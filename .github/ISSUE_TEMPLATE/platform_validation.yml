@@ -1,0 +1,43 @@
+name: 平台实测记录
+description: 提交 A100、C500 或其他设备的功能与性能证据
+title: "[Validation] "
+body:
+  - type: input
+    id: target
+    attributes:
+      label: 实验与设备
+      description: 填写章节/功能、GPU 型号、卡数和实际显存。
+    validations:
+      required: true
+  - type: textarea
+    id: stack
+    attributes:
+      label: 软件与模型版本
+      description: OS、驱动、运行时、框架/插件/算子库、模型与 Tokenizer revision；镜像使用可公开的标识。
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: 本次验证状态
+      options:
+        - passed：已实际运行且满足本实验标准
+        - failed：已实际运行但未满足标准
+        - unsupported：有明确限制依据
+        - not_run：仅提交计划或待验证配置
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 配置、输入与复现步骤
+      description: 固定负载、采样、并发、上下文和优化开关。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 原始证据与结论
+      description: 正确性、质量、kernel 路径及计时口径；性能结论提供基线和原始结果。not_run 说明尚缺条件。
+    validations:
+      required: true

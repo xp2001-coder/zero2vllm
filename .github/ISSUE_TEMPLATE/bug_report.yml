@@ -1,0 +1,43 @@
+name: 运行问题
+description: 报告 CPU 实验、配置检查或已交付代码的可复现问题
+title: "[Bug] "
+body:
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 发生了什么
+      description: 说明实际行为和期望行为；未实现的课程内容请使用课程建议模板。
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: 工程版本
+      description: 填写 commit、tag，或下载包的日期。
+    validations:
+      required: true
+  - type: dropdown
+    id: backend
+    attributes:
+      label: 运行路径
+      options:
+        - CPU 参考 / 文档工具
+        - CUDA / A100
+        - MACA / C500
+        - 其他 NVIDIA GPU
+        - 其他环境
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 最小复现
+      description: 命令、必要输入、配置和复现步骤；请去除令牌、私有地址和个人路径。
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境与错误输出
+      description: OS、Python、相关包版本和日志；涉及 GPU 时补充实际型号、显存和运行栈。
+      render: text

@@ -1,0 +1,1731 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-15",
+  "scope": "本次查阅的 vLLM 官方功能、设计、服务、模型、配置文档及 main 注册表；动态来源，不是发布版本兼容承诺",
+  "source_branches": [
+    "docs stable",
+    "GitHub main",
+    "docs latest"
+  ],
+  "observed_upstream_head": "00972dfd72988942138a7a6089eaee08580210b8",
+  "revision_note": "HEAD 为前轮盘点时 API 返回值，供定位；未逐文件确认网页缓存与该 SHA 一致。本轮导读另查 latest/main，正式源码实验与实机环境仍须固定并验证 tag/commit。",
+  "gpu_validation": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "sources": {
+    "quickstart": {
+      "title": "vLLM Quickstart",
+      "url": "https://docs.vllm.ai/en/stable/getting_started/quickstart/"
+    },
+    "gpu": {
+      "title": "GPU 安装与设备条件",
+      "url": "https://docs.vllm.ai/en/stable/getting_started/installation/gpu/"
+    },
+    "features": {
+      "title": "vLLM Features 与兼容性入口",
+      "url": "https://docs.vllm.ai/en/stable/features/"
+    },
+    "models": {
+      "title": "模型支持与任务",
+      "url": "https://docs.vllm.ai/en/stable/models/supported_models/"
+    },
+    "generation": {
+      "title": "Generative Models",
+      "url": "https://docs.vllm.ai/en/stable/models/generative_models/"
+    },
+    "pooling": {
+      "title": "Pooling Models",
+      "url": "https://docs.vllm.ai/en/stable/models/pooling_models/"
+    },
+    "architecture": {
+      "title": "架构设计",
+      "url": "https://docs.vllm.ai/en/stable/design/arch_overview/"
+    },
+    "runner": {
+      "title": "Model Runner V2",
+      "url": "https://docs.vllm.ai/en/stable/design/model_runner_v2/"
+    },
+    "hf": {
+      "title": "Hugging Face 集成",
+      "url": "https://docs.vllm.ai/en/stable/design/huggingface_integration/"
+    },
+    "serve": {
+      "title": "OpenAI-compatible Server",
+      "url": "https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/"
+    },
+    "apc": {
+      "title": "Automatic Prefix Caching",
+      "url": "https://docs.vllm.ai/en/stable/features/automatic_prefix_caching/"
+    },
+    "prefix_design": {
+      "title": "Prefix Caching 设计",
+      "url": "https://docs.vllm.ai/en/stable/design/prefix_caching/"
+    },
+    "hybrid": {
+      "title": "Hybrid KV Cache Manager",
+      "url": "https://docs.vllm.ai/en/stable/design/hybrid_kv_cache_manager/"
+    },
+    "kv_offload": {
+      "title": "KV Offloading",
+      "url": "https://docs.vllm.ai/en/stable/features/kv_offloading_usage/"
+    },
+    "context": {
+      "title": "Context Extension",
+      "url": "https://docs.vllm.ai/en/stable/features/context_extension/"
+    },
+    "index": {
+      "title": "IndexCache",
+      "url": "https://docs.vllm.ai/en/stable/features/index_cache/"
+    },
+    "optimization": {
+      "title": "Optimization and Tuning",
+      "url": "https://docs.vllm.ai/en/stable/configuration/optimization/"
+    },
+    "dbo": {
+      "title": "Dual Batch Overlap",
+      "url": "https://docs.vllm.ai/en/stable/design/dbo/"
+    },
+    "attention_support": {
+      "title": "Attention Backend 支持矩阵",
+      "url": "https://docs.vllm.ai/en/stable/design/attention_backends/"
+    },
+    "customop": {
+      "title": "CustomOp",
+      "url": "https://docs.vllm.ai/en/stable/design/custom_op/"
+    },
+    "compile": {
+      "title": "torch.compile 集成",
+      "url": "https://docs.vllm.ai/en/stable/design/torch_compile/"
+    },
+    "graphs": {
+      "title": "CUDA Graphs",
+      "url": "https://docs.vllm.ai/en/stable/design/cuda_graphs/"
+    },
+    "optimization_levels": {
+      "title": "Optimization Levels",
+      "url": "https://docs.vllm.ai/en/stable/design/optimization_levels/"
+    },
+    "ir": {
+      "title": "vLLM IR",
+      "url": "https://docs.vllm.ai/en/stable/design/vllm_ir/"
+    },
+    "vit_graphs": {
+      "title": "ViT CUDA Graphs",
+      "url": "https://docs.vllm.ai/en/stable/design/cuda_graphs_multimodal/"
+    },
+    "quant": {
+      "title": "量化与硬件矩阵",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/"
+    },
+    "online_quant": {
+      "title": "Online Quantization",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/online/"
+    },
+    "compressor": {
+      "title": "LLM Compressor",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/llm_compressor/"
+    },
+    "kv_quant": {
+      "title": "Quantized KV Cache",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/quantized_kvcache/"
+    },
+    "spec": {
+      "title": "Speculative Decoding",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/"
+    },
+    "eagle": {
+      "title": "EAGLE",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/eagle/"
+    },
+    "mtp": {
+      "title": "MTP",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/mtp/"
+    },
+    "spec_dynamic": {
+      "title": "Dynamic Speculative Decoding",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/dynamic_speculative_decoding/"
+    },
+    "spec_adaptive": {
+      "title": "Adaptive Verification",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/adaptive_verification/"
+    },
+    "parallel": {
+      "title": "Parallelism and Scaling",
+      "url": "https://docs.vllm.ai/en/stable/serving/parallelism_scaling/"
+    },
+    "cp": {
+      "title": "Context Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/"
+    },
+    "dp": {
+      "title": "Data Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/"
+    },
+    "ep": {
+      "title": "Expert Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/"
+    },
+    "moe_design": {
+      "title": "Fused MoE Modular Kernel",
+      "url": "https://docs.vllm.ai/en/stable/design/fused_moe_modular_kernel/"
+    },
+    "moe_features": {
+      "title": "MoE Kernel Features",
+      "url": "https://docs.vllm.ai/en/stable/design/moe_kernel_features/"
+    },
+    "disagg": {
+      "title": "Disaggregated Prefilling",
+      "url": "https://docs.vllm.ai/en/stable/features/disagg_prefill/"
+    },
+    "encoder_disagg": {
+      "title": "Disaggregated Encoder",
+      "url": "https://docs.vllm.ai/en/stable/features/disagg_encoder/"
+    },
+    "nixl": {
+      "title": "NIXL 兼容性矩阵",
+      "url": "https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/"
+    },
+    "multimodal": {
+      "title": "Multimodal Inputs",
+      "url": "https://docs.vllm.ai/en/stable/features/multimodal_inputs/"
+    },
+    "lora": {
+      "title": "LoRA Adapters",
+      "url": "https://docs.vllm.ai/en/stable/features/lora/"
+    },
+    "prompt_embed": {
+      "title": "Prompt Embedding Inputs",
+      "url": "https://docs.vllm.ai/en/stable/features/prompt_embeds/"
+    },
+    "structured": {
+      "title": "Structured Outputs",
+      "url": "https://docs.vllm.ai/en/stable/features/structured_outputs/"
+    },
+    "tools": {
+      "title": "Tool Calling",
+      "url": "https://docs.vllm.ai/en/stable/features/tool_calling/"
+    },
+    "reasoning": {
+      "title": "Reasoning Outputs",
+      "url": "https://docs.vllm.ai/en/stable/features/reasoning_outputs/"
+    },
+    "thinking": {
+      "title": "Interleaved Thinking",
+      "url": "https://docs.vllm.ai/en/stable/features/interleaved_thinking/"
+    },
+    "custom_logits": {
+      "title": "Custom Logits Processors",
+      "url": "https://docs.vllm.ai/en/stable/features/custom_logitsprocs/"
+    },
+    "load": {
+      "title": "Model Resolution",
+      "url": "https://docs.vllm.ai/en/stable/configuration/model_resolution/"
+    },
+    "memory": {
+      "title": "Conserving Memory",
+      "url": "https://docs.vllm.ai/en/stable/configuration/conserving_memory/"
+    },
+    "sleep": {
+      "title": "Sleep Mode",
+      "url": "https://docs.vllm.ai/en/stable/features/sleep_mode/"
+    },
+    "weight_transfer": {
+      "title": "Weight Transfer",
+      "url": "https://docs.vllm.ai/en/stable/training/weight_transfer/"
+    },
+    "async_rl": {
+      "title": "Async Reinforcement Learning",
+      "url": "https://docs.vllm.ai/en/stable/training/async_rl/"
+    },
+    "layerwise": {
+      "title": "Layerwise Reloading",
+      "url": "https://docs.vllm.ai/en/stable/training/layerwise/"
+    },
+    "bench": {
+      "title": "Benchmark CLI",
+      "url": "https://docs.vllm.ai/en/stable/benchmarking/cli/"
+    },
+    "sweep": {
+      "title": "Parameter Sweeps",
+      "url": "https://docs.vllm.ai/en/stable/benchmarking/sweeps/"
+    },
+    "profiling": {
+      "title": "Profiling vLLM",
+      "url": "https://docs.vllm.ai/en/stable/contributing/profiling/"
+    },
+    "metrics": {
+      "title": "Production Metrics",
+      "url": "https://docs.vllm.ai/en/stable/usage/metrics/"
+    },
+    "per_request": {
+      "title": "Per-Request Metrics",
+      "url": "https://docs.vllm.ai/en/stable/features/per_request_metrics/"
+    },
+    "batch_invariance": {
+      "title": "Batch Invariance",
+      "url": "https://docs.vllm.ai/en/stable/features/batch_invariance/"
+    },
+    "plugin": {
+      "title": "Plugin System",
+      "url": "https://docs.vllm.ai/en/stable/design/plugin_system/"
+    },
+    "deployment": {
+      "title": "Kubernetes 部署",
+      "url": "https://docs.vllm.ai/en/stable/deployment/k8s/"
+    },
+    "cache_config": {
+      "title": "缓存配置与 dtype 清单",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py"
+    },
+    "scheduler": {
+      "title": "调度配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/scheduler.py"
+    },
+    "parallel_config": {
+      "title": "并行配置与度数校验",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py"
+    },
+    "compile_config": {
+      "title": "编译模式与融合 Pass",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py"
+    },
+    "kernel": {
+      "title": "Linear/MoE Kernel 配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py"
+    },
+    "spec_config": {
+      "title": "推测方法与模型类型",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/speculative.py"
+    },
+    "quant_registry": {
+      "title": "量化方法注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py"
+    },
+    "attention_registry": {
+      "title": "Attention 后端注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/v1/attention/backends/registry.py"
+    },
+    "kv_factory": {
+      "title": "KV Connector 注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py"
+    },
+    "course": {
+      "title": "Datawhale zero-to-sglang",
+      "url": "https://github.com/datawhalechina/zero-to-sglang"
+    },
+    "transformers": {
+      "title": "Transformers",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    "nano": {
+      "title": "nano-vllm",
+      "url": "https://github.com/GeeeekExplorer/nano-vllm"
+    },
+    "mini": {
+      "title": "mini-sglang",
+      "url": "https://github.com/sgl-project/mini-sglang"
+    },
+    "flashattention": {
+      "title": "FlashAttention 官方实现与版本",
+      "url": "https://github.com/Dao-AILab/flash-attention"
+    },
+    "sglang_tbo": {
+      "title": "SGLang EP：TBO/SBO",
+      "url": "https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/expert_parallelism.mdx"
+    },
+    "metax": {
+      "title": "vLLM-MetaX",
+      "url": "https://github.com/MetaX-MACA/vLLM-metax"
+    },
+    "metax_install": {
+      "title": "MetaX 安装",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/getting_started/installation/maca.html"
+    },
+    "metax_quick": {
+      "title": "MetaX Quickstart",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/getting_started/quickstart.html"
+    },
+    "metax_models": {
+      "title": "MetaX 模型列表",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/models/supported_models.html"
+    },
+    "diffusion": {
+      "title": "离散扩散语言模型配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/diffusion.py"
+    },
+    "quant_base": {
+      "title": "vLLM 量化方法与配置接口",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py"
+    },
+    "triton_matmul": {
+      "title": "Triton 矩阵乘教程",
+      "url": "https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html"
+    },
+    "marlin_kernel": {
+      "title": "Marlin 量化内核实现",
+      "url": "https://github.com/IST-DASLab/marlin"
+    },
+    "triton_attention": {
+      "title": "Triton Fused Attention 教程",
+      "url": "https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html"
+    },
+    "sglang_tuning": {
+      "title": "SGLang Hyperparameter Tuning",
+      "url": "https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning"
+    }
+  },
+  "parts": [
+    {
+      "number": 0,
+      "title": "开始之前",
+      "prerequisites": "基础 Python",
+      "sources": [
+        "course",
+        "quickstart",
+        "gpu"
+      ],
+      "chapters": [
+        {
+          "id": "0.1",
+          "title": "读者路线与环境准备",
+          "topics": "Python、Linux、容器、驱动/运行时/框架版本、CPU 与双后端路线",
+          "exercise": "运行 CPU 实验并填写环境清单，区分已验证与待验证",
+          "hardware": "CPU/GPU",
+          "status": "partial"
+        },
+        {
+          "id": "0.2",
+          "title": "第一次模型生成",
+          "topics": "离线 LLM、在线服务、流式请求、Tokenizer 与 chat template",
+          "exercise": "画出输入消息到生成文本的数据流，保存一次服务记录",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "0.3",
+          "title": "实验与源码工作方法",
+          "topics": "固定 revision、阅读配置/日志/调用链、最小复现与原始数据",
+          "exercise": "建立个人实验目录和源码阅读笔记模板",
+          "hardware": "CPU",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 1,
+      "title": "理解大模型推理",
+      "prerequisites": "Part 0；矩阵乘法与基础 PyTorch",
+      "sources": [
+        "models",
+        "generation",
+        "bench"
+      ],
+      "chapters": [
+        {
+          "id": "1.1",
+          "title": "从 token 到下一步预测",
+          "topics": "Tokenizer、Embedding、Transformer、因果 Attention、LM Head",
+          "exercise": "手算小矩阵的 Attention 并标出张量维度",
+          "hardware": "CPU",
+          "status": "planned"
+        },
+        {
+          "id": "1.2",
+          "title": "Prefill 与 Decode",
+          "topics": "计算密集/带宽密集、HBM/SRAM、Roofline、算术强度",
+          "exercise": "估算两阶段的 FLOPs、访存量与主要瓶颈",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "1.3",
+          "title": "KV Cache 的作用",
+          "topics": "缓存更新、位置偏移、MHA/MQA/GQA、每 token 显存",
+          "exercise": "复现已有 logits 对齐实验并推导 KV 容量",
+          "hardware": "CPU/GPU",
+          "status": "partial"
+        },
+        {
+          "id": "1.4",
+          "title": "如何读性能结果",
+          "topics": "TTFT、TPOT、ITL、吞吐、Goodput、P50/P95/P99、排队",
+          "exercise": "用原始时间序列重算指标并识别错误口径",
+          "hardware": "CPU",
+          "status": "partial"
+        },
+        {
+          "id": "1.5",
+          "title": "模型结构与长上下文基础",
+          "topics": "RoPE、ALiBi、Sliding Window、MLA、稀疏/线性 Attention、SSM",
+          "exercise": "比较不同结构的缓存对象和复杂度",
+          "hardware": "CPU",
+          "status": "planned"
+        },
+        {
+          "id": "1.6",
+          "title": "采样与数值正确性",
+          "topics": "Greedy、temperature、top-k/top-p/min-p、penalty、seed、EOS/stop",
+          "exercise": "实现小词表采样并检查边界、分布和停止规则",
+          "hardware": "CPU",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "从零构建教学推理引擎",
+      "prerequisites": "Part 1",
+      "sources": [
+        "transformers",
+        "nano",
+        "mini",
+        "architecture"
+      ],
+      "chapters": [
+        {
+          "id": "2.1",
+          "title": "构建最小 PyTorch 模型",
+          "topics": "模型前向、生成循环、RMSNorm/RoPE/MLP、与 CPU 参考对齐",
+          "exercise": "用同一组权重逐层比较 logits",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "2.2",
+          "title": "加载真实模型权重",
+          "topics": "配置、safetensors、权重映射、Tokenizer、模型 revision",
+          "exercise": "加载候选小模型并对齐参考输出",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "2.3",
+          "title": "请求与缓存生命周期",
+          "topics": "创建、运行、完成、取消、异常、缓存归属",
+          "exercise": "画出状态机并验证取消后资源回收",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "2.4",
+          "title": "从静态批处理到连续批处理",
+          "topics": "迭代级调度、活跃队列、token 预算、请求插入退出",
+          "exercise": "回放长短请求混合的调度轨迹",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "2.5",
+          "title": "分页缓存",
+          "topics": "逻辑块、物理块、block table、slot mapping、设备 KV 存储",
+          "exercise": "把已有逻辑块模拟与 Attention 张量存储连接",
+          "hardware": "CPU/GPU",
+          "status": "partial"
+        },
+        {
+          "id": "2.6",
+          "title": "前缀缓存",
+          "topics": "跨请求共享、引用计数、哈希匹配、逐出、缓存失效",
+          "exercise": "构建共享前缀树形请求并检查复用与回收",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "2.7",
+          "title": "HTTP 与流式输出",
+          "topics": "异步迭代、背压、断连、取消传播、请求错误",
+          "exercise": "让断连请求释放资源并保存流式事件记录",
+          "hardware": "GPU",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "走进真实 vLLM",
+      "prerequisites": "Part 2；工程师可从本篇进入",
+      "sources": [
+        "architecture",
+        "runner",
+        "hf",
+        "features",
+        "serve"
+      ],
+      "chapters": [
+        {
+          "id": "3.1",
+          "title": "vLLM 中一次请求的旅程",
+          "topics": "输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消",
+          "exercise": "为固定版本标出请求 ID、进程/线程边界、消息内容及取消后的资源回收",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        },
+        {
+          "id": "3.2",
+          "title": "vLLM 调度与 KV 管理",
+          "topics": "输入处理、调度输出、KVCacheManager、BlockPool、执行反馈",
+          "exercise": "把教学状态机映射到正式实现",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "3.3",
+          "title": "模型执行与注意力后端",
+          "topics": "模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样",
+          "exercise": "追踪 [K,N] 权重加载及一次调度到张量化、实际 Attention/Linear 内核的完整链路",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        },
+        {
+          "id": "3.4",
+          "title": "V1 与 ModelRunner 演进",
+          "topics": "V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理",
+          "exercise": "制作 runner×图模式对照；按固定源码版本核对能力，避免把设计目标当已支持",
+          "hardware": "CPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        },
+        {
+          "id": "3.5",
+          "title": "配置与能力的解析流程",
+          "topics": "EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验",
+          "exercise": "追踪用户参数如何变成实际运行配置",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        }
+      ],
+      "teaching_focus": "先追踪请求、状态和张量三条线，再进入具体类。先读 3.1/3.3 理解执行，再回到 3.2 深入调度；3.4 单独处理版本演进。"
+    },
+    {
+      "number": 4,
+      "title": "CUDA 与 MACA 单卡基线",
+      "prerequisites": "Part 0、1、3",
+      "sources": [
+        "gpu",
+        "metax",
+        "metax_install",
+        "metax_quick"
+      ],
+      "chapters": [
+        {
+          "id": "4.1",
+          "title": "CUDA 路径与 A100 基线",
+          "topics": "上游 vLLM、CUDA/PyTorch、显存规格、eager 起步、离线/在线",
+          "exercise": "固定环境并保存单卡 A100 的正确性与性能基线",
+          "hardware": "GPU",
+          "status": "partial"
+        },
+        {
+          "id": "4.2",
+          "title": "MACA 路径与 C500 基线",
+          "topics": "vLLM-MetaX、MACA、mcoplib、官方镜像、版本关系",
+          "exercise": "固定配套环境并保存单卡 C500 的独立验证记录",
+          "hardware": "GPU",
+          "status": "partial"
+        },
+        {
+          "id": "4.3",
+          "title": "两个平台上的同一个实验",
+          "topics": "同权重/输入/采样/负载、dtype、后端差异、误差容限",
+          "exercise": "形成完整推理栈对照报告与失败记录",
+          "hardware": "双平台",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "KV Cache、Prefix Cache 与长上下文",
+      "prerequisites": "Part 1—3",
+      "sources": [
+        "apc",
+        "prefix_design",
+        "cache_config",
+        "hybrid",
+        "kv_offload",
+        "context",
+        "index"
+      ],
+      "chapters": [
+        {
+          "id": "5.1",
+          "title": "PagedAttention 与缓存布局",
+          "topics": "页大小、block table、slot mapping、NHD/HND 与新布局、碎片",
+          "exercise": "计算不同块大小的浪费并解释寻址过程",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "5.2",
+          "title": "Automatic Prefix Caching",
+          "topics": "APC 完整块匹配、未命中后缀计算、prefill 节省、最后 token/logits 边界；Radix 对照",
+          "exercise": "设计整块命中、尾块未命中、无共享、salt 隔离和容量逐出用例",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "5.3",
+          "title": "缓存键与共享隔离",
+          "topics": "链式哈希、token/多模态/LoRA 标识、cache salt、哈希算法",
+          "exercise": "设计共享与不应共享的请求用例，检查命中正确性",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "5.4",
+          "title": "缓存生命周期与路由",
+          "topics": "引用计数、LRU、逐出、抢占重算、reset、KV events、亲和路由",
+          "exercise": "回放容量不足轨迹并解释命中率和排队变化",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "5.5",
+          "title": "混合模型缓存管理",
+          "topics": "Full/SWA/SSM 分组、Hybrid KV Cache Manager、页对齐、共享层",
+          "exercise": "绘制混合层的内存分配与有效缓存范围",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "5.6",
+          "title": "Mamba 与线性模型状态缓存",
+          "topics": "Mamba1/2、GDN、卷积/SSM 状态、检查点、ReplaySSM/RecoverSSM",
+          "exercise": "用状态递推模拟说明缓存与回滚为何不同于普通 KV",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "5.7",
+          "title": "KV Offloading 与分层缓存",
+          "topics": "原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器",
+          "exercise": "比较重算和传输成本；核对命中、传输字节与显存",
+          "hardware": "GPU/多机",
+          "status": "planned"
+        },
+        {
+          "id": "5.8",
+          "title": "上下文扩展与 KV Sharing",
+          "topics": "RoPE scaling/YaRN、模型长度、滑窗、跨层 KV sharing/fast prefill",
+          "exercise": "设计长上下文质量评估并区分容量与有效理解长度",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "5.9",
+          "title": "IndexCache 与稀疏索引缓存",
+          "topics": "DSA top-k 索引跨层复用、复用频率、稀疏注意力精度",
+          "exercise": "分析索引复用成本与质量变化；不把它当 APC",
+          "hardware": "专项",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "调度、批处理与重叠执行",
+      "prerequisites": "Part 2—3、5",
+      "sources": [
+        "optimization",
+        "scheduler",
+        "dbo",
+        "sglang_tbo"
+      ],
+      "chapters": [
+        {
+          "id": "6.1",
+          "title": "连续批处理与调度策略",
+          "topics": "FCFS、priority、等待/运行队列、公平性、抢占与饥饿",
+          "exercise": "模拟长短请求混合并比较吞吐和尾延迟",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "6.2",
+          "title": "Chunked Prefill",
+          "topics": "分块预填充、混合 prefill/decode、长请求阈值、部分 prefill 预算",
+          "exercise": "扫描 chunk/token 预算，观察 TTFT 与 ITL 权衡",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "6.3",
+          "title": "Token 预算与显存预算",
+          "topics": "max_num_seqs、max_num_batched_tokens、版本中的 scheduled-token 上限、max_model_len、KV/encoder/推测预算",
+          "exercise": "手算 4096 token 预算中两个 decode 加一个长 prefill，标记理想上限与真实约束",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/02-scheduling-cache.md"
+        },
+        {
+          "id": "6.4",
+          "title": "异步调度与输出处理",
+          "topics": "CPU/GPU overlap、输入准备、采样反馈、异步输出、取消边界",
+          "exercise": "阅读时间线并定位 CPU 空洞和同步点",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "6.5",
+          "title": "DBO 与 TBO 对照",
+          "topics": "vLLM Dual Batch Overlap、ubatch、计算/通信重叠；SGLang TBO/SBO 对照",
+          "exercise": "画两微批次时间线，检查阈值和重叠是否真实发生",
+          "hardware": "多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "6.6",
+          "title": "调度功能组合与演进",
+          "topics": "async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of",
+          "exercise": "制作所选版本组合矩阵，记录拒绝/回退原因",
+          "hardware": "CPU/GPU/多卡",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "Attention 与高性能算子",
+      "prerequisites": "Part 1、3、5；补充 GPU 编程",
+      "sources": [
+        "attention_registry",
+        "attention_support",
+        "flashattention",
+        "kernel",
+        "customop",
+        "triton_attention"
+      ],
+      "chapters": [
+        {
+          "id": "7.1",
+          "title": "FlashAttention 原理",
+          "topics": "IO-aware tiling、online softmax、SRAM 复用、精确注意力",
+          "exercise": "分块计算 softmax 并与朴素实现对齐",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/03-attention-kernels.md"
+        },
+        {
+          "id": "7.2",
+          "title": "FlashAttention 版本与接入",
+          "topics": "FA1/FA2/FA3/FA4、varlen、prefill/decode、设备与 dtype 条件",
+          "exercise": "区分算法版本、安装包与 vLLM 实际选择的后端",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "7.3",
+          "title": "注意力后端选择",
+          "topics": "FlashInfer、Triton、SDPA/FlexAttention、CPU/ROCm/XPU、自动选择",
+          "exercise": "建立 head size、dtype、KV 格式、图执行的能力矩阵",
+          "hardware": "GPU/专项",
+          "status": "partial",
+          "reading": "docs/chapters/03-attention-kernels.md"
+        },
+        {
+          "id": "7.4",
+          "title": "MLA 与稀疏 Attention",
+          "topics": "FlashMLA、CUTLASS MLA、FlashInfer MLA、DSA/MSA、模型专用后端",
+          "exercise": "分析压缩 KV、索引选择和 attention kernel 的分工",
+          "hardware": "专项",
+          "status": "planned"
+        },
+        {
+          "id": "7.5",
+          "title": "Decode 与共享前缀注意力",
+          "topics": "分区归约、split-K、变长/分页、cascade attention、共享前缀",
+          "exercise": "比较短/长上下文和高/低 batch 下的算子时间",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/03-attention-kernels.md"
+        },
+        {
+          "id": "7.6",
+          "title": "线性层与融合算子",
+          "topics": "Triton vector add→reduction/Softmax→Matmul→Attention；GEMM/GEMV、RMSNorm、RoPE、SwiGLU、CUDA/CUTLASS/CuTeDSL",
+          "exercise": "逐级完成数值参考、mask/stride/尾块检查，再选择一个小算子做 microbenchmark",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/03-attention-kernels.md"
+        },
+        {
+          "id": "7.7",
+          "title": "Kernel 选择与调优",
+          "topics": "Marlin、Machete、DeepGEMM、Humming、FlashInfer、b12x、autotune/JIT",
+          "exercise": "解释形状、架构和量化格式如何影响调度与回退",
+          "hardware": "GPU/专项",
+          "status": "partial",
+          "reading": "docs/chapters/03-attention-kernels.md"
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "title": "编译、CUDA Graph 与执行优化",
+      "prerequisites": "Part 3、6、7",
+      "sources": [
+        "compile",
+        "compile_config",
+        "graphs",
+        "optimization_levels",
+        "ir",
+        "vit_graphs"
+      ],
+      "chapters": [
+        {
+          "id": "8.1",
+          "title": "torch.compile 集成",
+          "topics": "Dynamo/FX/Inductor 与 Triton TTIR/TTGIR/目标代码；guards、断图、动态 shape、piecewise compile",
+          "exercise": "区分两层编译链，追踪冷/热编译、specialization 和一个自定义算子的 lowering",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "8.2",
+          "title": "CUDA Graph 执行模式",
+          "topics": "NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE",
+          "exercise": "分别记录 eager、分段图、完整图的启动开销与显存",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "8.3",
+          "title": "形状特化与编译缓存",
+          "topics": "capture sizes、padding、warmup、缓存键、recompile、启动成本",
+          "exercise": "比较冷启动与稳态，定位重复编译",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "8.4",
+          "title": "计算融合 Pass",
+          "topics": "Norm+Quant、Act+Quant、Attention+Quant、QK Norm+RoPE、RoPE+KV",
+          "exercise": "对照融合前后 kernel 数和误差，不只看开关值",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "8.5",
+          "title": "通信融合与 Async TP",
+          "topics": "GEMM/collective overlap、all-reduce+RMSNorm、SP、对称内存",
+          "exercise": "画出依赖关系，测量通信隐藏比例",
+          "hardware": "多卡",
+          "status": "planned"
+        },
+        {
+          "id": "8.6",
+          "title": "优化级别、CustomOp 与 vLLM IR",
+          "topics": "优化预设、pass 优先级、算子 dispatch/lowering、平台覆盖",
+          "exercise": "追踪一个算子从模型代码到后端实现的过程",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "8.7",
+          "title": "多模态图与编译排错",
+          "topics": "ViT CUDA Graph、encoder compile、动态输入、回退、DBO/Spec 组合",
+          "exercise": "对齐图执行结果并保存最小失败场景",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "量化算法、算子实现与推理加速",
+      "prerequisites": "Part 1、4、7；内核调优结合 Part 8，MoE 量化补读 Part 12.1—12.3",
+      "sources": [
+        "quant",
+        "quant_base",
+        "kernel",
+        "triton_matmul",
+        "marlin_kernel",
+        "kv_quant",
+        "quant_registry",
+        "online_quant",
+        "compressor"
+      ],
+      "chapters": [
+        {
+          "id": "9.1",
+          "title": "低精度表示与计算路径",
+          "topics": "INT4/INT8、FP8/FP4/MX 格式；scale/zero-point、舍入/饱和、粒度；存储/乘法/累加精度",
+          "exercise": "定义张量、位布局与缩放契约，计算含元数据的内存/带宽预算",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.2",
+          "title": "量化算法",
+          "topics": "统一比较误差目标、校准、裁剪、舍入、误差补偿与等价变换；以 GPTQ/AWQ 等为案例，区分 PTQ/QAT",
+          "exercise": "固定格式与计算后端比较算法，输出校准/质量/转换成本分析",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.3",
+          "title": "量化策略与精度分配",
+          "topics": "W/A/KV、weight-only/低精度计算、静态/动态、在线/离线、分层/分组/专家混合精度、负载感知",
+          "exercise": "在质量、显存和延迟预算下设计策略，并形成敏感度与消融表",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.4",
+          "title": "手写量化与数据重排算子",
+          "topics": "amax/reduction、Q/DQ、per-token/per-group scales、INT4 半字节打包、符号扩展、重排与尾块",
+          "exercise": "先运行已交付 CPU INT4 实验并核对黄金字节/半 scale 误差界，再实现 GPU Q/DQ 与重排",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.5",
+          "title": "Weight-only GEMV 与 GEMM",
+          "topics": "W4A16/W8A16、packed layout、分块反量化融合、scale 复用、decode 小 M 与 prefill 大 M",
+          "exercise": "先写正确内核，再比较显式反量化与融合路径的时间和访存",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.6",
+          "title": "低精度 GEMM 与缩放实现",
+          "topics": "W8A8/W4A8、INT8/FP8/FP4 条件化路径、动态激活量化、分组缩放、累加精度、zero-point 补偿、epilogue",
+          "exercise": "实现受设备支持的低精度路径，把量化、矩阵乘和缩放开销分项测量",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "9.7",
+          "title": "融合算子与内核调优",
+          "topics": "Norm/Act+Quant、GEMM epilogue、tiling、L2/共享内存复用、流水线/双缓冲、寄存器、split-K、autotune",
+          "exercise": "用 profiling 解释每次改动，并在形状扫描中定位性能拐点与回退",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.8",
+          "title": "KV 量化与 Attention 协同",
+          "topics": "KV 格式/布局、per-head/per-token scales、量化写入/融合读取、低比特反量化、异常层与长上下文误差",
+          "exercise": "实现或改造一条 KV Q/DQ 路径，分别测容量、Attention 时间与模型质量",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "9.9",
+          "title": "MoE 专家量化与分组计算",
+          "topics": "按专家精度/scale、路由后的激活量化、grouped GEMM、打包布局、负载不均与通信协同",
+          "exercise": "分析专家 token 分布，优化一个子路径并核对 dispatch/compute/combine 开销",
+          "hardware": "GPU/多卡",
+          "status": "planned"
+        },
+        {
+          "id": "9.10",
+          "title": "量化算子接入 vLLM",
+          "topics": "QuantizationConfig→get_quant_method→create_weights→load→process_weights_after_loading→apply；布局/分片/dispatch/回退",
+          "exercise": "为同一量化权重追踪加载前后 shape/layout/dtype 和 kernel 分支，先层后模型再服务验收",
+          "hardware": "GPU/双平台",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        },
+        {
+          "id": "9.11",
+          "title": "从算子收益到端到端加速",
+          "topics": "microbenchmark→层→模型→服务、prefill/decode、精度/质量双重误差、TTFT/TPOT/Goodput、预处理摊销",
+          "exercise": "提交 A100/C500 独立报告，解释更低位宽或更快 GEMM 未带来整体收益的场景",
+          "hardware": "双平台",
+          "status": "partial",
+          "reading": "docs/chapters/05-quantization-operators.md"
+        }
+      ],
+      "teaching_focus": "算法集中在 9.2；9.3 设计精度策略；9.4—9.9 围绕算子实现与加速；9.10 接入 vLLM；9.11 验证完整推理链路。各格式与工具保留为案例和兼容索引。",
+      "readme_note": "学生先完成数学参考、打包与基础 GEMM；量化工程师可从策略/算子设计进入。贯穿实验、算子契约与验收方法见[量化篇设计](docs/quantization-design.md)。",
+      "curriculum_note": "学生先学习 9.1—9.4 的数学参考与打包，9.5 的内核实践需要 GPU；已有量化经验的工程师可先完成 9.3 的策略设计，再进入 9.4—9.11。\n\n贯穿实验：定义量化张量契约 → 参考 Q/DQ 与打包 → 融合量化 Linear → 调优与特定算子扩展 → vLLM 服务消融。见[量化篇设计与验收](quantization-design.md)。"
+    },
+    {
+      "number": 10,
+      "title": "Speculative Decoding 推测解码",
+      "prerequisites": "Part 1、3、5、6",
+      "sources": [
+        "spec",
+        "spec_config",
+        "eagle",
+        "mtp",
+        "spec_dynamic",
+        "spec_adaptive"
+      ],
+      "chapters": [
+        {
+          "id": "10.1",
+          "title": "Draft、Verify 与拒绝采样",
+          "topics": "目标/草稿分布、接受率、回退、额外 token、分布保持条件",
+          "exercise": "用小词表验证拒绝采样分布与边界",
+          "hardware": "CPU",
+          "status": "partial",
+          "reading": "docs/chapters/07-speculation-serving.md"
+        },
+        {
+          "id": "10.2",
+          "title": "N-gram 与 Suffix",
+          "topics": "ngram、ngram_gpu、prompt lookup、suffix matching、自适应深度",
+          "exercise": "比较重复文本和开放生成的命中率",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "10.3",
+          "title": "独立 Draft Model",
+          "topics": "草稿模型、词表对齐、draft TP、显存预算、投机 token 数",
+          "exercise": "扫描草稿长度并记录接受率与端到端收益",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "10.4",
+          "title": "EAGLE 与 EAGLE3",
+          "topics": "特征预测、draft tree/验证、hidden state extraction、模型配套",
+          "exercise": "画出特征/草稿/验证调用关系并核对 checkpoint",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "10.5",
+          "title": "MTP 与模型原生多 token 预测",
+          "topics": "MTP 模块、权重、共享状态、多模型家族、混合模型回滚",
+          "exercise": "验证预测模块适配并观察逐位置接受率",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "10.6",
+          "title": "其他草稿与并行提案",
+          "topics": "MLP speculator、Medusa、PARD、DFlash/DSpark、speculators、custom proposer",
+          "exercise": "区分文档方案、注册项与所选 runner 的可运行实现",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "10.7",
+          "title": "动态推测与自适应验证",
+          "topics": "Dynamic Speculative Decoding、负载感知、置信度、Adaptive Verification",
+          "exercise": "改变 QPS 并检查草稿长度、验证量与尾延迟",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "10.8",
+          "title": "推测的缓存与执行组合",
+          "topics": "KV 分配/回滚、CUDA Graph、异步调度、LoRA/量化/多模态/CP",
+          "exercise": "为支持的组合设计错误恢复和正确性检查",
+          "hardware": "GPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/07-speculation-serving.md"
+        },
+        {
+          "id": "10.9",
+          "title": "接受率与真实收益",
+          "topics": "每请求/每位置接受率、accepted tokens、草稿成本、有效吞吐",
+          "exercise": "解释高接受率但没有加速的场景并交付消融报告",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/07-speculation-serving.md"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "title": "并行切分与分布式执行",
+      "prerequisites": "Part 3、5—8；掌握 collective 基础",
+      "sources": [
+        "parallel",
+        "parallel_config",
+        "cp",
+        "dp",
+        "ep",
+        "compile_config"
+      ],
+      "chapters": [
+        {
+          "id": "11.1",
+          "title": "并行维度与通信基础",
+          "topics": "TP/PP/DP/EP/CP/PCP/DCP/SP、rank/group、all-reduce/all-gather/reduce-scatter/all-to-all",
+          "exercise": "画出进程组与张量切分，计算通信数据量",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.2",
+          "title": "Tensor Parallelism",
+          "topics": "TP、column/row parallel、vocab parallel、Attention heads、KV 复制",
+          "exercise": "手算两路 TP 的前向合并与显存分布",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.3",
+          "title": "Pipeline Parallelism",
+          "topics": "PP、层切分、不均匀分层、microbatch、流水线气泡",
+          "exercise": "制作 pipeline 时间线并估算负载不均的影响",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.4",
+          "title": "Data Parallelism",
+          "topics": "DP、副本、内部/外部/混合负载均衡、dense 与 MoE 差异",
+          "exercise": "比较请求路由、排队与副本扩展吞吐",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.5",
+          "title": "Context Parallelism 概念",
+          "topics": "CP 沿上下文切分、长序列、Q/KV 分布、ring/all-gather 算法",
+          "exercise": "区分上下文并行、序列并行和分块预填充",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.6",
+          "title": "Prefill Context Parallelism",
+          "topics": "PCP、prefill token 切分、rank 扩展、TP/PCP 组合、缓存布局",
+          "exercise": "推导 prefill 张量分工与通信，核对模型/runner 支持",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.7",
+          "title": "Decode Context Parallelism",
+          "topics": "DCP、decode KV 分片、复用进程组、MLA/GQA、ag_rs/a2a、Q replicate",
+          "exercise": "推导每卡 KV 和输出归约，核对 DCP 合法度数",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.8",
+          "title": "Sequence Parallelism 与 Async TP",
+          "topics": "SP 激活切分、TP 配合、融合 pass、序列并行 MoE 路径",
+          "exercise": "说明 SP 与 PCP/DCP 的缓存/通信目标差异",
+          "hardware": "CPU/多卡",
+          "status": "planned"
+        },
+        {
+          "id": "11.9",
+          "title": "组合并行与拓扑规划",
+          "topics": "TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA",
+          "exercise": "交付一份进程布局和容量预算，标明无法运行的组合",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "11.10",
+          "title": "分布式启动与排错",
+          "topics": "mp/Ray/external launcher、节点发现、通信超时、NCCL/P2P、故障",
+          "exercise": "设计启动、卡数不足、断连与通信失败的排查流程",
+          "hardware": "多卡/多机",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "title": "MoE 与通信优化",
+      "prerequisites": "Part 7、8、11",
+      "sources": [
+        "ep",
+        "parallel_config",
+        "moe_design",
+        "moe_features",
+        "kernel",
+        "dbo"
+      ],
+      "chapters": [
+        {
+          "id": "12.1",
+          "title": "MoE 计算链路",
+          "topics": "Router、top-k、shared/routed experts、dispatch、专家计算、combine",
+          "exercise": "手算 token 路由并统计各专家负载",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "12.2",
+          "title": "Expert Parallelism",
+          "topics": "EP、专家切分、Attention DP/TP 与专家组、placement、冗余专家",
+          "exercise": "画出 token 到专家的分发和汇总",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "12.3",
+          "title": "Fused MoE Kernel",
+          "topics": "Modular Kernel、prepare/finalize、量化布局、batched/mega MoE",
+          "exercise": "对照路由、通信和 GEMM 三类耗时",
+          "hardware": "GPU/多卡",
+          "status": "planned"
+        },
+        {
+          "id": "12.4",
+          "title": "All-to-All 后端",
+          "topics": "allgather/reducescatter、DeepEP、MoRI、NIXL EP、FlashInfer NVLink",
+          "exercise": "比较延迟/吞吐模式与拓扑条件，识别已移除后端",
+          "hardware": "多卡/专项",
+          "status": "planned"
+        },
+        {
+          "id": "12.5",
+          "title": "EPLB 与弹性专家并行",
+          "topics": "EPLB、重排/冗余、异步均衡、Elastic EP、扩缩容与故障恢复",
+          "exercise": "模拟热点专家并评估迁移成本和再均衡收益",
+          "hardware": "CPU/多卡",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "12.6",
+          "title": "MoE 重叠与综合调优",
+          "topics": "DBO、shared expert overlap、通信融合、量化、分离式部署组合",
+          "exercise": "建立算子时间线与消融矩阵，解释收益来源",
+          "hardware": "多卡",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "title": "分离式部署与 KV 传输",
+      "prerequisites": "Part 5、6、11",
+      "sources": [
+        "disagg",
+        "encoder_disagg",
+        "kv_factory",
+        "nixl",
+        "kv_offload"
+      ],
+      "chapters": [
+        {
+          "id": "13.1",
+          "title": "Prefill-Decode 分离",
+          "topics": "PD disaggregation、阶段独立扩展、TTFT/TPOT 目标、路由",
+          "exercise": "推导传输成本与分离收益的临界条件",
+          "hardware": "CPU/多机",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "13.2",
+          "title": "KV Connector 协议",
+          "topics": "scheduler/worker 角色、异步存取、生命周期、失败回收、KV events",
+          "exercise": "绘制一次远端 KV 的生产/传输/消费流程",
+          "hardware": "CPU/多机",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "13.3",
+          "title": "连接器与分层存储地图",
+          "topics": "NIXL、Mooncake/Store、LMCache、MoRIIO、FlexKV、HF3FS、原生 offload",
+          "exercise": "逐项核对传输协议、存储层与外部依赖",
+          "hardware": "多机/专项",
+          "status": "planned"
+        },
+        {
+          "id": "13.4",
+          "title": "异构并行与传输兼容",
+          "topics": "P/D 不同 TP/PCP/DCP、KV layout、block size、dtype、模型一致性",
+          "exercise": "做兼容性表与流量预算，不能假定任意配置可互传",
+          "hardware": "CPU/多机",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        },
+        {
+          "id": "13.5",
+          "title": "Encoder 分离与缓存",
+          "topics": "多模态 encoder、EC transfer、embedding cache、renderer 拆分",
+          "exercise": "画出图像/音频编码结果的跨进程流转",
+          "hardware": "多机/专项",
+          "status": "planned"
+        },
+        {
+          "id": "13.6",
+          "title": "分布式服务生命周期",
+          "topics": "push/pull、租约/通知、超时、重试、load failure recovery、缓存亲和",
+          "exercise": "分析故障注入轨迹与请求完成/回收语义",
+          "hardware": "多机",
+          "status": "partial",
+          "reading": "docs/chapters/06-parallel-moe-disagg.md"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "title": "模型类型、多模态与适配器",
+      "prerequisites": "Part 1、3、5",
+      "sources": [
+        "models",
+        "pooling",
+        "multimodal",
+        "lora",
+        "prompt_embed",
+        "vit_graphs",
+        "diffusion"
+      ],
+      "chapters": [
+        {
+          "id": "14.1",
+          "title": "模型注册与执行任务",
+          "topics": "generative/pooling、runner/task、原生实现/Transformers backend、encoder-decoder",
+          "exercise": "识别架构与任务匹配，制作能力清单",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        },
+        {
+          "id": "14.2",
+          "title": "文本生成与评分",
+          "topics": "生成、logprobs/prompt logprobs、score、generative scoring、beam search 版本差异",
+          "exercise": "区分生成结果与评分结果并验证 token 对齐",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "14.3",
+          "title": "Pooling 全任务",
+          "topics": "Embedding、token embedding、分类/token classification、reward、rerank/score",
+          "exercise": "设计表示、分类和排序的正确性与性能评测",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "14.4",
+          "title": "多模态输入管线",
+          "topics": "图像/视频/音频、processor cache、输入预算、placeholder、MM embeddings",
+          "exercise": "追踪媒体到张量/token 的转换并记录开销",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "14.5",
+          "title": "多模态执行优化",
+          "topics": "encoder batching/DP、ViT attention/FP8、encoder compile/graphs、EC cache",
+          "exercise": "拆开编码与文本生成耗时并验证组合条件",
+          "hardware": "GPU/多卡/专项",
+          "status": "planned"
+        },
+        {
+          "id": "14.6",
+          "title": "LoRA 与多租户适配",
+          "topics": "Multi-LoRA、混合 batch、动态装卸、CPU 缓存、resolver、默认多模态 LoRA",
+          "exercise": "核对 adapter 隔离、内存预算和多请求正确性",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "14.7",
+          "title": "Prompt Embeddings 与特殊架构",
+          "topics": "prompt embeds、custom I/O、MLA/混合 SSM、离散扩散 dLLM canvas/denoising、Omni 扩展边界",
+          "exercise": "追踪输入表示和 dLLM 分块去噪，区分上游引擎与外部项目职责",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "title": "服务接口与生成能力",
+      "prerequisites": "Part 3、14",
+      "sources": [
+        "serve",
+        "structured",
+        "tools",
+        "reasoning",
+        "thinking",
+        "custom_logits"
+      ],
+      "chapters": [
+        {
+          "id": "15.1",
+          "title": "离线与在线入口",
+          "topics": "LLM/AsyncLLM、chat/complete/serve/run-batch、OpenAI Batch、流式 SSE",
+          "exercise": "保存同负载下不同入口的输入输出契约",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/07-speculation-serving.md"
+        },
+        {
+          "id": "15.2",
+          "title": "API 能力地图",
+          "topics": "Completions/Chat/Responses、Embeddings/Score/Rerank、音频/实时接口、tokenize/detokenize",
+          "exercise": "按版本列出 endpoint 与模型能力条件",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "15.3",
+          "title": "Structured Outputs",
+          "topics": "JSON Schema、regex、choice、grammar、structural tag、XGrammar/Guidance",
+          "exercise": "验证约束满足率并测量语法编译和逐 token mask 成本",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "15.4",
+          "title": "Tool Calling",
+          "topics": "tool_choice、自动/指定/required、parallel tools、parser、chat template",
+          "exercise": "构建工具调用解析用例与流式增量组装检查",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "15.5",
+          "title": "Reasoning 与 Interleaved Thinking",
+          "topics": "reasoning parser、内容分离、思考预算、工具轮次与交错推理",
+          "exercise": "核对流式 reasoning/content/tool 三类输出",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "15.6",
+          "title": "自定义采样与处理器",
+          "topics": "Custom Logits Processors、logit bias、允许/禁止 token、custom arguments/I/O",
+          "exercise": "实现有约束的小处理器并检查批处理语义",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "15.7",
+          "title": "服务治理与扩展",
+          "topics": "前端进程扩展、限流/背压、取消、健康检查、指标、集成框架",
+          "exercise": "设计连接超时与高负载场景并保存完整请求结果",
+          "hardware": "GPU/多机",
+          "status": "partial",
+          "reading": "docs/chapters/07-speculation-serving.md"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "title": "权重加载、内存与 RL 推理生命周期",
+      "prerequisites": "Part 3—5、14",
+      "sources": [
+        "load",
+        "memory",
+        "sleep",
+        "weight_transfer",
+        "async_rl",
+        "layerwise"
+      ],
+      "chapters": [
+        {
+          "id": "16.1",
+          "title": "模型解析与权重加载",
+          "topics": "本地/Hugging Face/ModelScope、revision、safetensors、sharded state、lazy loading",
+          "exercise": "分解读取、解码、拷贝和首次生成的时间",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/01-request-lifecycle.md"
+        },
+        {
+          "id": "16.2",
+          "title": "高效加载与启动",
+          "topics": "fastsafetensors、Run:ai Streamer、Tensorizer、InstantTensor、加载并发、JIT warmup",
+          "exercise": "比较冷/热文件缓存下启动时间与主机峰值内存",
+          "hardware": "GPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "16.3",
+          "title": "权重 Offload 与内存预算",
+          "topics": "CPU weight offload、prefetch/UVA 路径、KV offload、pinned memory、图内存",
+          "exercise": "建立权重/激活/KV/workspace/graph 的显存账本",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "16.4",
+          "title": "Sleep、Wake 与 Pause/Resume",
+          "topics": "sleep levels、权重/KV 释放、wake tags、暂停恢复、缓存重置",
+          "exercise": "检查释放后的占用与恢复后输出一致性",
+          "hardware": "GPU",
+          "status": "planned"
+        },
+        {
+          "id": "16.5",
+          "title": "权重更新与传输",
+          "topics": "Weight Transfer、IPC/NCCL/Sharded RDT、逐层 reload、版本一致性",
+          "exercise": "画训练器到推理器的更新流程和同步点",
+          "hardware": "多进程/多卡",
+          "status": "planned"
+        },
+        {
+          "id": "16.6",
+          "title": "强化学习推理集成",
+          "topics": "RLHF/async rollout、训练-推理交替、distribution replay、routed experts、TRL",
+          "exercise": "分析权重滞后、采样分布和吞吐；明确 vLLM 的推理角色",
+          "hardware": "GPU/多卡",
+          "status": "planned"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "title": "评测、性能分析与优化方法",
+      "prerequisites": "Part 4；按实验选择 Part 5—16",
+      "sources": [
+        "bench",
+        "sweep",
+        "profiling",
+        "metrics",
+        "per_request",
+        "batch_invariance"
+      ],
+      "chapters": [
+        {
+          "id": "17.1",
+          "title": "基准测试工具与负载",
+          "topics": "bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据",
+          "exercise": "生成可重复输入并区分开环 QPS 与闭环并发",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "17.2",
+          "title": "延迟目标与参数搜索",
+          "topics": "SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存",
+          "exercise": "寻找满足尾延迟目标的配置，计入失败与超时",
+          "hardware": "CPU/GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "17.3",
+          "title": "Profiling 全链路",
+          "topics": "PyTorch Profiler、Nsight/厂商工具、CPU/GPU timeline；语义/shape/dtype 对齐、次数与单次耗时、关键路径",
+          "exercise": "无 profiler 测性能，另取匹配负载抓 trace；区分累计 kernel 时间、重叠与墙钟时间",
+          "hardware": "GPU",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        },
+        {
+          "id": "17.4",
+          "title": "观测与请求级指标",
+          "topics": "Prometheus/Grafana、OpenTelemetry、KV/调度/Spec/MoE 指标、per-request metrics",
+          "exercise": "把服务时间线与单请求延迟对应起来",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "17.5",
+          "title": "质量、复现与 Batch Invariance",
+          "topics": "数值容差、模型质量、长上下文、seed、批次不变性、确定性代价",
+          "exercise": "比较 logits/质量/性能三种结果并解释差异",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "17.6",
+          "title": "系统消融与综合项目",
+          "topics": "APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划",
+          "exercise": "交付可复现优化报告、原始数据及不生效的配置",
+          "hardware": "双平台",
+          "status": "partial",
+          "reading": "docs/chapters/04-compile-profiling.md"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "title": "平台扩展、部署生态与开源贡献",
+      "prerequisites": "Part 3、4、17",
+      "sources": [
+        "plugin",
+        "customop",
+        "metax",
+        "metax_models",
+        "deployment",
+        "features",
+        "sglang_tuning"
+      ],
+      "chapters": [
+        {
+          "id": "18.1",
+          "title": "平台与插件机制",
+          "topics": "out-of-tree platform、模型/算子/量化/LoRA/I/O 插件、能力检测",
+          "exercise": "追踪 MetaX 插件如何覆盖平台行为与算子选择",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        },
+        {
+          "id": "18.2",
+          "title": "C500 适配专题",
+          "topics": "MACA/mcoplib、Attention/量化/图执行能力、配置迁移、数值和性能排查",
+          "exercise": "逐项补齐 C500 功能证据，与 A100 结果独立记录",
+          "hardware": "双平台",
+          "status": "planned"
+        },
+        {
+          "id": "18.3",
+          "title": "其他硬件与框架对照",
+          "topics": "ROCm/XPU/CPU/TPU/其他插件，SGLang、TensorRT-LLM、llama.cpp、vLLM-Omni 边界",
+          "exercise": "比较同一概念的接口和实现，标注第三方/硬件专用内容",
+          "hardware": "CPU/专项",
+          "status": "planned"
+        },
+        {
+          "id": "18.4",
+          "title": "部署与周边生态",
+          "topics": "Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成",
+          "exercise": "设计服务、缓存、路由和监控的部署图",
+          "hardware": "CPU/多机",
+          "status": "planned"
+        },
+        {
+          "id": "18.5",
+          "title": "从问题到贡献与版本维护",
+          "topics": "单元/集成/性能检查、最小复现、PR、废弃迁移、功能台账更新",
+          "exercise": "提交有证据的改动，并同步正文、目录、兼容矩阵与来源",
+          "hardware": "CPU/GPU",
+          "status": "planned"
+        }
+      ]
+    }
+  ],
+  "knowledge_revision": {
+    "reviewed_on": "2026-09-15",
+    "manifest": "docs/knowledge-sources.json",
+    "source_documents": 38,
+    "note": "新增专题导读与 CPU 量化实验；保留 19 篇 126 章和独立 GPU 状态。"
+  }
+}

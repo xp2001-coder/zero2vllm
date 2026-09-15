@@ -1,0 +1,24 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+build/
+dist/
+.DS_Store
+.env
+.env.*
+.idea/
+.ipynb_checkpoints/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+Thumbs.db
+*.safetensors
+*.gguf
+models/
+runs/
+configs/local/
+# Local reference library and editorial scratch files.
+/vllm/
+/work/

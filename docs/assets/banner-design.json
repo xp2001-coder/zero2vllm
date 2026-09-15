@@ -1,0 +1,16 @@
+{
+  "asset": "zero2vllm-banner.webp",
+  "generator": "built-in image_gen",
+  "use": "Shared hero image for the Chinese and English READMEs",
+  "reference": "The previous zero2vllm banner, shown in a screenshot provided by the maintainer",
+  "previous_vector_draft": "zero2vllm-banner.svg",
+  "export": {
+    "width": 2103,
+    "height": 748,
+    "format": "webp",
+    "quality": 92,
+    "effort": 6,
+    "resized": false
+  },
+  "prompt": "Use case: style-transfer. Asset: a polished GitHub README banner for the educational LLM inference project zero2vllm. The input is the current banner shown in a screenshot: use the banner itself as the edit target and exclude all surrounding page chrome and cropped page text. Redesign its visual treatment substantially while preserving the project identity and meaning. Deliver ONE finished standalone panoramic banner, approximately 3:1 aspect ratio, ideally 2880x960. Full-bleed dark navy background, refined subtle blue and teal ambient light, generous margins, extremely clean editorial typography. Left half: small spaced overline 'LEARN · BUILD · OPTIMIZE', then very large bold immaculate lowercase wordmark 'zero2vllm' (exact spelling z e r o 2 v l l m, one line; white with a restrained cyan-to-teal accent on the numeral 2). Under it the exact sentence 'Understand inference. Write kernels.' in readable off-white, and a quiet bottom line 'CPU FOUNDATIONS / CUDA / MACA'. Right half: an elegant isometric 3D illustration of three small token tiles flowing into a layered tiled KV-cache memory array and then a beautifully machined dark GPU processor. Connect them with thin luminous blue-to-teal data paths, selective highlighted cache tiles, subtle translucency, precise beveled edges and realistic soft shadows. The processor has only a clean glowing </> symbol. Make this illustration visually cohesive, sophisticated and detailed without clutter, with breathing room between the text and diagram. Small labels 'TOKENS', 'KV CACHE', 'KERNELS' beneath the three stages, aligned and readable. Refined technical textbook meets premium developer product identity. All typography must be exact and readable after downscaling to GitHub content width. No extra claims, benchmark numbers, badges, brand logos, watermarks, neon overload, circuit-board wallpaper, starfields, or decorative code. The full rectangular image is the banner; no external frame or screenshot."
+}

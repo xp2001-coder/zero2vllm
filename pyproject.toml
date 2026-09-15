@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zero2vllm"
+version = "0.1.0.dev0"
+description = "Learn LLM inference with CPU reference experiments and CUDA/MACA deployment tracks"
+readme = "README.md"
+license = "CC-BY-NC-SA-4.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+zero2vllm = "zero2vllm.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["zero2vllm*"]

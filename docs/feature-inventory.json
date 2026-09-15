@@ -1,0 +1,425 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-15",
+  "scope": "手工核对官方 main 源码中选定的公共枚举及注册表，属于来源盘点，不是硬件支持矩阵或完整 CLI 转储。",
+  "source_revision_policy": "动态 main；查阅上下文 HEAD 见 curriculum-catalog.json。网页缓存未逐文件与该 SHA 对齐，不能用此清单替代固定版本验证。",
+  "cuda_a100": "not_run",
+  "maca_c500": "not_run",
+  "groups": [
+    {
+      "id": "quantization",
+      "title": "量化方法与快捷配置",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py",
+      "chapters": [
+        "9.1",
+        "9.2",
+        "9.3",
+        "9.10"
+      ],
+      "names": [
+        "awq",
+        "auto_awq",
+        "fp8",
+        "fbgemm_fp8",
+        "fp_quant",
+        "modelopt",
+        "modelopt_fp4",
+        "modelopt_mxfp8",
+        "modelopt_mixed",
+        "auto_gptq",
+        "gptq",
+        "gptq_marlin",
+        "awq_marlin",
+        "humming",
+        "compressed-tensors",
+        "experts_int8",
+        "quark",
+        "moe_wna16",
+        "torchao",
+        "inc",
+        "mxfp4",
+        "gpt_oss_mxfp4",
+        "deepseek_v4_fp8",
+        "online",
+        "fp8_per_tensor",
+        "fp8_per_block",
+        "fp8_per_channel",
+        "int8_per_channel_weight_only",
+        "nvfp4_per_token",
+        "mxfp8"
+      ],
+      "note": "别名、算法、框架和在线量化快捷方式并存；fbgemm_fp8、fp_quant 在本次源码中标为 deprecated。BnB/GGUF 在文档有条目，但不在本次 QuantizationMethods 枚举中。"
+    },
+    {
+      "id": "attention",
+      "title": "AttentionBackendEnum",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/v1/attention/backends/registry.py",
+      "chapters": [
+        "7.2",
+        "7.3",
+        "7.4",
+        "7.5"
+      ],
+      "names": [
+        "FLASH_ATTN",
+        "FLASH_ATTN_DIFFKV",
+        "TRITON_ATTN",
+        "TRITON_ATTN_DIFFKV",
+        "TRITON_FLASH_ATTN",
+        "ROCM_ATTN",
+        "ROCM_AITER_MLA",
+        "ROCM_AITER_TRITON_MLA",
+        "ROCM_AITER_FA",
+        "ROCM_AITER_MLA_SPARSE",
+        "XPU_MLA_SPARSE",
+        "TORCH_SDPA",
+        "FLASHINFER",
+        "TRITON_FLASHINFER",
+        "FLASHINFER_MLA",
+        "TOKENSPEED_MLA",
+        "FLASHINFER_MLA_SPARSE",
+        "FLASHINFER_MLA_SPARSE_SM120",
+        "FLASHINFER_MLA_SPARSE_SM90",
+        "TRITON_MLA",
+        "CUTLASS_MLA",
+        "FLASHMLA",
+        "FLASHMLA_SPARSE",
+        "FLASHMLA_SPARSE_DSV4",
+        "FLASHINFER_MLA_SPARSE_DSV4",
+        "ROCM_FLASHMLA_SPARSE_DSV4",
+        "FLASHMLA_SPARSE_DSV41",
+        "FLASHINFER_MLA_SPARSE_DSV41",
+        "B12X",
+        "FLASH_ATTN_MLA",
+        "FLASH_ATTN_MLA_SPARSE",
+        "MINIMAX_M3_SPARSE",
+        "CUTLASS_MSA",
+        "TRITON_MSA",
+        "NO_ATTENTION",
+        "FLEX_ATTENTION",
+        "HPC_ATTN",
+        "ROCM_AITER_UNIFIED_ATTN",
+        "CPU_ATTN",
+        "CPU_MLA",
+        "AMX_MLA",
+        "TURBOQUANT",
+        "CUSTOM"
+      ],
+      "note": "含平台专用、模型专用和扩展占位项；TORCH_SDPA 是 ViT 使用的标记，CUSTOM 需注册实现，不能把全部名称当作任意模型可切换的后端。"
+    },
+    {
+      "id": "mamba_attention",
+      "title": "MambaAttentionBackendEnum",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/v1/attention/backends/registry.py",
+      "chapters": [
+        "5.6",
+        "14.7"
+      ],
+      "names": [
+        "MAMBA1",
+        "MAMBA2",
+        "SHORT_CONV",
+        "LINEAR",
+        "GDN_ATTN",
+        "CUSTOM"
+      ],
+      "note": "递推状态模型的实现标识；其缓存和回滚语义单独讲解。"
+    },
+    {
+      "id": "kv_dtype",
+      "title": "CacheDType",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py",
+      "chapters": [
+        "5.5",
+        "9.8"
+      ],
+      "names": [
+        "auto",
+        "float16",
+        "bfloat16",
+        "fp8",
+        "fp8_e4m3",
+        "fp8_e5m2",
+        "fp8_inc",
+        "fp8_ds_mla",
+        "nvfp4_ds_mla",
+        "turboquant_k8v4",
+        "turboquant_4bit_nc",
+        "turboquant_k3v4_nc",
+        "turboquant_3bit_nc",
+        "int4_per_token_head",
+        "int8_per_token_head",
+        "fp8_per_token_head",
+        "nvfp4",
+        "nvfp4_4over6"
+      ],
+      "note": "含 dtype、模型专用布局和低比特方案；通过配置解析不能证明内核支持。低精度存储不等于同精度计算。"
+    },
+    {
+      "id": "spec_method",
+      "title": "推测方法展开后的通用标识",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/speculative.py",
+      "chapters": [
+        "10.2",
+        "10.3",
+        "10.4",
+        "10.5",
+        "10.6"
+      ],
+      "names": [
+        "ngram",
+        "medusa",
+        "mlp_speculator",
+        "draft_model",
+        "suffix",
+        "custom_class",
+        "eagle",
+        "eagle3",
+        "extract_hidden_states",
+        "ngram_gpu",
+        "dflash",
+        "dspark"
+      ],
+      "note": "SpeculativeMethod 中的 MTPModelTypes 另列；PARD、动态推测、自适应验证属文档专题，不应据名称发明 method 值。源码有标识仍须验证 runner 支持。"
+    },
+    {
+      "id": "mtp_model",
+      "title": "MTPModelTypes",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/speculative.py",
+      "chapters": [
+        "10.5"
+      ],
+      "names": [
+        "deepseek_mtp",
+        "dots3_note_mtp",
+        "mimo_mtp",
+        "mimo_v2_mtp",
+        "glm4_moe_mtp",
+        "glm4_moe_lite_mtp",
+        "glm_ocr_mtp",
+        "ernie_mtp",
+        "nemotron_h_mtp",
+        "exaone_moe_mtp",
+        "exaone4_5_mtp",
+        "qwen3_next_mtp",
+        "qwen4_exp_mtp",
+        "qwen3_5_mtp",
+        "longcat_flash_mtp",
+        "bailing_hybrid_v3_mtp",
+        "minimax_m3_mtp",
+        "bailing_hybrid_mtp",
+        "mtp",
+        "kimi_k3_mtp",
+        "pangu_ultra_moe_mtp",
+        "step3p5_mtp",
+        "hy_v3_mtp",
+        "hy_v4_mtp",
+        "gemma4_mtp",
+        "inkling_mtp",
+        "glm5_next_mtp"
+      ],
+      "note": "模型类型/自动识别映射，不是 27 种通用独立算法；课程讲映射与检查方法，逐模型能力以实际选定版本为准。"
+    },
+    {
+      "id": "linear_backend",
+      "title": "LinearBackend",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py",
+      "chapters": [
+        "7.6",
+        "7.7",
+        "9.5",
+        "9.6",
+        "9.7",
+        "9.10"
+      ],
+      "names": [
+        "auto",
+        "cutlass",
+        "flashinfer_cutlass",
+        "flashinfer_cutedsl",
+        "flashinfer_trtllm",
+        "flashinfer_cudnn",
+        "flashinfer_b12x",
+        "b12x",
+        "marlin",
+        "humming",
+        "triton",
+        "deep_gemm",
+        "torch",
+        "aiter",
+        "machete",
+        "fbgemm",
+        "conch",
+        "exllama",
+        "emulation",
+        "xpu",
+        "xpu_woq"
+      ],
+      "note": "按量化格式、shape、设备与优先级选择；支持 per-quant 覆盖。auto/emulation 等与原生优化实现要区分。"
+    },
+    {
+      "id": "moe_backend",
+      "title": "MoEBackend",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py",
+      "chapters": [
+        "12.3",
+        "9.9",
+        "9.10"
+      ],
+      "names": [
+        "auto",
+        "triton",
+        "batched_triton",
+        "deep_gemm",
+        "deep_gemm_mega_moe",
+        "cutlass",
+        "flashinfer_trtllm",
+        "flashinfer_cutlass",
+        "flashinfer_cutedsl",
+        "flashinfer_b12x",
+        "b12x",
+        "flashinfer_moe_ep_mega_deep_gemm",
+        "flashinfer_moe_ep_mega_cutedsl",
+        "marlin",
+        "humming",
+        "triton_unfused",
+        "aiter",
+        "aiter_triton_mxfp4_bf16",
+        "flydsl",
+        "hpc",
+        "emulation",
+        "rdna3"
+      ],
+      "note": "不同路由/量化/模型与平台能力；mega-MoE 有额外模型接线条件，不能当通用开关。"
+    },
+    {
+      "id": "sparse_topk",
+      "title": "SparseIndexerTopkBackend",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py",
+      "chapters": [
+        "5.9",
+        "7.4"
+      ],
+      "names": [
+        "auto",
+        "deep_select",
+        "cooperative",
+        "persistent",
+        "per_row",
+        "flashinfer",
+        "torch"
+      ],
+      "note": "稀疏索引 top-k 内核选项，与 AttentionBackendEnum 分层处理。"
+    },
+    {
+      "id": "all2all",
+      "title": "All-to-All 配置选项",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py",
+      "chapters": [
+        "12.4"
+      ],
+      "names": [
+        "allgather_reducescatter",
+        "deepep_high_throughput",
+        "deepep_low_latency",
+        "mori_high_throughput",
+        "mori_low_latency",
+        "nixl_ep",
+        "flashinfer_nvlink_one_sided",
+        "flashinfer_nvlink_two_sided"
+      ],
+      "note": "pplx/naive 在本次配置校验中走已移除/回退处理，不列为当前可用选项；DBO 设计文档的限制另行核对。"
+    },
+    {
+      "id": "kv_connector",
+      "title": "KVConnectorFactory 内置注册项",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py",
+      "chapters": [
+        "13.2",
+        "13.3"
+      ],
+      "names": [
+        "ExampleConnector",
+        "ExampleHiddenStatesConnector",
+        "LMCacheConnectorV1",
+        "LMCacheMPConnector",
+        "NixlConnector",
+        "NixlPullConnector",
+        "NixlPushConnector",
+        "MultiConnector",
+        "HiSparseConnector",
+        "MoRIIOConnector",
+        "OffloadingConnector",
+        "DecodeBenchConnector",
+        "MooncakeConnector",
+        "MooncakeStoreConnector",
+        "FlexKVConnectorV1",
+        "SimpleCPUOffloadConnector",
+        "HF3FSKVConnector"
+      ],
+      "note": "包含示例和 benchmark 专用连接器，不把它们都当生产传输方案；外部 module path 还可扩展；HMA 兼容性需检查。"
+    },
+    {
+      "id": "compile_modes",
+      "title": "CompilationMode",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py",
+      "chapters": [
+        "8.1"
+      ],
+      "names": [
+        "NONE",
+        "STOCK_TORCH_COMPILE",
+        "DYNAMO_TRACE_ONCE",
+        "VLLM_COMPILE"
+      ],
+      "note": "编译方式枚举；不等同于 O0/O1 等整体优化预设。"
+    },
+    {
+      "id": "graph_modes",
+      "title": "CUDAGraphMode",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py",
+      "chapters": [
+        "8.2"
+      ],
+      "names": [
+        "NONE",
+        "PIECEWISE",
+        "FULL",
+        "FULL_DECODE_ONLY",
+        "FULL_AND_PIECEWISE"
+      ],
+      "note": "图捕获/重放模式；编译与 graph 可以分别配置，需检查组合。"
+    },
+    {
+      "id": "fusion_passes",
+      "title": "PassConfig 中的布尔优化项",
+      "source": "https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py",
+      "chapters": [
+        "8.4",
+        "8.5",
+        "8.6"
+      ],
+      "names": [
+        "fuse_norm_quant",
+        "fuse_act_quant",
+        "fuse_attn_quant",
+        "eliminate_noops",
+        "enable_sp",
+        "fuse_gemm_comms",
+        "fuse_allreduce_rms",
+        "enable_qk_norm_rope_fusion",
+        "fuse_rope_kvcache_cat_mla",
+        "fuse_act_padding",
+        "fuse_mla_dual_rms_norm",
+        "fuse_rope_kvcache",
+        "fuse_qk_norm_rope_kvcache"
+      ],
+      "note": "仅枚举布尔项，阈值和其他 CompilationConfig 字段从源码索引继续查阅；部分融合仅有 ROCm/AITER 等平台路径。"
+    }
+  ],
+  "maintenance": [
+    "与课程目录逐项映射，记录新增/改名/废弃和来源变化。",
+    "对所选发布版本重做注册表与 CLI 审计，不能只核对 main。",
+    "对 A100/C500 分别记录版本、模型、dtype、backend、组合及实机证据。"
+  ]
+}

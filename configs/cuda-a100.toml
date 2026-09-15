@@ -1,0 +1,32 @@
+schema_version = 1
+backend = "cuda"
+
+# Fill a copy in configs/local/ after inspecting the actual machine.
+# Empty values are deliberate: this profile is not GPU-validated.
+[hardware]
+gpu_name = "NVIDIA A100"
+gpu_memory_gib = ""
+host_os = ""
+cpu_arch = ""
+
+[runtime]
+image = ""
+python = ""
+pytorch = ""
+vllm = ""
+driver = ""
+cuda = ""
+
+[model]
+id = "Qwen/Qwen3-0.6B"
+revision = ""
+path_in_container = ""
+dtype = "float16"
+
+[serving]
+tensor_parallel_size = 1
+max_model_len = 1024
+max_num_seqs = 4
+gpu_memory_utilization = 0.70
+enforce_eager = true
+port = 8000

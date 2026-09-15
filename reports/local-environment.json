@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "collected_at_utc": "2026-09-15T06:21:03.411464+00:00",
+  "python": "3.11.9",
+  "python_implementation": "cpython",
+  "system": "Windows",
+  "release": "10",
+  "machine": "AMD64",
+  "packages": {
+    "torch": null,
+    "vllm": null,
+    "vllm-metax": null,
+    "mcoplib": null,
+    "transformers": null
+  },
+  "commands_on_path": {
+    "nvidia-smi": false,
+    "mx-smi": false,
+    "docker": false
+  },
+  "gpu_execution_tested": false,
+  "note": "Inventory only; no GPU execution, driver probe, hostname, or credentials collected."
+}

@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-15",
+  "scope": "33 ZIP Markdown members and 5 loose Markdown files; editorial inventory, not hardware validation or a verbatim redistribution.",
+  "sources": [
+    {
+      "id": "vllm-01",
+      "framework": "vllm",
+      "path": "vllm/第1课-vLLM 快速上手和环境搭建.zip",
+      "member": "第1课-vLLM 快速上手和环境搭建 副本.md",
+      "text_sha256": "a44451714ad621f6de97d1ea5c6b2fb58dba083e6d44b51aa5fd44abdabf19e1",
+      "text_bytes": 31435,
+      "chapters": [
+        "0.1",
+        "0.2",
+        "4.1",
+        "15.1"
+      ],
+      "use": "离线/在线入口、调试与流式生成",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-02",
+      "framework": "vllm",
+      "path": "vllm/第2课-vLLM 核心组件-引擎模块和流式执行.zip",
+      "member": "第2课-vLLM 核心组件-引擎模块和流式执行 副本.md",
+      "text_sha256": "994d589df56d50ae7617a9d3fabb75704d2bec3c389a86694aa8d612e014c859",
+      "text_bytes": 57591,
+      "chapters": [
+        "3.1",
+        "6.4",
+        "15.1",
+        "15.7"
+      ],
+      "use": "EngineCoreClient、消息边界、请求到流式输出",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-03",
+      "framework": "vllm",
+      "path": "vllm/第3课-vLLM 核心组件-Worker_Executor 详解及协作.zip",
+      "member": "第3课-vLLM 核心组件-Worker_Executor 详解及协作 副本.md",
+      "text_sha256": "bb859a382eeba5fe2feebee48ead08e38bc072f5179034bceb11fe5297a38638",
+      "text_bytes": 67128,
+      "chapters": [
+        "3.1",
+        "3.3",
+        "11.1",
+        "11.10"
+      ],
+      "use": "Executor/Worker 分工、初始化与 RPC",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-04",
+      "framework": "vllm",
+      "path": "vllm/第4课-vLLM 核心组件-调度器如何实现.zip",
+      "member": "第4课-vLLM 核心组件-调度器如何实现 副本.md",
+      "text_sha256": "d11048e648518a5b86e552995aef2e7c84a5876cf193c2d905c5540886376049",
+      "text_bytes": 53728,
+      "chapters": [
+        "3.2",
+        "6.1",
+        "6.2",
+        "6.3"
+      ],
+      "use": "等待/运行队列、token 预算、执行反馈",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-05",
+      "framework": "vllm",
+      "path": "vllm/第5课-vLLM核心组件-显存管理之PagedAttention  副本.zip",
+      "member": "第5课-vLLM核心组件-显存管理之PagedAttention  副本.md",
+      "text_sha256": "2b4410e71c1fe98db03864da866f6fe0e1623d5fd72fd60abae294a8e2a880e9",
+      "text_bytes": 63024,
+      "chapters": [
+        "3.2",
+        "5.1",
+        "5.2",
+        "5.3",
+        "5.4"
+      ],
+      "use": "块分配、哈希、引用计数、逐出与重算",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-06",
+      "framework": "vllm",
+      "path": "vllm/第6课-vLLM 核心组件-ModelRunner之模型加载详解.zip",
+      "member": "第6课-vLLM 核心组件-ModelRunner之模型加载详解.md",
+      "text_sha256": "62bff5eec5b325e4bed4a6ecdd970d9f3a36b00925128e2fd5a04d95cd81c4e7",
+      "text_bytes": 53630,
+      "chapters": [
+        "3.3",
+        "14.1",
+        "16.1"
+      ],
+      "use": "模型注册、实例化、权重加载与自定义模型",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-07",
+      "framework": "vllm",
+      "path": "vllm/第7课-vLLM 架构-总览及模型推理过程详解.zip",
+      "member": "第7课-vLLM 架构-总览及模型推理过程详解.md",
+      "text_sha256": "13807e3e604fdfa68fe1d522650fbbd265394534d85874309e045a8483b4a4c3",
+      "text_bytes": 47294,
+      "chapters": [
+        "3.1",
+        "3.2",
+        "3.3"
+      ],
+      "use": "端到端调用链、输入张量化与状态更新",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-08",
+      "framework": "vllm",
+      "path": "vllm/第8课-OpenAI Triton 实现大模型的新算子 副本.zip",
+      "member": "第8课-OpenAI Triton 实现大模型的新算子 副本.md",
+      "text_sha256": "a0f452d4ff59c8c14f8277e8ba708bd8b70bf1143ed45d3bafdbece64a782f9b",
+      "text_bytes": 68321,
+      "chapters": [
+        "7.1",
+        "7.6",
+        "7.7",
+        "9.4"
+      ],
+      "use": "Triton 向量/Softmax/Matmul/Attention 的递进练习",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-09",
+      "framework": "vllm",
+      "path": "vllm/第9课-vLLM 高级特性-cuda graph 详解.zip",
+      "member": "第9课-vLLM 高级特性-cuda graph 详解.md",
+      "text_sha256": "db52599620b084763575573186490e56917a663de233a2e90d9e4dc52cd1deb9",
+      "text_bytes": 81622,
+      "chapters": [
+        "8.2",
+        "8.3"
+      ],
+      "use": "固定地址、捕获、回放、分桶与调度",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-10",
+      "framework": "vllm",
+      "path": "vllm/第10课-vLLM 量化-基础知识总结 副本.zip",
+      "member": "第10课-vLLM 量化-基础知识总结 副本.md",
+      "text_sha256": "dd36d1e2042068e7772feadda1c751f22de9e329c60b4928991e9d3aa2c0646f",
+      "text_bytes": 57200,
+      "chapters": [
+        "9.1",
+        "9.2",
+        "9.3"
+      ],
+      "use": "量化算术、误差目标、校准及通道缩放案例",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-11",
+      "framework": "vllm",
+      "path": "vllm/第11课-vLLM 量化-模块解析与实践 副本.zip",
+      "member": "第11课-vLLM 量化-模块解析与实践 副本.md",
+      "text_sha256": "a304e2aea1a84603b3f5fe99845aff1043e5e4cb2c9c8360e159dfd696b8cdaf",
+      "text_bytes": 41883,
+      "chapters": [
+        "9.4",
+        "9.5",
+        "9.6",
+        "9.10",
+        "9.11"
+      ],
+      "use": "配置到量化方法、权重后处理和真实 kernel 分支",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-12",
+      "framework": "vllm",
+      "path": "vllm/第12课-vLLM 分布式推理-数据并行详解 副本.zip",
+      "member": "第12课-vLLM 分布式推理-数据并行详解 副本.md",
+      "text_sha256": "5f76f03b815d1feb9ab1de5cd177ee0691ebbc3907410b59ad362490c12772c5",
+      "text_bytes": 75773,
+      "chapters": [
+        "11.1",
+        "11.4"
+      ],
+      "use": "请求副本、DP 路由及 Dense/MoE 区别",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-13",
+      "framework": "vllm",
+      "path": "vllm/第13课-vLLM 分布式推理-张量_流水并行详解 副本.zip",
+      "member": "第13课-vLLM 分布式推理-张量_流水并行详解 副本.md",
+      "text_sha256": "7e95f813289e1af2aae2ed1f99cf36ae86e7e84d1daef50bbaabb121693945f6",
+      "text_bytes": 93624,
+      "chapters": [
+        "11.1",
+        "11.2",
+        "11.3",
+        "11.9"
+      ],
+      "use": "列/行切分、PP 气泡与通信原语",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-14",
+      "framework": "vllm",
+      "path": "vllm/第14课-vLLM 分布式推理-专家并行 副本.zip",
+      "member": "第14课-vLLM 分布式推理-专家并行 副本.md",
+      "text_sha256": "1b560c84aa1188720cb0f3d2e19d7f4042d390de6957a3c89f2adc6776f320d8",
+      "text_bytes": 179802,
+      "chapters": [
+        "9.9",
+        "12.1",
+        "12.2",
+        "12.3",
+        "12.4"
+      ],
+      "use": "专家 dispatch/compute/combine、显式/隐式重排",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-15",
+      "framework": "vllm",
+      "path": "vllm/第15课-vLLM 分布式推理-EP 负载均衡 副本.zip",
+      "member": "第15课-vLLM 分布式推理-EP 负载均衡 副本.md",
+      "text_sha256": "a4e943b0a23ab2868b51a6e544cea7ffaa2b0fd8f560964439aac949a7686663",
+      "text_bytes": 94063,
+      "chapters": [
+        "12.5",
+        "12.6"
+      ],
+      "use": "逻辑/物理专家、滑动窗口、重排与迁移成本",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-16",
+      "framework": "vllm",
+      "path": "vllm/第16课-vLLM 高级特性-采样和投机解码 副本.zip",
+      "member": "第16课-vLLM 高级特性-采样和投机解码 副本.md",
+      "text_sha256": "9f17800601bfcd060d84719bb8fb35cfcf1c073aea7bf3b4fb650de2e3bf05e6",
+      "text_bytes": 154409,
+      "chapters": [
+        "10.1",
+        "10.3",
+        "10.4",
+        "10.5",
+        "10.6",
+        "10.8",
+        "10.9"
+      ],
+      "use": "提案/验证/接受、草稿成本与 KV 回滚",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-17",
+      "framework": "vllm",
+      "path": "vllm/第17课-vLLM 高级特性-模型编译 副本.zip",
+      "member": "第17课-vLLM 高级特性-模型编译 副本.md",
+      "text_sha256": "52e315bee4ad5553b220ae88296792daac27543c75e651fc48ccceb212ca19e6",
+      "text_bytes": 144035,
+      "chapters": [
+        "8.1",
+        "8.3",
+        "8.4",
+        "8.6"
+      ],
+      "use": "Dynamo/FX/Inductor、分段编译、缓存与融合",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-18",
+      "framework": "vllm",
+      "path": "vllm/第18课-vLLM 性能分析和瓶颈定位 副本.zip",
+      "member": "第18课-vLLM 性能分析和瓶颈定位 副本.md",
+      "text_sha256": "65d5b7a29e408f47b48fdf82ba3e7c31e83ba9df6b19bf86e2e10c5427fa0e39",
+      "text_bytes": 36546,
+      "chapters": [
+        "17.1",
+        "17.2",
+        "17.3",
+        "17.4",
+        "17.6"
+      ],
+      "use": "Profiler/Nsight、关键路径与负载匹配",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。"
+    },
+    {
+      "id": "vllm-19",
+      "framework": "vllm",
+      "path": "vllm/第19课-vLLM高级特性之PD分离技术详解-旧版但详细 副本.zip",
+      "member": "第19课-vLLM高级特性之PD分离技术详解-旧版但详细 副本.md",
+      "text_sha256": "49c8996e3e9ae33972b284ba840986858ad25a07f1d144eb20ec4afe3fa3fe8c",
+      "text_bytes": 155854,
+      "chapters": [
+        "13.1",
+        "13.2",
+        "13.4",
+        "13.6"
+      ],
+      "use": "PD 协议、传输、接收完成与失败回收",
+      "review_note": "原文件明确为旧版；吸收协议和生命周期，补丁与部署命令不直接沿用。"
+    },
+    {
+      "id": "vllm-20",
+      "framework": "vllm",
+      "path": "vllm/第20课-vLLM 核心组件-ModelRunnerV2 详解 副本.zip",
+      "member": "第20课-vLLM 核心组件-ModelRunnerV2 详解 副本.md",
+      "text_sha256": "1f7eebb3f2b8bfa482bb6ab2fd625aa07cb2ff4d3517851f370b736938cd124a",
+      "text_bytes": 104870,
+      "chapters": [
+        "3.4",
+        "6.4",
+        "8.2",
+        "10.8"
+      ],
+      "use": "持久状态与执行排列、异步依赖、增量写和采样",
+      "review_note": "设计导读；runner 与图模式分别消融，笔记中的性能数字不计作本项目结果。"
+    },
+    {
+      "id": "vllm-manual",
+      "framework": "vllm",
+      "path": "vllm/vLLM原理特性与逐项测试手册.md",
+      "member": null,
+      "text_sha256": "d5b39de2de04a7798b2c3f4ff06a2263eb62e3a0374112a72651b3a8e3985aa6",
+      "text_bytes": 125923,
+      "chapters": [
+        "0.3",
+        "4.3",
+        "6.3",
+        "9.11",
+        "13.4",
+        "17.1",
+        "17.2",
+        "17.3",
+        "17.6",
+        "18.2"
+      ],
+      "use": "W0—W7 负载、A/B、指标、trace 分析和逐项验证",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。 保留原实验的型号、卡数和版本边界；C600/多卡记录不作为 A100/C500 单卡证据。"
+    },
+    {
+      "id": "vllm-notes",
+      "framework": "vllm",
+      "path": "vllm/vLLM.md",
+      "member": null,
+      "text_sha256": "bd65ce1aa2907b00a83b2e114005ffbc5767b19796d3445a7ae2a08b3b6ea1b0",
+      "text_bytes": 50923,
+      "chapters": [
+        "3.1",
+        "3.2",
+        "5.1",
+        "6.3",
+        "17.3",
+        "18.2"
+      ],
+      "use": "CPU 元数据与设备张量；平台排查的问题清单",
+      "review_note": "按主题吸收并改写；源码路径、默认值和设备能力须回到所选版本核对。 保留原实验的型号、卡数和版本边界；C600/多卡记录不作为 A100/C500 单卡证据。"
+    },
+    {
+      "id": "sglang-01",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第1课：sglang介绍，环境搭建以及快速上手 副本.zip",
+      "member": "第1课：sglang介绍，环境搭建以及快速上手 副本.md",
+      "text_sha256": "181c2e0448f6d98fe81622d41fe740c5dd8af745c2e5e117610200d711a277a5",
+      "text_bytes": 44168,
+      "chapters": [
+        "0.3",
+        "18.3"
+      ],
+      "use": "框架定位、环境与跨框架比较方法",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-02",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第2课：sglang双层体系架构全景 副本.zip",
+      "member": "第2课：sglang双层体系架构全景 副本.md",
+      "text_sha256": "631e67b166e99455c51b5f9cc20fd6a597b6f5eddd515643a043d5520c1c39dc",
+      "text_bytes": 77783,
+      "chapters": [
+        "3.1",
+        "15.3",
+        "18.3"
+      ],
+      "use": "前端语言层与运行时分工",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-03",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第3课-SGLang 请求端到端生命周期与后端运行时 副本.zip",
+      "member": "第3课-SGLang 请求端到端生命周期与后端运行时 副本.md",
+      "text_sha256": "2cb85f7fdb0266e50936d1a320d5c6a55b55bc7872bdd2cb6532454302382215",
+      "text_bytes": 113576,
+      "chapters": [
+        "3.1",
+        "6.4",
+        "15.1",
+        "18.3"
+      ],
+      "use": "TokenizerManager/Scheduler/DetokenizerManager 对照",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-04",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第4课-SGLang RadixAttention 副本.zip",
+      "member": "第4课-SGLang RadixAttention 副本.md",
+      "text_sha256": "17fa0e243419caa690a4bc6ad9462bfbd8465cea6b761d8f832ce86a1db0285a",
+      "text_bytes": 101277,
+      "chapters": [
+        "5.2",
+        "5.3",
+        "5.4",
+        "18.3"
+      ],
+      "use": "Radix 树前缀复用、锁与逐出",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-05",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第5课-SGLang模型加载过程端到端详解 副本.md",
+      "member": null,
+      "text_sha256": "3dfb20f7ba9906e6bc7051779733b8f0788caaf6d5e8581456a1002b187d7915",
+      "text_bytes": 67299,
+      "chapters": [
+        "14.1",
+        "16.1",
+        "18.3"
+      ],
+      "use": "模型构建与权重加载对照",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-06",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第6课： Sglang中Schedule核心流程深度解读 副本.zip",
+      "member": "第6课： Sglang中Schedule核心流程深度解读 副本.md",
+      "text_sha256": "56a0e7dfa64b5dc50547947f133eb87fef8ed1bc2a240a3071d9629111cf9af8",
+      "text_bytes": 116714,
+      "chapters": [
+        "6.1",
+        "6.4",
+        "6.5",
+        "18.3"
+      ],
+      "use": "调度循环、重叠与批次更新",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-07",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第7课： Sglang chunked prefill深度技术解读 副本.zip",
+      "member": "第7课： Sglang chunked prefill深度技术解读 副本.md",
+      "text_sha256": "0ae074f85490940e73729f973a90d8b7987d570672abed14b08b40bedfd28289",
+      "text_bytes": 70034,
+      "chapters": [
+        "6.2",
+        "6.3",
+        "18.3"
+      ],
+      "use": "chunk/token 预算和抢占条件",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-08",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第8课_ Sglang模型量化基础详细介绍 副本.zip",
+      "member": "第8课_ Sglang模型量化基础详细介绍 副本.md",
+      "text_sha256": "b00dd712ba0268ef9253cfa6dabc384f0713d25415510085fe0f18e662b71c23",
+      "text_bytes": 73684,
+      "chapters": [
+        "9.1",
+        "9.2",
+        "9.3"
+      ],
+      "use": "量化对象、粒度、静态/动态与误差",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-09",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第9课： Sglang AWQ量化深度解读 副本.zip",
+      "member": "第9课： Sglang AWQ量化深度解读 副本.md",
+      "text_sha256": "117a09ebe28429c622d86e4c2d9b9d186a27cfe7ebf6640a6a4a7487cddc66ab",
+      "text_bytes": 84340,
+      "chapters": [
+        "9.2",
+        "9.5",
+        "9.7",
+        "9.10"
+      ],
+      "use": "算法/文件格式/执行格式解耦，加载后重排",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-10",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第10课：LLM attention架构及其变体创新详细介绍 副本.zip",
+      "member": "第10课：LLM attention架构及其变体创新详细介绍 副本.md",
+      "text_sha256": "4ed1027712eb89cb69935ef089b6f4288ef9f6dfd7a81f7d6398e14f808c4658",
+      "text_bytes": 85276,
+      "chapters": [
+        "1.5",
+        "7.1",
+        "7.4",
+        "11.5",
+        "11.6",
+        "11.7"
+      ],
+      "use": "MHA/GQA/MQA/MLA 与 KV 容量",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-11",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第11课：SGLang CUDA Graph  副本.md",
+      "member": null,
+      "text_sha256": "e3c97ca8ab2a391eb56d48a3a9a96f3fc28e03138dd027661ebb9af3ee59864e",
+      "text_bytes": 143702,
+      "chapters": [
+        "8.2",
+        "8.3",
+        "18.3"
+      ],
+      "use": "CUDA Graph runner/backend 分层对照",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-12",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第12课：SGlang torch.compile技术深度解读 副本.zip",
+      "member": "第12课：SGlang torch.compile技术深度解读 副本.md",
+      "text_sha256": "f8c554db47c1082ac441996ccac14c569861435aa189904bcea4c27b90784429",
+      "text_bytes": 189080,
+      "chapters": [
+        "8.1",
+        "8.3",
+        "8.4",
+        "18.3"
+      ],
+      "use": "编译阶段、guards、断图与缓存",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-13",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第13课：Triton编译全流程深度解读 副本.zip",
+      "member": "第13课：Triton编译全流程深度解读 副本.md",
+      "text_sha256": "4a64d7f910d997466c63ad60bfa3b41666474a2992c776f3989d67e049d3ed8a",
+      "text_bytes": 99108,
+      "chapters": [
+        "7.6",
+        "7.7",
+        "8.1",
+        "18.1"
+      ],
+      "use": "Triton IR/lowering、编译缓存和后端差异",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-14",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第14课：SGLang 推测解码 副本.zip",
+      "member": "第14课：SGLang 推测解码 副本.md",
+      "text_sha256": "04a5b7b07937dc8c74d1a0fb920ba2a929ec59a3d0f1fa06410ad7d241bc430c",
+      "text_bytes": 177654,
+      "chapters": [
+        "10.1",
+        "10.4",
+        "10.8",
+        "10.9",
+        "18.3"
+      ],
+      "use": "树状验证、接受路径、bonus token 与缓存提交",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-15",
+      "framework": "sglang",
+      "path": "vllm/SGLang/第15课：Sglang分布式原理详细介绍.zip",
+      "member": "第15课：Sglang分布式原理详细介绍.md",
+      "text_sha256": "714678d38a5c0d1948cc5cfe65f215e2acf696e2e7bded1ebd639ab7b5b93a20",
+      "text_bytes": 79399,
+      "chapters": [
+        "11.1",
+        "11.2",
+        "11.3",
+        "11.4",
+        "11.5",
+        "11.6",
+        "11.7",
+        "12.2",
+        "13.1"
+      ],
+      "use": "并行维度、通信、长上下文与分离部署对照",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。"
+    },
+    {
+      "id": "sglang-notes",
+      "framework": "sglang",
+      "path": "vllm/SGLang/sglang.md",
+      "member": null,
+      "text_sha256": "8b8b0d1a29d1755374266b38a773ff491ee24336c5ea1e93a70af300cee5b62c",
+      "text_bytes": 216045,
+      "chapters": [
+        "5.2",
+        "6.5",
+        "10.9",
+        "11.9",
+        "17.3",
+        "18.3"
+      ],
+      "use": "术语对照、容量排查、调参方法；跨框架案例",
+      "review_note": "作为 SGLang 对照材料；类名、参数、内核分支与结果不移植为 vLLM 结论。 保留原实验的型号、卡数和版本边界；C600/多卡记录不作为 A100/C500 单卡证据。"
+    }
+  ]
+}

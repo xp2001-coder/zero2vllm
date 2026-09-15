@@ -1,0 +1,662 @@
+{
+  "schema_version": 1,
+  "language": "en",
+  "parts": {
+    "0": {
+      "title": "Before You Begin"
+    },
+    "1": {
+      "title": "Understanding LLM Inference"
+    },
+    "2": {
+      "title": "Building a Teaching Inference Engine from Scratch"
+    },
+    "3": {
+      "title": "Inside the Real vLLM"
+    },
+    "4": {
+      "title": "Single-GPU Baselines on CUDA and MACA"
+    },
+    "5": {
+      "title": "KV Cache, Prefix Caching, and Long Contexts"
+    },
+    "6": {
+      "title": "Scheduling, Batching, and Overlapped Execution"
+    },
+    "7": {
+      "title": "Attention and High-Performance Kernels"
+    },
+    "8": {
+      "title": "Compilation, CUDA Graphs, and Execution Optimization"
+    },
+    "9": {
+      "title": "Quantization Algorithms, Kernel Implementation, and Inference Acceleration",
+      "readme_note": "Students start with the mathematical reference, packing, and basic GEMM; quantization engineers can begin with strategy and kernel design. See the [quantization course design](docs/quantization-design.md) for the running experiment, tensor contracts, and acceptance criteria."
+    },
+    "10": {
+      "title": "Speculative Decoding"
+    },
+    "11": {
+      "title": "Parallelism and Distributed Execution"
+    },
+    "12": {
+      "title": "MoE and Communication Optimization"
+    },
+    "13": {
+      "title": "Disaggregated Serving and KV Transfer"
+    },
+    "14": {
+      "title": "Model Types, Multimodality, and Adapters"
+    },
+    "15": {
+      "title": "Serving APIs and Generation Features"
+    },
+    "16": {
+      "title": "Weight Loading, Memory, and the RL Inference Lifecycle"
+    },
+    "17": {
+      "title": "Evaluation, Profiling, and Optimization Methods"
+    },
+    "18": {
+      "title": "Platform Extensions, Deployment, and Open-Source Contributions"
+    }
+  },
+  "chapters": {
+    "0.1": {
+      "title": "Learning paths and environment setup",
+      "topics": "Python, Linux, containers, driver/runtime/framework versions, CPU and two GPU backend paths"
+    },
+    "0.2": {
+      "title": "Your first model generation",
+      "topics": "Offline LLM inference, online serving, streaming requests, tokenizers, and chat templates"
+    },
+    "0.3": {
+      "title": "Working with experiments and source code",
+      "topics": "Pinned revisions, configurations/logs/call chains, minimal reproductions, and raw data"
+    },
+    "1.1": {
+      "title": "From tokens to next-token prediction",
+      "topics": "Tokenizers, embeddings, Transformers, causal attention, and the LM head"
+    },
+    "1.2": {
+      "title": "Prefill and decode",
+      "topics": "Compute-bound vs. bandwidth-bound work, HBM/SRAM, the roofline model, and arithmetic intensity"
+    },
+    "1.3": {
+      "title": "What KV cache does",
+      "topics": "Cache updates, position offsets, MHA/MQA/GQA, and memory per token"
+    },
+    "1.4": {
+      "title": "Reading performance results",
+      "topics": "TTFT, TPOT, ITL, throughput, goodput, P50/P95/P99, and queuing"
+    },
+    "1.5": {
+      "title": "Model architectures and long-context basics",
+      "topics": "RoPE, ALiBi, sliding windows, MLA, sparse/linear attention, and SSMs"
+    },
+    "1.6": {
+      "title": "Sampling and numerical correctness",
+      "topics": "Greedy decoding, temperature, top-k/top-p/min-p, penalties, seeds, and EOS/stop conditions"
+    },
+    "2.1": {
+      "title": "Building a minimal PyTorch model",
+      "topics": "Forward pass, generation loop, RMSNorm/RoPE/MLP, and agreement with the CPU reference"
+    },
+    "2.2": {
+      "title": "Loading real model weights",
+      "topics": "Configuration, safetensors, weight mapping, tokenizers, and model revisions"
+    },
+    "2.3": {
+      "title": "Request and cache lifecycles",
+      "topics": "Creation, execution, completion, cancellation, exceptions, and cache ownership"
+    },
+    "2.4": {
+      "title": "From static to continuous batching",
+      "topics": "Iteration-level scheduling, active queues, token budgets, and request admission/removal"
+    },
+    "2.5": {
+      "title": "Paged caching",
+      "topics": "Logical/physical blocks, block tables, slot mapping, and device KV storage"
+    },
+    "2.6": {
+      "title": "Prefix caching",
+      "topics": "Cross-request sharing, reference counts, hash matching, eviction, and invalidation"
+    },
+    "2.7": {
+      "title": "HTTP and streaming output",
+      "topics": "Async iteration, backpressure, disconnects, cancellation propagation, and request errors"
+    },
+    "3.1": {
+      "title": "A request's journey through vLLM",
+      "topics": "Input processing → EngineCoreClient → EngineCore → Executor/Worker/ModelRunner; request IDs, IPC, streaming queues, and cancellation"
+    },
+    "3.2": {
+      "title": "Scheduling and KV management in vLLM",
+      "topics": "Input processing, scheduler outputs, KVCacheManager, BlockPool, and execution feedback"
+    },
+    "3.3": {
+      "title": "Model execution and attention backends",
+      "topics": "Registration/initialization/weight loading/postprocessing; input_ids, positions, slot_mapping, attention metadata, and sampling"
+    },
+    "3.4": {
+      "title": "V1 and ModelRunner evolution",
+      "topics": "V0/V1 vs. MRV1/MRV2; persistent state and execution order, StagedWriteTensor, GPU metadata, sampling, and graph management"
+    },
+    "3.5": {
+      "title": "Resolving configuration and capabilities",
+      "topics": "EngineArgs, VllmConfig, environment variables, platform defaults, precedence, and validation"
+    },
+    "4.1": {
+      "title": "The CUDA path and A100 baseline",
+      "topics": "Upstream vLLM, CUDA/PyTorch, GPU memory specifications, starting in eager mode, and offline/online inference"
+    },
+    "4.2": {
+      "title": "The MACA path and C500 baseline",
+      "topics": "vLLM-MetaX, MACA, mcoplib, official images, and version compatibility"
+    },
+    "4.3": {
+      "title": "The same experiment on two platforms",
+      "topics": "Matched weights/inputs/sampling/workloads, dtype, backend differences, and error tolerances"
+    },
+    "5.1": {
+      "title": "PagedAttention and cache layouts",
+      "topics": "Page size, block tables, slot mapping, NHD/HND and newer layouts, and fragmentation"
+    },
+    "5.2": {
+      "title": "Automatic Prefix Caching",
+      "topics": "APC full-block matching, uncached suffix computation, prefill savings, final-token/logits boundaries; comparison with radix-based caching"
+    },
+    "5.3": {
+      "title": "Cache keys and sharing isolation",
+      "topics": "Chained hashes, token/multimodal/LoRA identities, cache salts, and hash algorithms"
+    },
+    "5.4": {
+      "title": "Cache lifecycle and routing",
+      "topics": "Reference counts, LRU, eviction, preemption/recomputation, reset, KV events, and affinity routing"
+    },
+    "5.5": {
+      "title": "Cache management for hybrid models",
+      "topics": "Full/SWA/SSM groups, Hybrid KV Cache Manager, page alignment, and shared layers"
+    },
+    "5.6": {
+      "title": "State caching for Mamba and linear models",
+      "topics": "Mamba1/2, GDN, convolution/SSM states, checkpoints, ReplaySSM, and RecoverSSM"
+    },
+    "5.7": {
+      "title": "KV offloading and tiered caching",
+      "topics": "Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors"
+    },
+    "5.8": {
+      "title": "Context extension and KV sharing",
+      "topics": "RoPE scaling/YaRN, model length, sliding windows, and cross-layer KV sharing/fast prefill"
+    },
+    "5.9": {
+      "title": "IndexCache and sparse index caching",
+      "topics": "Cross-layer reuse of DSA top-k indices, reuse frequency, and sparse-attention accuracy"
+    },
+    "6.1": {
+      "title": "Continuous batching and scheduling policies",
+      "topics": "FCFS, priority, waiting/running queues, fairness, preemption, and starvation"
+    },
+    "6.2": {
+      "title": "Chunked Prefill",
+      "topics": "Chunked prefill, mixed prefill/decode, long-request thresholds, and partial-prefill budgets"
+    },
+    "6.3": {
+      "title": "Token and GPU memory budgets",
+      "topics": "max_num_seqs, max_num_batched_tokens, version-specific scheduled-token limits, max_model_len, and KV/encoder/speculation budgets"
+    },
+    "6.4": {
+      "title": "Async scheduling and output processing",
+      "topics": "CPU/GPU overlap, input preparation, sampling feedback, async output, and cancellation boundaries"
+    },
+    "6.5": {
+      "title": "Comparing DBO and TBO",
+      "topics": "vLLM Dual Batch Overlap, ubatches, compute/communication overlap; comparison with SGLang TBO/SBO"
+    },
+    "6.6": {
+      "title": "Scheduling combinations and evolution",
+      "topics": "Async scheduling × speculative decoding × graphs × PP/LoRA; historical multi-step/best-of behavior"
+    },
+    "7.1": {
+      "title": "FlashAttention principles",
+      "topics": "IO-aware tiling, online softmax, SRAM reuse, and exact attention"
+    },
+    "7.2": {
+      "title": "FlashAttention versions and integration",
+      "topics": "FA1/FA2/FA3/FA4, varlen, prefill/decode, and device/dtype requirements"
+    },
+    "7.3": {
+      "title": "Selecting an attention backend",
+      "topics": "FlashInfer, Triton, SDPA/FlexAttention, CPU/ROCm/XPU, and automatic selection"
+    },
+    "7.4": {
+      "title": "MLA and sparse attention",
+      "topics": "FlashMLA, CUTLASS MLA, FlashInfer MLA, DSA/MSA, and model-specific backends"
+    },
+    "7.5": {
+      "title": "Decode and shared-prefix attention",
+      "topics": "Partitioned reduction, split-K, variable-length/paged attention, cascade attention, and shared prefixes"
+    },
+    "7.6": {
+      "title": "Linear layers and fused kernels",
+      "topics": "Triton vector add → reduction/softmax → matmul → attention; GEMM/GEMV, RMSNorm, RoPE, SwiGLU, CUDA/CUTLASS/CuTeDSL"
+    },
+    "7.7": {
+      "title": "Kernel selection and tuning",
+      "topics": "Marlin, Machete, DeepGEMM, Humming, FlashInfer, b12x, autotuning, and JIT"
+    },
+    "8.1": {
+      "title": "torch.compile integration",
+      "topics": "Dynamo/FX/Inductor and Triton TTIR/TTGIR/target code; guards, graph breaks, dynamic shapes, and piecewise compilation"
+    },
+    "8.2": {
+      "title": "CUDA Graph execution modes",
+      "topics": "NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE"
+    },
+    "8.3": {
+      "title": "Shape specialization and compilation caches",
+      "topics": "Capture sizes, padding, warmup, cache keys, recompilation, and startup cost"
+    },
+    "8.4": {
+      "title": "Compute fusion passes",
+      "topics": "Norm+Quant, Act+Quant, Attention+Quant, QK Norm+RoPE, and RoPE+KV"
+    },
+    "8.5": {
+      "title": "Communication fusion and Async TP",
+      "topics": "GEMM/collective overlap, all-reduce+RMSNorm, SP, and symmetric memory"
+    },
+    "8.6": {
+      "title": "Optimization levels, CustomOp, and vLLM IR",
+      "topics": "Optimization presets, pass precedence, operator dispatch/lowering, and platform overrides"
+    },
+    "8.7": {
+      "title": "Multimodal graphs and compilation debugging",
+      "topics": "ViT CUDA Graphs, encoder compilation, dynamic inputs, fallbacks, and DBO/speculation combinations"
+    },
+    "9.1": {
+      "title": "Low-precision representations and compute paths",
+      "topics": "INT4/INT8 and FP8/FP4/MX formats; scales/zero points, rounding/saturation, granularity; storage/multiply/accumulation precision"
+    },
+    "9.2": {
+      "title": "Quantization algorithms",
+      "topics": "Compare error objectives, calibration, clipping, rounding, error compensation, and equivalent transformations; GPTQ/AWQ as case studies, PTQ vs. QAT"
+    },
+    "9.3": {
+      "title": "Quantization strategies and precision allocation",
+      "topics": "W/A/KV, weight-only vs. low-precision computation, static/dynamic, online/offline, layer/group/expert mixed precision, and workload awareness"
+    },
+    "9.4": {
+      "title": "Writing quantization and data-reordering kernels",
+      "topics": "amax/reduction, Q/DQ, per-token/per-group scales, INT4 nibble packing, sign extension, reordering, and tail blocks"
+    },
+    "9.5": {
+      "title": "Weight-only GEMV and GEMM",
+      "topics": "W4A16/W8A16, packed layouts, fused tiled dequantization, scale reuse, small-M decode, and large-M prefill"
+    },
+    "9.6": {
+      "title": "Low-precision GEMM and scaling",
+      "topics": "W8A8/W4A8, conditional INT8/FP8/FP4 paths, dynamic activation quantization, group scaling, accumulation precision, zero-point compensation, and epilogues"
+    },
+    "9.7": {
+      "title": "Kernel fusion and tuning",
+      "topics": "Norm/Act+Quant, GEMM epilogues, tiling, L2/shared-memory reuse, pipelines/double buffering, registers, split-K, and autotuning"
+    },
+    "9.8": {
+      "title": "KV quantization and attention integration",
+      "topics": "KV formats/layouts, per-head/per-token scales, quantized writes/fused reads, low-bit dequantization, outlier layers, and long-context error"
+    },
+    "9.9": {
+      "title": "MoE expert quantization and grouped computation",
+      "topics": "Per-expert precision/scales, activation quantization after routing, grouped GEMM, packed layouts, load imbalance, and communication integration"
+    },
+    "9.10": {
+      "title": "Integrating quantized kernels into vLLM",
+      "topics": "QuantizationConfig → get_quant_method → create_weights → load → process_weights_after_loading → apply; layouts/sharding/dispatch/fallbacks"
+    },
+    "9.11": {
+      "title": "From kernel gains to end-to-end acceleration",
+      "topics": "Microbenchmark → layer → model → serving; prefill/decode, numerical error and model quality, TTFT/TPOT/goodput, and amortizing preprocessing"
+    },
+    "10.1": {
+      "title": "Drafting, verification, and rejection sampling",
+      "topics": "Target/draft distributions, acceptance rates, rollback, extra tokens, and distribution-preservation conditions"
+    },
+    "10.2": {
+      "title": "N-gram and suffix methods",
+      "topics": "ngram, ngram_gpu, prompt lookup, suffix matching, and adaptive depth"
+    },
+    "10.3": {
+      "title": "Separate draft models",
+      "topics": "Draft models, vocabulary alignment, draft TP, memory budgets, and speculative token counts"
+    },
+    "10.4": {
+      "title": "EAGLE and EAGLE3",
+      "topics": "Feature prediction, draft trees/verification, hidden-state extraction, and compatible models"
+    },
+    "10.5": {
+      "title": "MTP and native multi-token prediction",
+      "topics": "MTP modules, weights, shared states, model families, and rollback for hybrid models"
+    },
+    "10.6": {
+      "title": "Other draft methods and parallel proposals",
+      "topics": "MLP speculator, Medusa, PARD, DFlash/DSpark, speculators, and custom proposers"
+    },
+    "10.7": {
+      "title": "Dynamic speculation and adaptive verification",
+      "topics": "Dynamic Speculative Decoding, workload awareness, confidence, and Adaptive Verification"
+    },
+    "10.8": {
+      "title": "Speculation, caching, and execution combinations",
+      "topics": "KV allocation/rollback, CUDA Graphs, async scheduling, LoRA/quantization/multimodality/CP"
+    },
+    "10.9": {
+      "title": "Acceptance rates and actual gains",
+      "topics": "Per-request/per-position acceptance rates, accepted tokens, drafting costs, and effective throughput"
+    },
+    "11.1": {
+      "title": "Parallel dimensions and communication basics",
+      "topics": "TP/PP/DP/EP/CP/PCP/DCP/SP, ranks/groups, all-reduce/all-gather/reduce-scatter/all-to-all"
+    },
+    "11.2": {
+      "title": "Tensor Parallelism",
+      "topics": "TP, column/row parallelism, vocabulary parallelism, attention heads, and KV replication"
+    },
+    "11.3": {
+      "title": "Pipeline Parallelism",
+      "topics": "PP, layer partitioning, uneven partitions, microbatches, and pipeline bubbles"
+    },
+    "11.4": {
+      "title": "Data Parallelism",
+      "topics": "DP, replicas, internal/external/hybrid load balancing, and dense vs. MoE models"
+    },
+    "11.5": {
+      "title": "Context Parallelism concepts",
+      "topics": "CP along the context dimension, long sequences, Q/KV distribution, and ring/all-gather algorithms"
+    },
+    "11.6": {
+      "title": "Prefill Context Parallelism",
+      "topics": "PCP, prefill-token partitioning, rank expansion, TP/PCP combinations, and cache layouts"
+    },
+    "11.7": {
+      "title": "Decode Context Parallelism",
+      "topics": "DCP, decode KV sharding, process-group reuse, MLA/GQA, ag_rs/a2a, and Q replication"
+    },
+    "11.8": {
+      "title": "Sequence Parallelism and Async TP",
+      "topics": "SP activation partitioning, integration with TP, fusion passes, and sequence-parallel MoE paths"
+    },
+    "11.9": {
+      "title": "Combining parallelism and planning topology",
+      "topics": "TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA"
+    },
+    "11.10": {
+      "title": "Distributed launch and debugging",
+      "topics": "mp/Ray/external launchers, node discovery, communication timeouts, NCCL/P2P, and failures"
+    },
+    "12.1": {
+      "title": "The MoE computation path",
+      "topics": "Routers, top-k, shared/routed experts, dispatch, expert computation, and combine"
+    },
+    "12.2": {
+      "title": "Expert Parallelism",
+      "topics": "EP, expert partitioning, attention DP/TP and expert groups, placement, and redundant experts"
+    },
+    "12.3": {
+      "title": "Fused MoE kernels",
+      "topics": "Modular kernels, prepare/finalize, quantized layouts, and batched/mega MoE"
+    },
+    "12.4": {
+      "title": "All-to-all backends",
+      "topics": "All-gather/reduce-scatter, DeepEP, MoRI, NIXL EP, and FlashInfer NVLink"
+    },
+    "12.5": {
+      "title": "EPLB and elastic expert parallelism",
+      "topics": "EPLB, rearrangement/redundancy, async balancing, Elastic EP, scaling, and failure recovery"
+    },
+    "12.6": {
+      "title": "MoE overlap and combined tuning",
+      "topics": "DBO, shared-expert overlap, communication fusion, quantization, and disaggregated serving combinations"
+    },
+    "13.1": {
+      "title": "Prefill-decode disaggregation",
+      "topics": "PD disaggregation, independent phase scaling, TTFT/TPOT targets, and routing"
+    },
+    "13.2": {
+      "title": "The KV Connector protocol",
+      "topics": "Scheduler/worker roles, async storage/retrieval, lifecycle, cleanup after failures, and KV events"
+    },
+    "13.3": {
+      "title": "Connectors and tiered storage",
+      "topics": "NIXL, Mooncake/Store, LMCache, MoRIIO, FlexKV, HF3FS, and native offloading"
+    },
+    "13.4": {
+      "title": "Heterogeneous parallelism and transfer compatibility",
+      "topics": "Different P/D TP/PCP/DCP degrees, KV layouts, block sizes, dtypes, and model consistency"
+    },
+    "13.5": {
+      "title": "Encoder disaggregation and caching",
+      "topics": "Multimodal encoders, EC transfer, embedding caches, and renderer separation"
+    },
+    "13.6": {
+      "title": "Distributed serving lifecycles",
+      "topics": "Push/pull, leases/notifications, timeouts, retries, load-failure recovery, and cache affinity"
+    },
+    "14.1": {
+      "title": "Model registration and execution tasks",
+      "topics": "Generative/pooling models, runners/tasks, native implementations/Transformers backend, and encoder-decoder models"
+    },
+    "14.2": {
+      "title": "Text generation and scoring",
+      "topics": "Generation, logprobs/prompt logprobs, score, generative scoring, and version-specific beam search behavior"
+    },
+    "14.3": {
+      "title": "Pooling tasks",
+      "topics": "Embeddings, token embeddings, classification/token classification, rewards, and reranking/scoring"
+    },
+    "14.4": {
+      "title": "The multimodal input pipeline",
+      "topics": "Images/video/audio, processor caches, input budgets, placeholders, and multimodal embeddings"
+    },
+    "14.5": {
+      "title": "Multimodal execution optimization",
+      "topics": "Encoder batching/DP, ViT attention/FP8, encoder compilation/graphs, and EC caches"
+    },
+    "14.6": {
+      "title": "LoRA and multi-tenant adaptation",
+      "topics": "Multi-LoRA, mixed batches, dynamic loading/unloading, CPU caches, resolvers, and default multimodal LoRA"
+    },
+    "14.7": {
+      "title": "Prompt embeddings and specialized architectures",
+      "topics": "Prompt embeds, custom I/O, MLA/hybrid SSMs, discrete-diffusion dLLM canvas/denoising, and the scope of Omni extensions"
+    },
+    "15.1": {
+      "title": "Offline and online entry points",
+      "topics": "LLM/AsyncLLM, chat/complete/serve/run-batch, OpenAI Batch, and SSE streaming"
+    },
+    "15.2": {
+      "title": "API feature map",
+      "topics": "Completions/Chat/Responses, Embeddings/Score/Rerank, audio/realtime APIs, and tokenize/detokenize"
+    },
+    "15.3": {
+      "title": "Structured outputs",
+      "topics": "JSON Schema, regex, choice, grammar, structural tags, and XGrammar/Guidance"
+    },
+    "15.4": {
+      "title": "Tool calling",
+      "topics": "tool_choice, auto/named/required tools, parallel tools, parsers, and chat templates"
+    },
+    "15.5": {
+      "title": "Reasoning and interleaved thinking",
+      "topics": "Reasoning parsers, content separation, thinking budgets, tool rounds, and interleaved reasoning"
+    },
+    "15.6": {
+      "title": "Custom sampling and processors",
+      "topics": "Custom logits processors, logit bias, allowed/blocked tokens, and custom arguments/I/O"
+    },
+    "15.7": {
+      "title": "Serving operations and scaling",
+      "topics": "Frontend process scaling, rate limiting/backpressure, cancellation, health checks, metrics, and framework integrations"
+    },
+    "16.1": {
+      "title": "Model resolution and weight loading",
+      "topics": "Local/Hugging Face/ModelScope sources, revisions, safetensors, sharded state, and lazy loading"
+    },
+    "16.2": {
+      "title": "Efficient loading and startup",
+      "topics": "fastsafetensors, Run:ai Streamer, Tensorizer, InstantTensor, loading concurrency, and JIT warmup"
+    },
+    "16.3": {
+      "title": "Weight offloading and memory budgets",
+      "topics": "CPU weight offloading, prefetch/UVA paths, KV offloading, pinned memory, and graph memory"
+    },
+    "16.4": {
+      "title": "Sleep, wake, and pause/resume",
+      "topics": "Sleep levels, releasing weights/KV, wake tags, pausing/resuming, and cache resets"
+    },
+    "16.5": {
+      "title": "Weight updates and transfer",
+      "topics": "Weight Transfer, IPC/NCCL/Sharded RDT, layerwise reloading, and version consistency"
+    },
+    "16.6": {
+      "title": "Reinforcement-learning inference integration",
+      "topics": "RLHF/async rollouts, alternating training and inference, distribution replay, routed experts, and TRL"
+    },
+    "17.1": {
+      "title": "Benchmark tools and workloads",
+      "topics": "bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data"
+    },
+    "17.2": {
+      "title": "Latency targets and parameter searches",
+      "topics": "SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches"
+    },
+    "17.3": {
+      "title": "Profiling across the stack",
+      "topics": "PyTorch Profiler, Nsight/vendor tools, CPU/GPU timelines; matching semantics/shapes/dtypes, invocation counts and durations, and the critical path"
+    },
+    "17.4": {
+      "title": "Observability and per-request metrics",
+      "topics": "Prometheus/Grafana, OpenTelemetry, KV/scheduling/speculation/MoE metrics, and per-request metrics"
+    },
+    "17.5": {
+      "title": "Quality, reproducibility, and batch invariance",
+      "topics": "Numerical tolerances, model quality, long contexts, seeds, batch invariance, and the cost of determinism"
+    },
+    "17.6": {
+      "title": "System ablations and capstone projects",
+      "topics": "APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning"
+    },
+    "18.1": {
+      "title": "Platforms and plugins",
+      "topics": "Out-of-tree platforms, model/operator/quantization/LoRA/I/O plugins, and capability detection"
+    },
+    "18.2": {
+      "title": "Adapting to C500",
+      "topics": "MACA/mcoplib, attention/quantization/graph capabilities, configuration migration, and numerical/performance debugging"
+    },
+    "18.3": {
+      "title": "Other hardware and framework comparisons",
+      "topics": "ROCm/XPU/CPU/TPU/other plugins; the scope of SGLang, TensorRT-LLM, llama.cpp, and vLLM-Omni"
+    },
+    "18.4": {
+      "title": "Deployment and the surrounding ecosystem",
+      "topics": "Docker/Kubernetes/Helm/Ray/Nginx, routing, llm-d/Dynamo/Production Stack, and application integrations"
+    },
+    "18.5": {
+      "title": "From an issue to a contribution and version maintenance",
+      "topics": "Unit/integration/performance checks, minimal reproductions, PRs, deprecation migration, and feature inventory updates"
+    }
+  },
+  "sources": {
+    "course": "Datawhale zero-to-sglang",
+    "quickstart": "vLLM Quickstart",
+    "gpu": "GPU Installation and Hardware Requirements",
+    "models": "Supported Models and Tasks",
+    "generation": "Generative Models",
+    "bench": "Benchmark CLI",
+    "transformers": "Transformers",
+    "nano": "nano-vllm",
+    "mini": "mini-sglang",
+    "architecture": "Architecture Overview",
+    "runner": "Model Runner V2",
+    "hf": "Hugging Face Integration",
+    "features": "vLLM Features and Compatibility",
+    "serve": "OpenAI-compatible Server",
+    "metax": "vLLM-MetaX",
+    "metax_install": "MetaX Installation",
+    "metax_quick": "MetaX Quickstart",
+    "apc": "Automatic Prefix Caching",
+    "prefix_design": "Prefix Caching Design",
+    "cache_config": "Cache Configuration and Dtypes",
+    "hybrid": "Hybrid KV Cache Manager",
+    "kv_offload": "KV Offloading",
+    "context": "Context Extension",
+    "index": "IndexCache",
+    "optimization": "Optimization and Tuning",
+    "scheduler": "Scheduler Configuration",
+    "dbo": "Dual Batch Overlap",
+    "sglang_tbo": "SGLang EP: TBO/SBO",
+    "attention_registry": "Attention Backend Registry",
+    "attention_support": "Attention Backend Support Matrix",
+    "flashattention": "FlashAttention Implementation and Versions",
+    "kernel": "Linear/MoE Kernel Configuration",
+    "customop": "CustomOp",
+    "triton_attention": "Triton Fused Attention Tutorial",
+    "compile": "torch.compile Integration",
+    "compile_config": "Compilation Modes and Fusion Passes",
+    "graphs": "CUDA Graphs",
+    "optimization_levels": "Optimization Levels",
+    "ir": "vLLM IR",
+    "vit_graphs": "ViT CUDA Graphs",
+    "quant": "Quantization and Hardware Support",
+    "quant_base": "vLLM Quantization Method and Configuration Interfaces",
+    "triton_matmul": "Triton Matrix Multiplication Tutorial",
+    "marlin_kernel": "Marlin Quantized Kernel Implementation",
+    "kv_quant": "Quantized KV Cache",
+    "quant_registry": "Quantization Method Registry",
+    "online_quant": "Online Quantization",
+    "compressor": "LLM Compressor",
+    "spec": "Speculative Decoding",
+    "spec_config": "Speculative Methods and Model Types",
+    "eagle": "EAGLE",
+    "mtp": "MTP",
+    "spec_dynamic": "Dynamic Speculative Decoding",
+    "spec_adaptive": "Adaptive Verification",
+    "parallel": "Parallelism and Scaling",
+    "parallel_config": "Parallel Configuration and Degree Validation",
+    "cp": "Context Parallel Deployment",
+    "dp": "Data Parallel Deployment",
+    "ep": "Expert Parallel Deployment",
+    "moe_design": "Fused MoE Modular Kernel",
+    "moe_features": "MoE Kernel Features",
+    "disagg": "Disaggregated Prefilling",
+    "encoder_disagg": "Disaggregated Encoder",
+    "kv_factory": "KV Connector Registry",
+    "nixl": "NIXL Compatibility Matrix",
+    "pooling": "Pooling Models",
+    "multimodal": "Multimodal Inputs",
+    "lora": "LoRA Adapters",
+    "prompt_embed": "Prompt Embedding Inputs",
+    "diffusion": "Discrete Diffusion Language Model Configuration",
+    "structured": "Structured Outputs",
+    "tools": "Tool Calling",
+    "reasoning": "Reasoning Outputs",
+    "thinking": "Interleaved Thinking",
+    "custom_logits": "Custom Logits Processors",
+    "load": "Model Resolution",
+    "memory": "Conserving Memory",
+    "sleep": "Sleep Mode",
+    "weight_transfer": "Weight Transfer",
+    "async_rl": "Async Reinforcement Learning",
+    "layerwise": "Layerwise Reloading",
+    "sweep": "Parameter Sweeps",
+    "profiling": "Profiling vLLM",
+    "metrics": "Production Metrics",
+    "per_request": "Per-Request Metrics",
+    "batch_invariance": "Batch Invariance",
+    "plugin": "Plugin System",
+    "metax_models": "MetaX Supported Models",
+    "deployment": "Kubernetes Deployment",
+    "sglang_tuning": "SGLang Hyperparameter Tuning"
+  }
+}

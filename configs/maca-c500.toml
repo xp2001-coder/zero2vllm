@@ -1,0 +1,33 @@
+schema_version = 1
+backend = "maca"
+
+# The vendor's C500 image and version mapping must be checked on hardware.
+[hardware]
+gpu_name = "MetaX C500"
+gpu_memory_gib = ""
+host_os = ""
+cpu_arch = ""
+
+[runtime]
+image = ""
+python = ""
+pytorch = ""
+vllm = ""
+driver = ""
+maca = ""
+vllm_metax = ""
+mcoplib = ""
+
+[model]
+id = "Qwen/Qwen3-0.6B"
+revision = ""
+path_in_container = ""
+dtype = "float16"
+
+[serving]
+tensor_parallel_size = 1
+max_model_len = 1024
+max_num_seqs = 4
+gpu_memory_utilization = 0.70
+enforce_eager = true
+port = 8000

@@ -1,0 +1,28 @@
+name: 课程建议与内容纠错
+description: 改进章节解释、习题、特性覆盖和学习路线
+title: "[Course] "
+body:
+  - type: input
+    id: chapter
+    attributes:
+      label: 对应章节或文件
+      description: 例如 9.4 手写量化与数据重排算子；新专题可注明建议归属。
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 当前问题与建议
+      description: 说明读者遇到的困难，以及希望补充或修正的内容。
+    validations:
+      required: true
+  - type: textarea
+    id: exercise
+    attributes:
+      label: 建议的练习或验收产出
+      description: 可附最小例子、数值对齐方式或实验设计，并注明设备条件。
+  - type: textarea
+    id: sources
+    attributes:
+      label: 参考依据
+      description: 优先提供官方文档、论文或固定版本的源码链接；区分新版本与历史行为。

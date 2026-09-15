@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "mode": "check",
+  "changed_files": [],
+  "parts": 19,
+  "chapters": 126,
+  "inventory_groups": 14,
+  "inventory_named_entries": 233,
+  "knowledge_sources": 38,
+  "chapters_with_reading": 56,
+  "readme_languages": [
+    "zh",
+    "en"
+  ],
+  "markdown_files": 30,
+  "local_links": 480,
+  "local_fragments": 23,
+  "table_rows": 1231,
+  "parsed_json_and_toml": [
+    "configs/cuda-a100.toml",
+    "configs/maca-c500.toml",
+    "docs/assets/banner-design.json",
+    "docs/curriculum-catalog.json",
+    "docs/curriculum-en.json",
+    "docs/feature-inventory.json",
+    "docs/knowledge-sources.json",
+    "docs/templates/feature-validation.json",
+    "docs/templates/gpu-run.json",
+    "pyproject.toml",
+    "reports/cpu-int4-linear.json",
+    "reports/cpu-kv-cache.json",
+    "reports/curriculum-checks.json",
+    "reports/document-checks.json",
+    "reports/local-environment.json"
+  ],
+  "scope": "Local course consistency, bilingual outline structure, Markdown/HTML local links, headings/tables and JSON/TOML syntax. No network or GPU execution; translation meaning requires human review."
+}

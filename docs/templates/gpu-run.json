@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "record_type": "template",
+  "status": "not_run",
+  "run_id": null,
+  "created_at_utc": null,
+  "source_revision": null,
+  "profile_path": null,
+  "backend": null,
+  "hardware": null,
+  "runtime": null,
+  "model": null,
+  "serving_argv": null,
+  "workload": null,
+  "warmup": null,
+  "request_count": null,
+  "success_count": null,
+  "failed_count": null,
+  "metrics": null,
+  "raw_artifacts": [],
+  "notes": "Fill only from an actual run. Null metrics are not zero performance."
+}
