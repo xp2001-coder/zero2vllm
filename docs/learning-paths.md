@@ -2,31 +2,34 @@
 
 完整目录负责覆盖技术范围，学习路线负责选择进入顺序，开发里程碑负责安排材料交付。三者分别见 [课程目录](curriculum.md)、本文和 [开发路线](roadmap.md)。
 
-**当前可直接运行的是 [CPU KV Cache 引导实验](labs/01-kv-cache.md)、[CPU INT4 Linear 实验](labs/02-int4-linear.md)、逻辑块模拟及配置/环境检查。** 新增的[7 篇专题导读](knowledge-base.md)可配合下表学习。正式章节仍按目录标明材料/实验状态，所有 GPU 实验待验证。
+**先从[第一课 1.1：从 token 到下一步预测](chapters/01-next-token.md)开始，正文、CPU 实验与练习答案均已提供。** 还可直接运行 [CPU KV Cache 引导实验](labs/01-kv-cache.md)、[CPU INT4 Linear 实验](labs/02-int4-linear.md)、逻辑块模拟及配置/环境检查。[7 篇专题导读](knowledge-base.md)可配合下表学习。各章按目录标明材料/实验状态，所有 GPU 实验待验证。
 
 ## 先用现有材料走通一条短路线
 
-这条路线只使用已经提供的教程、代码和手算题。先从一次生成走到缓存、调度，再完成一个量化 Linear；有部署经验的读者可以从第 4 步进入。
+这条路线只使用已经提供的教程、代码和手算题。先从一次生成走到缓存、调度，再完成一个量化 Linear；有部署经验的读者可以从第 5 步进入。
 
 | 步骤 | 读与做 | 交付一个小结果 | 类型 |
 | --- | --- | --- | --- |
-| 1. 看懂一次生成 | [KV Cache 实验](labs/01-kv-cache.md)，运行默认命令 | 解释 4 个输入、8 个输出为什么缓存路径计算 11 个位置 | CPU 实验 |
-| 2. 管理多个请求 | [调度与缓存](chapters/02-scheduling-cache.md)，手算三轮预算和块寻址 | 调度表、block/slot 映射、KV 容量估算 | 手算；完整调度器待实现 |
-| 3. 对应到真实框架 | [请求、状态与张量](chapters/01-request-lifecycle.md) | 标明 request ID、调度输出、模型输入和输出归属的职责图 | 导读；固定版本追踪待完成 |
-| 4. 做出量化 Linear | [INT4 实验](labs/02-int4-linear.md)，比较 G=4 与 G=8 | 两份结果，说明 scale 数量、实现误差与量化误差 | CPU 实验 |
-| 5. 设计一次优化 | [量化导读](chapters/05-quantization-operators.md)和[Profiling 导读](chapters/04-compile-profiling.md) | 浮点、显式 DQ、融合路径的对照表，标明哪些还未实现 | 实验设计；GPU 测量待完成 |
+| 1. 看懂一次生成 | [第一课 1.1](chapters/01-next-token.md)，运行与手算 | 张量维度表、最后一行 logits、五道练习解释 | 完整正文与 CPU 实验 |
+| 2. 复用历史计算 | [KV Cache 实验](labs/01-kv-cache.md)，运行默认命令 | 解释 4 个输入、8 个输出为什么缓存路径计算 11 个位置 | CPU 实验 |
+| 3. 管理多个请求 | [调度与缓存](chapters/02-scheduling-cache.md)，手算三轮预算和块寻址 | 调度表、block/slot 映射、KV 容量估算 | 手算；完整调度器待实现 |
+| 4. 对应到真实框架 | [请求、状态与张量](chapters/01-request-lifecycle.md) | 标明 request ID、调度输出、模型输入和输出归属的职责图 | 导读；固定版本追踪待完成 |
+| 5. 做出量化 Linear | [INT4 实验](labs/02-int4-linear.md)，比较 G=4 与 G=8 | 两份结果，说明 scale 数量、实现误差与量化误差 | CPU 实验 |
+| 6. 设计一次优化 | [量化导读](chapters/05-quantization-operators.md)和[Profiling 导读](chapters/04-compile-profiling.md) | 浮点、显式 DQ、融合路径的对照表，标明哪些还未实现 | 实验设计；GPU 测量待完成 |
 
 ### 第一步：运行后先看什么
 
 在包含 `pyproject.toml` 的工程根目录执行：
 
 ```bash
-python -m zero2vllm demo --output runs/first-kv-cache.json
+python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
 ```
 
-打开结果的 `verification`：`passed` 和 `same_token_ids` 应为 `true`，`max_abs_logit_error` 应不超过 `1e-12`。随后解释投影位置数 `4+7=11`；如果还说不清最后一个输出为什么不用再计算，回看实验教程的“默认结果如何解释”。
+先看 `input.token_ids`、`trace.next_token_logits` 和 `generation.steps`，解释 `[0, 1]` 如何预测出 ID `2`。`verification.passed` 应为 `true`；完成第一课的手算、维度表和练习后，再进入缓存实验。
 
-第 4 步用同一个随机种子比较：
+第 2 步运行 `python -m zero2vllm demo --output runs/first-kv-cache.json`。检查 `verification.passed` 和 `same_token_ids` 为 `true`，`max_abs_logit_error` 不超过 `1e-12`。再解释投影位置数 `4+7=11`；如果还说不清最后一个输出为什么不用再计算，回看 KV 实验的“默认结果如何解释”。
+
+第 5 步用同一个随机种子比较：
 
 ```bash
 python -m zero2vllm quant-demo --group-size 4 --seed 7 --output runs/int4-g4.json
@@ -38,10 +41,10 @@ python -m zero2vllm quant-demo --group-size 8 --seed 7 --output runs/int4-g8.jso
 ### 完成短路线以后
 
 - 学生补齐下面 S0—S2 所列基础，再进入真实模型与 PyTorch 教学引擎。
-- 工程师用 E0 锁定基线，再把第 5 步的设计落实到一种平台。
+- 工程师用 E0 锁定基线，再把第 6 步的设计落实到一种平台。
 - 量化方向沿 Q0—Q5 推进，先完成一条 Linear 链路，再扩展 KV/MoE。
 
-下面各表给出完整学习目标，其中仍有待建设内容。当前手头没有 GPU，也可以交付上述两个 CPU 实验、手算和职责图。
+下面各表给出完整学习目标，其中仍有待建设内容。当前手头没有 GPU，也可以完成第一课、两个独立 CPU 实验、手算和职责图。
 
 ## 1. 学生路线：先完成一个能解释的推理闭环
 
@@ -49,7 +52,7 @@ python -m zero2vllm quant-demo --group-size 8 --seed 7 --output runs/int4-g8.jso
 
 | 阶段 | 建议顺序 | 过关时应能交付 | 设备与当前入口 |
 | --- | --- | --- | --- |
-| S0 · 跑通与观察 | 0.1 → 0.3 → 1.1 → 1.2 → 1.3 | 解释 Prefill/Decode，比较缓存前后的 logits 和工作量 | CPU；已有 KV 实验可运行 |
+| S0 · 跑通与观察 | 0.1 → 0.3 → 1.1 → 1.2 → 1.3 | 解释 Prefill/Decode，比较缓存前后的 logits 和工作量 | CPU；1.1 已完成，KV 实验可运行 |
 | S1 · 建立正确性标准 | 1.4 → 1.5 → 1.6 → 2.1 | 固定权重、位置和采样规则，逐层比较参考实现 | CPU；PyTorch 实现待建设 |
 | S2 · 管理多个请求 | 2.3 → 2.4 → 2.5 → 2.6 | 回放请求加入、结束、取消、抢占、前缀复用与回收 | CPU 模拟；已有独立逻辑块分配器，完整引擎待建设 |
 | S3 · 进入真实框架 | 4.1 或 4.2 → 0.2 → 2.2 → 3.1 → 3.2 → 3.3 | 保存一次小模型生成记录，并将教学模块映射到 vLLM | 选择一种 GPU；没有设备时先读源码 |

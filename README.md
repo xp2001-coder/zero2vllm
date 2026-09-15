@@ -31,7 +31,7 @@
 
 [文档导航](docs/README.md) · [开发路线](docs/roadmap.md) · [更新记录](CHANGELOG.md) · [使用许可](LICENSE)
 
-> **课程建设中。** 当前有 2 个可运行的 CPU 实验、7 篇专题导读和双后端配置模板。完整教学引擎与各章实验继续建设，A100/C500 的 GPU 实验尚待实机验证。
+> **课程建设中。** 第一课 1.1 已提供完整正文、CPU 实验与练习答案；另有 KV Cache、INT4 Linear 两个独立实验、7 篇专题导读和双后端配置模板。完整教学引擎与后续章节继续建设，A100/C500 的 GPU 实验尚待实机验证。
 
 ## 第一次来，从这里开始
 
@@ -39,7 +39,7 @@
 
 | 你的起点 | 第一份材料 | 做完后得到什么 |
 | --- | --- | --- |
-| 会 Python，想理解推理 | [CPU KV Cache 实验](docs/labs/01-kv-cache.md) | 一份输出一致性结果，解释哪些重复计算被省去 |
+| 会 Python，想理解推理 | [第一课：从 token 到下一步预测](docs/chapters/01-next-token.md) | 手算一次 Attention，解释最后一行 logits 怎样选出下一个 token |
 | 已用过模型部署，想读源码 | [请求、状态与张量](docs/chapters/01-request-lifecycle.md) | 一张请求调用链，分清调度决策与模型执行 |
 | 做量化或想写算子 | [CPU INT4 Linear 实验](docs/labs/02-int4-linear.md) → [量化导读](docs/chapters/05-quantization-operators.md) | 一份位布局、误差和存储报告，再推进到 GPU 内核 |
 | 已有可用 GPU 环境，想做优化 | [实验规范](docs/experiments.md) → [Profiling 导读](docs/chapters/04-compile-profiling.md) | 一份固定负载的实验设计，区分正确性、质量与性能 |
@@ -98,7 +98,7 @@
 
 具体章节顺序、阶段交付物、GPU 条件与交叉章节分工见[学习路线](docs/learning-paths.md)。每章共用基础正文，附工程进阶与平台说明；完整技术范围见[课程目录](docs/curriculum.md)。
 
-**现在就能做：**运行 KV Cache 与 INT4 Linear 两个 CPU 实验、阅读专题导读、检查逻辑块分配和配置模板。没有 GPU 时先完成 CPU 阶段，0.2 的真实模型生成体验可后置。
+**现在就能做：**完成第一课的手算与生成实验，继续运行 KV Cache、INT4 Linear 实验，阅读专题导读、检查逻辑块分配和配置模板。没有 GPU 时先完成 CPU 阶段，0.2 的真实模型生成体验可后置。
 
 ### 根据手头硬件选择实验
 
@@ -113,7 +113,19 @@
 
 ## 快速开始
 
-### 1. 运行第一个 CPU 实验
+### 1. 完成第一课：从 token 到下一步预测
+
+需要 **Python 3.11+**。在仓库根目录执行，不需要第三方包、模型下载或 GPU：
+
+```bash
+python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
+```
+
+从五个教学词项和二维向量开始，逐项观察 Embedding、Q/K/V、因果 Attention、logits 和生成循环。默认输入“我 喜欢”，第一步选中 ID `2`；`verification.passed` 应为 `true`。权重是为手算设置的，没有训练语言能力。
+
+阅读[第一课正文与五道练习](docs/chapters/01-next-token.md)，对照[实际运行结果](reports/lesson-01-next-token.json)。预计 60—90 分钟完成手算、实验和自查。
+
+### 2. 继续观察 KV Cache
 
 下载并解压仓库，或克隆到本地后，在包含 `pyproject.toml` 的根目录执行。需要 **Python 3.11+**，无需下载模型或安装第三方包。
 
@@ -135,7 +147,7 @@ python -m zero2vllm demo
 
 继续阅读[引导实验：KV Cache 前后是否计算一致](docs/labs/01-kv-cache.md)，或查看[已运行的结果](reports/cpu-kv-cache.json)。
 
-### 2. 保存结果与运行检查
+### 3. 保存结果与运行检查
 
 ```bash
 python -m zero2vllm demo --output runs/cpu-kv-cache.json
@@ -144,7 +156,7 @@ python -m unittest discover -s tests -v
 
 试着改变 prompt 或输出长度，先预测重复计算量，再检查结果。
 
-### 3. 量化方向：运行 INT4 Linear
+### 4. 量化方向：运行 INT4 Linear
 
 ```bash
 python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
@@ -152,7 +164,7 @@ python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
 
 实验实现沿 K 分组的 Q/DQ、有符号 INT4 打包及两条量化 Linear 参考路径。默认包含尾组和奇数打包，分别报告实现误差与量化误差，并把 scale 计入存储。详见[实验教程](docs/labs/02-int4-linear.md)；它是 CPU 数学参考，GPU 融合内核与 vLLM 集成待完成。
 
-### 4. 准备 GPU 路径
+### 5. 准备 GPU 路径
 
 ```bash
 python -m zero2vllm doctor --output runs/environment.json
@@ -166,7 +178,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 <!-- BEGIN course-outline -->
 
-本版共 **19 篇、126 个正式章节规划**，另有两个已完成的 CPU 实验。已编写的专题导读可点击章节名称进入；前置知识、练习产出、设备条件见[详细课程目录](docs/curriculum.md)。
+本版共 **19 篇、126 个正式章节规划**，另有两个独立的 CPU 实验。可点击章节名称进入已有正文或专题导读，完成程度以状态标记为准；前置知识、练习产出、设备条件见[详细课程目录](docs/curriculum.md)。
 
 **状态：✅ 已完成并有本地验证；🧩 有部分材料或代码；📋 已规划、正文待编写。** 功能已被上游收录也不等于本项目已经实测。
 
@@ -214,7 +226,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 1.1 从 token 到下一步预测 | Tokenizer、Embedding、Transformer、因果 Attention、LM Head | 📋 |
+| 1.1 [从 token 到下一步预测](docs/chapters/01-next-token.md) | Tokenizer、Embedding、Transformer、因果 Attention、LM Head | ✅ |
 | 1.2 Prefill 与 Decode | 计算密集/带宽密集、HBM/SRAM、Roofline、算术强度 | 📋 |
 | 1.3 KV Cache 的作用 | 缓存更新、位置偏移、MHA/MQA/GQA、每 token 显存 | 🧩 |
 | 1.4 如何读性能结果 | TTFT、TPOT、ITL、吞吐、Goodput、P50/P95/P99、排队 | 🧩 |
@@ -601,6 +613,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 | --- | --- |
 | 工程设计、课程分层和迭代验收标准 | [工程设计](docs/engineering.md)、[开发路线](docs/roadmap.md) |
 | 19 篇、126 章大纲与特性/优化索引 | [详细目录](docs/curriculum.md)、[特性地图](docs/vllm-feature-map.md)、[一致性检查](reports/curriculum-checks.json) |
+| 第一课 1.1：正文、手算、CPU 生成实验与五组练习答案 | [开始第一课](docs/chapters/01-next-token.md)、[原始结果](reports/lesson-01-next-token.json) |
 | 因果 Attention、KV Cache 与贪心生成 | [参考代码](zero2vllm/reference/attention.py)、[引导实验](docs/labs/01-kv-cache.md) |
 | 独立的逻辑块分配与回收模拟 | [块管理代码](zero2vllm/reference/blocks.py)；尚未接入 Attention |
 | 环境采集、A100/C500 配置检查 | [环境工具与配置说明](docs/backends.md) |
@@ -608,7 +621,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 | 38 份资料到课程的映射、7 篇专题导读 | [知识库入口](docs/knowledge-base.md)、[本轮更新报告](reports/knowledge-update.md) |
 | 三条学习路线、章节分工与目录同步检查 | [学习路线](docs/learning-paths.md)、[维护方法](CONTRIBUTING.md)、[框架审查记录](reports/framework-review.md) |
 
-**下一阶段：**固定 A100/C500 环境并建立小模型基线；将 CPU INT4 参考推进到独立 GPU Q/DQ、融合 Linear 和 vLLM 接入；继续完善 PyTorch 教学引擎和各专题实验。每个阶段以代码、正文和验证记录共同验收。
+**接下来：**先沿基础课程完成 1.2 Prefill/Decode、1.3 KV Cache 与 1.4 正确性检查。A100/C500 环境与小模型基线可同时准备；量化 GPU 算子、vLLM 接入和 PyTorch 教学引擎按[开发路线](docs/roadmap.md)推进。每个阶段以代码、正文和验证记录共同验收。
 
 ## 项目结构
 
@@ -619,7 +632,7 @@ zero2vllm/
 │   ├── feature-inventory.json   # 本次核对的后端与配置枚举
 │   ├── knowledge-sources.json   # 本地资料来源、哈希与章节映射
 │   ├── knowledge-base.md        # 7 篇导读与资料使用说明
-│   ├── chapters/               # 请求、缓存、算子、编译、量化、并行、推测
+│   ├── chapters/               # 第一课正文与请求、缓存、算子等专题导读
 │   ├── learning-paths.md        # 三条学习路线与交叉章节分工
 │   ├── vllm-feature-map.md      # 功能地图、并行术语和组合约束
 │   ├── labs/                # 已编写的实验教程
@@ -628,7 +641,7 @@ zero2vllm/
 │   ├── reference/           # CPU 数学参考与逻辑块模拟
 │   ├── profiles.py          # 双后端配置检查
 │   ├── environment.py       # 环境信息采集
-│   └── cli.py               # demo / quant-demo / doctor / profile
+│   └── cli.py               # next-token-demo / demo / quant-demo / doctor / profile
 ├── vllm/                    # 本地参考知识库，可选，默认不提交
 ├── configs/                 # A100、C500 环境配置模板
 ├── scripts/                 # 环境采集、目录生成与本地文档检查

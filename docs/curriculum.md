@@ -50,7 +50,7 @@
 
 | 编号 | 章节 | 验收练习或产出 | 设备 | 状态 |
 | --- | --- | --- | --- | --- |
-| 1.1 | 从 token 到下一步预测 | 手算小矩阵的 Attention 并标出张量维度 | CPU | 📋 |
+| 1.1 | [从 token 到下一步预测](../docs/chapters/01-next-token.md) | 手算小矩阵的 Attention 并标出张量维度 | CPU | ✅ |
 | 1.2 | Prefill 与 Decode | 估算两阶段的 FLOPs、访存量与主要瓶颈 | CPU/GPU | 📋 |
 | 1.3 | KV Cache 的作用 | 复现已有 logits 对齐实验并推导 KV 容量 | CPU/GPU | 🧩 |
 | 1.4 | 如何读性能结果 | 用原始时间序列重算指标并识别错误口径 | CPU | 🧩 |

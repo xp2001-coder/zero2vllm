@@ -428,7 +428,8 @@
           "topics": "Tokenizer、Embedding、Transformer、因果 Attention、LM Head",
           "exercise": "手算小矩阵的 Attention 并标出张量维度",
           "hardware": "CPU",
-          "status": "planned"
+          "status": "complete",
+          "reading": "docs/chapters/01-next-token.md"
         },
         {
           "id": "1.2",

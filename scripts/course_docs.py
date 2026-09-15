@@ -122,7 +122,7 @@ def english_outline(catalog, translation):
         require(bool(part.get("readme_note")) == bool(translated.get("readme_note")),
                 f"Missing or extra English part note: {part['number']}")
     outline = [
-        f"This edition plans **{len(parts)} parts and {len(chapter_ids)} chapters**, alongside two completed CPU labs. Linked chapter titles lead to existing topic guides. See the [detailed curriculum](docs/curriculum.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.",
+        f"This edition plans **{len(parts)} parts and {len(chapter_ids)} chapters**, alongside two standalone CPU labs. Linked chapter titles lead to available lessons or topic guides; status markers distinguish completed chapters from partial material. See the [detailed curriculum](docs/curriculum.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.",
         "**Status: ✅ complete with local validation; 🧩 partial material or code available; 📋 planned, chapter text pending.** Upstream availability does not mean a feature has been tested in this project.",
         "[✅ CPU starter lab: checking correctness with and without KV cache](docs/labs/01-kv-cache.md)",
         "[✅ CPU quantization lab: INT4 packing, group scales, and Linear](docs/labs/02-int4-linear.md)",
@@ -156,7 +156,7 @@ def rendered_sections(catalog, inventory, knowledge, translation):
     parts, sources = catalog["parts"], catalog["sources"]
     count = sum(len(p["chapters"]) for p in parts)
     summary = f"{len(parts)} 篇、{count} 个正式章节规划"
-    readme = [f"本版共 **{summary}**，另有两个已完成的 CPU 实验。已编写的专题导读可点击章节名称进入；前置知识、练习产出、设备条件见[详细课程目录](docs/curriculum.md)。",
+    readme = [f"本版共 **{summary}**，另有两个独立的 CPU 实验。可点击章节名称进入已有正文或专题导读，完成程度以状态标记为准；前置知识、练习产出、设备条件见[详细课程目录](docs/curriculum.md)。",
               "**状态：✅ 已完成并有本地验证；🧩 有部分材料或代码；📋 已规划、正文待编写。** 功能已被上游收录也不等于本项目已经实测。",
               "[✅ CPU 引导实验：KV Cache 前后是否计算一致](docs/labs/01-kv-cache.md)",
               "[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/labs/02-int4-linear.md)",

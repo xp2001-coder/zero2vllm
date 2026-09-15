@@ -10,6 +10,7 @@ import sys
 from .environment import collect_environment
 from .profiles import inspect_profile
 from .reference.attention import TinyAttentionLM, generate
+from .reference.next_token import next_token_experiment
 from .reference.quantization import quantization_experiment
 
 
@@ -45,6 +46,10 @@ def main(argv: list[str] | None = None) -> int:
     demo.add_argument("--max-new-tokens", type=int, default=8)
     demo.add_argument("--seed", type=int, default=7)
     demo.add_argument("--output", type=Path)
+    next_token = commands.add_parser("next-token-demo", help="Trace the hand-calculable model in lesson 1.1")
+    next_token.add_argument("--prompt", default="我 喜欢")
+    next_token.add_argument("--max-new-tokens", type=int, default=3)
+    next_token.add_argument("--output", type=Path)
     doctor = commands.add_parser("doctor", help="Collect read-only environment inventory")
     doctor.add_argument("--output", type=Path)
     quant = commands.add_parser("quant-demo", help="Verify INT4 packing and Linear on CPU")
@@ -60,6 +65,10 @@ def main(argv: list[str] | None = None) -> int:
         if args.command == "demo":
             prompt = [int(token.strip()) for token in args.prompt.split(",")]
             result = kv_experiment(prompt, args.max_new_tokens, args.seed)
+            code = 0 if result["verification"]["passed"] else 1
+        elif args.command == "next-token-demo":
+            result = next_token_experiment(args.prompt, args.max_new_tokens)
+            result["created_at_utc"] = datetime.now(timezone.utc).isoformat()
             code = 0 if result["verification"]["passed"] else 1
         elif args.command == "quant-demo":
             result = quantization_experiment(args.group_size, args.seed)

@@ -43,6 +43,12 @@ test_local_library_and_scratch_are_optional_and_excluded (test_course_docs.Cours
 test_missing_files_and_heading_fragments_are_rejected (test_course_docs.CourseDocsTests.test_missing_files_and_heading_fragments_are_rejected) ... ok
 test_missing_reading_body_is_rejected (test_course_docs.CourseDocsTests.test_missing_reading_body_is_rejected) ... ok
 test_write_preserves_manual_prose_and_is_idempotent (test_course_docs.CourseDocsTests.test_write_preserves_manual_prose_and_is_idempotent) ... ok
+test_cli_saves_the_trace_and_rejects_unknown_tokens (test_next_token.NextTokenLessonTests.test_cli_saves_the_trace_and_rejects_unknown_tokens) ... ok
+test_future_tokens_leave_existing_rows_unchanged (test_next_token.NextTokenLessonTests.test_future_tokens_leave_existing_rows_unchanged) ... ok
+test_generation_uses_last_row_and_grows_the_prefix (test_next_token.NextTokenLessonTests.test_generation_uses_last_row_and_grows_the_prefix) ... ok
+test_hand_calculation_matches_the_report (test_next_token.NextTokenLessonTests.test_hand_calculation_matches_the_report) ... ok
+test_token_mapping_invalid_inputs_and_context_boundary (test_next_token.NextTokenLessonTests.test_token_mapping_invalid_inputs_and_context_boundary) ... ok
+test_trace_agrees_with_reference_for_varied_shapes_and_positions (test_next_token.NextTokenLessonTests.test_trace_agrees_with_reference_for_varied_shapes_and_positions) ... ok
 test_cli_outputs_replayable_report_and_rejects_bad_group (test_quantization.QuantizationTests.test_cli_outputs_replayable_report_and_rejects_bad_group) ... ok
 test_error_bound_and_linear_across_shapes (test_quantization.QuantizationTests.test_error_bound_and_linear_across_shapes) ... ok
 test_invalid_numeric_inputs_and_shapes (test_quantization.QuantizationTests.test_invalid_numeric_inputs_and_shapes) ... ok
@@ -54,6 +60,6 @@ test_signed_nibbles_have_known_wire_bytes (test_quantization.QuantizationTests.t
 test_zero_column_uses_finite_scale_and_stays_zero (test_quantization.QuantizationTests.test_zero_column_uses_finite_scale_and_stays_zero) ... ok
 
 ----------------------------------------------------------------------
-Ran 54 tests in 10.125s
+Ran 60 tests in 13.203s
 
 OK

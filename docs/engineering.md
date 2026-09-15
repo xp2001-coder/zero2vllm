@@ -93,7 +93,7 @@ MACA 的设备 API 可能呈现 CUDA 风格。不能只凭 `torch.cuda.is_availa
 
 ## 6. 模型与数值基准
 
-CPU 引导实验使用随机权重和小词表，验证数学行为。真实模型首选候选为 Qwen3-0.6B；7B/8B 级模型作为后续性能负载，均需两平台验证。
+第一课 `next-token-demo` 使用五个教学词项与显式设置的二维权重，便于手算；KV Cache 引导实验使用固定随机权重和小词表。两者验证数学行为。真实模型首选候选为 Qwen3-0.6B；7B/8B 级模型作为后续性能负载，均需两平台验证。
 
 参考与优化实现对比时固定权重、输入 token、模型位置、dtype 和采样配置。优先逐步比较 logits，再比较贪心 token ID。浮点容差按 dtype 与实验观察制定，不要求 CPU 双精度与 GPU 半精度逐位一致。
 
@@ -113,7 +113,7 @@ CUDA 与 MACA 分别保存完整镜像摘要和包版本。优先对齐 vLLM 版
 
 已实现检查涵盖因果性、缓存前后 logits、分块 prefill、多个随机种子、上下文边界、请求缓存隔离、块所有权、容量不足时的原子性，以及配置错误。
 
-CI 已配置 Linux/Windows 与 Python 3.11/3.12 的 CPU 测试、引导实验和课程同步检查。本次实际执行环境仅为本地 Windows/Python 3.11，远程 CI 尚未执行。
+CI 已配置 Linux/Windows 与 Python 3.11/3.12 的 CPU 测试、第一课与两个独立实验、课程同步检查。本次实际执行环境仅为本地 Windows/Python 3.11，远程 CI 结果尚未核验。
 
 GPU 检查安排在维护者控制的机器上手动运行，提交可审阅的结果文件。后续拥有稳定机器和权限后再考虑自托管任务。
 
@@ -126,6 +126,8 @@ GPU 检查安排在维护者控制的机器上手动运行，提交可审阅的�
 README 大纲、详细章节表、来源总表、注册项附录与知识库映射由 `scripts/course_docs.py` 更新指定区段。知识来源另存于 [knowledge-sources.json](knowledge-sources.json)，课程中的 `reading` 连接到实际导读。修改清单后生成并检查，CI 对不同步的内容返回失败。学习路线与正文保留人工编写，具体维护流程见[贡献说明](../CONTRIBUTING.md)。
 
 本地 `vllm/` 是参考资料，`work/` 是临时整理目录，默认不提交且不参加课程链接检查；公开正文与 CPU 实验可以在不包含知识库的 checkout 中使用。Python 包仍为 `zero2vllm/`，不得将参考资料目录误当成安装的 vLLM 源码。
+
+第一课的可观察展开位于 `zero2vllm/reference/next_token.py`：复用已有数学原语与生成循环，输出第一轮各中间量和逐步生成记录。展开结果对照 `forward_full`，测试另用独立手算值、非单位投影和因果性检查。正文见[第一课](chapters/01-next-token.md)。
 
 量化参考位于 `zero2vllm/reference/quantization.py`，用独立教学格式实现 Q/DQ、INT4 打包和 Linear 数学对照。CLI 的 `quant-demo` 输出原始输入、packed 字节、scale、输出及两类误差；不计时、不调用 GPU，也不注册 vLLM 插件。后续 GPU 实现用它作为数值参考，不能复用其字节数假装测得设备显存。
 

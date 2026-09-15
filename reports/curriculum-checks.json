@@ -7,15 +7,15 @@
   "inventory_groups": 14,
   "inventory_named_entries": 233,
   "knowledge_sources": 38,
-  "chapters_with_reading": 56,
+  "chapters_with_reading": 57,
   "readme_languages": [
     "zh",
     "en"
   ],
-  "markdown_files": 30,
-  "local_links": 480,
+  "markdown_files": 31,
+  "local_links": 511,
   "local_fragments": 23,
-  "table_rows": 1231,
+  "table_rows": 1279,
   "parsed_json_and_toml": [
     "configs/cuda-a100.toml",
     "configs/maca-c500.toml",
@@ -31,6 +31,7 @@
     "reports/cpu-kv-cache.json",
     "reports/curriculum-checks.json",
     "reports/document-checks.json",
+    "reports/lesson-01-next-token.json",
     "reports/local-environment.json"
   ],
   "scope": "Local course consistency, bilingual outline structure, Markdown/HTML local links, headings/tables and JSON/TOML syntax. No network or GPU execution; translation meaning requires human review."

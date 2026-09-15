@@ -31,7 +31,7 @@
 
 [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
-> **Course under construction.** Two runnable CPU labs, seven topic guides, and configuration templates for both GPU backends are available. The full teaching engine and chapter labs are in development. A100/C500 GPU experiments await validation on hardware.
+> **Course under construction.** Lesson 1.1 now includes a full chapter, a CPU experiment, and exercises with answers. Two standalone labs (KV cache and INT4 Linear), seven topic guides, and configuration templates for both GPU backends are also available. The full teaching engine and later chapters are in development. A100/C500 GPU experiments await validation on hardware.
 >
 > **Language:** this README includes the full English overview and outline. Linked course chapters, labs, and supporting documents are currently primarily in Chinese.
 
@@ -41,7 +41,7 @@ Choose an entry point based on your experience, then follow the [learning paths]
 
 | Your starting point | First material | What you will produce |
 | --- | --- | --- |
-| You know Python and want to understand inference | [CPU KV cache lab](docs/labs/01-kv-cache.md) | A correctness report explaining which repeated computations caching removes |
+| You know Python and want to understand inference | [Lesson 1: from tokens to next-token prediction](docs/chapters/01-next-token.md) | Calculate attention by hand and explain how the last logit row selects the next token |
 | You have deployed models and want to read source code | [Requests, state, and tensors](docs/chapters/01-request-lifecycle.md) | A request call chain separating scheduling decisions from model execution |
 | You work on quantization or want to write kernels | [CPU INT4 Linear lab](docs/labs/02-int4-linear.md) → [Quantization guide](docs/chapters/05-quantization-operators.md) | A report on bit layouts, error, and storage, preparing for GPU kernels |
 | You have a working GPU environment and want to optimize | [Experiment guidelines](docs/experiments.md) → [Profiling guide](docs/chapters/04-compile-profiling.md) | An experiment design with a fixed workload and separate correctness, quality, and performance checks |
@@ -100,7 +100,7 @@ Prerequisites:
 
 See the [learning paths](docs/learning-paths.md) for chapter order, milestones, GPU requirements, and the division of work across related chapters. Each chapter shares a core explanation with engineering extensions and platform notes. The [detailed curriculum](docs/curriculum.md) retains the full technical scope.
 
-**Available now:** run the CPU KV cache and INT4 Linear labs, read the topic guides, and inspect the logical block allocator and configuration templates. Without a GPU, finish the CPU stages first and defer the real-model generation exercise in 0.2.
+**Available now:** complete the first lesson's hand calculation and generation experiment, continue with the KV cache and INT4 Linear labs, read the topic guides, and inspect the logical block allocator and configuration templates. Without a GPU, finish the CPU stages first and defer the real-model generation exercise in 0.2.
 
 ### Choose experiments for your hardware
 
@@ -115,7 +115,19 @@ See the [learning paths](docs/learning-paths.md) for chapter order, milestones, 
 
 ## Quick start
 
-### 1. Run the first CPU experiment
+### 1. Complete the first lesson: from tokens to next-token prediction
+
+With **Python 3.11+**, run this from the repository root. No third-party packages, model downloads, or GPU are required:
+
+```bash
+python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
+```
+
+Start with five teaching tokens and two-dimensional vectors. Inspect embeddings, Q/K/V, causal attention, logits, and the generation loop. The default input is “我 喜欢”; the first prediction is token ID `2`, and `verification.passed` should be `true`. Weights are hand-set for arithmetic and have no trained language ability.
+
+Read the [lesson and five exercises](docs/chapters/01-next-token.md) (Chinese) alongside the [recorded output](reports/lesson-01-next-token.json). Allow approximately 60–90 minutes for calculation, experiments, and self-checks.
+
+### 2. Continue with KV cache
 
 After downloading or cloning the repository, run this from the root directory containing `pyproject.toml`. You need **Python 3.11+**; no model download or third-party packages are required.
 
@@ -137,7 +149,7 @@ This small model illustrates computation; its token IDs have no natural-language
 
 Continue with the [KV cache correctness lab](docs/labs/01-kv-cache.md), or inspect the [recorded results](reports/cpu-kv-cache.json).
 
-### 2. Save results and run checks
+### 3. Save results and run checks
 
 ```bash
 python -m zero2vllm demo --output runs/cpu-kv-cache.json
@@ -146,7 +158,7 @@ python -m unittest discover -s tests -v
 
 Try changing the prompt or output length. Predict the repeated computation before checking the result.
 
-### 3. Quantization path: run INT4 Linear
+### 4. Quantization path: run INT4 Linear
 
 ```bash
 python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
@@ -154,7 +166,7 @@ python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
 
 This experiment implements Q/DQ with groups along K, signed INT4 packing, and two quantized Linear reference paths. Defaults exercise tail groups and odd-length packing. Reports distinguish implementation error from quantization error and include scales in storage accounting. See the [lab](docs/labs/02-int4-linear.md). This is a CPU mathematical reference; fused GPU kernels and vLLM integration are still to be implemented.
 
-### 4. Prepare a GPU path
+### 5. Prepare a GPU path
 
 ```bash
 python -m zero2vllm doctor --output runs/environment.json
@@ -168,7 +180,7 @@ These commands collect environment information and check configuration. The temp
 
 <!-- BEGIN course-outline -->
 
-This edition plans **19 parts and 126 chapters**, alongside two completed CPU labs. Linked chapter titles lead to existing topic guides. See the [detailed curriculum](docs/curriculum.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
+This edition plans **19 parts and 126 chapters**, alongside two standalone CPU labs. Linked chapter titles lead to available lessons or topic guides; status markers distinguish completed chapters from partial material. See the [detailed curriculum](docs/curriculum.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
 
 **Status: ✅ complete with local validation; 🧩 partial material or code available; 📋 planned, chapter text pending.** Upstream availability does not mean a feature has been tested in this project.
 
@@ -216,7 +228,7 @@ Sources and further reading: [Datawhale zero-to-sglang](https://github.com/dataw
 
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
-| 1.1 From tokens to next-token prediction | Tokenizers, embeddings, Transformers, causal attention, and the LM head | 📋 |
+| 1.1 [From tokens to next-token prediction](docs/chapters/01-next-token.md) | Tokenizers, embeddings, Transformers, causal attention, and the LM head | ✅ |
 | 1.2 Prefill and decode | Compute-bound vs. bandwidth-bound work, HBM/SRAM, the roofline model, and arithmetic intensity | 📋 |
 | 1.3 What KV cache does | Cache updates, position offsets, MHA/MQA/GQA, and memory per token | 🧩 |
 | 1.4 Reading performance results | TTFT, TPOT, ITL, throughput, goodput, P50/P95/P99, and queuing | 🧩 |
@@ -602,6 +614,7 @@ Current code version: **v0.1.0.dev0**.
 | --- | --- |
 | Engineering design, course layers, and milestone acceptance criteria | [Engineering design](docs/engineering.md), [roadmap](docs/roadmap.md) |
 | 19-part, 126-chapter outline and feature/optimization index | [Detailed curriculum](docs/curriculum.md), [feature map](docs/vllm-feature-map.md), [consistency checks](reports/curriculum-checks.json) |
+| Lesson 1.1: full text, hand calculation, CPU generation experiment, and five exercises with answers | [Start the lesson](docs/chapters/01-next-token.md), [recorded output](reports/lesson-01-next-token.json) |
 | Causal attention, KV caching, and greedy generation | [Reference code](zero2vllm/reference/attention.py), [starter lab](docs/labs/01-kv-cache.md) |
 | Independent logical block allocation and reclamation simulation | [Block manager](zero2vllm/reference/blocks.py); not yet connected to attention |
 | Environment collection and A100/C500 configuration checks | [Environment tools and configuration](docs/backends.md) |
@@ -609,7 +622,7 @@ Current code version: **v0.1.0.dev0**.
 | 38 reference documents mapped to the course, plus seven topic guides | [Knowledge-source map](docs/knowledge-base.md), [update report](reports/knowledge-update.md) |
 | Three learning paths, chapter responsibilities, and outline synchronization checks | [Learning paths](docs/learning-paths.md), [maintenance guide](CONTRIBUTING.md), [framework review](reports/framework-review.md) |
 
-**Next:** pin A100/C500 environments and establish small-model baselines; extend the CPU INT4 reference to standalone GPU Q/DQ, fused Linear, and vLLM integration; continue the PyTorch teaching engine and topic labs. Each milestone is accepted through code, written explanation, and validation records together.
+**Next:** complete the foundation lessons in order: 1.2 Prefill/Decode, 1.3 KV cache, and 1.4 correctness checks. A100/C500 environments and small-model baselines can be prepared alongside this work. GPU quantization kernels, vLLM integration, and the PyTorch teaching engine follow the [roadmap](docs/roadmap.md). Each milestone is accepted through code, written explanation, and validation records together.
 
 ## Repository structure
 
@@ -624,7 +637,7 @@ zero2vllm/
 │   ├── feature-inventory.json  # Reviewed backend and configuration entries
 │   ├── knowledge-sources.json  # Reference paths, hashes, and chapter mappings
 │   ├── knowledge-base.md       # Seven guides and reference-use notes
-│   ├── chapters/               # Requests, caches, kernels, compilation, etc.
+│   ├── chapters/               # First lesson and guides on requests, caches, kernels, etc.
 │   ├── learning-paths.md       # Three paths and cross-chapter responsibilities
 │   ├── vllm-feature-map.md     # Features, parallelism terms, and constraints
 │   ├── labs/                   # Available experiment tutorials
@@ -633,7 +646,7 @@ zero2vllm/
 │   ├── reference/              # CPU mathematical references and block simulation
 │   ├── profiles.py             # Configuration validation for both backends
 │   ├── environment.py          # Environment inventory
-│   └── cli.py                  # demo / quant-demo / doctor / profile
+│   └── cli.py                  # next-token-demo / demo / quant-demo / doctor / profile
 ├── vllm/                       # Optional local reference library; ignored by Git
 ├── configs/                    # A100 and C500 environment templates
 ├── scripts/                    # Environment collection and course/document checks
