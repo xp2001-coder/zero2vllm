@@ -6,7 +6,7 @@
 
 ## 1. 形状与参数预算
 
-默认模型的 Q、Attention 分数、gate、logits 是什么形状？为什么 MLP 要投影回 D？参数量是多少？从两层改为三层多出多少参数？
+沿用默认模型配置和命令行默认输入 `[[1,2,3,4]]`，Q、Attention 分数、gate、logits 是什么形状？为什么 MLP 要投影回 D？参数量是多少？从两层改为三层多出多少参数？
 
 <details>
 <summary>参考答案</summary>
@@ -25,10 +25,16 @@ python -m zero2vllm torch-demo --layers 3 --output .local/runs/part-02-engine/01
 
 计算 x=[3,4]、eps=3.5、gamma=[2,1] 的 RMSNorm。将 [1,0] 按角度 π/2 旋转，平方和是否改变？位置 0 呢？
 
+再用 `Dh=4`、`base=10000` 计算位置 1 的 `[1,0,1,0]`。如果只把真实位置 2 的一个 token 传给当前 `apply_rope`，它会使用哪个位置？同时把 Q/K 的位置各加 3，点积为什么保持不变？
+
 <details>
 <summary>参考答案</summary>
 
 归一化分母为 4，输出 [1.5,1]。旋转输出 [0,1]（浮点可能有接近零的残差），平方和保持为 1。位置 0 的角度都是 0，旋转是恒等变换。RMSNorm 的 gamma 可以改变尺度，RoPE 本身保持每对向量长度。
+
+两对旋转角度分别为 1 和 0.01 弧度，结果约为 `[0.540302,0.841471,0.999950,0.010000]`。当前函数使用 `arange(T)`；单 token 的 `T=1` 会产生位置 0，即使它实际位于位置 2。后续增量路径需要显式 position 或 offset。
+
+保持原始 Q/K 内容不变时，每对分量满足 `(R(m)q)ᵀ(R(n)k)=qᵀR(n-m)k`。两位置同时加 3 不改变差值，因此点积不变。运行 [rope_math.py](examples/rope_math.py) 验证；这个结论不等于任意移动整个模型的输入都会得到相同 logits。
 
 </details>
 

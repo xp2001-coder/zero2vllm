@@ -25,8 +25,7 @@ zero2vllm/
 ├── metadata/
 │   ├── course/parts/             按篇拆分的中文课程数据
 │   ├── translations/en/parts/    对应英文大纲
-│   ├── upstream/                 功能清单
-│   └── knowledge/                来源台账
+│   └── upstream/                 功能清单
 ├── zero2vllm/                    共享 Python 实现
 ├── tests/{reference,modeling,integration,maintenance}/
 ├── scripts/{docs,experiments,environment}/

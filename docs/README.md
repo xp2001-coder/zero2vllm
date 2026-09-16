@@ -7,7 +7,7 @@
 | [chapters/](chapters/README.md) | 19 篇、126 节；正文、实验、示例、输入数据和结果按节就近存放 |
 | [platforms/](platforms/README.md) | CPU / NVIDIA A100 / 沐曦 C500 的环境与验证约定 |
 | [engineering/](engineering/README.md) | 架构、实验规范、开发路线 |
-| [references/](references/README.md) | 官方来源、特性地图、知识库映射 |
+| [references/](references/README.md) | 官方来源、特性地图、专题导读 |
 | [maintenance/](maintenance/README.md) | 目录规范、更新课程、按文件提交 |
 | [metadata/](../metadata/README.md) | 课程编排与英文大纲按篇拆分；特性和来源分别维护 |
 
@@ -23,7 +23,7 @@
 | [首次学习的短路线](chapters/learning-paths.md#先用现有材料走通一条短路线) | 从第一课继续完成缓存实验、调度手算、请求图和量化 Linear |
 | [CPU KV Cache 实验](chapters/part-01-inference/03-kv-cache/lab.md) | 比较 KV Cache 前后的逐步 logits 与计算工作量 |
 | [CPU INT4 Linear 实验](chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md) | 分组缩放、半字节打包、量化 Linear 与误差/存储分析 |
-| [7 篇专题导读与知识库映射](references/knowledge-base.md) | 请求、缓存、算子、编译、量化、并行、推测的具体学习入口 |
+| [7 篇专题导读](references/topic-guides.md) | 请求、缓存、算子、编译、量化、并行、推测的具体学习入口 |
 | [学习路线](chapters/learning-paths.md) | 学生、工程师、量化方向的阶段安排与章节分工 |
 | [详细课程目录](chapters/README.md) | 各章前置、练习、设备条件和交付状态 |
 
@@ -43,5 +43,4 @@
 - [贡献说明](../CONTRIBUTING.md)与[更新记录](../CHANGELOG.md)。
 - [章节模板](maintenance/templates/lesson.md)、[GPU 运行模板](../configs/templates/gpu-run.json)与[功能验证模板](../configs/templates/feature-validation.json)。
 - [课程数据](../metadata/course/catalog.json)与[特性清单](../metadata/upstream/features.json)。
-- [知识来源台账](../metadata/knowledge/sources.json)与[本轮更新报告](../reports/history/course-design/knowledge-update.md)。
 - [维护者上传说明](maintenance/publishing.md)。

@@ -50,7 +50,7 @@
 
 **继续第二篇：**[2.1 构建最小 PyTorch 模型](docs/chapters/part-02-engine/01-pytorch-model/README.md)，在 CPU 上运行两层 Decoder，逐层对齐 RMSNorm、RoPE、Attention 与 SwiGLU。
 
-其余专题与 38 份资料的对应关系见[导读与知识库映射](docs/references/knowledge-base.md)。导读表示已有材料，目录中的 🧩 不等于完整章节或 GPU 验收完成。
+其余学习入口见[七篇专题导读](docs/references/topic-guides.md)。导读表示已有材料，目录中的 🧩 不等于完整章节或 GPU 验收完成。
 
 ## 为什么做这门课
 
@@ -630,7 +630,7 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 | 独立的逻辑块分配与回收模拟 | [块管理代码](zero2vllm/reference/blocks.py)；尚未接入 Attention |
 | 环境采集、A100/C500 配置检查 | [环境工具与配置说明](docs/platforms/README.md) |
 | CPU 数学参考与本地检查结果 | [验证记录](reports/README.md)、[KV 实验](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)、[INT4 实验](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json) |
-| 38 份资料到课程的映射、7 篇专题导读 | [知识库入口](docs/references/knowledge-base.md)、[本轮更新报告](reports/history/course-design/knowledge-update.md) |
+| 7 篇专题导读：概念、手算与实验设计 | [专题导读](docs/references/topic-guides.md)、[公开参考资料](docs/references/README.md) |
 | 三条学习路线、章节分工与目录同步检查 | [学习路线](docs/chapters/learning-paths.md)、[维护方法](CONTRIBUTING.md)、[框架审查记录](reports/history/course-design/framework-review.md) |
 
 **接下来：**Review 并试学 2.1，再逐节推进 2.2 的真实模型权重加载。A100/C500 环境与小模型基线可同时准备；量化 GPU 算子和 vLLM 接入按[开发路线](docs/engineering/roadmap.md)推进。每个阶段以代码、正文和验证记录共同验收。
@@ -656,8 +656,7 @@ zero2vllm/
 ├── metadata/
 │   ├── course/parts/             按篇拆分的中文课程数据
 │   ├── translations/en/parts/    对应英文大纲
-│   ├── upstream/                 功能清单
-│   └── knowledge/                来源台账
+│   └── upstream/                 功能清单
 ├── zero2vllm/                    共享 Python 实现
 ├── tests/{reference,modeling,integration,maintenance}/
 ├── scripts/{docs,experiments,environment}/

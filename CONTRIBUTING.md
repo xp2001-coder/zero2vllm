@@ -29,14 +29,14 @@ Part 1 改动可运行 `python -m scripts.experiments.part01`，一次保存 28 
 - [features.json](metadata/upstream/features.json)：命名条目、来源和章节映射。它是特性盘点，不是设备支持矩阵。
 - [learning-paths.md](docs/chapters/learning-paths.md)：学习顺序与章节分工；[roadmap.md](docs/engineering/roadmap.md)：材料交付顺序。
 
-修改课程、特性或[知识来源](metadata/knowledge/sources.json)清单后，在工程根目录运行：
+修改课程、特性或公开来源清单后，在工程根目录运行：
 
 ```bash
 python -m scripts.docs.course --write
 python -m scripts.docs.course --check
 ```
 
-工具更新中英文 README、课程总表、19 篇目录、未完成小节的教学安排/验收目标、来源总表、特性附录和知识库映射中的 `BEGIN/END` 标记区段，保留其余正文；请把 JSON 和生成的 Markdown 一起提交。`--check` 默认只读，内容不同步时返回非零状态，CI 同样执行此检查。不要手动编辑生成区段。
+工具更新中英文 README、课程总表、19 篇目录、未完成小节的教学安排/验收目标、公开来源总表和特性附录中的 `BEGIN/END` 标记区段，保留其余正文；请把 JSON 和生成的 Markdown 一起提交。`--check` 默认只读，内容不同步时返回非零状态，CI 同样执行此检查。不要手动编辑生成区段。
 
 中英文首页分别是 [README.md](README.md) 和 [README_en.md](README_en.md)，共用 `docs/assets/zero2vllm-banner.webp`。横幅的生成提示词与导出参数见 [banner-design.json](docs/assets/banner-design.json)，原 SVG 草图保留供参考。修改章节内容时同步维护英文译文；调整首页介绍、命令或进度时同步检查两份 README 的人工正文。工具会检查翻译编号是否齐全，但不判断译文含义是否过期。英文首页不代表章节正文已全部翻译，翻译范围说明应与实际交付一致。
 
@@ -55,6 +55,16 @@ python -m scripts.docs.course --check
 按[分级目录规范](docs/maintenance/repository-layout.md)进入对应小节，完成后同步 `content=lesson` 与 `status=complete`，并保留验证证据。
 
 使用 [章节模板](docs/maintenance/templates/lesson.md)，沿 [课程目录](docs/chapters/README.md) 递进。每章有基础和工程进阶内容，平台差异在相关位置说明。引用上游源码时固定版本，注明文件和符号。
+
+### 公开参考资料规则（适用于所有章节）
+
+- 参考资料只列读者可访问的论文、官方文档和公开项目源码，使用具体页面链接；源码注明 tag/commit 与文件或符号。
+- 正文、实验、练习、图注、导读和中英文首页均不引用本地知识库、内部编号、ZIP 文件名、私人台账或本机阅读路径。
+- 备课时可查阅本地资料；需要公开引用的结论应回到可核对的公开原始来源。无法提供公开链接时，删除该参考条目，不编造链接。
+- 原创插图链接仓库内的图稿说明；说明所用公式、代码或手算数据。第三方内容仍须保留实际公开来源及许可说明。
+- 私人来源台账放在已忽略的 `.local/archive/editorial/`，不进入公开课程数据，也不参与导航生成。
+
+`python -m scripts.docs.course --check` 会拦截读者页面中的内部资料标识及指向私有目录、本机文件的链接。此检查不联网，公开网址能否访问、来源是否支持相关结论仍需人工核对。正常的仓库内学习链接和实验输出路径可以保留。
 
 ## GitHub 协作
 

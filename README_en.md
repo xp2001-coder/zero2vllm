@@ -52,7 +52,7 @@ For your first pass, follow the [short route through existing materials](docs/ch
 
 **Continue with Part 2:** [2.1 Minimal PyTorch model](docs/chapters/part-02-engine/01-pytorch-model/README.md) implements a two-layer CPU decoder and checks RMSNorm, RoPE, attention, and SwiGLU against the scalar reference.
 
-The [guides and knowledge-source map](docs/references/knowledge-base.md) connect the topics to 38 reference documents. A 🧩 marker means some material is available; it does not mean a full chapter or GPU validation is complete.
+The [seven topic guides](docs/references/topic-guides.md) provide further learning entry points. A 🧩 marker means some material is available; it does not mean a full chapter or GPU validation is complete.
 
 ## Why this course
 
@@ -631,7 +631,7 @@ Current code version: **v0.1.0.dev0**.
 | Independent logical block allocation and reclamation simulation | [Block manager](zero2vllm/reference/blocks.py); not yet connected to attention |
 | Environment collection and A100/C500 configuration checks | [Environment tools and configuration](docs/platforms/README.md) |
 | CPU mathematical references and local check results | [Validation record](reports/README.md), [KV results](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json), [INT4 results](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json) |
-| 38 reference documents mapped to the course, plus seven topic guides | [Knowledge-source map](docs/references/knowledge-base.md), [update report](reports/history/course-design/knowledge-update.md) |
+| Seven topic guides with concepts, worked examples, and experiment plans | [Topic guides](docs/references/topic-guides.md), [public references](docs/references/README.md) |
 | Three learning paths, chapter responsibilities, and outline synchronization checks | [Learning paths](docs/chapters/learning-paths.md), [maintenance guide](CONTRIBUTING.md), [framework review](reports/history/course-design/framework-review.md) |
 
 **Next:** review and study lesson 2.1, then proceed to real model weight loading in 2.2. A100/C500 environments and small-model baselines can be prepared alongside this work. GPU quantization kernels and vLLM integration follow the [roadmap](docs/engineering/roadmap.md). Each milestone is accepted through code, written explanation, and validation records together.
@@ -657,8 +657,7 @@ zero2vllm/
 ├── metadata/
 │   ├── course/parts/             Chinese course data by part
 │   ├── translations/en/parts/    English outline by part
-│   ├── upstream/                 feature inventory
-│   └── knowledge/                source ledger
+│   └── upstream/                 feature inventory
 ├── zero2vllm/                    shared Python implementation
 ├── tests/{reference,modeling,integration,maintenance}/
 ├── scripts/{docs,experiments,environment}/

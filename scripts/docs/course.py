@@ -22,6 +22,19 @@ from scripts.docs.catalog import load_catalog, load_translation
 STATUS = {"planned": "📋", "partial": "🧩", "complete": "✅"}
 EXCLUDED = {".git", ".venv", ".local", "__pycache__", "runs", "models", "build", "dist"}
 LOCAL_ONLY = {"vllm", "work"}
+# Internal editorial labels are not usable references for GitHub readers.
+PRIVATE_REFERENCE = re.compile(
+    r"(?:本地|私有|内部)(?:参考)?知识库|知识库(?:台账|映射)|"
+    r"local\s+knowledge\s*(?:base|library)|knowledge[- ]source\s+map|"
+    r"\b(?:vllm|sglang)-(?:\d{2}|notes|manual)\b|"
+    r"(?:metadata[/\\]knowledge|knowledge-base\.md|knowledge-sources\.json)",
+    re.IGNORECASE,
+)
+
+
+def reader_document(relative):
+    return (relative in {"README.md", "README_en.md"}
+            or (relative.startswith("docs/") and not relative.startswith("docs/maintenance/")))
 
 
 def project_files(root: Path):
@@ -98,23 +111,6 @@ def table(headers, rows):
                      for row in [headers, ["---"] * len(headers), *rows])
 
 
-def validate_knowledge(knowledge, catalog):
-    require(knowledge["schema_version"] == 1, "Unsupported knowledge schema version")
-    chapters = {c["id"] for p in catalog["parts"] for c in p["chapters"]}
-    ids = set()
-    for source in knowledge["sources"]:
-        sid = source["id"]
-        require(sid not in ids and re.fullmatch(r"(vllm|sglang)-(\d{2}|notes|manual)", sid),
-                f"Invalid or duplicate knowledge source: {sid}")
-        ids.add(sid)
-        require(source["chapters"] and all(c in chapters for c in source["chapters"]),
-                f"Unknown knowledge chapter mapping: {sid}")
-        require(source["path"].startswith("vllm/") and ".." not in Path(source["path"]).parts,
-                f"Invalid knowledge path: {sid}")
-        require(re.fullmatch(r"[0-9a-f]{64}", source["text_sha256"]), f"Invalid text hash: {sid}")
-        require(source["use"] and source["review_note"], f"Missing editorial decision: {sid}")
-
-
 def english_outline(catalog, translation):
     require(translation["schema_version"] == 1 and translation["language"] == "en",
             "Unsupported English curriculum schema.")
@@ -167,9 +163,8 @@ def english_outline(catalog, translation):
     return "\n\n".join(outline)
 
 
-def rendered_sections(catalog, inventory, knowledge, translation):
+def rendered_sections(catalog, inventory, translation):
     validate_catalog(catalog, inventory)
-    validate_knowledge(knowledge, catalog)
     parts, sources = catalog["parts"], catalog["sources"]
     count = sum(len(p["chapters"]) for p in parts)
     summary = f"{len(parts)} 篇、{count} 个正式章节规划"
@@ -220,10 +215,6 @@ def rendered_sections(catalog, inventory, knowledge, translation):
         "docs/references/README.md": {"course-sources": table(["索引", "官方来源 / 项目"],
             [[f"`{key}`", f"[{s['title']}]({s['url']})"] for key, s in sources.items()])},
         "docs/references/feature-map.md": {"feature-inventory": "\n\n".join(appendix)},
-        "docs/references/knowledge-base.md": {"knowledge-map": table(
-            ["来源 ID", "本地资料文件", "对应章节", "吸收重点"],
-            [[f"`{s['id']}`", f"`{s['path']}`", "、".join(s["chapters"]), s["use"]]
-             for s in knowledge["sources"]])},
     }
     for part in parts:
         directory = part['directory']
@@ -310,6 +301,12 @@ def check_documents(root, replacements=None):
             continue
         markdown += 1
         content = outside_code(replacements.get(relative, path.read_text(encoding="utf-8")))
+        public = reader_document(relative)
+        if public:
+            private = PRIVATE_REFERENCE.search(content)
+            require(private is None,
+                    f"Private editorial reference in public document: {relative}: "
+                    f"{private.group() if private else ''}; cite a public source instead.")
         width = None
         for line in content.splitlines():
             if line.startswith("|"):
@@ -324,10 +321,20 @@ def check_documents(root, replacements=None):
         targets = re.findall(r"\[[^\]\n]*\]\(([^)\n]+)\)", content) + html_links.targets
         for target in targets:
             url = urlsplit(target.strip("<>"))
+            if public:
+                local_file = (url.scheme.lower() == 'file'
+                              or re.match(r'^[A-Za-z]:[/\\]', target.strip('<>'))
+                              or target.startswith('\\\\'))
+                require(not local_file,
+                        f"Private editorial reference in public document: {relative}: {target}")
             if url.scheme or url.netloc:
                 continue
             resolved = (path.parent / unquote(url.path)).resolve() if url.path else path
             require(resolved.is_relative_to(root) and resolved.exists(), f"Broken local link: {relative}: {target}")
+            if public:
+                target_parts = resolved.relative_to(root).parts
+                require(not target_parts or target_parts[0] not in (LOCAL_ONLY | {'.local'}),
+                        f"Private editorial reference in public document: {relative}: {target}")
             links += 1
             if url.fragment:
                 key = resolved.relative_to(root).as_posix()
@@ -342,11 +349,10 @@ def maintain(root=ROOT, write=False):
     root = root.resolve()
     catalog = load_catalog(root)
     inventory = json.loads((root / "metadata/upstream/features.json").read_text(encoding="utf-8"))
-    knowledge = json.loads((root / "metadata/knowledge/sources.json").read_text(encoding="utf-8"))
     translation = load_translation(root)
     replacements, changed = {}, []
     # Validate every marker and link before writing any generated document.
-    for filename, sections in rendered_sections(catalog, inventory, knowledge, translation).items():
+    for filename, sections in rendered_sections(catalog, inventory, translation).items():
         require((root / filename).is_file(), f"Broken local link: missing generated document: {filename}")
         old = (root / filename).read_text(encoding="utf-8")
         new = old
@@ -364,19 +370,18 @@ def maintain(root=ROOT, write=False):
             "chapters": sum(len(p["chapters"]) for p in catalog["parts"]),
             "inventory_groups": len(inventory["groups"]),
             "inventory_named_entries": sum(len(g["names"]) for g in inventory["groups"]),
-            "knowledge_sources": len(knowledge["sources"]),
             "chapters_with_reading": sum(bool(c.get("reading")) for p in catalog["parts"] for c in p["chapters"]),
             "completed_chapters": sum(c['status'] == 'complete' for p in catalog['parts'] for c in p['chapters']),
             "scaffold_entries": sum(c['content'] == 'scaffold' for p in catalog['parts'] for c in p['chapters']),
             "readme_languages": ["zh", "en"],
-            **checks, "scope": "Local course consistency, bilingual outline structure, Markdown/HTML local links, headings/tables and JSON/TOML syntax. No network or GPU execution; translation meaning requires human review."}
+            **checks, "scope": "Local course consistency, bilingual outline structure, public-reference policy, Markdown/HTML local links, headings/tables and JSON/TOML syntax. No network or GPU execution; source accessibility and translation meaning require human review."}
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     modes = parser.add_mutually_exclusive_group()
     modes.add_argument("--check", action="store_true", help="Check without changing documents (default).")
-    modes.add_argument("--write", action="store_true", help="Update marked sections from the course, feature and knowledge catalogs.")
+    modes.add_argument("--write", action="store_true", help="Update marked sections from the course and feature catalogs.")
     parser.add_argument("--report", type=Path, help="Optionally save the check result as JSON.")
     args = parser.parse_args(argv)
     try:

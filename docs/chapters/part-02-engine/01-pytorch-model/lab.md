@@ -4,7 +4,7 @@
 
 ## 1. 安装 CPU 学习环境
 
-所有命令均在仓库根目录执行。本次实测环境为 Windows、Python 3.11.9、PyTorch 2.7.1+cpu。Linux 已配置 CI，远程运行结果尚待确认。安装会下载约 216 MB 的 Windows torch wheel，另有依赖；无需下载模型权重。
+所有命令均在仓库根目录执行。本次本地实测环境为 Windows、Python 3.11.9、PyTorch 2.7.1+cpu。Linux 的 PyTorch 课程任务也已通过一次 [GitHub Actions 验证](https://github.com/xpxpxp2001xpxpxp/zero2vllm/actions/runs/35063302785)。安装会下载约 216 MB 的 Windows torch wheel，另有依赖；无需下载模型权重。
 
 ### Windows Git Bash
 
@@ -39,6 +39,46 @@ python -m pip install torch==2.7.1 numpy==2.2.6 --index-url https://download.pyt
 NumPy 用于避免 PyTorch 启动时提示缺少 NumPy 桥接依赖，本节计算没有调用 NumPy。第一篇依然只需要标准库。MACA/CUDA 实机使用各自核验过的环境，不要把本节 CPU wheel 覆盖到 GPU 环境；见[平台说明](../../../platforms/README.md)。
 
 ## 2. 第一次前向
+
+### 三位置 Attention 手算
+
+```bash
+python docs/chapters/part-02-engine/01-pytorch-model/examples/attention_math.py
+```
+
+这段程序使用正文指定的 Q、K、V，依次打印分数、因果 mask、softmax 概率和输出。Attention 输出矩阵的最后一行约为 `[0.2447,0.1801,1.9957,0]`，未来位置的概率均为零。程序还演示了错误地加上 0/1 可见性矩阵的结果：第一个位置分给未来的总权重约为 `0.5317`。
+
+### 两头 RoPE 与位置检查
+
+```bash
+python docs/chapters/part-02-engine/01-pytorch-model/examples/rope_math.py
+```
+
+这段程序复用模型的 `apply_rope`，再用 `math.sin/cos` 逐对计算作对照。输入形状为 `[1,2,3,4]`，两个头的原始向量不同，以检查旋转是否跨头混合。head 0 在位置 1 的结果应为 `[0.540302,0.841471,0.999950,0.010000]`，与正文配图一致。
+
+程序还会检查每对向量的平方和、位置 0 不变以及输入未被原地修改。末尾应出现：
+
+```text
+Head 0 dot, Q@2 and K@1: 1.851421
+Head 0 dot, Q@5 and K@4: 1.851421
+Joint position shift / relative rotation: PASS
+Wrong: one-token Q resets to 0; dot with K@1: 0.148479
+Different score detected: PASS (KV cache needs explicit positions)
+```
+
+前两行保持原始 Q/K 内容不变，只同时移动位置；最后两行故意只把新 Q 的位置重置为 0。当前函数根据输入长度生成位置，不能直接用于只传一个新 token 的增量路径。这里演示的是位置接口问题，尚未实现 KV Cache。
+
+### 三 token 模型前向
+
+```bash
+python docs/chapters/part-02-engine/01-pytorch-model/examples/walk_forward.py
+```
+
+输入是 `[[1,2,3]]`，与[正文生成示例](README.md#6-从-logits-到生成循环)相同。观察 `[1,3] → [1,3,8] → [1,3,16]`；Block 的 MLP 内部也会短暂出现 `[1,3,16]`，但那里的 16 表示中间特征数，最终 logits 的 16 表示词表大小。
+
+末尾应显示 `Walkthrough matches model(tokens): PASS`，三个位置的贪心 ID 为 `[[5,9,10]]`，完整 prompt 后追加的一个 ID 为 `[10]`。这项检查验证模块串接路径；数值正确性还要运行第 3 部分的独立参考对齐。
+
+### 再观察默认输入和完整记录
 
 ```bash
 python docs/chapters/part-02-engine/01-pytorch-model/examples/run.py

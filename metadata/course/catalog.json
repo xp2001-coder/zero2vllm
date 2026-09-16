@@ -375,12 +375,6 @@
       "url": "https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning"
     }
   },
-  "knowledge_revision": {
-    "reviewed_on": "2026-09-15",
-    "manifest": "docs/knowledge-sources.json",
-    "source_documents": 38,
-    "note": "新增专题导读与 CPU 量化实验；保留 19 篇 126 章和独立 GPU 状态。"
-  },
   "part_files": [
     "parts/00-orientation.json",
     "parts/01-inference.json",

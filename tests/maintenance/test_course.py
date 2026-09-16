@@ -109,15 +109,58 @@ class CourseDocsTests(unittest.TestCase):
         self.assertFalse(any(p.relative_to(self.root).parts[0] in {"vllm", "work"}
                              for p in project_files(self.root)))
 
-    def test_invalid_knowledge_mapping_prevents_document_write(self):
-        knowledge = json.loads(self.read("metadata/knowledge/sources.json"))
-        knowledge["sources"][0]["chapters"].append("99.99")
-        self.write("metadata/knowledge/sources.json", json.dumps(knowledge, ensure_ascii=False))
+    def test_private_reference_prevents_document_write(self):
+        lesson = load_catalog(self.root)['parts'][0]['chapters'][0]['reading']
+        self.write(lesson, self.read(lesson) + '\n参考本地知识库 `vllm-06`。\n')
         old = self.read("README.md").replace("本版共 **", "待更新 **")
         self.write("README.md", old)
-        with self.assertRaisesRegex(ValueError, "knowledge chapter mapping"):
+        with self.assertRaisesRegex(ValueError, "Private editorial reference"):
             maintain(self.root, write=True)
         self.assertEqual(self.read("README.md"), old)
+
+    def test_public_reading_pages_reject_internal_source_labels(self):
+        lesson = load_catalog(self.root)['parts'][0]['chapters'][0]['reading']
+        for filename in ('README.md', 'README_en.md', lesson, 'docs/references/topic-guides.md'):
+            original = self.read(filename)
+            for citation in ('本地知识库', '`vllm-08`', '`sglang-notes`', 'local knowledge base'):
+                with self.subTest(filename=filename, citation=citation):
+                    self.write(filename, original + '\n' + citation + '\n')
+                    with self.assertRaisesRegex(ValueError, 'Private editorial reference'):
+                        check_documents(self.root)
+            self.write(filename, original)
+
+    def test_public_reading_links_cannot_depend_on_private_files(self):
+        private = self.root / '.local' / 'private notes.md'
+        private.parent.mkdir()
+        private.write_text('editorial notes', encoding='utf-8')
+        original = self.read('README.md')
+        for link in ('[notes](.local/private%20notes.md)',
+                     '<a href=".local/private%20notes.md">notes</a>',
+                     '[notes](file:///C:/notes.md)',
+                     '[notes](C:/Users/author/notes.md)',
+                     r'[notes](C:\Users\author\notes.md)'):
+            with self.subTest(link=link):
+                self.write('README.md', original + '\n' + link + '\n')
+                with self.assertRaisesRegex(ValueError, 'Private editorial reference'):
+                    check_documents(self.root)
+
+    def test_private_archive_is_not_required_or_parsed(self):
+        self.assertFalse((self.root / 'metadata/knowledge').exists())
+        private = self.root / '.local' / 'archive' / 'editorial' / 'sources.json'
+        private.parent.mkdir(parents=True)
+        private.write_text('private incomplete JSON', encoding='utf-8')
+        self.assertTrue(maintain(self.root)['passed'])
+        self.assertNotIn('knowledge_sources', maintain(self.root))
+
+    def test_public_sources_repo_links_and_code_examples_are_allowed(self):
+        note = ('\n[paper](https://arxiv.org/abs/1706.03762)\n'
+                '[source](https://github.com/vllm-project/vllm/blob/main/vllm/v1/core/sched/scheduler.py)\n'
+                '[lesson](docs/chapters/part-02-engine/01-pytorch-model/README.md)\n'
+                '[repository](.)\n'
+                'Output: `.local/runs/example.json`.\n'
+                '```text\nvllm-06 is a literal in a code example, not a reference.\n```\n')
+        self.write('README.md', self.read('README.md') + note)
+        self.assertTrue(maintain(self.root)['passed'])
 
     def test_missing_reading_body_is_rejected(self):
         catalog = json.loads(self.read("metadata/course/catalog.json"))

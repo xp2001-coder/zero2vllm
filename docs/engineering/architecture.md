@@ -123,9 +123,9 @@ GPU 检查安排在维护者控制的机器上手动运行，提交可审阅的�
 
 目录和练习的结构化清单按篇保存在 [metadata/course/parts/](../../metadata/course/README.md)，中文和英文各有一个轻量索引维护篇顺序；注册项清单保存在 [features.json](../../metadata/upstream/features.json)。两者分别维护课程覆盖和来源盘点，不用于运行时探测硬件能力。
 
-README 大纲、详细章节表、来源总表、注册项附录与知识库映射由 `scripts/docs/course.py` 更新指定区段。知识来源另存于 [sources.json](../../metadata/knowledge/sources.json)，课程中的 `reading` 连接到独立小节，`guide` 关联专题导读，`content` 区分教学骨架与完整正文。修改清单后生成并检查，CI 对不同步的内容返回失败。学习路线与正文保留人工编写，具体维护流程见[贡献说明](../../CONTRIBUTING.md)。
+README 大纲、详细章节表、公开来源总表与注册项附录由 `scripts/docs/course.py` 更新指定区段。课程中的 `reading` 连接到独立小节，`guide` 关联专题导读，`content` 区分教学骨架与完整正文。修改清单后生成并检查，CI 对不同步的内容返回失败。学习路线与正文保留人工编写，具体维护流程见[贡献说明](../../CONTRIBUTING.md)。
 
-个人实验、配置与编辑资料统一放在已忽略的 `.local/`；旧整理资料保存在 `.local/archive/editorial/`。来源清单中的历史资料路径用于追溯，不是课程运行依赖。公开正文与 CPU 实验可以在不包含本地知识库的 checkout 中使用。Python 包仍为 `zero2vllm/`，不得将参考资料目录误当成安装的 vLLM 源码。
+个人实验、配置与备课资料统一放在已忽略的 `.local/`。公开正文、文档生成和 CPU 实验只依赖仓库内的课程与代码；参考文献使用公开论文、官方文档和源码。Python 包为 `zero2vllm/`，不得将参考资料目录误当成安装的 vLLM 源码。
 
 第一课的可观察展开位于 `zero2vllm/reference/next_token.py`：复用已有数学原语与生成循环，输出第一轮各中间量和逐步生成记录。展开结果对照 `forward_full`，测试另用独立手算值、非单位投影和因果性检查。正文见[第一课](../chapters/part-01-inference/01-next-token/README.md)。
 

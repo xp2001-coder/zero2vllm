@@ -5,7 +5,7 @@
 ## 建议审阅顺序
 
 1. [README](../../../README.md)：学习入口、课程状态和完整范围。
-2. [知识库映射](../../../docs/references/knowledge-base.md)：38 份来源如何进入课程，以及版本/设备问题如何处理。
+2. [专题导读](../../../docs/references/topic-guides.md)：各主题的学习与练习入口。原备课映射已归档到维护者本地区，公开课程不再展示内部来源编号。
 3. [量化导读](../../../docs/chapters/part-09-quantization/guide.md)和 [CPU INT4 实验](../../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)：算法统一成章后的具体教学深度。
 4. [编译与 Profiling](../../../docs/chapters/part-08-compilation/guide.md)和[实验规范](../../../docs/engineering/experiments.md)：优化如何测、怎样避免错误归因。
 5. [验证记录](../validation-before-restructure.md)：实际检查范围和未完成项。

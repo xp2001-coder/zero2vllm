@@ -2,7 +2,7 @@
 
 完整目录负责覆盖技术范围，学习路线负责选择进入顺序，开发里程碑负责安排材料交付。三者分别见 [课程目录](README.md)、本文和 [开发路线](../engineering/roadmap.md)。
 
-**[Part 1 的 1.1—1.6](part-01-inference/README.md)已提供完整正文、CPU 代码、操作命令和练习答案；初学者从 1.1 顺序学习。** 还可直接运行 [CPU KV Cache 引导实验](part-01-inference/03-kv-cache/lab.md)、[CPU INT4 Linear 实验](part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)、逻辑块模拟及配置/环境检查。[7 篇专题导读](../references/knowledge-base.md)可配合下表学习。所有 GPU 实验仍需独立验证。
+**[Part 1 的 1.1—1.6](part-01-inference/README.md)已提供完整正文、CPU 代码、操作命令和练习答案；初学者从 1.1 顺序学习。** 还可直接运行 [CPU KV Cache 引导实验](part-01-inference/03-kv-cache/lab.md)、[CPU INT4 Linear 实验](part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)、逻辑块模拟及配置/环境检查。[7 篇专题导读](../references/topic-guides.md)可配合下表学习。所有 GPU 实验仍需独立验证。
 
 ## 先用现有材料走通一条短路线
 

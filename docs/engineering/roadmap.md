@@ -29,7 +29,7 @@
 2. 试学已完成的 [2.1 最小 PyTorch 模型](../chapters/part-02-engine/01-pytorch-model/README.md)，下一步完成 2.2：固定真实模型 revision、配置、Tokenizer 和权重映射。
 3. 收集 A100、C500 的环境信息，选定共同 vLLM 版本候选与各自镜像。
 4. 先验证两平台小模型前向及生成，再固定正式部署步骤。
-5. 将已交付的[专题导读](../references/knowledge-base.md)逐步扩展为固定版本的源码实验；量化从 CPU INT4 参考推进到 GPU Q/DQ、融合 GEMV/GEMM、调优与 vLLM 接入，见[量化篇设计](../chapters/part-09-quantization/design.md)。
+5. 将已交付的[专题导读](../references/topic-guides.md)逐步扩展为固定版本的源码实验；量化从 CPU INT4 参考推进到 GPU Q/DQ、融合 GEMV/GEMM、调优与 vLLM 接入，见[量化篇设计](../chapters/part-09-quantization/design.md)。
 6. 每轮上游版本更新都核对注册项、废弃参数与章节覆盖，避免只追加关键词而没有练习和证据。
 
 硬件信息到位后，优先完成 M1，尽早暴露 MACA 侧依赖与算子差异。CPU 内容和硬件基线可以分别推进，最后在相同测试约定下对齐。

@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+<title id="title">多头拆分：沿特征维分组</title><desc id="desc">原创多头拆分图。B=1、T=3、D=8、H=2、Dh=4；0 到 23 仅用于追踪元素。青色特征0到3分到head 0，紫色特征4到7分到head 1，两个头都保留全部三个token位置。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1200" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1200" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.01  /  MULTI-HEAD</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">多头拆分：沿特征维分组</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >同一条序列，两个特征子空间；每个头都保留全部三个位置。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="276" width="1472" height="328" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 276 H176" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="92" y="326" font-size="21" fill="#54dcff" class="mono" >01</text>
+<text x="136" y="326" font-size="27" fill="#e8f2ff" font-weight="600">投影后的 Q</text>
+<rect x="1118" y="299" width="386" height="36" rx="18" fill="#11243b" stroke="#54dcff" stroke-opacity=".5"/>
+<text x="1311" y="323" font-size="18" fill="#54dcff" class="mono" text-anchor="middle">[B,T,D] = [1,3,8]</text>
+<text x="112" y="388" font-size="21" fill="#98aec9" >token 位置</text>
+<text x="346" y="383" font-size="24" fill="#54dcff" >特征 0–3</text>
+<text x="850" y="383" font-size="24" fill="#ae9aff" >特征 4–7</text>
+<path d="M346 393 L841 393" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M850 393 L1345 393" fill="none" stroke="#ae9aff" stroke-width="2" />
+<rect x="112" y="417" width="152" height="36" rx="18" fill="#11243b" stroke="#98aec9" stroke-opacity=".5"/>
+<text x="188" y="441" font-size="18" fill="#98aec9" class="mono" text-anchor="middle">position 0</text>
+<rect x="346" y="412" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="404.5" y="442.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">0</text>
+<rect x="472" y="412" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="530.5" y="442.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">1</text>
+<rect x="598" y="412" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="656.5" y="442.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">2</text>
+<rect x="724" y="412" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="782.5" y="442.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">3</text>
+<rect x="850" y="412" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="908.5" y="442.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">4</text>
+<rect x="976" y="412" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1034.5" y="442.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">5</text>
+<rect x="1102" y="412" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1160.5" y="442.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">6</text>
+<rect x="1228" y="412" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1286.5" y="442.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">7</text>
+<rect x="112" y="471" width="152" height="36" rx="18" fill="#11243b" stroke="#98aec9" stroke-opacity=".5"/>
+<text x="188" y="495" font-size="18" fill="#98aec9" class="mono" text-anchor="middle">position 1</text>
+<rect x="346" y="466" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="404.5" y="496.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">8</text>
+<rect x="472" y="466" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="530.5" y="496.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">9</text>
+<rect x="598" y="466" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="656.5" y="496.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">10</text>
+<rect x="724" y="466" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="782.5" y="496.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">11</text>
+<rect x="850" y="466" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="908.5" y="496.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">12</text>
+<rect x="976" y="466" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1034.5" y="496.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">13</text>
+<rect x="1102" y="466" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1160.5" y="496.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">14</text>
+<rect x="1228" y="466" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1286.5" y="496.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">15</text>
+<rect x="112" y="525" width="152" height="36" rx="18" fill="#11243b" stroke="#98aec9" stroke-opacity=".5"/>
+<text x="188" y="549" font-size="18" fill="#98aec9" class="mono" text-anchor="middle">position 2</text>
+<rect x="346" y="520" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="404.5" y="550.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">16</text>
+<rect x="472" y="520" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="530.5" y="550.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">17</text>
+<rect x="598" y="520" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="656.5" y="550.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">18</text>
+<rect x="724" y="520" width="117" height="45" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="782.5" y="550.5" font-size="26" fill="#54dcff" class="mono" text-anchor="middle">19</text>
+<rect x="850" y="520" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="908.5" y="550.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">20</text>
+<rect x="976" y="520" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1034.5" y="550.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">21</text>
+<rect x="1102" y="520" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1160.5" y="550.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">22</text>
+<rect x="1228" y="520" width="117" height="45" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1286.5" y="550.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">23</text>
+<circle cx="546" cy="604" r="5" fill="#54dcff" filter="url(#glow)"/>
+<path d="M546 607 V630 Q546 645 531 645 H429 Q414 645 414 660 V744" fill="none" stroke="#54dcff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-54dcff)"/>
+<circle cx="1050" cy="604" r="5" fill="#ae9aff" filter="url(#glow)"/>
+<path d="M1050 607 V630 Q1050 645 1065 645 H1171 Q1186 645 1186 660 V744" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<rect x="560" y="632" width="480" height="90" rx="14" fill="#101e34" stroke="#355069" />
+<text x="584" y="667" font-size="22" fill="#e8f2ff" class="mono" >reshape(B,T,H,Dh) → [1,3,2,4]</text>
+<text x="584" y="702" font-size="22" fill="#98aec9" class="mono" >transpose(1,2)    → [1,2,3,4]</text>
+<text x="268" y="719" font-size="18" fill="#54dcff" class="mono" letter-spacing="1">FEATURES 0–3</text>
+<text x="1212" y="719" font-size="18" fill="#ae9aff" class="mono" letter-spacing="1">FEATURES 4–7</text>
+<rect x="64" y="756" width="700" height="332" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 756 H176" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="92" y="809" font-size="28" fill="#54dcff" class="mono" font-weight="700">HEAD 0</text>
+<text x="732" y="807" font-size="23" fill="#98aec9" class="mono" text-anchor="end">[T,Dh] = [3,4]</text>
+<path d="M92 831 L736 831" fill="none" stroke="#2d435e" stroke-width="1" />
+<text x="92" y="879" font-size="23" fill="#98aec9" class="mono" >token 0</text>
+<rect x="240" y="851" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="295" y="883" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">0</text>
+<rect x="360" y="851" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="415" y="883" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">1</text>
+<rect x="480" y="851" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="535" y="883" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">2</text>
+<rect x="600" y="851" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="655" y="883" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">3</text>
+<text x="92" y="937" font-size="23" fill="#98aec9" class="mono" >token 1</text>
+<rect x="240" y="909" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="295" y="941" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">8</text>
+<rect x="360" y="909" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="415" y="941" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">9</text>
+<rect x="480" y="909" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="535" y="941" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">10</text>
+<rect x="600" y="909" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="655" y="941" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">11</text>
+<text x="92" y="995" font-size="23" fill="#98aec9" class="mono" >token 2</text>
+<rect x="240" y="967" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="295" y="999" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">16</text>
+<rect x="360" y="967" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="415" y="999" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">17</text>
+<rect x="480" y="967" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="535" y="999" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">18</text>
+<rect x="600" y="967" width="110" height="48" rx="7" fill="#14354b" stroke="#306780" stroke-width="1"/>
+<text x="655" y="999" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">19</text>
+<text x="92" y="1060" font-size="21" fill="#98aec9" >3 个位置 × 每个位置 4 维特征</text>
+<rect x="836" y="756" width="700" height="332" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M860 756 H948" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="864" y="809" font-size="28" fill="#ae9aff" class="mono" font-weight="700">HEAD 1</text>
+<text x="1504" y="807" font-size="23" fill="#98aec9" class="mono" text-anchor="end">[T,Dh] = [3,4]</text>
+<path d="M864 831 L1508 831" fill="none" stroke="#2d435e" stroke-width="1" />
+<text x="864" y="879" font-size="23" fill="#98aec9" class="mono" >token 0</text>
+<rect x="1012" y="851" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1067" y="883" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">4</text>
+<rect x="1132" y="851" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1187" y="883" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">5</text>
+<rect x="1252" y="851" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1307" y="883" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">6</text>
+<rect x="1372" y="851" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1427" y="883" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">7</text>
+<text x="864" y="937" font-size="23" fill="#98aec9" class="mono" >token 1</text>
+<rect x="1012" y="909" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1067" y="941" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">12</text>
+<rect x="1132" y="909" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1187" y="941" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">13</text>
+<rect x="1252" y="909" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1307" y="941" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">14</text>
+<rect x="1372" y="909" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1427" y="941" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">15</text>
+<text x="864" y="995" font-size="23" fill="#98aec9" class="mono" >token 2</text>
+<rect x="1012" y="967" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1067" y="999" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">20</text>
+<rect x="1132" y="967" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1187" y="999" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">21</text>
+<rect x="1252" y="967" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1307" y="999" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">22</text>
+<rect x="1372" y="967" width="110" height="48" rx="7" fill="#292642" stroke="#554b80" stroke-width="1"/>
+<text x="1427" y="999" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">23</text>
+<text x="864" y="1060" font-size="21" fill="#98aec9" >3 个位置 × 每个位置 4 维特征</text>
+<path d="M64 1118 L1536 1118" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1147" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1154" font-size="22" fill="#98aec9" >合头：transpose(1,2) → contiguous() → reshape(B,T,D)</text>
+<text x="1536" y="1154" font-size="19" fill="#59718e" class="mono" text-anchor="end">0–23 = ELEMENT INDICES</text>
+</svg>
