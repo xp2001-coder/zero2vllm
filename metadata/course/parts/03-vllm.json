@@ -1,0 +1,71 @@
+{
+  "number": 3,
+  "title": "走进真实 vLLM",
+  "prerequisites": "Part 2；工程师可从本篇进入",
+  "sources": [
+    "architecture",
+    "runner",
+    "hf",
+    "features",
+    "serve"
+  ],
+  "chapters": [
+    {
+      "id": "3.1",
+      "title": "vLLM 中一次请求的旅程",
+      "topics": "输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消",
+      "exercise": "为固定版本标出请求 ID、进程/线程边界、消息内容及取消后的资源回收",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "3.2",
+      "title": "vLLM 调度与 KV 管理",
+      "topics": "输入处理、调度输出、KVCacheManager、BlockPool、执行反馈",
+      "exercise": "把教学状态机映射到正式实现",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "3.3",
+      "title": "模型执行与注意力后端",
+      "topics": "模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样",
+      "exercise": "追踪 [K,N] 权重加载及一次调度到张量化、实际 Attention/Linear 内核的完整链路",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "3.4",
+      "title": "V1 与 ModelRunner 演进",
+      "topics": "V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理",
+      "exercise": "制作 runner×图模式对照；按固定源码版本核对能力，避免把设计目标当已支持",
+      "hardware": "CPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "3.5",
+      "title": "配置与能力的解析流程",
+      "topics": "EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验",
+      "exercise": "追踪用户参数如何变成实际运行配置",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "teaching_focus": "先追踪请求、状态和张量三条线，再进入具体类。先读 3.1/3.3 理解执行，再回到 3.2 深入调度；3.4 单独处理版本演进。",
+  "directory": "docs/chapters/part-03-vllm"
+}

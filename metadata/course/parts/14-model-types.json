@@ -1,0 +1,88 @@
+{
+  "number": 14,
+  "title": "模型类型、多模态与适配器",
+  "prerequisites": "Part 1、3、5",
+  "sources": [
+    "models",
+    "pooling",
+    "multimodal",
+    "lora",
+    "prompt_embed",
+    "vit_graphs",
+    "diffusion"
+  ],
+  "chapters": [
+    {
+      "id": "14.1",
+      "title": "模型注册与执行任务",
+      "topics": "generative/pooling、runner/task、原生实现/Transformers backend、encoder-decoder",
+      "exercise": "识别架构与任务匹配，制作能力清单",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-14-model-types/01-model-registration-and-execution-tasks/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.2",
+      "title": "文本生成与评分",
+      "topics": "生成、logprobs/prompt logprobs、score、generative scoring、beam search 版本差异",
+      "exercise": "区分生成结果与评分结果并验证 token 对齐",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/02-text-generation-and-scoring/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.3",
+      "title": "Pooling 全任务",
+      "topics": "Embedding、token embedding、分类/token classification、reward、rerank/score",
+      "exercise": "设计表示、分类和排序的正确性与性能评测",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/03-pooling-tasks/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.4",
+      "title": "多模态输入管线",
+      "topics": "图像/视频/音频、processor cache、输入预算、placeholder、MM embeddings",
+      "exercise": "追踪媒体到张量/token 的转换并记录开销",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/04-the-multimodal-input-pipeline/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.5",
+      "title": "多模态执行优化",
+      "topics": "encoder batching/DP、ViT attention/FP8、encoder compile/graphs、EC cache",
+      "exercise": "拆开编码与文本生成耗时并验证组合条件",
+      "hardware": "GPU/多卡/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/05-multimodal-execution-optimization/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.6",
+      "title": "LoRA 与多租户适配",
+      "topics": "Multi-LoRA、混合 batch、动态装卸、CPU 缓存、resolver、默认多模态 LoRA",
+      "exercise": "核对 adapter 隔离、内存预算和多请求正确性",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/06-lora-and-multi-tenant-adaptation/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "14.7",
+      "title": "Prompt Embeddings 与特殊架构",
+      "topics": "prompt embeds、custom I/O、MLA/混合 SSM、离散扩散 dLLM canvas/denoising、Omni 扩展边界",
+      "exercise": "追踪输入表示和 dLLM 分块去噪，区分上游引擎与外部项目职责",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-14-model-types/07-prompt-embeddings-and-specialized-architectures/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-14-model-types"
+}

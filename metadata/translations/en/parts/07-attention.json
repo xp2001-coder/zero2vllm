@@ -1,0 +1,36 @@
+{
+  "number": 7,
+  "part": {
+    "title": "Attention and High-Performance Kernels"
+  },
+  "chapters": {
+    "7.1": {
+      "title": "FlashAttention principles",
+      "topics": "IO-aware tiling, online softmax, SRAM reuse, and exact attention"
+    },
+    "7.2": {
+      "title": "FlashAttention versions and integration",
+      "topics": "FA1/FA2/FA3/FA4, varlen, prefill/decode, and device/dtype requirements"
+    },
+    "7.3": {
+      "title": "Selecting an attention backend",
+      "topics": "FlashInfer, Triton, SDPA/FlexAttention, CPU/ROCm/XPU, and automatic selection"
+    },
+    "7.4": {
+      "title": "MLA and sparse attention",
+      "topics": "FlashMLA, CUTLASS MLA, FlashInfer MLA, DSA/MSA, and model-specific backends"
+    },
+    "7.5": {
+      "title": "Decode and shared-prefix attention",
+      "topics": "Partitioned reduction, split-K, variable-length/paged attention, cascade attention, and shared prefixes"
+    },
+    "7.6": {
+      "title": "Linear layers and fused kernels",
+      "topics": "Triton vector add → reduction/softmax → matmul → attention; GEMM/GEMV, RMSNorm, RoPE, SwiGLU, CUDA/CUTLASS/CuTeDSL"
+    },
+    "7.7": {
+      "title": "Kernel selection and tuning",
+      "topics": "Marlin, Machete, DeepGEMM, Humming, FlashInfer, b12x, autotuning, and JIT"
+    }
+  }
+}

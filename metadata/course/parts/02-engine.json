@@ -1,0 +1,84 @@
+{
+  "number": 2,
+  "title": "从零构建教学推理引擎",
+  "prerequisites": "Part 1",
+  "sources": [
+    "transformers",
+    "nano",
+    "mini",
+    "architecture"
+  ],
+  "chapters": [
+    {
+      "id": "2.1",
+      "title": "构建最小 PyTorch 模型",
+      "topics": "模型前向、生成循环、RMSNorm/RoPE/MLP、与 CPU 参考对齐",
+      "exercise": "用同一组权重逐层比较 logits",
+      "hardware": "CPU",
+      "status": "complete",
+      "reading": "docs/chapters/part-02-engine/01-pytorch-model/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "2.2",
+      "title": "加载真实模型权重",
+      "topics": "配置、safetensors、权重映射、Tokenizer、模型 revision",
+      "exercise": "加载候选小模型并对齐参考输出",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-02-engine/02-loading-real-model-weights/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "2.3",
+      "title": "请求与缓存生命周期",
+      "topics": "创建、运行、完成、取消、异常、缓存归属",
+      "exercise": "画出状态机并验证取消后资源回收",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "2.4",
+      "title": "从静态批处理到连续批处理",
+      "topics": "迭代级调度、活跃队列、token 预算、请求插入退出",
+      "exercise": "回放长短请求混合的调度轨迹",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "2.5",
+      "title": "分页缓存",
+      "topics": "逻辑块、物理块、block table、slot mapping、设备 KV 存储",
+      "exercise": "把已有逻辑块模拟与 Attention 张量存储连接",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-02-engine/05-paged-caching/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "2.6",
+      "title": "前缀缓存",
+      "topics": "跨请求共享、引用计数、哈希匹配、逐出、缓存失效",
+      "exercise": "构建共享前缀树形请求并检查复用与回收",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-02-engine/06-prefix-caching/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "2.7",
+      "title": "HTTP 与流式输出",
+      "topics": "异步迭代、背压、断连、取消传播、请求错误",
+      "exercise": "让断连请求释放资源并保存流式事件记录",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-02-engine/07-http-and-streaming-output/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-02-engine"
+}

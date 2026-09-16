@@ -1,9 +1,9 @@
 <div align="center">
-  <img src="./docs/assets/zero2vllm-banner.webp" alt="zero2vllm：理解推理，手写算子" width="100%">
+  <img src="docs/assets/zero2vllm-banner.webp" alt="zero2vllm：理解推理，手写算子" width="100%">
   <h1>zero2vllm</h1>
   <p>
-    <a href="./README.md"><img src="https://img.shields.io/badge/简体中文-2563eb?style=for-the-badge" alt="简体中文"></a>
-    <a href="./README_en.md"><img src="https://img.shields.io/badge/English-6b7280?style=for-the-badge" alt="English"></a>
+    <a href="README.md"><img src="https://img.shields.io/badge/简体中文-2563eb?style=for-the-badge" alt="简体中文"></a>
+    <a href="README_en.md"><img src="https://img.shields.io/badge/English-6b7280?style=for-the-badge" alt="English"></a>
   </p>
   <h3>📚《从零手搓 vLLM》</h3>
   <p><em>从理解大模型如何生成，理解其推理过程中的缓存与调度，到手写算子以及对应的优化手段，让我们更能彻底地理解vLLM。</em></p>
@@ -16,8 +16,8 @@
   <img src="https://img.shields.io/badge/README-中文%20%7C%20English-16a34a?style=flat" alt="中英文 README">
   <img src="https://img.shields.io/badge/Python-3.11%2B-3776ab?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.11+">
   <img src="https://img.shields.io/badge/GPU_targets-A100%20%7C%20C500-0f766e?style=flat" alt="GPU 实验目标：A100 与 C500">
-  <a href="./docs/README.md"><img src="https://img.shields.io/badge/课程导航-开始阅读-2563eb?style=flat&amp;logo=gitbook&amp;logoColor=white" alt="课程导航"></a>
-  <a href="./LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey?style=flat" alt="CC BY-NC-SA 4.0"></a>
+  <a href="docs/README.md"><img src="https://img.shields.io/badge/课程导航-开始阅读-2563eb?style=flat&amp;logo=gitbook&amp;logoColor=white" alt="课程导航"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-CC%20BY--NC--SA%204.0-lightgrey?style=flat" alt="CC BY-NC-SA 4.0"></a>
 </div>
 
 <div align="center">
@@ -29,26 +29,28 @@
 
 [第一次来](#第一次来从这里开始) · [快速开始](#快速开始) · [课程大纲](#课程大纲) · [特性与优化地图](#特性与优化地图) · [学习路线](#学习路线) · [框架阅读地图](#框架阅读地图) · [当前进度](#当前进度) · [参与贡献](#参与贡献)
 
-[文档导航](docs/README.md) · [开发路线](docs/roadmap.md) · [更新记录](CHANGELOG.md) · [使用许可](LICENSE)
+[文档导航](docs/README.md) · [开发路线](docs/engineering/roadmap.md) · [更新记录](CHANGELOG.md) · [使用许可](LICENSE)
 
-> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。完整教学引擎与后续章节继续建设，A100/C500 的 GPU 实验尚待实机验证。
+> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。2.1 最小 PyTorch 模型已完成，全部 126 节已有独立目录；后续引擎功能逐节推进，A100/C500 的 GPU 实验尚待实机验证。
 
 ## 第一次来，从这里开始
 
-根据已有基础选一个入口，完成后再沿[学习路线](docs/learning-paths.md)深入。课程的完整范围保留在后面的 **19 篇、126 章**大纲中。
+根据已有基础选一个入口，完成后再沿[学习路线](docs/chapters/learning-paths.md)深入。课程的完整范围保留在后面的 **19 篇、126 章**大纲中。
 
 | 你的起点 | 第一份材料 | 做完后得到什么 |
 | --- | --- | --- |
-| 会 Python，想理解推理 | [第一课：从 token 到下一步预测](docs/chapters/01-next-token.md) | 手算一次 Attention，解释最后一行 logits 怎样选出下一个 token |
-| 已用过模型部署，想读源码 | [请求、状态与张量](docs/chapters/01-request-lifecycle.md) | 一张请求调用链，分清调度决策与模型执行 |
-| 做量化或想写算子 | [CPU INT4 Linear 实验](docs/labs/02-int4-linear.md) → [量化导读](docs/chapters/05-quantization-operators.md) | 一份位布局、误差和存储报告，再推进到 GPU 内核 |
-| 已有可用 GPU 环境，想做优化 | [实验规范](docs/experiments.md) → [Profiling 导读](docs/chapters/04-compile-profiling.md) | 一份固定负载的实验设计，区分正确性、质量与性能 |
+| 会 Python，想理解推理 | [第一课：从 token 到下一步预测](docs/chapters/part-01-inference/01-next-token/README.md) | 手算一次 Attention，解释最后一行 logits 怎样选出下一个 token |
+| 已用过模型部署，想读源码 | [请求、状态与张量](docs/chapters/part-03-vllm/guide.md) | 一张请求调用链，分清调度决策与模型执行 |
+| 做量化或想写算子 | [CPU INT4 Linear 实验](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md) → [量化导读](docs/chapters/part-09-quantization/guide.md) | 一份位布局、误差和存储报告，再推进到 GPU 内核 |
+| 已有可用 GPU 环境，想做优化 | [实验规范](docs/engineering/experiments.md) → [Profiling 导读](docs/chapters/part-08-compilation/guide.md) | 一份固定负载的实验设计，区分正确性、质量与性能 |
 
-首次学习可按[现有材料的短路线](docs/learning-paths.md#先用现有材料走通一条短路线)推进。算法统一在 **9.2 量化算法**，量化主线重点是策略、数据布局、算子实现、内核调优与 vLLM 接入。
+首次学习可按[现有材料的短路线](docs/chapters/learning-paths.md#先用现有材料走通一条短路线)推进。算法统一在 **9.2 量化算法**，量化主线重点是策略、数据布局、算子实现、内核调优与 vLLM 接入。
 
-**完整学习第一篇：**[Part 1 学习与命令总表](docs/chapters/part1-guide.md)，从生成原理走到缓存、性能指标、模型结构和采样正确性。
+**完整学习第一篇：**[Part 1 学习与命令总表](docs/chapters/part-01-inference/README.md)，从生成原理走到缓存、性能指标、模型结构和采样正确性。
 
-其余专题与 38 份资料的对应关系见[导读与知识库映射](docs/knowledge-base.md)。导读表示已有材料，目录中的 🧩 不等于完整章节或 GPU 验收完成。
+**继续第二篇：**[2.1 构建最小 PyTorch 模型](docs/chapters/part-02-engine/01-pytorch-model/README.md)，在 CPU 上运行两层 Decoder，逐层对齐 RMSNorm、RoPE、Attention 与 SwiGLU。
+
+其余专题与 38 份资料的对应关系见[导读与知识库映射](docs/references/knowledge-base.md)。导读表示已有材料，目录中的 🧩 不等于完整章节或 GPU 验收完成。
 
 ## 为什么做这门课
 
@@ -98,9 +100,9 @@
 | 工程师 | 固定一种平台基线，提前使用 Part 17 的测量方法 | 调用链与瓶颈 → 单项优化 → 组合回归 → 平台与分布式扩展 |
 | 量化方向 | 建立基线后，从 9.3 策略设计进入 | 张量契约 → Q/DQ 与打包 → 量化 GEMV/GEMM → 调优 → vLLM 接入与服务消融 |
 
-具体章节顺序、阶段交付物、GPU 条件与交叉章节分工见[学习路线](docs/learning-paths.md)。每章共用基础正文，附工程进阶与平台说明；完整技术范围见[课程目录](docs/curriculum.md)。
+具体章节顺序、阶段交付物、GPU 条件与交叉章节分工见[学习路线](docs/chapters/learning-paths.md)。每章共用基础正文，附工程进阶与平台说明；完整技术范围见[课程目录](docs/chapters/README.md)。
 
-**现在就能做：**完成 Part 1 六节正文与 CPU 实验，继续运行 INT4 Linear 实验，阅读专题导读、检查逻辑块分配和配置模板。没有 GPU 时先完成 CPU 阶段，0.2 的真实模型生成体验可后置。
+**现在就能做：**完成 Part 1 六节与 2.1 PyTorch CPU 实验，继续运行 INT4 Linear 实验，阅读专题导读、检查逻辑块分配和配置模板。没有 GPU 时先完成 CPU 阶段，0.2 的真实模型生成体验可后置。
 
 ### 根据手头硬件选择实验
 
@@ -119,20 +121,20 @@
 需要 **Python 3.11+**。在仓库根目录执行，不需要第三方包、模型下载或 GPU：
 
 ```bash
-python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
+python -m zero2vllm next-token-demo --output .local/runs/part-01-inference/01-next-token/default.json
 ```
 
 从五个教学词项和二维向量开始，逐项观察 Embedding、Q/K/V、因果 Attention、logits 和生成循环。默认输入“我 喜欢”，第一步选中 ID `2`；`verification.passed` 应为 `true`。权重是为手算设置的，没有训练语言能力。
 
-阅读[第一课正文与五道练习](docs/chapters/01-next-token.md)，对照[实际运行结果](reports/lesson-01-next-token.json)。预计 60—90 分钟完成手算、实验和自查。
+阅读[第一课正文与五道练习](docs/chapters/part-01-inference/01-next-token/README.md)，对照[实际运行结果](docs/chapters/part-01-inference/01-next-token/results/initial-baseline.json)。预计 60—90 分钟完成手算、实验和自查。
 
-整篇六节的命令、参数说明和练习见 [Part 1 总表](docs/chapters/part1-guide.md)。一次运行 28 个案例、全套测试与文档检查：
+整篇六节的命令、参数说明和练习见 [Part 1 总表](docs/chapters/part-01-inference/README.md)。一次运行 28 个案例、全套测试与文档检查：
 
 ```bash
-python scripts/run_part1.py
+python -m scripts.experiments.part01
 ```
 
-结果保存在 `runs/part1/summary.json` 及各案例文件中。性能指标使用标明来源的模拟时间线，容量/Roofline 为假设估算，均不代表 GPU 实测。
+结果保存在 `.local/runs/part-01-inference/summary.json` 及各案例文件中。性能指标使用标明来源的模拟时间线，容量/Roofline 为假设估算，均不代表 GPU 实测。
 
 ### 2. 继续观察 KV Cache
 
@@ -154,12 +156,12 @@ python -m zero2vllm demo
 
 这是用于学习计算过程的小模型，token ID 没有自然语言含义；投影位置计数也不能直接换算为 GPU 加速倍数。
 
-继续阅读[引导实验：KV Cache 前后是否计算一致](docs/labs/01-kv-cache.md)，或查看[已运行的结果](reports/cpu-kv-cache.json)。
+继续阅读[引导实验：KV Cache 前后是否计算一致](docs/chapters/part-01-inference/03-kv-cache/lab.md)，或查看[已运行的结果](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)。
 
 ### 3. 保存结果与运行检查
 
 ```bash
-python -m zero2vllm demo --output runs/cpu-kv-cache.json
+python -m zero2vllm demo --output .local/runs/part-01-inference/03-kv-cache/cpu-kv-cache.json
 python -m unittest discover -s tests -v
 ```
 
@@ -168,63 +170,63 @@ python -m unittest discover -s tests -v
 ### 4. 量化方向：运行 INT4 Linear
 
 ```bash
-python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
+python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/04-quantization-kernels/cpu-int4-linear.json
 ```
 
-实验实现沿 K 分组的 Q/DQ、有符号 INT4 打包及两条量化 Linear 参考路径。默认包含尾组和奇数打包，分别报告实现误差与量化误差，并把 scale 计入存储。详见[实验教程](docs/labs/02-int4-linear.md)；它是 CPU 数学参考，GPU 融合内核与 vLLM 集成待完成。
+实验实现沿 K 分组的 Q/DQ、有符号 INT4 打包及两条量化 Linear 参考路径。默认包含尾组和奇数打包，分别报告实现误差与量化误差，并把 scale 计入存储。详见[实验教程](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)；它是 CPU 数学参考，GPU 融合内核与 vLLM 集成待完成。
 
 ### 5. 准备 GPU 路径
 
 ```bash
-python -m zero2vllm doctor --output runs/environment.json
-python -m zero2vllm profile configs/cuda-a100.toml
-python -m zero2vllm profile configs/maca-c500.toml
+python -m zero2vllm doctor --output .local/environment/host.json
+python -m zero2vllm profile configs/platforms/cuda/a100.toml
+python -m zero2vllm profile configs/platforms/maca/c500.toml
 ```
 
-这一步用于整理环境信息和检查配置。模板会列出尚未填写的实际版本；配置完整后可预览容器内的启动参数。正式部署步骤随 A100、C500 实机验证补齐，见[双后端环境与配置](docs/backends.md)。
+这一步用于整理环境信息和检查配置。模板会列出尚未填写的实际版本；配置完整后可预览容器内的启动参数。正式部署步骤随 A100、C500 实机验证补齐，见[双后端环境与配置](docs/platforms/README.md)。
 
 ## 课程大纲
 
 <!-- BEGIN course-outline -->
 
-本版共 **19 篇、126 个正式章节规划**，另有两个独立的 CPU 实验。可点击章节名称进入已有正文或专题导读，完成程度以状态标记为准；前置知识、练习产出、设备条件见[详细课程目录](docs/curriculum.md)。
+本版共 **19 篇、126 个正式章节规划**，每篇、每节都有独立目录；未完成小节先提供教学骨架，两个 CPU 实验已归入对应篇。目录齐全不表示正文全部完成；前置知识、练习产出、设备条件见[详细课程目录](docs/chapters/README.md)。
 
 **状态：✅ 已完成并有本地验证；🧩 有部分材料或代码；📋 已规划、正文待编写。** 功能已被上游收录也不等于本项目已经实测。
 
-[✅ CPU 引导实验：KV Cache 前后是否计算一致](docs/labs/01-kv-cache.md)
+[✅ CPU 引导实验：KV Cache 前后是否计算一致](docs/chapters/part-01-inference/03-kv-cache/lab.md)
 
-[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/labs/02-int4-linear.md)
+[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)
 
 | 篇 | 专题范围 | 章节数 |
 | --- | --- | --- |
-| Part 0 | 开始之前 | 3 |
-| Part 1 | 理解大模型推理 | 6 |
-| Part 2 | 从零构建教学推理引擎 | 7 |
-| Part 3 | 走进真实 vLLM | 5 |
-| Part 4 | CUDA 与 MACA 单卡基线 | 3 |
-| Part 5 | KV Cache、Prefix Cache 与长上下文 | 9 |
-| Part 6 | 调度、批处理与重叠执行 | 6 |
-| Part 7 | Attention 与高性能算子 | 7 |
-| Part 8 | 编译、CUDA Graph 与执行优化 | 7 |
-| Part 9 | 量化算法、算子实现与推理加速 | 11 |
-| Part 10 | Speculative Decoding 推测解码 | 9 |
-| Part 11 | 并行切分与分布式执行 | 10 |
-| Part 12 | MoE 与通信优化 | 6 |
-| Part 13 | 分离式部署与 KV 传输 | 6 |
-| Part 14 | 模型类型、多模态与适配器 | 7 |
-| Part 15 | 服务接口与生成能力 | 7 |
-| Part 16 | 权重加载、内存与 RL 推理生命周期 | 6 |
-| Part 17 | 评测、性能分析与优化方法 | 6 |
-| Part 18 | 平台扩展、部署生态与开源贡献 | 5 |
+| [Part 0](docs/chapters/part-00-orientation/README.md) | 开始之前 | 3 |
+| [Part 1](docs/chapters/part-01-inference/README.md) | 理解大模型推理 | 6 |
+| [Part 2](docs/chapters/part-02-engine/README.md) | 从零构建教学推理引擎 | 7 |
+| [Part 3](docs/chapters/part-03-vllm/README.md) | 走进真实 vLLM | 5 |
+| [Part 4](docs/chapters/part-04-backends/README.md) | CUDA 与 MACA 单卡基线 | 3 |
+| [Part 5](docs/chapters/part-05-kv-cache/README.md) | KV Cache、Prefix Cache 与长上下文 | 9 |
+| [Part 6](docs/chapters/part-06-scheduling/README.md) | 调度、批处理与重叠执行 | 6 |
+| [Part 7](docs/chapters/part-07-attention/README.md) | Attention 与高性能算子 | 7 |
+| [Part 8](docs/chapters/part-08-compilation/README.md) | 编译、CUDA Graph 与执行优化 | 7 |
+| [Part 9](docs/chapters/part-09-quantization/README.md) | 量化算法、算子实现与推理加速 | 11 |
+| [Part 10](docs/chapters/part-10-speculation/README.md) | Speculative Decoding 推测解码 | 9 |
+| [Part 11](docs/chapters/part-11-parallelism/README.md) | 并行切分与分布式执行 | 10 |
+| [Part 12](docs/chapters/part-12-moe/README.md) | MoE 与通信优化 | 6 |
+| [Part 13](docs/chapters/part-13-disaggregation/README.md) | 分离式部署与 KV 传输 | 6 |
+| [Part 14](docs/chapters/part-14-model-types/README.md) | 模型类型、多模态与适配器 | 7 |
+| [Part 15](docs/chapters/part-15-serving/README.md) | 服务接口与生成能力 | 7 |
+| [Part 16](docs/chapters/part-16-weight-loading/README.md) | 权重加载、内存与 RL 推理生命周期 | 6 |
+| [Part 17](docs/chapters/part-17-profiling/README.md) | 评测、性能分析与优化方法 | 6 |
+| [Part 18](docs/chapters/part-18-deployment/README.md) | 平台扩展、部署生态与开源贡献 | 5 |
 
 <details>
 <summary>Part 0 · 开始之前（3 章）</summary>
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 0.1 读者路线与环境准备 | Python、Linux、容器、驱动/运行时/框架版本、CPU 与双后端路线 | 🧩 |
-| 0.2 第一次模型生成 | 离线 LLM、在线服务、流式请求、Tokenizer 与 chat template | 📋 |
-| 0.3 实验与源码工作方法 | 固定 revision、阅读配置/日志/调用链、最小复现与原始数据 | 📋 |
+| 0.1 [读者路线与环境准备](docs/chapters/part-00-orientation/01-learning-paths-and-environment-setup/README.md) | Python、Linux、容器、驱动/运行时/框架版本、CPU 与双后端路线 | 🧩 |
+| 0.2 [第一次模型生成](docs/chapters/part-00-orientation/02-your-first-model-generation/README.md) | 离线 LLM、在线服务、流式请求、Tokenizer 与 chat template | 📋 |
+| 0.3 [实验与源码工作方法](docs/chapters/part-00-orientation/03-working-with-experiments-and-source-code/README.md) | 固定 revision、阅读配置/日志/调用链、最小复现与原始数据 | 📋 |
 
 来源与阅读入口：[Datawhale zero-to-sglang](https://github.com/datawhalechina/zero-to-sglang) · [vLLM Quickstart](https://docs.vllm.ai/en/stable/getting_started/quickstart/) · [GPU 安装与设备条件](https://docs.vllm.ai/en/stable/getting_started/installation/gpu/)。
 
@@ -235,12 +237,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 1.1 [从 token 到下一步预测](docs/chapters/01-next-token.md) | Tokenizer、Embedding、Transformer、因果 Attention、LM Head | ✅ |
-| 1.2 [Prefill 与 Decode](docs/chapters/01-prefill-decode.md) | 计算密集/带宽密集、HBM/SRAM、Roofline、算术强度 | ✅ |
-| 1.3 [KV Cache 的作用](docs/chapters/01-kv-cache.md) | 缓存更新、位置偏移、MHA/MQA/GQA、每 token 显存 | ✅ |
-| 1.4 [如何读性能结果](docs/chapters/01-performance-metrics.md) | TTFT、TPOT、ITL、吞吐、Goodput、P50/P95/P99、排队 | ✅ |
-| 1.5 [模型结构与长上下文基础](docs/chapters/01-model-structures.md) | RoPE、ALiBi、Sliding Window、MLA、稀疏/线性 Attention、SSM | ✅ |
-| 1.6 [采样与数值正确性](docs/chapters/01-sampling-correctness.md) | Greedy、temperature、top-k/top-p/min-p、penalty、seed、EOS/stop | ✅ |
+| 1.1 [从 token 到下一步预测](docs/chapters/part-01-inference/01-next-token/README.md) | Tokenizer、Embedding、Transformer、因果 Attention、LM Head | ✅ |
+| 1.2 [Prefill 与 Decode](docs/chapters/part-01-inference/02-prefill-decode/README.md) | 计算密集/带宽密集、HBM/SRAM、Roofline、算术强度 | ✅ |
+| 1.3 [KV Cache 的作用](docs/chapters/part-01-inference/03-kv-cache/README.md) | 缓存更新、位置偏移、MHA/MQA/GQA、每 token 显存 | ✅ |
+| 1.4 [如何读性能结果](docs/chapters/part-01-inference/04-performance-metrics/README.md) | TTFT、TPOT、ITL、吞吐、Goodput、P50/P95/P99、排队 | ✅ |
+| 1.5 [模型结构与长上下文基础](docs/chapters/part-01-inference/05-model-structures/README.md) | RoPE、ALiBi、Sliding Window、MLA、稀疏/线性 Attention、SSM | ✅ |
+| 1.6 [采样与数值正确性](docs/chapters/part-01-inference/06-sampling-correctness/README.md) | Greedy、temperature、top-k/top-p/min-p、penalty、seed、EOS/stop | ✅ |
 
 来源与阅读入口：[模型支持与任务](https://docs.vllm.ai/en/stable/models/supported_models/) · [Generative Models](https://docs.vllm.ai/en/stable/models/generative_models/) · [Benchmark CLI](https://docs.vllm.ai/en/stable/benchmarking/cli/)。
 
@@ -251,13 +253,13 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 2.1 构建最小 PyTorch 模型 | 模型前向、生成循环、RMSNorm/RoPE/MLP、与 CPU 参考对齐 | 📋 |
-| 2.2 加载真实模型权重 | 配置、safetensors、权重映射、Tokenizer、模型 revision | 📋 |
-| 2.3 请求与缓存生命周期 | 创建、运行、完成、取消、异常、缓存归属 | 📋 |
-| 2.4 从静态批处理到连续批处理 | 迭代级调度、活跃队列、token 预算、请求插入退出 | 📋 |
-| 2.5 分页缓存 | 逻辑块、物理块、block table、slot mapping、设备 KV 存储 | 🧩 |
-| 2.6 前缀缓存 | 跨请求共享、引用计数、哈希匹配、逐出、缓存失效 | 📋 |
-| 2.7 HTTP 与流式输出 | 异步迭代、背压、断连、取消传播、请求错误 | 📋 |
+| 2.1 [构建最小 PyTorch 模型](docs/chapters/part-02-engine/01-pytorch-model/README.md) | 模型前向、生成循环、RMSNorm/RoPE/MLP、与 CPU 参考对齐 | ✅ |
+| 2.2 [加载真实模型权重](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md) | 配置、safetensors、权重映射、Tokenizer、模型 revision | 📋 |
+| 2.3 [请求与缓存生命周期](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) | 创建、运行、完成、取消、异常、缓存归属 | 📋 |
+| 2.4 [从静态批处理到连续批处理](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) | 迭代级调度、活跃队列、token 预算、请求插入退出 | 📋 |
+| 2.5 [分页缓存](docs/chapters/part-02-engine/05-paged-caching/README.md) | 逻辑块、物理块、block table、slot mapping、设备 KV 存储 | 🧩 |
+| 2.6 [前缀缓存](docs/chapters/part-02-engine/06-prefix-caching/README.md) | 跨请求共享、引用计数、哈希匹配、逐出、缓存失效 | 📋 |
+| 2.7 [HTTP 与流式输出](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) | 异步迭代、背压、断连、取消传播、请求错误 | 📋 |
 
 来源与阅读入口：[Transformers](https://github.com/huggingface/transformers) · [nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) · [mini-sglang](https://github.com/sgl-project/mini-sglang) · [架构设计](https://docs.vllm.ai/en/stable/design/arch_overview/)。
 
@@ -268,11 +270,11 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 3.1 [vLLM 中一次请求的旅程](docs/chapters/01-request-lifecycle.md) | 输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消 | 🧩 |
-| 3.2 [vLLM 调度与 KV 管理](docs/chapters/02-scheduling-cache.md) | 输入处理、调度输出、KVCacheManager、BlockPool、执行反馈 | 🧩 |
-| 3.3 [模型执行与注意力后端](docs/chapters/01-request-lifecycle.md) | 模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样 | 🧩 |
-| 3.4 [V1 与 ModelRunner 演进](docs/chapters/01-request-lifecycle.md) | V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理 | 🧩 |
-| 3.5 [配置与能力的解析流程](docs/chapters/01-request-lifecycle.md) | EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验 | 🧩 |
+| 3.1 [vLLM 中一次请求的旅程](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) | 输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消 | 🧩 |
+| 3.2 [vLLM 调度与 KV 管理](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md) | 输入处理、调度输出、KVCacheManager、BlockPool、执行反馈 | 🧩 |
+| 3.3 [模型执行与注意力后端](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) | 模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样 | 🧩 |
+| 3.4 [V1 与 ModelRunner 演进](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) | V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理 | 🧩 |
+| 3.5 [配置与能力的解析流程](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) | EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验 | 🧩 |
 
 来源与阅读入口：[架构设计](https://docs.vllm.ai/en/stable/design/arch_overview/) · [Model Runner V2](https://docs.vllm.ai/en/stable/design/model_runner_v2/) · [Hugging Face 集成](https://docs.vllm.ai/en/stable/design/huggingface_integration/) · [vLLM Features 与兼容性入口](https://docs.vllm.ai/en/stable/features/) · [OpenAI-compatible Server](https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/)。
 
@@ -283,9 +285,9 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 4.1 CUDA 路径与 A100 基线 | 上游 vLLM、CUDA/PyTorch、显存规格、eager 起步、离线/在线 | 🧩 |
-| 4.2 MACA 路径与 C500 基线 | vLLM-MetaX、MACA、mcoplib、官方镜像、版本关系 | 🧩 |
-| 4.3 两个平台上的同一个实验 | 同权重/输入/采样/负载、dtype、后端差异、误差容限 | 📋 |
+| 4.1 [CUDA 路径与 A100 基线](docs/chapters/part-04-backends/01-the-cuda-path-and-a100-baseline/README.md) | 上游 vLLM、CUDA/PyTorch、显存规格、eager 起步、离线/在线 | 🧩 |
+| 4.2 [MACA 路径与 C500 基线](docs/chapters/part-04-backends/02-the-maca-path-and-c500-baseline/README.md) | vLLM-MetaX、MACA、mcoplib、官方镜像、版本关系 | 🧩 |
+| 4.3 [两个平台上的同一个实验](docs/chapters/part-04-backends/03-the-same-experiment-on-two-platforms/README.md) | 同权重/输入/采样/负载、dtype、后端差异、误差容限 | 📋 |
 
 来源与阅读入口：[GPU 安装与设备条件](https://docs.vllm.ai/en/stable/getting_started/installation/gpu/) · [vLLM-MetaX](https://github.com/MetaX-MACA/vLLM-metax) · [MetaX 安装](https://vllm-metax.readthedocs.io/en/stable/getting_started/installation/maca.html) · [MetaX Quickstart](https://vllm-metax.readthedocs.io/en/stable/getting_started/quickstart.html)。
 
@@ -296,15 +298,15 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 5.1 [PagedAttention 与缓存布局](docs/chapters/02-scheduling-cache.md) | 页大小、block table、slot mapping、NHD/HND 与新布局、碎片 | 🧩 |
-| 5.2 [Automatic Prefix Caching](docs/chapters/02-scheduling-cache.md) | APC 完整块匹配、未命中后缀计算、prefill 节省、最后 token/logits 边界；Radix 对照 | 🧩 |
-| 5.3 [缓存键与共享隔离](docs/chapters/02-scheduling-cache.md) | 链式哈希、token/多模态/LoRA 标识、cache salt、哈希算法 | 🧩 |
-| 5.4 [缓存生命周期与路由](docs/chapters/02-scheduling-cache.md) | 引用计数、LRU、逐出、抢占重算、reset、KV events、亲和路由 | 🧩 |
-| 5.5 混合模型缓存管理 | Full/SWA/SSM 分组、Hybrid KV Cache Manager、页对齐、共享层 | 📋 |
-| 5.6 Mamba 与线性模型状态缓存 | Mamba1/2、GDN、卷积/SSM 状态、检查点、ReplaySSM/RecoverSSM | 📋 |
-| 5.7 KV Offloading 与分层缓存 | 原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器 | 📋 |
-| 5.8 上下文扩展与 KV Sharing | RoPE scaling/YaRN、模型长度、滑窗、跨层 KV sharing/fast prefill | 📋 |
-| 5.9 IndexCache 与稀疏索引缓存 | DSA top-k 索引跨层复用、复用频率、稀疏注意力精度 | 📋 |
+| 5.1 [PagedAttention 与缓存布局](docs/chapters/part-05-kv-cache/01-pagedattention-and-cache-layouts/README.md) | 页大小、block table、slot mapping、NHD/HND 与新布局、碎片 | 🧩 |
+| 5.2 [Automatic Prefix Caching](docs/chapters/part-05-kv-cache/02-automatic-prefix-caching/README.md) | APC 完整块匹配、未命中后缀计算、prefill 节省、最后 token/logits 边界；Radix 对照 | 🧩 |
+| 5.3 [缓存键与共享隔离](docs/chapters/part-05-kv-cache/03-cache-keys-and-sharing-isolation/README.md) | 链式哈希、token/多模态/LoRA 标识、cache salt、哈希算法 | 🧩 |
+| 5.4 [缓存生命周期与路由](docs/chapters/part-05-kv-cache/04-cache-lifecycle-and-routing/README.md) | 引用计数、LRU、逐出、抢占重算、reset、KV events、亲和路由 | 🧩 |
+| 5.5 [混合模型缓存管理](docs/chapters/part-05-kv-cache/05-cache-management-for-hybrid-models/README.md) | Full/SWA/SSM 分组、Hybrid KV Cache Manager、页对齐、共享层 | 📋 |
+| 5.6 [Mamba 与线性模型状态缓存](docs/chapters/part-05-kv-cache/06-state-caching-for-mamba-and-linear-models/README.md) | Mamba1/2、GDN、卷积/SSM 状态、检查点、ReplaySSM/RecoverSSM | 📋 |
+| 5.7 [KV Offloading 与分层缓存](docs/chapters/part-05-kv-cache/07-kv-offloading-and-tiered-caching/README.md) | 原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器 | 📋 |
+| 5.8 [上下文扩展与 KV Sharing](docs/chapters/part-05-kv-cache/08-context-extension-and-kv-sharing/README.md) | RoPE scaling/YaRN、模型长度、滑窗、跨层 KV sharing/fast prefill | 📋 |
+| 5.9 [IndexCache 与稀疏索引缓存](docs/chapters/part-05-kv-cache/09-indexcache-and-sparse-index-caching/README.md) | DSA top-k 索引跨层复用、复用频率、稀疏注意力精度 | 📋 |
 
 来源与阅读入口：[Automatic Prefix Caching](https://docs.vllm.ai/en/stable/features/automatic_prefix_caching/) · [Prefix Caching 设计](https://docs.vllm.ai/en/stable/design/prefix_caching/) · [缓存配置与 dtype 清单](https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py) · [Hybrid KV Cache Manager](https://docs.vllm.ai/en/stable/design/hybrid_kv_cache_manager/) · [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/) · [Context Extension](https://docs.vllm.ai/en/stable/features/context_extension/) · [IndexCache](https://docs.vllm.ai/en/stable/features/index_cache/)。
 
@@ -315,12 +317,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 6.1 [连续批处理与调度策略](docs/chapters/02-scheduling-cache.md) | FCFS、priority、等待/运行队列、公平性、抢占与饥饿 | 🧩 |
-| 6.2 [Chunked Prefill](docs/chapters/02-scheduling-cache.md) | 分块预填充、混合 prefill/decode、长请求阈值、部分 prefill 预算 | 🧩 |
-| 6.3 [Token 预算与显存预算](docs/chapters/02-scheduling-cache.md) | max_num_seqs、max_num_batched_tokens、版本中的 scheduled-token 上限、max_model_len、KV/encoder/推测预算 | 🧩 |
-| 6.4 异步调度与输出处理 | CPU/GPU overlap、输入准备、采样反馈、异步输出、取消边界 | 📋 |
-| 6.5 [DBO 与 TBO 对照](docs/chapters/06-parallel-moe-disagg.md) | vLLM Dual Batch Overlap、ubatch、计算/通信重叠；SGLang TBO/SBO 对照 | 🧩 |
-| 6.6 调度功能组合与演进 | async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of | 📋 |
+| 6.1 [连续批处理与调度策略](docs/chapters/part-06-scheduling/01-continuous-batching-and-scheduling-policies/README.md) | FCFS、priority、等待/运行队列、公平性、抢占与饥饿 | 🧩 |
+| 6.2 [Chunked Prefill](docs/chapters/part-06-scheduling/02-chunked-prefill/README.md) | 分块预填充、混合 prefill/decode、长请求阈值、部分 prefill 预算 | 🧩 |
+| 6.3 [Token 预算与显存预算](docs/chapters/part-06-scheduling/03-token-and-gpu-memory-budgets/README.md) | max_num_seqs、max_num_batched_tokens、版本中的 scheduled-token 上限、max_model_len、KV/encoder/推测预算 | 🧩 |
+| 6.4 [异步调度与输出处理](docs/chapters/part-06-scheduling/04-async-scheduling-and-output-processing/README.md) | CPU/GPU overlap、输入准备、采样反馈、异步输出、取消边界 | 📋 |
+| 6.5 [DBO 与 TBO 对照](docs/chapters/part-06-scheduling/05-comparing-dbo-and-tbo/README.md) | vLLM Dual Batch Overlap、ubatch、计算/通信重叠；SGLang TBO/SBO 对照 | 🧩 |
+| 6.6 [调度功能组合与演进](docs/chapters/part-06-scheduling/06-scheduling-combinations-and-evolution/README.md) | async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of | 📋 |
 
 来源与阅读入口：[Optimization and Tuning](https://docs.vllm.ai/en/stable/configuration/optimization/) · [调度配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/scheduler.py) · [Dual Batch Overlap](https://docs.vllm.ai/en/stable/design/dbo/) · [SGLang EP：TBO/SBO](https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/expert_parallelism.mdx)。
 
@@ -331,13 +333,13 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 7.1 [FlashAttention 原理](docs/chapters/03-attention-kernels.md) | IO-aware tiling、online softmax、SRAM 复用、精确注意力 | 🧩 |
-| 7.2 FlashAttention 版本与接入 | FA1/FA2/FA3/FA4、varlen、prefill/decode、设备与 dtype 条件 | 📋 |
-| 7.3 [注意力后端选择](docs/chapters/03-attention-kernels.md) | FlashInfer、Triton、SDPA/FlexAttention、CPU/ROCm/XPU、自动选择 | 🧩 |
-| 7.4 MLA 与稀疏 Attention | FlashMLA、CUTLASS MLA、FlashInfer MLA、DSA/MSA、模型专用后端 | 📋 |
-| 7.5 [Decode 与共享前缀注意力](docs/chapters/03-attention-kernels.md) | 分区归约、split-K、变长/分页、cascade attention、共享前缀 | 🧩 |
-| 7.6 [线性层与融合算子](docs/chapters/03-attention-kernels.md) | Triton vector add→reduction/Softmax→Matmul→Attention；GEMM/GEMV、RMSNorm、RoPE、SwiGLU、CUDA/CUTLASS/CuTeDSL | 🧩 |
-| 7.7 [Kernel 选择与调优](docs/chapters/03-attention-kernels.md) | Marlin、Machete、DeepGEMM、Humming、FlashInfer、b12x、autotune/JIT | 🧩 |
+| 7.1 [FlashAttention 原理](docs/chapters/part-07-attention/01-flashattention-principles/README.md) | IO-aware tiling、online softmax、SRAM 复用、精确注意力 | 🧩 |
+| 7.2 [FlashAttention 版本与接入](docs/chapters/part-07-attention/02-flashattention-versions-and-integration/README.md) | FA1/FA2/FA3/FA4、varlen、prefill/decode、设备与 dtype 条件 | 📋 |
+| 7.3 [注意力后端选择](docs/chapters/part-07-attention/03-selecting-an-attention-backend/README.md) | FlashInfer、Triton、SDPA/FlexAttention、CPU/ROCm/XPU、自动选择 | 🧩 |
+| 7.4 [MLA 与稀疏 Attention](docs/chapters/part-07-attention/04-mla-and-sparse-attention/README.md) | FlashMLA、CUTLASS MLA、FlashInfer MLA、DSA/MSA、模型专用后端 | 📋 |
+| 7.5 [Decode 与共享前缀注意力](docs/chapters/part-07-attention/05-decode-and-shared-prefix-attention/README.md) | 分区归约、split-K、变长/分页、cascade attention、共享前缀 | 🧩 |
+| 7.6 [线性层与融合算子](docs/chapters/part-07-attention/06-linear-layers-and-fused-kernels/README.md) | Triton vector add→reduction/Softmax→Matmul→Attention；GEMM/GEMV、RMSNorm、RoPE、SwiGLU、CUDA/CUTLASS/CuTeDSL | 🧩 |
+| 7.7 [Kernel 选择与调优](docs/chapters/part-07-attention/07-kernel-selection-and-tuning/README.md) | Marlin、Machete、DeepGEMM、Humming、FlashInfer、b12x、autotune/JIT | 🧩 |
 
 来源与阅读入口：[Attention 后端注册表](https://github.com/vllm-project/vllm/blob/main/vllm/v1/attention/backends/registry.py) · [Attention Backend 支持矩阵](https://docs.vllm.ai/en/stable/design/attention_backends/) · [FlashAttention 官方实现与版本](https://github.com/Dao-AILab/flash-attention) · [Linear/MoE Kernel 配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py) · [CustomOp](https://docs.vllm.ai/en/stable/design/custom_op/) · [Triton Fused Attention 教程](https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html)。
 
@@ -348,13 +350,13 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 8.1 [torch.compile 集成](docs/chapters/04-compile-profiling.md) | Dynamo/FX/Inductor 与 Triton TTIR/TTGIR/目标代码；guards、断图、动态 shape、piecewise compile | 🧩 |
-| 8.2 [CUDA Graph 执行模式](docs/chapters/04-compile-profiling.md) | NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE | 🧩 |
-| 8.3 [形状特化与编译缓存](docs/chapters/04-compile-profiling.md) | capture sizes、padding、warmup、缓存键、recompile、启动成本 | 🧩 |
-| 8.4 [计算融合 Pass](docs/chapters/04-compile-profiling.md) | Norm+Quant、Act+Quant、Attention+Quant、QK Norm+RoPE、RoPE+KV | 🧩 |
-| 8.5 通信融合与 Async TP | GEMM/collective overlap、all-reduce+RMSNorm、SP、对称内存 | 📋 |
-| 8.6 优化级别、CustomOp 与 vLLM IR | 优化预设、pass 优先级、算子 dispatch/lowering、平台覆盖 | 📋 |
-| 8.7 多模态图与编译排错 | ViT CUDA Graph、encoder compile、动态输入、回退、DBO/Spec 组合 | 📋 |
+| 8.1 [torch.compile 集成](docs/chapters/part-08-compilation/01-torch-compile-integration/README.md) | Dynamo/FX/Inductor 与 Triton TTIR/TTGIR/目标代码；guards、断图、动态 shape、piecewise compile | 🧩 |
+| 8.2 [CUDA Graph 执行模式](docs/chapters/part-08-compilation/02-cuda-graph-execution-modes/README.md) | NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE | 🧩 |
+| 8.3 [形状特化与编译缓存](docs/chapters/part-08-compilation/03-shape-specialization-and-compilation-caches/README.md) | capture sizes、padding、warmup、缓存键、recompile、启动成本 | 🧩 |
+| 8.4 [计算融合 Pass](docs/chapters/part-08-compilation/04-compute-fusion-passes/README.md) | Norm+Quant、Act+Quant、Attention+Quant、QK Norm+RoPE、RoPE+KV | 🧩 |
+| 8.5 [通信融合与 Async TP](docs/chapters/part-08-compilation/05-communication-fusion-and-async-tp/README.md) | GEMM/collective overlap、all-reduce+RMSNorm、SP、对称内存 | 📋 |
+| 8.6 [优化级别、CustomOp 与 vLLM IR](docs/chapters/part-08-compilation/06-optimization-levels-customop-and-vllm-ir/README.md) | 优化预设、pass 优先级、算子 dispatch/lowering、平台覆盖 | 📋 |
+| 8.7 [多模态图与编译排错](docs/chapters/part-08-compilation/07-multimodal-graphs-and-compilation-debugging/README.md) | ViT CUDA Graph、encoder compile、动态输入、回退、DBO/Spec 组合 | 📋 |
 
 来源与阅读入口：[torch.compile 集成](https://docs.vllm.ai/en/stable/design/torch_compile/) · [编译模式与融合 Pass](https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py) · [CUDA Graphs](https://docs.vllm.ai/en/stable/design/cuda_graphs/) · [Optimization Levels](https://docs.vllm.ai/en/stable/design/optimization_levels/) · [vLLM IR](https://docs.vllm.ai/en/stable/design/vllm_ir/) · [ViT CUDA Graphs](https://docs.vllm.ai/en/stable/design/cuda_graphs_multimodal/)。
 
@@ -365,19 +367,19 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 9.1 [低精度表示与计算路径](docs/chapters/05-quantization-operators.md) | INT4/INT8、FP8/FP4/MX 格式；scale/zero-point、舍入/饱和、粒度；存储/乘法/累加精度 | 🧩 |
-| 9.2 [量化算法](docs/chapters/05-quantization-operators.md) | 统一比较误差目标、校准、裁剪、舍入、误差补偿与等价变换；以 GPTQ/AWQ 等为案例，区分 PTQ/QAT | 🧩 |
-| 9.3 [量化策略与精度分配](docs/chapters/05-quantization-operators.md) | W/A/KV、weight-only/低精度计算、静态/动态、在线/离线、分层/分组/专家混合精度、负载感知 | 🧩 |
-| 9.4 [手写量化与数据重排算子](docs/chapters/05-quantization-operators.md) | amax/reduction、Q/DQ、per-token/per-group scales、INT4 半字节打包、符号扩展、重排与尾块 | 🧩 |
-| 9.5 [Weight-only GEMV 与 GEMM](docs/chapters/05-quantization-operators.md) | W4A16/W8A16、packed layout、分块反量化融合、scale 复用、decode 小 M 与 prefill 大 M | 🧩 |
-| 9.6 低精度 GEMM 与缩放实现 | W8A8/W4A8、INT8/FP8/FP4 条件化路径、动态激活量化、分组缩放、累加精度、zero-point 补偿、epilogue | 📋 |
-| 9.7 [融合算子与内核调优](docs/chapters/05-quantization-operators.md) | Norm/Act+Quant、GEMM epilogue、tiling、L2/共享内存复用、流水线/双缓冲、寄存器、split-K、autotune | 🧩 |
-| 9.8 KV 量化与 Attention 协同 | KV 格式/布局、per-head/per-token scales、量化写入/融合读取、低比特反量化、异常层与长上下文误差 | 📋 |
-| 9.9 MoE 专家量化与分组计算 | 按专家精度/scale、路由后的激活量化、grouped GEMM、打包布局、负载不均与通信协同 | 📋 |
-| 9.10 [量化算子接入 vLLM](docs/chapters/05-quantization-operators.md) | QuantizationConfig→get_quant_method→create_weights→load→process_weights_after_loading→apply；布局/分片/dispatch/回退 | 🧩 |
-| 9.11 [从算子收益到端到端加速](docs/chapters/05-quantization-operators.md) | microbenchmark→层→模型→服务、prefill/decode、精度/质量双重误差、TTFT/TPOT/Goodput、预处理摊销 | 🧩 |
+| 9.1 [低精度表示与计算路径](docs/chapters/part-09-quantization/01-low-precision-representations-and-compute-paths/README.md) | INT4/INT8、FP8/FP4/MX 格式；scale/zero-point、舍入/饱和、粒度；存储/乘法/累加精度 | 🧩 |
+| 9.2 [量化算法](docs/chapters/part-09-quantization/02-quantization-algorithms/README.md) | 统一比较误差目标、校准、裁剪、舍入、误差补偿与等价变换；以 GPTQ/AWQ 等为案例，区分 PTQ/QAT | 🧩 |
+| 9.3 [量化策略与精度分配](docs/chapters/part-09-quantization/03-quantization-strategies-and-precision-allocation/README.md) | W/A/KV、weight-only/低精度计算、静态/动态、在线/离线、分层/分组/专家混合精度、负载感知 | 🧩 |
+| 9.4 [手写量化与数据重排算子](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/README.md) | amax/reduction、Q/DQ、per-token/per-group scales、INT4 半字节打包、符号扩展、重排与尾块 | 🧩 |
+| 9.5 [Weight-only GEMV 与 GEMM](docs/chapters/part-09-quantization/05-weight-only-gemv-and-gemm/README.md) | W4A16/W8A16、packed layout、分块反量化融合、scale 复用、decode 小 M 与 prefill 大 M | 🧩 |
+| 9.6 [低精度 GEMM 与缩放实现](docs/chapters/part-09-quantization/06-low-precision-gemm-and-scaling/README.md) | W8A8/W4A8、INT8/FP8/FP4 条件化路径、动态激活量化、分组缩放、累加精度、zero-point 补偿、epilogue | 📋 |
+| 9.7 [融合算子与内核调优](docs/chapters/part-09-quantization/07-kernel-fusion-and-tuning/README.md) | Norm/Act+Quant、GEMM epilogue、tiling、L2/共享内存复用、流水线/双缓冲、寄存器、split-K、autotune | 🧩 |
+| 9.8 [KV 量化与 Attention 协同](docs/chapters/part-09-quantization/08-kv-quantization-and-attention-integration/README.md) | KV 格式/布局、per-head/per-token scales、量化写入/融合读取、低比特反量化、异常层与长上下文误差 | 📋 |
+| 9.9 [MoE 专家量化与分组计算](docs/chapters/part-09-quantization/09-moe-expert-quantization-and-grouped-computation/README.md) | 按专家精度/scale、路由后的激活量化、grouped GEMM、打包布局、负载不均与通信协同 | 📋 |
+| 9.10 [量化算子接入 vLLM](docs/chapters/part-09-quantization/10-integrating-quantized-kernels-into-vllm/README.md) | QuantizationConfig→get_quant_method→create_weights→load→process_weights_after_loading→apply；布局/分片/dispatch/回退 | 🧩 |
+| 9.11 [从算子收益到端到端加速](docs/chapters/part-09-quantization/11-from-kernel-gains-to-end-to-end-acceleration/README.md) | microbenchmark→层→模型→服务、prefill/decode、精度/质量双重误差、TTFT/TPOT/Goodput、预处理摊销 | 🧩 |
 
-学生先完成数学参考、打包与基础 GEMM；量化工程师可从策略/算子设计进入。贯穿实验、算子契约与验收方法见[量化篇设计](docs/quantization-design.md)。
+学生先完成数学参考、打包与基础 GEMM；量化工程师可从策略/算子设计进入。贯穿实验、算子契约与验收方法见[量化篇设计](docs/chapters/part-09-quantization/design.md)。
 
 来源与阅读入口：[量化与硬件矩阵](https://docs.vllm.ai/en/stable/features/quantization/) · [vLLM 量化方法与配置接口](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py) · [Linear/MoE Kernel 配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py) · [Triton 矩阵乘教程](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html) · [Marlin 量化内核实现](https://github.com/IST-DASLab/marlin) · [Quantized KV Cache](https://docs.vllm.ai/en/stable/features/quantization/quantized_kvcache/) · [量化方法注册表](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py) · [Online Quantization](https://docs.vllm.ai/en/stable/features/quantization/online/) · [LLM Compressor](https://docs.vllm.ai/en/stable/features/quantization/llm_compressor/)。
 
@@ -388,15 +390,15 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 10.1 [Draft、Verify 与拒绝采样](docs/chapters/07-speculation-serving.md) | 目标/草稿分布、接受率、回退、额外 token、分布保持条件 | 🧩 |
-| 10.2 N-gram 与 Suffix | ngram、ngram_gpu、prompt lookup、suffix matching、自适应深度 | 📋 |
-| 10.3 独立 Draft Model | 草稿模型、词表对齐、draft TP、显存预算、投机 token 数 | 📋 |
-| 10.4 EAGLE 与 EAGLE3 | 特征预测、draft tree/验证、hidden state extraction、模型配套 | 📋 |
-| 10.5 MTP 与模型原生多 token 预测 | MTP 模块、权重、共享状态、多模型家族、混合模型回滚 | 📋 |
-| 10.6 其他草稿与并行提案 | MLP speculator、Medusa、PARD、DFlash/DSpark、speculators、custom proposer | 📋 |
-| 10.7 动态推测与自适应验证 | Dynamic Speculative Decoding、负载感知、置信度、Adaptive Verification | 📋 |
-| 10.8 [推测的缓存与执行组合](docs/chapters/07-speculation-serving.md) | KV 分配/回滚、CUDA Graph、异步调度、LoRA/量化/多模态/CP | 🧩 |
-| 10.9 [接受率与真实收益](docs/chapters/07-speculation-serving.md) | 每请求/每位置接受率、accepted tokens、草稿成本、有效吞吐 | 🧩 |
+| 10.1 [Draft、Verify 与拒绝采样](docs/chapters/part-10-speculation/01-drafting-verification-and-rejection-sampling/README.md) | 目标/草稿分布、接受率、回退、额外 token、分布保持条件 | 🧩 |
+| 10.2 [N-gram 与 Suffix](docs/chapters/part-10-speculation/02-n-gram-and-suffix-methods/README.md) | ngram、ngram_gpu、prompt lookup、suffix matching、自适应深度 | 📋 |
+| 10.3 [独立 Draft Model](docs/chapters/part-10-speculation/03-separate-draft-models/README.md) | 草稿模型、词表对齐、draft TP、显存预算、投机 token 数 | 📋 |
+| 10.4 [EAGLE 与 EAGLE3](docs/chapters/part-10-speculation/04-eagle-and-eagle3/README.md) | 特征预测、draft tree/验证、hidden state extraction、模型配套 | 📋 |
+| 10.5 [MTP 与模型原生多 token 预测](docs/chapters/part-10-speculation/05-mtp-and-native-multi-token-prediction/README.md) | MTP 模块、权重、共享状态、多模型家族、混合模型回滚 | 📋 |
+| 10.6 [其他草稿与并行提案](docs/chapters/part-10-speculation/06-other-draft-methods-and-parallel-proposals/README.md) | MLP speculator、Medusa、PARD、DFlash/DSpark、speculators、custom proposer | 📋 |
+| 10.7 [动态推测与自适应验证](docs/chapters/part-10-speculation/07-dynamic-speculation-and-adaptive-verification/README.md) | Dynamic Speculative Decoding、负载感知、置信度、Adaptive Verification | 📋 |
+| 10.8 [推测的缓存与执行组合](docs/chapters/part-10-speculation/08-speculation-caching-and-execution-combinations/README.md) | KV 分配/回滚、CUDA Graph、异步调度、LoRA/量化/多模态/CP | 🧩 |
+| 10.9 [接受率与真实收益](docs/chapters/part-10-speculation/09-acceptance-rates-and-actual-gains/README.md) | 每请求/每位置接受率、accepted tokens、草稿成本、有效吞吐 | 🧩 |
 
 来源与阅读入口：[Speculative Decoding](https://docs.vllm.ai/en/stable/features/speculative_decoding/) · [推测方法与模型类型](https://github.com/vllm-project/vllm/blob/main/vllm/config/speculative.py) · [EAGLE](https://docs.vllm.ai/en/stable/features/speculative_decoding/eagle/) · [MTP](https://docs.vllm.ai/en/stable/features/speculative_decoding/mtp/) · [Dynamic Speculative Decoding](https://docs.vllm.ai/en/stable/features/speculative_decoding/dynamic_speculative_decoding/) · [Adaptive Verification](https://docs.vllm.ai/en/stable/features/speculative_decoding/adaptive_verification/)。
 
@@ -407,16 +409,16 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 11.1 [并行维度与通信基础](docs/chapters/06-parallel-moe-disagg.md) | TP/PP/DP/EP/CP/PCP/DCP/SP、rank/group、all-reduce/all-gather/reduce-scatter/all-to-all | 🧩 |
-| 11.2 [Tensor Parallelism](docs/chapters/06-parallel-moe-disagg.md) | TP、column/row parallel、vocab parallel、Attention heads、KV 复制 | 🧩 |
-| 11.3 [Pipeline Parallelism](docs/chapters/06-parallel-moe-disagg.md) | PP、层切分、不均匀分层、microbatch、流水线气泡 | 🧩 |
-| 11.4 [Data Parallelism](docs/chapters/06-parallel-moe-disagg.md) | DP、副本、内部/外部/混合负载均衡、dense 与 MoE 差异 | 🧩 |
-| 11.5 [Context Parallelism 概念](docs/chapters/06-parallel-moe-disagg.md) | CP 沿上下文切分、长序列、Q/KV 分布、ring/all-gather 算法 | 🧩 |
-| 11.6 [Prefill Context Parallelism](docs/chapters/06-parallel-moe-disagg.md) | PCP、prefill token 切分、rank 扩展、TP/PCP 组合、缓存布局 | 🧩 |
-| 11.7 [Decode Context Parallelism](docs/chapters/06-parallel-moe-disagg.md) | DCP、decode KV 分片、复用进程组、MLA/GQA、ag_rs/a2a、Q replicate | 🧩 |
-| 11.8 Sequence Parallelism 与 Async TP | SP 激活切分、TP 配合、融合 pass、序列并行 MoE 路径 | 📋 |
-| 11.9 [组合并行与拓扑规划](docs/chapters/06-parallel-moe-disagg.md) | TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA | 🧩 |
-| 11.10 分布式启动与排错 | mp/Ray/external launcher、节点发现、通信超时、NCCL/P2P、故障 | 📋 |
+| 11.1 [并行维度与通信基础](docs/chapters/part-11-parallelism/01-parallel-dimensions-and-communication-basics/README.md) | TP/PP/DP/EP/CP/PCP/DCP/SP、rank/group、all-reduce/all-gather/reduce-scatter/all-to-all | 🧩 |
+| 11.2 [Tensor Parallelism](docs/chapters/part-11-parallelism/02-tensor-parallelism/README.md) | TP、column/row parallel、vocab parallel、Attention heads、KV 复制 | 🧩 |
+| 11.3 [Pipeline Parallelism](docs/chapters/part-11-parallelism/03-pipeline-parallelism/README.md) | PP、层切分、不均匀分层、microbatch、流水线气泡 | 🧩 |
+| 11.4 [Data Parallelism](docs/chapters/part-11-parallelism/04-data-parallelism/README.md) | DP、副本、内部/外部/混合负载均衡、dense 与 MoE 差异 | 🧩 |
+| 11.5 [Context Parallelism 概念](docs/chapters/part-11-parallelism/05-context-parallelism-concepts/README.md) | CP 沿上下文切分、长序列、Q/KV 分布、ring/all-gather 算法 | 🧩 |
+| 11.6 [Prefill Context Parallelism](docs/chapters/part-11-parallelism/06-prefill-context-parallelism/README.md) | PCP、prefill token 切分、rank 扩展、TP/PCP 组合、缓存布局 | 🧩 |
+| 11.7 [Decode Context Parallelism](docs/chapters/part-11-parallelism/07-decode-context-parallelism/README.md) | DCP、decode KV 分片、复用进程组、MLA/GQA、ag_rs/a2a、Q replicate | 🧩 |
+| 11.8 [Sequence Parallelism 与 Async TP](docs/chapters/part-11-parallelism/08-sequence-parallelism-and-async-tp/README.md) | SP 激活切分、TP 配合、融合 pass、序列并行 MoE 路径 | 📋 |
+| 11.9 [组合并行与拓扑规划](docs/chapters/part-11-parallelism/09-combining-parallelism-and-planning-topology/README.md) | TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA | 🧩 |
+| 11.10 [分布式启动与排错](docs/chapters/part-11-parallelism/10-distributed-launch-and-debugging/README.md) | mp/Ray/external launcher、节点发现、通信超时、NCCL/P2P、故障 | 📋 |
 
 来源与阅读入口：[Parallelism and Scaling](https://docs.vllm.ai/en/stable/serving/parallelism_scaling/) · [并行配置与度数校验](https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py) · [Context Parallel Deployment](https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/) · [Data Parallel Deployment](https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/) · [Expert Parallel Deployment](https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/) · [编译模式与融合 Pass](https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py)。
 
@@ -427,12 +429,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 12.1 [MoE 计算链路](docs/chapters/06-parallel-moe-disagg.md) | Router、top-k、shared/routed experts、dispatch、专家计算、combine | 🧩 |
-| 12.2 [Expert Parallelism](docs/chapters/06-parallel-moe-disagg.md) | EP、专家切分、Attention DP/TP 与专家组、placement、冗余专家 | 🧩 |
-| 12.3 Fused MoE Kernel | Modular Kernel、prepare/finalize、量化布局、batched/mega MoE | 📋 |
-| 12.4 All-to-All 后端 | allgather/reducescatter、DeepEP、MoRI、NIXL EP、FlashInfer NVLink | 📋 |
-| 12.5 [EPLB 与弹性专家并行](docs/chapters/06-parallel-moe-disagg.md) | EPLB、重排/冗余、异步均衡、Elastic EP、扩缩容与故障恢复 | 🧩 |
-| 12.6 MoE 重叠与综合调优 | DBO、shared expert overlap、通信融合、量化、分离式部署组合 | 📋 |
+| 12.1 [MoE 计算链路](docs/chapters/part-12-moe/01-the-moe-computation-path/README.md) | Router、top-k、shared/routed experts、dispatch、专家计算、combine | 🧩 |
+| 12.2 [Expert Parallelism](docs/chapters/part-12-moe/02-expert-parallelism/README.md) | EP、专家切分、Attention DP/TP 与专家组、placement、冗余专家 | 🧩 |
+| 12.3 [Fused MoE Kernel](docs/chapters/part-12-moe/03-fused-moe-kernels/README.md) | Modular Kernel、prepare/finalize、量化布局、batched/mega MoE | 📋 |
+| 12.4 [All-to-All 后端](docs/chapters/part-12-moe/04-all-to-all-backends/README.md) | allgather/reducescatter、DeepEP、MoRI、NIXL EP、FlashInfer NVLink | 📋 |
+| 12.5 [EPLB 与弹性专家并行](docs/chapters/part-12-moe/05-eplb-and-elastic-expert-parallelism/README.md) | EPLB、重排/冗余、异步均衡、Elastic EP、扩缩容与故障恢复 | 🧩 |
+| 12.6 [MoE 重叠与综合调优](docs/chapters/part-12-moe/06-moe-overlap-and-combined-tuning/README.md) | DBO、shared expert overlap、通信融合、量化、分离式部署组合 | 📋 |
 
 来源与阅读入口：[Expert Parallel Deployment](https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/) · [并行配置与度数校验](https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py) · [Fused MoE Modular Kernel](https://docs.vllm.ai/en/stable/design/fused_moe_modular_kernel/) · [MoE Kernel Features](https://docs.vllm.ai/en/stable/design/moe_kernel_features/) · [Linear/MoE Kernel 配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py) · [Dual Batch Overlap](https://docs.vllm.ai/en/stable/design/dbo/)。
 
@@ -443,12 +445,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 13.1 [Prefill-Decode 分离](docs/chapters/06-parallel-moe-disagg.md) | PD disaggregation、阶段独立扩展、TTFT/TPOT 目标、路由 | 🧩 |
-| 13.2 [KV Connector 协议](docs/chapters/06-parallel-moe-disagg.md) | scheduler/worker 角色、异步存取、生命周期、失败回收、KV events | 🧩 |
-| 13.3 连接器与分层存储地图 | NIXL、Mooncake/Store、LMCache、MoRIIO、FlexKV、HF3FS、原生 offload | 📋 |
-| 13.4 [异构并行与传输兼容](docs/chapters/06-parallel-moe-disagg.md) | P/D 不同 TP/PCP/DCP、KV layout、block size、dtype、模型一致性 | 🧩 |
-| 13.5 Encoder 分离与缓存 | 多模态 encoder、EC transfer、embedding cache、renderer 拆分 | 📋 |
-| 13.6 [分布式服务生命周期](docs/chapters/06-parallel-moe-disagg.md) | push/pull、租约/通知、超时、重试、load failure recovery、缓存亲和 | 🧩 |
+| 13.1 [Prefill-Decode 分离](docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | PD disaggregation、阶段独立扩展、TTFT/TPOT 目标、路由 | 🧩 |
+| 13.2 [KV Connector 协议](docs/chapters/part-13-disaggregation/02-the-kv-connector-protocol/README.md) | scheduler/worker 角色、异步存取、生命周期、失败回收、KV events | 🧩 |
+| 13.3 [连接器与分层存储地图](docs/chapters/part-13-disaggregation/03-connectors-and-tiered-storage/README.md) | NIXL、Mooncake/Store、LMCache、MoRIIO、FlexKV、HF3FS、原生 offload | 📋 |
+| 13.4 [异构并行与传输兼容](docs/chapters/part-13-disaggregation/04-heterogeneous-parallelism-and-transfer-compatibility/README.md) | P/D 不同 TP/PCP/DCP、KV layout、block size、dtype、模型一致性 | 🧩 |
+| 13.5 [Encoder 分离与缓存](docs/chapters/part-13-disaggregation/05-encoder-disaggregation-and-caching/README.md) | 多模态 encoder、EC transfer、embedding cache、renderer 拆分 | 📋 |
+| 13.6 [分布式服务生命周期](docs/chapters/part-13-disaggregation/06-distributed-serving-lifecycles/README.md) | push/pull、租约/通知、超时、重试、load failure recovery、缓存亲和 | 🧩 |
 
 来源与阅读入口：[Disaggregated Prefilling](https://docs.vllm.ai/en/stable/features/disagg_prefill/) · [Disaggregated Encoder](https://docs.vllm.ai/en/stable/features/disagg_encoder/) · [KV Connector 注册表](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py) · [NIXL 兼容性矩阵](https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/) · [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/)。
 
@@ -459,13 +461,13 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 14.1 [模型注册与执行任务](docs/chapters/01-request-lifecycle.md) | generative/pooling、runner/task、原生实现/Transformers backend、encoder-decoder | 🧩 |
-| 14.2 文本生成与评分 | 生成、logprobs/prompt logprobs、score、generative scoring、beam search 版本差异 | 📋 |
-| 14.3 Pooling 全任务 | Embedding、token embedding、分类/token classification、reward、rerank/score | 📋 |
-| 14.4 多模态输入管线 | 图像/视频/音频、processor cache、输入预算、placeholder、MM embeddings | 📋 |
-| 14.5 多模态执行优化 | encoder batching/DP、ViT attention/FP8、encoder compile/graphs、EC cache | 📋 |
-| 14.6 LoRA 与多租户适配 | Multi-LoRA、混合 batch、动态装卸、CPU 缓存、resolver、默认多模态 LoRA | 📋 |
-| 14.7 Prompt Embeddings 与特殊架构 | prompt embeds、custom I/O、MLA/混合 SSM、离散扩散 dLLM canvas/denoising、Omni 扩展边界 | 📋 |
+| 14.1 [模型注册与执行任务](docs/chapters/part-14-model-types/01-model-registration-and-execution-tasks/README.md) | generative/pooling、runner/task、原生实现/Transformers backend、encoder-decoder | 🧩 |
+| 14.2 [文本生成与评分](docs/chapters/part-14-model-types/02-text-generation-and-scoring/README.md) | 生成、logprobs/prompt logprobs、score、generative scoring、beam search 版本差异 | 📋 |
+| 14.3 [Pooling 全任务](docs/chapters/part-14-model-types/03-pooling-tasks/README.md) | Embedding、token embedding、分类/token classification、reward、rerank/score | 📋 |
+| 14.4 [多模态输入管线](docs/chapters/part-14-model-types/04-the-multimodal-input-pipeline/README.md) | 图像/视频/音频、processor cache、输入预算、placeholder、MM embeddings | 📋 |
+| 14.5 [多模态执行优化](docs/chapters/part-14-model-types/05-multimodal-execution-optimization/README.md) | encoder batching/DP、ViT attention/FP8、encoder compile/graphs、EC cache | 📋 |
+| 14.6 [LoRA 与多租户适配](docs/chapters/part-14-model-types/06-lora-and-multi-tenant-adaptation/README.md) | Multi-LoRA、混合 batch、动态装卸、CPU 缓存、resolver、默认多模态 LoRA | 📋 |
+| 14.7 [Prompt Embeddings 与特殊架构](docs/chapters/part-14-model-types/07-prompt-embeddings-and-specialized-architectures/README.md) | prompt embeds、custom I/O、MLA/混合 SSM、离散扩散 dLLM canvas/denoising、Omni 扩展边界 | 📋 |
 
 来源与阅读入口：[模型支持与任务](https://docs.vllm.ai/en/stable/models/supported_models/) · [Pooling Models](https://docs.vllm.ai/en/stable/models/pooling_models/) · [Multimodal Inputs](https://docs.vllm.ai/en/stable/features/multimodal_inputs/) · [LoRA Adapters](https://docs.vllm.ai/en/stable/features/lora/) · [Prompt Embedding Inputs](https://docs.vllm.ai/en/stable/features/prompt_embeds/) · [ViT CUDA Graphs](https://docs.vllm.ai/en/stable/design/cuda_graphs_multimodal/) · [离散扩散语言模型配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/diffusion.py)。
 
@@ -476,13 +478,13 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 15.1 [离线与在线入口](docs/chapters/07-speculation-serving.md) | LLM/AsyncLLM、chat/complete/serve/run-batch、OpenAI Batch、流式 SSE | 🧩 |
-| 15.2 API 能力地图 | Completions/Chat/Responses、Embeddings/Score/Rerank、音频/实时接口、tokenize/detokenize | 📋 |
-| 15.3 Structured Outputs | JSON Schema、regex、choice、grammar、structural tag、XGrammar/Guidance | 📋 |
-| 15.4 Tool Calling | tool_choice、自动/指定/required、parallel tools、parser、chat template | 📋 |
-| 15.5 Reasoning 与 Interleaved Thinking | reasoning parser、内容分离、思考预算、工具轮次与交错推理 | 📋 |
-| 15.6 自定义采样与处理器 | Custom Logits Processors、logit bias、允许/禁止 token、custom arguments/I/O | 📋 |
-| 15.7 [服务治理与扩展](docs/chapters/07-speculation-serving.md) | 前端进程扩展、限流/背压、取消、健康检查、指标、集成框架 | 🧩 |
+| 15.1 [离线与在线入口](docs/chapters/part-15-serving/01-offline-and-online-entry-points/README.md) | LLM/AsyncLLM、chat/complete/serve/run-batch、OpenAI Batch、流式 SSE | 🧩 |
+| 15.2 [API 能力地图](docs/chapters/part-15-serving/02-api-feature-map/README.md) | Completions/Chat/Responses、Embeddings/Score/Rerank、音频/实时接口、tokenize/detokenize | 📋 |
+| 15.3 [Structured Outputs](docs/chapters/part-15-serving/03-structured-outputs/README.md) | JSON Schema、regex、choice、grammar、structural tag、XGrammar/Guidance | 📋 |
+| 15.4 [Tool Calling](docs/chapters/part-15-serving/04-tool-calling/README.md) | tool_choice、自动/指定/required、parallel tools、parser、chat template | 📋 |
+| 15.5 [Reasoning 与 Interleaved Thinking](docs/chapters/part-15-serving/05-reasoning-and-interleaved-thinking/README.md) | reasoning parser、内容分离、思考预算、工具轮次与交错推理 | 📋 |
+| 15.6 [自定义采样与处理器](docs/chapters/part-15-serving/06-custom-sampling-and-processors/README.md) | Custom Logits Processors、logit bias、允许/禁止 token、custom arguments/I/O | 📋 |
+| 15.7 [服务治理与扩展](docs/chapters/part-15-serving/07-serving-operations-and-scaling/README.md) | 前端进程扩展、限流/背压、取消、健康检查、指标、集成框架 | 🧩 |
 
 来源与阅读入口：[OpenAI-compatible Server](https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/) · [Structured Outputs](https://docs.vllm.ai/en/stable/features/structured_outputs/) · [Tool Calling](https://docs.vllm.ai/en/stable/features/tool_calling/) · [Reasoning Outputs](https://docs.vllm.ai/en/stable/features/reasoning_outputs/) · [Interleaved Thinking](https://docs.vllm.ai/en/stable/features/interleaved_thinking/) · [Custom Logits Processors](https://docs.vllm.ai/en/stable/features/custom_logitsprocs/)。
 
@@ -493,12 +495,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 16.1 [模型解析与权重加载](docs/chapters/01-request-lifecycle.md) | 本地/Hugging Face/ModelScope、revision、safetensors、sharded state、lazy loading | 🧩 |
-| 16.2 高效加载与启动 | fastsafetensors、Run:ai Streamer、Tensorizer、InstantTensor、加载并发、JIT warmup | 📋 |
-| 16.3 权重 Offload 与内存预算 | CPU weight offload、prefetch/UVA 路径、KV offload、pinned memory、图内存 | 📋 |
-| 16.4 Sleep、Wake 与 Pause/Resume | sleep levels、权重/KV 释放、wake tags、暂停恢复、缓存重置 | 📋 |
-| 16.5 权重更新与传输 | Weight Transfer、IPC/NCCL/Sharded RDT、逐层 reload、版本一致性 | 📋 |
-| 16.6 强化学习推理集成 | RLHF/async rollout、训练-推理交替、distribution replay、routed experts、TRL | 📋 |
+| 16.1 [模型解析与权重加载](docs/chapters/part-16-weight-loading/01-model-resolution-and-weight-loading/README.md) | 本地/Hugging Face/ModelScope、revision、safetensors、sharded state、lazy loading | 🧩 |
+| 16.2 [高效加载与启动](docs/chapters/part-16-weight-loading/02-efficient-loading-and-startup/README.md) | fastsafetensors、Run:ai Streamer、Tensorizer、InstantTensor、加载并发、JIT warmup | 📋 |
+| 16.3 [权重 Offload 与内存预算](docs/chapters/part-16-weight-loading/03-weight-offloading-and-memory-budgets/README.md) | CPU weight offload、prefetch/UVA 路径、KV offload、pinned memory、图内存 | 📋 |
+| 16.4 [Sleep、Wake 与 Pause/Resume](docs/chapters/part-16-weight-loading/04-sleep-wake-and-pause-resume/README.md) | sleep levels、权重/KV 释放、wake tags、暂停恢复、缓存重置 | 📋 |
+| 16.5 [权重更新与传输](docs/chapters/part-16-weight-loading/05-weight-updates-and-transfer/README.md) | Weight Transfer、IPC/NCCL/Sharded RDT、逐层 reload、版本一致性 | 📋 |
+| 16.6 [强化学习推理集成](docs/chapters/part-16-weight-loading/06-reinforcement-learning-inference-integration/README.md) | RLHF/async rollout、训练-推理交替、distribution replay、routed experts、TRL | 📋 |
 
 来源与阅读入口：[Model Resolution](https://docs.vllm.ai/en/stable/configuration/model_resolution/) · [Conserving Memory](https://docs.vllm.ai/en/stable/configuration/conserving_memory/) · [Sleep Mode](https://docs.vllm.ai/en/stable/features/sleep_mode/) · [Weight Transfer](https://docs.vllm.ai/en/stable/training/weight_transfer/) · [Async Reinforcement Learning](https://docs.vllm.ai/en/stable/training/async_rl/) · [Layerwise Reloading](https://docs.vllm.ai/en/stable/training/layerwise/)。
 
@@ -509,12 +511,12 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 17.1 [基准测试工具与负载](docs/chapters/04-compile-profiling.md) | bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据 | 🧩 |
-| 17.2 [延迟目标与参数搜索](docs/chapters/04-compile-profiling.md) | SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存 | 🧩 |
-| 17.3 [Profiling 全链路](docs/chapters/04-compile-profiling.md) | PyTorch Profiler、Nsight/厂商工具、CPU/GPU timeline；语义/shape/dtype 对齐、次数与单次耗时、关键路径 | 🧩 |
-| 17.4 观测与请求级指标 | Prometheus/Grafana、OpenTelemetry、KV/调度/Spec/MoE 指标、per-request metrics | 📋 |
-| 17.5 质量、复现与 Batch Invariance | 数值容差、模型质量、长上下文、seed、批次不变性、确定性代价 | 📋 |
-| 17.6 [系统消融与综合项目](docs/chapters/04-compile-profiling.md) | APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划 | 🧩 |
+| 17.1 [基准测试工具与负载](docs/chapters/part-17-profiling/01-benchmark-tools-and-workloads/README.md) | bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据 | 🧩 |
+| 17.2 [延迟目标与参数搜索](docs/chapters/part-17-profiling/02-latency-targets-and-parameter-searches/README.md) | SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存 | 🧩 |
+| 17.3 [Profiling 全链路](docs/chapters/part-17-profiling/03-profiling-across-the-stack/README.md) | PyTorch Profiler、Nsight/厂商工具、CPU/GPU timeline；语义/shape/dtype 对齐、次数与单次耗时、关键路径 | 🧩 |
+| 17.4 [观测与请求级指标](docs/chapters/part-17-profiling/04-observability-and-per-request-metrics/README.md) | Prometheus/Grafana、OpenTelemetry、KV/调度/Spec/MoE 指标、per-request metrics | 📋 |
+| 17.5 [质量、复现与 Batch Invariance](docs/chapters/part-17-profiling/05-quality-reproducibility-and-batch-invariance/README.md) | 数值容差、模型质量、长上下文、seed、批次不变性、确定性代价 | 📋 |
+| 17.6 [系统消融与综合项目](docs/chapters/part-17-profiling/06-system-ablations-and-capstone-projects/README.md) | APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划 | 🧩 |
 
 来源与阅读入口：[Benchmark CLI](https://docs.vllm.ai/en/stable/benchmarking/cli/) · [Parameter Sweeps](https://docs.vllm.ai/en/stable/benchmarking/sweeps/) · [Profiling vLLM](https://docs.vllm.ai/en/stable/contributing/profiling/) · [Production Metrics](https://docs.vllm.ai/en/stable/usage/metrics/) · [Per-Request Metrics](https://docs.vllm.ai/en/stable/features/per_request_metrics/) · [Batch Invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/)。
 
@@ -525,11 +527,11 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 18.1 平台与插件机制 | out-of-tree platform、模型/算子/量化/LoRA/I/O 插件、能力检测 | 📋 |
-| 18.2 C500 适配专题 | MACA/mcoplib、Attention/量化/图执行能力、配置迁移、数值和性能排查 | 📋 |
-| 18.3 其他硬件与框架对照 | ROCm/XPU/CPU/TPU/其他插件，SGLang、TensorRT-LLM、llama.cpp、vLLM-Omni 边界 | 📋 |
-| 18.4 部署与周边生态 | Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成 | 📋 |
-| 18.5 从问题到贡献与版本维护 | 单元/集成/性能检查、最小复现、PR、废弃迁移、功能台账更新 | 📋 |
+| 18.1 [平台与插件机制](docs/chapters/part-18-deployment/01-platforms-and-plugins/README.md) | out-of-tree platform、模型/算子/量化/LoRA/I/O 插件、能力检测 | 📋 |
+| 18.2 [C500 适配专题](docs/chapters/part-18-deployment/02-adapting-to-c500/README.md) | MACA/mcoplib、Attention/量化/图执行能力、配置迁移、数值和性能排查 | 📋 |
+| 18.3 [其他硬件与框架对照](docs/chapters/part-18-deployment/03-other-hardware-and-framework-comparisons/README.md) | ROCm/XPU/CPU/TPU/其他插件，SGLang、TensorRT-LLM、llama.cpp、vLLM-Omni 边界 | 📋 |
+| 18.4 [部署与周边生态](docs/chapters/part-18-deployment/04-deployment-and-the-surrounding-ecosystem/README.md) | Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成 | 📋 |
+| 18.5 [从问题到贡献与版本维护](docs/chapters/part-18-deployment/05-from-an-issue-to-a-contribution-and-version-maintenance/README.md) | 单元/集成/性能检查、最小复现、PR、废弃迁移、功能台账更新 | 📋 |
 
 来源与阅读入口：[Plugin System](https://docs.vllm.ai/en/stable/design/plugin_system/) · [CustomOp](https://docs.vllm.ai/en/stable/design/custom_op/) · [vLLM-MetaX](https://github.com/MetaX-MACA/vLLM-metax) · [MetaX 模型列表](https://vllm-metax.readthedocs.io/en/stable/models/supported_models.html) · [Kubernetes 部署](https://docs.vllm.ai/en/stable/deployment/k8s/) · [vLLM Features 与兼容性入口](https://docs.vllm.ai/en/stable/features/) · [SGLang Hyperparameter Tuning](https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning)。
 
@@ -539,7 +541,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 ## 特性与优化地图
 
-课程按 **2026-09-15 查阅的 vLLM 官方功能文档、设计说明与源码注册表**扩展。详细的术语、设备条件、组合实验和注册项见[完整特性地图](docs/vllm-feature-map.md)；[14 组、233 个注册/配置命名条目](docs/feature-inventory.json)用于后续检查遗漏，其中包含别名、模型映射与占位项。
+课程按 **2026-09-15 查阅的 vLLM 官方功能文档、设计说明与源码注册表**扩展。详细的术语、设备条件、组合实验和注册项见[完整特性地图](docs/references/feature-map.md)；[14 组、233 个注册/配置命名条目](metadata/upstream/features.json)用于后续检查遗漏，其中包含别名、模型映射与占位项。
 
 ### 重点覆盖
 
@@ -570,7 +572,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 | DCP | decode 上下文 KV | 复用进程组，不额外乘一次 GPU 数 |
 | SP | 部分中间激活的序列维度 | 配合 TP/编译及 MoE 路径，不等同于 PCP/DCP |
 
-**Chunked Prefill 也曾被缩写为 CP，但它属于调度策略，单卡即可学习。** PCP/DCP 的合法度数、Q/KV 分布与模型限制见[并行策略详解](docs/vllm-feature-map.md)和[上游并行配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py)。
+**Chunked Prefill 也曾被缩写为 CP，但它属于调度策略，单卡即可学习。** PCP/DCP 的合法度数、Q/KV 分布与模型限制见[并行策略详解](docs/references/feature-map.md)和[上游并行配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py)。
 
 **TBO 已纳入对照专题，vLLM 侧使用官方名称 DBO（Dual Batch Overlap）。** 课程分别讲 DBO、异步调度、Async TP，以及 SGLang 的 TBO/SBO，避免混用参数。[vLLM DBO 设计](https://docs.vllm.ai/en/stable/design/dbo/)
 
@@ -610,7 +612,7 @@ python -m zero2vllm profile configs/maca-c500.toml
 | NVIDIA CUDA | 上游 vLLM 与对应 CUDA/PyTorch 环境 | 单卡 A100 | 配置模板已有，待实测 |
 | 沐曦 MACA | vLLM + vLLM-MetaX + 配套 MACA/算子库 | 单卡 C500 | 配置模板已有，待实测 |
 
-模型、输入、dtype、采样参数和负载方法尽量统一；驱动、镜像、注意力后端与实际版本分别记录。先在每个平台建立正确性和性能基线，再分析两套系统的差异。[环境说明](docs/backends.md) · [实验记录规范](docs/experiments.md)
+模型、输入、dtype、采样参数和负载方法尽量统一；驱动、镜像、注意力后端与实际版本分别记录。先在每个平台建立正确性和性能基线，再分析两套系统的差异。[环境说明](docs/platforms/README.md) · [实验记录规范](docs/engineering/experiments.md)
 
 教学引擎先完成可检查的参考实现，再逐步接入优化算子。当前的 CPU 数学实验与逻辑块模拟，是后续 PyTorch 和 GPU 实现的起点。
 
@@ -620,60 +622,59 @@ python -m zero2vllm profile configs/maca-c500.toml
 
 | 已有成果 | 验证或阅读入口 |
 | --- | --- |
-| 工程设计、课程分层和迭代验收标准 | [工程设计](docs/engineering.md)、[开发路线](docs/roadmap.md) |
-| 19 篇、126 章大纲与特性/优化索引 | [详细目录](docs/curriculum.md)、[特性地图](docs/vllm-feature-map.md)、[一致性检查](reports/curriculum-checks.json) |
-| Part 1 全六节：正文、CPU 代码、参数命令、练习答案与统一运行 | [整篇学习入口](docs/chapters/part1-guide.md)、[运行器](scripts/run_part1.py)、[验证记录](reports/validation.md) |
-| 因果 Attention、KV Cache 与贪心生成 | [参考代码](zero2vllm/reference/attention.py)、[引导实验](docs/labs/01-kv-cache.md) |
+| 工程设计、课程分层和迭代验收标准 | [工程设计](docs/engineering/architecture.md)、[开发路线](docs/engineering/roadmap.md) |
+| 19 篇、126 章大纲与特性/优化索引 | [详细目录](docs/chapters/README.md)、[特性地图](docs/references/feature-map.md)、[一致性检查](reports/history/lesson-2.1-delivery/curriculum-checks.json) |
+| Part 1 全六节：正文、CPU 代码、参数命令、练习答案与统一运行 | [整篇学习入口](docs/chapters/part-01-inference/README.md)、[运行器](scripts/experiments/part01.py)、[验证记录](reports/README.md) |
+| 2.1 最小 PyTorch 模型：逐层对齐、7 个案例、6 组练习 | [正文与实验](docs/chapters/part-02-engine/01-pytorch-model/README.md)、[运行记录](docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json) |
+| 因果 Attention、KV Cache 与贪心生成 | [参考代码](zero2vllm/reference/attention.py)、[引导实验](docs/chapters/part-01-inference/03-kv-cache/lab.md) |
 | 独立的逻辑块分配与回收模拟 | [块管理代码](zero2vllm/reference/blocks.py)；尚未接入 Attention |
-| 环境采集、A100/C500 配置检查 | [环境工具与配置说明](docs/backends.md) |
-| CPU 数学参考与本地检查结果 | [验证记录](reports/validation.md)、[KV 实验](reports/cpu-kv-cache.json)、[INT4 实验](reports/cpu-int4-linear.json) |
-| 38 份资料到课程的映射、7 篇专题导读 | [知识库入口](docs/knowledge-base.md)、[本轮更新报告](reports/knowledge-update.md) |
-| 三条学习路线、章节分工与目录同步检查 | [学习路线](docs/learning-paths.md)、[维护方法](CONTRIBUTING.md)、[框架审查记录](reports/framework-review.md) |
+| 环境采集、A100/C500 配置检查 | [环境工具与配置说明](docs/platforms/README.md) |
+| CPU 数学参考与本地检查结果 | [验证记录](reports/README.md)、[KV 实验](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)、[INT4 实验](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json) |
+| 38 份资料到课程的映射、7 篇专题导读 | [知识库入口](docs/references/knowledge-base.md)、[本轮更新报告](reports/history/course-design/knowledge-update.md) |
+| 三条学习路线、章节分工与目录同步检查 | [学习路线](docs/chapters/learning-paths.md)、[维护方法](CONTRIBUTING.md)、[框架审查记录](reports/history/course-design/framework-review.md) |
 
-**接下来：**试学 Part 1 并完成综合练习，再进入 Part 2 的 PyTorch 教学引擎。A100/C500 环境与小模型基线可同时准备；量化 GPU 算子和 vLLM 接入按[开发路线](docs/roadmap.md)推进。每个阶段以代码、正文和验证记录共同验收。
+**接下来：**Review 并试学 2.1，再逐节推进 2.2 的真实模型权重加载。A100/C500 环境与小模型基线可同时准备；量化 GPU 算子和 vLLM 接入按[开发路线](docs/engineering/roadmap.md)推进。每个阶段以代码、正文和验证记录共同验收。
 
 ## 项目结构
 
 ```text
 zero2vllm/
-├── docs/                    # 课程目录、功能台账、引导实验、设计与平台说明
-│   ├── curriculum-catalog.json  # 章节、练习、设备和来源的维护入口
-│   ├── feature-inventory.json   # 本次核对的后端与配置枚举
-│   ├── knowledge-sources.json   # 本地资料来源、哈希与章节映射
-│   ├── knowledge-base.md        # 7 篇导读与资料使用说明
-│   ├── chapters/               # Part 1 六节正文、整篇导航与各专题导读
-│   ├── learning-paths.md        # 三条学习路线与交叉章节分工
-│   ├── vllm-feature-map.md      # 功能地图、并行术语和组合约束
-│   ├── labs/                # 已编写的实验教程
-│   └── templates/           # 章节与实验记录模板
-├── zero2vllm/
-│   ├── reference/           # CPU 数学参考与逻辑块模拟
-│   ├── profiles.py          # 双后端配置检查
-│   ├── environment.py       # 环境信息采集
-│   └── cli.py               # Part 1 六节实验 / demo / quant-demo / doctor / profile
-├── vllm/                    # 本地参考知识库，可选，默认不提交
-├── configs/                 # A100、C500 环境配置模板
-├── scripts/                 # 环境采集、目录生成与本地文档检查
-├── examples/part1/           # 明确标记为模拟的请求时间线
-├── tests/                   # 数学正确性、缓存行为与配置检查
-├── reports/                 # 实际结果与验证记录
-├── .github/                 # CPU 自动检查、Issue 表单与 PR 模板
-├── CONTRIBUTING.md          # 贡献流程与目录维护
-├── CHANGELOG.md             # 更新记录
-├── LICENSE                  # CC BY-NC-SA 4.0 许可正文
-├── .editorconfig            # 文本格式约定
-├── .gitattributes           # Git 换行约定
-├── .gitignore               # 排除本地配置、模型权重和运行缓存
-└── pyproject.toml
+├── docs/
+│   ├── chapters/                 19 篇、126 节
+│   │   └── part-02-engine/
+│   │       └── 01-pytorch-model/
+│   │           ├── README.md     正文
+│   │           ├── lab.md        实验命令
+│   │           ├── exercises.md  练习答案
+│   │           ├── examples/     本节示例
+│   │           └── results/      已验证结果
+│   ├── platforms/                平台说明
+│   ├── engineering/              架构与实验规范
+│   ├── references/               参考资料入口
+│   ├── maintenance/              维护说明和写作模板
+│   └── assets/                   共享图片
+├── metadata/
+│   ├── course/parts/             按篇拆分的中文课程数据
+│   ├── translations/en/parts/    对应英文大纲
+│   ├── upstream/                 功能清单
+│   └── knowledge/                来源台账
+├── zero2vllm/                    共享 Python 实现
+├── tests/{reference,modeling,integration,maintenance}/
+├── scripts/{docs,experiments,environment}/
+├── configs/{platforms,templates}/
+├── reports/{quality,platforms,history}/
+└── .local/{runs,checks,archive}/  本地区，不上传
 ```
 
-代码沿单一源码树演进，后续通过阶段标签对应课程进度。具体模块职责见[工程设计](docs/engineering.md)。
+完整目录约定和后续填充方法见[目录管理](docs/maintenance/repository-layout.md)。
+
+代码沿单一源码树演进，后续通过阶段标签对应课程进度。具体模块职责见[工程设计](docs/engineering/architecture.md)。
 
 ## 常见问题
 
 **没有 GPU，能学到哪一步？**
 
-现在即可完成 CPU KV Cache、INT4 打包和 Linear 实验，阅读 7 篇导读，修改逻辑块模拟，并完成调度、切分、通信预算的手算。GPU 内核与实际服务性能需要对应设备验证。
+现在即可完成 Part 1、2.1 PyTorch、CPU KV Cache、INT4 打包和 Linear 实验，阅读 7 篇导读，修改逻辑块模拟，并完成调度、切分、通信预算的手算。GPU 内核与实际服务性能需要对应设备验证。
 
 **需要先掌握 CUDA，或同时拥有 A100 和 C500 吗？**
 
@@ -681,7 +682,7 @@ zero2vllm/
 
 **“手写 mini-vLLM”与当前代码是什么关系？**
 
-它是课程的阶段目标。目前已完成数学参考和部分缓存逻辑，完整的 PyTorch 模型、调度器和服务仍按大纲推进。
+它是课程的阶段目标。目前已完成数学参考和部分缓存逻辑，2.1 已交付最小 PyTorch Decoder；真实权重、缓存接入、调度器和服务继续逐节推进。
 
 **多卡专题需要我现在就有多张卡吗？**
 
@@ -706,13 +707,13 @@ zero2vllm/
 
 章节采用统一的“基础内容 + 动手实验 + 工程进阶”结构。提交内容应注明运行条件和真实状态；代码改动附相关检查，性能结论附原始数据。
 
-[贡献说明](CONTRIBUTING.md) · [章节模板](docs/templates/chapter.md) · [实验记录规范](docs/experiments.md) · [维护者上传说明](docs/github-publishing.md)
+[贡献说明](CONTRIBUTING.md) · [章节模板](docs/maintenance/templates/lesson.md) · [实验记录规范](docs/engineering/experiments.md) · [维护者上传说明](docs/maintenance/publishing.md)
 
 ## 参考与致谢
 
 课程组织方式受到 [Datawhale zero-to-sglang](https://github.com/datawhalechina/zero-to-sglang) 的启发：让基础理解、逐步实现和真实源码阅读形成连续的学习过程。感谢 vLLM、SGLang、nano-vllm、mini-sglang、Transformers、llama.cpp、TensorRT-LLM 与 MetaX 社区提供的公开源码和技术资料。
 
-本项目的设计与当前代码独立编写。各参考项目的角色与来源见上方阅读地图及[参考资料](docs/references.md)。
+本项目的设计与当前代码独立编写。各参考项目的角色与来源见上方阅读地图及[参考资料](docs/references/README.md)。
 
 ---
 

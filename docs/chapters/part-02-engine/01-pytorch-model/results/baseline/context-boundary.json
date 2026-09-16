@@ -1,0 +1,423 @@
+{
+  "experiment": "part2-01-pytorch-decoder",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cpu",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "dtype": "float64"
+  },
+  "config": {
+    "vocab_size": 16,
+    "width": 8,
+    "heads": 2,
+    "hidden": 16,
+    "layers": 2,
+    "max_context": 32,
+    "eps": 1e-06,
+    "rope_base": 10000.0
+  },
+  "seed": 7,
+  "prompt": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "max_new_tokens": 1,
+  "weights_sha256": "c83a5db7c3cf931ce372f9dfcc915783276f268ddbbc05c73b5954c90466da96",
+  "parameter_count": 1576,
+  "tolerance": {
+    "atol": 1e-12,
+    "rtol": 1e-10
+  },
+  "comparisons": [
+    {
+      "stage": "embedding",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.norm1",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.q",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.k",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.v",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.q_rope",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.k_rope",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 3.3306690738754696e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.context",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.attention_residual",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 1.1102230246251565e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.norm2",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.gate",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 4.718447854656915e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.up",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.swiglu",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.down",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 1.6653345369377348e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.output",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 2.220446049250313e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.norm1",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 1.096345236817342e-15,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.q",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.k",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.v",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 4.579669976578771e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.q_rope",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.k_rope",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 8.881784197001252e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.context",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 4.440892098500626e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.attention_residual",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 3.885780586188048e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.norm2",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 9.992007221626409e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.gate",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.up",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 6.661338147750939e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.swiglu",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 1.942890293094024e-16,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.down",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 9.020562075079397e-17,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.output",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 3.3306690738754696e-16,
+      "passed": true
+    },
+    {
+      "stage": "final_norm",
+      "shape": [
+        1,
+        32,
+        8
+      ],
+      "max_abs_error": 1.5543122344752192e-15,
+      "passed": true
+    },
+    {
+      "stage": "logits",
+      "shape": [
+        1,
+        32,
+        16
+      ],
+      "max_abs_error": 6.38378239159465e-16,
+      "passed": true
+    }
+  ],
+  "reference_last_logits": [
+    0.2411604669529236,
+    -0.5915016924726108,
+    0.755594381831251,
+    0.2681886281706007,
+    0.5096778266395633,
+    0.9844901151145158,
+    -0.5282993400492502,
+    -0.11604292092195057,
+    0.05445939041558498,
+    0.13082910452846672,
+    -0.7637021075342106,
+    -0.21697350751960137,
+    0.2789802331893802,
+    0.1676666542003392,
+    -0.256236179327609,
+    -0.08207044636197766
+  ],
+  "torch_last_logits": [
+    0.24116046695292392,
+    -0.5915016924726111,
+    0.7555943818312509,
+    0.2681886281706005,
+    0.5096778266395634,
+    0.9844901151145159,
+    -0.5282993400492504,
+    -0.11604292092195068,
+    0.05445939041558501,
+    0.13082910452846683,
+    -0.7637021075342106,
+    -0.2169735075196013,
+    0.2789802331893802,
+    0.16766665420033963,
+    -0.25623617932760906,
+    -0.08207044636197783
+  ],
+  "reference_generated_ids": [
+    5
+  ],
+  "torch_generated_ids": [
+    5
+  ],
+  "verification": {
+    "passed": true,
+    "all_stages_close": true,
+    "greedy_ids_equal": true
+  },
+  "scope": "Untrained CPU dense decoder; full-prefix recomputation; no padding/KV cache/checkpoint/GPU performance validation.",
+  "created_at_utc": "2026-09-16T03:23:14.636032+00:00"
+}

@@ -1,0 +1,109 @@
+{
+  "number": 10,
+  "title": "Speculative Decoding 推测解码",
+  "prerequisites": "Part 1、3、5、6",
+  "sources": [
+    "spec",
+    "spec_config",
+    "eagle",
+    "mtp",
+    "spec_dynamic",
+    "spec_adaptive"
+  ],
+  "chapters": [
+    {
+      "id": "10.1",
+      "title": "Draft、Verify 与拒绝采样",
+      "topics": "目标/草稿分布、接受率、回退、额外 token、分布保持条件",
+      "exercise": "用小词表验证拒绝采样分布与边界",
+      "hardware": "CPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-10-speculation/01-drafting-verification-and-rejection-sampling/README.md",
+      "guide": "docs/chapters/part-10-speculation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.2",
+      "title": "N-gram 与 Suffix",
+      "topics": "ngram、ngram_gpu、prompt lookup、suffix matching、自适应深度",
+      "exercise": "比较重复文本和开放生成的命中率",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/02-n-gram-and-suffix-methods/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.3",
+      "title": "独立 Draft Model",
+      "topics": "草稿模型、词表对齐、draft TP、显存预算、投机 token 数",
+      "exercise": "扫描草稿长度并记录接受率与端到端收益",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/03-separate-draft-models/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.4",
+      "title": "EAGLE 与 EAGLE3",
+      "topics": "特征预测、draft tree/验证、hidden state extraction、模型配套",
+      "exercise": "画出特征/草稿/验证调用关系并核对 checkpoint",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/04-eagle-and-eagle3/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.5",
+      "title": "MTP 与模型原生多 token 预测",
+      "topics": "MTP 模块、权重、共享状态、多模型家族、混合模型回滚",
+      "exercise": "验证预测模块适配并观察逐位置接受率",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/05-mtp-and-native-multi-token-prediction/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.6",
+      "title": "其他草稿与并行提案",
+      "topics": "MLP speculator、Medusa、PARD、DFlash/DSpark、speculators、custom proposer",
+      "exercise": "区分文档方案、注册项与所选 runner 的可运行实现",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/06-other-draft-methods-and-parallel-proposals/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.7",
+      "title": "动态推测与自适应验证",
+      "topics": "Dynamic Speculative Decoding、负载感知、置信度、Adaptive Verification",
+      "exercise": "改变 QPS 并检查草稿长度、验证量与尾延迟",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-10-speculation/07-dynamic-speculation-and-adaptive-verification/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.8",
+      "title": "推测的缓存与执行组合",
+      "topics": "KV 分配/回滚、CUDA Graph、异步调度、LoRA/量化/多模态/CP",
+      "exercise": "为支持的组合设计错误恢复和正确性检查",
+      "hardware": "GPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-10-speculation/08-speculation-caching-and-execution-combinations/README.md",
+      "guide": "docs/chapters/part-10-speculation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "10.9",
+      "title": "接受率与真实收益",
+      "topics": "每请求/每位置接受率、accepted tokens、草稿成本、有效吞吐",
+      "exercise": "解释高接受率但没有加速的场景并交付消融报告",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-10-speculation/09-acceptance-rates-and-actual-gains/README.md",
+      "guide": "docs/chapters/part-10-speculation/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-10-speculation"
+}

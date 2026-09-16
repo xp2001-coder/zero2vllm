@@ -1,0 +1,32 @@
+{
+  "number": 6,
+  "part": {
+    "title": "Scheduling, Batching, and Overlapped Execution"
+  },
+  "chapters": {
+    "6.1": {
+      "title": "Continuous batching and scheduling policies",
+      "topics": "FCFS, priority, waiting/running queues, fairness, preemption, and starvation"
+    },
+    "6.2": {
+      "title": "Chunked Prefill",
+      "topics": "Chunked prefill, mixed prefill/decode, long-request thresholds, and partial-prefill budgets"
+    },
+    "6.3": {
+      "title": "Token and GPU memory budgets",
+      "topics": "max_num_seqs, max_num_batched_tokens, version-specific scheduled-token limits, max_model_len, and KV/encoder/speculation budgets"
+    },
+    "6.4": {
+      "title": "Async scheduling and output processing",
+      "topics": "CPU/GPU overlap, input preparation, sampling feedback, async output, and cancellation boundaries"
+    },
+    "6.5": {
+      "title": "Comparing DBO and TBO",
+      "topics": "vLLM Dual Batch Overlap, ubatches, compute/communication overlap; comparison with SGLang TBO/SBO"
+    },
+    "6.6": {
+      "title": "Scheduling combinations and evolution",
+      "topics": "Async scheduling × speculative decoding × graphs × PP/LoRA; historical multi-step/best-of behavior"
+    }
+  }
+}

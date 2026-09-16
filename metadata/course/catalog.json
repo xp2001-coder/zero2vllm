@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "reviewed_on": "2026-09-15",
+  "scope": "本次查阅的 vLLM 官方功能、设计、服务、模型、配置文档及 main 注册表；动态来源，不是发布版本兼容承诺",
+  "source_branches": [
+    "docs stable",
+    "GitHub main",
+    "docs latest"
+  ],
+  "observed_upstream_head": "00972dfd72988942138a7a6089eaee08580210b8",
+  "revision_note": "HEAD 为前轮盘点时 API 返回值，供定位；未逐文件确认网页缓存与该 SHA 一致。本轮导读另查 latest/main，正式源码实验与实机环境仍须固定并验证 tag/commit。",
+  "gpu_validation": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "sources": {
+    "quickstart": {
+      "title": "vLLM Quickstart",
+      "url": "https://docs.vllm.ai/en/stable/getting_started/quickstart/"
+    },
+    "gpu": {
+      "title": "GPU 安装与设备条件",
+      "url": "https://docs.vllm.ai/en/stable/getting_started/installation/gpu/"
+    },
+    "features": {
+      "title": "vLLM Features 与兼容性入口",
+      "url": "https://docs.vllm.ai/en/stable/features/"
+    },
+    "models": {
+      "title": "模型支持与任务",
+      "url": "https://docs.vllm.ai/en/stable/models/supported_models/"
+    },
+    "generation": {
+      "title": "Generative Models",
+      "url": "https://docs.vllm.ai/en/stable/models/generative_models/"
+    },
+    "pooling": {
+      "title": "Pooling Models",
+      "url": "https://docs.vllm.ai/en/stable/models/pooling_models/"
+    },
+    "architecture": {
+      "title": "架构设计",
+      "url": "https://docs.vllm.ai/en/stable/design/arch_overview/"
+    },
+    "runner": {
+      "title": "Model Runner V2",
+      "url": "https://docs.vllm.ai/en/stable/design/model_runner_v2/"
+    },
+    "hf": {
+      "title": "Hugging Face 集成",
+      "url": "https://docs.vllm.ai/en/stable/design/huggingface_integration/"
+    },
+    "serve": {
+      "title": "OpenAI-compatible Server",
+      "url": "https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/"
+    },
+    "apc": {
+      "title": "Automatic Prefix Caching",
+      "url": "https://docs.vllm.ai/en/stable/features/automatic_prefix_caching/"
+    },
+    "prefix_design": {
+      "title": "Prefix Caching 设计",
+      "url": "https://docs.vllm.ai/en/stable/design/prefix_caching/"
+    },
+    "hybrid": {
+      "title": "Hybrid KV Cache Manager",
+      "url": "https://docs.vllm.ai/en/stable/design/hybrid_kv_cache_manager/"
+    },
+    "kv_offload": {
+      "title": "KV Offloading",
+      "url": "https://docs.vllm.ai/en/stable/features/kv_offloading_usage/"
+    },
+    "context": {
+      "title": "Context Extension",
+      "url": "https://docs.vllm.ai/en/stable/features/context_extension/"
+    },
+    "index": {
+      "title": "IndexCache",
+      "url": "https://docs.vllm.ai/en/stable/features/index_cache/"
+    },
+    "optimization": {
+      "title": "Optimization and Tuning",
+      "url": "https://docs.vllm.ai/en/stable/configuration/optimization/"
+    },
+    "dbo": {
+      "title": "Dual Batch Overlap",
+      "url": "https://docs.vllm.ai/en/stable/design/dbo/"
+    },
+    "attention_support": {
+      "title": "Attention Backend 支持矩阵",
+      "url": "https://docs.vllm.ai/en/stable/design/attention_backends/"
+    },
+    "customop": {
+      "title": "CustomOp",
+      "url": "https://docs.vllm.ai/en/stable/design/custom_op/"
+    },
+    "compile": {
+      "title": "torch.compile 集成",
+      "url": "https://docs.vllm.ai/en/stable/design/torch_compile/"
+    },
+    "graphs": {
+      "title": "CUDA Graphs",
+      "url": "https://docs.vllm.ai/en/stable/design/cuda_graphs/"
+    },
+    "optimization_levels": {
+      "title": "Optimization Levels",
+      "url": "https://docs.vllm.ai/en/stable/design/optimization_levels/"
+    },
+    "ir": {
+      "title": "vLLM IR",
+      "url": "https://docs.vllm.ai/en/stable/design/vllm_ir/"
+    },
+    "vit_graphs": {
+      "title": "ViT CUDA Graphs",
+      "url": "https://docs.vllm.ai/en/stable/design/cuda_graphs_multimodal/"
+    },
+    "quant": {
+      "title": "量化与硬件矩阵",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/"
+    },
+    "online_quant": {
+      "title": "Online Quantization",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/online/"
+    },
+    "compressor": {
+      "title": "LLM Compressor",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/llm_compressor/"
+    },
+    "kv_quant": {
+      "title": "Quantized KV Cache",
+      "url": "https://docs.vllm.ai/en/stable/features/quantization/quantized_kvcache/"
+    },
+    "spec": {
+      "title": "Speculative Decoding",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/"
+    },
+    "eagle": {
+      "title": "EAGLE",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/eagle/"
+    },
+    "mtp": {
+      "title": "MTP",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/mtp/"
+    },
+    "spec_dynamic": {
+      "title": "Dynamic Speculative Decoding",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/dynamic_speculative_decoding/"
+    },
+    "spec_adaptive": {
+      "title": "Adaptive Verification",
+      "url": "https://docs.vllm.ai/en/stable/features/speculative_decoding/adaptive_verification/"
+    },
+    "parallel": {
+      "title": "Parallelism and Scaling",
+      "url": "https://docs.vllm.ai/en/stable/serving/parallelism_scaling/"
+    },
+    "cp": {
+      "title": "Context Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/"
+    },
+    "dp": {
+      "title": "Data Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/"
+    },
+    "ep": {
+      "title": "Expert Parallel Deployment",
+      "url": "https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/"
+    },
+    "moe_design": {
+      "title": "Fused MoE Modular Kernel",
+      "url": "https://docs.vllm.ai/en/stable/design/fused_moe_modular_kernel/"
+    },
+    "moe_features": {
+      "title": "MoE Kernel Features",
+      "url": "https://docs.vllm.ai/en/stable/design/moe_kernel_features/"
+    },
+    "disagg": {
+      "title": "Disaggregated Prefilling",
+      "url": "https://docs.vllm.ai/en/stable/features/disagg_prefill/"
+    },
+    "encoder_disagg": {
+      "title": "Disaggregated Encoder",
+      "url": "https://docs.vllm.ai/en/stable/features/disagg_encoder/"
+    },
+    "nixl": {
+      "title": "NIXL 兼容性矩阵",
+      "url": "https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/"
+    },
+    "multimodal": {
+      "title": "Multimodal Inputs",
+      "url": "https://docs.vllm.ai/en/stable/features/multimodal_inputs/"
+    },
+    "lora": {
+      "title": "LoRA Adapters",
+      "url": "https://docs.vllm.ai/en/stable/features/lora/"
+    },
+    "prompt_embed": {
+      "title": "Prompt Embedding Inputs",
+      "url": "https://docs.vllm.ai/en/stable/features/prompt_embeds/"
+    },
+    "structured": {
+      "title": "Structured Outputs",
+      "url": "https://docs.vllm.ai/en/stable/features/structured_outputs/"
+    },
+    "tools": {
+      "title": "Tool Calling",
+      "url": "https://docs.vllm.ai/en/stable/features/tool_calling/"
+    },
+    "reasoning": {
+      "title": "Reasoning Outputs",
+      "url": "https://docs.vllm.ai/en/stable/features/reasoning_outputs/"
+    },
+    "thinking": {
+      "title": "Interleaved Thinking",
+      "url": "https://docs.vllm.ai/en/stable/features/interleaved_thinking/"
+    },
+    "custom_logits": {
+      "title": "Custom Logits Processors",
+      "url": "https://docs.vllm.ai/en/stable/features/custom_logitsprocs/"
+    },
+    "load": {
+      "title": "Model Resolution",
+      "url": "https://docs.vllm.ai/en/stable/configuration/model_resolution/"
+    },
+    "memory": {
+      "title": "Conserving Memory",
+      "url": "https://docs.vllm.ai/en/stable/configuration/conserving_memory/"
+    },
+    "sleep": {
+      "title": "Sleep Mode",
+      "url": "https://docs.vllm.ai/en/stable/features/sleep_mode/"
+    },
+    "weight_transfer": {
+      "title": "Weight Transfer",
+      "url": "https://docs.vllm.ai/en/stable/training/weight_transfer/"
+    },
+    "async_rl": {
+      "title": "Async Reinforcement Learning",
+      "url": "https://docs.vllm.ai/en/stable/training/async_rl/"
+    },
+    "layerwise": {
+      "title": "Layerwise Reloading",
+      "url": "https://docs.vllm.ai/en/stable/training/layerwise/"
+    },
+    "bench": {
+      "title": "Benchmark CLI",
+      "url": "https://docs.vllm.ai/en/stable/benchmarking/cli/"
+    },
+    "sweep": {
+      "title": "Parameter Sweeps",
+      "url": "https://docs.vllm.ai/en/stable/benchmarking/sweeps/"
+    },
+    "profiling": {
+      "title": "Profiling vLLM",
+      "url": "https://docs.vllm.ai/en/stable/contributing/profiling/"
+    },
+    "metrics": {
+      "title": "Production Metrics",
+      "url": "https://docs.vllm.ai/en/stable/usage/metrics/"
+    },
+    "per_request": {
+      "title": "Per-Request Metrics",
+      "url": "https://docs.vllm.ai/en/stable/features/per_request_metrics/"
+    },
+    "batch_invariance": {
+      "title": "Batch Invariance",
+      "url": "https://docs.vllm.ai/en/stable/features/batch_invariance/"
+    },
+    "plugin": {
+      "title": "Plugin System",
+      "url": "https://docs.vllm.ai/en/stable/design/plugin_system/"
+    },
+    "deployment": {
+      "title": "Kubernetes 部署",
+      "url": "https://docs.vllm.ai/en/stable/deployment/k8s/"
+    },
+    "cache_config": {
+      "title": "缓存配置与 dtype 清单",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py"
+    },
+    "scheduler": {
+      "title": "调度配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/scheduler.py"
+    },
+    "parallel_config": {
+      "title": "并行配置与度数校验",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py"
+    },
+    "compile_config": {
+      "title": "编译模式与融合 Pass",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py"
+    },
+    "kernel": {
+      "title": "Linear/MoE Kernel 配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py"
+    },
+    "spec_config": {
+      "title": "推测方法与模型类型",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/speculative.py"
+    },
+    "quant_registry": {
+      "title": "量化方法注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py"
+    },
+    "attention_registry": {
+      "title": "Attention 后端注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/v1/attention/backends/registry.py"
+    },
+    "kv_factory": {
+      "title": "KV Connector 注册表",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py"
+    },
+    "course": {
+      "title": "Datawhale zero-to-sglang",
+      "url": "https://github.com/datawhalechina/zero-to-sglang"
+    },
+    "transformers": {
+      "title": "Transformers",
+      "url": "https://github.com/huggingface/transformers"
+    },
+    "nano": {
+      "title": "nano-vllm",
+      "url": "https://github.com/GeeeekExplorer/nano-vllm"
+    },
+    "mini": {
+      "title": "mini-sglang",
+      "url": "https://github.com/sgl-project/mini-sglang"
+    },
+    "flashattention": {
+      "title": "FlashAttention 官方实现与版本",
+      "url": "https://github.com/Dao-AILab/flash-attention"
+    },
+    "sglang_tbo": {
+      "title": "SGLang EP：TBO/SBO",
+      "url": "https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/expert_parallelism.mdx"
+    },
+    "metax": {
+      "title": "vLLM-MetaX",
+      "url": "https://github.com/MetaX-MACA/vLLM-metax"
+    },
+    "metax_install": {
+      "title": "MetaX 安装",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/getting_started/installation/maca.html"
+    },
+    "metax_quick": {
+      "title": "MetaX Quickstart",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/getting_started/quickstart.html"
+    },
+    "metax_models": {
+      "title": "MetaX 模型列表",
+      "url": "https://vllm-metax.readthedocs.io/en/stable/models/supported_models.html"
+    },
+    "diffusion": {
+      "title": "离散扩散语言模型配置",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/config/diffusion.py"
+    },
+    "quant_base": {
+      "title": "vLLM 量化方法与配置接口",
+      "url": "https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py"
+    },
+    "triton_matmul": {
+      "title": "Triton 矩阵乘教程",
+      "url": "https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html"
+    },
+    "marlin_kernel": {
+      "title": "Marlin 量化内核实现",
+      "url": "https://github.com/IST-DASLab/marlin"
+    },
+    "triton_attention": {
+      "title": "Triton Fused Attention 教程",
+      "url": "https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html"
+    },
+    "sglang_tuning": {
+      "title": "SGLang Hyperparameter Tuning",
+      "url": "https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning"
+    }
+  },
+  "knowledge_revision": {
+    "reviewed_on": "2026-09-15",
+    "manifest": "docs/knowledge-sources.json",
+    "source_documents": 38,
+    "note": "新增专题导读与 CPU 量化实验；保留 19 篇 126 章和独立 GPU 状态。"
+  },
+  "part_files": [
+    "parts/00-orientation.json",
+    "parts/01-inference.json",
+    "parts/02-engine.json",
+    "parts/03-vllm.json",
+    "parts/04-backends.json",
+    "parts/05-kv-cache.json",
+    "parts/06-scheduling.json",
+    "parts/07-attention.json",
+    "parts/08-compilation.json",
+    "parts/09-quantization.json",
+    "parts/10-speculation.json",
+    "parts/11-parallelism.json",
+    "parts/12-moe.json",
+    "parts/13-disaggregation.json",
+    "parts/14-model-types.json",
+    "parts/15-serving.json",
+    "parts/16-weight-loading.json",
+    "parts/17-profiling.json",
+    "parts/18-deployment.json"
+  ]
+}

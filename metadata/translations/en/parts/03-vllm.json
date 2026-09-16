@@ -1,0 +1,28 @@
+{
+  "number": 3,
+  "part": {
+    "title": "Inside the Real vLLM"
+  },
+  "chapters": {
+    "3.1": {
+      "title": "A request's journey through vLLM",
+      "topics": "Input processing → EngineCoreClient → EngineCore → Executor/Worker/ModelRunner; request IDs, IPC, streaming queues, and cancellation"
+    },
+    "3.2": {
+      "title": "Scheduling and KV management in vLLM",
+      "topics": "Input processing, scheduler outputs, KVCacheManager, BlockPool, and execution feedback"
+    },
+    "3.3": {
+      "title": "Model execution and attention backends",
+      "topics": "Registration/initialization/weight loading/postprocessing; input_ids, positions, slot_mapping, attention metadata, and sampling"
+    },
+    "3.4": {
+      "title": "V1 and ModelRunner evolution",
+      "topics": "V0/V1 vs. MRV1/MRV2; persistent state and execution order, StagedWriteTensor, GPU metadata, sampling, and graph management"
+    },
+    "3.5": {
+      "title": "Resolving configuration and capabilities",
+      "topics": "EngineArgs, VllmConfig, environment variables, platform defaults, precedence, and validation"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "number": 4,
+  "title": "CUDA 与 MACA 单卡基线",
+  "prerequisites": "Part 0、1、3",
+  "sources": [
+    "gpu",
+    "metax",
+    "metax_install",
+    "metax_quick"
+  ],
+  "chapters": [
+    {
+      "id": "4.1",
+      "title": "CUDA 路径与 A100 基线",
+      "topics": "上游 vLLM、CUDA/PyTorch、显存规格、eager 起步、离线/在线",
+      "exercise": "固定环境并保存单卡 A100 的正确性与性能基线",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-04-backends/01-the-cuda-path-and-a100-baseline/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "4.2",
+      "title": "MACA 路径与 C500 基线",
+      "topics": "vLLM-MetaX、MACA、mcoplib、官方镜像、版本关系",
+      "exercise": "固定配套环境并保存单卡 C500 的独立验证记录",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-04-backends/02-the-maca-path-and-c500-baseline/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "4.3",
+      "title": "两个平台上的同一个实验",
+      "topics": "同权重/输入/采样/负载、dtype、后端差异、误差容限",
+      "exercise": "形成完整推理栈对照报告与失败记录",
+      "hardware": "双平台",
+      "status": "planned",
+      "reading": "docs/chapters/part-04-backends/03-the-same-experiment-on-two-platforms/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-04-backends"
+}

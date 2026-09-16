@@ -1,0 +1,79 @@
+{
+  "number": 13,
+  "title": "分离式部署与 KV 传输",
+  "prerequisites": "Part 5、6、11",
+  "sources": [
+    "disagg",
+    "encoder_disagg",
+    "kv_factory",
+    "nixl",
+    "kv_offload"
+  ],
+  "chapters": [
+    {
+      "id": "13.1",
+      "title": "Prefill-Decode 分离",
+      "topics": "PD disaggregation、阶段独立扩展、TTFT/TPOT 目标、路由",
+      "exercise": "推导传输成本与分离收益的临界条件",
+      "hardware": "CPU/多机",
+      "status": "partial",
+      "reading": "docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "13.2",
+      "title": "KV Connector 协议",
+      "topics": "scheduler/worker 角色、异步存取、生命周期、失败回收、KV events",
+      "exercise": "绘制一次远端 KV 的生产/传输/消费流程",
+      "hardware": "CPU/多机",
+      "status": "partial",
+      "reading": "docs/chapters/part-13-disaggregation/02-the-kv-connector-protocol/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "13.3",
+      "title": "连接器与分层存储地图",
+      "topics": "NIXL、Mooncake/Store、LMCache、MoRIIO、FlexKV、HF3FS、原生 offload",
+      "exercise": "逐项核对传输协议、存储层与外部依赖",
+      "hardware": "多机/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-13-disaggregation/03-connectors-and-tiered-storage/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "13.4",
+      "title": "异构并行与传输兼容",
+      "topics": "P/D 不同 TP/PCP/DCP、KV layout、block size、dtype、模型一致性",
+      "exercise": "做兼容性表与流量预算，不能假定任意配置可互传",
+      "hardware": "CPU/多机",
+      "status": "partial",
+      "reading": "docs/chapters/part-13-disaggregation/04-heterogeneous-parallelism-and-transfer-compatibility/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "13.5",
+      "title": "Encoder 分离与缓存",
+      "topics": "多模态 encoder、EC transfer、embedding cache、renderer 拆分",
+      "exercise": "画出图像/音频编码结果的跨进程流转",
+      "hardware": "多机/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-13-disaggregation/05-encoder-disaggregation-and-caching/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "13.6",
+      "title": "分布式服务生命周期",
+      "topics": "push/pull、租约/通知、超时、重试、load failure recovery、缓存亲和",
+      "exercise": "分析故障注入轨迹与请求完成/回收语义",
+      "hardware": "多机",
+      "status": "partial",
+      "reading": "docs/chapters/part-13-disaggregation/06-distributed-serving-lifecycles/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-13-disaggregation"
+}

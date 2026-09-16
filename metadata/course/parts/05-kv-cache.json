@@ -1,0 +1,111 @@
+{
+  "number": 5,
+  "title": "KV Cache、Prefix Cache 与长上下文",
+  "prerequisites": "Part 1—3",
+  "sources": [
+    "apc",
+    "prefix_design",
+    "cache_config",
+    "hybrid",
+    "kv_offload",
+    "context",
+    "index"
+  ],
+  "chapters": [
+    {
+      "id": "5.1",
+      "title": "PagedAttention 与缓存布局",
+      "topics": "页大小、block table、slot mapping、NHD/HND 与新布局、碎片",
+      "exercise": "计算不同块大小的浪费并解释寻址过程",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-05-kv-cache/01-pagedattention-and-cache-layouts/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.2",
+      "title": "Automatic Prefix Caching",
+      "topics": "APC 完整块匹配、未命中后缀计算、prefill 节省、最后 token/logits 边界；Radix 对照",
+      "exercise": "设计整块命中、尾块未命中、无共享、salt 隔离和容量逐出用例",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-05-kv-cache/02-automatic-prefix-caching/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.3",
+      "title": "缓存键与共享隔离",
+      "topics": "链式哈希、token/多模态/LoRA 标识、cache salt、哈希算法",
+      "exercise": "设计共享与不应共享的请求用例，检查命中正确性",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-05-kv-cache/03-cache-keys-and-sharing-isolation/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.4",
+      "title": "缓存生命周期与路由",
+      "topics": "引用计数、LRU、逐出、抢占重算、reset、KV events、亲和路由",
+      "exercise": "回放容量不足轨迹并解释命中率和排队变化",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-05-kv-cache/04-cache-lifecycle-and-routing/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.5",
+      "title": "混合模型缓存管理",
+      "topics": "Full/SWA/SSM 分组、Hybrid KV Cache Manager、页对齐、共享层",
+      "exercise": "绘制混合层的内存分配与有效缓存范围",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-05-kv-cache/05-cache-management-for-hybrid-models/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.6",
+      "title": "Mamba 与线性模型状态缓存",
+      "topics": "Mamba1/2、GDN、卷积/SSM 状态、检查点、ReplaySSM/RecoverSSM",
+      "exercise": "用状态递推模拟说明缓存与回滚为何不同于普通 KV",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-05-kv-cache/06-state-caching-for-mamba-and-linear-models/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.7",
+      "title": "KV Offloading 与分层缓存",
+      "topics": "原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器",
+      "exercise": "比较重算和传输成本；核对命中、传输字节与显存",
+      "hardware": "GPU/多机",
+      "status": "planned",
+      "reading": "docs/chapters/part-05-kv-cache/07-kv-offloading-and-tiered-caching/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.8",
+      "title": "上下文扩展与 KV Sharing",
+      "topics": "RoPE scaling/YaRN、模型长度、滑窗、跨层 KV sharing/fast prefill",
+      "exercise": "设计长上下文质量评估并区分容量与有效理解长度",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-05-kv-cache/08-context-extension-and-kv-sharing/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "5.9",
+      "title": "IndexCache 与稀疏索引缓存",
+      "topics": "DSA top-k 索引跨层复用、复用频率、稀疏注意力精度",
+      "exercise": "分析索引复用成本与质量变化；不把它当 APC",
+      "hardware": "专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-05-kv-cache/09-indexcache-and-sparse-index-caching/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-05-kv-cache"
+}

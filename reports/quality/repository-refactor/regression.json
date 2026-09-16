@@ -1,0 +1,695 @@
+{
+  "record_type": "executed_repository_refactor_checks",
+  "created_at_utc": "2026-09-16T05:38:54.108857+00:00",
+  "environment": {
+    "os": "Windows",
+    "python": "3.11.9",
+    "pytorch": "2.7.1+cpu",
+    "numpy": "2.2.6"
+  },
+  "source": {
+    "git_commit": "6f0ae78732a565599a8eeddb0b45e7af91f5aa6a",
+    "working_tree_dirty": true,
+    "source_sha256": "d674f9819331c93249debb9e0591b016263f9c5ad919ab2bafe95f928ca44ba0",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "passed": true,
+  "unit_tests": {
+    "command": "python -m unittest discover -s tests -v",
+    "count": 108,
+    "skipped": 0,
+    "passed": true,
+    "log": "tests.txt"
+  },
+  "part1": {
+    "command": "python -m scripts.experiments.part01 --skip-tests",
+    "created_at_utc": "2026-09-16T05:34:38.871704+00:00",
+    "count": 28,
+    "passed": true,
+    "tests_skipped_in_runner": true,
+    "cases": [
+      {
+        "name": "01-next-token",
+        "arguments": [
+          "next-token-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_reference_error": 0.0,
+          "max_abs_first_step_error": 0.0,
+          "future_attention_is_zero": true,
+          "attention_rows_sum_to_one": true,
+          "absolute_tolerance": 1e-12,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "02-phases",
+        "arguments": [
+          "phase-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_logit_error": 0.0,
+          "same_token_ids": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "03-cache",
+        "arguments": [
+          "kv-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_chunk_logit_error": 0.0,
+          "max_abs_grouped_error": 0.0,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "04-metrics",
+        "arguments": [
+          "metrics-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "passed": true,
+          "meaning": "Input schema, clocks and event ordering validated; not proof of measured GPU provenance."
+        },
+        "error": null
+      },
+      {
+        "name": "05-structures",
+        "arguments": [
+          "structure-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "errors": {
+            "rope_norm": 8.881784197001252e-16,
+            "rope_relative_position": 1.1102230246251565e-16,
+            "linear_recurrence": 2.220446049250313e-16,
+            "latent_identity": 2.42861286636753e-17,
+            "ssm_recurrence": 0.0
+          },
+          "absolute_tolerance": 1e-12,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "06-sampling",
+        "arguments": [
+          "sampling-demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "cache-generation",
+        "arguments": [
+          "demo"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_token_ids": true,
+          "max_abs_logit_error": 0.0,
+          "absolute_tolerance": 1e-12,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "phase-short",
+        "arguments": [
+          "phase-demo",
+          "--prompt",
+          "1,2",
+          "--max-new-tokens",
+          "3"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_logit_error": 0.0,
+          "same_token_ids": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "phase-batch64",
+        "arguments": [
+          "phase-demo",
+          "--decode-batch",
+          "64"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_logit_error": 0.0,
+          "same_token_ids": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "cache-chunk1",
+        "arguments": [
+          "kv-demo",
+          "--chunk-size",
+          "1"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_chunk_logit_error": 0.0,
+          "max_abs_grouped_error": 0.0,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "cache-chunk3",
+        "arguments": [
+          "kv-demo",
+          "--chunk-size",
+          "3"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_chunk_logit_error": 0.0,
+          "max_abs_grouped_error": 0.0,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "cache-capacity",
+        "arguments": [
+          "kv-demo",
+          "--sequence-length",
+          "8192",
+          "--batch-size",
+          "4"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_chunk_logit_error": 0.0,
+          "max_abs_grouped_error": 0.0,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "cache-gqa4",
+        "arguments": [
+          "kv-demo",
+          "--kv-heads",
+          "4"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "max_abs_chunk_logit_error": 0.0,
+          "max_abs_grouped_error": 0.0,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "metrics-strict",
+        "arguments": [
+          "metrics-demo",
+          "--ttft-slo",
+          "0.4",
+          "--tpot-slo",
+          "0.2"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "passed": true,
+          "meaning": "Input schema, clocks and event ordering validated; not proof of measured GPU provenance."
+        },
+        "error": null
+      },
+      {
+        "name": "structure-window1",
+        "arguments": [
+          "structure-demo",
+          "--window",
+          "1"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "errors": {
+            "rope_norm": 8.881784197001252e-16,
+            "rope_relative_position": 1.1102230246251565e-16,
+            "linear_recurrence": 2.220446049250313e-16,
+            "latent_identity": 2.42861286636753e-17,
+            "ssm_recurrence": 0.0
+          },
+          "absolute_tolerance": 1e-12,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "structure-window8",
+        "arguments": [
+          "structure-demo",
+          "--window",
+          "8"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "errors": {
+            "rope_norm": 8.881784197001252e-16,
+            "rope_relative_position": 1.1102230246251565e-16,
+            "linear_recurrence": 2.220446049250313e-16,
+            "latent_identity": 2.42861286636753e-17,
+            "ssm_recurrence": 0.0
+          },
+          "absolute_tolerance": 1e-12,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-greedy",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "0",
+          "--max-new-tokens",
+          "3"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-temp05",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "0.5",
+          "--top-p",
+          "1"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-temp15",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "1.5",
+          "--top-p",
+          "1"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-topk",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "1",
+          "--top-k",
+          "2",
+          "--top-p",
+          "1"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-topp",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "1",
+          "--top-p",
+          "0.8"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-minp",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "1",
+          "--top-p",
+          "1",
+          "--min-p",
+          "0.6"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-penalties",
+        "arguments": [
+          "sampling-demo",
+          "--repetition-penalty",
+          "1.2",
+          "--presence-penalty",
+          "0.5",
+          "--frequency-penalty",
+          "0.25"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-seed8",
+        "arguments": [
+          "sampling-demo",
+          "--seed",
+          "8"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-eos",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "0",
+          "--eos-token-id",
+          "2"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-stop-id",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "0",
+          "--stop-token-id",
+          "2"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-stop-string",
+        "arguments": [
+          "sampling-demo",
+          "--temperature",
+          "0",
+          "--stop",
+          "推理推理"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      },
+      {
+        "name": "sampling-zero",
+        "arguments": [
+          "sampling-demo",
+          "--max-new-tokens",
+          "0"
+        ],
+        "exit_code": 0,
+        "passed": true,
+        "verification": {
+          "same_seed_replay": true,
+          "passed": true
+        },
+        "error": null
+      }
+    ]
+  },
+  "lesson_2_1": {
+    "command": "python -m scripts.experiments.lesson0201",
+    "created_at_utc": "2026-09-16T05:34:47.220619+00:00",
+    "count": 7,
+    "passed": true,
+    "lesson_tests": 13,
+    "cases": [
+      {
+        "name": "float64",
+        "options": {
+          "prompt": [
+            1,
+            2,
+            3,
+            4
+          ]
+        },
+        "passed": true
+      },
+      {
+        "name": "float32",
+        "options": {
+          "prompt": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "dtype": "float32"
+        },
+        "passed": true
+      },
+      {
+        "name": "seed8",
+        "options": {
+          "prompt": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "seed": 8
+        },
+        "passed": true
+      },
+      {
+        "name": "single-token",
+        "options": {
+          "prompt": [
+            15
+          ],
+          "layers": 1
+        },
+        "passed": true
+      },
+      {
+        "name": "three-layers",
+        "options": {
+          "prompt": [
+            2,
+            2,
+            0
+          ],
+          "layers": 3
+        },
+        "passed": true
+      },
+      {
+        "name": "zero-output",
+        "options": {
+          "prompt": [
+            1,
+            2
+          ],
+          "max_new_tokens": 0
+        },
+        "passed": true
+      },
+      {
+        "name": "context-boundary",
+        "options": {
+          "prompt": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "max_new_tokens": 1
+        },
+        "passed": true
+      }
+    ]
+  },
+  "commands": [
+    {
+      "name": "lesson-example",
+      "command": [
+        ".venv/python",
+        "docs/chapters/part-02-engine/01-pytorch-model/examples/run.py"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "expected_shape_observed": true
+    },
+    {
+      "name": "int4",
+      "command": [
+        "python",
+        "-m",
+        "zero2vllm",
+        "quant-demo",
+        "--output",
+        ".local/runs/part-09-quantization/04-quantization-kernels/restructure.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "passed": true,
+        "implementation_max_abs_error": 0.0,
+        "weight_max_abs_error": 0.14067759110638123,
+        "output_quantization_max_abs_error": 0.4033838925001154,
+        "weight_half_scale_bound_passed": true,
+        "absolute_tolerance": 1e-12
+      }
+    },
+    {
+      "name": "environment",
+      "command": [
+        "python",
+        "-m",
+        "scripts.environment.collect",
+        "--output",
+        ".local/checks/environment.json"
+      ],
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "torch-cli",
+      "command": [
+        ".venv/python",
+        "-m",
+        "zero2vllm",
+        "torch-demo",
+        "--dtype",
+        "float32",
+        "--output",
+        ".local/runs/part-02-engine/01-pytorch-model/restructure-cli-float32.json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "passed": true,
+        "all_stages_close": true,
+        "greedy_ids_equal": true
+      }
+    }
+  ],
+  "gpu_status": "not_run",
+  "remote_ci_status": "not_run",
+  "scope": "Local Windows CPU verification. Raw current case outputs remain in ignored .local/runs; historical public baselines retain their original measurements and source hashes."
+}

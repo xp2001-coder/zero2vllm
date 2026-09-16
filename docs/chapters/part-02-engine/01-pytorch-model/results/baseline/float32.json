@@ -1,0 +1,401 @@
+{
+  "experiment": "part2-01-pytorch-decoder",
+  "environment": {
+    "python": "3.11.9",
+    "torch": "2.7.1+cpu",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu",
+    "dtype": "float32"
+  },
+  "config": {
+    "vocab_size": 16,
+    "width": 8,
+    "heads": 2,
+    "hidden": 16,
+    "layers": 2,
+    "max_context": 32,
+    "eps": 1e-06,
+    "rope_base": 10000.0
+  },
+  "seed": 7,
+  "prompt": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "max_new_tokens": 4,
+  "weights_sha256": "c83a5db7c3cf931ce372f9dfcc915783276f268ddbbc05c73b5954c90466da96",
+  "parameter_count": 1576,
+  "tolerance": {
+    "atol": 1e-05,
+    "rtol": 0.0001
+  },
+  "comparisons": [
+    {
+      "stage": "embedding",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.3198001302949791e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.norm1",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.251215058228894e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.q",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 8.066208068147063e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.k",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.139476075717738e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.v",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 8.63265299244631e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.q_rope",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 9.502336795197408e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.k_rope",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.2563260964881806e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.context",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 8.497066905643891e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.attention_residual",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 4.089269203810808e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.norm2",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 3.0001741113672153e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.gate",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 2.1187910392850284e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.up",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 1.9197060296960444e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.swiglu",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 1.593115643849785e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.down",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 9.30253928888014e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.0.output",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 6.893758147663576e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.norm1",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 3.4314241778576893e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.q",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.920162791546609e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.k",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 2.165440653595363e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.v",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 2.484148183268253e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.q_rope",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.9380732163565284e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.k_rope",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 2.165440653595363e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.context",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 1.0456823062998666e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.attention_residual",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 7.13023388110301e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.norm2",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 3.0859549657313856e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.gate",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 2.026630067097912e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.up",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 1.9257149896922954e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.swiglu",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 1.220861105544202e-07,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.down",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 4.284401039500452e-08,
+      "passed": true
+    },
+    {
+      "stage": "layers.1.output",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 6.479432451689249e-08,
+      "passed": true
+    },
+    {
+      "stage": "final_norm",
+      "shape": [
+        1,
+        4,
+        8
+      ],
+      "max_abs_error": 3.8553567249799414e-07,
+      "passed": true
+    },
+    {
+      "stage": "logits",
+      "shape": [
+        1,
+        4,
+        16
+      ],
+      "max_abs_error": 2.1987312437410367e-07,
+      "passed": true
+    }
+  ],
+  "reference_last_logits": [
+    0.17829375045446386,
+    -0.7592518148209775,
+    0.831982566869241,
+    -0.2772080161465496,
+    0.4260753894994348,
+    -0.028043271992629792,
+    -0.7110079155771345,
+    -0.48891001949810514,
+    -0.2820146867385778,
+    -0.05227639053905886,
+    -0.10863460997587174,
+    -0.42573356732083445,
+    0.3286558902592458,
+    0.2887395921624778,
+    -0.11130933831508705,
+    -0.731559407100485
+  ],
+  "torch_last_logits": [
+    0.17829369008541107,
+    -0.7592519521713257,
+    0.8319826126098633,
+    -0.2772080600261688,
+    0.42607536911964417,
+    -0.0280433502048254,
+    -0.7110080122947693,
+    -0.4889101982116699,
+    -0.2820146977901459,
+    -0.05227632075548172,
+    -0.10863455384969711,
+    -0.42573362588882446,
+    0.32865580916404724,
+    0.28873956203460693,
+    -0.11130920052528381,
+    -0.7315595746040344
+  ],
+  "reference_generated_ids": [
+    2,
+    0,
+    2,
+    0
+  ],
+  "torch_generated_ids": [
+    2,
+    0,
+    2,
+    0
+  ],
+  "verification": {
+    "passed": true,
+    "all_stages_close": true,
+    "greedy_ids_equal": true
+  },
+  "scope": "Untrained CPU dense decoder; full-prefix recomputation; no padding/KV cache/checkpoint/GPU performance validation.",
+  "created_at_utc": "2026-09-16T03:23:14.636032+00:00"
+}

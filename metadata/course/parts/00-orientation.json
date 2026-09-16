@@ -1,0 +1,43 @@
+{
+  "number": 0,
+  "title": "开始之前",
+  "prerequisites": "基础 Python",
+  "sources": [
+    "course",
+    "quickstart",
+    "gpu"
+  ],
+  "chapters": [
+    {
+      "id": "0.1",
+      "title": "读者路线与环境准备",
+      "topics": "Python、Linux、容器、驱动/运行时/框架版本、CPU 与双后端路线",
+      "exercise": "运行 CPU 实验并填写环境清单，区分已验证与待验证",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-00-orientation/01-learning-paths-and-environment-setup/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "0.2",
+      "title": "第一次模型生成",
+      "topics": "离线 LLM、在线服务、流式请求、Tokenizer 与 chat template",
+      "exercise": "画出输入消息到生成文本的数据流，保存一次服务记录",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-00-orientation/02-your-first-model-generation/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "0.3",
+      "title": "实验与源码工作方法",
+      "topics": "固定 revision、阅读配置/日志/调用链、最小复现与原始数据",
+      "exercise": "建立个人实验目录和源码阅读笔记模板",
+      "hardware": "CPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-00-orientation/03-working-with-experiments-and-source-code/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-00-orientation"
+}

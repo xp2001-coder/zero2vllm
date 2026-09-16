@@ -1,0 +1,32 @@
+{
+  "number": 17,
+  "part": {
+    "title": "Evaluation, Profiling, and Optimization Methods"
+  },
+  "chapters": {
+    "17.1": {
+      "title": "Benchmark tools and workloads",
+      "topics": "bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data"
+    },
+    "17.2": {
+      "title": "Latency targets and parameter searches",
+      "topics": "SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches"
+    },
+    "17.3": {
+      "title": "Profiling across the stack",
+      "topics": "PyTorch Profiler, Nsight/vendor tools, CPU/GPU timelines; matching semantics/shapes/dtypes, invocation counts and durations, and the critical path"
+    },
+    "17.4": {
+      "title": "Observability and per-request metrics",
+      "topics": "Prometheus/Grafana, OpenTelemetry, KV/scheduling/speculation/MoE metrics, and per-request metrics"
+    },
+    "17.5": {
+      "title": "Quality, reproducibility, and batch invariance",
+      "topics": "Numerical tolerances, model quality, long contexts, seeds, batch invariance, and the cost of determinism"
+    },
+    "17.6": {
+      "title": "System ablations and capstone projects",
+      "topics": "APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning"
+    }
+  }
+}

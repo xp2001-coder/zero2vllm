@@ -1,0 +1,124 @@
+{
+  "number": 11,
+  "title": "并行切分与分布式执行",
+  "prerequisites": "Part 3、5—8；掌握 collective 基础",
+  "sources": [
+    "parallel",
+    "parallel_config",
+    "cp",
+    "dp",
+    "ep",
+    "compile_config"
+  ],
+  "chapters": [
+    {
+      "id": "11.1",
+      "title": "并行维度与通信基础",
+      "topics": "TP/PP/DP/EP/CP/PCP/DCP/SP、rank/group、all-reduce/all-gather/reduce-scatter/all-to-all",
+      "exercise": "画出进程组与张量切分，计算通信数据量",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/01-parallel-dimensions-and-communication-basics/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.2",
+      "title": "Tensor Parallelism",
+      "topics": "TP、column/row parallel、vocab parallel、Attention heads、KV 复制",
+      "exercise": "手算两路 TP 的前向合并与显存分布",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/02-tensor-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.3",
+      "title": "Pipeline Parallelism",
+      "topics": "PP、层切分、不均匀分层、microbatch、流水线气泡",
+      "exercise": "制作 pipeline 时间线并估算负载不均的影响",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/03-pipeline-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.4",
+      "title": "Data Parallelism",
+      "topics": "DP、副本、内部/外部/混合负载均衡、dense 与 MoE 差异",
+      "exercise": "比较请求路由、排队与副本扩展吞吐",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/04-data-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.5",
+      "title": "Context Parallelism 概念",
+      "topics": "CP 沿上下文切分、长序列、Q/KV 分布、ring/all-gather 算法",
+      "exercise": "区分上下文并行、序列并行和分块预填充",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/05-context-parallelism-concepts/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.6",
+      "title": "Prefill Context Parallelism",
+      "topics": "PCP、prefill token 切分、rank 扩展、TP/PCP 组合、缓存布局",
+      "exercise": "推导 prefill 张量分工与通信，核对模型/runner 支持",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/06-prefill-context-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.7",
+      "title": "Decode Context Parallelism",
+      "topics": "DCP、decode KV 分片、复用进程组、MLA/GQA、ag_rs/a2a、Q replicate",
+      "exercise": "推导每卡 KV 和输出归约，核对 DCP 合法度数",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/07-decode-context-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.8",
+      "title": "Sequence Parallelism 与 Async TP",
+      "topics": "SP 激活切分、TP 配合、融合 pass、序列并行 MoE 路径",
+      "exercise": "说明 SP 与 PCP/DCP 的缓存/通信目标差异",
+      "hardware": "CPU/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-11-parallelism/08-sequence-parallelism-and-async-tp/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.9",
+      "title": "组合并行与拓扑规划",
+      "topics": "TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA",
+      "exercise": "交付一份进程布局和容量预算，标明无法运行的组合",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-11-parallelism/09-combining-parallelism-and-planning-topology/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "11.10",
+      "title": "分布式启动与排错",
+      "topics": "mp/Ray/external launcher、节点发现、通信超时、NCCL/P2P、故障",
+      "exercise": "设计启动、卡数不足、断连与通信失败的排查流程",
+      "hardware": "多卡/多机",
+      "status": "planned",
+      "reading": "docs/chapters/part-11-parallelism/10-distributed-launch-and-debugging/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-11-parallelism"
+}

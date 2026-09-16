@@ -1,0 +1,96 @@
+[
+  {
+    "name": "example",
+    "arguments": [
+      "examples/part2/01-pytorch-model/run.py"
+    ],
+    "interpreter": "project venv",
+    "expected_exit": 0,
+    "exit_code": 0,
+    "passed": true,
+    "stderr": "",
+    "stdout": "logits shape: (1, 4, 16)\nparameters: 1576\nembedding (1, 4, 8)\nlayers.0.norm1 (1, 4, 8)\nlayers.0.q (1, 4, 8)\nlayers.0.k (1, 4, 8)\nlayers.0.v (1, 4, 8)\nlayers.0.q_rope (1, 4, 8)\nlayers.0.k_rope (1, 4, 8)\nlayers.0.context (1, 4, 8)\nlayers.0.attention_residual (1, 4, 8)\nlayers.0.norm2 (1, 4, 8)\nlayers.0.gate (1, 4, 16)\nlayers.0.up (1, 4, 16)\nlayers.0.swiglu (1, 4, 16)\nlayers.0.down (1, 4, 8)\nlayers.0.output (1, 4, 8)\nlayers.1.norm1 (1, 4, 8)\nlayers.1.q (1, 4, 8)\nlayers.1.k (1, 4, 8)\nlayers.1.v (1, 4, 8)\nlayers.1.q_rope (1, 4, 8)\nlayers.1.k_rope (1, 4, 8)\nlayers.1.context (1, 4, 8)\nlayers.1.attention_residual (1, 4, 8)\nlayers.1.norm2 (1, 4, 8)\nlayers.1.gate (1, 4, 16)\nlayers.1.up (1, 4, 16)\nlayers.1.swiglu (1, 4, 16)\nlayers.1.down (1, 4, 8)\nlayers.1.output (1, 4, 8)\nfinal_norm (1, 4, 8)\nlogits (1, 4, 16)\ngenerated IDs: [2, 0, 2, 0]\nThese are untrained token IDs, not natural language.\n"
+  },
+  {
+    "name": "cli-float32",
+    "arguments": [
+      "-m",
+      "zero2vllm",
+      "torch-demo",
+      "--dtype",
+      "float32",
+      "--output",
+      "runs/part2/cli.json"
+    ],
+    "interpreter": "project venv",
+    "expected_exit": 0,
+    "exit_code": 0,
+    "passed": true,
+    "stderr": "",
+    "stdout": null
+  },
+  {
+    "name": "invalid-token",
+    "arguments": [
+      "-m",
+      "zero2vllm",
+      "torch-demo",
+      "--prompt",
+      "16"
+    ],
+    "interpreter": "project venv",
+    "expected_exit": 2,
+    "exit_code": 2,
+    "passed": true,
+    "stderr": "zero2vllm: Token IDs must be integers within the vocabulary.\n",
+    "stdout": null
+  },
+  {
+    "name": "negative-output",
+    "arguments": [
+      "-m",
+      "zero2vllm",
+      "torch-demo",
+      "--max-new-tokens",
+      "-1"
+    ],
+    "interpreter": "project venv",
+    "expected_exit": 2,
+    "exit_code": 2,
+    "passed": true,
+    "stderr": "zero2vllm: max_new_tokens must be a nonnegative integer.\n",
+    "stdout": null
+  },
+  {
+    "name": "context-overflow",
+    "arguments": [
+      "-m",
+      "zero2vllm",
+      "torch-demo",
+      "--prompt",
+      "1,2",
+      "--max-new-tokens",
+      "32"
+    ],
+    "interpreter": "project venv",
+    "expected_exit": 2,
+    "exit_code": 2,
+    "passed": true,
+    "stderr": "zero2vllm: Generation inputs would exceed max_context.\n",
+    "stdout": null
+  },
+  {
+    "name": "missing-optional-torch",
+    "arguments": [
+      "-m",
+      "zero2vllm",
+      "torch-demo"
+    ],
+    "interpreter": "standard-library environment",
+    "expected_exit": 2,
+    "exit_code": 2,
+    "passed": true,
+    "stderr": "zero2vllm: torch-demo requires PyTorch. Install into your project venv: python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu\n",
+    "stdout": null
+  }
+]

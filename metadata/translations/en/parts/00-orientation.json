@@ -1,0 +1,20 @@
+{
+  "number": 0,
+  "part": {
+    "title": "Before You Begin"
+  },
+  "chapters": {
+    "0.1": {
+      "title": "Learning paths and environment setup",
+      "topics": "Python, Linux, containers, driver/runtime/framework versions, CPU and two GPU backend paths"
+    },
+    "0.2": {
+      "title": "Your first model generation",
+      "topics": "Offline LLM inference, online serving, streaming requests, tokenizers, and chat templates"
+    },
+    "0.3": {
+      "title": "Working with experiments and source code",
+      "topics": "Pinned revisions, configurations/logs/call chains, minimal reproductions, and raw data"
+    }
+  }
+}

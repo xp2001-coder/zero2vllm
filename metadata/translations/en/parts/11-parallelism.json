@@ -1,0 +1,48 @@
+{
+  "number": 11,
+  "part": {
+    "title": "Parallelism and Distributed Execution"
+  },
+  "chapters": {
+    "11.1": {
+      "title": "Parallel dimensions and communication basics",
+      "topics": "TP/PP/DP/EP/CP/PCP/DCP/SP, ranks/groups, all-reduce/all-gather/reduce-scatter/all-to-all"
+    },
+    "11.2": {
+      "title": "Tensor Parallelism",
+      "topics": "TP, column/row parallelism, vocabulary parallelism, attention heads, and KV replication"
+    },
+    "11.3": {
+      "title": "Pipeline Parallelism",
+      "topics": "PP, layer partitioning, uneven partitions, microbatches, and pipeline bubbles"
+    },
+    "11.4": {
+      "title": "Data Parallelism",
+      "topics": "DP, replicas, internal/external/hybrid load balancing, and dense vs. MoE models"
+    },
+    "11.5": {
+      "title": "Context Parallelism concepts",
+      "topics": "CP along the context dimension, long sequences, Q/KV distribution, and ring/all-gather algorithms"
+    },
+    "11.6": {
+      "title": "Prefill Context Parallelism",
+      "topics": "PCP, prefill-token partitioning, rank expansion, TP/PCP combinations, and cache layouts"
+    },
+    "11.7": {
+      "title": "Decode Context Parallelism",
+      "topics": "DCP, decode KV sharding, process-group reuse, MLA/GQA, ag_rs/a2a, and Q replication"
+    },
+    "11.8": {
+      "title": "Sequence Parallelism and Async TP",
+      "topics": "SP activation partitioning, integration with TP, fusion passes, and sequence-parallel MoE paths"
+    },
+    "11.9": {
+      "title": "Combining parallelism and planning topology",
+      "topics": "TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA"
+    },
+    "11.10": {
+      "title": "Distributed launch and debugging",
+      "topics": "mp/Ray/external launchers, node discovery, communication timeouts, NCCL/P2P, and failures"
+    }
+  }
+}

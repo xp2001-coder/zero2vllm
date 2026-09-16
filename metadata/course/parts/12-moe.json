@@ -1,0 +1,79 @@
+{
+  "number": 12,
+  "title": "MoE 与通信优化",
+  "prerequisites": "Part 7、8、11",
+  "sources": [
+    "ep",
+    "parallel_config",
+    "moe_design",
+    "moe_features",
+    "kernel",
+    "dbo"
+  ],
+  "chapters": [
+    {
+      "id": "12.1",
+      "title": "MoE 计算链路",
+      "topics": "Router、top-k、shared/routed experts、dispatch、专家计算、combine",
+      "exercise": "手算 token 路由并统计各专家负载",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-12-moe/01-the-moe-computation-path/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "12.2",
+      "title": "Expert Parallelism",
+      "topics": "EP、专家切分、Attention DP/TP 与专家组、placement、冗余专家",
+      "exercise": "画出 token 到专家的分发和汇总",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-12-moe/02-expert-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "12.3",
+      "title": "Fused MoE Kernel",
+      "topics": "Modular Kernel、prepare/finalize、量化布局、batched/mega MoE",
+      "exercise": "对照路由、通信和 GEMM 三类耗时",
+      "hardware": "GPU/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-12-moe/03-fused-moe-kernels/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "12.4",
+      "title": "All-to-All 后端",
+      "topics": "allgather/reducescatter、DeepEP、MoRI、NIXL EP、FlashInfer NVLink",
+      "exercise": "比较延迟/吞吐模式与拓扑条件，识别已移除后端",
+      "hardware": "多卡/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-12-moe/04-all-to-all-backends/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "12.5",
+      "title": "EPLB 与弹性专家并行",
+      "topics": "EPLB、重排/冗余、异步均衡、Elastic EP、扩缩容与故障恢复",
+      "exercise": "模拟热点专家并评估迁移成本和再均衡收益",
+      "hardware": "CPU/多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-12-moe/05-eplb-and-elastic-expert-parallelism/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "12.6",
+      "title": "MoE 重叠与综合调优",
+      "topics": "DBO、shared expert overlap、通信融合、量化、分离式部署组合",
+      "exercise": "建立算子时间线与消融矩阵，解释收益来源",
+      "hardware": "多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-12-moe/06-moe-overlap-and-combined-tuning/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-12-moe"
+}

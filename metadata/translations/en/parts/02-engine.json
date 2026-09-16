@@ -1,0 +1,36 @@
+{
+  "number": 2,
+  "part": {
+    "title": "Building a Teaching Inference Engine from Scratch"
+  },
+  "chapters": {
+    "2.1": {
+      "title": "Building a minimal PyTorch model",
+      "topics": "Forward pass, generation loop, RMSNorm/RoPE/MLP, and agreement with the CPU reference"
+    },
+    "2.2": {
+      "title": "Loading real model weights",
+      "topics": "Configuration, safetensors, weight mapping, tokenizers, and model revisions"
+    },
+    "2.3": {
+      "title": "Request and cache lifecycles",
+      "topics": "Creation, execution, completion, cancellation, exceptions, and cache ownership"
+    },
+    "2.4": {
+      "title": "From static to continuous batching",
+      "topics": "Iteration-level scheduling, active queues, token budgets, and request admission/removal"
+    },
+    "2.5": {
+      "title": "Paged caching",
+      "topics": "Logical/physical blocks, block tables, slot mapping, and device KV storage"
+    },
+    "2.6": {
+      "title": "Prefix caching",
+      "topics": "Cross-request sharing, reference counts, hash matching, eviction, and invalidation"
+    },
+    "2.7": {
+      "title": "HTTP and streaming output",
+      "topics": "Async iteration, backpressure, disconnects, cancellation propagation, and request errors"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "number": 8,
+  "part": {
+    "title": "Compilation, CUDA Graphs, and Execution Optimization"
+  },
+  "chapters": {
+    "8.1": {
+      "title": "torch.compile integration",
+      "topics": "Dynamo/FX/Inductor and Triton TTIR/TTGIR/target code; guards, graph breaks, dynamic shapes, and piecewise compilation"
+    },
+    "8.2": {
+      "title": "CUDA Graph execution modes",
+      "topics": "NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE"
+    },
+    "8.3": {
+      "title": "Shape specialization and compilation caches",
+      "topics": "Capture sizes, padding, warmup, cache keys, recompilation, and startup cost"
+    },
+    "8.4": {
+      "title": "Compute fusion passes",
+      "topics": "Norm+Quant, Act+Quant, Attention+Quant, QK Norm+RoPE, and RoPE+KV"
+    },
+    "8.5": {
+      "title": "Communication fusion and Async TP",
+      "topics": "GEMM/collective overlap, all-reduce+RMSNorm, SP, and symmetric memory"
+    },
+    "8.6": {
+      "title": "Optimization levels, CustomOp, and vLLM IR",
+      "topics": "Optimization presets, pass precedence, operator dispatch/lowering, and platform overrides"
+    },
+    "8.7": {
+      "title": "Multimodal graphs and compilation debugging",
+      "topics": "ViT CUDA Graphs, encoder compilation, dynamic inputs, fallbacks, and DBO/speculation combinations"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "number": 5,
+  "part": {
+    "title": "KV Cache, Prefix Caching, and Long Contexts"
+  },
+  "chapters": {
+    "5.1": {
+      "title": "PagedAttention and cache layouts",
+      "topics": "Page size, block tables, slot mapping, NHD/HND and newer layouts, and fragmentation"
+    },
+    "5.2": {
+      "title": "Automatic Prefix Caching",
+      "topics": "APC full-block matching, uncached suffix computation, prefill savings, final-token/logits boundaries; comparison with radix-based caching"
+    },
+    "5.3": {
+      "title": "Cache keys and sharing isolation",
+      "topics": "Chained hashes, token/multimodal/LoRA identities, cache salts, and hash algorithms"
+    },
+    "5.4": {
+      "title": "Cache lifecycle and routing",
+      "topics": "Reference counts, LRU, eviction, preemption/recomputation, reset, KV events, and affinity routing"
+    },
+    "5.5": {
+      "title": "Cache management for hybrid models",
+      "topics": "Full/SWA/SSM groups, Hybrid KV Cache Manager, page alignment, and shared layers"
+    },
+    "5.6": {
+      "title": "State caching for Mamba and linear models",
+      "topics": "Mamba1/2, GDN, convolution/SSM states, checkpoints, ReplaySSM, and RecoverSSM"
+    },
+    "5.7": {
+      "title": "KV offloading and tiered caching",
+      "topics": "Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors"
+    },
+    "5.8": {
+      "title": "Context extension and KV sharing",
+      "topics": "RoPE scaling/YaRN, model length, sliding windows, and cross-layer KV sharing/fast prefill"
+    },
+    "5.9": {
+      "title": "IndexCache and sparse index caching",
+      "topics": "Cross-layer reuse of DSA top-k indices, reuse frequency, and sparse-attention accuracy"
+    }
+  }
+}

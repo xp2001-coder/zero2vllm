@@ -23,6 +23,20 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
-      - run: python scripts/run_part1.py --skip-tests
-      - run: python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
-      - run: python scripts/course_docs.py --check
+      - run: python -m scripts.experiments.part01 --skip-tests
+      - run: python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/04-quantization-kernels/int4.json
+      - run: python -m scripts.docs.course --check
+      - run: python -m scripts.docs.layout
+
+  pytorch-lesson:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install torch==2.7.1 numpy==2.2.6 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m scripts.experiments.lesson0201
+      - run: python -m zero2vllm torch-demo --dtype float32 --output .local/runs/part-02-engine/01-pytorch-model/cli-float32.json
+      - run: python docs/chapters/part-02-engine/01-pytorch-model/examples/run.py

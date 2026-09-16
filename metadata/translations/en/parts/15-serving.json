@@ -1,0 +1,36 @@
+{
+  "number": 15,
+  "part": {
+    "title": "Serving APIs and Generation Features"
+  },
+  "chapters": {
+    "15.1": {
+      "title": "Offline and online entry points",
+      "topics": "LLM/AsyncLLM, chat/complete/serve/run-batch, OpenAI Batch, and SSE streaming"
+    },
+    "15.2": {
+      "title": "API feature map",
+      "topics": "Completions/Chat/Responses, Embeddings/Score/Rerank, audio/realtime APIs, and tokenize/detokenize"
+    },
+    "15.3": {
+      "title": "Structured outputs",
+      "topics": "JSON Schema, regex, choice, grammar, structural tags, and XGrammar/Guidance"
+    },
+    "15.4": {
+      "title": "Tool calling",
+      "topics": "tool_choice, auto/named/required tools, parallel tools, parsers, and chat templates"
+    },
+    "15.5": {
+      "title": "Reasoning and interleaved thinking",
+      "topics": "Reasoning parsers, content separation, thinking budgets, tool rounds, and interleaved reasoning"
+    },
+    "15.6": {
+      "title": "Custom sampling and processors",
+      "topics": "Custom logits processors, logit bias, allowed/blocked tokens, and custom arguments/I/O"
+    },
+    "15.7": {
+      "title": "Serving operations and scaling",
+      "topics": "Frontend process scaling, rate limiting/backpressure, cancellation, health checks, metrics, and framework integrations"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "number": 9,
+  "part": {
+    "title": "Quantization Algorithms, Kernel Implementation, and Inference Acceleration",
+    "readme_note": "Students start with the mathematical reference, packing, and basic GEMM; quantization engineers can begin with strategy and kernel design. See the [quantization course design](docs/chapters/part-09-quantization/design.md) for the running experiment, tensor contracts, and acceptance criteria."
+  },
+  "chapters": {
+    "9.1": {
+      "title": "Low-precision representations and compute paths",
+      "topics": "INT4/INT8 and FP8/FP4/MX formats; scales/zero points, rounding/saturation, granularity; storage/multiply/accumulation precision"
+    },
+    "9.2": {
+      "title": "Quantization algorithms",
+      "topics": "Compare error objectives, calibration, clipping, rounding, error compensation, and equivalent transformations; GPTQ/AWQ as case studies, PTQ vs. QAT"
+    },
+    "9.3": {
+      "title": "Quantization strategies and precision allocation",
+      "topics": "W/A/KV, weight-only vs. low-precision computation, static/dynamic, online/offline, layer/group/expert mixed precision, and workload awareness"
+    },
+    "9.4": {
+      "title": "Writing quantization and data-reordering kernels",
+      "topics": "amax/reduction, Q/DQ, per-token/per-group scales, INT4 nibble packing, sign extension, reordering, and tail blocks"
+    },
+    "9.5": {
+      "title": "Weight-only GEMV and GEMM",
+      "topics": "W4A16/W8A16, packed layouts, fused tiled dequantization, scale reuse, small-M decode, and large-M prefill"
+    },
+    "9.6": {
+      "title": "Low-precision GEMM and scaling",
+      "topics": "W8A8/W4A8, conditional INT8/FP8/FP4 paths, dynamic activation quantization, group scaling, accumulation precision, zero-point compensation, and epilogues"
+    },
+    "9.7": {
+      "title": "Kernel fusion and tuning",
+      "topics": "Norm/Act+Quant, GEMM epilogues, tiling, L2/shared-memory reuse, pipelines/double buffering, registers, split-K, and autotuning"
+    },
+    "9.8": {
+      "title": "KV quantization and attention integration",
+      "topics": "KV formats/layouts, per-head/per-token scales, quantized writes/fused reads, low-bit dequantization, outlier layers, and long-context error"
+    },
+    "9.9": {
+      "title": "MoE expert quantization and grouped computation",
+      "topics": "Per-expert precision/scales, activation quantization after routing, grouped GEMM, packed layouts, load imbalance, and communication integration"
+    },
+    "9.10": {
+      "title": "Integrating quantized kernels into vLLM",
+      "topics": "QuantizationConfig → get_quant_method → create_weights → load → process_weights_after_loading → apply; layouts/sharding/dispatch/fallbacks"
+    },
+    "9.11": {
+      "title": "From kernel gains to end-to-end acceleration",
+      "topics": "Microbenchmark → layer → model → serving; prefill/decode, numerical error and model quality, TTFT/TPOT/goodput, and amortizing preprocessing"
+    }
+  }
+}

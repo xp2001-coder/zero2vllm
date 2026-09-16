@@ -1,0 +1,521 @@
+{
+  "record_type": "regression_summary",
+  "source": {
+    "git_commit": "6f0ae78732a565599a8eeddb0b45e7af91f5aa6a",
+    "working_tree_dirty": true,
+    "source_sha256": "a57f88c688a56c0c2e24d8c7bc78270fe91eee555272ba3f3ea577c88a3c03b7",
+    "recipe": "Sorted package/tests/scripts Python files plus event fixture; relative UTF-8 path + NUL + LF-normalized file bytes + NUL."
+  },
+  "created_at_utc": "2026-09-16T03:18:35.655044+00:00",
+  "passed": true,
+  "cases": [
+    {
+      "name": "01-next-token",
+      "arguments": [
+        "next-token-demo"
+      ],
+      "output": "01-next-token.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_reference_error": 0.0,
+        "max_abs_first_step_error": 0.0,
+        "future_attention_is_zero": true,
+        "attention_rows_sum_to_one": true,
+        "absolute_tolerance": 1e-12,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "02-phases",
+      "arguments": [
+        "phase-demo"
+      ],
+      "output": "02-phases.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_logit_error": 0.0,
+        "same_token_ids": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "03-cache",
+      "arguments": [
+        "kv-demo"
+      ],
+      "output": "03-cache.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_chunk_logit_error": 0.0,
+        "max_abs_grouped_error": 0.0,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "04-metrics",
+      "arguments": [
+        "metrics-demo"
+      ],
+      "output": "04-metrics.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "passed": true,
+        "meaning": "Input schema, clocks and event ordering validated; not proof of measured GPU provenance."
+      },
+      "error": null
+    },
+    {
+      "name": "05-structures",
+      "arguments": [
+        "structure-demo"
+      ],
+      "output": "05-structures.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "errors": {
+          "rope_norm": 8.881784197001252e-16,
+          "rope_relative_position": 1.1102230246251565e-16,
+          "linear_recurrence": 2.220446049250313e-16,
+          "latent_identity": 2.42861286636753e-17,
+          "ssm_recurrence": 0.0
+        },
+        "absolute_tolerance": 1e-12,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "06-sampling",
+      "arguments": [
+        "sampling-demo"
+      ],
+      "output": "06-sampling.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "cache-generation",
+      "arguments": [
+        "demo"
+      ],
+      "output": "cache-generation.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_token_ids": true,
+        "max_abs_logit_error": 0.0,
+        "absolute_tolerance": 1e-12,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "phase-short",
+      "arguments": [
+        "phase-demo",
+        "--prompt",
+        "1,2",
+        "--max-new-tokens",
+        "3"
+      ],
+      "output": "phase-short.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_logit_error": 0.0,
+        "same_token_ids": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "phase-batch64",
+      "arguments": [
+        "phase-demo",
+        "--decode-batch",
+        "64"
+      ],
+      "output": "phase-batch64.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_logit_error": 0.0,
+        "same_token_ids": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "cache-chunk1",
+      "arguments": [
+        "kv-demo",
+        "--chunk-size",
+        "1"
+      ],
+      "output": "cache-chunk1.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_chunk_logit_error": 0.0,
+        "max_abs_grouped_error": 0.0,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "cache-chunk3",
+      "arguments": [
+        "kv-demo",
+        "--chunk-size",
+        "3"
+      ],
+      "output": "cache-chunk3.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_chunk_logit_error": 0.0,
+        "max_abs_grouped_error": 0.0,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "cache-capacity",
+      "arguments": [
+        "kv-demo",
+        "--sequence-length",
+        "8192",
+        "--batch-size",
+        "4"
+      ],
+      "output": "cache-capacity.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_chunk_logit_error": 0.0,
+        "max_abs_grouped_error": 0.0,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "cache-gqa4",
+      "arguments": [
+        "kv-demo",
+        "--kv-heads",
+        "4"
+      ],
+      "output": "cache-gqa4.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "max_abs_chunk_logit_error": 0.0,
+        "max_abs_grouped_error": 0.0,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "metrics-strict",
+      "arguments": [
+        "metrics-demo",
+        "--ttft-slo",
+        "0.4",
+        "--tpot-slo",
+        "0.2"
+      ],
+      "output": "metrics-strict.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "passed": true,
+        "meaning": "Input schema, clocks and event ordering validated; not proof of measured GPU provenance."
+      },
+      "error": null
+    },
+    {
+      "name": "structure-window1",
+      "arguments": [
+        "structure-demo",
+        "--window",
+        "1"
+      ],
+      "output": "structure-window1.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "errors": {
+          "rope_norm": 8.881784197001252e-16,
+          "rope_relative_position": 1.1102230246251565e-16,
+          "linear_recurrence": 2.220446049250313e-16,
+          "latent_identity": 2.42861286636753e-17,
+          "ssm_recurrence": 0.0
+        },
+        "absolute_tolerance": 1e-12,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "structure-window8",
+      "arguments": [
+        "structure-demo",
+        "--window",
+        "8"
+      ],
+      "output": "structure-window8.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "errors": {
+          "rope_norm": 8.881784197001252e-16,
+          "rope_relative_position": 1.1102230246251565e-16,
+          "linear_recurrence": 2.220446049250313e-16,
+          "latent_identity": 2.42861286636753e-17,
+          "ssm_recurrence": 0.0
+        },
+        "absolute_tolerance": 1e-12,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-greedy",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "0",
+        "--max-new-tokens",
+        "3"
+      ],
+      "output": "sampling-greedy.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-temp05",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "0.5",
+        "--top-p",
+        "1"
+      ],
+      "output": "sampling-temp05.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-temp15",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "1.5",
+        "--top-p",
+        "1"
+      ],
+      "output": "sampling-temp15.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-topk",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "1",
+        "--top-k",
+        "2",
+        "--top-p",
+        "1"
+      ],
+      "output": "sampling-topk.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-topp",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "1",
+        "--top-p",
+        "0.8"
+      ],
+      "output": "sampling-topp.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-minp",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "1",
+        "--top-p",
+        "1",
+        "--min-p",
+        "0.6"
+      ],
+      "output": "sampling-minp.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-penalties",
+      "arguments": [
+        "sampling-demo",
+        "--repetition-penalty",
+        "1.2",
+        "--presence-penalty",
+        "0.5",
+        "--frequency-penalty",
+        "0.25"
+      ],
+      "output": "sampling-penalties.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-seed8",
+      "arguments": [
+        "sampling-demo",
+        "--seed",
+        "8"
+      ],
+      "output": "sampling-seed8.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-eos",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "0",
+        "--eos-token-id",
+        "2"
+      ],
+      "output": "sampling-eos.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-stop-id",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "0",
+        "--stop-token-id",
+        "2"
+      ],
+      "output": "sampling-stop-id.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-stop-string",
+      "arguments": [
+        "sampling-demo",
+        "--temperature",
+        "0",
+        "--stop",
+        "推理推理"
+      ],
+      "output": "sampling-stop-string.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    },
+    {
+      "name": "sampling-zero",
+      "arguments": [
+        "sampling-demo",
+        "--max-new-tokens",
+        "0"
+      ],
+      "output": "sampling-zero.json",
+      "exit_code": 0,
+      "passed": true,
+      "verification": {
+        "same_seed_replay": true,
+        "passed": true
+      },
+      "error": null
+    }
+  ],
+  "course_check": {
+    "exit_code": 0,
+    "passed": true,
+    "output": "course-check.txt"
+  },
+  "tests_skipped": true,
+  "note": "Summary of a new run under runs/reorganization-part1; historical full artifacts remain under reports/part1."
+}

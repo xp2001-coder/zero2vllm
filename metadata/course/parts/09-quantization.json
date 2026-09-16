@@ -1,0 +1,140 @@
+{
+  "number": 9,
+  "title": "量化算法、算子实现与推理加速",
+  "prerequisites": "Part 1、4、7；内核调优结合 Part 8，MoE 量化补读 Part 12.1—12.3",
+  "sources": [
+    "quant",
+    "quant_base",
+    "kernel",
+    "triton_matmul",
+    "marlin_kernel",
+    "kv_quant",
+    "quant_registry",
+    "online_quant",
+    "compressor"
+  ],
+  "chapters": [
+    {
+      "id": "9.1",
+      "title": "低精度表示与计算路径",
+      "topics": "INT4/INT8、FP8/FP4/MX 格式；scale/zero-point、舍入/饱和、粒度；存储/乘法/累加精度",
+      "exercise": "定义张量、位布局与缩放契约，计算含元数据的内存/带宽预算",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/01-low-precision-representations-and-compute-paths/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.2",
+      "title": "量化算法",
+      "topics": "统一比较误差目标、校准、裁剪、舍入、误差补偿与等价变换；以 GPTQ/AWQ 等为案例，区分 PTQ/QAT",
+      "exercise": "固定格式与计算后端比较算法，输出校准/质量/转换成本分析",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/02-quantization-algorithms/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.3",
+      "title": "量化策略与精度分配",
+      "topics": "W/A/KV、weight-only/低精度计算、静态/动态、在线/离线、分层/分组/专家混合精度、负载感知",
+      "exercise": "在质量、显存和延迟预算下设计策略，并形成敏感度与消融表",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/03-quantization-strategies-and-precision-allocation/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.4",
+      "title": "手写量化与数据重排算子",
+      "topics": "amax/reduction、Q/DQ、per-token/per-group scales、INT4 半字节打包、符号扩展、重排与尾块",
+      "exercise": "先运行已交付 CPU INT4 实验并核对黄金字节/半 scale 误差界，再实现 GPU Q/DQ 与重排",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.5",
+      "title": "Weight-only GEMV 与 GEMM",
+      "topics": "W4A16/W8A16、packed layout、分块反量化融合、scale 复用、decode 小 M 与 prefill 大 M",
+      "exercise": "先写正确内核，再比较显式反量化与融合路径的时间和访存",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/05-weight-only-gemv-and-gemm/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.6",
+      "title": "低精度 GEMM 与缩放实现",
+      "topics": "W8A8/W4A8、INT8/FP8/FP4 条件化路径、动态激活量化、分组缩放、累加精度、zero-point 补偿、epilogue",
+      "exercise": "实现受设备支持的低精度路径，把量化、矩阵乘和缩放开销分项测量",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-09-quantization/06-low-precision-gemm-and-scaling/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.7",
+      "title": "融合算子与内核调优",
+      "topics": "Norm/Act+Quant、GEMM epilogue、tiling、L2/共享内存复用、流水线/双缓冲、寄存器、split-K、autotune",
+      "exercise": "用 profiling 解释每次改动，并在形状扫描中定位性能拐点与回退",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/07-kernel-fusion-and-tuning/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.8",
+      "title": "KV 量化与 Attention 协同",
+      "topics": "KV 格式/布局、per-head/per-token scales、量化写入/融合读取、低比特反量化、异常层与长上下文误差",
+      "exercise": "实现或改造一条 KV Q/DQ 路径，分别测容量、Attention 时间与模型质量",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-09-quantization/08-kv-quantization-and-attention-integration/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.9",
+      "title": "MoE 专家量化与分组计算",
+      "topics": "按专家精度/scale、路由后的激活量化、grouped GEMM、打包布局、负载不均与通信协同",
+      "exercise": "分析专家 token 分布，优化一个子路径并核对 dispatch/compute/combine 开销",
+      "hardware": "GPU/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-09-quantization/09-moe-expert-quantization-and-grouped-computation/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.10",
+      "title": "量化算子接入 vLLM",
+      "topics": "QuantizationConfig→get_quant_method→create_weights→load→process_weights_after_loading→apply；布局/分片/dispatch/回退",
+      "exercise": "为同一量化权重追踪加载前后 shape/layout/dtype 和 kernel 分支，先层后模型再服务验收",
+      "hardware": "GPU/双平台",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/10-integrating-quantized-kernels-into-vllm/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "9.11",
+      "title": "从算子收益到端到端加速",
+      "topics": "microbenchmark→层→模型→服务、prefill/decode、精度/质量双重误差、TTFT/TPOT/Goodput、预处理摊销",
+      "exercise": "提交 A100/C500 独立报告，解释更低位宽或更快 GEMM 未带来整体收益的场景",
+      "hardware": "双平台",
+      "status": "partial",
+      "reading": "docs/chapters/part-09-quantization/11-from-kernel-gains-to-end-to-end-acceleration/README.md",
+      "guide": "docs/chapters/part-09-quantization/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "teaching_focus": "算法集中在 9.2；9.3 设计精度策略；9.4—9.9 围绕算子实现与加速；9.10 接入 vLLM；9.11 验证完整推理链路。各格式与工具保留为案例和兼容索引。",
+  "readme_note": "学生先完成数学参考、打包与基础 GEMM；量化工程师可从策略/算子设计进入。贯穿实验、算子契约与验收方法见[量化篇设计](docs/chapters/part-09-quantization/design.md)。",
+  "curriculum_note": "学生先学习 9.1—9.4 的数学参考与打包，9.5 的内核实践需要 GPU；已有量化经验的工程师可先完成 9.3 的策略设计，再进入 9.4—9.11。\n\n贯穿实验：定义量化张量契约 → 参考 Q/DQ 与打包 → 融合量化 Linear → 调优与特定算子扩展 → vLLM 服务消融。见[量化篇设计与验收](part-09-quantization/design.md)。",
+  "directory": "docs/chapters/part-09-quantization"
+}

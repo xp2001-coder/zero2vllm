@@ -1,0 +1,77 @@
+{
+  "number": 16,
+  "title": "权重加载、内存与 RL 推理生命周期",
+  "prerequisites": "Part 3—5、14",
+  "sources": [
+    "load",
+    "memory",
+    "sleep",
+    "weight_transfer",
+    "async_rl",
+    "layerwise"
+  ],
+  "chapters": [
+    {
+      "id": "16.1",
+      "title": "模型解析与权重加载",
+      "topics": "本地/Hugging Face/ModelScope、revision、safetensors、sharded state、lazy loading",
+      "exercise": "分解读取、解码、拷贝和首次生成的时间",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-16-weight-loading/01-model-resolution-and-weight-loading/README.md",
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "16.2",
+      "title": "高效加载与启动",
+      "topics": "fastsafetensors、Run:ai Streamer、Tensorizer、InstantTensor、加载并发、JIT warmup",
+      "exercise": "比较冷/热文件缓存下启动时间与主机峰值内存",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-16-weight-loading/02-efficient-loading-and-startup/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "16.3",
+      "title": "权重 Offload 与内存预算",
+      "topics": "CPU weight offload、prefetch/UVA 路径、KV offload、pinned memory、图内存",
+      "exercise": "建立权重/激活/KV/workspace/graph 的显存账本",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-16-weight-loading/03-weight-offloading-and-memory-budgets/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "16.4",
+      "title": "Sleep、Wake 与 Pause/Resume",
+      "topics": "sleep levels、权重/KV 释放、wake tags、暂停恢复、缓存重置",
+      "exercise": "检查释放后的占用与恢复后输出一致性",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-16-weight-loading/04-sleep-wake-and-pause-resume/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "16.5",
+      "title": "权重更新与传输",
+      "topics": "Weight Transfer、IPC/NCCL/Sharded RDT、逐层 reload、版本一致性",
+      "exercise": "画训练器到推理器的更新流程和同步点",
+      "hardware": "多进程/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-16-weight-loading/05-weight-updates-and-transfer/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "16.6",
+      "title": "强化学习推理集成",
+      "topics": "RLHF/async rollout、训练-推理交替、distribution replay、routed experts、TRL",
+      "exercise": "分析权重滞后、采样分布和吞吐；明确 vLLM 的推理角色",
+      "hardware": "GPU/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-16-weight-loading/06-reinforcement-learning-inference-integration/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-16-weight-loading"
+}

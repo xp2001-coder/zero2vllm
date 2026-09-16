@@ -1,0 +1,36 @@
+{
+  "number": 14,
+  "part": {
+    "title": "Model Types, Multimodality, and Adapters"
+  },
+  "chapters": {
+    "14.1": {
+      "title": "Model registration and execution tasks",
+      "topics": "Generative/pooling models, runners/tasks, native implementations/Transformers backend, and encoder-decoder models"
+    },
+    "14.2": {
+      "title": "Text generation and scoring",
+      "topics": "Generation, logprobs/prompt logprobs, score, generative scoring, and version-specific beam search behavior"
+    },
+    "14.3": {
+      "title": "Pooling tasks",
+      "topics": "Embeddings, token embeddings, classification/token classification, rewards, and reranking/scoring"
+    },
+    "14.4": {
+      "title": "The multimodal input pipeline",
+      "topics": "Images/video/audio, processor caches, input budgets, placeholders, and multimodal embeddings"
+    },
+    "14.5": {
+      "title": "Multimodal execution optimization",
+      "topics": "Encoder batching/DP, ViT attention/FP8, encoder compilation/graphs, and EC caches"
+    },
+    "14.6": {
+      "title": "LoRA and multi-tenant adaptation",
+      "topics": "Multi-LoRA, mixed batches, dynamic loading/unloading, CPU caches, resolvers, and default multimodal LoRA"
+    },
+    "14.7": {
+      "title": "Prompt embeddings and specialized architectures",
+      "topics": "Prompt embeds, custom I/O, MLA/hybrid SSMs, discrete-diffusion dLLM canvas/denoising, and the scope of Omni extensions"
+    }
+  }
+}

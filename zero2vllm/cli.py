@@ -77,7 +77,7 @@ def main(argv: list[str] | None = None) -> int:
     kv.add_argument("--output", type=Path)
     metrics = commands.add_parser("metrics-demo", help="Recompute metrics from same-clock per-token events",
                                   formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    metrics.add_argument("--input", type=Path, default=Path("examples/part1/request-events.json"), help="Event JSON; bundled input is simulated")
+    metrics.add_argument("--input", type=Path, default=Path("docs/chapters/part-01-inference/04-performance-metrics/data/request-events.json"), help="Event JSON; bundled input is simulated")
     metrics.add_argument("--ttft-slo", type=float, default=0.9, help="TTFT limit in seconds")
     metrics.add_argument("--tpot-slo", type=float, default=0.35, help="TPOT limit in seconds")
     metrics.add_argument("--output", type=Path)
@@ -104,6 +104,14 @@ def main(argv: list[str] | None = None) -> int:
     sampling.add_argument("--stop-token-id", type=int, action="append", default=[], help="Repeat for multiple stopping IDs")
     sampling.add_argument("--stop", action="append", default=[], help="Stop string in generated text; may cross token boundaries")
     sampling.add_argument("--output", type=Path)
+    torch_demo = commands.add_parser("torch-demo", help="Part 2.1: compare a PyTorch decoder with the scalar reference",
+                                     formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    torch_demo.add_argument("--prompt", default="1,2,3,4")
+    torch_demo.add_argument("--max-new-tokens", type=int, default=4)
+    torch_demo.add_argument("--seed", type=int, default=7)
+    torch_demo.add_argument("--dtype", choices=("float64", "float32"), default="float64")
+    torch_demo.add_argument("--layers", type=int, default=2)
+    torch_demo.add_argument("--output", type=Path)
     doctor = commands.add_parser("doctor", help="Collect read-only environment inventory")
     doctor.add_argument("--output", type=Path)
     quant = commands.add_parser("quant-demo", help="Verify INT4 packing and Linear on CPU")
@@ -143,6 +151,18 @@ def main(argv: list[str] | None = None) -> int:
                                              args.eos_token_id, tuple(args.stop_token_id), tuple(args.stop), args.min_new_tokens)
             result["created_at_utc"] = datetime.now(timezone.utc).isoformat()
             code = 0 if result["verification"]["passed"] else 1
+        elif args.command == "torch-demo":
+            try:
+                from .modeling.torch_decoder import decoder_experiment
+            except ModuleNotFoundError as error:
+                if error.name == 'torch':
+                    raise ValueError('torch-demo requires PyTorch. Install into your project venv: '
+                                     'python -m pip install torch==2.7.1 --index-url https://download.pytorch.org/whl/cpu') from error
+                raise
+            result = decoder_experiment([int(x.strip()) for x in args.prompt.split(',')],
+                                        args.max_new_tokens, args.seed, args.dtype, args.layers)
+            result['created_at_utc'] = datetime.now(timezone.utc).isoformat()
+            code = 0 if result['verification']['passed'] else 1
         elif args.command == "quant-demo":
             result = quantization_experiment(args.group_size, args.seed)
             result["created_at_utc"] = datetime.now(timezone.utc).isoformat()

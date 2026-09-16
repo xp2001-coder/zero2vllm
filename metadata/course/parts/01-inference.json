@@ -1,0 +1,73 @@
+{
+  "number": 1,
+  "title": "理解大模型推理",
+  "prerequisites": "基础 Python；1.1 补充矩阵乘法；本篇 CPU 实验无需 PyTorch 或 GPU",
+  "sources": [
+    "models",
+    "generation",
+    "bench"
+  ],
+  "chapters": [
+    {
+      "id": "1.1",
+      "title": "从 token 到下一步预测",
+      "topics": "Tokenizer、Embedding、Transformer、因果 Attention、LM Head",
+      "exercise": "手算小矩阵的 Attention 并标出张量维度",
+      "hardware": "CPU",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/01-next-token/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "1.2",
+      "title": "Prefill 与 Decode",
+      "topics": "计算密集/带宽密集、HBM/SRAM、Roofline、算术强度",
+      "exercise": "估算两阶段的 FLOPs、访存量与主要瓶颈",
+      "hardware": "CPU 参考与推导；GPU 性能另行验证",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/02-prefill-decode/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "1.3",
+      "title": "KV Cache 的作用",
+      "topics": "缓存更新、位置偏移、MHA/MQA/GQA、每 token 显存",
+      "exercise": "复现已有 logits 对齐实验并推导 KV 容量",
+      "hardware": "CPU 参考与推导；GPU 性能另行验证",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/03-kv-cache/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "1.4",
+      "title": "如何读性能结果",
+      "topics": "TTFT、TPOT、ITL、吞吐、Goodput、P50/P95/P99、排队",
+      "exercise": "用原始时间序列重算指标并识别错误口径",
+      "hardware": "CPU",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/04-performance-metrics/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "1.5",
+      "title": "模型结构与长上下文基础",
+      "topics": "RoPE、ALiBi、Sliding Window、MLA、稀疏/线性 Attention、SSM",
+      "exercise": "比较不同结构的缓存对象和复杂度",
+      "hardware": "CPU",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/05-model-structures/README.md",
+      "content": "lesson"
+    },
+    {
+      "id": "1.6",
+      "title": "采样与数值正确性",
+      "topics": "Greedy、temperature、top-k/top-p/min-p、penalty、seed、EOS/stop",
+      "exercise": "实现小词表采样并检查边界、分布和停止规则",
+      "hardware": "CPU",
+      "status": "complete",
+      "reading": "docs/chapters/part-01-inference/06-sampling-correctness/README.md",
+      "content": "lesson"
+    }
+  ],
+  "directory": "docs/chapters/part-01-inference"
+}

@@ -1,0 +1,90 @@
+{
+  "number": 8,
+  "title": "编译、CUDA Graph 与执行优化",
+  "prerequisites": "Part 3、6、7",
+  "sources": [
+    "compile",
+    "compile_config",
+    "graphs",
+    "optimization_levels",
+    "ir",
+    "vit_graphs"
+  ],
+  "chapters": [
+    {
+      "id": "8.1",
+      "title": "torch.compile 集成",
+      "topics": "Dynamo/FX/Inductor 与 Triton TTIR/TTGIR/目标代码；guards、断图、动态 shape、piecewise compile",
+      "exercise": "区分两层编译链，追踪冷/热编译、specialization 和一个自定义算子的 lowering",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-08-compilation/01-torch-compile-integration/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.2",
+      "title": "CUDA Graph 执行模式",
+      "topics": "NONE/PIECEWISE/FULL/FULL_DECODE_ONLY/FULL_AND_PIECEWISE",
+      "exercise": "分别记录 eager、分段图、完整图的启动开销与显存",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-08-compilation/02-cuda-graph-execution-modes/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.3",
+      "title": "形状特化与编译缓存",
+      "topics": "capture sizes、padding、warmup、缓存键、recompile、启动成本",
+      "exercise": "比较冷启动与稳态，定位重复编译",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-08-compilation/03-shape-specialization-and-compilation-caches/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.4",
+      "title": "计算融合 Pass",
+      "topics": "Norm+Quant、Act+Quant、Attention+Quant、QK Norm+RoPE、RoPE+KV",
+      "exercise": "对照融合前后 kernel 数和误差，不只看开关值",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-08-compilation/04-compute-fusion-passes/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.5",
+      "title": "通信融合与 Async TP",
+      "topics": "GEMM/collective overlap、all-reduce+RMSNorm、SP、对称内存",
+      "exercise": "画出依赖关系，测量通信隐藏比例",
+      "hardware": "多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-08-compilation/05-communication-fusion-and-async-tp/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.6",
+      "title": "优化级别、CustomOp 与 vLLM IR",
+      "topics": "优化预设、pass 优先级、算子 dispatch/lowering、平台覆盖",
+      "exercise": "追踪一个算子从模型代码到后端实现的过程",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-08-compilation/06-optimization-levels-customop-and-vllm-ir/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "8.7",
+      "title": "多模态图与编译排错",
+      "topics": "ViT CUDA Graph、encoder compile、动态输入、回退、DBO/Spec 组合",
+      "exercise": "对齐图执行结果并保存最小失败场景",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-08-compilation/07-multimodal-graphs-and-compilation-debugging/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-08-compilation"
+}

@@ -1,0 +1,18 @@
+test_config_and_token_contract (test_decoder_reference.ScalarDecoderTests.test_config_and_token_contract) ... ok
+test_future_tokens_do_not_change_prefix (test_decoder_reference.ScalarDecoderTests.test_future_tokens_do_not_change_prefix) ... ok
+test_generation_boundary_and_input_ownership (test_decoder_reference.ScalarDecoderTests.test_generation_boundary_and_input_ownership) ... ok
+test_rms_norm_hand_calculation_and_zero (test_decoder_reference.ScalarDecoderTests.test_rms_norm_hand_calculation_and_zero) ... ok
+test_rope_preserves_norm_in_each_head (test_decoder_reference.ScalarDecoderTests.test_rope_preserves_norm_in_each_head) ... ok
+test_all_intermediate_stages_float64_and_float32 (test_torch_decoder.TorchDecoderTests.test_all_intermediate_stages_float64_and_float32) ... ok
+test_batch_matches_independent_requests (test_torch_decoder.TorchDecoderTests.test_batch_matches_independent_requests) ... ok
+test_does_not_change_rng_and_generation_disables_grad (test_torch_decoder.TorchDecoderTests.test_does_not_change_rng_and_generation_disables_grad) ... ok
+test_future_mask_and_prefix_extension (test_torch_decoder.TorchDecoderTests.test_future_mask_and_prefix_extension) ... ok
+test_invalid_input_and_context_boundary (test_torch_decoder.TorchDecoderTests.test_invalid_input_and_context_boundary) ... ok
+test_linear_transpose_embedding_and_parameter_registration (test_torch_decoder.TorchDecoderTests.test_linear_transpose_embedding_and_parameter_registration) ... ok
+test_mutated_projection_fails_oracle_comparison (test_torch_decoder.TorchDecoderTests.test_mutated_projection_fails_oracle_comparison) ... ok
+test_rotations_use_position_and_do_not_mix_heads (test_torch_decoder.TorchDecoderTests.test_rotations_use_position_and_do_not_mix_heads) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.244s
+
+OK

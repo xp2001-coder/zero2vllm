@@ -1,0 +1,78 @@
+{
+  "number": 6,
+  "title": "调度、批处理与重叠执行",
+  "prerequisites": "Part 2—3、5",
+  "sources": [
+    "optimization",
+    "scheduler",
+    "dbo",
+    "sglang_tbo"
+  ],
+  "chapters": [
+    {
+      "id": "6.1",
+      "title": "连续批处理与调度策略",
+      "topics": "FCFS、priority、等待/运行队列、公平性、抢占与饥饿",
+      "exercise": "模拟长短请求混合并比较吞吐和尾延迟",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-06-scheduling/01-continuous-batching-and-scheduling-policies/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "6.2",
+      "title": "Chunked Prefill",
+      "topics": "分块预填充、混合 prefill/decode、长请求阈值、部分 prefill 预算",
+      "exercise": "扫描 chunk/token 预算，观察 TTFT 与 ITL 权衡",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-06-scheduling/02-chunked-prefill/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "6.3",
+      "title": "Token 预算与显存预算",
+      "topics": "max_num_seqs、max_num_batched_tokens、版本中的 scheduled-token 上限、max_model_len、KV/encoder/推测预算",
+      "exercise": "手算 4096 token 预算中两个 decode 加一个长 prefill，标记理想上限与真实约束",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-06-scheduling/03-token-and-gpu-memory-budgets/README.md",
+      "guide": "docs/chapters/part-05-kv-cache/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "6.4",
+      "title": "异步调度与输出处理",
+      "topics": "CPU/GPU overlap、输入准备、采样反馈、异步输出、取消边界",
+      "exercise": "阅读时间线并定位 CPU 空洞和同步点",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-06-scheduling/04-async-scheduling-and-output-processing/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "6.5",
+      "title": "DBO 与 TBO 对照",
+      "topics": "vLLM Dual Batch Overlap、ubatch、计算/通信重叠；SGLang TBO/SBO 对照",
+      "exercise": "画两微批次时间线，检查阈值和重叠是否真实发生",
+      "hardware": "多卡",
+      "status": "partial",
+      "reading": "docs/chapters/part-06-scheduling/05-comparing-dbo-and-tbo/README.md",
+      "guide": "docs/chapters/part-11-parallelism/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "6.6",
+      "title": "调度功能组合与演进",
+      "topics": "async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of",
+      "exercise": "制作所选版本组合矩阵，记录拒绝/回退原因",
+      "hardware": "CPU/GPU/多卡",
+      "status": "planned",
+      "reading": "docs/chapters/part-06-scheduling/06-scheduling-combinations-and-evolution/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-06-scheduling"
+}

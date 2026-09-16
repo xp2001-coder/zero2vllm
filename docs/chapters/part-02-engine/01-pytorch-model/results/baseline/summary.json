@@ -1,0 +1,138 @@
+{
+  "created_at_utc": "2026-09-16T03:23:14.636032+00:00",
+  "source": {
+    "git_commit": "6f0ae78732a565599a8eeddb0b45e7af91f5aa6a",
+    "working_tree_dirty": true,
+    "source_sha256": "a57f88c688a56c0c2e24d8c7bc78270fe91eee555272ba3f3ea577c88a3c03b7",
+    "recipe": "Sorted package/tests/scripts Python files plus event fixture; relative UTF-8 path + NUL + LF-normalized file bytes + NUL."
+  },
+  "cases": [
+    {
+      "name": "float64",
+      "options": {
+        "prompt": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "output": "float64.json",
+      "passed": true
+    },
+    {
+      "name": "float32",
+      "options": {
+        "prompt": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "dtype": "float32"
+      },
+      "output": "float32.json",
+      "passed": true
+    },
+    {
+      "name": "seed8",
+      "options": {
+        "prompt": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "seed": 8
+      },
+      "output": "seed8.json",
+      "passed": true
+    },
+    {
+      "name": "single-token",
+      "options": {
+        "prompt": [
+          15
+        ],
+        "layers": 1
+      },
+      "output": "single-token.json",
+      "passed": true
+    },
+    {
+      "name": "three-layers",
+      "options": {
+        "prompt": [
+          2,
+          2,
+          0
+        ],
+        "layers": 3
+      },
+      "output": "three-layers.json",
+      "passed": true
+    },
+    {
+      "name": "zero-output",
+      "options": {
+        "prompt": [
+          1,
+          2
+        ],
+        "max_new_tokens": 0
+      },
+      "output": "zero-output.json",
+      "passed": true
+    },
+    {
+      "name": "context-boundary",
+      "options": {
+        "prompt": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "max_new_tokens": 1
+      },
+      "output": "context-boundary.json",
+      "passed": true
+    }
+  ],
+  "tests_skipped": false,
+  "gpu_status": "not_run",
+  "passed": true,
+  "tests": {
+    "passed": true,
+    "output": "tests.txt",
+    "exit_code": 0
+  }
+}

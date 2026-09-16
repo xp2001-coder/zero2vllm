@@ -1,0 +1,20 @@
+{
+  "number": 4,
+  "part": {
+    "title": "Single-GPU Baselines on CUDA and MACA"
+  },
+  "chapters": {
+    "4.1": {
+      "title": "The CUDA path and A100 baseline",
+      "topics": "Upstream vLLM, CUDA/PyTorch, GPU memory specifications, starting in eager mode, and offline/online inference"
+    },
+    "4.2": {
+      "title": "The MACA path and C500 baseline",
+      "topics": "vLLM-MetaX, MACA, mcoplib, official images, and version compatibility"
+    },
+    "4.3": {
+      "title": "The same experiment on two platforms",
+      "topics": "Matched weights/inputs/sampling/workloads, dtype, backend differences, and error tolerances"
+    }
+  }
+}

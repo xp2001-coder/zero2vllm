@@ -1,0 +1,91 @@
+{
+  "number": 7,
+  "title": "Attention 与高性能算子",
+  "prerequisites": "Part 1、3、5；补充 GPU 编程",
+  "sources": [
+    "attention_registry",
+    "attention_support",
+    "flashattention",
+    "kernel",
+    "customop",
+    "triton_attention"
+  ],
+  "chapters": [
+    {
+      "id": "7.1",
+      "title": "FlashAttention 原理",
+      "topics": "IO-aware tiling、online softmax、SRAM 复用、精确注意力",
+      "exercise": "分块计算 softmax 并与朴素实现对齐",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-07-attention/01-flashattention-principles/README.md",
+      "guide": "docs/chapters/part-07-attention/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.2",
+      "title": "FlashAttention 版本与接入",
+      "topics": "FA1/FA2/FA3/FA4、varlen、prefill/decode、设备与 dtype 条件",
+      "exercise": "区分算法版本、安装包与 vLLM 实际选择的后端",
+      "hardware": "GPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-07-attention/02-flashattention-versions-and-integration/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.3",
+      "title": "注意力后端选择",
+      "topics": "FlashInfer、Triton、SDPA/FlexAttention、CPU/ROCm/XPU、自动选择",
+      "exercise": "建立 head size、dtype、KV 格式、图执行的能力矩阵",
+      "hardware": "GPU/专项",
+      "status": "partial",
+      "reading": "docs/chapters/part-07-attention/03-selecting-an-attention-backend/README.md",
+      "guide": "docs/chapters/part-07-attention/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.4",
+      "title": "MLA 与稀疏 Attention",
+      "topics": "FlashMLA、CUTLASS MLA、FlashInfer MLA、DSA/MSA、模型专用后端",
+      "exercise": "分析压缩 KV、索引选择和 attention kernel 的分工",
+      "hardware": "专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-07-attention/04-mla-and-sparse-attention/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.5",
+      "title": "Decode 与共享前缀注意力",
+      "topics": "分区归约、split-K、变长/分页、cascade attention、共享前缀",
+      "exercise": "比较短/长上下文和高/低 batch 下的算子时间",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-07-attention/05-decode-and-shared-prefix-attention/README.md",
+      "guide": "docs/chapters/part-07-attention/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.6",
+      "title": "线性层与融合算子",
+      "topics": "Triton vector add→reduction/Softmax→Matmul→Attention；GEMM/GEMV、RMSNorm、RoPE、SwiGLU、CUDA/CUTLASS/CuTeDSL",
+      "exercise": "逐级完成数值参考、mask/stride/尾块检查，再选择一个小算子做 microbenchmark",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-07-attention/06-linear-layers-and-fused-kernels/README.md",
+      "guide": "docs/chapters/part-07-attention/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "7.7",
+      "title": "Kernel 选择与调优",
+      "topics": "Marlin、Machete、DeepGEMM、Humming、FlashInfer、b12x、autotune/JIT",
+      "exercise": "解释形状、架构和量化格式如何影响调度与回退",
+      "hardware": "GPU/专项",
+      "status": "partial",
+      "reading": "docs/chapters/part-07-attention/07-kernel-selection-and-tuning/README.md",
+      "guide": "docs/chapters/part-07-attention/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-07-attention"
+}

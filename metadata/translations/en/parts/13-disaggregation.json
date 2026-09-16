@@ -1,0 +1,32 @@
+{
+  "number": 13,
+  "part": {
+    "title": "Disaggregated Serving and KV Transfer"
+  },
+  "chapters": {
+    "13.1": {
+      "title": "Prefill-decode disaggregation",
+      "topics": "PD disaggregation, independent phase scaling, TTFT/TPOT targets, and routing"
+    },
+    "13.2": {
+      "title": "The KV Connector protocol",
+      "topics": "Scheduler/worker roles, async storage/retrieval, lifecycle, cleanup after failures, and KV events"
+    },
+    "13.3": {
+      "title": "Connectors and tiered storage",
+      "topics": "NIXL, Mooncake/Store, LMCache, MoRIIO, FlexKV, HF3FS, and native offloading"
+    },
+    "13.4": {
+      "title": "Heterogeneous parallelism and transfer compatibility",
+      "topics": "Different P/D TP/PCP/DCP degrees, KV layouts, block sizes, dtypes, and model consistency"
+    },
+    "13.5": {
+      "title": "Encoder disaggregation and caching",
+      "topics": "Multimodal encoders, EC transfer, embedding caches, and renderer separation"
+    },
+    "13.6": {
+      "title": "Distributed serving lifecycles",
+      "topics": "Push/pull, leases/notifications, timeouts, retries, load-failure recovery, and cache affinity"
+    }
+  }
+}

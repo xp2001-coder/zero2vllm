@@ -1,0 +1,32 @@
+{
+  "number": 16,
+  "part": {
+    "title": "Weight Loading, Memory, and the RL Inference Lifecycle"
+  },
+  "chapters": {
+    "16.1": {
+      "title": "Model resolution and weight loading",
+      "topics": "Local/Hugging Face/ModelScope sources, revisions, safetensors, sharded state, and lazy loading"
+    },
+    "16.2": {
+      "title": "Efficient loading and startup",
+      "topics": "fastsafetensors, Run:ai Streamer, Tensorizer, InstantTensor, loading concurrency, and JIT warmup"
+    },
+    "16.3": {
+      "title": "Weight offloading and memory budgets",
+      "topics": "CPU weight offloading, prefetch/UVA paths, KV offloading, pinned memory, and graph memory"
+    },
+    "16.4": {
+      "title": "Sleep, wake, and pause/resume",
+      "topics": "Sleep levels, releasing weights/KV, wake tags, pausing/resuming, and cache resets"
+    },
+    "16.5": {
+      "title": "Weight updates and transfer",
+      "topics": "Weight Transfer, IPC/NCCL/Sharded RDT, layerwise reloading, and version consistency"
+    },
+    "16.6": {
+      "title": "Reinforcement-learning inference integration",
+      "topics": "RLHF/async rollouts, alternating training and inference, distribution replay, routed experts, and TRL"
+    }
+  }
+}

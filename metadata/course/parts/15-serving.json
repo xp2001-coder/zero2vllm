@@ -1,0 +1,88 @@
+{
+  "number": 15,
+  "title": "服务接口与生成能力",
+  "prerequisites": "Part 3、14",
+  "sources": [
+    "serve",
+    "structured",
+    "tools",
+    "reasoning",
+    "thinking",
+    "custom_logits"
+  ],
+  "chapters": [
+    {
+      "id": "15.1",
+      "title": "离线与在线入口",
+      "topics": "LLM/AsyncLLM、chat/complete/serve/run-batch、OpenAI Batch、流式 SSE",
+      "exercise": "保存同负载下不同入口的输入输出契约",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-15-serving/01-offline-and-online-entry-points/README.md",
+      "guide": "docs/chapters/part-10-speculation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.2",
+      "title": "API 能力地图",
+      "topics": "Completions/Chat/Responses、Embeddings/Score/Rerank、音频/实时接口、tokenize/detokenize",
+      "exercise": "按版本列出 endpoint 与模型能力条件",
+      "hardware": "GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-15-serving/02-api-feature-map/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.3",
+      "title": "Structured Outputs",
+      "topics": "JSON Schema、regex、choice、grammar、structural tag、XGrammar/Guidance",
+      "exercise": "验证约束满足率并测量语法编译和逐 token mask 成本",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-15-serving/03-structured-outputs/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.4",
+      "title": "Tool Calling",
+      "topics": "tool_choice、自动/指定/required、parallel tools、parser、chat template",
+      "exercise": "构建工具调用解析用例与流式增量组装检查",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-15-serving/04-tool-calling/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.5",
+      "title": "Reasoning 与 Interleaved Thinking",
+      "topics": "reasoning parser、内容分离、思考预算、工具轮次与交错推理",
+      "exercise": "核对流式 reasoning/content/tool 三类输出",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-15-serving/05-reasoning-and-interleaved-thinking/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.6",
+      "title": "自定义采样与处理器",
+      "topics": "Custom Logits Processors、logit bias、允许/禁止 token、custom arguments/I/O",
+      "exercise": "实现有约束的小处理器并检查批处理语义",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-15-serving/06-custom-sampling-and-processors/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "15.7",
+      "title": "服务治理与扩展",
+      "topics": "前端进程扩展、限流/背压、取消、健康检查、指标、集成框架",
+      "exercise": "设计连接超时与高负载场景并保存完整请求结果",
+      "hardware": "GPU/多机",
+      "status": "partial",
+      "reading": "docs/chapters/part-15-serving/07-serving-operations-and-scaling/README.md",
+      "guide": "docs/chapters/part-10-speculation/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-15-serving"
+}

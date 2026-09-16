@@ -1,0 +1,28 @@
+{
+  "number": 18,
+  "part": {
+    "title": "Platform Extensions, Deployment, and Open-Source Contributions"
+  },
+  "chapters": {
+    "18.1": {
+      "title": "Platforms and plugins",
+      "topics": "Out-of-tree platforms, model/operator/quantization/LoRA/I/O plugins, and capability detection"
+    },
+    "18.2": {
+      "title": "Adapting to C500",
+      "topics": "MACA/mcoplib, attention/quantization/graph capabilities, configuration migration, and numerical/performance debugging"
+    },
+    "18.3": {
+      "title": "Other hardware and framework comparisons",
+      "topics": "ROCm/XPU/CPU/TPU/other plugins; the scope of SGLang, TensorRT-LLM, llama.cpp, and vLLM-Omni"
+    },
+    "18.4": {
+      "title": "Deployment and the surrounding ecosystem",
+      "topics": "Docker/Kubernetes/Helm/Ray/Nginx, routing, llm-d/Dynamo/Production Stack, and application integrations"
+    },
+    "18.5": {
+      "title": "From an issue to a contribution and version maintenance",
+      "topics": "Unit/integration/performance checks, minimal reproductions, PRs, deprecation migration, and feature inventory updates"
+    }
+  }
+}

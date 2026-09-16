@@ -1,0 +1,67 @@
+{
+  "number": 18,
+  "title": "平台扩展、部署生态与开源贡献",
+  "prerequisites": "Part 3、4、17",
+  "sources": [
+    "plugin",
+    "customop",
+    "metax",
+    "metax_models",
+    "deployment",
+    "features",
+    "sglang_tuning"
+  ],
+  "chapters": [
+    {
+      "id": "18.1",
+      "title": "平台与插件机制",
+      "topics": "out-of-tree platform、模型/算子/量化/LoRA/I/O 插件、能力检测",
+      "exercise": "追踪 MetaX 插件如何覆盖平台行为与算子选择",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-18-deployment/01-platforms-and-plugins/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "18.2",
+      "title": "C500 适配专题",
+      "topics": "MACA/mcoplib、Attention/量化/图执行能力、配置迁移、数值和性能排查",
+      "exercise": "逐项补齐 C500 功能证据，与 A100 结果独立记录",
+      "hardware": "双平台",
+      "status": "planned",
+      "reading": "docs/chapters/part-18-deployment/02-adapting-to-c500/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "18.3",
+      "title": "其他硬件与框架对照",
+      "topics": "ROCm/XPU/CPU/TPU/其他插件，SGLang、TensorRT-LLM、llama.cpp、vLLM-Omni 边界",
+      "exercise": "比较同一概念的接口和实现，标注第三方/硬件专用内容",
+      "hardware": "CPU/专项",
+      "status": "planned",
+      "reading": "docs/chapters/part-18-deployment/03-other-hardware-and-framework-comparisons/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "18.4",
+      "title": "部署与周边生态",
+      "topics": "Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成",
+      "exercise": "设计服务、缓存、路由和监控的部署图",
+      "hardware": "CPU/多机",
+      "status": "planned",
+      "reading": "docs/chapters/part-18-deployment/04-deployment-and-the-surrounding-ecosystem/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "18.5",
+      "title": "从问题到贡献与版本维护",
+      "topics": "单元/集成/性能检查、最小复现、PR、废弃迁移、功能台账更新",
+      "exercise": "提交有证据的改动，并同步正文、目录、兼容矩阵与来源",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-18-deployment/05-from-an-issue-to-a-contribution-and-version-maintenance/README.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-18-deployment"
+}

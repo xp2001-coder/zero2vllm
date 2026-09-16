@@ -1,0 +1,130 @@
+# 本地验证记录
+
+最近验证日期：2026-09-16。环境：Windows / AMD64 / CPython 3.11.9。此前第一课、INT4 与框架记录保留原始日期。
+
+## 本轮：目录重组与 2.1（2026-09-16）
+
+环境：Windows / CPython 3.11.9 / PyTorch 2.7.1+cpu / NumPy 2.2.6。依赖仅安装在项目 .venv。
+
+| 检查 | 本轮实际结果 |
+| --- | --- |
+| 全套测试（PyTorch 虚拟环境） | 103 项全部通过，无跳过；包含目录层级与生成保留正文、标量模型和 PyTorch 数值/行为检查 |
+| 第一篇回归（无 torch 的基础 Python） | 28 个案例和课程检查全部通过，使用 --skip-tests，因为全套测试已独立执行 |
+| 2.1 案例 | 7 个全部通过；本节 13 项测试通过 |
+| float64 逐层对齐 | 31 个比较点；最大绝对误差 1.5543122344752192e-15 |
+| float32 逐层对齐 | 31 个比较点；最大绝对误差 3.8553567249799414e-07 |
+| 默认生成 | 两条路径都输出 [2,0,2,0]，仅为随机权重教学模型 |
+| 命令检查 | 示例、float32 CLI、非法 ID、负生成数、上下文越界、缺少可选依赖共 6 项符合预期 |
+| 目录 | 19 篇、126 节独立入口；7 节完整课程、119 节教学骨架，已有部分导读仍保留 partial 标记 |
+| GPU 与远程 CI | 均未执行/未核验，不能由 CPU 结果代替 |
+
+证据：[2.1 摘要](../../docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json)、[float64](../../docs/chapters/part-02-engine/01-pytorch-model/results/baseline/float64.json)、[float32](../../docs/chapters/part-02-engine/01-pytorch-model/results/baseline/float32.json)、[本节测试原始输出](../../docs/chapters/part-02-engine/01-pytorch-model/results/baseline/tests.txt)、[最新目录检查](lesson-2.1-delivery/curriculum-checks.json)。
+
+补充证据：[全套测试末段输出](lesson-2.1-delivery/regression-tail.txt)（明确为末段，含 103 项通过总结）、[第一篇本轮回归摘要](lesson-2.1-delivery/part1-regression.json)、[六项命令检查](lesson-2.1-delivery/command-checks.json)。
+
+本次执行命令：
+
+```text
+.venv/Scripts/python.exe -m unittest discover -s tests -v
+python scripts/experiments/part01.py --skip-tests --output-dir runs/reorganization-part1
+.venv/Scripts/python.exe scripts/experiments/lesson0201.py --output-dir reports/part2/01-pytorch-model
+python scripts/docs/course.py --check --report reports/history/lesson-2.1-delivery/curriculum-checks.json
+```
+
+下面保留第一篇交付时的历史结果；其中 87 项测试、62 个阅读入口和旧源码摘要均属于该次验证，不是当前统计。
+
+## 第一篇交付时的历史执行结果
+
+| 检查 | 结果 |
+| --- | --- |
+| `python -m unittest discover -s tests -v` | 87 项测试通过：此前 60 项与 Part 1 新增 27 项；本次由统一运行器执行，原始输出已保存 |
+| `python scripts/experiments/part01.py --output-dir reports/part1` | 28 个默认/变体案例、87 项单元测试、课程同步检查全部通过；摘要含实际命令、退出码、Python 版本与源码摘要 |
+| 第一课 CPU 生成实验 | 默认 Attention 最后一行约 `[0.330238, 0.669762]`；生成 ID `[2, 2, 2]`；展开与参考前向最大差 0.0 |
+| CPU 默认 KV Cache 实验 | token ID 一致；最大 logits 误差 0.0 |
+| Q/K/V 投影处理的位置数 | 完整重算 60；缓存路径 11 |
+| Attention query/key 配对次数 | 完整重算 276；缓存路径 66 |
+| CPU INT4 Linear | 显式 DQ 与 packed 数学参考的输出最大差 0.0；半 scale 误差界通过 |
+| INT4 默认量化误差 | 权重最大差 0.14067759110638123；层输出最大差 0.4033838925001154，仅随机矩阵参考 |
+| INT4 逻辑 payload | packed 43 字节 + float64 scales 120 字节 = 163 字节；不是设备显存测量 |
+| 标准库环境采集入口 | 成功写入结构化记录 |
+| A100/C500 配置模板 | 正确报告未填写字段，不输出可执行参数 |
+| Markdown/HTML 本地文件、图片链接与 JSON/TOML 解析 | 通过，详见文档检查记录 |
+| 本轮课程扩充一致性 | 19 篇、126 章；README/课程目录/结构化目录一致；14 组 233 个命名条目有章节映射 |
+| `python scripts/docs/course.py --check` | 生成内容已同步；本地文件、标题锚点和结构检查通过 |
+| 知识来源与正文 | 38 份来源映射有效；7 篇导读供 56 个章节进入并标记部分材料；Part 1 共 6 节正文与 CPU 验证已完成，共 62 个章节有阅读入口 |
+| 原始知识库 | 2026-09-15 记录：38 份 Markdown 文本 SHA-256 与整理前一致；本轮未重新读取原始知识库，公开课程不依赖该目录 |
+| 不含知识库的课程副本 | 文档维护测试通过；本地 `vllm/`、`work/` 不参与复制和课程链接检查 |
+| 中英文首页 | 两种语言均覆盖 19 篇、126 章，共用状态、阅读链接和来源网址；已同步 Part 1 六节入口、完成标记和下一步安排 |
+| 英文材料范围 | 完整英文 README 已编写；链接的章节正文、实验和支持文档仍主要为中文 |
+
+## 检查覆盖
+
+- 第一课的独立手算 logits、非单位投影与非零位置向量对照、最后一行选择、因果性、并列最大值、词项与上下文边界、CLI 结果保存。
+- Prefill/Decode 逐步位置与工作计数、独立 GEMM FLOPs/字节手算与非法假设输入。
+- 分块尾部与 offset、MHA/GQA/MQA 容量及分组头读取的独立均值例子。
+- 模拟时间线重算、单 token 的 TPOT、失败/部分输出、SLO、插值分位数、事件顺序/来源字段。
+- RoPE 已知旋转、相对位置、窗口边界、ALiBi 手算、线性 Attention 递推与标量 SSM 展开。
+- 候选筛选、符号相关 penalty、数值稳定性、seed/抽样频率、EOS/stop ID/跨 token 停止字符串、零输出与数值反例。
+- 因果掩码、不同分块 prefill 的位置一致性。
+- 多个随机种子和 prompt 的逐步 logits 与生成序列一致性。
+- 零输出、上下文边界、非法 token、请求输入不被修改。
+- 缓存归属检查、容量不足时不发生部分写入。
+- 逻辑块非连续映射、释放后复用、容量不足时原子性、随机操作下容量与所有权守恒。
+- 后端显式选择、版本不匹配、单卡限制、未锁定镜像、配置缺项。
+- 未知/拼错/跨后端配置字段、显存值的正数与有限性；无效配置不输出启动参数。
+- 命令退出码、Unicode 目录下的 JSON 文件输出、只读环境清单。
+- 目录漂移可检测、只读检查不改正文、生成保留人工段落、重复生成无变化、标记损坏时不写其他文档、无效引用与本地链接被拒绝。
+- INT4 黄金字节、符号扩展、ties-to-even、饱和、零列、尾组、非对齐形状、误差界、非法输入与 CLI。
+- 知识来源的无效章节映射被拒绝；正文缺失被拒绝；公开课程可独立于本地资料检查。
+- 英文生成内容漂移、人工段落保留、状态/阅读/来源网址同步、翻译编号缺失、HTML 链接及图片、实体转义和代码块示例排除。
+
+## 可审阅证据
+
+- [原始测试输出](part1-delivery/reference-tests.txt)
+- [第一课的中间矩阵与逐步生成 JSON](../../docs/chapters/part-01-inference/01-next-token/results/initial-baseline.json)
+- [Part 1 全部案例与验证摘要](../../docs/chapters/part-01-inference/results/baseline/summary.json)
+- [Part 1 本次完整测试输出](../../docs/chapters/part-01-inference/results/baseline/tests.txt)
+- [Prefill/Decode 轨迹与估算](../../docs/chapters/part-01-inference/02-prefill-decode/results/baseline/02-phases.json)、[缓存/GQA/容量](../../docs/chapters/part-01-inference/03-kv-cache/results/baseline/03-cache.json)
+- [模拟请求指标](../../docs/chapters/part-01-inference/04-performance-metrics/results/baseline/04-metrics.json)、[位置与模型结构](../../docs/chapters/part-01-inference/05-model-structures/results/baseline/05-structures.json)、[采样/停止/数值](../../docs/chapters/part-01-inference/06-sampling-correctness/results/baseline/06-sampling.json)
+- [CPU 实验 JSON](../../docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)
+- [CPU INT4 原始输入、字节与输出](../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json)
+- [本地环境 JSON](../platforms/cpu/initial-environment.json)
+- [文档与配置检查 JSON](lesson-2.1-delivery/document-checks.json)
+- [课程与特性目录检查 JSON](lesson-2.1-delivery/curriculum-checks.json)
+
+## 课程地图与量化篇修订
+
+增加了量化、缓存、Attention、编译、推测、并行、MoE、分离式部署、模型/服务能力与生命周期的细分目录、练习和来源。文档检查覆盖本地链接、标题锚点、表格、折叠区块、章节/练习/状态一致性与注册项映射；不代表全部远程链接或上游功能运行验证。
+
+此前框架审查完成 38 项本地检查；知识库更新后为 50 项；中英文同步与 HTML 链接检查扩展到 54 项；第一课增加到 60 项。Part 1 本次新增 27 项，全部 87 项通过。GPU 状态仍为 `not_run`。
+
+### 第一课验收
+
+[1.1《从 token 到下一步预测》](../../docs/chapters/part-01-inference/01-next-token/README.md)使用显式手工权重、五个教学词项和二维向量，复用原有完整重算生成循环。默认结果与独立手算表达式吻合，未来位置的 Attention 权重为零，各行归一化；单词项与三词项输入也已运行。正文包含形状表、五组练习答案、边界与排错说明。这里只验收 CPU 计算与教学材料，未训练模型，也没有测量性能。学习时长 60—90 分钟是估计，需读者试学反馈。
+
+### Part 1 整篇验收
+
+1.1—1.6 的正文、实现、参数命令、练习答案、排错和综合练习见 [Part 1 总表](../../docs/chapters/part-01-inference/README.md)。各节的“已完成”指所声明的 CPU 数学参考、推导和数据分析范围。1.2/1.3 的 GPU 性能状态独立保留。
+
+| 案例 | 本次实际结果 | 解释范围 |
+| --- | --- | --- |
+| Prefill/Decode | 缓存/重算投影 11/60；逐步 logits 最大差 0 | CPU 计数与对齐，不是 GPU 加速比 |
+| 分块/GQA | 两项输出对照最大差均为 0 | 分块位置与同一共享 K/V 的两种读取方式 |
+| 理论 KV 容量 | 默认 MHA 2 GiB、GQA 512 MiB、MQA 64 MiB | 按明示 32 层配置估算，不是 Python 或 GPU 内存采样 |
+| 请求指标 | 成功率 75%；输出吞吐约 2.608696 token/s；Goodput 约 0.869565 request/s | 手工模拟时间线上的重算 |
+| 窗口与结构 | 配对数 36/21；RoPE/线性/latent/SSM 数学对照误差均 ≤1e-12 | 独立恒等式，不是不同模型族的质量等价 |
+| 采样与停止 | 同 seed 复现通过；greedy/EOS/stop ID/跨 token stop/零输出案例通过 | 本教学 CPU 契约，不是跨后端可复现保证 |
+
+运行摘要保留已提交基线 commit、工作区有改动的标记和 LF 归一化源码摘要，避免用未包含本次改动的 commit 冒充完整版本。本次未执行训练、真实权重加载、vLLM 服务、GPU kernel 或性能测试；学习时长仍需试学验证。
+
+### 量化篇结构修订
+
+量化篇仍为 11 章，算法统一到 9.2。已有[量化导读](../../docs/chapters/part-09-quantization/guide.md)与 [CPU INT4 实验](../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)，覆盖一种对称格式的策略/契约、Q/DQ、打包和 Linear 数学参考。GPU GEMV/GEMM、融合、KV/MoE、vLLM 接入与模型质量仍待实现和实测。
+
+## 框架审查与优化
+
+此前的配置与维护工具审查见[框架审查记录](course-design/framework-review.md)。7 篇导读、38 份来源台账与 W0—W7 负载规范的过程和审阅入口见[知识库更新](course-design/knowledge-update.md)。原始测试输出已更新为本轮结果；本地 CI 已改用 Part 1 的统一案例运行器，远程 CI 结果尚未核验。
+
+## 尚未验证的内容
+
+A100/C500 实机、真实模型权重、正式 vLLM 服务与 GPU 性能尚未验证；Linux 和 Python 3.12 的远程 CI 结果尚未核验。配置完整性检查不验证实际 GPU 型号、镜像内包版本或模型 revision。当前 CPU 计数不能解释为 GPU 加速比。

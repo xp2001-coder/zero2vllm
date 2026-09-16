@@ -1,0 +1,80 @@
+{
+  "number": 17,
+  "title": "评测、性能分析与优化方法",
+  "prerequisites": "Part 4；按实验选择 Part 5—16",
+  "sources": [
+    "bench",
+    "sweep",
+    "profiling",
+    "metrics",
+    "per_request",
+    "batch_invariance"
+  ],
+  "chapters": [
+    {
+      "id": "17.1",
+      "title": "基准测试工具与负载",
+      "topics": "bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据",
+      "exercise": "生成可重复输入并区分开环 QPS 与闭环并发",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-17-profiling/01-benchmark-tools-and-workloads/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "17.2",
+      "title": "延迟目标与参数搜索",
+      "topics": "SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存",
+      "exercise": "寻找满足尾延迟目标的配置，计入失败与超时",
+      "hardware": "CPU/GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-17-profiling/02-latency-targets-and-parameter-searches/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "17.3",
+      "title": "Profiling 全链路",
+      "topics": "PyTorch Profiler、Nsight/厂商工具、CPU/GPU timeline；语义/shape/dtype 对齐、次数与单次耗时、关键路径",
+      "exercise": "无 profiler 测性能，另取匹配负载抓 trace；区分累计 kernel 时间、重叠与墙钟时间",
+      "hardware": "GPU",
+      "status": "partial",
+      "reading": "docs/chapters/part-17-profiling/03-profiling-across-the-stack/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "17.4",
+      "title": "观测与请求级指标",
+      "topics": "Prometheus/Grafana、OpenTelemetry、KV/调度/Spec/MoE 指标、per-request metrics",
+      "exercise": "把服务时间线与单请求延迟对应起来",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-17-profiling/04-observability-and-per-request-metrics/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "17.5",
+      "title": "质量、复现与 Batch Invariance",
+      "topics": "数值容差、模型质量、长上下文、seed、批次不变性、确定性代价",
+      "exercise": "比较 logits/质量/性能三种结果并解释差异",
+      "hardware": "CPU/GPU",
+      "status": "planned",
+      "reading": "docs/chapters/part-17-profiling/05-quality-reproducibility-and-batch-invariance/README.md",
+      "content": "scaffold"
+    },
+    {
+      "id": "17.6",
+      "title": "系统消融与综合项目",
+      "topics": "APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划",
+      "exercise": "交付可复现优化报告、原始数据及不生效的配置",
+      "hardware": "双平台",
+      "status": "partial",
+      "reading": "docs/chapters/part-17-profiling/06-system-ablations-and-capstone-projects/README.md",
+      "guide": "docs/chapters/part-08-compilation/guide.md",
+      "content": "scaffold"
+    }
+  ],
+  "directory": "docs/chapters/part-17-profiling"
+}

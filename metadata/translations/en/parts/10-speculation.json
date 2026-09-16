@@ -1,0 +1,44 @@
+{
+  "number": 10,
+  "part": {
+    "title": "Speculative Decoding"
+  },
+  "chapters": {
+    "10.1": {
+      "title": "Drafting, verification, and rejection sampling",
+      "topics": "Target/draft distributions, acceptance rates, rollback, extra tokens, and distribution-preservation conditions"
+    },
+    "10.2": {
+      "title": "N-gram and suffix methods",
+      "topics": "ngram, ngram_gpu, prompt lookup, suffix matching, and adaptive depth"
+    },
+    "10.3": {
+      "title": "Separate draft models",
+      "topics": "Draft models, vocabulary alignment, draft TP, memory budgets, and speculative token counts"
+    },
+    "10.4": {
+      "title": "EAGLE and EAGLE3",
+      "topics": "Feature prediction, draft trees/verification, hidden-state extraction, and compatible models"
+    },
+    "10.5": {
+      "title": "MTP and native multi-token prediction",
+      "topics": "MTP modules, weights, shared states, model families, and rollback for hybrid models"
+    },
+    "10.6": {
+      "title": "Other draft methods and parallel proposals",
+      "topics": "MLP speculator, Medusa, PARD, DFlash/DSpark, speculators, and custom proposers"
+    },
+    "10.7": {
+      "title": "Dynamic speculation and adaptive verification",
+      "topics": "Dynamic Speculative Decoding, workload awareness, confidence, and Adaptive Verification"
+    },
+    "10.8": {
+      "title": "Speculation, caching, and execution combinations",
+      "topics": "KV allocation/rollback, CUDA Graphs, async scheduling, LoRA/quantization/multimodality/CP"
+    },
+    "10.9": {
+      "title": "Acceptance rates and actual gains",
+      "topics": "Per-request/per-position acceptance rates, accepted tokens, drafting costs, and effective throughput"
+    }
+  }
+}

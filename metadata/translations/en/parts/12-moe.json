@@ -1,0 +1,32 @@
+{
+  "number": 12,
+  "part": {
+    "title": "MoE and Communication Optimization"
+  },
+  "chapters": {
+    "12.1": {
+      "title": "The MoE computation path",
+      "topics": "Routers, top-k, shared/routed experts, dispatch, expert computation, and combine"
+    },
+    "12.2": {
+      "title": "Expert Parallelism",
+      "topics": "EP, expert partitioning, attention DP/TP and expert groups, placement, and redundant experts"
+    },
+    "12.3": {
+      "title": "Fused MoE kernels",
+      "topics": "Modular kernels, prepare/finalize, quantized layouts, and batched/mega MoE"
+    },
+    "12.4": {
+      "title": "All-to-all backends",
+      "topics": "All-gather/reduce-scatter, DeepEP, MoRI, NIXL EP, and FlashInfer NVLink"
+    },
+    "12.5": {
+      "title": "EPLB and elastic expert parallelism",
+      "topics": "EPLB, rearrangement/redundancy, async balancing, Elastic EP, scaling, and failure recovery"
+    },
+    "12.6": {
+      "title": "MoE overlap and combined tuning",
+      "topics": "DBO, shared-expert overlap, communication fusion, quantization, and disaggregated serving combinations"
+    }
+  }
+}
