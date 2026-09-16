@@ -1,5 +1,6 @@
 import copy
 import json
+import os
 from pathlib import Path
 import shutil
 import tempfile
@@ -218,6 +219,49 @@ class CourseDocsTests(unittest.TestCase):
         self.assertIn('独立验收产出', self.read(catalog['parts'][2]['directory']+'/README.md'))
         self.assertIn('新增专题二', self.read(chapter['reading']))
         self.assertTrue(self.read(chapter['reading']).endswith(note))
+
+
+class DocumentRootTests(unittest.TestCase):
+    def setUp(self):
+        temporary = tempfile.TemporaryDirectory(prefix="zero2vllm_document_links_")
+        self.addCleanup(temporary.cleanup)
+        self.root = Path(temporary.name)
+        (self.root / "docs").mkdir()
+        (self.root / "README.md").write_text(
+            "[Guide](docs/guide.md#guide)\n", encoding="utf-8")
+        (self.root / "docs/guide.md").write_text(
+            '# Guide\n<a href="../README.md">Home</a>\n', encoding="utf-8")
+
+    def assert_valid_links(self, root):
+        report = check_documents(root)
+        self.assertEqual(report["markdown_files"], 2)
+        self.assertEqual(report["local_links"], 2)
+        self.assertEqual(report["local_fragments"], 1)
+
+    def test_root_with_parent_component_preserves_links_and_anchors(self):
+        self.assert_valid_links(self.root / "docs" / "..")
+
+    @unittest.skipUnless(os.name == "nt", "Windows short-path alias")
+    def test_windows_short_root_preserves_links_and_anchors(self):
+        import ctypes
+        from ctypes import wintypes
+
+        get_short_path = ctypes.WinDLL("kernel32", use_last_error=True).GetShortPathNameW
+        get_short_path.argtypes = [wintypes.LPCWSTR, wintypes.LPWSTR, wintypes.DWORD]
+        get_short_path.restype = wintypes.DWORD
+        buffer = ctypes.create_unicode_buffer(32768)
+        length = get_short_path(str(self.root), buffer, len(buffer))
+        self.assertGreater(length, 0, ctypes.get_last_error())
+        self.assertLess(length, len(buffer))
+        alias = Path(buffer.value)
+        if alias == alias.resolve():
+            self.skipTest("8.3 aliases are disabled on this volume")
+        self.assert_valid_links(alias)
+
+    def test_existing_file_outside_document_root_is_rejected(self):
+        # README exists, but is outside the selected docs root.
+        with self.assertRaisesRegex(ValueError, "Broken local link.*README"):
+            check_documents(self.root / "docs")
 
 
 if __name__ == "__main__":

@@ -296,6 +296,8 @@ class HTMLLinks(HTMLParser):
 
 
 def check_documents(root, replacements=None):
+    # Compare canonical paths on both sides: Windows TEMP may use an 8.3 alias.
+    root = root.resolve()
     replacements = replacements or {}
     links, fragments, rows, markdown, parsed = 0, 0, 0, 0, []
     for path in project_files(root):
