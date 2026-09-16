@@ -46,16 +46,16 @@
 
 ### Part 1 · 理解大模型推理
 
-前置：Part 0；矩阵乘法与基础 PyTorch。
+前置：基础 Python；1.1 补充矩阵乘法；本篇 CPU 实验无需 PyTorch 或 GPU。
 
 | 编号 | 章节 | 验收练习或产出 | 设备 | 状态 |
 | --- | --- | --- | --- | --- |
 | 1.1 | [从 token 到下一步预测](../docs/chapters/01-next-token.md) | 手算小矩阵的 Attention 并标出张量维度 | CPU | ✅ |
-| 1.2 | Prefill 与 Decode | 估算两阶段的 FLOPs、访存量与主要瓶颈 | CPU/GPU | 📋 |
-| 1.3 | KV Cache 的作用 | 复现已有 logits 对齐实验并推导 KV 容量 | CPU/GPU | 🧩 |
-| 1.4 | 如何读性能结果 | 用原始时间序列重算指标并识别错误口径 | CPU | 🧩 |
-| 1.5 | 模型结构与长上下文基础 | 比较不同结构的缓存对象和复杂度 | CPU | 📋 |
-| 1.6 | 采样与数值正确性 | 实现小词表采样并检查边界、分布和停止规则 | CPU | 📋 |
+| 1.2 | [Prefill 与 Decode](../docs/chapters/01-prefill-decode.md) | 估算两阶段的 FLOPs、访存量与主要瓶颈 | CPU 参考与推导；GPU 性能另行验证 | ✅ |
+| 1.3 | [KV Cache 的作用](../docs/chapters/01-kv-cache.md) | 复现已有 logits 对齐实验并推导 KV 容量 | CPU 参考与推导；GPU 性能另行验证 | ✅ |
+| 1.4 | [如何读性能结果](../docs/chapters/01-performance-metrics.md) | 用原始时间序列重算指标并识别错误口径 | CPU | ✅ |
+| 1.5 | [模型结构与长上下文基础](../docs/chapters/01-model-structures.md) | 比较不同结构的缓存对象和复杂度 | CPU | ✅ |
+| 1.6 | [采样与数值正确性](../docs/chapters/01-sampling-correctness.md) | 实现小词表采样并检查边界、分布和停止规则 | CPU | ✅ |
 
 源码与资料：[模型支持与任务](https://docs.vllm.ai/en/stable/models/supported_models/) · [Generative Models](https://docs.vllm.ai/en/stable/models/generative_models/) · [Benchmark CLI](https://docs.vllm.ai/en/stable/benchmarking/cli/)。
 

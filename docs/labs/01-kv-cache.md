@@ -84,4 +84,4 @@ python -m zero2vllm demo --max-new-tokens 1
 
 ## 下一步
 
-能解释 60 与 11 的来源后，继续[调度与缓存](../chapters/02-scheduling-cache.md)，把单个请求扩展到多个请求的预算和块分配。完整的首次阅读顺序见[五步短路线](../learning-paths.md#先用现有材料走通一条短路线)。
+能解释 60 与 11 的来源后，可先读 [1.3 完整缓存课](../chapters/01-kv-cache.md)的分块、GQA 和容量推导，再继续[调度与缓存](../chapters/02-scheduling-cache.md)。基础内容的完整顺序见 [Part 1 总表](../chapters/part1-guide.md)，跨专题学习见[现有材料短路线](../learning-paths.md#先用现有材料走通一条短路线)。

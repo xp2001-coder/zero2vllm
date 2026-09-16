@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "record_type": "simulation",
+  "description": "Hand-written teaching timeline; not recorded from a server or GPU.",
+  "timestamp_kind": "per_token_same_clock",
+  "requests": [
+    {"id": "A", "arrival_s": 0.0, "work_started_s": 0.2, "token_times_s": [0.5, 0.7, 1.0], "finished_s": 1.1, "status": "ok"},
+    {"id": "B", "arrival_s": 0.1, "work_started_s": 0.4, "token_times_s": [0.9], "finished_s": 1.0, "status": "ok"},
+    {"id": "C", "arrival_s": 0.2, "work_started_s": 0.7, "token_times_s": [1.4, 2.0], "finished_s": 2.1, "status": "ok"},
+    {"id": "D", "arrival_s": 0.3, "work_started_s": 0.8, "token_times_s": [], "finished_s": 2.3, "status": "error"}
+  ]
+}

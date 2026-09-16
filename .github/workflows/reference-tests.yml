@@ -23,7 +23,6 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
-      - run: python -m zero2vllm next-token-demo --output runs/lesson-01-next-token.json
-      - run: python -m zero2vllm demo --output runs/cpu-kv-cache.json
+      - run: python scripts/run_part1.py --skip-tests
       - run: python -m zero2vllm quant-demo --output runs/cpu-int4-linear.json
       - run: python scripts/course_docs.py --check

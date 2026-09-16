@@ -17,6 +17,8 @@ python scripts/course_docs.py --check
 
 文档改动检查链接和命令。涉及数学、调度、缓存或错误处理的变更应提供能发现行为错误的测试；硬件相关改动应附对应平台实测证据。
 
+Part 1 改动可运行 `python scripts/run_part1.py`，一次保存 28 个案例、全套测试和课程检查。案例、命令参数与预期解释见 [Part 1 总表](docs/chapters/part1-guide.md)。如已独立运行测试，可加 `--skip-tests`，报告会明确标记跳过状态。
+
 ## 课程目录的维护入口
 
 - [curriculum-catalog.json](docs/curriculum-catalog.json)：章节标题、知识点、练习、设备、状态、前置和来源；篇内补充说明也在对应记录中维护。

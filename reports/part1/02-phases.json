@@ -1,0 +1,446 @@
+{
+  "schema_version": 1,
+  "experiment": "part1_prefill_decode",
+  "record_type": "measured_reference",
+  "input": {
+    "prompt_token_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "max_new_tokens": 8,
+    "seed": 7
+  },
+  "model": {
+    "width": 8,
+    "vocab_size": 16,
+    "max_context": 128
+  },
+  "steps": [
+    {
+      "step": 1,
+      "phase": "prefill",
+      "input_token_ids": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "absolute_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "q_shape": [
+        4,
+        8
+      ],
+      "kv_shape_after": [
+        4,
+        8
+      ],
+      "cache_length_before": 0,
+      "cache_length_after": 4,
+      "projected_positions": 4,
+      "attention_score_pairs": 10,
+      "next_token_id": 6,
+      "next_token_logits": [
+        -0.0018939462785897594,
+        0.23170475220217152,
+        0.12903077103856567,
+        -0.07257266774566731,
+        -0.02413896084540531,
+        -0.5426393689366041,
+        0.5372287300758828,
+        -0.26173300019238005,
+        -0.20323460756992243,
+        -0.6849506955476878,
+        0.4241758823708514,
+        -0.46810719680143087,
+        -0.45158338782711804,
+        0.4857793335384607,
+        0.2156591484177779,
+        -0.20756089482295126
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 2,
+      "phase": "decode",
+      "input_token_ids": [
+        6
+      ],
+      "absolute_positions": [
+        4
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        5,
+        8
+      ],
+      "cache_length_before": 4,
+      "cache_length_after": 5,
+      "projected_positions": 1,
+      "attention_score_pairs": 5,
+      "next_token_id": 9,
+      "next_token_logits": [
+        -0.24178515507463155,
+        -0.2789112920664003,
+        0.07769347699462156,
+        0.31149827527482954,
+        0.0832925182539468,
+        0.0233176130186276,
+        0.05959840099061,
+        -0.06291293605749917,
+        -0.1762060462934201,
+        0.6132802760556204,
+        -0.043329436183838256,
+        0.11436984551718224,
+        0.49392662138970544,
+        0.07178960800744594,
+        -0.013688438770153584,
+        0.17786107443171853
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 3,
+      "phase": "decode",
+      "input_token_ids": [
+        9
+      ],
+      "absolute_positions": [
+        5
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        6,
+        8
+      ],
+      "cache_length_before": 5,
+      "cache_length_after": 6,
+      "projected_positions": 1,
+      "attention_score_pairs": 6,
+      "next_token_id": 8,
+      "next_token_logits": [
+        0.0841999803412349,
+        -0.03252382240660506,
+        -0.02929088396607829,
+        -0.05135022367153741,
+        0.007029313895953787,
+        0.4339591381594131,
+        -0.3107869685269884,
+        0.04577565305103234,
+        0.48582397487435086,
+        0.33419150737553444,
+        -0.5898527354560483,
+        0.2530903105920683,
+        0.3109776184786894,
+        -0.4736757035575264,
+        -0.1847355189752169,
+        0.47148262563395843
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 4,
+      "phase": "decode",
+      "input_token_ids": [
+        8
+      ],
+      "absolute_positions": [
+        6
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        7,
+        8
+      ],
+      "cache_length_before": 6,
+      "cache_length_after": 7,
+      "projected_positions": 1,
+      "attention_score_pairs": 7,
+      "next_token_id": 15,
+      "next_token_logits": [
+        0.11496863283856983,
+        -0.14674960297634998,
+        0.051273377612739396,
+        -0.46575284938811945,
+        0.08579564756771656,
+        -0.36595171456539566,
+        0.07947106095099171,
+        -0.29828986847545064,
+        -0.019756653847310235,
+        0.3511072867690107,
+        -0.05609068027375228,
+        0.12553103889987827,
+        0.07543748277276696,
+        0.11875359207190705,
+        0.07791397183609217,
+        0.4626546720069814
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 5,
+      "phase": "decode",
+      "input_token_ids": [
+        15
+      ],
+      "absolute_positions": [
+        7
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        8,
+        8
+      ],
+      "cache_length_before": 7,
+      "cache_length_after": 8,
+      "projected_positions": 1,
+      "attention_score_pairs": 8,
+      "next_token_id": 9,
+      "next_token_logits": [
+        0.22405642080888882,
+        -0.5131509686157434,
+        -0.3282174781618001,
+        -0.4761698424738021,
+        0.28637066285980284,
+        -0.1923544977733167,
+        -0.29141194436568496,
+        -0.13015356774185227,
+        -0.3058053172435565,
+        0.5402357570837073,
+        -0.25101889841117647,
+        0.4716144173704096,
+        0.06088705387755716,
+        0.14034363327601568,
+        0.015052129079542093,
+        -0.009572444513969686
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 6,
+      "phase": "decode",
+      "input_token_ids": [
+        9
+      ],
+      "absolute_positions": [
+        8
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        9,
+        8
+      ],
+      "cache_length_before": 8,
+      "cache_length_after": 9,
+      "projected_positions": 1,
+      "attention_score_pairs": 9,
+      "next_token_id": 15,
+      "next_token_logits": [
+        0.17488167015768347,
+        0.027496796134642718,
+        -0.025104817636892006,
+        -0.2225154909984959,
+        0.10175379322256665,
+        0.12906317806839318,
+        -0.17944273721294485,
+        0.003537687865781028,
+        0.29985079438783757,
+        0.16339004625064676,
+        -0.43643995950973913,
+        0.11443308430345611,
+        0.11258369553961618,
+        -0.3521644940176355,
+        -0.12470712376711787,
+        0.3560087578618108
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 7,
+      "phase": "decode",
+      "input_token_ids": [
+        15
+      ],
+      "absolute_positions": [
+        9
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        10,
+        8
+      ],
+      "cache_length_before": 9,
+      "cache_length_after": 10,
+      "projected_positions": 1,
+      "attention_score_pairs": 10,
+      "next_token_id": 15,
+      "next_token_logits": [
+        0.27653772053997233,
+        -0.18881795382821714,
+        0.05400139852348145,
+        -0.7280349136184663,
+        0.04431992623074205,
+        -0.4506245987869916,
+        -0.04320578157298512,
+        -0.3432202347282554,
+        -0.01736544538348261,
+        0.042452373178141475,
+        -0.09137951289982651,
+        0.21198520239999485,
+        -0.2356899224958365,
+        0.0465067000525313,
+        0.09158668502603774,
+        0.31838369178314974
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 8,
+      "phase": "decode",
+      "input_token_ids": [
+        15
+      ],
+      "absolute_positions": [
+        10
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        11,
+        8
+      ],
+      "cache_length_before": 10,
+      "cache_length_after": 11,
+      "projected_positions": 1,
+      "attention_score_pairs": 11,
+      "next_token_id": 2,
+      "next_token_logits": [
+        -0.18947389168105228,
+        -0.4388345991408759,
+        0.5808502512525917,
+        -0.16306390313354052,
+        0.029733323332942093,
+        -0.22819265382498452,
+        -0.23521141808990564,
+        -0.18019460046632463,
+        -0.16412271922600696,
+        0.06905643081604178,
+        0.053392113279765854,
+        0.44817906674397984,
+        -0.09191057489738068,
+        -0.2040696061217804,
+        -0.1440254831008409,
+        0.1233590349524149
+      ],
+      "max_abs_logit_error": 0.0
+    }
+  ],
+  "new_token_ids": [
+    6,
+    9,
+    8,
+    15,
+    9,
+    15,
+    15,
+    2
+  ],
+  "cached_work": {
+    "projected_token_positions": 11,
+    "attention_score_pairs": 66
+  },
+  "full_recompute_work": {
+    "projected_token_positions": 60,
+    "attention_score_pairs": 276
+  },
+  "gemm_estimates": {
+    "prefill": {
+      "record_type": "analytical_estimate",
+      "shape_m_k_n": [
+        128,
+        4096,
+        4096
+      ],
+      "element_bytes": 2,
+      "flops": 4294967296,
+      "weight_bytes": 33554432,
+      "input_and_output_bytes": 2097152,
+      "ideal_transfer_bytes": 35651584,
+      "arithmetic_intensity_flops_per_byte": 120.47058823529412,
+      "assumed_peak_tflops": 100.0,
+      "assumed_bandwidth_gbps": 1000.0,
+      "ridge_point_flops_per_byte": 100.0,
+      "compute_lower_bound_ms": 0.04294967296,
+      "transfer_lower_bound_ms": 0.035651584,
+      "roofline_lower_bound_ms": 0.04294967296,
+      "limiting_bound": "compute",
+      "assumptions": [
+        "One dense GEMM; each weight/input read once and output written once.",
+        "No bias, KV reads, softmax, MLP stack, cache residency, launch, or communication.",
+        "Peak rates are hypothetical inputs, not A100/C500 specifications or achieved rates."
+      ]
+    },
+    "decode": {
+      "record_type": "analytical_estimate",
+      "shape_m_k_n": [
+        1,
+        4096,
+        4096
+      ],
+      "element_bytes": 2,
+      "flops": 33554432,
+      "weight_bytes": 33554432,
+      "input_and_output_bytes": 16384,
+      "ideal_transfer_bytes": 33570816,
+      "arithmetic_intensity_flops_per_byte": 0.9995119570522206,
+      "assumed_peak_tflops": 100.0,
+      "assumed_bandwidth_gbps": 1000.0,
+      "ridge_point_flops_per_byte": 100.0,
+      "compute_lower_bound_ms": 0.00033554432,
+      "transfer_lower_bound_ms": 0.033570815999999996,
+      "roofline_lower_bound_ms": 0.033570815999999996,
+      "limiting_bound": "transfer",
+      "assumptions": [
+        "One dense GEMM; each weight/input read once and output written once.",
+        "No bias, KV reads, softmax, MLP stack, cache residency, launch, or communication.",
+        "Peak rates are hypothetical inputs, not A100/C500 specifications or achieved rates."
+      ]
+    }
+  },
+  "verification": {
+    "max_abs_logit_error": 0.0,
+    "same_token_ids": true,
+    "passed": true
+  },
+  "limitations": [
+    "CPU loops expose semantics, not parallel GPU scheduling or measured latency.",
+    "GEMM estimates use different, explicitly listed shapes from the tiny CPU model."
+  ],
+  "created_at_utc": "2026-09-15T16:11:57.939088+00:00"
+}

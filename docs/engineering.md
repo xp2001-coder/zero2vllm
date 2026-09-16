@@ -113,7 +113,7 @@ CUDA 与 MACA 分别保存完整镜像摘要和包版本。优先对齐 vLLM 版
 
 已实现检查涵盖因果性、缓存前后 logits、分块 prefill、多个随机种子、上下文边界、请求缓存隔离、块所有权、容量不足时的原子性，以及配置错误。
 
-CI 已配置 Linux/Windows 与 Python 3.11/3.12 的 CPU 测试、第一课与两个独立实验、课程同步检查。本次实际执行环境仅为本地 Windows/Python 3.11，远程 CI 结果尚未核验。
+CI 已配置 Linux/Windows 与 Python 3.11/3.12 的 CPU 测试、Part 1 的 28 案例运行器、INT4 实验和课程同步检查。本地实际验证环境为 Windows/Python 3.11，远程 CI 结果尚未核验。
 
 GPU 检查安排在维护者控制的机器上手动运行，提交可审阅的结果文件。后续拥有稳定机器和权限后再考虑自托管任务。
 
@@ -128,6 +128,8 @@ README 大纲、详细章节表、来源总表、注册项附录与知识库映�
 本地 `vllm/` 是参考资料，`work/` 是临时整理目录，默认不提交且不参加课程链接检查；公开正文与 CPU 实验可以在不包含知识库的 checkout 中使用。Python 包仍为 `zero2vllm/`，不得将参考资料目录误当成安装的 vLLM 源码。
 
 第一课的可观察展开位于 `zero2vllm/reference/next_token.py`：复用已有数学原语与生成循环，输出第一轮各中间量和逐步生成记录。展开结果对照 `forward_full`，测试另用独立手算值、非单位投影和因果性检查。正文见[第一课](chapters/01-next-token.md)。
+
+Part 1 其余参考分别位于 `phases.py`、`kv_geometry.py`、`metrics.py`、`positions.py`、`sampling.py`。工作计数、假设估算、模拟事件与数学恒等式在报告中分别标明；各命令经 `scripts/run_part1.py` 统一执行。学习和代码入口见[Part 1 总表](chapters/part1-guide.md)。
 
 量化参考位于 `zero2vllm/reference/quantization.py`，用独立教学格式实现 Q/DQ、INT4 打包和 Linear 数学对照。CLI 的 `quant-demo` 输出原始输入、packed 字节、scale、输出及两类误差；不计时、不调用 GPU，也不注册 vLLM 插件。后续 GPU 实现用它作为数值参考，不能复用其字节数假装测得设备显存。
 

@@ -31,7 +31,7 @@
 
 [Documentation](docs/README.md) · [Roadmap](docs/roadmap.md) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
-> **Course under construction.** Lesson 1.1 now includes a full chapter, a CPU experiment, and exercises with answers. Two standalone labs (KV cache and INT4 Linear), seven topic guides, and configuration templates for both GPU backends are also available. The full teaching engine and later chapters are in development. A100/C500 GPU experiments await validation on hardware.
+> **Course under construction.** All six Part 1 lessons (1.1–1.6) now include full text, CPU code, commands, exercises with answers, and a shared runner. The INT4 Linear lab, seven topic guides, and configuration templates for both GPU backends are also available. The full teaching engine and later chapters are in development. A100/C500 GPU experiments await validation on hardware.
 >
 > **Language:** this README includes the full English overview and outline. Linked course chapters, labs, and supporting documents are currently primarily in Chinese.
 
@@ -47,6 +47,8 @@ Choose an entry point based on your experience, then follow the [learning paths]
 | You have a working GPU environment and want to optimize | [Experiment guidelines](docs/experiments.md) → [Profiling guide](docs/chapters/04-compile-profiling.md) | An experiment design with a fixed workload and separate correctness, quality, and performance checks |
 
 For your first pass, follow the [short route through existing materials](docs/learning-paths.md#先用现有材料走通一条短路线). Algorithms are covered together in **9.2 Quantization algorithms**. The quantization path emphasizes strategy, data layouts, kernel implementation, tuning, and vLLM integration.
+
+**Study the complete first part:** the [Part 1 learning and command guide](docs/chapters/part1-guide.md) covers generation, caching, performance metrics, model structures, sampling, and numerical correctness.
 
 The [guides and knowledge-source map](docs/knowledge-base.md) connect the topics to 38 reference documents. A 🧩 marker means some material is available; it does not mean a full chapter or GPU validation is complete.
 
@@ -100,7 +102,7 @@ Prerequisites:
 
 See the [learning paths](docs/learning-paths.md) for chapter order, milestones, GPU requirements, and the division of work across related chapters. Each chapter shares a core explanation with engineering extensions and platform notes. The [detailed curriculum](docs/curriculum.md) retains the full technical scope.
 
-**Available now:** complete the first lesson's hand calculation and generation experiment, continue with the KV cache and INT4 Linear labs, read the topic guides, and inspect the logical block allocator and configuration templates. Without a GPU, finish the CPU stages first and defer the real-model generation exercise in 0.2.
+**Available now:** complete all six Part 1 lessons and CPU experiments, continue with the INT4 Linear lab, read the topic guides, and inspect the logical block allocator and configuration templates. Without a GPU, finish the CPU stages first and defer the real-model generation exercise in 0.2.
 
 ### Choose experiments for your hardware
 
@@ -126,6 +128,14 @@ python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
 Start with five teaching tokens and two-dimensional vectors. Inspect embeddings, Q/K/V, causal attention, logits, and the generation loop. The default input is “我 喜欢”; the first prediction is token ID `2`, and `verification.passed` should be `true`. Weights are hand-set for arithmetic and have no trained language ability.
 
 Read the [lesson and five exercises](docs/chapters/01-next-token.md) (Chinese) alongside the [recorded output](reports/lesson-01-next-token.json). Allow approximately 60–90 minutes for calculation, experiments, and self-checks.
+
+The [Part 1 guide](docs/chapters/part1-guide.md) includes all six lessons, commands, parameter explanations, and exercises. Run 28 cases, the full test suite, and document checks together:
+
+```bash
+python scripts/run_part1.py
+```
+
+Reports are saved under `runs/part1/`, including `summary.json`. Metric examples use an explicitly simulated timeline; capacity and roofline values are analytical estimates, not GPU measurements.
 
 ### 2. Continue with KV cache
 
@@ -229,11 +239,11 @@ Sources and further reading: [Datawhale zero-to-sglang](https://github.com/dataw
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
 | 1.1 [From tokens to next-token prediction](docs/chapters/01-next-token.md) | Tokenizers, embeddings, Transformers, causal attention, and the LM head | ✅ |
-| 1.2 Prefill and decode | Compute-bound vs. bandwidth-bound work, HBM/SRAM, the roofline model, and arithmetic intensity | 📋 |
-| 1.3 What KV cache does | Cache updates, position offsets, MHA/MQA/GQA, and memory per token | 🧩 |
-| 1.4 Reading performance results | TTFT, TPOT, ITL, throughput, goodput, P50/P95/P99, and queuing | 🧩 |
-| 1.5 Model architectures and long-context basics | RoPE, ALiBi, sliding windows, MLA, sparse/linear attention, and SSMs | 📋 |
-| 1.6 Sampling and numerical correctness | Greedy decoding, temperature, top-k/top-p/min-p, penalties, seeds, and EOS/stop conditions | 📋 |
+| 1.2 [Prefill and decode](docs/chapters/01-prefill-decode.md) | Compute-bound vs. bandwidth-bound work, HBM/SRAM, the roofline model, and arithmetic intensity | ✅ |
+| 1.3 [What KV cache does](docs/chapters/01-kv-cache.md) | Cache updates, position offsets, MHA/MQA/GQA, and memory per token | ✅ |
+| 1.4 [Reading performance results](docs/chapters/01-performance-metrics.md) | TTFT, TPOT, ITL, throughput, goodput, P50/P95/P99, and queuing | ✅ |
+| 1.5 [Model architectures and long-context basics](docs/chapters/01-model-structures.md) | RoPE, ALiBi, sliding windows, MLA, sparse/linear attention, and SSMs | ✅ |
+| 1.6 [Sampling and numerical correctness](docs/chapters/01-sampling-correctness.md) | Greedy decoding, temperature, top-k/top-p/min-p, penalties, seeds, and EOS/stop conditions | ✅ |
 
 Sources and further reading: [Supported Models and Tasks](https://docs.vllm.ai/en/stable/models/supported_models/) · [Generative Models](https://docs.vllm.ai/en/stable/models/generative_models/) · [Benchmark CLI](https://docs.vllm.ai/en/stable/benchmarking/cli/).
 
@@ -614,7 +624,7 @@ Current code version: **v0.1.0.dev0**.
 | --- | --- |
 | Engineering design, course layers, and milestone acceptance criteria | [Engineering design](docs/engineering.md), [roadmap](docs/roadmap.md) |
 | 19-part, 126-chapter outline and feature/optimization index | [Detailed curriculum](docs/curriculum.md), [feature map](docs/vllm-feature-map.md), [consistency checks](reports/curriculum-checks.json) |
-| Lesson 1.1: full text, hand calculation, CPU generation experiment, and five exercises with answers | [Start the lesson](docs/chapters/01-next-token.md), [recorded output](reports/lesson-01-next-token.json) |
+| All six Part 1 lessons: full text, CPU code, command parameters, exercises, and a shared runner | [Part 1 guide](docs/chapters/part1-guide.md), [runner](scripts/run_part1.py), [validation record](reports/validation.md) |
 | Causal attention, KV caching, and greedy generation | [Reference code](zero2vllm/reference/attention.py), [starter lab](docs/labs/01-kv-cache.md) |
 | Independent logical block allocation and reclamation simulation | [Block manager](zero2vllm/reference/blocks.py); not yet connected to attention |
 | Environment collection and A100/C500 configuration checks | [Environment tools and configuration](docs/backends.md) |
@@ -622,7 +632,7 @@ Current code version: **v0.1.0.dev0**.
 | 38 reference documents mapped to the course, plus seven topic guides | [Knowledge-source map](docs/knowledge-base.md), [update report](reports/knowledge-update.md) |
 | Three learning paths, chapter responsibilities, and outline synchronization checks | [Learning paths](docs/learning-paths.md), [maintenance guide](CONTRIBUTING.md), [framework review](reports/framework-review.md) |
 
-**Next:** complete the foundation lessons in order: 1.2 Prefill/Decode, 1.3 KV cache, and 1.4 correctness checks. A100/C500 environments and small-model baselines can be prepared alongside this work. GPU quantization kernels, vLLM integration, and the PyTorch teaching engine follow the [roadmap](docs/roadmap.md). Each milestone is accepted through code, written explanation, and validation records together.
+**Next:** work through Part 1 and its integrated exercises, then build the PyTorch teaching engine in Part 2. A100/C500 environments and small-model baselines can be prepared alongside this work. GPU quantization kernels and vLLM integration follow the [roadmap](docs/roadmap.md). Each milestone is accepted through code, written explanation, and validation records together.
 
 ## Repository structure
 
@@ -637,7 +647,7 @@ zero2vllm/
 │   ├── feature-inventory.json  # Reviewed backend and configuration entries
 │   ├── knowledge-sources.json  # Reference paths, hashes, and chapter mappings
 │   ├── knowledge-base.md       # Seven guides and reference-use notes
-│   ├── chapters/               # First lesson and guides on requests, caches, kernels, etc.
+│   ├── chapters/               # Six Part 1 lessons, study guide, and topic guides
 │   ├── learning-paths.md       # Three paths and cross-chapter responsibilities
 │   ├── vllm-feature-map.md     # Features, parallelism terms, and constraints
 │   ├── labs/                   # Available experiment tutorials
@@ -646,10 +656,11 @@ zero2vllm/
 │   ├── reference/              # CPU mathematical references and block simulation
 │   ├── profiles.py             # Configuration validation for both backends
 │   ├── environment.py          # Environment inventory
-│   └── cli.py                  # next-token-demo / demo / quant-demo / doctor / profile
+│   └── cli.py                  # Six Part 1 experiments / demo / quant-demo / doctor / profile
 ├── vllm/                       # Optional local reference library; ignored by Git
 ├── configs/                    # A100 and C500 environment templates
 ├── scripts/                    # Environment collection and course/document checks
+├── examples/part1/              # Explicitly simulated request timeline
 ├── tests/                      # Math, cache behavior, and configuration checks
 ├── reports/                    # Actual results and validation records
 ├── .github/                    # CPU CI, issue forms, and PR template

@@ -1,0 +1,225 @@
+{
+  "schema_version": 1,
+  "experiment": "part1_prefill_decode",
+  "record_type": "measured_reference",
+  "input": {
+    "prompt_token_ids": [
+      1,
+      2
+    ],
+    "max_new_tokens": 3,
+    "seed": 7
+  },
+  "model": {
+    "width": 8,
+    "vocab_size": 16,
+    "max_context": 128
+  },
+  "steps": [
+    {
+      "step": 1,
+      "phase": "prefill",
+      "input_token_ids": [
+        1,
+        2
+      ],
+      "absolute_positions": [
+        0,
+        1
+      ],
+      "q_shape": [
+        2,
+        8
+      ],
+      "kv_shape_after": [
+        2,
+        8
+      ],
+      "cache_length_before": 0,
+      "cache_length_after": 2,
+      "projected_positions": 2,
+      "attention_score_pairs": 3,
+      "next_token_id": 13,
+      "next_token_logits": [
+        -0.41871314861960807,
+        0.005319785591493764,
+        0.0035758722302008245,
+        0.24442069456509868,
+        0.20756161383234276,
+        0.08053450537015087,
+        0.2487069158063947,
+        -0.2333573859702899,
+        0.10884591790522015,
+        -0.7583997219590715,
+        0.25916756024499266,
+        0.043530377085340174,
+        -0.47545927838262325,
+        0.9148864675059254,
+        -0.08232607265033871,
+        -0.26264949781045516
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 2,
+      "phase": "decode",
+      "input_token_ids": [
+        13
+      ],
+      "absolute_positions": [
+        2
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        3,
+        8
+      ],
+      "cache_length_before": 2,
+      "cache_length_after": 3,
+      "projected_positions": 1,
+      "attention_score_pairs": 3,
+      "next_token_id": 13,
+      "next_token_logits": [
+        -0.6034387966044289,
+        -0.1686134583080931,
+        0.20519306472145438,
+        0.6067942069608981,
+        -0.5425157010014181,
+        -0.08296231215601163,
+        0.5265860724480298,
+        -0.3954194211781883,
+        -0.2670910846969813,
+        -0.5657279583316869,
+        0.8975239283015134,
+        -0.12241721323672225,
+        -0.2518310217558011,
+        1.0669012618285367,
+        0.3623270712472109,
+        -0.4806077356383509
+      ],
+      "max_abs_logit_error": 0.0
+    },
+    {
+      "step": 3,
+      "phase": "decode",
+      "input_token_ids": [
+        13
+      ],
+      "absolute_positions": [
+        3
+      ],
+      "q_shape": [
+        1,
+        8
+      ],
+      "kv_shape_after": [
+        4,
+        8
+      ],
+      "cache_length_before": 3,
+      "cache_length_after": 4,
+      "projected_positions": 1,
+      "attention_score_pairs": 4,
+      "next_token_id": 13,
+      "next_token_logits": [
+        -0.30866383153113813,
+        0.08473391367557594,
+        0.19491057687381053,
+        0.09121950481264092,
+        -0.20619082987803705,
+        -0.22066679072156048,
+        0.5372039471188419,
+        -0.5185724471683286,
+        0.14220833120390955,
+        -0.8370573244706941,
+        0.423917664122724,
+        -0.19718100008506365,
+        -0.48148098509349363,
+        0.882824640898027,
+        0.2017004548197337,
+        -0.028961828857318128
+      ],
+      "max_abs_logit_error": 0.0
+    }
+  ],
+  "new_token_ids": [
+    13,
+    13,
+    13
+  ],
+  "cached_work": {
+    "projected_token_positions": 4,
+    "attention_score_pairs": 10
+  },
+  "full_recompute_work": {
+    "projected_token_positions": 9,
+    "attention_score_pairs": 19
+  },
+  "gemm_estimates": {
+    "prefill": {
+      "record_type": "analytical_estimate",
+      "shape_m_k_n": [
+        128,
+        4096,
+        4096
+      ],
+      "element_bytes": 2,
+      "flops": 4294967296,
+      "weight_bytes": 33554432,
+      "input_and_output_bytes": 2097152,
+      "ideal_transfer_bytes": 35651584,
+      "arithmetic_intensity_flops_per_byte": 120.47058823529412,
+      "assumed_peak_tflops": 100.0,
+      "assumed_bandwidth_gbps": 1000.0,
+      "ridge_point_flops_per_byte": 100.0,
+      "compute_lower_bound_ms": 0.04294967296,
+      "transfer_lower_bound_ms": 0.035651584,
+      "roofline_lower_bound_ms": 0.04294967296,
+      "limiting_bound": "compute",
+      "assumptions": [
+        "One dense GEMM; each weight/input read once and output written once.",
+        "No bias, KV reads, softmax, MLP stack, cache residency, launch, or communication.",
+        "Peak rates are hypothetical inputs, not A100/C500 specifications or achieved rates."
+      ]
+    },
+    "decode": {
+      "record_type": "analytical_estimate",
+      "shape_m_k_n": [
+        1,
+        4096,
+        4096
+      ],
+      "element_bytes": 2,
+      "flops": 33554432,
+      "weight_bytes": 33554432,
+      "input_and_output_bytes": 16384,
+      "ideal_transfer_bytes": 33570816,
+      "arithmetic_intensity_flops_per_byte": 0.9995119570522206,
+      "assumed_peak_tflops": 100.0,
+      "assumed_bandwidth_gbps": 1000.0,
+      "ridge_point_flops_per_byte": 100.0,
+      "compute_lower_bound_ms": 0.00033554432,
+      "transfer_lower_bound_ms": 0.033570815999999996,
+      "roofline_lower_bound_ms": 0.033570815999999996,
+      "limiting_bound": "transfer",
+      "assumptions": [
+        "One dense GEMM; each weight/input read once and output written once.",
+        "No bias, KV reads, softmax, MLP stack, cache residency, launch, or communication.",
+        "Peak rates are hypothetical inputs, not A100/C500 specifications or achieved rates."
+      ]
+    }
+  },
+  "verification": {
+    "max_abs_logit_error": 0.0,
+    "same_token_ids": true,
+    "passed": true
+  },
+  "limitations": [
+    "CPU loops expose semantics, not parallel GPU scheduling or measured latency.",
+    "GEMM estimates use different, explicitly listed shapes from the tiny CPU model."
+  ],
+  "created_at_utc": "2026-09-15T16:11:59.382007+00:00"
+}

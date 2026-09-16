@@ -1,0 +1,405 @@
+{
+  "schema_version": 1,
+  "experiment": "part1_sampling",
+  "record_type": "measured_reference",
+  "input": {
+    "prompt": "我 喜欢",
+    "max_new_tokens": 8,
+    "min_new_tokens": 0,
+    "seed": 7,
+    "draws": 2000,
+    "eos_token_id": null,
+    "stop_token_ids": [],
+    "stop_strings": []
+  },
+  "config": {
+    "temperature": 0.8,
+    "top_k": 0,
+    "top_p": 0.9,
+    "min_p": 0.0,
+    "repetition_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0
+  },
+  "generation": {
+    "new_token_ids": [
+      1,
+      1,
+      2,
+      1,
+      2,
+      2,
+      1,
+      2
+    ],
+    "generated_text": "喜欢喜欢推理喜欢推理推理喜欢推理",
+    "finish_reason": "length",
+    "stop_value": null,
+    "steps": [
+      {
+        "step": 1,
+        "input_token_ids": [
+          0,
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.3302384506733431,
+            1.6697615493266569,
+            2.0,
+            -0.3302384506733431,
+            -1.6697615493266569
+          ],
+          "penalized_logits": [
+            0.3302384506733431,
+            1.6697615493266569,
+            2.0,
+            -0.3302384506733431,
+            -1.6697615493266569
+          ],
+          "kept_token_ids": [
+            2,
+            1,
+            0
+          ],
+          "probabilities": [
+            0.06945438906682445,
+            0.37058177588747343,
+            0.5599638350457021,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 1
+      },
+      {
+        "step": 2,
+        "input_token_ids": [
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.1977758146404282,
+            1.802224185359572,
+            2.0,
+            -0.1977758146404282,
+            -1.802224185359572
+          ],
+          "penalized_logits": [
+            0.1977758146404282,
+            1.802224185359572,
+            2.0,
+            -0.1977758146404282,
+            -1.802224185359572
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.43850792676612,
+            0.5614920732338801,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 1
+      },
+      {
+        "step": 3,
+        "input_token_ids": [
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.1411563112428496,
+            1.8588436887571502,
+            1.9999999999999998,
+            -0.1411563112428496,
+            -1.8588436887571502
+          ],
+          "penalized_logits": [
+            0.1411563112428496,
+            1.8588436887571502,
+            1.9999999999999998,
+            -0.1411563112428496,
+            -1.8588436887571502
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.45600274068384533,
+            0.5439972593161546,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 2
+      },
+      {
+        "step": 4,
+        "input_token_ids": [
+          2
+        ],
+        "distribution": {
+          "raw_logits": [
+            1.5023319878380779,
+            1.8341106626126926,
+            3.3364426504507705,
+            -1.5023319878380779,
+            -1.8341106626126926
+          ],
+          "penalized_logits": [
+            1.5023319878380779,
+            1.8341106626126926,
+            3.3364426504507705,
+            -1.5023319878380779,
+            -1.8341106626126926
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.13262854629902637,
+            0.8673714537009736,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 1
+      },
+      {
+        "step": 5,
+        "input_token_ids": [
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.2718095795405028,
+            1.9102380255743716,
+            2.1820476051148745,
+            -0.2718095795405028,
+            -1.9102380255743716
+          ],
+          "penalized_logits": [
+            0.2718095795405028,
+            1.9102380255743716,
+            2.1820476051148745,
+            -0.2718095795405028,
+            -1.9102380255743716
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.4158672974808241,
+            0.5841327025191758,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 2
+      },
+      {
+        "step": 6,
+        "input_token_ids": [
+          2
+        ],
+        "distribution": {
+          "raw_logits": [
+            1.5583151028394742,
+            1.8895787757098685,
+            3.4478938785493427,
+            -1.5583151028394742,
+            -1.8895787757098685
+          ],
+          "penalized_logits": [
+            1.5583151028394742,
+            1.8895787757098685,
+            3.4478938785493427,
+            -1.5583151028394742,
+            -1.8895787757098685
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.1247831909416355,
+            0.8752168090583645,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 2
+      },
+      {
+        "step": 7,
+        "input_token_ids": [
+          2
+        ],
+        "distribution": {
+          "raw_logits": [
+            1.6391306820683953,
+            1.9097826705170988,
+            3.548913352585494,
+            -1.6391306820683953,
+            -1.9097826705170988
+          ],
+          "penalized_logits": [
+            1.6391306820683953,
+            1.9097826705170988,
+            3.548913352585494,
+            -1.6391306820683953,
+            -1.9097826705170988
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.11416222701177124,
+            0.8858377729882287,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 1
+      },
+      {
+        "step": 8,
+        "input_token_ids": [
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.41128463907683277,
+            1.9419445774770674,
+            2.3532292165539,
+            -0.41128463907683277,
+            -1.9419445774770674
+          ],
+          "penalized_logits": [
+            0.41128463907683277,
+            1.9419445774770674,
+            2.3532292165539,
+            -0.41128463907683277,
+            -1.9419445774770674
+          ],
+          "kept_token_ids": [
+            2,
+            1
+          ],
+          "probabilities": [
+            0.0,
+            0.3742315247463225,
+            0.6257684752536775,
+            0.0,
+            0.0
+          ],
+          "mode": "sample"
+        },
+        "selected_token_id": 2
+      }
+    ],
+    "cache_length": 9,
+    "work": {
+      "projected_token_positions": 9,
+      "attention_score_pairs": 45
+    },
+    "stop_contract": "Terminal IDs remain in new_token_ids but are omitted from text; stop strings and following text are removed. Prompt text is excluded. Buffered output only."
+  },
+  "frequency_experiment": {
+    "base_probabilities": [
+      0.4,
+      0.3,
+      0.2,
+      0.1
+    ],
+    "filtered": {
+      "raw_logits": [
+        -0.916290731874155,
+        -1.2039728043259361,
+        -1.6094379124341003,
+        -2.3025850929940455
+      ],
+      "penalized_logits": [
+        -0.916290731874155,
+        -1.2039728043259361,
+        -1.6094379124341003,
+        -2.3025850929940455
+      ],
+      "kept_token_ids": [
+        0,
+        1,
+        2
+      ],
+      "probabilities": [
+        0.47205396798434385,
+        0.32947178727349297,
+        0.19847424474216324,
+        0.0
+      ],
+      "mode": "sample"
+    },
+    "draws": 2000,
+    "counts": [
+      972,
+      617,
+      411,
+      0
+    ],
+    "frequencies": [
+      0.486,
+      0.3085,
+      0.2055,
+      0.0
+    ]
+  },
+  "numerical_examples": {
+    "same_token_wrong_scores": {
+      "max_abs_error": 18.0,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "all_within_tolerance": false,
+      "same_argmax": true,
+      "reference_top2_gap": 1.0
+    },
+    "close_scores_different_token": {
+      "max_abs_error": 1.9999999989472883e-07,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "all_within_tolerance": true,
+      "same_argmax": false,
+      "reference_top2_gap": 1.0000000005838672e-07
+    }
+  },
+  "verification": {
+    "same_seed_replay": true,
+    "passed": true
+  },
+  "limitations": [
+    "Teaching sampler with an explicit filter order; not a replica of every vLLM version/backend.",
+    "Seed replay is checked only for this CPU implementation, not across hardware/frameworks.",
+    "Toy strings have direct token-piece concatenation; no real tokenizer or streaming stop buffer.",
+    "Finite-sample frequencies fluctuate; exact agreement with probabilities is not required."
+  ],
+  "created_at_utc": "2026-09-15T16:11:58.868040+00:00"
+}

@@ -7,6 +7,7 @@
 | [项目首页](../README.md) | 课程定位、快速开始、完整大纲和当前进度 |
 | [English README](../README_en.md) | 英文项目介绍与完整 19 篇、126 章大纲；章节正文目前主要是中文 |
 | [第一课：从 token 到下一步预测](chapters/01-next-token.md) | 完整正文、二维 Attention 手算、CPU 生成实验与五组练习答案 |
+| [Part 1 六节学习与命令总表](chapters/part1-guide.md) | 完整正文、各节代码/参数/练习与 28 案例统一运行入口 |
 | [首次学习的短路线](learning-paths.md#先用现有材料走通一条短路线) | 从第一课继续完成缓存实验、调度手算、请求图和量化 Linear |
 | [CPU KV Cache 实验](labs/01-kv-cache.md) | 比较 KV Cache 前后的逐步 logits 与计算工作量 |
 | [CPU INT4 Linear 实验](labs/02-int4-linear.md) | 分组缩放、半字节打包、量化 Linear 与误差/存储分析 |

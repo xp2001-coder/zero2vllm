@@ -2,7 +2,7 @@
 
 > 第一节正式技术课。基础必读，含工程进阶。设备：CPU。正文、示例与练习已编写，本地数学验证通过。预计学习时间：60—90 分钟，含手算与实验。
 
-[课程首页](../../README.md) · [完整目录](../curriculum.md) · [学习路线](../learning-paths.md)
+[课程首页](../../README.md) · [Part 1 学习与命令总表](part1-guide.md) · [完整目录](../curriculum.md)
 
 ## 学习目标
 
@@ -46,6 +46,23 @@ python -m zero2vllm next-token-demo --output runs/lesson-01/default.json
 ```
 
 这里是便于阅读的**字段路径摘录**，小数保留六位；原文件采用嵌套结构并保留计算精度。已有运行记录见 [CPU 第一课结果](../../reports/lesson-01-next-token.json)。
+
+### 参数与结果文件怎么用
+
+```bash
+python -m zero2vllm next-token-demo --help
+python -m zero2vllm next-token-demo --prompt "我 喜欢 推理" --max-new-tokens 1 --output runs/lesson-01/three-tokens.json
+```
+
+| 参数 | 默认 | 作用与边界 |
+| --- | --- | --- |
+| `--prompt` | `我 喜欢` | 用空格分隔下面五词项中的片段；不接受任意自然语言 |
+| `--max-new-tokens` | 3 | 生成新 token 的步数，必须为正整数，不包含 prompt |
+| `--output` | 不保存文件 | 保存完整嵌套 JSON；不存在的父目录自动创建 |
+
+本课最多前向处理 16 个位置。prompt 长度为 P、输出步数为 O 时，检查 `P+O-1≤16`：最后一个输出选出后就返回，不会再次参与前向。1.6 的采样实验另允许零输出，用来检查停止边界；不要把两个命令的参数约定混为一谈。
+
+个人运行结果放在 `runs/`，默认不提交 Git；要保留两次对照就使用不同文件名。命令退出码 0 表示实验检查通过，1 表示对照未通过，2 表示输入/文件错误。生成重复词项本身不是退出错误。
 
 先记住一个问题：**输入只有两个 token，为什么输出分数有五个？** 读到 LM Head 时，你应该能回答。
 
@@ -454,7 +471,7 @@ python -m unittest discover -s tests -p test_next_token.py -v
 python scripts/course_docs.py --check
 ```
 
-**下一课：1.2《Prefill 与 Decode》。** 我们会继续使用这条生成链，比较首次处理整个 prompt 与后续逐 token 生成的计算对象、形状和工作量。已有 [KV Cache 引导实验](../labs/01-kv-cache.md)可先观察；缓存容量与缓存正确性的完整推导在 1.3 展开。
+**下一课：[1.2《Prefill 与 Decode》](01-prefill-decode.md)。** 继续使用这条生成链，比较首次处理整个 prompt 与后续逐 token 生成的计算对象、形状和工作量。随后阅读 [1.3 KV Cache](01-kv-cache.md)、[1.4 性能指标](01-performance-metrics.md)、[1.5 模型结构](01-model-structures.md)、[1.6 采样与数值正确性](01-sampling-correctness.md)。
 
 ## 参考资料与复现记录
 

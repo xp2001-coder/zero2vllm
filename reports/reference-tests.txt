@@ -49,6 +49,33 @@ test_generation_uses_last_row_and_grows_the_prefix (test_next_token.NextTokenLes
 test_hand_calculation_matches_the_report (test_next_token.NextTokenLessonTests.test_hand_calculation_matches_the_report) ... ok
 test_token_mapping_invalid_inputs_and_context_boundary (test_next_token.NextTokenLessonTests.test_token_mapping_invalid_inputs_and_context_boundary) ... ok
 test_trace_agrees_with_reference_for_varied_shapes_and_positions (test_next_token.NextTokenLessonTests.test_trace_agrees_with_reference_for_varied_shapes_and_positions) ... ok
+test_mha_gqa_mqa_capacity_and_scaling (test_part1.CacheGeometryTests.test_mha_gqa_mqa_capacity_and_scaling) ... ok
+test_uneven_chunks_offsets_and_input_preservation (test_part1.CacheGeometryTests.test_uneven_chunks_offsets_and_input_preservation) ... ok
+test_zero_queries_produce_group_value_means (test_part1.CacheGeometryTests.test_zero_queries_produce_group_value_means) ... ok
+test_all_failed_and_single_token_slo_policy (test_part1.MetricsTests.test_all_failed_and_single_token_slo_policy) ... ok
+test_failed_partial_tokens_do_not_inflate_throughput (test_part1.MetricsTests.test_failed_partial_tokens_do_not_inflate_throughput) ... ok
+test_hand_computed_timeline_and_goodput (test_part1.MetricsTests.test_hand_computed_timeline_and_goodput) ... ok
+test_percentiles_empty_singleton_and_interpolation (test_part1.MetricsTests.test_percentiles_empty_singleton_and_interpolation) ... ok
+test_reject_bad_clocks_duplicates_chunks_and_empty_success (test_part1.MetricsTests.test_reject_bad_clocks_duplicates_chunks_and_empty_success) ... ok
+test_bad_arguments_fail_without_report (test_part1.Part1CLITests.test_bad_arguments_fail_without_report) ... ok
+test_commands_save_valid_reports_in_unicode_directory (test_part1.Part1CLITests.test_commands_save_valid_reports_in_unicode_directory) ... ok
+test_gemm_flops_bytes_and_roofline_by_hand (test_part1.PhaseTests.test_gemm_flops_bytes_and_roofline_by_hand) ... ok
+test_invalid_estimates_and_trace_budget (test_part1.PhaseTests.test_invalid_estimates_and_trace_budget) ... ok
+test_phase_steps_and_last_unconsumed_token (test_part1.PhaseTests.test_phase_steps_and_last_unconsumed_token) ... ok
+test_eos_stop_ids_and_minimum_length (test_part1.SamplingTests.test_eos_stop_ids_and_minimum_length) ... ok
+test_logit_tolerance_and_token_equality_are_independent (test_part1.SamplingTests.test_logit_tolerance_and_token_equality_are_independent) ... ok
+test_seed_replay_and_empirical_distribution (test_part1.SamplingTests.test_seed_replay_and_empirical_distribution) ... ok
+test_sign_aware_penalties_have_distinct_histories (test_part1.SamplingTests.test_sign_aware_penalties_have_distinct_histories) ... ok
+test_stable_softmax_shift_and_invalid_inputs (test_part1.SamplingTests.test_stable_softmax_shift_and_invalid_inputs) ... ok
+test_stop_string_crosses_piece_boundary_and_ignores_prompt (test_part1.SamplingTests.test_stop_string_crosses_piece_boundary_and_ignores_prompt) ... ok
+test_top_k_top_p_min_p_known_probabilities (test_part1.SamplingTests.test_top_k_top_p_min_p_known_probabilities) ... ok
+test_zero_output_and_invalid_stopping_budget (test_part1.SamplingTests.test_zero_output_and_invalid_stopping_budget) ... ok
+test_zero_temperature_masks_and_ties (test_part1.SamplingTests.test_zero_temperature_masks_and_ties) ... ok
+test_alibi_hand_calculation_and_causality (test_part1.StructureTests.test_alibi_hand_calculation_and_causality) ... ok
+test_linear_attention_recurrence_and_non_softmax_semantics (test_part1.StructureTests.test_linear_attention_recurrence_and_non_softmax_semantics) ... ok
+test_rope_known_rotation_norm_and_relative_positions (test_part1.StructureTests.test_rope_known_rotation_norm_and_relative_positions) ... ok
+test_ssm_scan_matches_closed_form (test_part1.StructureTests.test_ssm_scan_matches_closed_form) ... ok
+test_window_membership_counts_and_full_limit (test_part1.StructureTests.test_window_membership_counts_and_full_limit) ... ok
 test_cli_outputs_replayable_report_and_rejects_bad_group (test_quantization.QuantizationTests.test_cli_outputs_replayable_report_and_rejects_bad_group) ... ok
 test_error_bound_and_linear_across_shapes (test_quantization.QuantizationTests.test_error_bound_and_linear_across_shapes) ... ok
 test_invalid_numeric_inputs_and_shapes (test_quantization.QuantizationTests.test_invalid_numeric_inputs_and_shapes) ... ok
@@ -60,6 +87,6 @@ test_signed_nibbles_have_known_wire_bytes (test_quantization.QuantizationTests.t
 test_zero_column_uses_finite_scale_and_stays_zero (test_quantization.QuantizationTests.test_zero_column_uses_finite_scale_and_stays_zero) ... ok
 
 ----------------------------------------------------------------------
-Ran 60 tests in 13.203s
+Ran 87 tests in 16.134s
 
 OK

@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "experiment": "part1_sampling",
+  "record_type": "measured_reference",
+  "input": {
+    "prompt": "我 喜欢",
+    "max_new_tokens": 8,
+    "min_new_tokens": 0,
+    "seed": 7,
+    "draws": 2000,
+    "eos_token_id": 2,
+    "stop_token_ids": [],
+    "stop_strings": []
+  },
+  "config": {
+    "temperature": 0.0,
+    "top_k": 0,
+    "top_p": 0.9,
+    "min_p": 0.0,
+    "repetition_penalty": 1.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0
+  },
+  "generation": {
+    "new_token_ids": [
+      2
+    ],
+    "generated_text": "",
+    "finish_reason": "eos",
+    "stop_value": 2,
+    "steps": [
+      {
+        "step": 1,
+        "input_token_ids": [
+          0,
+          1
+        ],
+        "distribution": {
+          "raw_logits": [
+            0.3302384506733431,
+            1.6697615493266569,
+            2.0,
+            -0.3302384506733431,
+            -1.6697615493266569
+          ],
+          "penalized_logits": [
+            0.3302384506733431,
+            1.6697615493266569,
+            2.0,
+            -0.3302384506733431,
+            -1.6697615493266569
+          ],
+          "kept_token_ids": [
+            2
+          ],
+          "probabilities": [
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ],
+          "mode": "greedy"
+        },
+        "selected_token_id": 2
+      }
+    ],
+    "cache_length": 2,
+    "work": {
+      "projected_token_positions": 2,
+      "attention_score_pairs": 3
+    },
+    "stop_contract": "Terminal IDs remain in new_token_ids but are omitted from text; stop strings and following text are removed. Prompt text is excluded. Buffered output only."
+  },
+  "frequency_experiment": {
+    "base_probabilities": [
+      0.4,
+      0.3,
+      0.2,
+      0.1
+    ],
+    "filtered": {
+      "raw_logits": [
+        -0.916290731874155,
+        -1.2039728043259361,
+        -1.6094379124341003,
+        -2.3025850929940455
+      ],
+      "penalized_logits": [
+        -0.916290731874155,
+        -1.2039728043259361,
+        -1.6094379124341003,
+        -2.3025850929940455
+      ],
+      "kept_token_ids": [
+        0
+      ],
+      "probabilities": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "mode": "greedy"
+    },
+    "draws": 2000,
+    "counts": [
+      2000,
+      0,
+      0,
+      0
+    ],
+    "frequencies": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "numerical_examples": {
+    "same_token_wrong_scores": {
+      "max_abs_error": 18.0,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "all_within_tolerance": false,
+      "same_argmax": true,
+      "reference_top2_gap": 1.0
+    },
+    "close_scores_different_token": {
+      "max_abs_error": 1.9999999989472883e-07,
+      "atol": 1e-06,
+      "rtol": 1e-05,
+      "all_within_tolerance": true,
+      "same_argmax": false,
+      "reference_top2_gap": 1.0000000005838672e-07
+    }
+  },
+  "verification": {
+    "same_seed_replay": true,
+    "passed": true
+  },
+  "limitations": [
+    "Teaching sampler with an explicit filter order; not a replica of every vLLM version/backend.",
+    "Seed replay is checked only for this CPU implementation, not across hardware/frameworks.",
+    "Toy strings have direct token-piece concatenation; no real tokenizer or streaming stop buffer.",
+    "Finite-sample frequencies fluctuate; exact agreement with probabilities is not required."
+  ],
+  "created_at_utc": "2026-09-15T16:12:03.994227+00:00"
+}

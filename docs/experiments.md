@@ -5,11 +5,14 @@
 | record_type | 含义 |
 | --- | --- |
 | measured_reference | 实际执行的 CPU 数学参考；不可作为 GPU 性能数据 |
+| analytical_estimate | 按明示结构、形状和假设计算的 FLOPs、字节或下界；不是计时或显存测量 |
 | measured_gpu | 实际 GPU 运行的结果，必须附版本与设备证据 |
 | simulation | 调度、逻辑块等模拟结果，明确模拟假设 |
 | template | 尚未运行的模板；指标使用 null |
 
 当前的 [KV Cache 实验](../reports/cpu-kv-cache.json)和 [INT4 Linear 实验](../reports/cpu-int4-linear.json)属于 `measured_reference`。GPU [记录模板](templates/gpu-run.json)尚未执行；知识库中的其他设备记录不计入本项目的单卡验证。
+
+[Part 1](chapters/part1-guide.md)中，`phase-demo`、`kv-demo` 的外层为实际执行的 CPU 参考，嵌套容量/性能模型标为 `analytical_estimate`；`metrics-demo` 默认事件与统计结果均为 `simulation`。不能只看最外层记录类型就把其中所有数字当成设备测量。
 
 ## GPU 结果的最小字段
 
