@@ -108,10 +108,9 @@ See the [learning paths](docs/learning-paths.md) for chapter order, milestones, 
 
 | Available environment | Where to start | Later practice |
 | --- | --- | --- |
-| Ordinary computer with a CPU | Current causal-attention and KV cache labs, plus the logical block simulation | Learn the fundamentals and analyze existing experiment records |
+| Ordinary computer with a CPU | Current causal-attention and KV cache labs, plus the logical block simulation, complete the CPU coding exercises | Learn the fundamentals and analyze existing experiment records |
 | An available NVIDIA GPU | Run a small model when the selected software version and memory capacity permit | Follow the CUDA path through the GPU chapters |
 | MetaX C500 | Use the matching official software stack | Follow the MACA path through the GPU chapters |
-| No GPU access yet | Complete the CPU coding exercises | Analyze the maintainer's real GPU records as they are published |
 
 **A single A100 and a single C500 are our first planned validation targets.** You only need to choose one GPU path. Minimum GPU memory requirements will be documented from measurements for each model and experiment.
 
