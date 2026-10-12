@@ -66,7 +66,7 @@
     {
       "id": "6.6",
       "title": "调度功能组合与演进",
-      "topics": "async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of",
+      "topics": "async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of；混部与PD同预算对照，批处理/排队对阶段容量的影响",
       "exercise": "制作所选版本组合矩阵，记录拒绝/回退原因",
       "hardware": "CPU/GPU/多卡",
       "status": "planned",

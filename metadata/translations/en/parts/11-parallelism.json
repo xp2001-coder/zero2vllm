@@ -38,7 +38,7 @@
     },
     "11.9": {
       "title": "Combining parallelism and planning topology",
-      "topics": "TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA"
+      "topics": "TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA; separate P/D resource groups, GPU counts and node counts, linked to 13.4/13.9"
     },
     "11.10": {
       "title": "Distributed launch and debugging",

@@ -101,7 +101,7 @@
     {
       "id": "11.9",
       "title": "组合并行与拓扑规划",
-      "topics": "TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA",
+      "topics": "TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA；P/D资源组、卡数与节点数分开核算，衔接13.4/13.9",
       "exercise": "交付一份进程布局和容量预算，标明无法运行的组合",
       "hardware": "CPU/多卡",
       "status": "partial",

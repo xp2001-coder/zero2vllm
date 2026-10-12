@@ -1,0 +1,59 @@
+test_bad_marker_prevents_writing_other_documents (tests.maintenance.test_course.CourseDocsTests.test_bad_marker_prevents_writing_other_documents) ... ok
+test_both_languages_share_status_reading_and_source_urls (tests.maintenance.test_course.CourseDocsTests.test_both_languages_share_status_reading_and_source_urls) ... ok
+test_catalog_change_updates_all_affected_documents (tests.maintenance.test_course.CourseDocsTests.test_catalog_change_updates_all_affected_documents) ... ok
+test_check_detects_generated_drift_without_writing (tests.maintenance.test_course.CourseDocsTests.test_check_detects_generated_drift_without_writing) ... ok
+test_english_drift_is_detected_and_manual_text_is_preserved (tests.maintenance.test_course.CourseDocsTests.test_english_drift_is_detected_and_manual_text_is_preserved) ... FAIL
+test_hierarchy_has_unique_lesson_paths_and_part_indexes (tests.maintenance.test_course.CourseDocsTests.test_hierarchy_has_unique_lesson_paths_and_part_indexes) ... ok
+test_html_links_images_entities_and_code_fences (tests.maintenance.test_course.CourseDocsTests.test_html_links_images_entities_and_code_fences) ... ok
+test_incomplete_english_translation_prevents_any_write (tests.maintenance.test_course.CourseDocsTests.test_incomplete_english_translation_prevents_any_write) ... ok
+test_invalid_catalog_links_and_duplicates_are_rejected (tests.maintenance.test_course.CourseDocsTests.test_invalid_catalog_links_and_duplicates_are_rejected) ... ok
+test_local_library_and_scratch_are_optional_and_excluded (tests.maintenance.test_course.CourseDocsTests.test_local_library_and_scratch_are_optional_and_excluded) ... ok
+test_missing_files_and_heading_fragments_are_rejected (tests.maintenance.test_course.CourseDocsTests.test_missing_files_and_heading_fragments_are_rejected) ... ok
+test_missing_reading_body_is_rejected (tests.maintenance.test_course.CourseDocsTests.test_missing_reading_body_is_rejected) ... ok
+test_part_index_and_scaffold_follow_catalog_without_overwriting_prose (tests.maintenance.test_course.CourseDocsTests.test_part_index_and_scaffold_follow_catalog_without_overwriting_prose) ... ok
+test_private_archive_is_not_required_or_parsed (tests.maintenance.test_course.CourseDocsTests.test_private_archive_is_not_required_or_parsed) ... ok
+test_private_reference_prevents_document_write (tests.maintenance.test_course.CourseDocsTests.test_private_reference_prevents_document_write) ... ok
+test_public_reading_links_cannot_depend_on_private_files (tests.maintenance.test_course.CourseDocsTests.test_public_reading_links_cannot_depend_on_private_files) ... ok
+test_public_reading_pages_reject_internal_source_labels (tests.maintenance.test_course.CourseDocsTests.test_public_reading_pages_reject_internal_source_labels) ... ok
+test_public_sources_repo_links_and_code_examples_are_allowed (tests.maintenance.test_course.CourseDocsTests.test_public_sources_repo_links_and_code_examples_are_allowed) ... ok
+test_scaffold_cannot_be_marked_complete_or_escape_its_part (tests.maintenance.test_course.CourseDocsTests.test_scaffold_cannot_be_marked_complete_or_escape_its_part) ... ok
+test_write_preserves_manual_prose_and_is_idempotent (tests.maintenance.test_course.CourseDocsTests.test_write_preserves_manual_prose_and_is_idempotent) ... ok
+test_existing_file_outside_document_root_is_rejected (tests.maintenance.test_course.DocumentRootTests.test_existing_file_outside_document_root_is_rejected) ... ok
+test_root_with_parent_component_preserves_links_and_anchors (tests.maintenance.test_course.DocumentRootTests.test_root_with_parent_component_preserves_links_and_anchors) ... ok
+test_windows_short_root_preserves_links_and_anchors (tests.maintenance.test_course.DocumentRootTests.test_windows_short_root_preserves_links_and_anchors) ... skipped '8.3 aliases are disabled on this volume'
+test_current_tree_and_published_links_are_valid (tests.maintenance.test_layout.LayoutTests.test_current_tree_and_published_links_are_valid) ... ok
+test_empty_and_obsolete_directories_and_stray_files_are_rejected (tests.maintenance.test_layout.LayoutTests.test_empty_and_obsolete_directories_and_stray_files_are_rejected) ... ok
+test_missing_duplicate_or_escaping_data_files_are_rejected (tests.maintenance.test_layout.LayoutTests.test_missing_duplicate_or_escaping_data_files_are_rejected) ... ok
+test_missing_published_artifact_is_rejected (tests.maintenance.test_layout.LayoutTests.test_missing_published_artifact_is_rejected) ... ok
+test_split_catalog_preserves_all_translations (tests.maintenance.test_layout.LayoutTests.test_split_catalog_preserves_all_translations) ... ok
+
+======================================================================
+FAIL: test_english_drift_is_detected_and_manual_text_is_preserved (tests.maintenance.test_course.CourseDocsTests.test_english_drift_is_detected_and_manual_text_is_preserved)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\i26439\Documents\ChatGPT\zero2vllm\tests\maintenance\test_course.py", line 177, in test_english_drift_is_detected_and_manual_text_is_preserved
+    self.assertEqual(report["changed_files"], ["README_en.md"])
+AssertionError: Lists differ: ['README.md', 'README_en.md', 'docs/chapters/part[147 chars].md'] != ['README_en.md']
+
+First differing element 0:
+'README.md'
+'README_en.md'
+
+First list contains 3 additional elements.
+First extra element 1:
+'README_en.md'
+
+- ['README.md',
+-  'README_en.md',
+? ^              ^
+
++ ['README_en.md']
+? ^              ^
+
+-  'docs/chapters/part-13-disaggregation/03-performance-surfaces-and-slo-lookup/README.md',
+-  'docs/chapters/part-13-disaggregation/10-routing-queues-and-elasticity/README.md']
+
+----------------------------------------------------------------------
+Ran 28 tests in 526.714s
+
+FAILED (failures=1, skipped=1)

@@ -1,10 +1,10 @@
 # 文档导航
 
-课程按 **篇 → 节** 组织。先进入篇目录，再选择小节；每节的正文、实验和练习在同一目录中。129 个小节入口都已建立，状态区分完整课程与待填充骨架。
+课程按 **篇 → 节** 组织。先进入篇目录，再选择小节；每节的正文、实验和练习在同一目录中。135 个小节入口都已建立，状态区分完整课程与待填充骨架。
 
 | 分区 | 内容 |
 | --- | --- |
-| [chapters/](chapters/README.md) | 19 篇、129 节；正文、实验、示例、输入数据和结果按节就近存放 |
+| [chapters/](chapters/README.md) | 19 篇、135 节；正文、实验、示例、输入数据和结果按节就近存放 |
 | [platforms/](platforms/README.md) | CPU / NVIDIA A100 / 沐曦 C500 的环境与验证约定 |
 | [engineering/](engineering/README.md) | 架构、实验规范、开发路线 |
 | [references/](references/README.md) | 官方来源、特性地图、专题导读 |
@@ -16,7 +16,7 @@
 | 入口 | 内容 |
 | --- | --- |
 | [项目首页](../README.md) | 课程定位、快速开始、完整大纲和当前进度 |
-| [English README](../README_en.md) | 英文项目介绍与完整 19 篇、129 章大纲；章节正文目前主要是中文 |
+| [English README](../README_en.md) | 英文项目介绍与完整 19 篇、135 章大纲；章节正文目前主要是中文 |
 | [第一课：从 token 到下一步预测](chapters/part-01-inference/01-next-token/README.md) | 完整正文、二维 Attention 手算、CPU 生成实验与五组练习答案 |
 | [Part 1 六节学习与命令总表](chapters/part-01-inference/README.md) | 完整正文、各节代码/参数/练习与 28 案例统一运行入口 |
 | [2.1 最小 PyTorch 模型](chapters/part-02-engine/01-pytorch-model/README.md) | RMSNorm / RoPE / Attention / SwiGLU、逐层对齐、7 个案例与 6 组练习 |

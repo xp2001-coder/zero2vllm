@@ -20,6 +20,7 @@ async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of。
 
 1. async scheduling × spec decode × graphs × PP/LoRA：补充概念、推导、例子及实现边界。
 2. 旧 multi-step/best-of：补充概念、推导、例子及实现边界。
+3. 混部与PD同预算对照，批处理/排队对阶段容量的影响：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -49,3 +50,8 @@ async scheduling × spec decode × graphs × PP/LoRA；旧 multi-step/best-of。
 - [调度配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/scheduler.py)
 - [Dual Batch Overlap](https://docs.vllm.ai/en/stable/design/dbo/)
 - [SGLang EP：TBO/SBO](https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/expert_parallelism.mdx)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。混部与PD同预算对照，批处理/排队对阶段容量的影响。先明确计量单位和验证范围，再用于集群推算。

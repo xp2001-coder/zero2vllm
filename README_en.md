@@ -31,13 +31,13 @@
 
 [Documentation](docs/README.md) · [Roadmap](docs/engineering/roadmap.md) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
-> **Course under construction.** Part 1 (1.1–1.6) and lessons 2.1–2.7 now include text, CPU code, commands, exercises with answers, and validation. Lessons 3.1–3.5 add pinned-source reading, scheduling/KV and model-execution labs, Runner evolution, configuration tracing, and CPU-only static inspection. Lesson 9.1 adds affine quantization/dequantization/requantization with zero-points, model passports, six Chinese diagrams, and 17 CPU cases. Lesson 9.2 adds non-square grouped Q/DQ, FP8/FP4 representations, tail padding, and effective bit accounting, with 20 CPU cases and seven Chinese diagrams. Lesson 9.3 adds reproducible calibration protocols, observers, effective token budgets, and weight/layer/task error comparisons. Lesson 9.4 adds error-control derivations, a GPTQ core reference, and scaling, rotation and STE experiments. All 129 chapters have separate directories; unfinished entries remain marked as teaching outlines. The INT4 Linear lab, seven topic guides, and configuration templates for both GPU backends are also available. Later engine features will follow lesson by lesson. A100/C500 GPU experiments await validation on hardware.
+> **Course under construction.** Part 1 (1.1–1.6) and lessons 2.1–2.7 now include text, CPU code, commands, exercises with answers, and validation. Lessons 3.1–3.5 add pinned-source reading, scheduling/KV and model-execution labs, Runner evolution, configuration tracing, and CPU-only static inspection. Lesson 9.1 adds affine quantization/dequantization/requantization with zero-points, model passports, six Chinese diagrams, and 17 CPU cases. Lesson 9.2 adds non-square grouped Q/DQ, FP8/FP4 representations, tail padding, and effective bit accounting, with 20 CPU cases and seven Chinese diagrams. Lesson 9.3 adds reproducible calibration protocols, observers, effective token budgets, and weight/layer/task error comparisons. Lesson 9.4 adds error-control derivations, a GPTQ core reference, and scaling, rotation and STE experiments. Part 13 targets engineers with 12 planned lessons on P/D performance modeling, SLO-based sizing, Mooncake/KV systems, Dynamo and llm-d control planes, and production operations and validation. All 135 chapters have separate directories; unfinished entries remain marked as teaching outlines. The INT4 Linear lab, seven topic guides, and configuration templates for both GPU backends are also available. Later engine features will follow lesson by lesson. A100/C500 GPU experiments await validation on hardware.
 >
 > **Language:** this README includes the full English overview and outline. Linked course chapters, labs, and supporting documents are currently primarily in Chinese.
 
 ## Start here
 
-Choose an entry point based on your experience, then follow the [learning paths](docs/chapters/learning-paths.md). The full **19-part, 129-chapter** scope appears below.
+Choose an entry point based on your experience, then follow the [learning paths](docs/chapters/learning-paths.md). The full **19-part, 135-chapter** scope appears below.
 
 | Your starting point | First material | What you will produce |
 | --- | --- | --- |
@@ -201,7 +201,7 @@ These commands collect environment information and check configuration. The temp
 
 <!-- BEGIN course-outline -->
 
-This edition plans **19 parts and 129 chapters**. Every chapter has its own directory; unfinished entries contain a teaching outline, not a completed lesson. Two CPU labs live under their related parts. See the [detailed curriculum](docs/chapters/README.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
+This edition plans **19 parts and 135 chapters**. Every chapter has its own directory; unfinished entries contain a teaching outline, not a completed lesson. Two CPU labs live under their related parts. See the [detailed curriculum](docs/chapters/README.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
 
 **Status: ✅ complete with local validation; 🧩 partial material or code available; 📋 planned, chapter text pending.** Upstream availability does not mean a feature has been tested in this project.
 
@@ -224,7 +224,7 @@ This edition plans **19 parts and 129 chapters**. Every chapter has its own dire
 | [Part 10](docs/chapters/part-10-speculation/README.md) | Speculative Decoding | 9 |
 | [Part 11](docs/chapters/part-11-parallelism/README.md) | Parallelism and Distributed Execution | 10 |
 | [Part 12](docs/chapters/part-12-moe/README.md) | MoE and Communication Optimization | 6 |
-| [Part 13](docs/chapters/part-13-disaggregation/README.md) | Disaggregated Serving and KV Transfer | 6 |
+| [Part 13](docs/chapters/part-13-disaggregation/README.md) | Distributed Inference Engineering: PD, KV Systems and Cluster Scheduling | 12 |
 | [Part 14](docs/chapters/part-14-model-types/README.md) | Model Types, Multimodality, and Adapters | 7 |
 | [Part 15](docs/chapters/part-15-serving/README.md) | Serving APIs and Generation Features | 7 |
 | [Part 16](docs/chapters/part-16-weight-loading/README.md) | Weight Loading, Memory, and the RL Inference Lifecycle | 6 |
@@ -318,7 +318,7 @@ Sources and further reading: [GPU Installation and Hardware Requirements](https:
 | 5.4 [Cache lifecycle and routing](docs/chapters/part-05-kv-cache/04-cache-lifecycle-and-routing/README.md) | Reference counts, LRU, eviction, preemption/recomputation, reset, KV events, and affinity routing | 🧩 |
 | 5.5 [Cache management for hybrid models](docs/chapters/part-05-kv-cache/05-cache-management-for-hybrid-models/README.md) | Full/SWA/SSM groups, Hybrid KV Cache Manager, page alignment, and shared layers | 📋 |
 | 5.6 [State caching for Mamba and linear models](docs/chapters/part-05-kv-cache/06-state-caching-for-mamba-and-linear-models/README.md) | Mamba1/2, GDN, convolution/SSM states, checkpoints, ReplaySSM, and RecoverSSM | 📋 |
-| 5.7 [KV offloading and tiered caching](docs/chapters/part-05-kv-cache/07-kv-offloading-and-tiered-caching/README.md) | Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors | 📋 |
+| 5.7 [KV offloading and tiered caching](docs/chapters/part-05-kv-cache/07-kv-offloading-and-tiered-caching/README.md) | Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors; object/byte hit rates and remote-read costs, linked to 13.5/13.8 | 📋 |
 | 5.8 [Context extension and KV sharing](docs/chapters/part-05-kv-cache/08-context-extension-and-kv-sharing/README.md) | RoPE scaling/YaRN, model length, sliding windows, and cross-layer KV sharing/fast prefill | 📋 |
 | 5.9 [IndexCache and sparse index caching](docs/chapters/part-05-kv-cache/09-indexcache-and-sparse-index-caching/README.md) | Cross-layer reuse of DSA top-k indices, reuse frequency, and sparse-attention accuracy | 📋 |
 
@@ -336,7 +336,7 @@ Sources and further reading: [Automatic Prefix Caching](https://docs.vllm.ai/en/
 | 6.3 [Token and GPU memory budgets](docs/chapters/part-06-scheduling/03-token-and-gpu-memory-budgets/README.md) | max_num_seqs, max_num_batched_tokens, version-specific scheduled-token limits, max_model_len, and KV/encoder/speculation budgets | 🧩 |
 | 6.4 [Async scheduling and output processing](docs/chapters/part-06-scheduling/04-async-scheduling-and-output-processing/README.md) | CPU/GPU overlap, input preparation, sampling feedback, async output, and cancellation boundaries | 📋 |
 | 6.5 [Comparing DBO and TBO](docs/chapters/part-06-scheduling/05-comparing-dbo-and-tbo/README.md) | vLLM Dual Batch Overlap, ubatches, compute/communication overlap; comparison with SGLang TBO/SBO | 🧩 |
-| 6.6 [Scheduling combinations and evolution](docs/chapters/part-06-scheduling/06-scheduling-combinations-and-evolution/README.md) | Async scheduling × speculative decoding × graphs × PP/LoRA; historical multi-step/best-of behavior | 📋 |
+| 6.6 [Scheduling combinations and evolution](docs/chapters/part-06-scheduling/06-scheduling-combinations-and-evolution/README.md) | Async scheduling × speculative decoding × graphs × PP/LoRA; historical multi-step/best-of behavior; equal-budget colocated/PD comparisons and batching/queueing effects on phase capacity | 📋 |
 
 Sources and further reading: [Optimization and Tuning](https://docs.vllm.ai/en/stable/configuration/optimization/) · [Scheduler Configuration](https://github.com/vllm-project/vllm/blob/main/vllm/config/scheduler.py) · [Dual Batch Overlap](https://docs.vllm.ai/en/stable/design/dbo/) · [SGLang EP: TBO/SBO](https://github.com/sgl-project/sglang/blob/main/docs/docs/advanced_features/expert_parallelism.mdx).
 
@@ -391,10 +391,10 @@ Sources and further reading: [torch.compile Integration](https://docs.vllm.ai/en
 | 9.8 [Bit packing, serialization, and repacking](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/README.md) | INT4 byte/word packing; bit-stream, padded, and block-word alternatives; serialization, repacking and inverses, endianness, and tails | 🧩 |
 | 9.9 [Weight-only GEMV/GEMM and tuning](docs/chapters/part-09-quantization/09-weight-only-gemv-gemm-and-tuning/README.md) | Explicit versus fused dequantization, actual compute types, prefill/decode shape sweeps, tiling, reuse, pipelines, registers, split-K, and tuning | 🧩 |
 | 9.10 [Activation quantization, low-precision GEMM, and fusion](docs/chapters/part-09-quantization/10-activation-quantization-low-precision-gemm-and-fusion/README.md) | Start with INT8 W8A8; conditional FP8/W4A8/FP4 paths; time statistics, Q, GEMM, scaling, DQ, and epilogues; fusion ablations | 🧩 |
-| 9.11 [KV cache quantization and attention integration](docs/chapters/part-09-quantization/11-kv-cache-quantization-and-attention/README.md) | Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality | 📋 |
+| 9.11 [KV cache quantization and attention integration](docs/chapters/part-09-quantization/11-kv-cache-quantization-and-attention/README.md) | Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality; wire bytes, Q/DQ overhead and PD layout contracts, linked to 13.5/13.9 | 📋 |
 | 9.12 [MoE, parallel sharding, and quantization](docs/chapters/part-09-quantization/12-moe-parallel-sharding-and-quantization/README.md) | TP sharding and group boundaries, fused QKV, expert sensitivity and imbalance, grouped computation, and EP metadata/communication | 📋 |
 | 9.13 [Integrating quantization into vLLM](docs/chapters/part-09-quantization/13-integrating-quantization-into-vllm/README.md) | Trace configuration, method selection, weight creation/loading, post-load processing, repacking, backend dispatch, and fallback in pinned vLLM source | 🧩 |
-| 9.14 [From kernel gains to end-to-end inference acceleration](docs/chapters/part-09-quantization/14-from-kernel-gains-to-end-to-end-acceleration/README.md) | Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports | 🧩 |
+| 9.14 [From kernel gains to end-to-end inference acceleration](docs/chapters/part-09-quantization/14-from-kernel-gains-to-end-to-end-acceleration/README.md) | Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports; how quantization changes P/D capacity curves and ratios without equating compression with speedup | 🧩 |
 
 The v1.0 baseline has four modules and 14 units, with a Quantized Model Passport for every experiment. Start with CPU matrices, then a few layers, then Qwen3-8B W4A16 G128. CNN/MQBench is a classic side track. See the [Part 9 design](docs/chapters/part-09-quantization/design.md).
 
@@ -434,7 +434,7 @@ Sources and further reading: [Speculative Decoding](https://docs.vllm.ai/en/stab
 | 11.6 [Prefill Context Parallelism](docs/chapters/part-11-parallelism/06-prefill-context-parallelism/README.md) | PCP, prefill-token partitioning, rank expansion, TP/PCP combinations, and cache layouts | 🧩 |
 | 11.7 [Decode Context Parallelism](docs/chapters/part-11-parallelism/07-decode-context-parallelism/README.md) | DCP, decode KV sharding, process-group reuse, MLA/GQA, ag_rs/a2a, and Q replication | 🧩 |
 | 11.8 [Sequence Parallelism and Async TP](docs/chapters/part-11-parallelism/08-sequence-parallelism-and-async-tp/README.md) | SP activation partitioning, integration with TP, fusion passes, and sequence-parallel MoE paths | 📋 |
-| 11.9 [Combining parallelism and planning topology](docs/chapters/part-11-parallelism/09-combining-parallelism-and-planning-topology/README.md) | TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA | 🧩 |
+| 11.9 [Combining parallelism and planning topology](docs/chapters/part-11-parallelism/09-combining-parallelism-and-planning-topology/README.md) | TP × PP × DP × PCP, DCP/EP group reuse, NVLink/PCIe/RDMA/NUMA; separate P/D resource groups, GPU counts and node counts, linked to 13.4/13.9 | 🧩 |
 | 11.10 [Distributed launch and debugging](docs/chapters/part-11-parallelism/10-distributed-launch-and-debugging/README.md) | mp/Ray/external launchers, node discovery, communication timeouts, NCCL/P2P, and failures | 📋 |
 
 Sources and further reading: [Parallelism and Scaling](https://docs.vllm.ai/en/stable/serving/parallelism_scaling/) · [Parallel Configuration and Degree Validation](https://github.com/vllm-project/vllm/blob/main/vllm/config/parallel.py) · [Context Parallel Deployment](https://docs.vllm.ai/en/stable/serving/context_parallel_deployment/) · [Data Parallel Deployment](https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/) · [Expert Parallel Deployment](https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/) · [Compilation Modes and Fusion Passes](https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py).
@@ -458,18 +458,24 @@ Sources and further reading: [Expert Parallel Deployment](https://docs.vllm.ai/e
 </details>
 
 <details>
-<summary>Part 13 · Disaggregated Serving and KV Transfer (6 chapters)</summary>
+<summary>Part 13 · Distributed Inference Engineering: PD, KV Systems and Cluster Scheduling (12 chapters)</summary>
 
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
-| 13.1 [Prefill-decode disaggregation](docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | PD disaggregation, independent phase scaling, TTFT/TPOT targets, and routing | 🧩 |
-| 13.2 [The KV Connector protocol](docs/chapters/part-13-disaggregation/02-the-kv-connector-protocol/README.md) | Scheduler/worker roles, async storage/retrieval, lifecycle, cleanup after failures, and KV events | 🧩 |
-| 13.3 [Connectors and tiered storage](docs/chapters/part-13-disaggregation/03-connectors-and-tiered-storage/README.md) | NIXL, Mooncake/Store, LMCache, MoRIIO, FlexKV, HF3FS, and native offloading | 📋 |
-| 13.4 [Heterogeneous parallelism and transfer compatibility](docs/chapters/part-13-disaggregation/04-heterogeneous-parallelism-and-transfer-compatibility/README.md) | Different P/D TP/PCP/DCP degrees, KV layouts, block sizes, dtypes, and model consistency | 🧩 |
-| 13.5 [Encoder disaggregation and caching](docs/chapters/part-13-disaggregation/05-encoder-disaggregation-and-caching/README.md) | Multimodal encoders, EC transfer, embedding caches, and renderer separation | 📋 |
-| 13.6 [Distributed serving lifecycles](docs/chapters/part-13-disaggregation/06-distributed-serving-lifecycles/README.md) | Push/pull, leases/notifications, timeouts, retries, load-failure recovery, and cache affinity | 🧩 |
+| 13.1 [When to disaggregate prefill and decode](docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | Colocated and chunked-prefill baselines; interference, TTFT/TPOT/ITL, goodput, independent scaling and first-token ownership | 🧩 |
+| 13.2 [Isolated P/D measurement and workload protocols](docs/chapters/part-13-disaggregation/02-isolated-measurement-and-workload-protocol/README.md) | Model/hardware fingerprints, ISL/OSL distributions, one-token P baseline, fake-transfer D validation, arrival rate, request count, concurrency and steady-state windows | 📋 |
+| 13.3 [Performance surfaces and SLO lookup](docs/chapters/part-13-disaggregation/03-performance-surfaces-and-slo-lookup/README.md) | Optional scans and absolute-rate sweeps, frozen q_ref, latency percentiles, joint SLOs, repeated trials, interpolation limits and infeasible points; roofline bounds and held-out fit residuals; Dynamo Profiler inputs, measured versus estimated curves and applicability | 📋 |
+| 13.4 [P/D ratios and cluster capacity planning](docs/chapters/part-13-disaggregation/04-pd-ratios-and-capacity-planning/README.md) | SLO-feasible request capacities, token accounting, headroom, integer replicas, parallel resource groups, GPU/node counts and network/memory/cost constraints; offline sizing versus online planning and GPU budgets | 📋 |
+| 13.5 [KV volume and the transfer critical path](docs/chapters/part-13-disaggregation/05-kv-volume-and-transfer-critical-path/README.md) | Logical, per-rank and wire bytes; KV dtype/scales; memory registration, packing, networking and layout conversion; overlap and contention | 📋 |
+| 13.6 [The vLLM KV Connector protocol](docs/chapters/part-13-disaggregation/06-the-kv-connector-protocol/README.md) | Scheduler/worker roles, metadata/block mappings, async transfer and completion, readiness, ownership, release and KV events | 🧩 |
+| 13.7 [Mooncake Transfer Engine, Store and KV scheduling](docs/chapters/part-13-disaggregation/07-mooncake-transfer-engine-and-store/README.md) | Paper architecture versus open-source components; segments, buffers, batch transfers, registration, transport/topology, store metadata/replicas and recompute-versus-transfer decisions | 📋 |
+| 13.8 [Connector ecosystems and tiered KV storage](docs/chapters/part-13-disaggregation/08-connectors-and-tiered-storage/README.md) | Separate transport libraries, stores and runtime connectors; HBM/DRAM/SSD, admission, eviction, prefetching, byte hit rates and hot spots; Dynamo KVBM versus NIXL responsibilities and versioned capability evidence | 📋 |
+| 13.9 [Heterogeneous parallelism, KV resharding and placement](docs/chapters/part-13-disaggregation/09-heterogeneous-parallelism-and-transfer-compatibility/README.md) | P/D TP/PP/PCP/DCP differences, GQA replication, identity/layout contracts, resharding, topology and cross-vendor verification | 🧩 |
+| 13.10 [Cluster control planes: Dynamo, llm-d and elasticity](docs/chapters/part-13-disaggregation/10-routing-queues-and-elasticity/README.md) | Request routing versus pool control timescales; Dynamo Frontend/Router/Profiler/Planner/Operator; llm-d Gateway/EPP/InferencePool; Production Stack comparison; cache, transfer and queue costs; admission, backpressure and fairness; warmup, hysteresis and draining; Little's law and trace replay | 📋 |
+| 13.11 [Encoder disaggregation and E/P/D planning](docs/chapters/part-13-disaggregation/11-encoder-disaggregation-and-caching/README.md) | Encoder/renderer boundaries, embeddings versus KV, multimodal workload units, cache identity and three-stage capacity | 📋 |
+| 13.12 [Production operations, recovery and end-to-end validation](docs/chapters/part-13-disaggregation/12-distributed-serving-lifecycles/README.md) | Ownership and cleanup; per-request distributed traces and SLO alerts; timeout, retry, cancellation and output deduplication limits; stale cache events and network failures; rolling upgrades, draining and rollback; joint-SLO goodput, cost per compliant request, model residuals and N-1 capacity | 🧩 |
 
-Sources and further reading: [Disaggregated Prefilling](https://docs.vllm.ai/en/stable/features/disagg_prefill/) · [Disaggregated Encoder](https://docs.vllm.ai/en/stable/features/disagg_encoder/) · [KV Connector Registry](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py) · [NIXL Compatibility Matrix](https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/) · [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/).
+Sources and further reading: [Disaggregated Prefilling](https://docs.vllm.ai/en/stable/features/disagg_prefill/) · [Disaggregated Encoder](https://docs.vllm.ai/en/stable/features/disagg_encoder/) · [KV Connector Registry](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py) · [NIXL Compatibility Matrix](https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/) · [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/) · [DistServe — SLO-aware PD resource allocation](https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin) · [Mooncake — KVCache-centric serving architecture](https://www.usenix.org/conference/fast25/presentation/qin) · [Mooncake Transfer Engine](https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html) · [vLLM MooncakeConnector](https://docs.vllm.ai/en/latest/features/mooncake_connector_usage/) · [NVIDIA Dynamo Architecture](https://docs.nvidia.com/dynamo/dev/knowledge-base/concepts/architecture) · [NVIDIA Dynamo Profiler](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/profiler/overview) · [NVIDIA Dynamo Planner Design](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/planner/planner-design) · [NVIDIA Dynamo KVBM Configuration and Cache Tiers](https://docs.nvidia.com/dynamo/dev/reference/components/kvbm-configuration) · [llm-d Architecture](https://llm-d.ai/docs/architecture) · [vLLM Production Stack](https://github.com/vllm-project/production-stack).
 
 </details>
 
@@ -528,12 +534,12 @@ Sources and further reading: [Model Resolution](https://docs.vllm.ai/en/stable/c
 
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
-| 17.1 [Benchmark tools and workloads](docs/chapters/part-17-profiling/01-benchmark-tools-and-workloads/README.md) | bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data | 🧩 |
-| 17.2 [Latency targets and parameter searches](docs/chapters/part-17-profiling/02-latency-targets-and-parameter-searches/README.md) | SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches | 🧩 |
+| 17.1 [Benchmark tools and workloads](docs/chapters/part-17-profiling/01-benchmark-tools-and-workloads/README.md) | bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data; configured versus observed arrival/completion rates, load windows and measurement sufficiency | 🧩 |
+| 17.2 [Latency targets and parameter searches](docs/chapters/part-17-profiling/02-latency-targets-and-parameter-searches/README.md) | SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches; P/D performance tables and joint SLOs, optional scans and adaptive rate sweeps | 🧩 |
 | 17.3 [Profiling across the stack](docs/chapters/part-17-profiling/03-profiling-across-the-stack/README.md) | PyTorch Profiler, Nsight/vendor tools, CPU/GPU timelines; matching semantics/shapes/dtypes, invocation counts and durations, and the critical path | 🧩 |
 | 17.4 [Observability and per-request metrics](docs/chapters/part-17-profiling/04-observability-and-per-request-metrics/README.md) | Prometheus/Grafana, OpenTelemetry, KV/scheduling/speculation/MoE metrics, and per-request metrics | 📋 |
 | 17.5 [Quality, reproducibility, and batch invariance](docs/chapters/part-17-profiling/05-quality-reproducibility-and-batch-invariance/README.md) | Numerical tolerances, model quality, long contexts, seeds, batch invariance, and the cost of determinism | 📋 |
-| 17.6 [System ablations and capstone projects](docs/chapters/part-17-profiling/06-system-ablations-and-capstone-projects/README.md) | APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning | 🧩 |
+| 17.6 [System ablations and capstone projects](docs/chapters/part-17-profiling/06-system-ablations-and-capstone-projects/README.md) | APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning; P/D capacity prediction residuals and equal-GPU/equal-cost ablations, linked to 13.12 | 🧩 |
 
 Sources and further reading: [Benchmark CLI](https://docs.vllm.ai/en/stable/benchmarking/cli/) · [Parameter Sweeps](https://docs.vllm.ai/en/stable/benchmarking/sweeps/) · [Profiling vLLM](https://docs.vllm.ai/en/stable/contributing/profiling/) · [Production Metrics](https://docs.vllm.ai/en/stable/usage/metrics/) · [Per-Request Metrics](https://docs.vllm.ai/en/stable/features/per_request_metrics/) · [Batch Invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/).
 
@@ -547,7 +553,7 @@ Sources and further reading: [Benchmark CLI](https://docs.vllm.ai/en/stable/benc
 | 18.1 [Platforms and plugins](docs/chapters/part-18-deployment/01-platforms-and-plugins/README.md) | Out-of-tree platforms, model/operator/quantization/LoRA/I/O plugins, and capability detection | 📋 |
 | 18.2 [Adapting to C500](docs/chapters/part-18-deployment/02-adapting-to-c500/README.md) | MACA/mcoplib, attention/quantization/graph capabilities, configuration migration, and numerical/performance debugging | 📋 |
 | 18.3 [Other hardware and framework comparisons](docs/chapters/part-18-deployment/03-other-hardware-and-framework-comparisons/README.md) | ROCm/XPU/CPU/TPU/other plugins; the scope of SGLang, TensorRT-LLM, llama.cpp, and vLLM-Omni | 📋 |
-| 18.4 [Deployment and the surrounding ecosystem](docs/chapters/part-18-deployment/04-deployment-and-the-surrounding-ecosystem/README.md) | Docker/Kubernetes/Helm/Ray/Nginx, routing, llm-d/Dynamo/Production Stack, and application integrations | 📋 |
+| 18.4 [Deployment and the surrounding ecosystem](docs/chapters/part-18-deployment/04-deployment-and-the-surrounding-ecosystem/README.md) | Docker/Kubernetes/Helm/Ray/Nginx and application integration; pinned images, drivers, device plugins and network dependencies; Production Stack deployment entry; Dynamo/llm-d control planes and production operations in 13.10/13.12 | 📋 |
 | 18.5 [From an issue to a contribution and version maintenance](docs/chapters/part-18-deployment/05-from-an-issue-to-a-contribution-and-version-maintenance/README.md) | Unit/integration/performance checks, minimal reproductions, PRs, deprecation migration, and feature inventory updates | 📋 |
 
 Sources and further reading: [Plugin System](https://docs.vllm.ai/en/stable/design/plugin_system/) · [CustomOp](https://docs.vllm.ai/en/stable/design/custom_op/) · [vLLM-MetaX](https://github.com/MetaX-MACA/vLLM-metax) · [MetaX Supported Models](https://vllm-metax.readthedocs.io/en/stable/models/supported_models.html) · [Kubernetes Deployment](https://docs.vllm.ai/en/stable/deployment/k8s/) · [vLLM Features and Compatibility](https://docs.vllm.ai/en/stable/features/) · [SGLang Hyperparameter Tuning](https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning).
@@ -641,7 +647,7 @@ Current code version: **v0.1.0.dev0**.
 | Available work | Validation or reading entry |
 | --- | --- |
 | Engineering design, course layers, and milestone acceptance criteria | [Engineering design](docs/engineering/architecture.md), [roadmap](docs/engineering/roadmap.md) |
-| 19-part, 129-chapter outline and feature/optimization index | [Detailed curriculum](docs/chapters/README.md), [feature map](docs/references/feature-map.md), [consistency checks](reports/quality/part-09-design-baseline/course.json) |
+| 19-part, 135-chapter outline and feature/optimization index | [Detailed curriculum](docs/chapters/README.md), [feature map](docs/references/feature-map.md), [consistency checks](reports/quality/part-13-engineering/course.json) |
 | All six Part 1 lessons: full text, CPU code, command parameters, exercises, and a shared runner | [Part 1 guide](docs/chapters/part-01-inference/README.md), [runner](scripts/experiments/part01.py), [validation record](reports/README.md) |
 | 2.1 PyTorch decoder: layerwise checks, seven cases, and six exercises | [Lesson and labs](docs/chapters/part-02-engine/01-pytorch-model/README.md), [recorded results](docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json) |
 | 2.2 Real checkpoint loading: four original diagrams, three prompts, and eight exercises | [Lesson and labs](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md), [recorded results](docs/chapters/part-02-engine/02-loading-real-model-weights/results/README.md) |
@@ -669,7 +675,7 @@ Current code version: **v0.1.0.dev0**.
 ```text
 zero2vllm/
 ├── docs/
-│   ├── chapters/                 19 parts, 129 lessons
+│   ├── chapters/                 19 parts, 135 lessons
 │   │   └── part-02-engine/
 │   │       └── 01-pytorch-model/
 │   │           ├── README.md     lesson text

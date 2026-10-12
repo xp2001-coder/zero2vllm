@@ -339,8 +339,9 @@
       "title": "KVConnectorFactory 内置注册项",
       "source": "https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py",
       "chapters": [
-        "13.2",
-        "13.3"
+        "13.6",
+        "13.8",
+        "13.7"
       ],
       "names": [
         "ExampleConnector",

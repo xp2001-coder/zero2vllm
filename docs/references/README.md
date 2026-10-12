@@ -106,6 +106,16 @@
 | `marlin_kernel` | [Marlin 量化内核实现](https://github.com/IST-DASLab/marlin) |
 | `triton_attention` | [Triton Fused Attention 教程](https://triton-lang.org/main/getting-started/tutorials/06-fused-attention.html) |
 | `sglang_tuning` | [SGLang Hyperparameter Tuning](https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning) |
+| `distserve` | [DistServe — SLO-aware PD resource allocation](https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin) |
+| `mooncake_paper` | [Mooncake — KVCache-centric serving architecture](https://www.usenix.org/conference/fast25/presentation/qin) |
+| `mooncake_transfer` | [Mooncake Transfer Engine](https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html) |
+| `mooncake_connector` | [vLLM MooncakeConnector](https://docs.vllm.ai/en/latest/features/mooncake_connector_usage/) |
+| `dynamo_architecture` | [NVIDIA Dynamo 架构](https://docs.nvidia.com/dynamo/dev/knowledge-base/concepts/architecture) |
+| `dynamo_profiler` | [NVIDIA Dynamo Profiler](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/profiler/overview) |
+| `dynamo_planner` | [NVIDIA Dynamo Planner 设计](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/planner/planner-design) |
+| `dynamo_kvbm` | [NVIDIA Dynamo KVBM 配置与存储层级](https://docs.nvidia.com/dynamo/dev/reference/components/kvbm-configuration) |
+| `llmd_architecture` | [llm-d 架构](https://llm-d.ai/docs/architecture) |
+| `production_stack` | [vLLM Production Stack](https://github.com/vllm-project/production-stack) |
 
 <!-- END course-sources -->
 

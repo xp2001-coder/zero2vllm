@@ -9,7 +9,7 @@
 ```text
 zero2vllm/
 ├── docs/
-│   ├── chapters/                 19 篇、129 节
+│   ├── chapters/                 19 篇、135 节
 │   │   └── part-02-engine/
 │   │       └── 01-pytorch-model/
 │   │           ├── README.md     正文
@@ -34,7 +34,7 @@ zero2vllm/
 └── .local/{runs,checks,archive}/  本地区，不上传
 ```
 
-有实际内容才创建 examples/、data/、results/；尚未完成的小节只保留明确的教学骨架，避免复制 129 套空文件夹。普通课文中直接包含练习时，不强行拆文件。
+有实际内容才创建 examples/、data/、results/；尚未完成的小节只保留明确的教学骨架，避免复制 135 套空文件夹。普通课文中直接包含练习时，不强行拆文件。
 
 ## 文件放哪里
 

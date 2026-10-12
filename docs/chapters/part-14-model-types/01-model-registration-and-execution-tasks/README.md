@@ -1,6 +1,6 @@
 # 14.1 模型注册与执行任务
 
-[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 13.6](../../part-13-disaggregation/06-distributed-serving-lifecycles/README.md) · [下一节 14.2](../02-text-generation-and-scoring/README.md)
+[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 13.12](../../part-13-disaggregation/12-distributed-serving-lifecycles/README.md) · [下一节 14.2](../02-text-generation-and-scoring/README.md)
 
 > 🧩 已有相关材料；本节正文与配套实验待完善。目录存在不表示内容已经完成。
 

@@ -127,7 +127,7 @@
     {
       "id": "9.11",
       "title": "KV Cache 量化与 Attention 协同",
-      "topics": "动态状态、写入 Q/读取 DQ、scale 生命周期；per-tensor/head/token；FP8/INT8/INT4/FP4；KIVI/KVQuant/MiKV；长上下文质量",
+      "topics": "动态状态、写入 Q/读取 DQ、scale 生命周期；per-tensor/head/token；FP8/INT8/INT4/FP4；KIVI/KVQuant/MiKV；长上下文质量；KV量化后的线上字节/QDQ成本与PD布局契约，衔接13.5/13.9",
       "exercise": "KV 容量/并发/写读开销/Attention 延迟/质量报告，prefill 与 decode 分开",
       "hardware": "CPU 参考；GPU/专项",
       "status": "planned",
@@ -160,7 +160,7 @@
     {
       "id": "9.14",
       "title": "从算子收益到端到端推理加速",
-      "topics": "数值/模型质量/kernel/model/serving 五层验收；PPL/显存/TTFT/TPOT/ITL/吞吐/Goodput/尾延迟；预处理摊销与双平台报告",
+      "topics": "数值/模型质量/kernel/model/serving 五层验收；PPL/显存/TTFT/TPOT/ITL/吞吐/Goodput/尾延迟；预处理摊销与双平台报告；量化如何改变P/D曲线与容量配比，避免只按压缩倍率估速",
       "exercise": "A100/C500 独立端到端报告与 Algorithm→Format→Kernel→Runtime 系统图",
       "hardware": "双平台；CPU 分析",
       "status": "partial",

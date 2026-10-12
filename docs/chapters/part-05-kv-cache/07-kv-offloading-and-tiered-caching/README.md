@@ -22,6 +22,7 @@
 2. GPU↔CPU：补充概念、推导、例子及实现边界。
 3. 异步换入换出：补充概念、推导、例子及实现边界。
 4. 存储与连接器：补充概念、推导、例子及实现边界。
+5. 对象/字节命中与远端读取成本，衔接13.5/13.8：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -54,3 +55,8 @@
 - [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/)
 - [Context Extension](https://docs.vllm.ai/en/stable/features/context_extension/)
 - [IndexCache](https://docs.vllm.ai/en/stable/features/index_cache/)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。对象/字节命中与远端读取成本，衔接13.5/13.8。先明确计量单位和验证范围，再用于集群推算。

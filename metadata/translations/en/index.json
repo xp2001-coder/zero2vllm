@@ -91,7 +91,17 @@
     "plugin": "Plugin System",
     "metax_models": "MetaX Supported Models",
     "deployment": "Kubernetes Deployment",
-    "sglang_tuning": "SGLang Hyperparameter Tuning"
+    "sglang_tuning": "SGLang Hyperparameter Tuning",
+    "distserve": "DistServe — SLO-aware PD resource allocation",
+    "mooncake_paper": "Mooncake — KVCache-centric serving architecture",
+    "mooncake_transfer": "Mooncake Transfer Engine",
+    "mooncake_connector": "vLLM MooncakeConnector",
+    "dynamo_architecture": "NVIDIA Dynamo Architecture",
+    "dynamo_profiler": "NVIDIA Dynamo Profiler",
+    "dynamo_planner": "NVIDIA Dynamo Planner Design",
+    "dynamo_kvbm": "NVIDIA Dynamo KVBM Configuration and Cache Tiers",
+    "llmd_architecture": "llm-d Architecture",
+    "production_stack": "vLLM Production Stack"
   },
   "part_files": [
     "parts/00-orientation.json",

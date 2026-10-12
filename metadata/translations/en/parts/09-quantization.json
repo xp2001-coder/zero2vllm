@@ -47,7 +47,7 @@
     },
     "9.11": {
       "title": "KV cache quantization and attention integration",
-      "topics": "Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality"
+      "topics": "Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality; wire bytes, Q/DQ overhead and PD layout contracts, linked to 13.5/13.9"
     },
     "9.12": {
       "title": "MoE, parallel sharding, and quantization",
@@ -59,7 +59,7 @@
     },
     "9.14": {
       "title": "From kernel gains to end-to-end inference acceleration",
-      "topics": "Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports"
+      "topics": "Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports; how quantization changes P/D capacity curves and ratios without equating compression with speedup"
     }
   }
 }

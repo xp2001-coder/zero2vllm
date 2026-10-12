@@ -6,7 +6,7 @@
 
 ## 学习目标
 
-Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成。
+容器、驱动、设备插件与网络依赖，Kubernetes/Helm/Ray/Nginx及应用接入；Production Stack作为部署入口。Dynamo/llm-d的请求决策与资源池控制由13.10主讲。
 
 ## 前置知识与设备
 
@@ -18,10 +18,10 @@ Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应�
 
 <!-- BEGIN lesson-plan -->
 
-1. Docker/Kubernetes/Helm/Ray/Nginx：补充概念、推导、例子及实现边界。
-2. 路由：补充概念、推导、例子及实现边界。
-3. llm-d/Dynamo/Production Stack：补充概念、推导、例子及实现边界。
-4. 应用集成：补充概念、推导、例子及实现边界。
+1. Docker/Kubernetes/Helm/Ray/Nginx 与应用接入：补充概念、推导、例子及实现边界。
+2. 镜像/驱动/设备插件/网络依赖与版本固定：补充概念、推导、例子及实现边界。
+3. Production Stack 部署入口：补充概念、推导、例子及实现边界。
+4. Dynamo/llm-d 控制面与生产运维主讲见13.10/13.12：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -54,3 +54,8 @@ Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应�
 - [Kubernetes 部署](https://docs.vllm.ai/en/stable/deployment/k8s/)
 - [vLLM Features 与兼容性入口](https://docs.vllm.ai/en/stable/features/)
 - [SGLang Hyperparameter Tuning](https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。本节负责镜像/运行时、设备与网络资源、部署清单和应用入口；13.10负责Dynamo/llm-d的路由、容量与弹性决策，13.12负责故障演练、排空与回滚验收，避免重复介绍整套平台。

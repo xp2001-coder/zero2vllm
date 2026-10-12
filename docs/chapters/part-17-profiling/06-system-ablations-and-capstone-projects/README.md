@@ -21,6 +21,8 @@ APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划。
 1. APC×Chunked Prefill×Graphs×Quant×Spec：补充概念、推导、例子及实现边界。
 2. 双平台成本：补充概念、推导、例子及实现边界。
 3. 容量规划：补充概念、推导、例子及实现边界。
+4. P/D容量预测残差：补充概念、推导、例子及实现边界。
+5. 等卡数/等成本消融，衔接13.12：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -56,3 +58,8 @@ APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划。
 - [Production Metrics](https://docs.vllm.ai/en/stable/usage/metrics/)
 - [Per-Request Metrics](https://docs.vllm.ai/en/stable/features/per_request_metrics/)
 - [Batch Invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。P/D容量预测残差、等卡数/等成本消融，衔接13.12。先明确计量单位和验证范围，再用于集群推算。

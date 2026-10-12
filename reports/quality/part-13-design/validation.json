@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-12",
+  "scope": "Course layout and documentation regression; no model, transfer or GPU tests",
+  "initial_suite": {
+    "passed": false,
+    "exit_code": 1,
+    "tests": 28,
+    "elapsed_seconds": 527.02,
+    "scope": "Course generation, bilingual metadata, public links and repository layout only; no GPU or performance tests."
+  },
+  "english_snapshot_recheck_passed": true,
+  "passed_cases_after_recheck": 27,
+  "skipped": 1,
+  "skip_reason": "8.3 aliases are disabled on this volume"
+}

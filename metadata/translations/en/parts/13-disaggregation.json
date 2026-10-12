@@ -1,32 +1,56 @@
 {
   "number": 13,
   "part": {
-    "title": "Disaggregated Serving and KV Transfer"
+    "title": "Distributed Inference Engineering: PD, KV Systems and Cluster Scheduling"
   },
   "chapters": {
     "13.1": {
-      "title": "Prefill-decode disaggregation",
-      "topics": "PD disaggregation, independent phase scaling, TTFT/TPOT targets, and routing"
+      "title": "When to disaggregate prefill and decode",
+      "topics": "Colocated and chunked-prefill baselines; interference, TTFT/TPOT/ITL, goodput, independent scaling and first-token ownership"
     },
     "13.2": {
-      "title": "The KV Connector protocol",
-      "topics": "Scheduler/worker roles, async storage/retrieval, lifecycle, cleanup after failures, and KV events"
+      "title": "Isolated P/D measurement and workload protocols",
+      "topics": "Model/hardware fingerprints, ISL/OSL distributions, one-token P baseline, fake-transfer D validation, arrival rate, request count, concurrency and steady-state windows"
     },
     "13.3": {
-      "title": "Connectors and tiered storage",
-      "topics": "NIXL, Mooncake/Store, LMCache, MoRIIO, FlexKV, HF3FS, and native offloading"
+      "title": "Performance surfaces and SLO lookup",
+      "topics": "Optional scans and absolute-rate sweeps, frozen q_ref, latency percentiles, joint SLOs, repeated trials, interpolation limits and infeasible points; roofline bounds and held-out fit residuals; Dynamo Profiler inputs, measured versus estimated curves and applicability"
     },
     "13.4": {
-      "title": "Heterogeneous parallelism and transfer compatibility",
-      "topics": "Different P/D TP/PCP/DCP degrees, KV layouts, block sizes, dtypes, and model consistency"
+      "title": "P/D ratios and cluster capacity planning",
+      "topics": "SLO-feasible request capacities, token accounting, headroom, integer replicas, parallel resource groups, GPU/node counts and network/memory/cost constraints; offline sizing versus online planning and GPU budgets"
     },
     "13.5": {
-      "title": "Encoder disaggregation and caching",
-      "topics": "Multimodal encoders, EC transfer, embedding caches, and renderer separation"
+      "title": "KV volume and the transfer critical path",
+      "topics": "Logical, per-rank and wire bytes; KV dtype/scales; memory registration, packing, networking and layout conversion; overlap and contention"
     },
     "13.6": {
-      "title": "Distributed serving lifecycles",
-      "topics": "Push/pull, leases/notifications, timeouts, retries, load-failure recovery, and cache affinity"
+      "title": "The vLLM KV Connector protocol",
+      "topics": "Scheduler/worker roles, metadata/block mappings, async transfer and completion, readiness, ownership, release and KV events"
+    },
+    "13.7": {
+      "title": "Mooncake Transfer Engine, Store and KV scheduling",
+      "topics": "Paper architecture versus open-source components; segments, buffers, batch transfers, registration, transport/topology, store metadata/replicas and recompute-versus-transfer decisions"
+    },
+    "13.8": {
+      "title": "Connector ecosystems and tiered KV storage",
+      "topics": "Separate transport libraries, stores and runtime connectors; HBM/DRAM/SSD, admission, eviction, prefetching, byte hit rates and hot spots; Dynamo KVBM versus NIXL responsibilities and versioned capability evidence"
+    },
+    "13.9": {
+      "title": "Heterogeneous parallelism, KV resharding and placement",
+      "topics": "P/D TP/PP/PCP/DCP differences, GQA replication, identity/layout contracts, resharding, topology and cross-vendor verification"
+    },
+    "13.10": {
+      "title": "Cluster control planes: Dynamo, llm-d and elasticity",
+      "topics": "Request routing versus pool control timescales; Dynamo Frontend/Router/Profiler/Planner/Operator; llm-d Gateway/EPP/InferencePool; Production Stack comparison; cache, transfer and queue costs; admission, backpressure and fairness; warmup, hysteresis and draining; Little's law and trace replay"
+    },
+    "13.11": {
+      "title": "Encoder disaggregation and E/P/D planning",
+      "topics": "Encoder/renderer boundaries, embeddings versus KV, multimodal workload units, cache identity and three-stage capacity"
+    },
+    "13.12": {
+      "title": "Production operations, recovery and end-to-end validation",
+      "topics": "Ownership and cleanup; per-request distributed traces and SLO alerts; timeout, retry, cancellation and output deduplication limits; stale cache events and network failures; rolling upgrades, draining and rollback; joint-SLO goodput, cost per compliant request, model residuals and N-1 capacity"
     }
   }
 }

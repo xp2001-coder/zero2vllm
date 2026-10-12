@@ -18,7 +18,7 @@
     },
     "18.4": {
       "title": "Deployment and the surrounding ecosystem",
-      "topics": "Docker/Kubernetes/Helm/Ray/Nginx, routing, llm-d/Dynamo/Production Stack, and application integrations"
+      "topics": "Docker/Kubernetes/Helm/Ray/Nginx and application integration; pinned images, drivers, device plugins and network dependencies; Production Stack deployment entry; Dynamo/llm-d control planes and production operations in 13.10/13.12"
     },
     "18.5": {
       "title": "From an issue to a contribution and version maintenance",

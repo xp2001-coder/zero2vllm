@@ -45,7 +45,7 @@
     {
       "id": "18.4",
       "title": "部署与周边生态",
-      "topics": "Docker/Kubernetes/Helm/Ray/Nginx、路由、llm-d/Dynamo/Production Stack、应用集成",
+      "topics": "Docker/Kubernetes/Helm/Ray/Nginx 与应用接入；镜像/驱动/设备插件/网络依赖与版本固定；Production Stack 部署入口；Dynamo/llm-d 控制面与生产运维主讲见13.10/13.12",
       "exercise": "设计服务、缓存、路由和监控的部署图",
       "hardware": "CPU/多机",
       "status": "planned",

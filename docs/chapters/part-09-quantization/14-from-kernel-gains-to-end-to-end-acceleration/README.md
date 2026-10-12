@@ -151,6 +151,7 @@ runtime version
 1. 数值/模型质量/kernel/model/serving 五层验收：补充概念、推导、例子及实现边界。
 2. PPL/显存/TTFT/TPOT/ITL/吞吐/Goodput/尾延迟：补充概念、推导、例子及实现边界。
 3. 预处理摊销与双平台报告：补充概念、推导、例子及实现边界。
+4. 量化如何改变P/D曲线与容量配比，避免只按压缩倍率估速：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -166,3 +167,8 @@ runtime version
 <!-- END lesson-exercise -->
 
 完整正文按[统一写作模板](../templates/lesson.md)逐节交付；验收前保持教学骨架状态。
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。量化如何改变P/D曲线与容量配比，避免只按压缩倍率估速。先明确计量单位和验证范围，再用于集群推算。

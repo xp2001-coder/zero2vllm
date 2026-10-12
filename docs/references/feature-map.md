@@ -248,7 +248,7 @@ pplx/naive 在本次配置校验中走已移除/回退处理，不列为当前�
 
 ### KVConnectorFactory 内置注册项
 
-章节：13.2、13.3。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py)。
+章节：13.6、13.8、13.7。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py)。
 
 包含示例和 benchmark 专用连接器，不把它们都当生产传输方案；外部 module path 还可扩展；HMA 兼容性需检查。
 

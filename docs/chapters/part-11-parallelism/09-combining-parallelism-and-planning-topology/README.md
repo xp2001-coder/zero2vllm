@@ -21,6 +21,8 @@ TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA。
 1. TP×PP×DP×PCP：补充概念、推导、例子及实现边界。
 2. DCP/EP 组复用：补充概念、推导、例子及实现边界。
 3. NVLink/PCIe/RDMA/NUMA：补充概念、推导、例子及实现边界。
+4. P/D资源组：补充概念、推导、例子及实现边界。
+5. 卡数与节点数分开核算，衔接13.4/13.9：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -56,3 +58,8 @@ TP×PP×DP×PCP、DCP/EP 组复用、NVLink/PCIe/RDMA/NUMA。
 - [Data Parallel Deployment](https://docs.vllm.ai/en/stable/serving/data_parallel_deployment/)
 - [Expert Parallel Deployment](https://docs.vllm.ai/en/stable/serving/expert_parallel_deployment/)
 - [编译模式与融合 Pass](https://github.com/vllm-project/vllm/blob/main/vllm/config/compilation.py)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。P/D资源组、卡数与节点数分开核算，衔接13.4/13.9。先明确计量单位和验证范围，再用于集群推算。

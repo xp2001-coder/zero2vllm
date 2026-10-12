@@ -14,7 +14,7 @@
     {
       "id": "17.1",
       "title": "基准测试工具与负载",
-      "topics": "bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据",
+      "topics": "bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真实数据；配置/实际到达/完成速率，供压窗口与测量充分性",
       "exercise": "生成可重复输入并区分开环 QPS 与闭环并发",
       "hardware": "CPU/GPU",
       "status": "partial",
@@ -25,7 +25,7 @@
     {
       "id": "17.2",
       "title": "延迟目标与参数搜索",
-      "topics": "SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存",
+      "topics": "SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存；P/D单阶段性能表与联合SLO，scan可选，sweep拐点加密",
       "exercise": "寻找满足尾延迟目标的配置，计入失败与超时",
       "hardware": "CPU/GPU",
       "status": "partial",
@@ -67,7 +67,7 @@
     {
       "id": "17.6",
       "title": "系统消融与综合项目",
-      "topics": "APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划",
+      "topics": "APC×Chunked Prefill×Graphs×Quant×Spec、双平台成本、容量规划；P/D容量预测残差、等卡数/等成本消融，衔接13.12",
       "exercise": "交付可复现优化报告、原始数据及不生效的配置",
       "hardware": "双平台",
       "status": "partial",

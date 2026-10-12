@@ -1,58 +1,62 @@
-# 13.1 Prefill-Decode 分离
+# 13.1 PD 分离的收益、代价与适用边界
 
-[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 12.6](../../part-12-moe/06-moe-overlap-and-combined-tuning/README.md) · [下一节 13.2](../02-the-kv-connector-protocol/README.md)
+[本篇规划](../README.md) · [全部课程](../../README.md) · [上一节 12.6](../../part-12-moe/06-moe-overlap-and-combined-tuning/README.md) · [下一节 13.2](../02-isolated-measurement-and-workload-protocol/README.md)
 
-> 🧩 已有相关材料；本节正文与配套实验待完善。目录存在不表示内容已经完成。
+> 教学规划已扩充；正文、可运行代码与测量结果待交付。本页不代表已完成实验。
 
 ## 学习目标
 
-PD disaggregation、阶段独立扩展、TTFT/TPOT 目标、路由。
+混部与 Chunked Prefill 基线；P/D 干扰；TTFT/TPOT/ITL 与 goodput；独立扩展与首 token 归属。
 
 ## 前置知识与设备
 
-- 前置：Part 5、6、11。
-- 设备：CPU/多机。具体版本和执行命令随本节实验一起固定。
-- A100/C500 的支持情况以实机记录为准，未执行的路径保持待验证。
+面向已有服务部署与压测经验的工程师；缓存、调度、并行与测量基础分别见 Part 5、6、11、17。
+
+使用真实业务负载与部署预算设计对照，离线分析可在 CPU 完成。离线推导用于筛选方案，不能代替真实集群验收；A100/C500 分别记录支持证据。
 
 ## 正文安排
 
 <!-- BEGIN lesson-plan -->
 
-1. PD disaggregation：补充概念、推导、例子及实现边界。
-2. 阶段独立扩展：补充概念、推导、例子及实现边界。
-3. TTFT/TPOT 目标：补充概念、推导、例子及实现边界。
-4. 路由：补充概念、推导、例子及实现边界。
+1. 混部与 Chunked Prefill 基线：补充概念、推导、例子及实现边界。
+2. P/D 干扰：补充概念、推导、例子及实现边界。
+3. TTFT/TPOT/ITL 与 goodput：补充概念、推导、例子及实现边界。
+4. 独立扩展与首 token 归属：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
-## 代码与实验
+## 代码与实验设计
 
-- [ ] 确定最小输入、预期输出与张量/请求契约。
-- [ ] 补充可独立运行的实现、命令、参数解释和结果示例。
-- [ ] 覆盖正常输入、边界输入和失败排查。
-- [ ] 保存可复核结果；涉及性能时注明设备、版本、负载和计时范围。
+1. 先定义输入数据、计数单位、阶段/窗口边界和参考结果。
+2. 用实测数据校准本节模型；合成输入只做边界检查，单独标记数据来源与适用范围。
+3. 接入真实数据时记录模型、版本、硬件、并行/缓存配置及原始证据。
+4. 保留失败与不生效的条件，提供复现命令、边界案例和结果解释。
+
+版本与平台支持逐项核验；先分析代价，再比较收益，不把待实现设计标为实机验证。
 
 ## 练习与验收
 
 <!-- BEGIN lesson-exercise -->
 
-目标产出：**推导传输成本与分离收益的临界条件**。
+目标产出：**给出同资源预算下混部/分离的比较协议，解释何时不应分离**。
 
 - [ ] 提供输入、命令、结果与解释。
 - [ ] 补充参考答案和至少一个边界案例。
 
 <!-- END lesson-exercise -->
 
-完成正文、代码、命令和必要验证后，才能把课程数据中的状态改为已完成。填充方法见[章节模板](../../../maintenance/templates/lesson.md)。
+完成正文、代码、命令和验证后，才能更改为完整课程。内容结构遵循[章节模板](../../../maintenance/templates/lesson.md)。
 
-## 已有材料
+## 公开资料
 
-先读[相关专题导读](../../part-11-parallelism/guide.md)。它覆盖多个小节，不能替代本节的完整实现和验收。
-
-## 参考资料
-
-- [Disaggregated Prefilling](https://docs.vllm.ai/en/stable/features/disagg_prefill/)
+- [DistServe（OSDI 2024）](https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin)
+- [Mooncake（FAST 2025）](https://www.usenix.org/conference/fast25/presentation/qin)
+- [vLLM Disaggregated Prefilling](https://docs.vllm.ai/en/latest/features/disagg_prefill/)
+- [Mooncake Transfer Engine](https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html)
+- [vLLM MooncakeConnector](https://docs.vllm.ai/en/latest/features/mooncake_connector_usage/)
+- [NIXL 兼容矩阵](https://docs.vllm.ai/en/latest/features/nixl_connector_compatibility/)
 - [Disaggregated Encoder](https://docs.vllm.ai/en/stable/features/disagg_encoder/)
 - [KV Connector 注册表](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py)
-- [NIXL 兼容性矩阵](https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/)
 - [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/)
+
+资料核对日期：2026-10-12。latest/main页面可能变化；正式实验需固定版本、commit与能力矩阵。

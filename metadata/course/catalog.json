@@ -373,6 +373,46 @@
     "sglang_tuning": {
       "title": "SGLang Hyperparameter Tuning",
       "url": "https://docs.sglang.io/docs/advanced_features/hyperparameter_tuning"
+    },
+    "distserve": {
+      "title": "DistServe — SLO-aware PD resource allocation",
+      "url": "https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin"
+    },
+    "mooncake_paper": {
+      "title": "Mooncake — KVCache-centric serving architecture",
+      "url": "https://www.usenix.org/conference/fast25/presentation/qin"
+    },
+    "mooncake_transfer": {
+      "title": "Mooncake Transfer Engine",
+      "url": "https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html"
+    },
+    "mooncake_connector": {
+      "title": "vLLM MooncakeConnector",
+      "url": "https://docs.vllm.ai/en/latest/features/mooncake_connector_usage/"
+    },
+    "dynamo_architecture": {
+      "title": "NVIDIA Dynamo 架构",
+      "url": "https://docs.nvidia.com/dynamo/dev/knowledge-base/concepts/architecture"
+    },
+    "dynamo_profiler": {
+      "title": "NVIDIA Dynamo Profiler",
+      "url": "https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/profiler/overview"
+    },
+    "dynamo_planner": {
+      "title": "NVIDIA Dynamo Planner 设计",
+      "url": "https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/planner/planner-design"
+    },
+    "dynamo_kvbm": {
+      "title": "NVIDIA Dynamo KVBM 配置与存储层级",
+      "url": "https://docs.nvidia.com/dynamo/dev/reference/components/kvbm-configuration"
+    },
+    "llmd_architecture": {
+      "title": "llm-d 架构",
+      "url": "https://llm-d.ai/docs/architecture"
+    },
+    "production_stack": {
+      "title": "vLLM Production Stack",
+      "url": "https://github.com/vllm-project/production-stack"
     }
   },
   "part_files": [

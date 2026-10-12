@@ -1,0 +1,6 @@
+test_english_drift_is_detected_and_manual_text_is_preserved (tests.maintenance.test_course.CourseDocsTests.test_english_drift_is_detected_and_manual_text_is_preserved) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 76.650s
+
+OK

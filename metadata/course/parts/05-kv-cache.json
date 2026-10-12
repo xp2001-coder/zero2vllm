@@ -79,7 +79,7 @@
     {
       "id": "5.7",
       "title": "KV Offloading 与分层缓存",
-      "topics": "原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器",
+      "topics": "原生/LMCache、GPU↔CPU、异步换入换出、存储与连接器；对象/字节命中与远端读取成本，衔接13.5/13.8",
       "exercise": "比较重算和传输成本；核对命中、传输字节与显存",
       "hardware": "GPU/多机",
       "status": "planned",

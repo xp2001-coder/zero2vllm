@@ -24,6 +24,7 @@ SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存。
 4. sweep：补充概念、推导、例子及实现边界。
 5. Pareto：补充概念、推导、例子及实现边界。
 6. 冷/热缓存：补充概念、推导、例子及实现边界。
+7. P/D单阶段性能表与联合SLO，scan可选，sweep拐点加密：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -59,3 +60,8 @@ SLO/Goodput、并发、输入输出分布、sweep、Pareto、冷/热缓存。
 - [Production Metrics](https://docs.vllm.ai/en/stable/usage/metrics/)
 - [Per-Request Metrics](https://docs.vllm.ai/en/stable/features/per_request_metrics/)
 - [Batch Invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。P/D单阶段性能表与联合SLO，scan可选，sweep拐点加密。先明确计量单位和验证范围，再用于集群推算。

@@ -96,6 +96,7 @@ Quantized KV Cache Report。
 5. FP8/INT8/INT4/FP4：补充概念、推导、例子及实现边界。
 6. KIVI/KVQuant/MiKV：补充概念、推导、例子及实现边界。
 7. 长上下文质量：补充概念、推导、例子及实现边界。
+8. KV量化后的线上字节/QDQ成本与PD布局契约，衔接13.5/13.9：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -111,3 +112,8 @@ Quantized KV Cache Report。
 <!-- END lesson-exercise -->
 
 完整正文按[统一写作模板](../templates/lesson.md)逐节交付；验收前保持教学骨架状态。
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。KV量化后的线上字节/QDQ成本与PD布局契约，衔接13.5/13.9。先明确计量单位和验证范围，再用于集群推算。

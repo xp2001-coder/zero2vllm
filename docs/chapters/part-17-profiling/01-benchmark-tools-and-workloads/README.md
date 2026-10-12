@@ -21,6 +21,7 @@ bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真�
 1. bench latency/throughput/serve/startup/mm-processor：补充概念、推导、例子及实现边界。
 2. trace replay：补充概念、推导、例子及实现边界。
 3. 合成/真实数据：补充概念、推导、例子及实现边界。
+4. 配置/实际到达/完成速率，供压窗口与测量充分性：补充概念、推导、例子及实现边界。
 
 <!-- END lesson-plan -->
 
@@ -56,3 +57,8 @@ bench latency/throughput/serve/startup/mm-processor、trace replay、合成/真�
 - [Production Metrics](https://docs.vllm.ai/en/stable/usage/metrics/)
 - [Per-Request Metrics](https://docs.vllm.ai/en/stable/features/per_request_metrics/)
 - [Batch Invariance](https://docs.vllm.ai/en/stable/features/batch_invariance/)
+
+
+## 与分离式服务的衔接
+
+本节的相关结论将接入 [Part 13：分布式推理工程](../../part-13-disaggregation/README.md)。配置/实际到达/完成速率，供压窗口与测量充分性。先明确计量单位和验证范围，再用于集群推算。

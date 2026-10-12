@@ -6,11 +6,11 @@
   "chapters": {
     "17.1": {
       "title": "Benchmark tools and workloads",
-      "topics": "bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data"
+      "topics": "bench latency/throughput/serve/startup/mm-processor, trace replay, and synthetic/real data; configured versus observed arrival/completion rates, load windows and measurement sufficiency"
     },
     "17.2": {
       "title": "Latency targets and parameter searches",
-      "topics": "SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches"
+      "topics": "SLOs/goodput, concurrency, input/output distributions, sweeps, Pareto tradeoffs, and cold/warm caches; P/D performance tables and joint SLOs, optional scans and adaptive rate sweeps"
     },
     "17.3": {
       "title": "Profiling across the stack",
@@ -26,7 +26,7 @@
     },
     "17.6": {
       "title": "System ablations and capstone projects",
-      "topics": "APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning"
+      "topics": "APC × Chunked Prefill × Graphs × Quantization × Speculation, costs across two platforms, and capacity planning; P/D capacity prediction residuals and equal-GPU/equal-cost ablations, linked to 13.12"
     }
   }
 }

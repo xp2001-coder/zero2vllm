@@ -95,3 +95,12 @@ P50/P95/P99 使用同一种计算方法，并保存样本数。客户端测量�
 | TP/CP/EP/PD | 设备与版本满足条件后单独安排 | 张量/组/布局、通信、回收 | 混合拓扑与故障恢复 |
 
 性能测量时关闭 profiler，另取同负载区间采集 trace。按算子语义、shape、dtype、次数对齐 A100/C500；不同平台名称相似的 kernel 不一定相同。累计 kernel 时间、单次时间、重叠区间和墙钟时间分别报告。具体练习见[编译与 Profiling 导读](../chapters/part-08-compilation/guide.md)。
+
+
+## 分离式服务的测量合同
+
+按 [Part 13](../chapters/part-13-disaggregation/README.md) 按工程验证阶段交付：离线模型、单卡阶段曲线、多机真实KV与控制面/服务验证。CPU仿真只用于校验模型，工程结课需要集群证据。每份记录标明实际执行层级。
+
+P-only输出1 token是首token基线，fake D需核对上下文和token计数；配置request_rate、实际到达率、完成req/s分别记录。scan的q_ref只用于范围探索，SLO合格容量来自测量充分的sweep。重复轮次、失败/拒绝、超时、未完成请求和原始attempt不能省略。
+
+配比用同场景、同口径qP/qD产生初估；随后加入线上KV字节、暴露等待、共享带宽、显存、排队、余量与整数布局。最终比较等GPU数/等成本的混部、PD及远端缓存，报告同请求联合SLO、goodput与预测误差。

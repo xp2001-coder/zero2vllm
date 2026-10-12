@@ -30,7 +30,7 @@
     },
     "5.7": {
       "title": "KV offloading and tiered caching",
-      "topics": "Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors"
+      "topics": "Native offloading/LMCache, GPU ↔ CPU transfers, async swap-in/swap-out, storage, and connectors; object/byte hit rates and remote-read costs, linked to 13.5/13.8"
     },
     "5.8": {
       "title": "Context extension and KV sharing",

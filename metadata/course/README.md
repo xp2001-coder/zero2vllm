@@ -19,7 +19,7 @@
 | 10 | [Speculative Decoding 推测解码](parts/10-speculation.json) | 9 |
 | 11 | [并行切分与分布式执行](parts/11-parallelism.json) | 10 |
 | 12 | [MoE 与通信优化](parts/12-moe.json) | 6 |
-| 13 | [分离式部署与 KV 传输](parts/13-disaggregation.json) | 6 |
+| 13 | [分布式推理工程：PD 分离、KV 系统与集群调度](parts/13-disaggregation.json) | 12 |
 | 14 | [模型类型、多模态与适配器](parts/14-model-types.json) | 7 |
 | 15 | [服务接口与生成能力](parts/15-serving.json) | 7 |
 | 16 | [权重加载、内存与 RL 推理生命周期](parts/16-weight-loading.json) | 6 |
