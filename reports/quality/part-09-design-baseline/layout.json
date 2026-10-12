@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "errors": [],
+  "empty_directories": [],
+  "parts": 19,
+  "lessons": 129,
+  "published_artifact_links": 38,
+  "local_workspace_excluded": ".local/; archives and current runs do not enter public course checks"
+}

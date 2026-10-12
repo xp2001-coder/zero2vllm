@@ -1,0 +1,65 @@
+{
+  "name": "staged_writes",
+  "checks": {
+    "staging_did_not_mutate_base": true,
+    "matches_dense_update": true,
+    "pending_cleared": true
+  },
+  "passed": true,
+  "payload": {
+    "indices": [
+      0,
+      2
+    ],
+    "starts": [
+      2,
+      0
+    ],
+    "cumulative_ends": [
+      2,
+      3
+    ],
+    "contents": [
+      8,
+      3,
+      5
+    ],
+    "payload_bytes": 36,
+    "full_table_bytes": 72
+  },
+  "result": [
+    [
+      0,
+      0,
+      8,
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      5,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  ]
+}
+{
+  "name": "overlap_guard",
+  "checks": {
+    "ambiguous_writes_rejected": true
+  },
+  "passed": true,
+  "note": "No GPU ordering guarantee is invented."
+}
+CPU semantics only; no upstream runner or GPU execution.

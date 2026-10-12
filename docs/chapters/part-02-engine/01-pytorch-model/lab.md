@@ -4,7 +4,7 @@
 
 ## 1. 安装 CPU 学习环境
 
-所有命令均在仓库根目录执行。本次本地实测环境为 Windows、Python 3.11.9、PyTorch 2.7.1+cpu。Linux 的 PyTorch 课程任务也已通过一次 [GitHub Actions 验证](https://github.com/xpxpxp2001xpxpxp/zero2vllm/actions/runs/35063302785)。安装会下载约 216 MB 的 Windows torch wheel，另有依赖；无需下载模型权重。
+所有命令均在仓库根目录执行。本次本地实测环境为 Windows、Python 3.11.9、PyTorch 2.7.1+cpu。Linux 的 PyTorch 课程任务曾在原仓库通过一次 [GitHub Actions 验证](https://github.com/xpxpxp2001xpxpxp/zero2vllm/actions/runs/35063302785)。该链接是原账号的历史记录，账号停用后可能无法访问；新仓库的 CI 状态以 Actions 页面为准。安装会下载约 216 MB 的 Windows torch wheel，另有依赖；无需下载模型权重。
 
 ### Windows Git Bash
 

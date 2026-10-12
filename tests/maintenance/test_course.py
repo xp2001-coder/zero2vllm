@@ -253,10 +253,18 @@ class CourseDocsTests(unittest.TestCase):
     def test_part_index_and_scaffold_follow_catalog_without_overwriting_prose(self):
         catalog = json.loads(self.read('metadata/course/catalog.json'))
         chapter = catalog['parts'][2]['chapters'][1]
+        # Build a scaffold in the temporary copy; do not depend on lesson progress.
+        chapter['content'] = 'scaffold'
+        chapter['status'] = 'planned'
         chapter['exercise'] = '独立验收产出'
         chapter['topics'] = '新增专题一、新增专题二'
+        original = self.read(chapter['reading'])
+        fixture = original
+        for marker in ('lesson-plan', 'lesson-exercise'):
+            if f'<!-- BEGIN {marker} -->' not in fixture:
+                fixture += f'\n<!-- BEGIN {marker} -->\n\n<!-- END {marker} -->\n'
         note = '\n作者手写备注，必须保留。\n'
-        self.write(chapter['reading'], self.read(chapter['reading']) + note)
+        self.write(chapter['reading'], fixture + note)
         self.write('metadata/course/catalog.json', json.dumps(catalog, ensure_ascii=False))
         maintain(self.root, write=True)
         self.assertIn('独立验收产出', self.read(catalog['parts'][2]['directory']+'/README.md'))

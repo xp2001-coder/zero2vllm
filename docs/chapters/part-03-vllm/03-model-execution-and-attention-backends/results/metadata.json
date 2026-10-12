@@ -1,0 +1,176 @@
+{
+  "recorded_at": "2026-09-20T06:09:19.974103+00:00",
+  "python": "3.11.9",
+  "verification_level": "metadata_only",
+  "upstream_executed": false,
+  "full_llama_executed": false,
+  "gpu_validated": false,
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "1dbecde17e182d209217034e659c2921f0fc0e9cc588fbe2f6765da89c54d842",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "cases": [
+    {
+      "name": "packing",
+      "checks": {
+        "tokens": true,
+        "positions": true,
+        "slots": true,
+        "query_boundaries": true,
+        "seq_lengths": true,
+        "logit_rows": true
+      },
+      "passed": true,
+      "metadata": {
+        "requests": [
+          {
+            "request_id": "B",
+            "token_ids": [
+              20,
+              21,
+              22,
+              23
+            ],
+            "computed": 3,
+            "scheduled": 1,
+            "block_table": [
+              5
+            ]
+          },
+          {
+            "request_id": "A",
+            "token_ids": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "computed": 2,
+            "scheduled": 3,
+            "block_table": [
+              8,
+              3
+            ]
+          }
+        ],
+        "input_ids": [
+          23,
+          12,
+          13,
+          14
+        ],
+        "positions": [
+          3,
+          2,
+          3,
+          4
+        ],
+        "slot_mapping": [
+          23,
+          34,
+          35,
+          12
+        ],
+        "query_start_loc": [
+          0,
+          1,
+          4
+        ],
+        "seq_lens": [
+          4,
+          5
+        ],
+        "logits_indices": [
+          0,
+          3
+        ],
+        "num_actual_tokens": 4,
+        "num_input_tokens": 4
+      }
+    },
+    {
+      "name": "packing_reordered",
+      "checks": {
+        "tokens": true,
+        "positions": true,
+        "slots": true,
+        "boundaries": true,
+        "mapping": true
+      },
+      "passed": true,
+      "metadata": {
+        "requests": [
+          {
+            "request_id": "A",
+            "token_ids": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "computed": 2,
+            "scheduled": 3,
+            "block_table": [
+              8,
+              3
+            ]
+          },
+          {
+            "request_id": "B",
+            "token_ids": [
+              20,
+              21,
+              22,
+              23
+            ],
+            "computed": 3,
+            "scheduled": 1,
+            "block_table": [
+              5
+            ]
+          }
+        ],
+        "input_ids": [
+          12,
+          13,
+          14,
+          23
+        ],
+        "positions": [
+          2,
+          3,
+          4,
+          3
+        ],
+        "slot_mapping": [
+          34,
+          35,
+          12,
+          23
+        ],
+        "query_start_loc": [
+          0,
+          3,
+          4
+        ],
+        "seq_lens": [
+          5,
+          4
+        ],
+        "logits_indices": [
+          2,
+          3
+        ],
+        "num_actual_tokens": 4,
+        "num_input_tokens": 4
+      }
+    }
+  ],
+  "passed": true
+}

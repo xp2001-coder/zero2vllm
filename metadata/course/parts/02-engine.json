@@ -22,62 +22,62 @@
     {
       "id": "2.2",
       "title": "加载真实模型权重",
-      "topics": "配置、safetensors、权重映射、Tokenizer、模型 revision",
-      "exercise": "加载候选小模型并对齐参考输出",
-      "hardware": "GPU",
-      "status": "planned",
+      "topics": "配置与 revision、safetensors、权重映射与共享、Tokenizer、GQA/RoPE 布局、逐层对齐",
+      "exercise": "固定 SmolLM2-135M revision，映射权重并逐层对齐参考输出",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/02-loading-real-model-weights/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "2.3",
       "title": "请求与缓存生命周期",
-      "topics": "创建、运行、完成、取消、异常、缓存归属",
-      "exercise": "画出状态机并验证取消后资源回收",
-      "hardware": "CPU/GPU",
-      "status": "planned",
+      "topics": "请求状态、准入额度、取消边界、异常回收、独立 KV 与共享模型",
+      "exercise": "回放 11 个生命周期案例，验证取消隔离与资源回收",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "2.4",
       "title": "从静态批处理到连续批处理",
-      "topics": "迭代级调度、活跃队列、token 预算、请求插入退出",
-      "exercise": "回放长短请求混合的调度轨迹",
-      "hardware": "CPU/GPU",
-      "status": "planned",
+      "topics": "静态组与逐轮补位、三种预算、FIFO 阻塞、轮转公平性、首项与输出间隔",
+      "exercise": "回放六组双策略负载，核对输出、预算与调度边界",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "2.5",
       "title": "分页缓存",
-      "topics": "逻辑块、物理块、block table、slot mapping、设备 KV 存储",
-      "exercise": "把已有逻辑块模拟与 Attention 张量存储连接",
-      "hardware": "CPU/GPU",
-      "status": "partial",
+      "topics": "块表与 slot 映射、CPU KV 张量、有效前缀、整块准入、隔离与回收",
+      "exercise": "连接物理块与 KV 张量，回放 11 个案例并对齐完整重算 logits",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/05-paged-caching/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "2.6",
       "title": "前缀缓存",
-      "topics": "跨请求共享、引用计数、哈希匹配、逐出、缓存失效",
-      "exercise": "构建共享前缀树形请求并检查复用与回收",
-      "hardware": "CPU/GPU",
-      "status": "planned",
+      "topics": "完整前缀匹配、末块重算、真实 KV 共享、引用计数、哈希隔离与 LRU 逐出",
+      "exercise": "运行 12 个 CPU 案例，核对冷暖 logits、共享块和取消后的引用回收",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/06-prefix-caching/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "2.7",
       "title": "HTTP 与流式输出",
-      "topics": "异步迭代、背压、断连、取消传播、请求错误",
-      "exercise": "让断连请求释放资源并保存流式事件记录",
-      "hardware": "GPU",
-      "status": "planned",
+      "topics": "HTTP/SSE 基础、异步输出、有界队列、背压、断连取消与错误收尾",
+      "exercise": "运行 14 个服务案例及可选前缀后端，核对事件顺序、客户端断连与资源回收",
+      "hardware": "CPU",
+      "status": "complete",
       "reading": "docs/chapters/part-02-engine/07-http-and-streaming-output/README.md",
-      "content": "scaffold"
+      "content": "lesson"
     }
   ],
   "directory": "docs/chapters/part-02-engine"

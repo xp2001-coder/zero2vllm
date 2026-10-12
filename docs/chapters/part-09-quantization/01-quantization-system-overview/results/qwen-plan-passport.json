@@ -1,0 +1,407 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "qwen3-8b-w4a16-g128-plan",
+  "scope": "Planned model; no weights loaded or GPU execution",
+  "sections": {
+    "provenance": {
+      "model": {
+        "expected": "Qwen3-8B",
+        "observed": null,
+        "status": "declared",
+        "evidence": [],
+        "note": "Course target, not inspected model evidence"
+      },
+      "model_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tokenizer_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "quantization_framework": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "framework_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "algorithm": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "calibration_dataset": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "calibration_samples": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "token_budget": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "sequence_length": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "seed": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    },
+    "numerical": {
+      "weight_representation": {
+        "expected": "4-bit; exact encoding unspecified",
+        "observed": null,
+        "status": "declared",
+        "evidence": [],
+        "note": "Course target, not inspected model evidence"
+      },
+      "activation_representation": {
+        "expected": "16-bit floating point; FP16/BF16 unspecified",
+        "observed": null,
+        "status": "declared",
+        "evidence": [],
+        "note": "Course target, not inspected model evidence"
+      },
+      "kv_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "symmetry": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "group_size": {
+        "expected": 128,
+        "observed": null,
+        "status": "declared",
+        "evidence": [],
+        "note": "Course target, not inspected model evidence"
+      },
+      "group_axis": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "scale_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "scale_granularity": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "zero_point": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "rounding": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "clipping": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "saturation": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    },
+    "execution": {
+      "checkpoint_format": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "format_version": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "qweight_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "qweight_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "scale_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "zero_point_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "g_idx": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "packing": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "on_disk_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "repack": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "in_memory_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "activation_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "multiply_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "accumulator_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "output_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "runtime": {
+        "expected": "vLLM",
+        "observed": null,
+        "status": "declared",
+        "evidence": [],
+        "note": "Course target, not inspected model evidence"
+      },
+      "quant_method": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "linear_backend": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "actual_kernel": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    },
+    "validation": {
+      "hardware": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "driver": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "device_runtime": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "framework": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "correctness": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_quality": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "kv_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "prefill": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "decode": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "ttft": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tpot": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "throughput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "goodput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    }
+  }
+}

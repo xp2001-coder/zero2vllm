@@ -12,7 +12,7 @@
 | [调度与缓存](../chapters/part-05-kv-cache/guide.md) | token 预算、KV 容量和前缀命中如何共同影响调度？ | 手算调度轮次、块寻址与缓存实验设计 |
 | [Attention 与算子](../chapters/part-07-attention/guide.md) | FlashAttention、分页存储和后端选择分别解决什么？ | Online Softmax 推导、Triton 实现顺序 |
 | [编译、图执行与 Profiling](../chapters/part-08-compilation/guide.md) | 如何确认某项优化真的生效？ | 编译/图模式消融、同 shape 时间线分析 |
-| [量化策略与算子](../chapters/part-09-quantization/guide.md) | 从算法选择走到布局、内核和 vLLM 集成 | [CPU INT4 Linear 实验](../chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)与 GPU 后续任务 |
+| [量化策略与算子](../chapters/part-09-quantization/guide.md) | 从算法选择走到布局、内核和 vLLM 集成 | [CPU INT4 Linear 实验](../chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)与 GPU 后续任务 |
 | [并行、MoE 与分离式部署](../chapters/part-11-parallelism/guide.md) | 切什么、怎么通信、需要几张卡？ | TP/CP 推导、专家路由和 KV 传输账本 |
 | [推测解码与服务闭环](../chapters/part-10-speculation/guide.md) | 接受率、缓存提交和流式结果怎样对应？ | 接受/拒绝手算、停止与取消场景设计 |
 

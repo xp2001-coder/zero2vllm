@@ -1,0 +1,1378 @@
+{
+  "recorded_at_utc": "2026-09-20T10:34:45.288502+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "d69b29a4a453bd60c64e315444ab8231868d3d3bbd96dbcf6f9ec17c0ed3c508",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "gpu_validated": false,
+  "real_model_evaluated": false,
+  "mqbench_executed": false,
+  "passed": true,
+  "cases": [
+    {
+      "name": "nested_sample_count_study",
+      "passed": true
+    },
+    {
+      "name": "fixed_effective_token_budget",
+      "passed": true
+    },
+    {
+      "name": "held_out_sample_ids",
+      "passed": true
+    },
+    {
+      "name": "padding_excluded_before_observing",
+      "passed": true,
+      "padded_max": 999.0,
+      "valid_max": 1.0
+    },
+    {
+      "name": "ema_is_order_dependent",
+      "passed": true,
+      "orders": [
+        {
+          "mode": "ema",
+          "alpha_new_batch": 0.25,
+          "minimum": -1.75,
+          "maximum": 2.75,
+          "updates": 2,
+          "tokens": 2,
+          "elements": 4,
+          "frozen": false
+        },
+        {
+          "mode": "ema",
+          "alpha_new_batch": 0.25,
+          "minimum": -3.25,
+          "maximum": 6.25,
+          "updates": 2,
+          "tokens": 2,
+          "elements": 4,
+          "frozen": false
+        }
+      ]
+    },
+    {
+      "name": "ema_depends_on_batch_partition",
+      "passed": true
+    },
+    {
+      "name": "freeze_blocks_test_leakage",
+      "passed": true
+    },
+    {
+      "name": "reset_removes_old_statistics",
+      "passed": true
+    },
+    {
+      "name": "empty_mask_does_not_initialize",
+      "passed": true
+    },
+    {
+      "name": "histogram_edges_and_out_of_range",
+      "passed": true,
+      "histogram": {
+        "edges": [
+          -2.0,
+          -1.0,
+          0.0,
+          1.0,
+          2.0
+        ],
+        "counts": [
+          1,
+          1,
+          1,
+          2
+        ],
+        "underflow": 1,
+        "overflow": 1,
+        "interval": "left-closed/right-open; final bin includes high"
+      }
+    },
+    {
+      "name": "nearest_rank_percentile",
+      "passed": true
+    },
+    {
+      "name": "clipping_can_reduce_calibration_mse",
+      "passed": true
+    },
+    {
+      "name": "calibration_best_can_lose_on_validation",
+      "passed": true
+    },
+    {
+      "name": "weight_mse_does_not_order_layer_error",
+      "passed": true
+    },
+    {
+      "name": "upstream_choice_reverses_candidate_ranking",
+      "passed": true
+    },
+    {
+      "name": "small_logit_mse_can_flip_prediction",
+      "passed": true
+    },
+    {
+      "name": "zero_norm_metrics_are_explicit",
+      "passed": true
+    },
+    {
+      "name": "cosine_hides_scale_error",
+      "passed": true
+    },
+    {
+      "name": "nll_uses_valid_target_count",
+      "passed": true,
+      "metrics": {
+        "valid_targets": 2,
+        "nll_sum": 1.3862943611198906,
+        "mean_nll": 0.6931471805599453,
+        "perplexity": 2.0,
+        "accuracy": 0.5,
+        "scope": "Synthetic aligned logits; not language-model PPL or benchmark accuracy"
+      }
+    },
+    {
+      "name": "shape_mismatch_cannot_silently_zip",
+      "passed": true
+    }
+  ],
+  "studies": {
+    "evaluation_protocol": {
+      "schema_version": 1,
+      "dataset": "zero2vllm synthetic token fixture v1",
+      "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+      "tokenizer": {
+        "name": "pretokenized-synthetic-ids",
+        "revision": "v1",
+        "language_model_tokenizer": false
+      },
+      "split": "test",
+      "domain": null,
+      "seed": 0,
+      "requested_samples": 4,
+      "selected_ids": [
+        "test-code-0",
+        "test-general-0",
+        "test-general-1",
+        "test-code-1"
+      ],
+      "used_samples": 4,
+      "sample_ids": [
+        "test-code-0",
+        "test-general-0",
+        "test-general-1",
+        "test-code-1"
+      ],
+      "max_length": 8,
+      "requested_token_budget": null,
+      "valid_tokens": 24,
+      "body_tokens": 16,
+      "bos_tokens": 4,
+      "eos_tokens": 4,
+      "padding_tokens": 8,
+      "body_tokens_dropped_by_length": 0,
+      "preprocessing": {
+        "bos": true,
+        "eos": true,
+        "length_policy": "reserve specials, truncate body on right",
+        "budget_policy": "keep prefix of final sample; EOS can be omitted",
+        "padding": "right; token_id=0",
+        "concatenation": false,
+        "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+      },
+      "input_ids": [
+        [
+          1,
+          12,
+          3,
+          8,
+          11,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          4,
+          9,
+          5,
+          3,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          5,
+          10,
+          6,
+          4,
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          8,
+          4,
+          11,
+          12,
+          2,
+          0,
+          0
+        ]
+      ],
+      "attention_mask": [
+        [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ],
+        [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false
+        ]
+      ],
+      "prepared_sha256": "7aa003a043d14ffd5c73221f03852cff17ac5e2d1afe8323f46547ffc7f0d41e",
+      "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+      "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+      "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+      "upstream_input": "fixed unquantized feature lookup",
+      "batching": "one prepared document per observer update"
+    },
+    "sample_count": [
+      {
+        "protocol": {
+          "schema_version": 1,
+          "dataset": "zero2vllm synthetic token fixture v1",
+          "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "tokenizer": {
+            "name": "pretokenized-synthetic-ids",
+            "revision": "v1",
+            "language_model_tokenizer": false
+          },
+          "split": "calibration",
+          "domain": "general",
+          "seed": 0,
+          "requested_samples": 2,
+          "selected_ids": [
+            "calibration-general-4",
+            "calibration-general-1"
+          ],
+          "used_samples": 2,
+          "sample_ids": [
+            "calibration-general-4",
+            "calibration-general-1"
+          ],
+          "max_length": 8,
+          "requested_token_budget": null,
+          "valid_tokens": 11,
+          "body_tokens": 7,
+          "bos_tokens": 2,
+          "eos_tokens": 2,
+          "padding_tokens": 5,
+          "body_tokens_dropped_by_length": 0,
+          "preprocessing": {
+            "bos": true,
+            "eos": true,
+            "length_policy": "reserve specials, truncate body on right",
+            "budget_policy": "keep prefix of final sample; EOS can be omitted",
+            "padding": "right; token_id=0",
+            "concatenation": false,
+            "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+          },
+          "input_ids": [
+            [
+              1,
+              3,
+              9,
+              4,
+              5,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              3,
+              4,
+              2,
+              0,
+              0,
+              0
+            ]
+          ],
+          "attention_mask": [
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ]
+          ],
+          "prepared_sha256": "b2e22e02516f17af122a1ede62fb9ae5ae0fc24117dbaef3827b26df0af0a798",
+          "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+          "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+          "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+          "upstream_input": "fixed unquantized feature lookup",
+          "batching": "one prepared document per observer update"
+        },
+        "parameters": {
+          "scale": 0.14285714285714285,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        "observer": {
+          "mode": "minmax",
+          "alpha_new_batch": null,
+          "minimum": -1.0,
+          "maximum": 1.0,
+          "updates": 2,
+          "tokens": 11,
+          "elements": 22,
+          "frozen": true
+        },
+        "evaluation": {
+          "error": {
+            "elements": 48,
+            "sse": 184.8265306122449,
+            "mse": 3.8505527210884356,
+            "max_abs": 6.0,
+            "reference_energy": 294.5,
+            "nmse": 0.6275943314507467,
+            "cosine": 0.7991757900352928,
+            "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+          },
+          "saturation_fraction": 0.2708333333333333,
+          "evaluated_tokens": 24,
+          "scope": "Held-out synthetic activation Q/DQ, not model quality"
+        }
+      },
+      {
+        "protocol": {
+          "schema_version": 1,
+          "dataset": "zero2vllm synthetic token fixture v1",
+          "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "tokenizer": {
+            "name": "pretokenized-synthetic-ids",
+            "revision": "v1",
+            "language_model_tokenizer": false
+          },
+          "split": "calibration",
+          "domain": "general",
+          "seed": 0,
+          "requested_samples": 4,
+          "selected_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2"
+          ],
+          "used_samples": 4,
+          "sample_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2"
+          ],
+          "max_length": 8,
+          "requested_token_budget": null,
+          "valid_tokens": 24,
+          "body_tokens": 16,
+          "bos_tokens": 4,
+          "eos_tokens": 4,
+          "padding_tokens": 8,
+          "body_tokens_dropped_by_length": 0,
+          "preprocessing": {
+            "bos": true,
+            "eos": true,
+            "length_policy": "reserve specials, truncate body on right",
+            "budget_policy": "keep prefix of final sample; EOS can be omitted",
+            "padding": "right; token_id=0",
+            "concatenation": false,
+            "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+          },
+          "input_ids": [
+            [
+              1,
+              3,
+              9,
+              4,
+              5,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              3,
+              4,
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              10,
+              3,
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              5,
+              6,
+              3,
+              4,
+              9,
+              2,
+              0
+            ]
+          ],
+          "attention_mask": [
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ]
+          ],
+          "prepared_sha256": "f4d0ae75bf56bb49e0bebb87c2cd2b1257b1d655374544698941ac831f460cba",
+          "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+          "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+          "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+          "upstream_input": "fixed unquantized feature lookup",
+          "batching": "one prepared document per observer update"
+        },
+        "parameters": {
+          "scale": 0.21428571428571427,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        "observer": {
+          "mode": "minmax",
+          "alpha_new_batch": null,
+          "minimum": -1.0,
+          "maximum": 1.5,
+          "updates": 4,
+          "tokens": 24,
+          "elements": 48,
+          "frozen": true
+        },
+        "evaluation": {
+          "error": {
+            "elements": 48,
+            "sse": 144.6377551020408,
+            "mse": 3.0132865646258504,
+            "max_abs": 5.5,
+            "reference_energy": 294.5,
+            "nmse": 0.4911298984789162,
+            "cosine": 0.8788153770877938,
+            "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+          },
+          "saturation_fraction": 0.25,
+          "evaluated_tokens": 24,
+          "scope": "Held-out synthetic activation Q/DQ, not model quality"
+        }
+      },
+      {
+        "protocol": {
+          "schema_version": 1,
+          "dataset": "zero2vllm synthetic token fixture v1",
+          "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "tokenizer": {
+            "name": "pretokenized-synthetic-ids",
+            "revision": "v1",
+            "language_model_tokenizer": false
+          },
+          "split": "calibration",
+          "domain": "general",
+          "seed": 0,
+          "requested_samples": 8,
+          "selected_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2",
+            "calibration-general-0",
+            "calibration-general-3",
+            "calibration-general-7",
+            "calibration-general-6"
+          ],
+          "used_samples": 8,
+          "sample_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2",
+            "calibration-general-0",
+            "calibration-general-3",
+            "calibration-general-7",
+            "calibration-general-6"
+          ],
+          "max_length": 8,
+          "requested_token_budget": null,
+          "valid_tokens": 50,
+          "body_tokens": 34,
+          "bos_tokens": 8,
+          "eos_tokens": 8,
+          "padding_tokens": 14,
+          "body_tokens_dropped_by_length": 0,
+          "preprocessing": {
+            "bos": true,
+            "eos": true,
+            "length_policy": "reserve specials, truncate body on right",
+            "budget_policy": "keep prefix of final sample; EOS can be omitted",
+            "padding": "right; token_id=0",
+            "concatenation": false,
+            "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+          },
+          "input_ids": [
+            [
+              1,
+              3,
+              9,
+              4,
+              5,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              3,
+              4,
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              10,
+              3,
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              5,
+              6,
+              3,
+              4,
+              9,
+              2,
+              0
+            ],
+            [
+              1,
+              3,
+              4,
+              5,
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              6,
+              5,
+              4,
+              3,
+              9,
+              10,
+              2
+            ],
+            [
+              1,
+              4,
+              3,
+              8,
+              6,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              3,
+              4,
+              7,
+              5,
+              2,
+              0,
+              0
+            ]
+          ],
+          "attention_mask": [
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              true
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ]
+          ],
+          "prepared_sha256": "065f88764c3be2ca84826f9cab4926e045753f1ff4372a5840f00952d79919c2",
+          "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+          "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+          "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+          "upstream_input": "fixed unquantized feature lookup",
+          "batching": "one prepared document per observer update"
+        },
+        "parameters": {
+          "scale": 1.0,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        "observer": {
+          "mode": "minmax",
+          "alpha_new_batch": null,
+          "minimum": -6.0,
+          "maximum": 7.0,
+          "updates": 8,
+          "tokens": 50,
+          "elements": 100,
+          "frozen": true
+        },
+        "evaluation": {
+          "error": {
+            "elements": 48,
+            "sse": 4.5,
+            "mse": 0.09375,
+            "max_abs": 0.5,
+            "reference_energy": 294.5,
+            "nmse": 0.015280135823429542,
+            "cosine": 0.9923305216391212,
+            "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+          },
+          "saturation_fraction": 0.0,
+          "evaluated_tokens": 24,
+          "scope": "Held-out synthetic activation Q/DQ, not model quality"
+        }
+      }
+    ],
+    "fixed_token_budget": [
+      {
+        "protocol": {
+          "schema_version": 1,
+          "dataset": "zero2vllm synthetic token fixture v1",
+          "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "tokenizer": {
+            "name": "pretokenized-synthetic-ids",
+            "revision": "v1",
+            "language_model_tokenizer": false
+          },
+          "split": "calibration",
+          "domain": "general",
+          "seed": 0,
+          "requested_samples": 4,
+          "selected_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2"
+          ],
+          "used_samples": 3,
+          "sample_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5"
+          ],
+          "max_length": 8,
+          "requested_token_budget": 16,
+          "valid_tokens": 16,
+          "body_tokens": 11,
+          "bos_tokens": 3,
+          "eos_tokens": 2,
+          "padding_tokens": 8,
+          "body_tokens_dropped_by_length": 0,
+          "preprocessing": {
+            "bos": true,
+            "eos": true,
+            "length_policy": "reserve specials, truncate body on right",
+            "budget_policy": "keep prefix of final sample; EOS can be omitted",
+            "padding": "right; token_id=0",
+            "concatenation": false,
+            "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+          },
+          "input_ids": [
+            [
+              1,
+              3,
+              9,
+              4,
+              5,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              3,
+              4,
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              4,
+              10,
+              3,
+              6,
+              0,
+              0,
+              0
+            ]
+          ],
+          "attention_mask": [
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ]
+          ],
+          "prepared_sha256": "30841743443a56df7443fbe39fc410eb3ba66ddf6e3987263dc49f08f1ff5176",
+          "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+          "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+          "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+          "upstream_input": "fixed unquantized feature lookup",
+          "batching": "one prepared document per observer update"
+        },
+        "parameters": {
+          "scale": 0.21428571428571427,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        "observer": {
+          "mode": "minmax",
+          "alpha_new_batch": null,
+          "minimum": -1.0,
+          "maximum": 1.5,
+          "updates": 3,
+          "tokens": 16,
+          "elements": 32,
+          "frozen": true
+        },
+        "evaluation": {
+          "error": {
+            "elements": 48,
+            "sse": 144.6377551020408,
+            "mse": 3.0132865646258504,
+            "max_abs": 5.5,
+            "reference_energy": 294.5,
+            "nmse": 0.4911298984789162,
+            "cosine": 0.8788153770877938,
+            "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+          },
+          "saturation_fraction": 0.25,
+          "evaluated_tokens": 24,
+          "scope": "Held-out synthetic activation Q/DQ, not model quality"
+        }
+      },
+      {
+        "protocol": {
+          "schema_version": 1,
+          "dataset": "zero2vllm synthetic token fixture v1",
+          "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "tokenizer": {
+            "name": "pretokenized-synthetic-ids",
+            "revision": "v1",
+            "language_model_tokenizer": false
+          },
+          "split": "calibration",
+          "domain": "code",
+          "seed": 0,
+          "requested_samples": 4,
+          "selected_ids": [
+            "calibration-code-4",
+            "calibration-code-1",
+            "calibration-code-5",
+            "calibration-code-2"
+          ],
+          "used_samples": 3,
+          "sample_ids": [
+            "calibration-code-4",
+            "calibration-code-1",
+            "calibration-code-5"
+          ],
+          "max_length": 8,
+          "requested_token_budget": 16,
+          "valid_tokens": 16,
+          "body_tokens": 11,
+          "bos_tokens": 3,
+          "eos_tokens": 2,
+          "padding_tokens": 8,
+          "body_tokens_dropped_by_length": 0,
+          "preprocessing": {
+            "bos": true,
+            "eos": true,
+            "length_policy": "reserve specials, truncate body on right",
+            "budget_policy": "keep prefix of final sample; EOS can be omitted",
+            "padding": "right; token_id=0",
+            "concatenation": false,
+            "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+          },
+          "input_ids": [
+            [
+              1,
+              11,
+              12,
+              5,
+              8,
+              2,
+              0,
+              0
+            ],
+            [
+              1,
+              11,
+              8,
+              12,
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              1,
+              8,
+              5,
+              12,
+              11,
+              0,
+              0,
+              0
+            ]
+          ],
+          "attention_mask": [
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            [
+              true,
+              true,
+              true,
+              true,
+              true,
+              false,
+              false,
+              false
+            ]
+          ],
+          "prepared_sha256": "fcef7a094b84f7cd7356256a1e91d89622514884dd017dcdcc9091276e9f625f",
+          "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+          "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+          "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+          "upstream_input": "fixed unquantized feature lookup",
+          "batching": "one prepared document per observer update"
+        },
+        "parameters": {
+          "scale": 1.0,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        "observer": {
+          "mode": "minmax",
+          "alpha_new_batch": null,
+          "minimum": -6.0,
+          "maximum": 7.0,
+          "updates": 3,
+          "tokens": 16,
+          "elements": 32,
+          "frozen": true
+        },
+        "evaluation": {
+          "error": {
+            "elements": 48,
+            "sse": 4.5,
+            "mse": 0.09375,
+            "max_abs": 0.5,
+            "reference_energy": 294.5,
+            "nmse": 0.015280135823429542,
+            "cosine": 0.9923305216391212,
+            "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+          },
+          "saturation_fraction": 0.0,
+          "evaluated_tokens": 24,
+          "scope": "Held-out synthetic activation Q/DQ, not model quality"
+        }
+      }
+    ]
+  },
+  "clipping": {
+    "calibration_description": "256 values at +/-0.5, one 7 and one 0",
+    "calibration_elements": 258,
+    "search": {
+      "best": {
+        "threshold": 4,
+        "scale": 0.5714285714285714,
+        "zero_point": 0,
+        "mse": 0.03994621104255655,
+        "saturation_fraction": 0.003875968992248062
+      },
+      "candidates": [
+        {
+          "threshold": 0.5,
+          "scale": 0.07142857142857142,
+          "zero_point": 0,
+          "mse": 0.16375968992248063,
+          "saturation_fraction": 0.003875968992248062
+        },
+        {
+          "threshold": 1,
+          "scale": 0.14285714285714285,
+          "zero_point": 0,
+          "mse": 0.14459737383325424,
+          "saturation_fraction": 0.003875968992248062
+        },
+        {
+          "threshold": 2,
+          "scale": 0.2857142857142857,
+          "zero_point": 0,
+          "mse": 0.10196171491852554,
+          "saturation_fraction": 0.003875968992248062
+        },
+        {
+          "threshold": 4,
+          "scale": 0.5714285714285714,
+          "zero_point": 0,
+          "mse": 0.03994621104255655,
+          "saturation_fraction": 0.003875968992248062
+        },
+        {
+          "threshold": 7,
+          "scale": 1.0,
+          "zero_point": 0,
+          "mse": 0.24806201550387597,
+          "saturation_fraction": 0.0
+        }
+      ],
+      "objective": "Element-weighted calibration MSE",
+      "tie_break": "larger threshold",
+      "search": "finite supplied candidate set, not a global optimum"
+    },
+    "validation": [
+      {
+        "threshold": 0.5,
+        "validation_mse": 21.125
+      },
+      {
+        "threshold": 1,
+        "validation_mse": 18.002551020408163
+      },
+      {
+        "threshold": 2,
+        "validation_mse": 12.502551020408163
+      },
+      {
+        "threshold": 4,
+        "validation_mse": 4.502551020408164
+      },
+      {
+        "threshold": 7,
+        "validation_mse": 0.125
+      }
+    ],
+    "policy": "Candidate chosen on calibration only; validation reveals a distribution gap"
+  },
+  "objectives": {
+    "weight_vs_layer": {
+      "A": {
+        "weight": {
+          "elements": 2,
+          "sse": 0.015625,
+          "mse": 0.0078125,
+          "max_abs": 0.125,
+          "reference_energy": 2.0,
+          "nmse": 0.0078125,
+          "cosine": 0.9977851578566089,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "layer": {
+          "elements": 1,
+          "sse": 1.0,
+          "mse": 1.0,
+          "max_abs": 1.0,
+          "reference_energy": 64.0,
+          "nmse": 0.015625,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        }
+      },
+      "B": {
+        "weight": {
+          "elements": 2,
+          "sse": 0.0625,
+          "mse": 0.03125,
+          "max_abs": 0.25,
+          "reference_energy": 2.0,
+          "nmse": 0.03125,
+          "cosine": 0.9899494936611665,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "layer": {
+          "elements": 1,
+          "sse": 0.0,
+          "mse": 0.0,
+          "max_abs": 0.0,
+          "reference_energy": 64.0,
+          "nmse": 0.0,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        }
+      }
+    },
+    "reconstruction": {
+      "A": {
+        "fp_input": {
+          "elements": 1,
+          "sse": 0.0,
+          "mse": 0.0,
+          "max_abs": 0.0,
+          "reference_energy": 25.0,
+          "nmse": 0.0,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "quantized_upstream": {
+          "elements": 1,
+          "sse": 1.0,
+          "mse": 1.0,
+          "max_abs": 1.0,
+          "reference_energy": 25.0,
+          "nmse": 0.04,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        }
+      },
+      "B": {
+        "fp_input": {
+          "elements": 1,
+          "sse": 1.0,
+          "mse": 1.0,
+          "max_abs": 1.0,
+          "reference_energy": 25.0,
+          "nmse": 0.04,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "quantized_upstream": {
+          "elements": 1,
+          "sse": 0.0625,
+          "mse": 0.0625,
+          "max_abs": 0.25,
+          "reference_energy": 25.0,
+          "nmse": 0.0025,
+          "cosine": 1.0,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        }
+      }
+    },
+    "logits_vs_accuracy": {
+      "A": {
+        "error": {
+          "elements": 4,
+          "sse": 0.03125,
+          "mse": 0.0078125,
+          "max_abs": 0.125,
+          "reference_energy": 17.765625,
+          "nmse": 0.001759014951627089,
+          "cosine": 0.9991204925241864,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "task": {
+          "valid_targets": 2,
+          "nll_sum": 0.7757489632349789,
+          "mean_nll": 0.38787448161748944,
+          "perplexity": 1.4738447780649293,
+          "accuracy": 0.5,
+          "scope": "Synthetic aligned logits; not language-model PPL or benchmark accuracy"
+        }
+      },
+      "B": {
+        "error": {
+          "elements": 4,
+          "sse": 1.140625,
+          "mse": 0.28515625,
+          "max_abs": 1,
+          "reference_energy": 17.765625,
+          "nmse": 0.06420404573438875,
+          "cosine": 0.9957866490745638,
+          "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+        },
+        "task": {
+          "valid_targets": 2,
+          "nll_sum": 0.5226643357538486,
+          "mean_nll": 0.2613321678769243,
+          "perplexity": 1.2986589665893105,
+          "accuracy": 1.0,
+          "scope": "Synthetic aligned logits; not language-model PPL or benchmark accuracy"
+        }
+      }
+    }
+  },
+  "torch_observers": {
+    "torch_version": "2.7.1+cpu",
+    "device": "cpu",
+    "comparisons": [
+      {
+        "mode": "minmax",
+        "passed": true,
+        "ours": {
+          "scale": 0.8,
+          "zero_point": 5,
+          "qmin": 0,
+          "qmax": 15,
+          "scheme": "asymmetric"
+        },
+        "torch_scale": 0.800000011920929,
+        "torch_zero_point": 5,
+        "minimum": -4.0,
+        "maximum": 8.0
+      },
+      {
+        "mode": "ema",
+        "passed": true,
+        "ours": {
+          "scale": 0.3,
+          "zero_point": 6,
+          "qmin": 0,
+          "qmax": 15,
+          "scheme": "asymmetric"
+        },
+        "torch_scale": 0.30000001192092896,
+        "torch_zero_point": 6,
+        "minimum": -1.75,
+        "maximum": 2.75
+      }
+    ],
+    "passed": true,
+    "scope": "Two affine observer fixtures, matching range [0,15]; not full observer equivalence"
+  }
+}

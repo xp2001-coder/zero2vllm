@@ -66,6 +66,22 @@ python -m zero2vllm phase-demo --help
 - `next_token_logits`：完整词表上的分数。
 - `verification.passed`：缓存与重算生成对齐，默认最大 logits 差为 0。
 
+### 把“已读入”和“刚选出”放在两栏
+
+先用更短的 `P=2,O=3` 理解计数。设输入为 A、B，依次选出 C、D、E：
+
+| 调用 | 本轮送入模型 | 调用后缓存已经包含 | 根据最后一行 logits 选出 |
+| --- | --- | --- | --- |
+| Prefill | A、B | A、B | C |
+| 第一次 Decode | C | A、B、C | D |
+| 第二次 Decode | D | A、B、C、D | E，然后停止 |
+
+![输入、缓存与选出 token 的时序](assets/input-output-steps.png)
+
+*图｜E 已经是返回结果，但没有被重新送入模型。因此生成 3 项只需要 Prefill 后再进行 2 次 Decode，最终缓存长度为 4。图中的字母表示 token ID 的占位符。*
+
+这里的“输出 3 项”数的是选择次数；“缓存 4 个位置”数的是实际处理过的输入。Prefill 同时完成 prompt 处理和首个输出所需的 logits；不能在计数时再无条件补一个“专门生成首 token 的 Decode”。停止后，缓存由调用方释放，释放后的长度又是另一个观察时刻。
+
 ## 3. 手算工作量：先数对象，再算 FLOPs
 
 记 prompt 长度为 `P`，输出个数为 `O≥1`。

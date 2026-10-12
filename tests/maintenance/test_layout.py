@@ -23,7 +23,7 @@ class LayoutTests(unittest.TestCase):
     def test_current_tree_and_published_links_are_valid(self):
         report = audit(self.root)
         self.assertTrue(report['passed'], report['errors'])
-        self.assertEqual(report['lessons'], 126)
+        self.assertEqual(report['lessons'], 129)
         self.assertGreater(report['published_artifact_links'], 30)
 
     def test_empty_and_obsolete_directories_and_stray_files_are_rejected(self):

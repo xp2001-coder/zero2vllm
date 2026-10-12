@@ -1,0 +1,287 @@
+{
+  "recorded_at": "2026-09-20T07:17:49.153379+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "ea9e60f8bd9b2989ed8a63a25b3d52ef19ab601d048b669f3dbfa4c2359c0497",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "commands": [
+    {
+      "name": "cpu",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "-m",
+        "scripts.experiments.lesson0305",
+        "--output-dir",
+        ".local/checks/lesson030405/5-cpu"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:44.859859+00:00"
+    },
+    {
+      "name": "source-inspection",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "-m",
+        "scripts.experiments.lesson0305",
+        "--inspect-source",
+        "--output-dir",
+        ".local/checks/lesson030405/5-source-inspection"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:45.582854+00:00"
+    },
+    {
+      "name": "config-override",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--max-num-batched-tokens",
+        "3072",
+        "--prefix",
+        "false"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:45.795329+00:00"
+    },
+    {
+      "name": "defaults-40-server",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--config",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/data/defaults.json",
+        "--memory-gib",
+        "40",
+        "--usage",
+        "server"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:46.151588+00:00"
+    },
+    {
+      "name": "defaults-40-offline",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--config",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/data/defaults.json",
+        "--memory-gib",
+        "40",
+        "--usage",
+        "offline"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:46.383547+00:00"
+    },
+    {
+      "name": "defaults-80-server",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--config",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/data/defaults.json",
+        "--memory-gib",
+        "80",
+        "--usage",
+        "server"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:46.620011+00:00"
+    },
+    {
+      "name": "defaults-80-offline",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--config",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/data/defaults.json",
+        "--memory-gib",
+        "80",
+        "--usage",
+        "offline"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:46.861939+00:00"
+    },
+    {
+      "name": "engine-auto-supported",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/inspect_engine.py",
+        "--intent",
+        "auto",
+        "--feature",
+        "supported"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:47.090679+00:00"
+    },
+    {
+      "name": "engine-auto-experimental",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/inspect_engine.py",
+        "--intent",
+        "auto",
+        "--feature",
+        "experimental"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:47.347344+00:00"
+    },
+    {
+      "name": "engine-1-experimental",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/inspect_engine.py",
+        "--intent",
+        "1",
+        "--feature",
+        "experimental"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:47.576942+00:00"
+    },
+    {
+      "name": "engine-1-unsupported",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/inspect_engine.py",
+        "--intent",
+        "1",
+        "--feature",
+        "unsupported"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:47.805561+00:00"
+    },
+    {
+      "name": "chunk-budget",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--max-num-batched-tokens",
+        "512",
+        "--max-num-seqs",
+        "16"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:48.032333+00:00"
+    },
+    {
+      "name": "invalid-budget",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--max-num-batched-tokens",
+        "8",
+        "--max-num-seqs",
+        "16"
+      ],
+      "exit_code": 2,
+      "expected_exit_code": 2,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:48.266340+00:00"
+    },
+    {
+      "name": "eager-intent",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py",
+        "--enforce-eager"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:48.493509+00:00"
+    },
+    {
+      "name": "unchunked-rejection",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "-c",
+        "from zero2vllm.reference.config_resolution import verify_scheduler; verify_scheduler(512,16,4096,False)"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:48.668067+00:00"
+    }
+  ],
+  "passed": true,
+  "upstream_executed": false,
+  "gpu_validated": false,
+  "note": "Python -S disables site initialization. Expected failures are explicitly listed; no upstream Python module was imported."
+}

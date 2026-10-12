@@ -1,0 +1,55 @@
+{
+  "recorded_at_utc": "2026-09-17T12:30:20.773502+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "cc29000cb3d2f46100d89f77cd54e95bbdf8f8a87a03fef3b9f9be6067ac26f3",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "os": "Windows-10-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "examples": [
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/04-performance-metrics/examples/compare_timelines.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/05-model-structures/examples/walk_positions.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/05-model-structures/examples/walk_states.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_correctness.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_distribution.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python -S -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_stopping.py",
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "command": "python -X utf8 -m unittest tests.reference.test_part1 -v",
+    "exit_code": 0,
+    "count": 27,
+    "seconds": 2.555,
+    "output": "tests.txt"
+  },
+  "cases": {
+    "count": 28,
+    "passed": true,
+    "output": "cases.json"
+  },
+  "scope": "Part 1 reference/CLI regression, six standard-library examples, document and layout checks. Shared implementation unchanged. Historical baselines preserved.",
+  "remote_ci": "not_run",
+  "gpu_status": "not_run"
+}

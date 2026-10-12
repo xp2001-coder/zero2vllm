@@ -10,9 +10,9 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm/stargazers"><img src="https://img.shields.io/github/stars/xpxpxp2001xpxpxp/zero2vllm?style=flat&amp;logo=github" alt="GitHub stars"></a>
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm/forks"><img src="https://img.shields.io/github/forks/xpxpxp2001xpxpxp/zero2vllm?style=flat&amp;logo=github" alt="GitHub forks"></a>
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm"><img src="https://img.shields.io/badge/GitHub-Project-2563eb?style=flat&amp;logo=github" alt="GitHub project"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm/stargazers"><img src="https://img.shields.io/github/stars/xp2001-coder/zero2vllm?style=flat&amp;logo=github" alt="GitHub stars"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm/forks"><img src="https://img.shields.io/github/forks/xp2001-coder/zero2vllm?style=flat&amp;logo=github" alt="GitHub forks"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm"><img src="https://img.shields.io/badge/GitHub-Project-2563eb?style=flat&amp;logo=github" alt="GitHub project"></a>
   <img src="https://img.shields.io/badge/README-中文%20%7C%20English-16a34a?style=flat" alt="Chinese and English READMEs">
   <img src="https://img.shields.io/badge/Python-3.11%2B-3776ab?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.11+">
   <img src="https://img.shields.io/badge/GPU_targets-A100%20%7C%20C500-0f766e?style=flat" alt="GPU experiment targets: A100 and C500">
@@ -31,28 +31,38 @@
 
 [Documentation](docs/README.md) · [Roadmap](docs/engineering/roadmap.md) · [Changelog](CHANGELOG.md) · [License](LICENSE)
 
-> **Course under construction.** Part 1 (1.1–1.6) and lesson 2.1 now include text, CPU code, commands, exercises with answers, and validation. All 126 chapters have separate directories; unfinished entries remain marked as teaching outlines. The INT4 Linear lab, seven topic guides, and configuration templates for both GPU backends are also available. Later engine features will follow lesson by lesson. A100/C500 GPU experiments await validation on hardware.
+> **Course under construction.** Part 1 (1.1–1.6) and lessons 2.1–2.7 now include text, CPU code, commands, exercises with answers, and validation. Lessons 3.1–3.5 add pinned-source reading, scheduling/KV and model-execution labs, Runner evolution, configuration tracing, and CPU-only static inspection. Lesson 9.1 adds affine quantization/dequantization/requantization with zero-points, model passports, six Chinese diagrams, and 17 CPU cases. Lesson 9.2 adds non-square grouped Q/DQ, FP8/FP4 representations, tail padding, and effective bit accounting, with 20 CPU cases and seven Chinese diagrams. Lesson 9.3 adds reproducible calibration protocols, observers, effective token budgets, and weight/layer/task error comparisons. Lesson 9.4 adds error-control derivations, a GPTQ core reference, and scaling, rotation and STE experiments. All 129 chapters have separate directories; unfinished entries remain marked as teaching outlines. The INT4 Linear lab, seven topic guides, and configuration templates for both GPU backends are also available. Later engine features will follow lesson by lesson. A100/C500 GPU experiments await validation on hardware.
 >
 > **Language:** this README includes the full English overview and outline. Linked course chapters, labs, and supporting documents are currently primarily in Chinese.
 
 ## Start here
 
-Choose an entry point based on your experience, then follow the [learning paths](docs/chapters/learning-paths.md). The full **19-part, 126-chapter** scope appears below.
+Choose an entry point based on your experience, then follow the [learning paths](docs/chapters/learning-paths.md). The full **19-part, 129-chapter** scope appears below.
 
 | Your starting point | First material | What you will produce |
 | --- | --- | --- |
 | You know Python and want to understand inference | [Lesson 1: from tokens to next-token prediction](docs/chapters/part-01-inference/01-next-token/README.md) | Calculate attention by hand and explain how the last logit row selects the next token |
 | You have deployed models and want to read source code | [Requests, state, and tensors](docs/chapters/part-03-vllm/guide.md) | A request call chain separating scheduling decisions from model execution |
-| You work on quantization or want to write kernels | [CPU INT4 Linear lab](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md) → [Quantization guide](docs/chapters/part-09-quantization/guide.md) | A report on bit layouts, error, and storage, preparing for GPU kernels |
+| You work on quantization or want to write kernels | [CPU INT4 Linear lab](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md) → [Quantization guide](docs/chapters/part-09-quantization/guide.md) | A report on bit layouts, error, and storage, preparing for GPU kernels |
 | You have a working GPU environment and want to optimize | [Experiment guidelines](docs/engineering/experiments.md) → [Profiling guide](docs/chapters/part-08-compilation/guide.md) | An experiment design with a fixed workload and separate correctness, quality, and performance checks |
 
-For your first pass, follow the [short route through existing materials](docs/chapters/learning-paths.md#先用现有材料走通一条短路线). Algorithms are covered together in **9.2 Quantization algorithms**. The quantization path emphasizes strategy, data layouts, kernel implementation, tuning, and vLLM integration.
+For your first pass, follow the [short route through existing materials](docs/chapters/learning-paths.md#先用现有材料走通一条短路线). Algorithms are covered together in **9.4 Quantization algorithms and error control**. The quantization path emphasizes strategy, data layouts, kernel implementation, tuning, and vLLM integration.
 
 **Study the complete first part:** the [Part 1 learning and command guide](docs/chapters/part-01-inference/README.md) covers generation, caching, performance metrics, model structures, sampling, and numerical correctness.
 
 **Continue with Part 2:** [2.1 Minimal PyTorch model](docs/chapters/part-02-engine/01-pytorch-model/README.md) implements a two-layer CPU decoder and checks RMSNorm, RoPE, attention, and SwiGLU against the scalar reference.
 
+Then study [2.2 Loading real model weights](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md): load a pinned SmolLM2-135M checkpoint, understand weight layouts, GQA, RoPE, and tied parameters, and compare layer outputs with Transformers on CPU.
+
+[2.3 Request and cache lifecycles](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) then covers completion, cancellation, failures, and release of per-request caches and admission capacity.
+[2.4 Static and continuous batching](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) adds iteration scheduling and compares admission, waiting, and output gaps.
+[2.5 Paged caching](docs/chapters/part-02-engine/05-paged-caching/README.md) connects physical blocks to KV tensors and checks address mapping, causal reads, reclamation, and reuse.
+[2.6 Prefix caching](docs/chapters/part-02-engine/06-prefix-caching/README.md) shares actual K/V across requests and explains matching, ownership, and eviction through cold/warm runs, branching prompts, and memory pressure.
+[2.7 HTTP and streaming output](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) introduces HTTP and async Python, connects the engine to a real loopback server, and checks slow consumers, disconnection, timeouts, and error termination.
+
 The [seven topic guides](docs/references/topic-guides.md) provide further learning entry points. A 🧩 marker means some material is available; it does not mean a full chapter or GPU validation is complete.
+
+Continue with [3.1 A request’s journey through vLLM](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) and [3.2 Scheduling and KV management](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md): follow pinned source, then calculate and replay scheduling, allocation, shared references, and preemption without requiring a GPU. Then use [3.3 Model execution and attention backends](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) to pack inputs and verify CPU tensor results and request ownership. Continue with [3.4 Runner evolution](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) for state organization and graph dispatch, then [3.5 Configuration tracing](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) for final values and their origins.
 
 ## Why this course
 
@@ -100,11 +110,11 @@ Prerequisites:
 | --- | --- | --- |
 | Student | CPU starter lab, 0.1/0.3, and Part 1 | Mathematical reference → request/cache simulation → real small model → vLLM mapping; build an explainable teaching engine in stages |
 | Engineer | Establish one platform baseline; use Part 17's measurement methods early | Call chain and bottlenecks → individual optimizations → combination regressions → platform and distributed extensions |
-| Quantization specialist | Establish a baseline, then enter at 9.3: strategy design | Tensor contract → Q/DQ and packing → quantized GEMV/GEMM → tuning → vLLM integration and serving ablations |
+| Quantization specialist | Establish a baseline, then start with 9.1/9.2 contracts and 9.5 strategies | Tensor contract → Q/DQ and packing → quantized GEMV/GEMM → tuning → vLLM integration and serving ablations |
 
 See the [learning paths](docs/chapters/learning-paths.md) for chapter order, milestones, GPU requirements, and the division of work across related chapters. Each chapter shares a core explanation with engineering extensions and platform notes. The [detailed curriculum](docs/chapters/README.md) retains the full technical scope.
 
-**Available now:** complete all six Part 1 lessons and the 2.1 PyTorch CPU experiments, continue with the INT4 Linear lab, read the topic guides, and inspect the logical block allocator and configuration templates. Without a GPU, finish the CPU stages first and defer the real-model generation exercise in 0.2.
+**Available now:** complete all six Part 1 lessons and the 2.1–2.7 CPU experiments, continue with the INT4 Linear lab, read the topic guides, and inspect the logical block allocator and configuration templates. The real checkpoint lab in 2.2 needs no GPU; the vLLM generation exercise in 0.2 can be deferred.
 
 ### Choose experiments for your hardware
 
@@ -172,10 +182,10 @@ Try changing the prompt or output length. Predict the repeated computation befor
 ### 4. Quantization path: run INT4 Linear
 
 ```bash
-python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/04-quantization-kernels/cpu-int4-linear.json
+python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/08-bit-packing-serialization-and-repack/cpu-int4-linear.json
 ```
 
-This experiment implements Q/DQ with groups along K, signed INT4 packing, and two quantized Linear reference paths. Defaults exercise tail groups and odd-length packing. Reports distinguish implementation error from quantization error and include scales in storage accounting. See the [lab](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md). This is a CPU mathematical reference; fused GPU kernels and vLLM integration are still to be implemented.
+This experiment implements Q/DQ with groups along K, signed INT4 packing, and two quantized Linear reference paths. Defaults exercise tail groups and odd-length packing. Reports distinguish implementation error from quantization error and include scales in storage accounting. See the [lab](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md). This is a CPU mathematical reference; fused GPU kernels and vLLM integration are still to be implemented.
 
 ### 5. Prepare a GPU path
 
@@ -191,13 +201,13 @@ These commands collect environment information and check configuration. The temp
 
 <!-- BEGIN course-outline -->
 
-This edition plans **19 parts and 126 chapters**. Every chapter has its own directory; unfinished entries contain a teaching outline, not a completed lesson. Two CPU labs live under their related parts. See the [detailed curriculum](docs/chapters/README.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
+This edition plans **19 parts and 129 chapters**. Every chapter has its own directory; unfinished entries contain a teaching outline, not a completed lesson. Two CPU labs live under their related parts. See the [detailed curriculum](docs/chapters/README.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.
 
 **Status: ✅ complete with local validation; 🧩 partial material or code available; 📋 planned, chapter text pending.** Upstream availability does not mean a feature has been tested in this project.
 
 [✅ CPU starter lab: checking correctness with and without KV cache](docs/chapters/part-01-inference/03-kv-cache/lab.md)
 
-[✅ CPU quantization lab: INT4 packing, group scales, and Linear](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)
+[✅ CPU quantization lab: INT4 packing, group scales, and Linear](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)
 
 | Part | Scope | Chapters |
 | --- | --- | --- |
@@ -210,7 +220,7 @@ This edition plans **19 parts and 126 chapters**. Every chapter has its own dire
 | [Part 6](docs/chapters/part-06-scheduling/README.md) | Scheduling, Batching, and Overlapped Execution | 6 |
 | [Part 7](docs/chapters/part-07-attention/README.md) | Attention and High-Performance Kernels | 7 |
 | [Part 8](docs/chapters/part-08-compilation/README.md) | Compilation, CUDA Graphs, and Execution Optimization | 7 |
-| [Part 9](docs/chapters/part-09-quantization/README.md) | Quantization Algorithms, Kernel Implementation, and Inference Acceleration | 11 |
+| [Part 9](docs/chapters/part-09-quantization/README.md) | Quantization Algorithms, Formats, Kernels, and Inference Systems | 14 |
 | [Part 10](docs/chapters/part-10-speculation/README.md) | Speculative Decoding | 9 |
 | [Part 11](docs/chapters/part-11-parallelism/README.md) | Parallelism and Distributed Execution | 10 |
 | [Part 12](docs/chapters/part-12-moe/README.md) | MoE and Communication Optimization | 6 |
@@ -256,12 +266,12 @@ Sources and further reading: [Supported Models and Tasks](https://docs.vllm.ai/e
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
 | 2.1 [Building a minimal PyTorch model](docs/chapters/part-02-engine/01-pytorch-model/README.md) | Forward pass, generation loop, RMSNorm/RoPE/MLP, and agreement with the CPU reference | ✅ |
-| 2.2 [Loading real model weights](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md) | Configuration, safetensors, weight mapping, tokenizers, and model revisions | 📋 |
-| 2.3 [Request and cache lifecycles](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) | Creation, execution, completion, cancellation, exceptions, and cache ownership | 📋 |
-| 2.4 [From static to continuous batching](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) | Iteration-level scheduling, active queues, token budgets, and request admission/removal | 📋 |
-| 2.5 [Paged caching](docs/chapters/part-02-engine/05-paged-caching/README.md) | Logical/physical blocks, block tables, slot mapping, and device KV storage | 🧩 |
-| 2.6 [Prefix caching](docs/chapters/part-02-engine/06-prefix-caching/README.md) | Cross-request sharing, reference counts, hash matching, eviction, and invalidation | 📋 |
-| 2.7 [HTTP and streaming output](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) | Async iteration, backpressure, disconnects, cancellation propagation, and request errors | 📋 |
+| 2.2 [Loading real model weights](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md) | Configuration and revisions, safetensors, weight mapping and tying, tokenizers, GQA/RoPE layouts, and layerwise checks | ✅ |
+| 2.3 [Request and cache lifecycles](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) | Request states, admission budgets, cancellation boundaries, failure cleanup, owned KV, and shared models | ✅ |
+| 2.4 [From static to continuous batching](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) | Static cohorts and iteration admission, three budgets, FIFO blocking, rotation fairness, and output gaps | ✅ |
+| 2.5 [Paged caching](docs/chapters/part-02-engine/05-paged-caching/README.md) | Block tables and slot mapping, CPU KV tensors, valid prefixes, whole-block admission, isolation, and reclamation | ✅ |
+| 2.6 [Prefix caching](docs/chapters/part-02-engine/06-prefix-caching/README.md) | Full-prefix matching, final-block recomputation, shared KV tensors, reference counts, hash isolation, and LRU eviction | ✅ |
+| 2.7 [HTTP and streaming output](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) | HTTP/SSE fundamentals, async output, bounded queues, backpressure, disconnect cancellation, and error termination | ✅ |
 
 Sources and further reading: [Transformers](https://github.com/huggingface/transformers) · [nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) · [mini-sglang](https://github.com/sgl-project/mini-sglang) · [Architecture Overview](https://docs.vllm.ai/en/stable/design/arch_overview/).
 
@@ -272,11 +282,13 @@ Sources and further reading: [Transformers](https://github.com/huggingface/trans
 
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
-| 3.1 [A request's journey through vLLM](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) | Input processing → EngineCoreClient → EngineCore → Executor/Worker/ModelRunner; request IDs, IPC, streaming queues, and cancellation | 🧩 |
-| 3.2 [Scheduling and KV management in vLLM](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md) | Input processing, scheduler outputs, KVCacheManager, BlockPool, and execution feedback | 🧩 |
-| 3.3 [Model execution and attention backends](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) | Registration/initialization/weight loading/postprocessing; input_ids, positions, slot_mapping, attention metadata, and sampling | 🧩 |
-| 3.4 [V1 and ModelRunner evolution](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) | V0/V1 vs. MRV1/MRV2; persistent state and execution order, StagedWriteTensor, GPU metadata, sampling, and graph management | 🧩 |
-| 3.5 [Resolving configuration and capabilities](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) | EngineArgs, VllmConfig, environment variables, platform defaults, precedence, and validation | 🧩 |
+| 3.1 [A request's journey through vLLM](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) | Pinned v0.8.5 request path; inputs, processes/threads/tasks, message structures, model iterations, output merging, and cancellation cleanup | ✅ |
+| 3.2 [Scheduling and KV management in vLLM](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md) | Pinned v0.8.5; token gaps and budgets, mixed scheduling, block allocation, prefix references, head-of-line blocking, recompute preemption, and execution feedback | ✅ |
+| 3.3 [Model execution and attention backends](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) | Pinned v0.8.5; model loading, weight orientation and fused QKV, input packing, RoPE/GQA, attention metadata, backend contracts, and candidate filtering | ✅ |
+| 3.4 [V1 and ModelRunner evolution](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) | V0/V1 vs. MRV1/MRV2; stable slots, staged writes, copy lifetime, GPU metadata, sampling math, and graph dispatch | ✅ |
+| 3.5 [Resolving configuration and capabilities](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) | CLI/SDK to EngineArgs; None vs. False, V1 defaults and policy overrides, value provenance, budget constraints, and platform/runtime validation | ✅ |
+
+Lessons 3.1–3.5 include pinned-source reading, CPU experiments, and exercises. Lesson 3.4 compares v0.8.5 and v0.17.1; the other main paths use v0.8.5. State, tensor, and configuration exercises do not validate GPU execution.
 
 Sources and further reading: [Architecture Overview](https://docs.vllm.ai/en/stable/design/arch_overview/) · [Model Runner V2](https://docs.vllm.ai/en/stable/design/model_runner_v2/) · [Hugging Face Integration](https://docs.vllm.ai/en/stable/design/huggingface_integration/) · [vLLM Features and Compatibility](https://docs.vllm.ai/en/stable/features/) · [OpenAI-compatible Server](https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/).
 
@@ -365,23 +377,26 @@ Sources and further reading: [torch.compile Integration](https://docs.vllm.ai/en
 </details>
 
 <details>
-<summary>Part 9 · Quantization Algorithms, Kernel Implementation, and Inference Acceleration (11 chapters)</summary>
+<summary>Part 9 · Quantization Algorithms, Formats, Kernels, and Inference Systems (14 chapters)</summary>
 
 | Chapter | Topics to cover | Status |
 | --- | --- | --- |
-| 9.1 [Low-precision representations and compute paths](docs/chapters/part-09-quantization/01-low-precision-representations-and-compute-paths/README.md) | INT4/INT8 and FP8/FP4/MX formats; scales/zero points, rounding/saturation, granularity; storage/multiply/accumulation precision | 🧩 |
-| 9.2 [Quantization algorithms](docs/chapters/part-09-quantization/02-quantization-algorithms/README.md) | Compare error objectives, calibration, clipping, rounding, error compensation, and equivalent transformations; GPTQ/AWQ as case studies, PTQ vs. QAT | 🧩 |
-| 9.3 [Quantization strategies and precision allocation](docs/chapters/part-09-quantization/03-quantization-strategies-and-precision-allocation/README.md) | W/A/KV, weight-only vs. low-precision computation, static/dynamic, online/offline, layer/group/expert mixed precision, and workload awareness | 🧩 |
-| 9.4 [Writing quantization and data-reordering kernels](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/README.md) | amax/reduction, Q/DQ, per-token/per-group scales, INT4 nibble packing, sign extension, reordering, and tail blocks | 🧩 |
-| 9.5 [Weight-only GEMV and GEMM](docs/chapters/part-09-quantization/05-weight-only-gemv-and-gemm/README.md) | W4A16/W8A16, packed layouts, fused tiled dequantization, scale reuse, small-M decode, and large-M prefill | 🧩 |
-| 9.6 [Low-precision GEMM and scaling](docs/chapters/part-09-quantization/06-low-precision-gemm-and-scaling/README.md) | W8A8/W4A8, conditional INT8/FP8/FP4 paths, dynamic activation quantization, group scaling, accumulation precision, zero-point compensation, and epilogues | 📋 |
-| 9.7 [Kernel fusion and tuning](docs/chapters/part-09-quantization/07-kernel-fusion-and-tuning/README.md) | Norm/Act+Quant, GEMM epilogues, tiling, L2/shared-memory reuse, pipelines/double buffering, registers, split-K, and autotuning | 🧩 |
-| 9.8 [KV quantization and attention integration](docs/chapters/part-09-quantization/08-kv-quantization-and-attention-integration/README.md) | KV formats/layouts, per-head/per-token scales, quantized writes/fused reads, low-bit dequantization, outlier layers, and long-context error | 📋 |
-| 9.9 [MoE expert quantization and grouped computation](docs/chapters/part-09-quantization/09-moe-expert-quantization-and-grouped-computation/README.md) | Per-expert precision/scales, activation quantization after routing, grouped GEMM, packed layouts, load imbalance, and communication integration | 📋 |
-| 9.10 [Integrating quantized kernels into vLLM](docs/chapters/part-09-quantization/10-integrating-quantized-kernels-into-vllm/README.md) | QuantizationConfig → get_quant_method → create_weights → load → process_weights_after_loading → apply; layouts/sharding/dispatch/fallbacks | 🧩 |
-| 9.11 [From kernel gains to end-to-end acceleration](docs/chapters/part-09-quantization/11-from-kernel-gains-to-end-to-end-acceleration/README.md) | Microbenchmark → layer → model → serving; prefill/decode, numerical error and model quality, TTFT/TPOT/goodput, and amortizing preprocessing | 🧩 |
+| 9.1 [Quantization systems and terminology](docs/chapters/part-09-quantization/01-quantization-system-overview/README.md) | Separate algorithms, schemes, representations, formats, layouts, and kernels; affine Q/DQ/requantization with zero-points, repacking, a hand-computed Linear, and evidence-aware passports | ✅ |
+| 9.2 [Numerical representations, quantization formulas, and tensor contracts](docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/README.md) | Integer and floating-point representations; affine grouped Q/DQ, axes, tails and scale precision; MX/NV block scales and effective bits per weight | ✅ |
+| 9.3 [Calibration, observers, and error measurement](docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/README.md) | Reproducible calibration protocols, valid tokens/masks and held-out evaluation; MinMax/EMA/histogram/percentile/MSE search; weight, layer, block and task objectives with explicit input provenance | ✅ |
+| 9.4 [Quantization algorithms and error control](docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/README.md) | RTN, clipping and rounding objectives; GPTQ Hessian, compensation, Cholesky, damping and groups; AWQ-inspired scaling, rotation, FakeQuant/STE and PTQ/QAT | ✅ |
+| 9.5 [Activation quantization and mixed-precision strategies](docs/chapters/part-09-quantization/05-activation-quantization-and-mixed-precision/README.md) | Static/dynamic activation scales, token/block granularity, outliers and transforms, sensitivity, and precision allocation under quality or memory budgets | 🧩 |
+| 9.6 [Quantization frameworks, export workflows, and ecosystem](docs/chapters/part-09-quantization/06-quantization-frameworks-and-export/README.md) | Teaching roles for MQBench/PPQ, LightCompress, AutoRound, LLM Compressor, and ModelOpt; independent export paths and algorithm/format separation | 📋 |
+| 9.7 [Checkpoint formats and the quantized weight ABI](docs/chapters/part-09-quantization/07-checkpoint-formats-and-quantized-weight-abi/README.md) | GPTQ/AWQ/compressed-tensors/GGUF; weight, zero-point, scale and group metadata; container, storage, and execution contracts | 📋 |
+| 9.8 [Bit packing, serialization, and repacking](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/README.md) | INT4 byte/word packing; bit-stream, padded, and block-word alternatives; serialization, repacking and inverses, endianness, and tails | 🧩 |
+| 9.9 [Weight-only GEMV/GEMM and tuning](docs/chapters/part-09-quantization/09-weight-only-gemv-gemm-and-tuning/README.md) | Explicit versus fused dequantization, actual compute types, prefill/decode shape sweeps, tiling, reuse, pipelines, registers, split-K, and tuning | 🧩 |
+| 9.10 [Activation quantization, low-precision GEMM, and fusion](docs/chapters/part-09-quantization/10-activation-quantization-low-precision-gemm-and-fusion/README.md) | Start with INT8 W8A8; conditional FP8/W4A8/FP4 paths; time statistics, Q, GEMM, scaling, DQ, and epilogues; fusion ablations | 🧩 |
+| 9.11 [KV cache quantization and attention integration](docs/chapters/part-09-quantization/11-kv-cache-quantization-and-attention/README.md) | Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality | 📋 |
+| 9.12 [MoE, parallel sharding, and quantization](docs/chapters/part-09-quantization/12-moe-parallel-sharding-and-quantization/README.md) | TP sharding and group boundaries, fused QKV, expert sensitivity and imbalance, grouped computation, and EP metadata/communication | 📋 |
+| 9.13 [Integrating quantization into vLLM](docs/chapters/part-09-quantization/13-integrating-quantization-into-vllm/README.md) | Trace configuration, method selection, weight creation/loading, post-load processing, repacking, backend dispatch, and fallback in pinned vLLM source | 🧩 |
+| 9.14 [From kernel gains to end-to-end inference acceleration](docs/chapters/part-09-quantization/14-from-kernel-gains-to-end-to-end-acceleration/README.md) | Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports | 🧩 |
 
-Students start with the mathematical reference, packing, and basic GEMM; quantization engineers can begin with strategy and kernel design. See the [quantization course design](docs/chapters/part-09-quantization/design.md) for the running experiment, tensor contracts, and acceptance criteria.
+The v1.0 baseline has four modules and 14 units, with a Quantized Model Passport for every experiment. Start with CPU matrices, then a few layers, then Qwen3-8B W4A16 G128. CNN/MQBench is a classic side track. See the [Part 9 design](docs/chapters/part-09-quantization/design.md).
 
 Sources and further reading: [Quantization and Hardware Support](https://docs.vllm.ai/en/stable/features/quantization/) · [vLLM Quantization Method and Configuration Interfaces](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py) · [Linear/MoE Kernel Configuration](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py) · [Triton Matrix Multiplication Tutorial](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html) · [Marlin Quantized Kernel Implementation](https://github.com/IST-DASLab/marlin) · [Quantized KV Cache](https://docs.vllm.ai/en/stable/features/quantization/quantized_kvcache/) · [Quantization Method Registry](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py) · [Online Quantization](https://docs.vllm.ai/en/stable/features/quantization/online/) · [LLM Compressor](https://docs.vllm.ai/en/stable/features/quantization/llm_compressor/).
 
@@ -619,29 +634,42 @@ The teaching engine starts with checkable reference implementations and graduall
 
 ## Current progress
 
+Part 1 now includes expanded explanations, diagrams, and short examples, with emphasis on lessons 1.4–1.6; see the [study guide](docs/chapters/part-01-inference/README.md#后半篇怎样分段学习).
+
 Current code version: **v0.1.0.dev0**.
 
 | Available work | Validation or reading entry |
 | --- | --- |
 | Engineering design, course layers, and milestone acceptance criteria | [Engineering design](docs/engineering/architecture.md), [roadmap](docs/engineering/roadmap.md) |
-| 19-part, 126-chapter outline and feature/optimization index | [Detailed curriculum](docs/chapters/README.md), [feature map](docs/references/feature-map.md), [consistency checks](reports/history/lesson-2.1-delivery/curriculum-checks.json) |
+| 19-part, 129-chapter outline and feature/optimization index | [Detailed curriculum](docs/chapters/README.md), [feature map](docs/references/feature-map.md), [consistency checks](reports/quality/part-09-design-baseline/course.json) |
 | All six Part 1 lessons: full text, CPU code, command parameters, exercises, and a shared runner | [Part 1 guide](docs/chapters/part-01-inference/README.md), [runner](scripts/experiments/part01.py), [validation record](reports/README.md) |
 | 2.1 PyTorch decoder: layerwise checks, seven cases, and six exercises | [Lesson and labs](docs/chapters/part-02-engine/01-pytorch-model/README.md), [recorded results](docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json) |
+| 2.2 Real checkpoint loading: four original diagrams, three prompts, and eight exercises | [Lesson and labs](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md), [recorded results](docs/chapters/part-02-engine/02-loading-real-model-weights/results/README.md) |
+| 2.3 Request lifecycles: four original diagrams, 11 basic cases, and eight exercises | [Lesson and labs](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md), [recorded results](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/results/README.md) |
+| 2.4 Iteration scheduling: four original diagrams, six workloads under two policies, and eight exercises | [Lesson and labs](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md), [recorded results](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/results/README.md) |
+| 2.5 Tensor paging: four original diagrams, eleven CPU cases, and eight exercises | [Lesson and labs](docs/chapters/part-02-engine/05-paged-caching/README.md), [recorded results](docs/chapters/part-02-engine/05-paged-caching/results/README.md) |
+| 2.6 Prefix sharing: five original Chinese diagrams, twelve CPU cases, and twelve exercises | [Lesson and labs](docs/chapters/part-02-engine/06-prefix-caching/README.md), [recorded results](docs/chapters/part-02-engine/06-prefix-caching/results/README.md) |
+| 2.7 HTTP streaming: six original Chinese diagrams, fourteen base cases plus one prefix-backend case, and fourteen exercises | [Lesson and labs](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md), [recorded results](docs/chapters/part-02-engine/07-http-and-streaming-output/results/README.md) |
+| 3.1 request journey: pinned v0.8.5, five Chinese diagrams, source inspection, and twelve exercises | [Lesson and labs](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md), [source records](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/results/README.md) |
+| 3.2 scheduling and KV: six Chinese diagrams, ten count cases, pinned-source inspection, and fourteen exercises | [Lesson and labs](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md), [run records](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/results/README.md) |
+| 3.3 model execution: seven Chinese diagrams, twelve CPU cases, 27 pinned-source functions, and sixteen exercises | [Lesson and labs](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md), [run records](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/results/README.md) |
+| 3.4 Runner evolution: six Chinese diagrams, 10 CPU cases, fourteen exercises | [Lesson and records](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) |
+| 3.5 Configuration tracing: six Chinese diagrams, 12 CPU cases, fourteen exercises | [Lesson and records](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) |
 | Causal attention, KV caching, and greedy generation | [Reference code](zero2vllm/reference/attention.py), [starter lab](docs/chapters/part-01-inference/03-kv-cache/lab.md) |
 | Independent logical block allocation and reclamation simulation | [Block manager](zero2vllm/reference/blocks.py); not yet connected to attention |
 | Environment collection and A100/C500 configuration checks | [Environment tools and configuration](docs/platforms/README.md) |
-| CPU mathematical references and local check results | [Validation record](reports/README.md), [KV results](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json), [INT4 results](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json) |
+| CPU mathematical references and local check results | [Validation record](reports/README.md), [KV results](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json), [INT4 results](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json) |
 | Seven topic guides with concepts, worked examples, and experiment plans | [Topic guides](docs/references/topic-guides.md), [public references](docs/references/README.md) |
 | Three learning paths, chapter responsibilities, and outline synchronization checks | [Learning paths](docs/chapters/learning-paths.md), [maintenance guide](CONTRIBUTING.md), [framework review](reports/history/course-design/framework-review.md) |
 
-**Next:** review and study lesson 2.1, then proceed to real model weight loading in 2.2. A100/C500 environments and small-model baselines can be prepared alongside this work. GPU quantization kernels and vLLM integration follow the [roadmap](docs/engineering/roadmap.md). Each milestone is accepted through code, written explanation, and validation records together.
+**Next:** review and work through lessons 3.4–3.5, then build separate A100/CUDA and C500/MACA baseline records in Part 4. GPU quantization kernels and vLLM integration follow the [roadmap](docs/engineering/roadmap.md). Each milestone combines code, explanation, and validation.
 
 ## Repository structure
 
 ```text
 zero2vllm/
 ├── docs/
-│   ├── chapters/                 19 parts, 126 lessons
+│   ├── chapters/                 19 parts, 129 lessons
 │   │   └── part-02-engine/
 │   │       └── 01-pytorch-model/
 │   │           ├── README.md     lesson text
@@ -674,7 +702,7 @@ The code evolves in one source tree; future stage tags will correspond to course
 
 **How far can I get without a GPU?**
 
-You can complete Part 1, the 2.1 PyTorch decoder, CPU KV cache, INT4 packing, and Linear labs now; read seven guides; modify the logical block simulation; and work through scheduling, partitioning, and communication budgets by hand. GPU kernels and actual serving performance require the relevant hardware.
+You can complete Part 1, the 2.1 PyTorch decoder, 2.2 real checkpoint loading, 2.3 request lifecycles, 2.4 scheduling replays, 2.5 tensor paging, 2.6 prefix sharing, 2.7 HTTP streaming, CPU KV cache, INT4 packing, and Linear labs now; read seven guides; modify the logical block simulation; and work through scheduling, partitioning, and communication budgets by hand. GPU kernels and actual serving performance require the relevant hardware.
 
 **Do I need CUDA knowledge or both an A100 and a C500?**
 
@@ -682,7 +710,7 @@ Start with Python and the foundation labs. Choose one GPU path for practical wor
 
 **How does “building a mini-vLLM” relate to the current code?**
 
-It is a course milestone. Mathematical references and some cache logic are available; lesson 2.1 now includes a minimal PyTorch decoder. Real weights, cache integration, scheduling, and serving will follow lesson by lesson.
+It is a course milestone. Mathematical references and some cache logic are available; lesson 2.1 includes a minimal PyTorch decoder, and 2.2 adds real checkpoint loading and reference comparisons. Lesson 2.3 adds synchronous request management and cancellation cleanup. Lesson 2.4 adds static/continuous admission and three budget checks with serial reference execution. Lesson 2.5 connects a CPU block pool to KV tensors and reference attention. Lesson 2.6 adds full-prefix sharing across requests, reference counting, and eviction. Lesson 2.7 adds a local HTTP service with SSE, backpressure, and disconnect cancellation. Incremental KV for the real model, tensor batching, and GPU serving follow lesson by lesson.
 
 **Do I need multiple GPUs before studying parallelism?**
 

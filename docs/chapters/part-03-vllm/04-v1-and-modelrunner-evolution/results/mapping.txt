@@ -1,0 +1,96 @@
+{
+  "name": "stable_rows",
+  "checks": {
+    "mapping_is_1_0": true,
+    "identity_preserved": true,
+    "unscheduled_C_unchanged": true
+  },
+  "passed": true,
+  "step": {
+    "request_ids": [
+      "B",
+      "A"
+    ],
+    "indices": [
+      1,
+      0
+    ],
+    "generations": [
+      1,
+      1
+    ]
+  },
+  "persistent_before": [
+    {
+      "request_id": "A",
+      "token_ids": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "computed": 2,
+      "generation": 1
+    },
+    {
+      "request_id": "B",
+      "token_ids": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "computed": 3,
+      "generation": 1
+    },
+    {
+      "request_id": "C",
+      "token_ids": [
+        30,
+        31
+      ],
+      "computed": 0,
+      "generation": 1
+    }
+  ]
+}
+{
+  "name": "scatter_progress",
+  "checks": {
+    "A_5_B_4_C_0": true
+  },
+  "passed": true,
+  "computed_by_id": {
+    "A": 5,
+    "B": 4,
+    "C": 0
+  }
+}
+{
+  "name": "row_reuse",
+  "checks": {
+    "stale_step_rejected": true,
+    "new_D_untouched": true
+  },
+  "passed": true,
+  "note": "Generation is a teaching guard, not an asserted upstream field."
+}
+{
+  "name": "preempt_and_resume",
+  "checks": {
+    "A_reloaded_elsewhere": true,
+    "progress_reset_explicitly": true
+  },
+  "passed": true,
+  "old_slot": 0,
+  "resumed_slot": 2,
+  "preserved_history": [
+    10,
+    11,
+    12,
+    13,
+    14
+  ]
+}
+CPU semantics only; no upstream runner or GPU execution.

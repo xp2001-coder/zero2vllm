@@ -1,0 +1,7 @@
+{
+  "mode": "NONE",
+  "bucket": null,
+  "num_actual_tokens": 3,
+  "reason": "full graph not captured"
+}
+Dispatch policy illustration only; piecewise wrapper readiness and GPU execution are outside scope.

@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.8.5",
+  "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+  "hash_policy": "sha256 after CRLF to LF normalization; no other normalization",
+  "files": {
+    "LICENSE": {
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "vllm/v1/core/block_pool.py": {
+      "sha256_lf": "66184ec8114891c8bf38888c60289198afb057ae7c48b17c038d9a597fd88228"
+    },
+    "vllm/v1/core/kv_cache_manager.py": {
+      "sha256_lf": "b382c55a8f775e7756176286af64dd532488d0a7ce035de8a18b0b13a76da8c0"
+    },
+    "vllm/v1/core/sched/output.py": {
+      "sha256_lf": "c739929723acc72050eabd4c080ff0c165ffd9e8303f424a0e7c6c817b16c7be"
+    },
+    "vllm/v1/core/sched/scheduler.py": {
+      "sha256_lf": "18f3717ee040a8f9b70159ecc2af8a4f57a2525e1c1c8e18947f9e3d0b0716a4"
+    },
+    "vllm/v1/request.py": {
+      "sha256_lf": "7b46cf84e2e3c884fe608b4d3bbfcb243d388795004683d0a2bdb9df26e01229"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "kv01",
+      "stage": "schedule",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler.schedule",
+      "title": "先运行队列，后等待队列；预算、分配与抢占",
+      "calls": [
+        "self.kv_cache_manager.allocate_slots",
+        "self.running.pop",
+        "self.waiting.appendleft",
+        "self.kv_cache_manager.get_computed_blocks",
+        "SchedulerOutput"
+      ]
+    },
+    {
+      "id": "kv02",
+      "stage": "prefix",
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "symbol": "KVCacheManager.get_computed_blocks",
+      "title": "完整前缀查找与末块重算",
+      "calls": [
+        "hash_request_tokens",
+        "block_hashes.pop",
+        "self.specialized_manager.find_longest_cache_hit",
+        "block_hashes.append"
+      ]
+    },
+    {
+      "id": "kv03",
+      "stage": "allocate",
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "symbol": "KVCacheManager.allocate_slots",
+      "title": "分配公式、命中保护与新增块",
+      "calls": [
+        "cdiv",
+        "self.block_pool.get_num_free_blocks",
+        "self.block_pool.touch",
+        "self.block_pool.get_new_blocks",
+        "self.block_pool.cache_full_blocks"
+      ]
+    },
+    {
+      "id": "kv04",
+      "stage": "release",
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "symbol": "KVCacheManager.free",
+      "title": "拆除请求块表并释放引用",
+      "calls": [
+        "self.req_to_blocks.pop",
+        "self.block_pool.free_blocks"
+      ]
+    },
+    {
+      "id": "kv05",
+      "stage": "prefix",
+      "path": "vllm/v1/core/block_pool.py",
+      "symbol": "BlockPool.touch",
+      "title": "命中块增加引用并离开空闲队列",
+      "calls": [
+        "self.free_block_queue.remove",
+        "block.incr_ref"
+      ]
+    },
+    {
+      "id": "kv06",
+      "stage": "allocate",
+      "path": "vllm/v1/core/block_pool.py",
+      "symbol": "BlockPool.get_new_blocks",
+      "title": "取得块并清除旧缓存身份",
+      "calls": [
+        "self.free_block_queue.popleft",
+        "self._maybe_evict_cached_block",
+        "curr_block.incr_ref"
+      ]
+    },
+    {
+      "id": "kv07",
+      "stage": "release",
+      "path": "vllm/v1/core/block_pool.py",
+      "symbol": "BlockPool.free_blocks",
+      "title": "引用归零才归还队列",
+      "calls": [
+        "block.decr_ref",
+        "self.free_block_queue.append"
+      ]
+    },
+    {
+      "id": "kv08",
+      "stage": "evict",
+      "path": "vllm/v1/core/block_pool.py",
+      "symbol": "BlockPool._maybe_evict_cached_block",
+      "title": "移除缓存身份",
+      "calls": [
+        "block.reset_hash"
+      ]
+    },
+    {
+      "id": "kv09",
+      "stage": "feedback",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler.update_from_output",
+      "title": "按请求更新采样结果与停止状态",
+      "calls": [
+        "request.append_output_token_ids",
+        "check_stop",
+        "self._free_request"
+      ]
+    },
+    {
+      "id": "kv10",
+      "stage": "release",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler._free_request",
+      "title": "最终结束时清理完整请求状态",
+      "calls": [
+        "self.kv_cache_manager.free",
+        "self.kv_cache_manager.free_block_hashes",
+        "self.finished_req_ids.add"
+      ]
+    },
+    {
+      "id": "kv11",
+      "stage": "feedback",
+      "path": "vllm/v1/request.py",
+      "symbol": "Request.append_output_token_ids",
+      "title": "输出 token 同步进入完整序列",
+      "calls": [
+        "self._output_token_ids.append",
+        "self._all_token_ids.append"
+      ]
+    }
+  ],
+  "structures": [
+    {
+      "id": "scheduler-output",
+      "path": "vllm/v1/core/sched/output.py",
+      "symbol": "SchedulerOutput",
+      "fields": [
+        "scheduled_new_reqs",
+        "scheduled_cached_reqs",
+        "num_scheduled_tokens",
+        "total_num_scheduled_tokens",
+        "finished_req_ids"
+      ]
+    }
+  ]
+}

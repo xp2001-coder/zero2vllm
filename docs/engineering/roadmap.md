@@ -6,8 +6,8 @@
 | --- | --- | --- | --- |
 | M0 工程设计 | 架构、目录、CPU 引导实验、版本配置、自动检查 | 无第三方依赖运行；缓存 logits 一致；配置缺项可识别 | 已完成本地首版 |
 | M1 双平台运行基线 | A100/C500 各一个固定镜像、小模型、服务示例与原始记录 | 每平台一张完整卡；离线、流式生成成功；版本和模型可追溯 | 待机器环境 |
-| M2 PyTorch 教学引擎 | 对等模型、真实权重、生成与 KV Cache | 与参考实现及真实模型参考路径对齐；两平台分别检查 | 2.1 CPU 最小模型已完成，2.2 起逐节推进 |
-| M3 调度与分页 | 请求生命周期、连续批处理、设备缓存存储 | 完成/取消/异常后无块泄漏；输出正确；容量不足行为明确 | 规划 |
+| M2 PyTorch 教学引擎 | 对等模型、真实权重、生成与 KV Cache | 与参考实现及真实模型参考路径对齐；两平台分别检查 | 2.1—2.7 CPU 教学材料、模型与缓存检查、本机 HTTP 服务已完成；真实权重增量 KV 与 GPU 验证待做 |
+| M3 调度与分页 | 请求生命周期、连续批处理、设备缓存存储 | 完成/取消/异常后无块泄漏；输出正确；容量不足行为明确 | 2.3—2.6 已验证 CPU 生命周期、调度、物理块张量存储与前缀共享；共享感知准入、真实模型增量 KV、GPU 算子与张量批执行待做 |
 | M4 单卡优化体系 | Part 5—10：KV/APC、调度、Attention、编译/Graphs、量化、推测 | 每类有原理、源码、最小实验与组合条件；两平台各自记录 | 已有专题导读和 CPU INT4 参考；完整章节/GPU 实测待做 |
 | M5 分布式体系 | Part 11—13：TP/PP/DP/EP/CP/PCP/DCP/SP、MoE/DBO/EPLB、PD/EC | 进程组、张量/缓存布局、通信预算、模拟与版本支持核对 | 已有切分/路由/传输导读与手算；模拟和实机待做 |
 | M6 模型与服务体系 | Part 14—16：Pooling/多模态/LoRA、约束生成/工具/推理、权重/RL | 功能与输入输出契约明确，加载/取消/恢复和组合有检查 | 已完成目录设计，正文/实测待做 |
@@ -16,7 +16,7 @@
 
 ### 里程碑之间的依赖
 
-- M2 的 CPU/PyTorch 对等实现，以及量化 Q0/Q1 的策略、张量契约和数学参考，可在 M1 的硬件环境准备期间推进。
+- M2 的 CPU/PyTorch 对等实现，以及量化篇 9.1/9.2/9.8 的契约、数学参考和打包，可在 M1 的硬件环境准备期间推进；Part 9 按已确认的 v1.0 设计先打通 W4A16 完整路径。
 - 量化 GPU 算子与 vLLM 接入依赖对应平台的 M1 基线；它们可直接在正式 vLLM 实验层推进，不必等待 M3 教学调度器全部完成。
 - M4 逐专题验收，优先推进量化 Linear 的完整链路。PCP/DCP 等专题可先交付推导与源码阅读，实际通信实验另需设备。
 - Part 17 的基本测量方法随 M1 开始使用；M7 再交付系统分析和综合项目。
@@ -26,7 +26,7 @@
 [Part 1 的 1.1—1.6](../chapters/part-01-inference/README.md)已补齐正文、CPU 代码、参数命令、练习答案和统一运行入口。1.4 为性能指标，1.6 为采样与数值正确性；0.x 作为课前准备。先收集整篇试学反馈，再推进教学引擎。
 
 1. 用 Part 1 的综合练习核对讲解深度、命令可复制性与错误提示；按试学结果调整难度和时长。
-2. 试学已完成的 [2.1 最小 PyTorch 模型](../chapters/part-02-engine/01-pytorch-model/README.md)，下一步完成 2.2：固定真实模型 revision、配置、Tokenizer 和权重映射。
+2. 试学 [2.1 最小 PyTorch 模型](../chapters/part-02-engine/01-pytorch-model/README.md)与 [2.2 真实权重加载](../chapters/part-02-engine/02-loading-real-model-weights/README.md)，复查逐层对齐与生成结果；试学 [2.3 请求生命周期](../chapters/part-02-engine/03-request-and-cache-lifecycles/README.md)的取消与隔离案例，试学 [2.4 迭代调度](../chapters/part-02-engine/04-from-static-to-continuous-batching/README.md)的六组对照，试学 [2.5 分页缓存](../chapters/part-02-engine/05-paged-caching/README.md)的地址、读取与回收，试学 [2.6 前缀缓存](../chapters/part-02-engine/06-prefix-caching/README.md)的冷暖对照、引用计数与逐出，试学 [2.7 HTTP 与流式输出](../chapters/part-02-engine/07-http-and-streaming-output/README.md)的客户端、背压、取消与错误收尾，3.1—3.5 已完成固定源码、调度/KV、模型执行、Runner 演进和配置解析的 CPU 实验，下一步试学 3.4—3.5，再推进第四篇双平台环境与基线。
 3. 收集 A100、C500 的环境信息，选定共同 vLLM 版本候选与各自镜像。
 4. 先验证两平台小模型前向及生成，再固定正式部署步骤。
 5. 将已交付的[专题导读](../references/topic-guides.md)逐步扩展为固定版本的源码实验；量化从 CPU INT4 参考推进到 GPU Q/DQ、融合 GEMV/GEMM、调优与 vLLM 接入，见[量化篇设计](../chapters/part-09-quantization/design.md)。

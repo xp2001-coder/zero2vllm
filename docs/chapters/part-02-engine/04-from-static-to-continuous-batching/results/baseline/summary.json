@@ -1,0 +1,4505 @@
+{
+  "experiment": "part2-04-iteration-scheduling",
+  "created_at_utc": "2026-09-17T06:40:51.456042+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "d9692e912b27d98ea0af33202e4612103a89870d609de7965fb29a5f4d97cfe8",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "model": {
+    "seed": 7,
+    "max_context": 32,
+    "vocab_size": 16,
+    "width": 8
+  },
+  "cache_kind": "real_python_kv_lists",
+  "execution": "serial per-request cached forwards; a plan is not a tensor batch",
+  "clock": "arrival/cancel at boundary r; selected outputs at boundary r+1; no wall-clock performance measurements",
+  "metrics_note": "selected_slot_fraction is logical selections/(rounds*max_running), not GPU utilization",
+  "cases": [
+    {
+      "name": "mixed_lengths",
+      "policy": "static",
+      "description": "Long A holds a static cohort open after short B finishes; C and D arrive later.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 2,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2
+        },
+        {
+          "id": "c",
+          "arrival": 1,
+          "prompt": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        },
+        {
+          "id": "d",
+          "arrival": 2,
+          "prompt": [
+            3,
+            1,
+            2
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 11,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 11
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 11,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b"
+          ],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c",
+            "d"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 8,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c",
+            "d"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 8,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c",
+            "d"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 8,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c",
+            "d"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 8,
+          "executed": [
+            "a"
+          ],
+          "terminal": [
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 6,
+          "cohort_id": 2,
+          "admitted": [
+            "c",
+            "d"
+          ],
+          "waiting": [],
+          "running": [
+            "c",
+            "d"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 2
+            },
+            {
+              "request_id": "d",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 7,
+          "executed": [
+            "c",
+            "d"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 7
+        },
+        {
+          "round_index": 7,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "d",
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "d",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "c",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 7,
+          "executed": [
+            "d",
+            "c"
+          ],
+          "terminal": [
+            "d",
+            "c"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12,
+            3,
+            8
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 8,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 6,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            7,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 2,
+          "token_boundaries": [
+            1,
+            2
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            12,
+            3
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 6,
+          "terminal_boundary": 8,
+          "token_boundaries": [
+            7,
+            8
+          ],
+          "first_token_delay_rounds": 6,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "d",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            3,
+            1,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [
+            4,
+            7
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 2,
+          "admission_boundary": 6,
+          "terminal_boundary": 8,
+          "token_boundaries": [
+            7,
+            8
+          ],
+          "first_token_delay_rounds": 5,
+          "completion_delay_rounds": 6,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12,
+          3,
+          8
+        ],
+        "b": [
+          7,
+          14
+        ],
+        "c": [
+          12,
+          3
+        ],
+        "d": [
+          4,
+          7
+        ]
+      },
+      "metrics": {
+        "rounds": 8,
+        "request_steps": 12,
+        "processed_input_tokens": 18,
+        "emitted_tokens": 12,
+        "selected_slot_fraction": 0.75,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "mixed_lengths",
+      "policy": "continuous",
+      "description": "Long A holds a static cohort open after short B finishes; C and D arrive later.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 2,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2
+        },
+        {
+          "id": "c",
+          "arrival": 1,
+          "prompt": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        },
+        {
+          "id": "d",
+          "arrival": 2,
+          "prompt": [
+            3,
+            1,
+            2
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 11,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 11
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 11,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b"
+          ],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 0,
+          "admitted": [
+            "c"
+          ],
+          "waiting": [
+            "d"
+          ],
+          "running": [
+            "a",
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 11,
+          "executed": [
+            "a",
+            "c"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 11
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "d"
+          ],
+          "running": [
+            "c",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 11,
+          "executed": [
+            "c",
+            "a"
+          ],
+          "terminal": [
+            "c"
+          ],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 0,
+          "admitted": [
+            "d"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "d"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "d",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "d"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "d",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "d",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "d",
+            "a"
+          ],
+          "terminal": [
+            "d",
+            "a"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12,
+            3,
+            8
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 8,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 6,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            7,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 2,
+          "token_boundaries": [
+            1,
+            2
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            12,
+            3
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 2,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 2,
+          "completion_delay_rounds": 3,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "d",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            3,
+            1,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [
+            4,
+            7
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 2,
+          "admission_boundary": 4,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 3,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12,
+          3,
+          8
+        ],
+        "b": [
+          7,
+          14
+        ],
+        "c": [
+          12,
+          3
+        ],
+        "d": [
+          4,
+          7
+        ]
+      },
+      "metrics": {
+        "rounds": 6,
+        "request_steps": 12,
+        "processed_input_tokens": 18,
+        "emitted_tokens": 12,
+        "selected_slot_fraction": 1.0,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "token_pressure",
+      "policy": "static",
+      "description": "Two active requests cannot both prefill under a three-token iteration budget.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 2,
+        "max_tokens_per_round": 3
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3
+        },
+        {
+          "id": "c",
+          "arrival": 1,
+          "prompt": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [
+            "b"
+          ],
+          "admission_blocked": null,
+          "reserved_before_execution": 10,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 2
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 10,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 10,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 10,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b",
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 2,
+          "admitted": [
+            "c"
+          ],
+          "waiting": [],
+          "running": [
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "c"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 3
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "c"
+          ],
+          "terminal": [
+            "c"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [
+            7,
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 2,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            12,
+            3
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 4,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 4,
+          "completion_delay_rounds": 5,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12
+        ],
+        "b": [
+          7,
+          14,
+          1
+        ],
+        "c": [
+          12,
+          3
+        ]
+      },
+      "metrics": {
+        "rounds": 6,
+        "request_steps": 9,
+        "processed_input_tokens": 13,
+        "emitted_tokens": 9,
+        "selected_slot_fraction": 0.75,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "token_pressure",
+      "policy": "continuous",
+      "description": "Two active requests cannot both prefill under a three-token iteration budget.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 2,
+        "max_tokens_per_round": 3
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3
+        },
+        {
+          "id": "c",
+          "arrival": 1,
+          "prompt": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [
+            "b"
+          ],
+          "admission_blocked": null,
+          "reserved_before_execution": 10,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 2
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 10,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 10,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 10
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "c"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "max_running",
+          "reserved_before_execution": 10,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b",
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 0,
+          "admitted": [
+            "c"
+          ],
+          "waiting": [],
+          "running": [
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "c"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 3
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "c",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "c"
+          ],
+          "terminal": [
+            "c"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [
+            7,
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 2,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            12,
+            3
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 4,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 4,
+          "completion_delay_rounds": 5,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12
+        ],
+        "b": [
+          7,
+          14,
+          1
+        ],
+        "c": [
+          12,
+          3
+        ]
+      },
+      "metrics": {
+        "rounds": 6,
+        "request_steps": 9,
+        "processed_input_tokens": 13,
+        "emitted_tokens": 9,
+        "selected_slot_fraction": 0.75,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fifo_capacity",
+      "policy": "static",
+      "description": "A reserves six of eight positions; head B needs five, follower C only one.",
+      "limits": {
+        "capacity_tokens": 8,
+        "max_running": 3,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 3
+        },
+        {
+          "id": "c",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 1
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "a"
+          ],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "fifo_capacity",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 2,
+          "admitted": [
+            "b",
+            "c"
+          ],
+          "waiting": [],
+          "running": [
+            "b",
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 6,
+          "executed": [
+            "b",
+            "c"
+          ],
+          "terminal": [
+            "c"
+          ],
+          "reserved_after_execution": 5
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 5
+        },
+        {
+          "round_index": 6,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "b"
+          ],
+          "terminal": [
+            "b"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 5,
+          "output_ids": [
+            7,
+            0,
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 5,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 4,
+          "terminal_boundary": 7,
+          "token_boundaries": [
+            5,
+            6,
+            7
+          ],
+          "first_token_delay_rounds": 5,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 1,
+          "eos_token_id": null,
+          "required_tokens": 1,
+          "output_ids": [
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 1,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 4,
+          "terminal_boundary": 5,
+          "token_boundaries": [
+            5
+          ],
+          "first_token_delay_rounds": 5,
+          "completion_delay_rounds": 5,
+          "inter_token_gaps_rounds": []
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12
+        ],
+        "b": [
+          7,
+          0,
+          13
+        ],
+        "c": [
+          13
+        ]
+      },
+      "metrics": {
+        "rounds": 7,
+        "request_steps": 8,
+        "processed_input_tokens": 12,
+        "emitted_tokens": 8,
+        "selected_slot_fraction": 0.38095238095238093,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "fifo_capacity",
+      "policy": "continuous",
+      "description": "A reserves six of eight positions; head B needs five, follower C only one.",
+      "limits": {
+        "capacity_tokens": 8,
+        "max_running": 3,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 3
+        },
+        {
+          "id": "c",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 1
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "a"
+          ],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "fifo_capacity",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "fifo_capacity",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "fifo_capacity",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 6
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [
+            "b",
+            "c"
+          ],
+          "running": [
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "fifo_capacity",
+          "reserved_before_execution": 6,
+          "executed": [
+            "a"
+          ],
+          "terminal": [
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 0,
+          "admitted": [
+            "b",
+            "c"
+          ],
+          "waiting": [],
+          "running": [
+            "b",
+            "c"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "c",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 6,
+          "executed": [
+            "b",
+            "c"
+          ],
+          "terminal": [
+            "c"
+          ],
+          "reserved_after_execution": 5
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 5
+        },
+        {
+          "round_index": 6,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "b"
+          ],
+          "terminal": [
+            "b"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 4,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 5,
+          "output_ids": [
+            7,
+            0,
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 5,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 4,
+          "terminal_boundary": 7,
+          "token_boundaries": [
+            5,
+            6,
+            7
+          ],
+          "first_token_delay_rounds": 5,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "c",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 1,
+          "eos_token_id": null,
+          "required_tokens": 1,
+          "output_ids": [
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 1,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 4,
+          "terminal_boundary": 5,
+          "token_boundaries": [
+            5
+          ],
+          "first_token_delay_rounds": 5,
+          "completion_delay_rounds": 5,
+          "inter_token_gaps_rounds": []
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          14,
+          1,
+          5,
+          12
+        ],
+        "b": [
+          7,
+          0,
+          13
+        ],
+        "c": [
+          13
+        ]
+      },
+      "metrics": {
+        "rounds": 7,
+        "request_steps": 8,
+        "processed_input_tokens": 12,
+        "emitted_tokens": 8,
+        "selected_slot_fraction": 0.38095238095238093,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "staggered_arrivals",
+      "policy": "static",
+      "description": "The engine is genuinely idle before the second request arrives.",
+      "limits": {
+        "capacity_tokens": 16,
+        "max_running": 2,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "early",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 1
+        },
+        {
+          "id": "late",
+          "arrival": 4,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "early"
+          ],
+          "waiting": [],
+          "running": [
+            "early"
+          ],
+          "planned": [
+            {
+              "request_id": "early",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 1,
+          "executed": [
+            "early"
+          ],
+          "terminal": [
+            "early"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 2,
+          "admitted": [
+            "late"
+          ],
+          "waiting": [],
+          "running": [
+            "late"
+          ],
+          "planned": [
+            {
+              "request_id": "late",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "late"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 3
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "late"
+          ],
+          "planned": [
+            {
+              "request_id": "late",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "late"
+          ],
+          "terminal": [
+            "late"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "early",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 1,
+          "eos_token_id": null,
+          "required_tokens": 1,
+          "output_ids": [
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 1,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 1,
+          "token_boundaries": [
+            1
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 1,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "late",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            7,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 4,
+          "admission_boundary": 4,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "early": [
+          13
+        ],
+        "late": [
+          7,
+          14
+        ]
+      },
+      "metrics": {
+        "rounds": 6,
+        "request_steps": 3,
+        "processed_input_tokens": 4,
+        "emitted_tokens": 3,
+        "selected_slot_fraction": 0.25,
+        "empty_rounds": 3
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "staggered_arrivals",
+      "policy": "continuous",
+      "description": "The engine is genuinely idle before the second request arrives.",
+      "limits": {
+        "capacity_tokens": 16,
+        "max_running": 2,
+        "max_tokens_per_round": 8
+      },
+      "workload": [
+        {
+          "id": "early",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 1
+        },
+        {
+          "id": "late",
+          "arrival": 4,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "early"
+          ],
+          "waiting": [],
+          "running": [
+            "early"
+          ],
+          "planned": [
+            {
+              "request_id": "early",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 1,
+          "executed": [
+            "early"
+          ],
+          "terminal": [
+            "early"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [],
+          "planned": [],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 0,
+          "executed": [],
+          "terminal": [],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 0,
+          "admitted": [
+            "late"
+          ],
+          "waiting": [],
+          "running": [
+            "late"
+          ],
+          "planned": [
+            {
+              "request_id": "late",
+              "phase": "prefill",
+              "input_tokens": 2
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "late"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 3
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "late"
+          ],
+          "planned": [
+            {
+              "request_id": "late",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 3,
+          "executed": [
+            "late"
+          ],
+          "terminal": [
+            "late"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "early",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 1,
+          "eos_token_id": null,
+          "required_tokens": 1,
+          "output_ids": [
+            13
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 1,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 1,
+          "token_boundaries": [
+            1
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 1,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "late",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 3,
+          "output_ids": [
+            7,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 4,
+          "admission_boundary": 4,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "early": [
+          13
+        ],
+        "late": [
+          7,
+          14
+        ]
+      },
+      "metrics": {
+        "rounds": 6,
+        "request_steps": 3,
+        "processed_input_tokens": 4,
+        "emitted_tokens": 3,
+        "selected_slot_fraction": 0.25,
+        "empty_rounds": 3
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "stop_and_cancel",
+      "policy": "static",
+      "description": "Running cancellation, waiting cancellation, EOS and zero output share the same boundary clock.",
+      "limits": {
+        "capacity_tokens": 24,
+        "max_running": 2,
+        "max_tokens_per_round": 6
+      },
+      "workload": [
+        {
+          "id": "cancel_running",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "cancel_at": 2
+        },
+        {
+          "id": "cancel_waiting",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "cancel_at": 0
+        },
+        {
+          "id": "eos",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 5,
+          "eos_token_id": 14
+        },
+        {
+          "id": "zero",
+          "arrival": 1,
+          "prompt": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 0
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "cancel_running",
+            "eos"
+          ],
+          "waiting": [],
+          "running": [
+            "cancel_running",
+            "eos"
+          ],
+          "planned": [
+            {
+              "request_id": "cancel_running",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "eos",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 15,
+          "executed": [
+            "cancel_running",
+            "eos"
+          ],
+          "terminal": [
+            "eos"
+          ],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "cancel_running"
+          ],
+          "planned": [
+            {
+              "request_id": "cancel_running",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 8,
+          "executed": [
+            "cancel_running"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 8
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "cancel_running",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 2,
+          "cancel_requested": true,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 2,
+          "token_boundaries": [
+            1,
+            2
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "cancel_waiting",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": true,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": null,
+          "terminal_boundary": 0,
+          "token_boundaries": [],
+          "first_token_delay_rounds": null,
+          "completion_delay_rounds": 0,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "eos",
+          "status": "finished",
+          "reason": "eos",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 5,
+          "eos_token_id": 14,
+          "required_tokens": 7,
+          "output_ids": [
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 1,
+          "token_boundaries": [
+            1
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 1,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "zero",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 4,
+          "prompt_ids": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 0,
+          "eos_token_id": null,
+          "required_tokens": 0,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": null,
+          "terminal_boundary": 1,
+          "token_boundaries": [],
+          "first_token_delay_rounds": null,
+          "completion_delay_rounds": 0,
+          "inter_token_gaps_rounds": []
+        }
+      ],
+      "expected_without_cancellation": {
+        "cancel_running": [
+          14,
+          1,
+          5,
+          12,
+          3,
+          8
+        ],
+        "cancel_waiting": [
+          7,
+          14,
+          1
+        ],
+        "eos": [
+          14
+        ],
+        "zero": []
+      },
+      "metrics": {
+        "rounds": 2,
+        "request_steps": 3,
+        "processed_input_tokens": 7,
+        "emitted_tokens": 3,
+        "selected_slot_fraction": 0.75,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "stop_and_cancel",
+      "policy": "continuous",
+      "description": "Running cancellation, waiting cancellation, EOS and zero output share the same boundary clock.",
+      "limits": {
+        "capacity_tokens": 24,
+        "max_running": 2,
+        "max_tokens_per_round": 6
+      },
+      "workload": [
+        {
+          "id": "cancel_running",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "cancel_at": 2
+        },
+        {
+          "id": "cancel_waiting",
+          "arrival": 0,
+          "prompt": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "cancel_at": 0
+        },
+        {
+          "id": "eos",
+          "arrival": 0,
+          "prompt": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 5,
+          "eos_token_id": 14
+        },
+        {
+          "id": "zero",
+          "arrival": 1,
+          "prompt": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 0
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "cancel_running",
+            "eos"
+          ],
+          "waiting": [],
+          "running": [
+            "cancel_running",
+            "eos"
+          ],
+          "planned": [
+            {
+              "request_id": "cancel_running",
+              "phase": "prefill",
+              "input_tokens": 3
+            },
+            {
+              "request_id": "eos",
+              "phase": "prefill",
+              "input_tokens": 3
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 15,
+          "executed": [
+            "cancel_running",
+            "eos"
+          ],
+          "terminal": [
+            "eos"
+          ],
+          "reserved_after_execution": 8
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "cancel_running"
+          ],
+          "planned": [
+            {
+              "request_id": "cancel_running",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 8,
+          "executed": [
+            "cancel_running"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 8
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "cancel_running",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 2,
+          "cancel_requested": true,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 2,
+          "token_boundaries": [
+            1,
+            2
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 2,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        },
+        {
+          "request_id": "cancel_waiting",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": true,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": null,
+          "terminal_boundary": 0,
+          "token_boundaries": [],
+          "first_token_delay_rounds": null,
+          "completion_delay_rounds": 0,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "eos",
+          "status": "finished",
+          "reason": "eos",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 5,
+          "eos_token_id": 14,
+          "required_tokens": 7,
+          "output_ids": [
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 1,
+          "token_boundaries": [
+            1
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 1,
+          "inter_token_gaps_rounds": []
+        },
+        {
+          "request_id": "zero",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 4,
+          "prompt_ids": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "max_new_tokens": 0,
+          "eos_token_id": null,
+          "required_tokens": 0,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": null,
+          "terminal_boundary": 1,
+          "token_boundaries": [],
+          "first_token_delay_rounds": null,
+          "completion_delay_rounds": 0,
+          "inter_token_gaps_rounds": []
+        }
+      ],
+      "expected_without_cancellation": {
+        "cancel_running": [
+          14,
+          1,
+          5,
+          12,
+          3,
+          8
+        ],
+        "cancel_waiting": [
+          7,
+          14,
+          1
+        ],
+        "eos": [
+          14
+        ],
+        "zero": []
+      },
+      "metrics": {
+        "rounds": 2,
+        "request_steps": 3,
+        "processed_input_tokens": 7,
+        "emitted_tokens": 3,
+        "selected_slot_fraction": 0.75,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "long_prefill_turn",
+      "policy": "static",
+      "description": "A whole four-token prefill eventually gets first choice despite two decoders.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 3,
+        "max_tokens_per_round": 4
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            2
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "long",
+          "arrival": 1,
+          "prompt": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 1,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "long"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 12,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "long"
+          ],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "long"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 12,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "long"
+          ],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 1,
+          "admitted": [],
+          "waiting": [
+            "long"
+          ],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": "cohort_barrier",
+          "reserved_before_execution": 12,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b",
+            "a"
+          ],
+          "reserved_after_execution": 0
+        },
+        {
+          "round_index": 6,
+          "cohort_id": 2,
+          "admitted": [
+            "long"
+          ],
+          "waiting": [],
+          "running": [
+            "long"
+          ],
+          "planned": [
+            {
+              "request_id": "long",
+              "phase": "prefill",
+              "input_tokens": 4
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "long"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 5
+        },
+        {
+          "round_index": 7,
+          "cohort_id": 2,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "long"
+          ],
+          "planned": [
+            {
+              "request_id": "long",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 5,
+          "executed": [
+            "long"
+          ],
+          "terminal": [
+            "long"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            13,
+            14,
+            1,
+            5,
+            14,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 6,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            2
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            7,
+            14,
+            1,
+            5,
+            14,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 6,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 6,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "long",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 4,
+          "prompt_ids": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 5,
+          "output_ids": [
+            13,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 5,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 6,
+          "terminal_boundary": 8,
+          "token_boundaries": [
+            7,
+            8
+          ],
+          "first_token_delay_rounds": 6,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          13,
+          14,
+          1,
+          5,
+          14,
+          12
+        ],
+        "b": [
+          7,
+          14,
+          1,
+          5,
+          14,
+          12
+        ],
+        "long": [
+          13,
+          14
+        ]
+      },
+      "metrics": {
+        "rounds": 8,
+        "request_steps": 14,
+        "processed_input_tokens": 17,
+        "emitted_tokens": 14,
+        "selected_slot_fraction": 0.5833333333333334,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    },
+    {
+      "name": "long_prefill_turn",
+      "policy": "continuous",
+      "description": "A whole four-token prefill eventually gets first choice despite two decoders.",
+      "limits": {
+        "capacity_tokens": 32,
+        "max_running": 3,
+        "max_tokens_per_round": 4
+      },
+      "workload": [
+        {
+          "id": "a",
+          "arrival": 0,
+          "prompt": [
+            1
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "b",
+          "arrival": 0,
+          "prompt": [
+            2
+          ],
+          "max_new_tokens": 6
+        },
+        {
+          "id": "long",
+          "arrival": 1,
+          "prompt": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 2
+        }
+      ],
+      "traces": [
+        {
+          "round_index": 0,
+          "cohort_id": 0,
+          "admitted": [
+            "a",
+            "b"
+          ],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "prefill",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "prefill",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 1,
+          "cohort_id": 0,
+          "admitted": [
+            "long"
+          ],
+          "waiting": [],
+          "running": [
+            "b",
+            "a",
+            "long"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [
+            "long"
+          ],
+          "admission_blocked": null,
+          "reserved_before_execution": 17,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 17
+        },
+        {
+          "round_index": 2,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "a",
+            "long",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [
+            "long"
+          ],
+          "admission_blocked": null,
+          "reserved_before_execution": 17,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 17
+        },
+        {
+          "round_index": 3,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "long",
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "long",
+              "phase": "prefill",
+              "input_tokens": 4
+            }
+          ],
+          "skipped_budget": [
+            "b",
+            "a"
+          ],
+          "admission_blocked": null,
+          "reserved_before_execution": 17,
+          "executed": [
+            "long"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 17
+        },
+        {
+          "round_index": 4,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b",
+            "a",
+            "long"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "long",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 17,
+          "executed": [
+            "b",
+            "a",
+            "long"
+          ],
+          "terminal": [
+            "long"
+          ],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 5,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "a",
+            "b"
+          ],
+          "planned": [
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "a",
+            "b"
+          ],
+          "terminal": [],
+          "reserved_after_execution": 12
+        },
+        {
+          "round_index": 6,
+          "cohort_id": 0,
+          "admitted": [],
+          "waiting": [],
+          "running": [
+            "b",
+            "a"
+          ],
+          "planned": [
+            {
+              "request_id": "b",
+              "phase": "decode",
+              "input_tokens": 1
+            },
+            {
+              "request_id": "a",
+              "phase": "decode",
+              "input_tokens": 1
+            }
+          ],
+          "skipped_budget": [],
+          "admission_blocked": null,
+          "reserved_before_execution": 12,
+          "executed": [
+            "b",
+            "a"
+          ],
+          "terminal": [
+            "b",
+            "a"
+          ],
+          "reserved_after_execution": 0
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            1
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            13,
+            14,
+            1,
+            5,
+            14,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 7,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 1,
+          "prompt_ids": [
+            2
+          ],
+          "max_new_tokens": 6,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            7,
+            14,
+            1,
+            5,
+            14,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 6,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 0,
+          "admission_boundary": 0,
+          "terminal_boundary": 7,
+          "token_boundaries": [
+            1,
+            2,
+            3,
+            5,
+            6,
+            7
+          ],
+          "first_token_delay_rounds": 1,
+          "completion_delay_rounds": 7,
+          "inter_token_gaps_rounds": [
+            1,
+            1,
+            2,
+            1,
+            1
+          ]
+        },
+        {
+          "request_id": "long",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 4,
+          "prompt_ids": [
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 2,
+          "eos_token_id": null,
+          "required_tokens": 5,
+          "output_ids": [
+            13,
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 5,
+          "forward_calls": 2,
+          "cancel_requested": false,
+          "error": null,
+          "arrival_boundary": 1,
+          "admission_boundary": 1,
+          "terminal_boundary": 5,
+          "token_boundaries": [
+            4,
+            5
+          ],
+          "first_token_delay_rounds": 3,
+          "completion_delay_rounds": 4,
+          "inter_token_gaps_rounds": [
+            1
+          ]
+        }
+      ],
+      "expected_without_cancellation": {
+        "a": [
+          13,
+          14,
+          1,
+          5,
+          14,
+          12
+        ],
+        "b": [
+          7,
+          14,
+          1,
+          5,
+          14,
+          12
+        ],
+        "long": [
+          13,
+          14
+        ]
+      },
+      "metrics": {
+        "rounds": 7,
+        "request_steps": 14,
+        "processed_input_tokens": 17,
+        "emitted_tokens": 14,
+        "selected_slot_fraction": 0.6666666666666666,
+        "empty_rounds": 0
+      },
+      "assertions": {
+        "outputs_match_independent_full_recompute": true,
+        "all_terminal_without_failure": true,
+        "capacity_respected": true,
+        "active_limit_respected": true,
+        "iteration_token_limit_respected": true,
+        "at_most_one_forward_per_request_per_round": true,
+        "budget_returned": true,
+        "all_contexts_closed": true,
+        "finalized_once": true
+      },
+      "passed": true
+    }
+  ],
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "passed": true
+}

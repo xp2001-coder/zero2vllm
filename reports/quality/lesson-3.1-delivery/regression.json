@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-09-17T13:40:30.206170+00:00",
+  "python": "3.11.9",
+  "platform": "Windows",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "729fcd1c10aa9f94c23d63c81c2fa5015c54c3411590066907d778d949c170f1",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "tests": {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "count": 280,
+    "skipped": 0,
+    "wall_seconds": 234.279
+  },
+  "scope": "Local regression; no GPU execution and no remote GitHub Actions run.",
+  "source_inspection": {
+    "passed": true,
+    "files": 25,
+    "functions": 38,
+    "message_structures": 4,
+    "cold_downloaded_files": 25,
+    "offline_downloaded_files": 0,
+    "executed_upstream_code": false,
+    "gpu_validated": false
+  },
+  "remote_ci": "not_run"
+}

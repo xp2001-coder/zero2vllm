@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.8.5",
+  "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+  "hash_policy": "SHA-256 after CRLF-to-LF normalization",
+  "files": {
+    "LICENSE": {
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "vllm/config.py": {
+      "sha256_lf": "016f1281a0519c636bace104012ff8d1c199db89aba190d6d9cd810d67c91a48"
+    },
+    "vllm/engine/arg_utils.py": {
+      "sha256_lf": "65dfb922f57b5b242ac226024ae6a8041cc141b5b003831ea0d372d37d9e1caa"
+    },
+    "vllm/entrypoints/cli/serve.py": {
+      "sha256_lf": "380807dd51758194ce3281d0b61ca2cb106e05aeae4034a7bd5b9e3ba2645c3a"
+    },
+    "vllm/entrypoints/llm.py": {
+      "sha256_lf": "c94f05c95a988bf842e2efc6704a6f0cb735267bcd603ebad7b19da008250ac9"
+    },
+    "vllm/envs.py": {
+      "sha256_lf": "5bd0b822bd6fbce1f7f5090dd0177eca0e1a7ed5af4b8135851042f04a82a05f"
+    },
+    "vllm/platforms/cuda.py": {
+      "sha256_lf": "f2a80d4df5733f5d03a5ca2861545eb8ada75df75260d9b6a665b699e2a91681"
+    },
+    "vllm/utils.py": {
+      "sha256_lf": "3beb162b7a50f9df211cfeabcdd0ec423d03395ef230816a7fc3cffeffdb479d"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "point-01",
+      "stage": "read",
+      "path": "vllm/utils.py",
+      "symbol": "FlexibleArgumentParser.parse_args",
+      "title": "参数归一化与最终解析",
+      "calls": [
+        "ValueError",
+        "self._pull_args_from_config",
+        "arg.startswith",
+        "arg.split"
+      ]
+    },
+    {
+      "id": "point-02",
+      "stage": "read",
+      "path": "vllm/utils.py",
+      "symbol": "FlexibleArgumentParser._pull_args_from_config",
+      "title": "配置文件参数排在显式 CLI 前",
+      "calls": [
+        "args.count",
+        "args.index",
+        "ValueError",
+        "self._load_config_file"
+      ]
+    },
+    {
+      "id": "point-03",
+      "stage": "read",
+      "path": "vllm/utils.py",
+      "symbol": "FlexibleArgumentParser._load_config_file",
+      "title": "YAML 转为参数序列",
+      "calls": [
+        "file_path.split",
+        "ValueError",
+        "open",
+        "yaml.safe_load"
+      ]
+    },
+    {
+      "id": "point-04",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "EngineArgs.from_cli_args",
+      "title": "Namespace 到 EngineArgs",
+      "calls": [
+        "dataclasses.fields",
+        "cls"
+      ]
+    },
+    {
+      "id": "point-05",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "EngineArgs.create_model_config",
+      "title": "模型配置构造",
+      "calls": [
+        "check_gguf_file",
+        "ModelConfig",
+        "cast"
+      ]
+    },
+    {
+      "id": "point-06",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "EngineArgs.create_engine_config",
+      "title": "能力判断、默认值与配置聚合",
+      "calls": [
+        "current_platform.pre_register_and_update",
+        "DeviceConfig",
+        "self.create_model_config",
+        "envs.is_set"
+      ]
+    },
+    {
+      "id": "point-07",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "EngineArgs._is_v1_supported_oracle",
+      "title": "V1 兼容性分支",
+      "calls": [
+        "_raise_or_fallback"
+      ]
+    },
+    {
+      "id": "point-08",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "EngineArgs._set_default_args_v1",
+      "title": "强制项、None 默认值与设备/用途默认",
+      "calls": [
+        "current_platform.get_device_total_memory",
+        "logger.debug"
+      ]
+    },
+    {
+      "id": "point-09",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "_raise_or_fallback",
+      "title": "不支持功能：显式报错或自动回退",
+      "calls": [
+        "envs.is_set",
+        "NotImplementedError",
+        "logger.warning"
+      ]
+    },
+    {
+      "id": "point-10",
+      "stage": "read",
+      "path": "vllm/engine/arg_utils.py",
+      "symbol": "_warn_or_fallback",
+      "title": "实验功能：显式尝试或自动回退",
+      "calls": [
+        "envs.is_set",
+        "logger.warning",
+        "logger.info"
+      ]
+    },
+    {
+      "id": "point-11",
+      "stage": "read",
+      "path": "vllm/config.py",
+      "symbol": "SchedulerConfig.__post_init__",
+      "title": "补全调度字段与派生值",
+      "calls": [
+        "logger.warning",
+        "logger.info"
+      ]
+    },
+    {
+      "id": "point-12",
+      "stage": "read",
+      "path": "vllm/config.py",
+      "symbol": "SchedulerConfig._verify_args",
+      "title": "跨字段约束",
+      "calls": [
+        "ValueError"
+      ]
+    },
+    {
+      "id": "point-13",
+      "stage": "read",
+      "path": "vllm/config.py",
+      "symbol": "VllmConfig.__post_init__",
+      "title": "配置交叉验证及平台更新",
+      "calls": [
+        "self.model_config.verify_async_output_proc",
+        "self.model_config.verify_with_parallel_config",
+        "self.cache_config.verify_with_parallel_config",
+        "self.lora_config.verify_with_cache_config"
+      ]
+    },
+    {
+      "id": "point-14",
+      "stage": "read",
+      "path": "vllm/config.py",
+      "symbol": "ModelConfig._verify_cuda_graph",
+      "title": "图模式相关调整",
+      "calls": [
+        "current_platform.is_rocm",
+        "logger.warning"
+      ]
+    },
+    {
+      "id": "point-15",
+      "stage": "read",
+      "path": "vllm/platforms/cuda.py",
+      "symbol": "CudaPlatformBase.check_and_update_config",
+      "title": "CUDA 的 worker 与块长默认值",
+      "calls": [
+        "NotImplementedError",
+        "is_flashmla_supported",
+        "logger.info"
+      ]
+    },
+    {
+      "id": "point-16",
+      "stage": "read",
+      "path": "vllm/envs.py",
+      "symbol": "is_set",
+      "title": "区分未设置和显式设置",
+      "calls": [
+        "AttributeError"
+      ]
+    },
+    {
+      "id": "point-17",
+      "stage": "read",
+      "path": "vllm/envs.py",
+      "symbol": "set_vllm_use_v1",
+      "title": "记录已作出的引擎选择",
+      "calls": [
+        "is_set",
+        "ValueError"
+      ]
+    }
+  ],
+  "structures": []
+}

@@ -13,59 +13,60 @@
     {
       "id": "3.1",
       "title": "vLLM 中一次请求的旅程",
-      "topics": "输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消",
-      "exercise": "为固定版本标出请求 ID、进程/线程边界、消息内容及取消后的资源回收",
-      "hardware": "CPU/GPU",
-      "status": "partial",
+      "topics": "固定 v0.8.5 请求路径；输入、进程/线程/任务、消息结构、模型迭代、输出合并与取消回收",
+      "exercise": "核对固定提交的 25 个源文件、38 个函数与 4 类消息，绘制请求路径并解释取消回收",
+      "hardware": "CPU（源码阅读）；GPU 实测另验收",
+      "status": "complete",
       "reading": "docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md",
       "guide": "docs/chapters/part-03-vllm/guide.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "3.2",
       "title": "vLLM 调度与 KV 管理",
-      "topics": "输入处理、调度输出、KVCacheManager、BlockPool、执行反馈",
-      "exercise": "把教学状态机映射到正式实现",
-      "hardware": "CPU/GPU",
-      "status": "partial",
+      "topics": "固定 v0.8.5；token 缺口与预算、混合调度、块分配、前缀引用、队首阻塞、抢占重算与执行反馈",
+      "exercise": "手算逐轮 token/块账本；运行 10 个计数案例并核验固定源码分支",
+      "hardware": "CPU（计数实验与源码阅读）；GPU 实测另验收",
+      "status": "complete",
       "reading": "docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md",
-      "guide": "docs/chapters/part-05-kv-cache/guide.md",
-      "content": "scaffold"
+      "guide": "docs/chapters/part-03-vllm/guide.md",
+      "content": "lesson"
     },
     {
       "id": "3.3",
       "title": "模型执行与注意力后端",
-      "topics": "模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样",
-      "exercise": "追踪 [K,N] 权重加载及一次调度到张量化、实际 Attention/Linear 内核的完整链路",
-      "hardware": "GPU",
-      "status": "partial",
+      "topics": "固定 v0.8.5；模型加载、权重方向与融合 QKV、输入打包、RoPE/GQA、注意力元数据、后端与候选过滤",
+      "exercise": "手算双请求张量与缓存地址；运行 12 个 CPU 案例并核验 27 个固定源码函数",
+      "hardware": "CPU（张量实验与源码阅读）；GPU 实测另验收",
+      "status": "complete",
       "reading": "docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md",
       "guide": "docs/chapters/part-03-vllm/guide.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "3.4",
       "title": "V1 与 ModelRunner 演进",
-      "topics": "V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理",
-      "exercise": "制作 runner×图模式对照；按固定源码版本核对能力，避免把设计目标当已支持",
-      "hardware": "CPU",
-      "status": "partial",
+      "topics": "V0/V1 与 MRV1/MRV2；稳定槽位、增量写入、拷贝寿命、GPU 元数据、采样数学与图模式分派",
+      "exercise": "手算状态映射与增量载荷；运行 10 个 CPU 案例，核验两版本 26 个函数并设计受控对照",
+      "hardware": "CPU（语义实验与源码阅读）；GPU 实测另验收",
+      "status": "complete",
       "reading": "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md",
       "guide": "docs/chapters/part-03-vllm/guide.md",
-      "content": "scaffold"
+      "content": "lesson"
     },
     {
       "id": "3.5",
       "title": "配置与能力的解析流程",
-      "topics": "EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验",
-      "exercise": "追踪用户参数如何变成实际运行配置",
-      "hardware": "CPU/GPU",
-      "status": "partial",
+      "topics": "CLI/SDK 到 EngineArgs；None 与 False、V1 默认/强制规则、配置来源、预算约束与平台/运行时验证",
+      "exercise": "运行 12 个配置案例，追踪字段覆盖与改写；核验 17 个固定源码函数并列出待验证能力",
+      "hardware": "CPU（语义实验与源码阅读）；GPU 实测另验收",
+      "status": "complete",
       "reading": "docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md",
       "guide": "docs/chapters/part-03-vllm/guide.md",
-      "content": "scaffold"
+      "content": "lesson"
     }
   ],
-  "teaching_focus": "先追踪请求、状态和张量三条线，再进入具体类。先读 3.1/3.3 理解执行，再回到 3.2 深入调度；3.4 单独处理版本演进。",
-  "directory": "docs/chapters/part-03-vllm"
+  "teaching_focus": "沿请求、调度/KV、执行张量、Runner 演进和配置解析五条线阅读固定源码；每节用 CPU 例子核对语义，再进入双平台实测。",
+  "directory": "docs/chapters/part-03-vllm",
+  "readme_note": "3.1—3.5 已完成固定版本源码阅读、CPU 实验与练习。3.4 比较 v0.8.5 与 v0.17.1，其余主线固定 v0.8.5；状态、张量与配置实验不代表 GPU 执行通过。"
 }

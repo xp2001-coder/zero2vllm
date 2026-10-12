@@ -1,0 +1,200 @@
+{
+  "recorded_at": "2026-09-20T07:17:44.303213+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "ea9e60f8bd9b2989ed8a63a25b3d52ef19ab601d048b669f3dbfa4c2359c0497",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "commands": [
+    {
+      "name": "cpu",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "-m",
+        "scripts.experiments.lesson0304",
+        "--output-dir",
+        ".local/checks/lesson030405/4-cpu"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:41.428689+00:00"
+    },
+    {
+      "name": "source-inspection",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "-m",
+        "scripts.experiments.lesson0304",
+        "--inspect-source",
+        "--output-dir",
+        ".local/checks/lesson030405/4-source-inspection"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:42.071681+00:00"
+    },
+    {
+      "name": "mapping",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/walk_state.py",
+        "--case",
+        "mapping"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:42.343595+00:00"
+    },
+    {
+      "name": "staged",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/walk_state.py",
+        "--case",
+        "staged"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:42.670177+00:00"
+    },
+    {
+      "name": "copy",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/walk_state.py",
+        "--case",
+        "copy"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:42.950789+00:00"
+    },
+    {
+      "name": "sampling",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/walk_state.py",
+        "--case",
+        "sampling"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:43.240147+00:00"
+    },
+    {
+      "name": "graph-decode",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/inspect_graphs.py",
+        "--mode",
+        "FULL_AND_PIECEWISE",
+        "--query-lengths",
+        "1",
+        "1",
+        "1",
+        "--captured",
+        "4"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:43.445307+00:00"
+    },
+    {
+      "name": "graph-mixed",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/inspect_graphs.py",
+        "--mode",
+        "FULL_AND_PIECEWISE",
+        "--query-lengths",
+        "1",
+        "3",
+        "--captured",
+        "4"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:43.618909+00:00"
+    },
+    {
+      "name": "graph-uncaptured",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/inspect_graphs.py",
+        "--mode",
+        "FULL_AND_PIECEWISE",
+        "--query-lengths",
+        "1",
+        "1",
+        "1",
+        "--captured"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:43.805538+00:00"
+    },
+    {
+      "name": "graph-decode-only",
+      "command": [
+        "python",
+        "-X",
+        "utf8",
+        "-S",
+        "docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/inspect_graphs.py",
+        "--mode",
+        "FULL_DECODE_ONLY",
+        "--query-lengths",
+        "1",
+        "3",
+        "--captured",
+        "4"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "passed": true,
+      "recorded_at": "2026-09-20T07:17:43.994593+00:00"
+    }
+  ],
+  "passed": true,
+  "upstream_executed": false,
+  "gpu_validated": false,
+  "note": "Python -S disables site initialization. Expected failures are explicitly listed; no upstream Python module was imported."
+}

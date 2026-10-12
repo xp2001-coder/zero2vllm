@@ -1,6 +1,6 @@
 # 10.1 Draft、Verify 与拒绝采样
 
-[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 9.11](../../part-09-quantization/11-from-kernel-gains-to-end-to-end-acceleration/README.md) · [下一节 10.2](../02-n-gram-and-suffix-methods/README.md)
+[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 9.14](../../part-09-quantization/14-from-kernel-gains-to-end-to-end-acceleration/README.md) · [下一节 10.2](../02-n-gram-and-suffix-methods/README.md)
 
 > 🧩 已有相关材料；本节正文与配套实验待完善。目录存在不表示内容已经完成。
 

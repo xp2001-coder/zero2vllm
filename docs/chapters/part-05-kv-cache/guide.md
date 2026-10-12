@@ -1,8 +1,8 @@
 # 调度与缓存：一次推进多少 token，放在哪里
 
-对应 3.2、5.1—5.4、6.1—6.3。前置：[请求链路](../part-03-vllm/guide.md)、[CPU KV Cache 实验](../part-01-inference/03-kv-cache/lab.md)。状态：**导读、手算与 GPU 实验设计已提供；完整调度模拟和 GPU 实测待完成**。
+对应 3.2、5.1—5.4、6.1—6.3。前置：[请求链路](../part-03-vllm/guide.md)、[CPU KV Cache 实验](../part-01-inference/03-kv-cache/lab.md)。状态：**导读、手算与 GPU 实验设计已提供；3.2 已完成限定主路径的计数回放，GPU 实测待完成**。
 
-本篇吸收 vLLM 第 4、5 讲与测试手册，结合 SGLang 第 4、6、7 讲的对照问题。
+先读 [3.2 vLLM 调度与 KV 管理](../part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md)，用固定版本逐轮追踪 token 预算、前缀容量与抢占。本导读继续提供后续缓存与调度专题的入口。
 
 ## 1. 三种预算不能互相替代
 

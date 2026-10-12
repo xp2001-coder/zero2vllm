@@ -1,0 +1,53 @@
+{
+  "name": "expanded_sampling_map",
+  "checks": {
+    "state_indices": true,
+    "local_positions": true
+  },
+  "passed": true,
+  "indices": [
+    2,
+    0,
+    0,
+    0
+  ],
+  "local_positions": [
+    0,
+    0,
+    1,
+    2
+  ]
+}
+{
+  "name": "sampling_algebra",
+  "checks": {
+    "gumbel_equivalence": true,
+    "topk_uses_full_normalizer": true
+  },
+  "passed": true,
+  "logits": [
+    2.0,
+    1.0,
+    0.0,
+    -1.0
+  ],
+  "uniforms": [
+    0.13,
+    0.81,
+    0.4,
+    0.73
+  ],
+  "gumbel_token": 1,
+  "top_logprobs": {
+    "indices": [
+      0,
+      1
+    ],
+    "logprobs": [
+      -0.44018969856119533,
+      -1.4401896985611953
+    ]
+  },
+  "note": "Fixed-uniform algebra only; not Triton RNG or statistical throughput validation."
+}
+CPU semantics only; no upstream runner or GPU execution.

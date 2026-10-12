@@ -1,0 +1,119 @@
+CPU 单层 Attention 夹具；非 vLLM / 预训练模型 / GPU 执行。
+{
+  "requests": [
+    {
+      "request_id": "A",
+      "token_ids": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "computed": 2,
+      "scheduled": 3,
+      "block_table": [
+        8,
+        3
+      ]
+    },
+    {
+      "request_id": "B",
+      "token_ids": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "computed": 3,
+      "scheduled": 1,
+      "block_table": [
+        5
+      ]
+    }
+  ],
+  "input_ids": [
+    12,
+    13,
+    14,
+    23
+  ],
+  "positions": [
+    2,
+    3,
+    4,
+    3
+  ],
+  "slot_mapping": [
+    34,
+    35,
+    12,
+    23
+  ],
+  "query_start_loc": [
+    0,
+    3,
+    4
+  ],
+  "seq_lens": [
+    5,
+    4
+  ],
+  "logits_indices": [
+    2,
+    3
+  ],
+  "num_actual_tokens": 4,
+  "num_input_tokens": 4,
+  "shapes": {
+    "hidden": [
+      4,
+      8
+    ],
+    "q": [
+      4,
+      4,
+      2
+    ],
+    "k": [
+      4,
+      2,
+      2
+    ],
+    "v": [
+      4,
+      2,
+      2
+    ],
+    "cache": [
+      2,
+      10,
+      4,
+      2,
+      2
+    ],
+    "logits": [
+      4,
+      32
+    ],
+    "selected_logits": [
+      2,
+      32
+    ]
+  },
+  "errors": {
+    "A": 2.220446049250313e-16,
+    "B": 1.1102230246251565e-16
+  },
+  "candidate_ids": [
+    16,
+    24
+  ],
+  "returned_ids": {
+    "A": [],
+    "B": [
+      24
+    ]
+  }
+}

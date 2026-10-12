@@ -10,9 +10,9 @@
 </div>
 
 <div align="center">
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm/stargazers"><img src="https://img.shields.io/github/stars/xpxpxp2001xpxpxp/zero2vllm?style=flat&amp;logo=github" alt="GitHub stars"></a>
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm/forks"><img src="https://img.shields.io/github/forks/xpxpxp2001xpxpxp/zero2vllm?style=flat&amp;logo=github" alt="GitHub forks"></a>
-  <a href="https://github.com/xpxpxp2001xpxpxp/zero2vllm"><img src="https://img.shields.io/badge/GitHub-Project-2563eb?style=flat&amp;logo=github" alt="GitHub 项目"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm/stargazers"><img src="https://img.shields.io/github/stars/xp2001-coder/zero2vllm?style=flat&amp;logo=github" alt="GitHub stars"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm/forks"><img src="https://img.shields.io/github/forks/xp2001-coder/zero2vllm?style=flat&amp;logo=github" alt="GitHub forks"></a>
+  <a href="https://github.com/xp2001-coder/zero2vllm"><img src="https://img.shields.io/badge/GitHub-Project-2563eb?style=flat&amp;logo=github" alt="GitHub 项目"></a>
   <img src="https://img.shields.io/badge/README-中文%20%7C%20English-16a34a?style=flat" alt="中英文 README">
   <img src="https://img.shields.io/badge/Python-3.11%2B-3776ab?style=flat&amp;logo=python&amp;logoColor=white" alt="Python 3.11+">
   <img src="https://img.shields.io/badge/GPU_targets-A100%20%7C%20C500-0f766e?style=flat" alt="GPU 实验目标：A100 与 C500">
@@ -31,24 +31,34 @@
 
 [文档导航](docs/README.md) · [开发路线](docs/engineering/roadmap.md) · [更新记录](CHANGELOG.md) · [使用许可](LICENSE)
 
-> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。2.1 最小 PyTorch 模型已完成，全部 126 节已有独立目录；后续引擎功能逐节推进，A100/C500 的 GPU 实验尚待实机验证。
+> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。2.1—2.7 的模型构建、真实权重加载、请求生命周期、迭代调度、CPU 张量分页、前缀共享与 HTTP 流式服务已完成 CPU 验证，3.1—3.5 已提供固定版本源码阅读、调度/KV 与执行张量实验、Runner 演进、配置解析及 CPU 静态核验。9.1 已提供含 zero-point 的量化/反量化/重量化、模型 Passport、6 张中文图与 17 个 CPU 案例。9.2 进一步提供非方阵分组 Q/DQ、FP8/FP4 表示、尾组补零与有效位宽计算，含 20 个 CPU 案例和 7 张中文图。9.3 已补充校准协议、Observer、有效 token 预算及权重/层/任务误差对照。9.4 已补充量化误差控制推导、GPTQ 核心参考、缩放/旋转与 STE 实验。全部 129 节已有独立目录；后续引擎功能逐节推进，A100/C500 的 GPU 实验尚待实机验证。
 
 ## 第一次来，从这里开始
 
-根据已有基础选一个入口，完成后再沿[学习路线](docs/chapters/learning-paths.md)深入。课程的完整范围保留在后面的 **19 篇、126 章**大纲中。
+根据已有基础选一个入口，完成后再沿[学习路线](docs/chapters/learning-paths.md)深入。课程的完整范围保留在后面的 **19 篇、129 章**大纲中。
 
 | 你的起点 | 第一份材料 | 做完后得到什么 |
 | --- | --- | --- |
 | 会 Python，想理解推理 | [第一课：从 token 到下一步预测](docs/chapters/part-01-inference/01-next-token/README.md) | 手算一次 Attention，解释最后一行 logits 怎样选出下一个 token |
 | 已用过模型部署，想读源码 | [请求、状态与张量](docs/chapters/part-03-vllm/guide.md) | 一张请求调用链，分清调度决策与模型执行 |
-| 做量化或想写算子 | [CPU INT4 Linear 实验](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md) → [量化导读](docs/chapters/part-09-quantization/guide.md) | 一份位布局、误差和存储报告，再推进到 GPU 内核 |
+| 做量化或想写算子 | [CPU INT4 Linear 实验](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md) → [量化导读](docs/chapters/part-09-quantization/guide.md) | 一份位布局、误差和存储报告，再推进到 GPU 内核 |
 | 已有可用 GPU 环境，想做优化 | [实验规范](docs/engineering/experiments.md) → [Profiling 导读](docs/chapters/part-08-compilation/guide.md) | 一份固定负载的实验设计，区分正确性、质量与性能 |
 
-首次学习可按[现有材料的短路线](docs/chapters/learning-paths.md#先用现有材料走通一条短路线)推进。算法统一在 **9.2 量化算法**，量化主线重点是策略、数据布局、算子实现、内核调优与 vLLM 接入。
+首次学习可按[现有材料的短路线](docs/chapters/learning-paths.md#先用现有材料走通一条短路线)推进。算法统一在 **9.4 量化算法与误差控制**，量化主线重点是策略、数据布局、算子实现、内核调优与 vLLM 接入。
 
 **完整学习第一篇：**[Part 1 学习与命令总表](docs/chapters/part-01-inference/README.md)，从生成原理走到缓存、性能指标、模型结构和采样正确性。
 
 **继续第二篇：**[2.1 构建最小 PyTorch 模型](docs/chapters/part-02-engine/01-pytorch-model/README.md)，在 CPU 上运行两层 Decoder，逐层对齐 RMSNorm、RoPE、Attention 与 SwiGLU。
+
+接着学习 [2.2 加载真实模型权重](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md)：加载固定版本的 SmolLM2-135M，理解权重布局、GQA、RoPE 和共享参数，在 CPU 上与 Transformers 逐层对齐。
+
+再通过 [2.3 请求与缓存生命周期](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md)处理完成、取消与异常，观察独立缓存和运行额度如何回收。
+随后在 [2.4 静态与连续批处理](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md)中让调度器选择每轮工作，比较补位、等待与输出间隔。
+在 [2.5 分页缓存](docs/chapters/part-02-engine/05-paged-caching/README.md)中把物理块池接到 K/V 张量，验证地址映射、因果读取和释放复用。
+继续在 [2.6 前缀缓存](docs/chapters/part-02-engine/06-prefix-caching/README.md)中让请求复用真实 K/V，用冷暖对照、分叉请求与内存压力解释命中、共享和逐出。
+在 [2.7 HTTP 与流式输出](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md)中，从 HTTP 和异步编程基础开始，把引擎接到真实本机服务，检查客户端慢读、断连、超时与错误收尾。
+
+继续阅读 [3.1 vLLM 请求旅程](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md)与 [3.2 调度与 KV 管理](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md)：沿固定源码追踪请求，再手算和回放逐轮调度、块分配、共享引用与抢占。随后在 [3.3 模型执行与注意力后端](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md)把计划变成张量，核对数值和输出归属。继续在 [3.4 Runner 演进](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md)理解状态组织与图模式，再用 [3.5 配置解析](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md)追踪最终参数。这些基础部分不依赖 GPU。
 
 其余学习入口见[七篇专题导读](docs/references/topic-guides.md)。导读表示已有材料，目录中的 🧩 不等于完整章节或 GPU 验收完成。
 
@@ -98,11 +108,11 @@
 | --- | --- | --- |
 | 学生 | CPU 引导实验，0.1/0.3 与 Part 1 | 数学参考 → 请求/缓存模拟 → 真实小模型 → vLLM 映射；逐步交付可解释的教学引擎 |
 | 工程师 | 固定一种平台基线，提前使用 Part 17 的测量方法 | 调用链与瓶颈 → 单项优化 → 组合回归 → 平台与分布式扩展 |
-| 量化方向 | 建立基线后，从 9.3 策略设计进入 | 张量契约 → Q/DQ 与打包 → 量化 GEMV/GEMM → 调优 → vLLM 接入与服务消融 |
+| 量化方向 | 建立基线后，从 9.1/9.2 契约与 9.5 策略进入 | 张量契约 → Q/DQ 与打包 → 量化 GEMV/GEMM → 调优 → vLLM 接入与服务消融 |
 
 具体章节顺序、阶段交付物、GPU 条件与交叉章节分工见[学习路线](docs/chapters/learning-paths.md)。每章共用基础正文，附工程进阶与平台说明；完整技术范围见[课程目录](docs/chapters/README.md)。
 
-**现在就能做：**完成 Part 1 六节与 2.1 PyTorch CPU 实验，继续运行 INT4 Linear 实验，阅读专题导读、检查逻辑块分配和配置模板。没有 GPU 时先完成 CPU 阶段，0.2 的真实模型生成体验可后置。
+**现在就能做：**完成 Part 1 六节与 2.1—2.7 CPU 实验，继续运行 INT4 Linear 实验，阅读专题导读、检查逻辑块分配和配置模板。2.2 的真实权重实验不需要 GPU；0.2 的 vLLM 生成体验可后置。
 
 ### 根据手头硬件选择实验
 
@@ -170,10 +180,10 @@ python -m unittest discover -s tests -v
 ### 4. 量化方向：运行 INT4 Linear
 
 ```bash
-python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/04-quantization-kernels/cpu-int4-linear.json
+python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/08-bit-packing-serialization-and-repack/cpu-int4-linear.json
 ```
 
-实验实现沿 K 分组的 Q/DQ、有符号 INT4 打包及两条量化 Linear 参考路径。默认包含尾组和奇数打包，分别报告实现误差与量化误差，并把 scale 计入存储。详见[实验教程](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)；它是 CPU 数学参考，GPU 融合内核与 vLLM 集成待完成。
+实验实现沿 K 分组的 Q/DQ、有符号 INT4 打包及两条量化 Linear 参考路径。默认包含尾组和奇数打包，分别报告实现误差与量化误差，并把 scale 计入存储。详见[实验教程](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)；它是 CPU 数学参考，GPU 融合内核与 vLLM 集成待完成。
 
 ### 5. 准备 GPU 路径
 
@@ -189,13 +199,13 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 
 <!-- BEGIN course-outline -->
 
-本版共 **19 篇、126 个正式章节规划**，每篇、每节都有独立目录；未完成小节先提供教学骨架，两个 CPU 实验已归入对应篇。目录齐全不表示正文全部完成；前置知识、练习产出、设备条件见[详细课程目录](docs/chapters/README.md)。
+本版共 **19 篇、129 个正式章节规划**，每篇、每节都有独立目录；未完成小节先提供教学骨架，两个 CPU 实验已归入对应篇。目录齐全不表示正文全部完成；前置知识、练习产出、设备条件见[详细课程目录](docs/chapters/README.md)。
 
 **状态：✅ 已完成并有本地验证；🧩 有部分材料或代码；📋 已规划、正文待编写。** 功能已被上游收录也不等于本项目已经实测。
 
 [✅ CPU 引导实验：KV Cache 前后是否计算一致](docs/chapters/part-01-inference/03-kv-cache/lab.md)
 
-[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)
+[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)
 
 | 篇 | 专题范围 | 章节数 |
 | --- | --- | --- |
@@ -208,7 +218,7 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 | [Part 6](docs/chapters/part-06-scheduling/README.md) | 调度、批处理与重叠执行 | 6 |
 | [Part 7](docs/chapters/part-07-attention/README.md) | Attention 与高性能算子 | 7 |
 | [Part 8](docs/chapters/part-08-compilation/README.md) | 编译、CUDA Graph 与执行优化 | 7 |
-| [Part 9](docs/chapters/part-09-quantization/README.md) | 量化算法、算子实现与推理加速 | 11 |
+| [Part 9](docs/chapters/part-09-quantization/README.md) | 量化算法、格式、算子与推理系统 | 14 |
 | [Part 10](docs/chapters/part-10-speculation/README.md) | Speculative Decoding 推测解码 | 9 |
 | [Part 11](docs/chapters/part-11-parallelism/README.md) | 并行切分与分布式执行 | 10 |
 | [Part 12](docs/chapters/part-12-moe/README.md) | MoE 与通信优化 | 6 |
@@ -254,12 +264,12 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
 | 2.1 [构建最小 PyTorch 模型](docs/chapters/part-02-engine/01-pytorch-model/README.md) | 模型前向、生成循环、RMSNorm/RoPE/MLP、与 CPU 参考对齐 | ✅ |
-| 2.2 [加载真实模型权重](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md) | 配置、safetensors、权重映射、Tokenizer、模型 revision | 📋 |
-| 2.3 [请求与缓存生命周期](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) | 创建、运行、完成、取消、异常、缓存归属 | 📋 |
-| 2.4 [从静态批处理到连续批处理](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) | 迭代级调度、活跃队列、token 预算、请求插入退出 | 📋 |
-| 2.5 [分页缓存](docs/chapters/part-02-engine/05-paged-caching/README.md) | 逻辑块、物理块、block table、slot mapping、设备 KV 存储 | 🧩 |
-| 2.6 [前缀缓存](docs/chapters/part-02-engine/06-prefix-caching/README.md) | 跨请求共享、引用计数、哈希匹配、逐出、缓存失效 | 📋 |
-| 2.7 [HTTP 与流式输出](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) | 异步迭代、背压、断连、取消传播、请求错误 | 📋 |
+| 2.2 [加载真实模型权重](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md) | 配置与 revision、safetensors、权重映射与共享、Tokenizer、GQA/RoPE 布局、逐层对齐 | ✅ |
+| 2.3 [请求与缓存生命周期](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md) | 请求状态、准入额度、取消边界、异常回收、独立 KV 与共享模型 | ✅ |
+| 2.4 [从静态批处理到连续批处理](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md) | 静态组与逐轮补位、三种预算、FIFO 阻塞、轮转公平性、首项与输出间隔 | ✅ |
+| 2.5 [分页缓存](docs/chapters/part-02-engine/05-paged-caching/README.md) | 块表与 slot 映射、CPU KV 张量、有效前缀、整块准入、隔离与回收 | ✅ |
+| 2.6 [前缀缓存](docs/chapters/part-02-engine/06-prefix-caching/README.md) | 完整前缀匹配、末块重算、真实 KV 共享、引用计数、哈希隔离与 LRU 逐出 | ✅ |
+| 2.7 [HTTP 与流式输出](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md) | HTTP/SSE 基础、异步输出、有界队列、背压、断连取消与错误收尾 | ✅ |
 
 来源与阅读入口：[Transformers](https://github.com/huggingface/transformers) · [nano-vllm](https://github.com/GeeeekExplorer/nano-vllm) · [mini-sglang](https://github.com/sgl-project/mini-sglang) · [架构设计](https://docs.vllm.ai/en/stable/design/arch_overview/)。
 
@@ -270,11 +280,13 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 3.1 [vLLM 中一次请求的旅程](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) | 输入处理→EngineCoreClient→EngineCore→Executor/Worker/ModelRunner；请求 ID、进程通信、流式队列与取消 | 🧩 |
-| 3.2 [vLLM 调度与 KV 管理](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md) | 输入处理、调度输出、KVCacheManager、BlockPool、执行反馈 | 🧩 |
-| 3.3 [模型执行与注意力后端](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) | 模型注册/初始化/权重加载/后处理；input_ids、positions、slot_mapping、Attention metadata、采样 | 🧩 |
-| 3.4 [V1 与 ModelRunner 演进](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) | V0/V1 与 MRV1/MRV2 两个维度；持久状态/执行排列、StagedWriteTensor、GPU 元数据、采样与图管理 | 🧩 |
-| 3.5 [配置与能力的解析流程](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) | EngineArgs、VllmConfig、环境变量、平台默认值、优先级与校验 | 🧩 |
+| 3.1 [vLLM 中一次请求的旅程](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md) | 固定 v0.8.5 请求路径；输入、进程/线程/任务、消息结构、模型迭代、输出合并与取消回收 | ✅ |
+| 3.2 [vLLM 调度与 KV 管理](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md) | 固定 v0.8.5；token 缺口与预算、混合调度、块分配、前缀引用、队首阻塞、抢占重算与执行反馈 | ✅ |
+| 3.3 [模型执行与注意力后端](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md) | 固定 v0.8.5；模型加载、权重方向与融合 QKV、输入打包、RoPE/GQA、注意力元数据、后端与候选过滤 | ✅ |
+| 3.4 [V1 与 ModelRunner 演进](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) | V0/V1 与 MRV1/MRV2；稳定槽位、增量写入、拷贝寿命、GPU 元数据、采样数学与图模式分派 | ✅ |
+| 3.5 [配置与能力的解析流程](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) | CLI/SDK 到 EngineArgs；None 与 False、V1 默认/强制规则、配置来源、预算约束与平台/运行时验证 | ✅ |
+
+3.1—3.5 已完成固定版本源码阅读、CPU 实验与练习。3.4 比较 v0.8.5 与 v0.17.1，其余主线固定 v0.8.5；状态、张量与配置实验不代表 GPU 执行通过。
 
 来源与阅读入口：[架构设计](https://docs.vllm.ai/en/stable/design/arch_overview/) · [Model Runner V2](https://docs.vllm.ai/en/stable/design/model_runner_v2/) · [Hugging Face 集成](https://docs.vllm.ai/en/stable/design/huggingface_integration/) · [vLLM Features 与兼容性入口](https://docs.vllm.ai/en/stable/features/) · [OpenAI-compatible Server](https://docs.vllm.ai/en/stable/serving/online_serving/openai_compatible_server/)。
 
@@ -363,23 +375,26 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 </details>
 
 <details>
-<summary>Part 9 · 量化算法、算子实现与推理加速（11 章）</summary>
+<summary>Part 9 · 量化算法、格式、算子与推理系统（14 章）</summary>
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 9.1 [低精度表示与计算路径](docs/chapters/part-09-quantization/01-low-precision-representations-and-compute-paths/README.md) | INT4/INT8、FP8/FP4/MX 格式；scale/zero-point、舍入/饱和、粒度；存储/乘法/累加精度 | 🧩 |
-| 9.2 [量化算法](docs/chapters/part-09-quantization/02-quantization-algorithms/README.md) | 统一比较误差目标、校准、裁剪、舍入、误差补偿与等价变换；以 GPTQ/AWQ 等为案例，区分 PTQ/QAT | 🧩 |
-| 9.3 [量化策略与精度分配](docs/chapters/part-09-quantization/03-quantization-strategies-and-precision-allocation/README.md) | W/A/KV、weight-only/低精度计算、静态/动态、在线/离线、分层/分组/专家混合精度、负载感知 | 🧩 |
-| 9.4 [手写量化与数据重排算子](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/README.md) | amax/reduction、Q/DQ、per-token/per-group scales、INT4 半字节打包、符号扩展、重排与尾块 | 🧩 |
-| 9.5 [Weight-only GEMV 与 GEMM](docs/chapters/part-09-quantization/05-weight-only-gemv-and-gemm/README.md) | W4A16/W8A16、packed layout、分块反量化融合、scale 复用、decode 小 M 与 prefill 大 M | 🧩 |
-| 9.6 [低精度 GEMM 与缩放实现](docs/chapters/part-09-quantization/06-low-precision-gemm-and-scaling/README.md) | W8A8/W4A8、INT8/FP8/FP4 条件化路径、动态激活量化、分组缩放、累加精度、zero-point 补偿、epilogue | 📋 |
-| 9.7 [融合算子与内核调优](docs/chapters/part-09-quantization/07-kernel-fusion-and-tuning/README.md) | Norm/Act+Quant、GEMM epilogue、tiling、L2/共享内存复用、流水线/双缓冲、寄存器、split-K、autotune | 🧩 |
-| 9.8 [KV 量化与 Attention 协同](docs/chapters/part-09-quantization/08-kv-quantization-and-attention-integration/README.md) | KV 格式/布局、per-head/per-token scales、量化写入/融合读取、低比特反量化、异常层与长上下文误差 | 📋 |
-| 9.9 [MoE 专家量化与分组计算](docs/chapters/part-09-quantization/09-moe-expert-quantization-and-grouped-computation/README.md) | 按专家精度/scale、路由后的激活量化、grouped GEMM、打包布局、负载不均与通信协同 | 📋 |
-| 9.10 [量化算子接入 vLLM](docs/chapters/part-09-quantization/10-integrating-quantized-kernels-into-vllm/README.md) | QuantizationConfig→get_quant_method→create_weights→load→process_weights_after_loading→apply；布局/分片/dispatch/回退 | 🧩 |
-| 9.11 [从算子收益到端到端加速](docs/chapters/part-09-quantization/11-from-kernel-gains-to-end-to-end-acceleration/README.md) | microbenchmark→层→模型→服务、prefill/decode、精度/质量双重误差、TTFT/TPOT/Goodput、预处理摊销 | 🧩 |
+| 9.1 [量化系统全景与术语分层](docs/chapters/part-09-quantization/01-quantization-system-overview/README.md) | 算法/方案/表示/格式/布局/算子分层；含 zero-point 的 Q/DQ/RQ、repack 区别、Linear 手算与模型 Passport | ✅ |
+| 9.2 [数值表示、量化公式与张量契约](docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/README.md) | INT2/3/4/8 与 E4M3FN/E5M2/E2M1；MX/NV 块缩放；含 zero-point 的分组 Q/DQ、非方阵/尾组/scale 精度；effective bpw | ✅ |
+| 9.3 [Calibration、Observer 与误差测量](docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/README.md) | Calibration Protocol、有效 token/mask 与独立评测；MinMax/EMA/Histogram/Percentile/MSE 搜索；权重/层/block/任务误差与输入主干 | ✅ |
+| 9.4 [量化算法与误差控制](docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/README.md) | RTN/裁剪/舍入目标；GPTQ 的 Hessian、补偿、Cholesky、damping 与分组；AWQ 启发式缩放、rotation、FakeQuant/STE 与 PTQ/QAT | ✅ |
+| 9.5 [Activation Quantization 与混合精度策略](docs/chapters/part-09-quantization/05-activation-quantization-and-mixed-precision/README.md) | 静态/动态激活 scale、per-token/per-block、outlier 与变换；层/通道/专家敏感度；W4A16→INT8 W8A8→条件化 FP8/W4A8/FP4 | 🧩 |
+| 9.6 [量化框架、导出流程与生态](docs/chapters/part-09-quantization/06-quantization-frameworks-and-export/README.md) | MQBench/PPQ、LightCompress、AutoRound、LLM Compressor、ModelOpt；算法/导出格式解耦；两条独立生产路径 | 📋 |
+| 9.7 [Checkpoint Format 与 Quantized Weight ABI](docs/chapters/part-09-quantization/07-checkpoint-formats-and-quantized-weight-abi/README.md) | GPTQ/AWQ/compressed-tensors/GGUF；qweight/qzeros/scales/g_idx；shape/dtype/axis/stride；容器、磁盘契约与执行契约 | 📋 |
+| 9.8 [位打包、序列化与 Repack](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/README.md) | INT4 byte/word packing；INT3/5/6/7 bit-stream/padding/block-word；序列化/读取；repack/逆变换；字节序、奇数尾部与非对齐 | 🧩 |
+| 9.9 [Weight-only GEMV / GEMM 与调优](docs/chapters/part-09-quantization/09-weight-only-gemv-gemm-and-tuning/README.md) | W4A16/W8A16、显式/融合 DQ、实际乘法类型；prefill/decode shape sweep；tiling/scale/L2/共享内存/流水线/寄存器/split-K/autotune | 🧩 |
+| 9.10 [激活量化、低精度 GEMM 与融合](docs/chapters/part-09-quantization/10-activation-quantization-low-precision-gemm-and-fusion/README.md) | INT8 W8A8 优先；FP8/W4A8/FP4 条件化路径；statistics/Q/GEMM/scale/DQ/epilogue 分项计时；Norm/Act+Quant 等融合 | 🧩 |
+| 9.11 [KV Cache 量化与 Attention 协同](docs/chapters/part-09-quantization/11-kv-cache-quantization-and-attention/README.md) | 动态状态、写入 Q/读取 DQ、scale 生命周期；per-tensor/head/token；FP8/INT8/INT4/FP4；KIVI/KVQuant/MiKV；长上下文质量 | 📋 |
+| 9.12 [MoE、并行切分与量化](docs/chapters/part-09-quantization/12-moe-parallel-sharding-and-quantization/README.md) | TP qweight/scale/zp/g_idx 切分与 group boundary；fused QKV；专家敏感度/负载；Router/Dispatch/Grouped GEMM/Combine；EP | 📋 |
+| 9.13 [量化路径接入 vLLM](docs/chapters/part-09-quantization/13-integrating-quantization-into-vllm/README.md) | quantization_config/QuantizationConfig/get_quant_method/create_weights/load/process_weights_after_loading/apply；repack/dispatch/回退；固定源码追踪 | 🧩 |
+| 9.14 [从算子收益到端到端推理加速](docs/chapters/part-09-quantization/14-from-kernel-gains-to-end-to-end-acceleration/README.md) | 数值/模型质量/kernel/model/serving 五层验收；PPL/显存/TTFT/TPOT/ITL/吞吐/Goodput/尾延迟；预处理摊销与双平台报告 | 🧩 |
 
-学生先完成数学参考、打包与基础 GEMM；量化工程师可从策略/算子设计进入。贯穿实验、算子契约与验收方法见[量化篇设计](docs/chapters/part-09-quantization/design.md)。
+每节维护 Quantized Model Passport，区分算法、数值契约、checkpoint、repack、kernel 与运行时证据。CPU 小矩阵 → 少量层 → Qwen3-8B；CNN/MQBench 为经典支线。见 [Part 9 v1.0 总设计](docs/chapters/part-09-quantization/design.md)。
 
 来源与阅读入口：[量化与硬件矩阵](https://docs.vllm.ai/en/stable/features/quantization/) · [vLLM 量化方法与配置接口](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py) · [Linear/MoE Kernel 配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py) · [Triton 矩阵乘教程](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html) · [Marlin 量化内核实现](https://github.com/IST-DASLab/marlin) · [Quantized KV Cache](https://docs.vllm.ai/en/stable/features/quantization/quantized_kvcache/) · [量化方法注册表](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py) · [Online Quantization](https://docs.vllm.ai/en/stable/features/quantization/online/) · [LLM Compressor](https://docs.vllm.ai/en/stable/features/quantization/llm_compressor/)。
 
@@ -618,29 +633,42 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 
 ## 当前进度
 
+第一篇已补充讲解、图解和短示例，重点加强 1.4—1.6；见[学习入口](docs/chapters/part-01-inference/README.md#后半篇怎样分段学习)。
+
 当前代码版本：**v0.1.0.dev0**。
 
 | 已有成果 | 验证或阅读入口 |
 | --- | --- |
 | 工程设计、课程分层和迭代验收标准 | [工程设计](docs/engineering/architecture.md)、[开发路线](docs/engineering/roadmap.md) |
-| 19 篇、126 章大纲与特性/优化索引 | [详细目录](docs/chapters/README.md)、[特性地图](docs/references/feature-map.md)、[一致性检查](reports/history/lesson-2.1-delivery/curriculum-checks.json) |
+| 19 篇、129 章大纲与特性/优化索引 | [详细目录](docs/chapters/README.md)、[特性地图](docs/references/feature-map.md)、[一致性检查](reports/quality/part-09-design-baseline/course.json) |
 | Part 1 全六节：正文、CPU 代码、参数命令、练习答案与统一运行 | [整篇学习入口](docs/chapters/part-01-inference/README.md)、[运行器](scripts/experiments/part01.py)、[验证记录](reports/README.md) |
 | 2.1 最小 PyTorch 模型：逐层对齐、7 个案例、6 组练习 | [正文与实验](docs/chapters/part-02-engine/01-pytorch-model/README.md)、[运行记录](docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json) |
+| 2.2 真实权重加载：4 张原创图、3 个真实输入、8 组练习 | [正文与实验](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md)、[运行记录](docs/chapters/part-02-engine/02-loading-real-model-weights/results/README.md) |
+| 2.3 请求生命周期：4 张原创图、11 个基础案例、8 组练习 | [正文与实验](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/README.md)、[运行记录](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/results/README.md) |
+| 2.4 迭代调度：4 张原创图、6 组双策略回放、8 组练习 | [正文与实验](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/README.md)、[运行记录](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/results/README.md) |
+| 2.5 张量分页：4 张原创图、11 个 CPU 案例、8 组练习 | [正文与实验](docs/chapters/part-02-engine/05-paged-caching/README.md)、[运行记录](docs/chapters/part-02-engine/05-paged-caching/results/README.md) |
+| 2.6 前缀共享：5 张中文原创图、12 个 CPU 案例、12 组练习 | [正文与实验](docs/chapters/part-02-engine/06-prefix-caching/README.md)、[运行记录](docs/chapters/part-02-engine/06-prefix-caching/results/README.md) |
+| 2.7 HTTP 与流式输出：6 张中文原创图、14 个基础案例与 1 个前缀后端案例、14 组练习 | [正文与实验](docs/chapters/part-02-engine/07-http-and-streaming-output/README.md)、[运行记录](docs/chapters/part-02-engine/07-http-and-streaming-output/results/README.md) |
+| 3.1 请求旅程：固定 v0.8.5、5 张中文图、源码核验与 12 组练习 | [正文与实验](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/README.md)、[源码记录](docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/results/README.md) |
+| 3.2 调度与 KV：6 张中文图、10 个计数案例、固定源码核验与 14 组练习 | [正文与实验](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/README.md)、[运行记录](docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/results/README.md) |
+| 3.3 模型执行：7 张中文图、12 个 CPU 案例、27 个固定源码函数与 16 组练习 | [正文与实验](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/README.md)、[运行记录](docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/results/README.md) |
+| 3.4 Runner 演进: 6 张中文图、10 个 CPU 案例与 14 组练习 | [正文与记录](docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/README.md) |
+| 3.5 配置解析: 6 张中文图、12 个 CPU 案例与 14 组练习 | [正文与记录](docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/README.md) |
 | 因果 Attention、KV Cache 与贪心生成 | [参考代码](zero2vllm/reference/attention.py)、[引导实验](docs/chapters/part-01-inference/03-kv-cache/lab.md) |
 | 独立的逻辑块分配与回收模拟 | [块管理代码](zero2vllm/reference/blocks.py)；尚未接入 Attention |
 | 环境采集、A100/C500 配置检查 | [环境工具与配置说明](docs/platforms/README.md) |
-| CPU 数学参考与本地检查结果 | [验证记录](reports/README.md)、[KV 实验](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)、[INT4 实验](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json) |
+| CPU 数学参考与本地检查结果 | [验证记录](reports/README.md)、[KV 实验](docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)、[INT4 实验](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json) |
 | 7 篇专题导读：概念、手算与实验设计 | [专题导读](docs/references/topic-guides.md)、[公开参考资料](docs/references/README.md) |
 | 三条学习路线、章节分工与目录同步检查 | [学习路线](docs/chapters/learning-paths.md)、[维护方法](CONTRIBUTING.md)、[框架审查记录](reports/history/course-design/framework-review.md) |
 
-**接下来：**Review 并试学 2.1，再逐节推进 2.2 的真实模型权重加载。A100/C500 环境与小模型基线可同时准备；量化 GPU 算子和 vLLM 接入按[开发路线](docs/engineering/roadmap.md)推进。每个阶段以代码、正文和验证记录共同验收。
+**接下来：**Review 并试学 3.4—3.5，再进入第四篇，分别建立 A100/CUDA 与 C500/MACA 的环境和小模型基线。量化 GPU 算子与 vLLM 接入按[开发路线](docs/engineering/roadmap.md)推进；每阶段以代码、正文和验证记录共同验收。
 
 ## 项目结构
 
 ```text
 zero2vllm/
 ├── docs/
-│   ├── chapters/                 19 篇、126 节
+│   ├── chapters/                 19 篇、129 节
 │   │   └── part-02-engine/
 │   │       └── 01-pytorch-model/
 │   │           ├── README.md     正文
@@ -673,7 +701,7 @@ zero2vllm/
 
 **没有 GPU，能学到哪一步？**
 
-现在即可完成 Part 1、2.1 PyTorch、CPU KV Cache、INT4 打包和 Linear 实验，阅读 7 篇导读，修改逻辑块模拟，并完成调度、切分、通信预算的手算。GPU 内核与实际服务性能需要对应设备验证。
+现在即可完成 Part 1、2.1 PyTorch、2.2 真实权重加载、2.3 请求生命周期、2.4 调度回放、2.5 张量分页、2.6 前缀共享、2.7 HTTP 流式服务、CPU KV Cache、INT4 打包和 Linear 实验，阅读 7 篇导读，修改逻辑块模拟，并完成调度、切分、通信预算的手算。GPU 内核与实际服务性能需要对应设备验证。
 
 **需要先掌握 CUDA，或同时拥有 A100 和 C500 吗？**
 
@@ -681,7 +709,7 @@ zero2vllm/
 
 **“手写 mini-vLLM”与当前代码是什么关系？**
 
-它是课程的阶段目标。目前已完成数学参考和部分缓存逻辑，2.1 已交付最小 PyTorch Decoder；真实权重、缓存接入、调度器和服务继续逐节推进。
+它是课程的阶段目标。目前已完成数学参考和部分缓存逻辑，2.1 已交付最小 PyTorch Decoder，2.2 已完成真实权重加载与参考对齐，2.3 已实现同步请求管理和取消回收，2.4 已加入静态/连续准入与三种预算检查，2.5 已连接 CPU 物理块池、KV 张量与 Attention，2.6 已加入跨请求完整前缀共享、引用计数与逐出，2.7 已接入本机 HTTP、SSE、背压和断连取消；真实模型增量 KV、张量批执行与 GPU 服务继续逐节推进。
 
 **多卡专题需要我现在就有多张卡吗？**
 

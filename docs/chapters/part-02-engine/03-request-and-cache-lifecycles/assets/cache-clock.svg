@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1190" viewBox="0 0 1600 1190" role="img" aria-labelledby="title desc">
+<title id="title">输出数量与缓存长度差一步</title><desc id="desc">对照等待、准入、四次计算和收尾时的输出数量、缓存长度与逻辑额度。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1190" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1190" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.03  /  CACHE CLOCK</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">输出数量与缓存长度差一步</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >P = 3 个输入，最多生成 N = 4 项；准入时预留 P + N − 1 = 6 个位置。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="72" y="280" width="1456" height="660" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M96 280 H184" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="100" y="328" font-size="25" fill="#e8f2ff" >时刻</text>
+<text x="680" y="328" font-size="25" fill="#98aec9" >已提交输出 G</text>
+<text x="950" y="328" font-size="25" fill="#98aec9" >实际 KV 位置</text>
+<text x="1270" y="328" font-size="25" fill="#98aec9" >预留额度</text>
+<path d="M95 429 L1504 429" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="402" font-size="25" fill="#e8f2ff" >提交：WAITING</text>
+<text x="744" y="402" font-size="29" fill="#e8f2ff" class="mono" >0</text>
+<text x="1014" y="402" font-size="29" fill="#54dcff" class="mono" >0</text>
+<text x="1334" y="402" font-size="29" fill="#e8f2ff" class="mono" >0</text>
+<path d="M95 506 L1504 506" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="479" font-size="25" fill="#e8f2ff" >准入：RUNNING</text>
+<text x="744" y="479" font-size="29" fill="#e8f2ff" class="mono" >0</text>
+<text x="1014" y="479" font-size="29" fill="#54dcff" class="mono" >0</text>
+<text x="1334" y="479" font-size="29" fill="#e8f2ff" class="mono" >6</text>
+<path d="M95 583 L1504 583" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="556" font-size="25" fill="#e8f2ff" >第 1 项提交后</text>
+<text x="744" y="556" font-size="29" fill="#e8f2ff" class="mono" >1</text>
+<text x="1014" y="556" font-size="29" fill="#54dcff" class="mono" >3</text>
+<text x="1334" y="556" font-size="29" fill="#e8f2ff" class="mono" >6</text>
+<path d="M95 660 L1504 660" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="633" font-size="25" fill="#e8f2ff" >第 2 项提交后</text>
+<text x="744" y="633" font-size="29" fill="#e8f2ff" class="mono" >2</text>
+<text x="1014" y="633" font-size="29" fill="#54dcff" class="mono" >4</text>
+<text x="1334" y="633" font-size="29" fill="#e8f2ff" class="mono" >6</text>
+<path d="M95 737 L1504 737" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="710" font-size="25" fill="#e8f2ff" >第 3 项提交后</text>
+<text x="744" y="710" font-size="29" fill="#e8f2ff" class="mono" >3</text>
+<text x="1014" y="710" font-size="29" fill="#54dcff" class="mono" >5</text>
+<text x="1334" y="710" font-size="29" fill="#e8f2ff" class="mono" >6</text>
+<rect x="87" y="747" width="1424" height="66" rx="8" fill="#1b2c43" stroke="#35516c" />
+<path d="M95 814 L1504 814" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="787" font-size="25" fill="#e8f2ff" >第 4 项刚提交，尚未收尾</text>
+<text x="744" y="787" font-size="29" fill="#e8f2ff" class="mono" >4</text>
+<text x="1014" y="787" font-size="29" fill="#54dcff" class="mono" >6</text>
+<text x="1334" y="787" font-size="29" fill="#e8f2ff" class="mono" >6</text>
+<path d="M95 891 L1504 891" fill="none" stroke="#243b55" stroke-width="1" />
+<text x="100" y="864" font-size="25" fill="#57e5be" >FINISHED：已收尾</text>
+<text x="744" y="864" font-size="29" fill="#57e5be" class="mono" >4</text>
+<text x="1014" y="864" font-size="29" fill="#57e5be" class="mono" >0</text>
+<text x="1334" y="864" font-size="29" fill="#57e5be" class="mono" >0</text>
+<rect x="72" y="980" width="1456" height="95" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M96 980 H184" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="101" y="1037" font-size="29" fill="#ae9aff" class="mono" >KV = P + G − 1</text>
+<text x="470" y="1037" font-size="24" fill="#98aec9" >适用于已有输出、尚未收尾的时刻；最后预测出的 token 还没做前向。</text>
+<path d="M64 1114 L1536 1114" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1143" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1150" font-size="22" fill="#98aec9" >reserved 是逻辑准入账本，不是实际内存字节；最终状态中的缓存长度为 0。</text>
+<text x="1536" y="1150" font-size="19" fill="#59718e" class="mono" text-anchor="end">PREDICTED ≠ COMPUTED</text>
+</svg>

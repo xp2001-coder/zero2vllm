@@ -1,8 +1,8 @@
 # 从一次请求读懂 vLLM：请求、状态与张量
 
-对应 3.1、3.3—3.5、14.1、16.1。前置：Prefill/Decode、基本 Transformer 前向。状态：**专题导读与练习已提供；固定版本源码实验、A100/C500 实测待完成**。
+对应 3.1—3.5、14.1、16.1。前置：Prefill/Decode、基本 Transformer 前向。状态：**3.1—3.5 已提供固定源码阅读、调度/KV、执行张量、Runner 状态与配置解析实验及静态核验；本导读覆盖的其他专题及 A100/C500 实测继续建设**。
 
-学习后应能回答：请求现在在哪里，谁决定下一步工作，GPU 实际收到什么？本篇吸收本地 vLLM 第 2、3、6、7、20 讲；SGLang 第 2、3、5 讲用于对照。
+学习后应能回答：请求现在在哪里，谁决定下一步工作，GPU 实际收到什么？从 [3.1 完整课程](01-a-request-s-journey-through-vllm/README.md)开始，先沿固定源码追踪一条请求，再读 [3.2 调度与 KV 管理](02-scheduling-and-kv-management-in-vllm/README.md)的逐轮账本，最后在 [3.3 模型执行](03-model-execution-and-attention-backends/README.md)中核对输入、地址、数值与输出。再读 [3.4 Runner 演进](04-v1-and-modelrunner-evolution/README.md)与 [3.5 配置解析](05-resolving-configuration-and-capabilities/README.md)，把状态组织、图模式和字段来源连接起来。
 
 ## 1. 先建立三条线
 

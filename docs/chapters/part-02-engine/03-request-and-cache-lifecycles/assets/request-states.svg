@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200" role="img" aria-labelledby="title desc">
+<title id="title">请求有终点，资源也要有归处</title><desc id="desc">等待、运行与三种终态；零输出和初始化失败也有明确出口。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1200" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1200" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.03  /  LIFECYCLE</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">请求有终点，资源也要有归处</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >状态记录请求走到哪里；统一收尾负责交还它持有的额度与缓存。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="80" y="390" width="340" height="136" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M104 390 H192" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="104" y="438" font-size="30" fill="#6aa8ff" class="mono" >WAITING</text>
+<text x="104" y="483" font-size="23" fill="#98aec9" >已接收，尚未持有运行资源</text>
+<rect x="630" y="390" width="340" height="136" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M654 390 H742" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="654" y="438" font-size="30" fill="#54dcff" class="mono" >RUNNING</text>
+<text x="654" y="483" font-size="23" fill="#98aec9" >已准入，可执行 step</text>
+<rect x="1160" y="390" width="350" height="136" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M1184 390 H1272" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="1184" y="438" font-size="30" fill="#57e5be" class="mono" >FINISHED</text>
+<text x="1184" y="483" font-size="23" fill="#98aec9" >EOS 或达到输出数量</text>
+<rect x="300" y="750" width="390" height="136" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M324 750 H412" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="324" y="798" font-size="30" fill="#ae9aff" class="mono" >CANCELLED</text>
+<text x="324" y="843" font-size="23" fill="#98aec9" >保留已交付输出，释放资源</text>
+<rect x="1030" y="750" width="420" height="136" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M1054 750 H1142" stroke="#ff9b99" stroke-width="3" opacity=".95"/>
+<text x="1054" y="798" font-size="30" fill="#ff9b99" class="mono" >FAILED</text>
+<text x="1054" y="843" font-size="23" fill="#98aec9" >保留错误与轨迹，释放资源</text>
+<path d="M420 450 H625" fill="none" stroke="#54dcff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-54dcff)"/>
+<text x="455" y="429" font-size="22" fill="#54dcff" >admit 成功</text>
+<path d="M970 450 H1155" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<text x="992" y="429" font-size="22" fill="#57e5be" >完成条件</text>
+<path d="M250 390 V290 H1335 V385" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<text x="710" y="278" font-size="22" fill="#57e5be" class="mono" >max_new_tokens = 0</text>
+<path d="M245 526 V660 H430 V745" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<text x="290" y="616" font-size="22" fill="#ae9aff" >等待中取消</text>
+<path d="M745 526 V637 H585 V745" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<text x="775" y="604" font-size="22" fill="#ae9aff" >运行中取消</text>
+<path d="M900 526 V660 H1220 V745" fill="none" stroke="#ff9b99" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ff9b99)"/>
+<text x="1050" y="631" font-size="22" fill="#ff9b99" >计算异常</text>
+<path d="M145 526 V972 H1390 V891" fill="none" stroke="#ff9b99" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ff9b99)"/>
+<text x="350" y="958" font-size="22" fill="#ff9b99" >初始化失败：已预留的额度也必须归还</text>
+<rect x="80" y="1020" width="1430" height="85" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M104 1020 H192" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="110" y="1072" font-size="24" fill="#e8f2ff" >终态不会再次生成；重复 cancel / step 不得再次释放。RUNNING 可经过多次 step。</text>
+<path d="M64 1124 L1536 1124" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1153" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1160" font-size="22" fill="#98aec9" >教学状态名不等于 vLLM 完整枚举；本节采用单线程同步执行。</text>
+<text x="1536" y="1160" font-size="19" fill="#59718e" class="mono" text-anchor="end">ONE FINALIZATION</text>
+</svg>

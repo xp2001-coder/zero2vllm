@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.17.1",
+  "commit": "95c0f928cdeeaa21c4906e73cee6a156e1b3b995",
+  "hash_policy": "SHA-256 after CRLF-to-LF normalization",
+  "files": {
+    "LICENSE": {
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "docs/design/cuda_graphs.md": {
+      "sha256_lf": "97ac48202fc61db330bb751b7c7e67dff6b640032996e50fb82624360cafd80b"
+    },
+    "docs/design/model_runner_v2.md": {
+      "sha256_lf": "6cab4503299078b8e556b580d0c43125d46364089f3827c97115c1b1a273ad8d"
+    },
+    "vllm/config/compilation.py": {
+      "sha256_lf": "db7cd1fde4dca4396e4a07d36061043d94c9e43813740d8b850e108a0b1bbb8e"
+    },
+    "vllm/envs.py": {
+      "sha256_lf": "ec02032aca2f2a3f34e32a5fd99751e4cae6eb97f5d9bc61fcd7934b4e0ae206"
+    },
+    "vllm/v1/worker/gpu/buffer_utils.py": {
+      "sha256_lf": "ac40981db47be4bb35ccb2116b88497d1a2429f61a479b6e0e0169cbd5076587"
+    },
+    "vllm/v1/worker/gpu/cudagraph_utils.py": {
+      "sha256_lf": "fdbcd6943dbaefe26fb8c3a414ab87815622064c951d4dbccfec1b31e9e3fbc7"
+    },
+    "vllm/v1/worker/gpu/input_batch.py": {
+      "sha256_lf": "1e3ea79a55f0a03f33293ebac077ae02ceacca0565bbbc6dec1479608e83244d"
+    },
+    "vllm/v1/worker/gpu/model_runner.py": {
+      "sha256_lf": "5ab787ea8d504744e324b06c9464f1a67fc7f21b8da427f733a12236c452adcb"
+    },
+    "vllm/v1/worker/gpu/sample/sampler.py": {
+      "sha256_lf": "101c76d4dc0ab9bbd642efd7fb9aa8bff2669f6be051ea143d234c03472e00a3"
+    },
+    "vllm/v1/worker/gpu/states.py": {
+      "sha256_lf": "65a2ac3941ddf6477b8ffa02f511e47109d15c908b27774fc8074d0f40d07b71"
+    },
+    "vllm/v1/worker/gpu_worker.py": {
+      "sha256_lf": "8d51eac463840064b76d412fe8d5a8d32910b1c369b5cb3b8c5062744761c366"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "point-01",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_worker.py",
+      "symbol": "Worker.__init__",
+      "title": "读取 MRV2 开关",
+      "calls": [
+        "super().__init__",
+        "super",
+        "torch.set_float32_matmul_precision",
+        "ElasticEPScalingExecutor"
+      ]
+    },
+    {
+      "id": "point-02",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_worker.py",
+      "symbol": "Worker.init_device",
+      "title": "在 V1 Worker 内选择两种 runner",
+      "calls": [
+        "os.environ.pop",
+        "torch.cuda.device_count",
+        "torch.cuda.is_available"
+      ]
+    },
+    {
+      "id": "point-03",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/model_runner.py",
+      "symbol": "GPUModelRunner.finish_requests",
+      "title": "释放完成和抢占的执行侧状态",
+      "calls": [
+        "finished_req_ids.union",
+        "self.req_states.remove_request",
+        "self.encoder_cache.remove_request",
+        "self.prompt_logprobs_worker.remove_request"
+      ]
+    },
+    {
+      "id": "point-04",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/model_runner.py",
+      "symbol": "GPUModelRunner.add_requests",
+      "title": "新增或恢复状态",
+      "calls": [
+        "self.req_states.add_request",
+        "self.encoder_cache.add_request",
+        "self.model_state.add_request",
+        "self.block_tables.append_block_ids"
+      ]
+    },
+    {
+      "id": "point-05",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/model_runner.py",
+      "symbol": "GPUModelRunner.prepare_inputs",
+      "title": "按本轮执行顺序构造映射与张量",
+      "calls": [
+        "sorted",
+        "map",
+        "np.fromiter"
+      ]
+    },
+    {
+      "id": "point-06",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/model_runner.py",
+      "symbol": "GPUModelRunner.execute_model",
+      "title": "实际图模式与模型执行",
+      "calls": [
+        "self.finish_requests",
+        "self.free_states",
+        "self.add_requests",
+        "self.update_requests"
+      ]
+    },
+    {
+      "id": "point-07",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/model_runner.py",
+      "symbol": "GPUModelRunner.capture_model",
+      "title": "单独图捕获入口及 PP 限制",
+      "calls": [
+        "self.cudagraph_manager.needs_capture",
+        "logger.warning",
+        "logger.warning_once",
+        "time.perf_counter"
+      ]
+    },
+    {
+      "id": "point-08",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/states.py",
+      "symbol": "RequestState.add_request",
+      "title": "分配稳定状态槽与写入初值",
+      "calls": [
+        "self.free_indices.pop",
+        "self.total_len.stage_write_elem",
+        "self.all_token_ids.stage_write",
+        "self.num_computed_tokens.stage_write_elem"
+      ]
+    },
+    {
+      "id": "point-09",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/states.py",
+      "symbol": "RequestState.remove_request",
+      "title": "归还槽位",
+      "calls": [
+        "self.req_id_to_index.pop",
+        "self.index_to_req_id.pop",
+        "self.free_indices.append"
+      ]
+    },
+    {
+      "id": "point-10",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/buffer_utils.py",
+      "symbol": "async_copy_to_gpu",
+      "title": "独立临时副本与异步拷贝",
+      "calls": [
+        "torch.from_numpy",
+        "torch.empty_like",
+        "x.pin_memory",
+        "out.copy_"
+      ]
+    },
+    {
+      "id": "point-11",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/buffer_utils.py",
+      "symbol": "StagedWriteTensor.stage_write",
+      "title": "记录变长增量",
+      "calls": [
+        "self._staged_write_indices.append",
+        "self._staged_write_starts.append",
+        "self._staged_write_contents.extend",
+        "self._staged_write_cu_lens.append"
+      ]
+    },
+    {
+      "id": "point-12",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/buffer_utils.py",
+      "symbol": "StagedWriteTensor.apply_write",
+      "title": "打包增量并分发写入",
+      "calls": [
+        "self.write_indices.copy_to_uva",
+        "self.write_starts.copy_to_uva",
+        "self.write_cu_lens.copy_to_uva",
+        "async_tensor_h2d"
+      ]
+    },
+    {
+      "id": "point-13",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/buffer_utils.py",
+      "symbol": "_apply_write_kernel",
+      "title": "按段写入目标表",
+      "calls": [
+        "tl.program_id",
+        "tl.load"
+      ]
+    },
+    {
+      "id": "point-14",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/input_batch.py",
+      "symbol": "prepare_pos_seq_lens",
+      "title": "GPU 元数据入口",
+      "calls": [
+        "_prepare_pos_seq_lens_kernel[num_reqs + 1,]"
+      ]
+    },
+    {
+      "id": "point-15",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/input_batch.py",
+      "symbol": "_prepare_pos_seq_lens_kernel",
+      "title": "按状态映射读取已计算进度",
+      "calls": [
+        "tl.program_id",
+        "tl.num_programs",
+        "tl.range",
+        "tl.arange"
+      ]
+    },
+    {
+      "id": "point-16",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/input_batch.py",
+      "symbol": "expand_idx_mapping",
+      "title": "为多 logits 行展开状态索引",
+      "calls": [
+        "idx_mapping.new_empty",
+        "torch.empty",
+        "_expand_idx_mapping_kernel[num_reqs,]",
+        "triton.next_power_of_2"
+      ]
+    },
+    {
+      "id": "point-17",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/cudagraph_utils.py",
+      "symbol": "CudaGraphManager.capture_graph",
+      "title": "分段图或整图的捕获分派",
+      "calls": [
+        "cdiv",
+        "model_state.prepare_dummy_inputs",
+        "prepare_inputs_to_capture",
+        "make_num_tokens_across_dp"
+      ]
+    },
+    {
+      "id": "point-18",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/cudagraph_utils.py",
+      "symbol": "CudaGraphManager.get_cudagraph_runtime_mode",
+      "title": "每轮图模式及未捕获回退",
+      "calls": [
+        "self.get_cudagraph_size",
+        "self.cudagraph_mode.decode_mode",
+        "self.cudagraph_mode.mixed_mode"
+      ]
+    },
+    {
+      "id": "point-19",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/cudagraph_utils.py",
+      "symbol": "CudaGraphManager.run_fullgraph",
+      "title": "整图重放",
+      "calls": [
+        "get_offloader().sync_prev_onload",
+        "get_offloader",
+        "self.graphs[num_tokens].replay"
+      ]
+    },
+    {
+      "id": "point-20",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/cudagraph_utils.py",
+      "symbol": "get_cudagraph_sizes",
+      "title": "预设形状映射",
+      "calls": [
+        "sorted",
+        "cudagraph_sizes.items"
+      ]
+    },
+    {
+      "id": "point-21",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/sample/sampler.py",
+      "symbol": "Sampler.sample",
+      "title": "处理 logits 并进入 Gumbel 采样",
+      "calls": [
+        "torch.empty_like(logits, dtype=torch.float32).copy_",
+        "torch.empty_like",
+        "self.logit_bias_state.apply_logit_bias",
+        "self.penalties_state.apply_penalties"
+      ]
+    },
+    {
+      "id": "point-22",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu/sample/sampler.py",
+      "symbol": "Sampler.__call__",
+      "title": "可选 top-k logprobs 与输出",
+      "calls": [
+        "get_num_nans",
+        "self.sample",
+        "self.sampling_states.max_num_logprobs",
+        "cu_num_logits_np.tolist"
+      ]
+    }
+  ],
+  "structures": []
+}

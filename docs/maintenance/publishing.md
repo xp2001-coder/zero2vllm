@@ -77,7 +77,7 @@ Issue 表单与 PR 模板采用 GitHub 支持的目录约定；合入默认分�
 
 About 可使用本页建议的 Description；Topics 可选：`vllm`、`llm-inference`、`quantization`、`cuda`、`metax`、`gpu`、`tutorial`、`chinese`。当前没有独立文档站，Website 可留空。
 
-课程导航使用仓库内相对链接；工作流没有绑定个人账号。两份 README 的 Stars、Forks 和项目入口已指向 [xpxpxp2001xpxpxp/zero2vllm](https://github.com/xpxpxp2001xpxpxp/zero2vllm)。仓库转移或改名时同步更新这些徽章地址。当前不显示尚未开通的在线文档站入口。
+课程导航使用仓库内相对链接；工作流没有绑定个人账号。两份 README 的 Stars、Forks 和项目入口已指向 [xp2001-coder/zero2vllm](https://github.com/xp2001-coder/zero2vllm)。仓库转移或改名时同步更新这些徽章地址。当前不显示尚未开通的在线文档站入口。
 
 章节与特性清单修改后，按[贡献说明](../../CONTRIBUTING.md)生成并检查文档。核心命令为：
 

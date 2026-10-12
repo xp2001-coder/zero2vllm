@@ -1,0 +1,1559 @@
+{
+  "recorded_at": "2026-09-20T07:17:45.104329+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "ea9e60f8bd9b2989ed8a63a25b3d52ef19ab601d048b669f3dbfa4c2359c0497",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "verification_level": "cpu_config_policy_subset",
+  "upstream_executed": false,
+  "gpu_validated": false,
+  "cases": [
+    {
+      "name": "cli_over_file",
+      "checks": {
+        "final_3072": true,
+        "origin_cli": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 3072,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "cli",
+          "max_num_seqs": "v1_device_default",
+          "enable_prefix_caching": "v1_default",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "model_default",
+          "block_size": "cuda_platform_default"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 4096,
+            "phase": "file"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": 4096,
+            "after": 3072,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "v1_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 256,
+            "phase": "v1_device_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": false,
+            "phase": "model_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 16,
+            "phase": "cuda_platform_default"
+          }
+        ],
+        "graph_intent": "eligible_for_configuration_not_proven_active",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      }
+    },
+    {
+      "name": "false_is_explicit",
+      "checks": {
+        "false_retained": true,
+        "unset_defaults_true": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 2048,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": false,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "v1_device_usage_default",
+          "max_num_seqs": "v1_device_default",
+          "enable_prefix_caching": "cli",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "model_default",
+          "block_size": "cuda_platform_default"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "file"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": true,
+            "after": false,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 2048,
+            "phase": "v1_device_usage_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 256,
+            "phase": "v1_device_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": false,
+            "phase": "model_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 16,
+            "phase": "cuda_platform_default"
+          }
+        ],
+        "graph_intent": "eligible_for_configuration_not_proven_active",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      }
+    },
+    {
+      "name": "v1_forces_chunking",
+      "checks": {
+        "false_becomes_true": true,
+        "reason_recorded": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 2048,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "v1_device_usage_default",
+          "max_num_seqs": "v1_device_default",
+          "enable_prefix_caching": "v1_default",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "model_default",
+          "block_size": "cuda_platform_default"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": false,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": false,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "v1_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 2048,
+            "phase": "v1_device_usage_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 256,
+            "phase": "v1_device_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": false,
+            "phase": "model_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 16,
+            "phase": "cuda_platform_default"
+          }
+        ],
+        "graph_intent": "eligible_for_configuration_not_proven_active",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      }
+    },
+    {
+      "name": "usage_and_memory_defaults",
+      "checks": {
+        "server_40": true,
+        "offline_40": true,
+        "server_80": true,
+        "offline_80": true,
+        "seqs": true
+      },
+      "passed": true,
+      "defaults": {
+        "40_server": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 2048,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "40_offline": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 8192,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "80_server": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 8192,
+          "max_num_seqs": 1024,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "80_offline": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 16384,
+          "max_num_seqs": 1024,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        }
+      }
+    },
+    {
+      "name": "engine_intent",
+      "checks": {
+        "auto_supported": true,
+        "auto_unsupported": true,
+        "auto_experimental": true,
+        "explicit_experimental": true,
+        "explicit_zero": true
+      },
+      "passed": true,
+      "decisions": {
+        "None_supported": {
+          "engine": "V1",
+          "reason": "supported feature"
+        },
+        "None_unsupported": {
+          "engine": "V0",
+          "reason": "automatic fallback: unsupported feature"
+        },
+        "None_experimental": {
+          "engine": "V0",
+          "reason": "automatic fallback: experimental feature"
+        },
+        "1_experimental": {
+          "engine": "V1",
+          "reason": "experimental opt-in"
+        },
+        "0_supported": {
+          "engine": "V0",
+          "reason": "explicit V0"
+        }
+      }
+    },
+    {
+      "name": "forced_unsupported_errors",
+      "checks": {
+        "rejects": true
+      },
+      "passed": true
+    },
+    {
+      "name": "cross_field_validation",
+      "checks": {
+        "rejects_budget_lt_seqs": true
+      },
+      "passed": true,
+      "expected_error": "token budget must be >= max_num_seqs"
+    },
+    {
+      "name": "model_limit",
+      "checks": {
+        "rejects_over_fixture_limit": true
+      },
+      "passed": true,
+      "expected_error": "model length exceeds this fixture limit; RoPE overrides are outside scope"
+    },
+    {
+      "name": "chunk_budget",
+      "checks": {
+        "small_budget_valid_for_chunked": true,
+        "unchunked_rejects": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 512,
+          "max_num_seqs": 16,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 16
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "cli",
+          "max_num_seqs": "cli",
+          "enable_prefix_caching": "v1_default",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "model_default",
+          "block_size": "cuda_platform_default"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 512,
+            "phase": "cli"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 16,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "v1_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": false,
+            "phase": "model_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 16,
+            "phase": "cuda_platform_default"
+          }
+        ],
+        "graph_intent": "eligible_for_configuration_not_proven_active",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      }
+    },
+    {
+      "name": "eager_intent",
+      "checks": {
+        "disabled_intent": true,
+        "default_not_claimed_active": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 2048,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": true,
+          "block_size": 16
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "v1_device_usage_default",
+          "max_num_seqs": "v1_device_default",
+          "enable_prefix_caching": "v1_default",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "cli",
+          "block_size": "cuda_platform_default"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": true,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "v1_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 2048,
+            "phase": "v1_device_usage_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 256,
+            "phase": "v1_device_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 16,
+            "phase": "cuda_platform_default"
+          }
+        ],
+        "graph_intent": "disabled",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      }
+    },
+    {
+      "name": "validation_stages",
+      "checks": {
+        "block_size_preserved": true,
+        "backend_check_still_pending": true
+      },
+      "passed": true,
+      "resolution": {
+        "values": {
+          "max_model_len": 4096,
+          "max_num_batched_tokens": 2048,
+          "max_num_seqs": 256,
+          "enable_prefix_caching": true,
+          "enable_chunked_prefill": true,
+          "enforce_eager": false,
+          "block_size": 7
+        },
+        "origins": {
+          "max_model_len": "model_config",
+          "max_num_batched_tokens": "v1_device_usage_default",
+          "max_num_seqs": "v1_device_default",
+          "enable_prefix_caching": "v1_default",
+          "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+          "enforce_eager": "model_default",
+          "block_size": "cli"
+        },
+        "trace": [
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": null,
+            "phase": "declared_default"
+          },
+          {
+            "field": "block_size",
+            "before": null,
+            "after": 7,
+            "phase": "cli"
+          },
+          {
+            "field": "max_model_len",
+            "before": null,
+            "after": 4096,
+            "phase": "model_config"
+          },
+          {
+            "field": "enable_chunked_prefill",
+            "before": null,
+            "after": true,
+            "phase": "v1_policy: mandatory chunked prefill"
+          },
+          {
+            "field": "enable_prefix_caching",
+            "before": null,
+            "after": true,
+            "phase": "v1_default"
+          },
+          {
+            "field": "max_num_batched_tokens",
+            "before": null,
+            "after": 2048,
+            "phase": "v1_device_usage_default"
+          },
+          {
+            "field": "max_num_seqs",
+            "before": null,
+            "after": 256,
+            "phase": "v1_device_default"
+          },
+          {
+            "field": "enforce_eager",
+            "before": null,
+            "after": false,
+            "phase": "model_default"
+          }
+        ],
+        "graph_intent": "eligible_for_configuration_not_proven_active",
+        "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+        "runtime_checks_pending": [
+          "model loading",
+          "backend dimensions/dtype",
+          "cache capacity",
+          "capture and replay",
+          "numerical validation"
+        ]
+      },
+      "note": "Value 7 is not validated for FlashAttention; acceptance by this stage does not make it usable."
+    },
+    {
+      "name": "unverified_platform",
+      "checks": {
+        "refuses_cuda_defaults_as_maca_evidence": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "source_inspection": [
+    {
+      "passed": true,
+      "errors": [],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "matched": true
+        },
+        {
+          "path": "vllm/config.py",
+          "sha256_lf": "016f1281a0519c636bace104012ff8d1c199db89aba190d6d9cd810d67c91a48",
+          "matched": true
+        },
+        {
+          "path": "vllm/engine/arg_utils.py",
+          "sha256_lf": "65dfb922f57b5b242ac226024ae6a8041cc141b5b003831ea0d372d37d9e1caa",
+          "matched": true
+        },
+        {
+          "path": "vllm/entrypoints/cli/serve.py",
+          "sha256_lf": "380807dd51758194ce3281d0b61ca2cb106e05aeae4034a7bd5b9e3ba2645c3a",
+          "matched": true
+        },
+        {
+          "path": "vllm/entrypoints/llm.py",
+          "sha256_lf": "c94f05c95a988bf842e2efc6704a6f0cb735267bcd603ebad7b19da008250ac9",
+          "matched": true
+        },
+        {
+          "path": "vllm/envs.py",
+          "sha256_lf": "5bd0b822bd6fbce1f7f5090dd0177eca0e1a7ed5af4b8135851042f04a82a05f",
+          "matched": true
+        },
+        {
+          "path": "vllm/platforms/cuda.py",
+          "sha256_lf": "f2a80d4df5733f5d03a5ca2861545eb8ada75df75260d9b6a665b699e2a91681",
+          "matched": true
+        },
+        {
+          "path": "vllm/utils.py",
+          "sha256_lf": "3beb162b7a50f9df211cfeabcdd0ec423d03395ef230816a7fc3cffeffdb479d",
+          "matched": true
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "point-01",
+          "stage": "read",
+          "path": "vllm/utils.py",
+          "symbol": "FlexibleArgumentParser.parse_args",
+          "title": "参数归一化与最终解析",
+          "calls": [
+            "ValueError",
+            "self._pull_args_from_config",
+            "arg.startswith",
+            "arg.split"
+          ],
+          "line": 1334,
+          "end_line": 1369,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/utils.py#L1334",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "ValueError",
+              "line": 1343
+            },
+            {
+              "target": "self._pull_args_from_config",
+              "line": 1349
+            },
+            {
+              "target": "arg.startswith",
+              "line": 1354
+            },
+            {
+              "target": "arg.split",
+              "line": 1356
+            },
+            {
+              "target": "arg.startswith",
+              "line": 1362
+            }
+          ]
+        },
+        {
+          "id": "point-02",
+          "stage": "read",
+          "path": "vllm/utils.py",
+          "symbol": "FlexibleArgumentParser._pull_args_from_config",
+          "title": "配置文件参数排在显式 CLI 前",
+          "calls": [
+            "args.count",
+            "args.index",
+            "ValueError",
+            "self._load_config_file"
+          ],
+          "line": 1383,
+          "end_line": 1456,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/utils.py#L1383",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "args.count",
+              "line": 1417
+            },
+            {
+              "target": "args.index",
+              "line": 1420
+            },
+            {
+              "target": "ValueError",
+              "line": 1422
+            },
+            {
+              "target": "self._load_config_file",
+              "line": 1427
+            },
+            {
+              "target": "ValueError",
+              "line": 1440
+            }
+          ]
+        },
+        {
+          "id": "point-03",
+          "stage": "read",
+          "path": "vllm/utils.py",
+          "symbol": "FlexibleArgumentParser._load_config_file",
+          "title": "YAML 转为参数序列",
+          "calls": [
+            "file_path.split",
+            "ValueError",
+            "open",
+            "yaml.safe_load"
+          ],
+          "line": 1458,
+          "end_line": 1503,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/utils.py#L1458",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "file_path.split",
+              "line": 1471
+            },
+            {
+              "target": "ValueError",
+              "line": 1473
+            },
+            {
+              "target": "open",
+              "line": 1482
+            },
+            {
+              "target": "yaml.safe_load",
+              "line": 1483
+            }
+          ]
+        },
+        {
+          "id": "point-04",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "EngineArgs.from_cli_args",
+          "title": "Namespace 到 EngineArgs",
+          "calls": [
+            "dataclasses.fields",
+            "cls"
+          ],
+          "line": 968,
+          "end_line": 973,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L968",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "dataclasses.fields",
+              "line": 970
+            },
+            {
+              "target": "cls",
+              "line": 972
+            }
+          ]
+        },
+        {
+          "id": "point-05",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "EngineArgs.create_model_config",
+          "title": "模型配置构造",
+          "calls": [
+            "check_gguf_file",
+            "ModelConfig",
+            "cast"
+          ],
+          "line": 975,
+          "end_line": 1026,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L975",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "check_gguf_file",
+              "line": 977
+            },
+            {
+              "target": "ModelConfig",
+              "line": 987
+            },
+            {
+              "target": "cast",
+              "line": 992
+            }
+          ]
+        },
+        {
+          "id": "point-06",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "EngineArgs.create_engine_config",
+          "title": "能力判断、默认值与配置聚合",
+          "calls": [
+            "current_platform.pre_register_and_update",
+            "DeviceConfig",
+            "self.create_model_config",
+            "envs.is_set"
+          ],
+          "line": 1078,
+          "end_line": 1290,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L1078",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "current_platform.pre_register_and_update",
+              "line": 1096
+            },
+            {
+              "target": "DeviceConfig",
+              "line": 1098
+            },
+            {
+              "target": "self.create_model_config",
+              "line": 1099
+            },
+            {
+              "target": "envs.is_set",
+              "line": 1107
+            },
+            {
+              "target": "envs.is_set",
+              "line": 1112
+            }
+          ]
+        },
+        {
+          "id": "point-07",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "EngineArgs._is_v1_supported_oracle",
+          "title": "V1 兼容性分支",
+          "calls": [
+            "_raise_or_fallback"
+          ],
+          "line": 1292,
+          "end_line": 1499,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L1292",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "_raise_or_fallback",
+              "line": 1300
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1307
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1312
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1318
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1323
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1328
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1333
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1340
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1354
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1371
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1377
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1384
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1391
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1398
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1404
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1413
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1419
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1440
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1459
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1464
+            },
+            {
+              "target": "_raise_or_fallback",
+              "line": 1481
+            }
+          ]
+        },
+        {
+          "id": "point-08",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "EngineArgs._set_default_args_v1",
+          "title": "强制项、None 默认值与设备/用途默认",
+          "calls": [
+            "current_platform.get_device_total_memory",
+            "logger.debug"
+          ],
+          "line": 1565,
+          "end_line": 1624,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L1565",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "current_platform.get_device_total_memory",
+              "line": 1591
+            },
+            {
+              "target": "logger.debug",
+              "line": 1616
+            },
+            {
+              "target": "logger.debug",
+              "line": 1623
+            }
+          ]
+        },
+        {
+          "id": "point-09",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "_raise_or_fallback",
+          "title": "不支持功能：显式报错或自动回退",
+          "calls": [
+            "envs.is_set",
+            "NotImplementedError",
+            "logger.warning"
+          ],
+          "line": 1649,
+          "end_line": 1658,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L1649",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "envs.is_set",
+              "line": 1650
+            },
+            {
+              "target": "NotImplementedError",
+              "line": 1651
+            },
+            {
+              "target": "logger.warning",
+              "line": 1658
+            }
+          ]
+        },
+        {
+          "id": "point-10",
+          "stage": "read",
+          "path": "vllm/engine/arg_utils.py",
+          "symbol": "_warn_or_fallback",
+          "title": "实验功能：显式尝试或自动回退",
+          "calls": [
+            "envs.is_set",
+            "logger.warning",
+            "logger.info"
+          ],
+          "line": 1661,
+          "end_line": 1673,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/engine/arg_utils.py#L1661",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "envs.is_set",
+              "line": 1662
+            },
+            {
+              "target": "logger.warning",
+              "line": 1663
+            },
+            {
+              "target": "logger.info",
+              "line": 1669
+            }
+          ]
+        },
+        {
+          "id": "point-11",
+          "stage": "read",
+          "path": "vllm/config.py",
+          "symbol": "SchedulerConfig.__post_init__",
+          "title": "补全调度字段与派生值",
+          "calls": [
+            "logger.warning",
+            "logger.info"
+          ],
+          "line": 1954,
+          "end_line": 2020,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/config.py#L1954",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "logger.warning",
+              "line": 1957
+            },
+            {
+              "target": "logger.warning",
+              "line": 1963
+            },
+            {
+              "target": "logger.info",
+              "line": 2003
+            },
+            {
+              "target": "logger.info",
+              "line": 2013
+            }
+          ]
+        },
+        {
+          "id": "point-12",
+          "stage": "read",
+          "path": "vllm/config.py",
+          "symbol": "SchedulerConfig._verify_args",
+          "title": "跨字段约束",
+          "calls": [
+            "ValueError"
+          ],
+          "line": 2022,
+          "end_line": 2072,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/config.py#L2022",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "ValueError",
+              "line": 2025
+            },
+            {
+              "target": "ValueError",
+              "line": 2034
+            },
+            {
+              "target": "ValueError",
+              "line": 2040
+            },
+            {
+              "target": "ValueError",
+              "line": 2046
+            },
+            {
+              "target": "ValueError",
+              "line": 2052
+            },
+            {
+              "target": "ValueError",
+              "line": 2057
+            },
+            {
+              "target": "ValueError",
+              "line": 2061
+            },
+            {
+              "target": "ValueError",
+              "line": 2069
+            }
+          ]
+        },
+        {
+          "id": "point-13",
+          "stage": "read",
+          "path": "vllm/config.py",
+          "symbol": "VllmConfig.__post_init__",
+          "title": "配置交叉验证及平台更新",
+          "calls": [
+            "self.model_config.verify_async_output_proc",
+            "self.model_config.verify_with_parallel_config",
+            "self.cache_config.verify_with_parallel_config",
+            "self.lora_config.verify_with_cache_config"
+          ],
+          "line": 3844,
+          "end_line": 3950,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/config.py#L3844",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "self.model_config.verify_async_output_proc",
+              "line": 3848
+            },
+            {
+              "target": "self.model_config.verify_with_parallel_config",
+              "line": 3851
+            },
+            {
+              "target": "self.cache_config.verify_with_parallel_config",
+              "line": 3854
+            },
+            {
+              "target": "self.lora_config.verify_with_cache_config",
+              "line": 3857
+            }
+          ]
+        },
+        {
+          "id": "point-14",
+          "stage": "read",
+          "path": "vllm/config.py",
+          "symbol": "ModelConfig._verify_cuda_graph",
+          "title": "图模式相关调整",
+          "calls": [
+            "current_platform.is_rocm",
+            "logger.warning"
+          ],
+          "line": 835,
+          "end_line": 846,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/config.py#L835",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "current_platform.is_rocm",
+              "line": 842
+            },
+            {
+              "target": "logger.warning",
+              "line": 843
+            }
+          ]
+        },
+        {
+          "id": "point-15",
+          "stage": "read",
+          "path": "vllm/platforms/cuda.py",
+          "symbol": "CudaPlatformBase.check_and_update_config",
+          "title": "CUDA 的 worker 与块长默认值",
+          "calls": [
+            "NotImplementedError",
+            "is_flashmla_supported",
+            "logger.info"
+          ],
+          "line": 109,
+          "end_line": 166,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/platforms/cuda.py#L109",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "NotImplementedError",
+              "line": 118
+            },
+            {
+              "target": "is_flashmla_supported",
+              "line": 154
+            },
+            {
+              "target": "logger.info",
+              "line": 157
+            },
+            {
+              "target": "logger.info",
+              "line": 162
+            }
+          ]
+        },
+        {
+          "id": "point-16",
+          "stage": "read",
+          "path": "vllm/envs.py",
+          "symbol": "is_set",
+          "title": "区分未设置和显式设置",
+          "calls": [
+            "AttributeError"
+          ],
+          "line": 746,
+          "end_line": 750,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/envs.py#L746",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "AttributeError",
+              "line": 750
+            }
+          ]
+        },
+        {
+          "id": "point-17",
+          "stage": "read",
+          "path": "vllm/envs.py",
+          "symbol": "set_vllm_use_v1",
+          "title": "记录已作出的引擎选择",
+          "calls": [
+            "is_set",
+            "ValueError"
+          ],
+          "line": 753,
+          "end_line": 759,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/envs.py#L753",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "is_set",
+              "line": 754
+            },
+            {
+              "target": "ValueError",
+              "line": 755
+            }
+          ]
+        }
+      ],
+      "structures": [],
+      "verification_level": "static_source_inspection",
+      "executed_upstream_code": false,
+      "gpu_validated": false,
+      "repository": "https://github.com/vllm-project/vllm",
+      "tag": "v0.8.5",
+      "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+      "downloaded": []
+    }
+  ]
+}

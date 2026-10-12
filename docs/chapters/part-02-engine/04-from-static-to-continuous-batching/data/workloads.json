@@ -1,0 +1,66 @@
+{
+  "model": {"seed": 7, "max_context": 32, "vocab_size": 16, "width": 8},
+  "cases": [
+    {
+      "name": "mixed_lengths",
+      "description": "Long A holds a static cohort open after short B finishes; C and D arrive later.",
+      "limits": {"capacity_tokens": 32, "max_running": 2, "max_tokens_per_round": 8},
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 6},
+        {"id": "b", "arrival": 0, "prompt": [4, 2], "max_new_tokens": 2},
+        {"id": "c", "arrival": 1, "prompt": [5, 6], "max_new_tokens": 2},
+        {"id": "d", "arrival": 2, "prompt": [3, 1, 2], "max_new_tokens": 2}
+      ]
+    },
+    {
+      "name": "token_pressure",
+      "description": "Two active requests cannot both prefill under a three-token iteration budget.",
+      "limits": {"capacity_tokens": 32, "max_running": 2, "max_tokens_per_round": 3},
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 4},
+        {"id": "b", "arrival": 0, "prompt": [4, 2], "max_new_tokens": 3},
+        {"id": "c", "arrival": 1, "prompt": [5, 6], "max_new_tokens": 2}
+      ]
+    },
+    {
+      "name": "fifo_capacity",
+      "description": "A reserves six of eight positions; head B needs five, follower C only one.",
+      "limits": {"capacity_tokens": 8, "max_running": 3, "max_tokens_per_round": 8},
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 4},
+        {"id": "b", "arrival": 0, "prompt": [2, 3, 4], "max_new_tokens": 3},
+        {"id": "c", "arrival": 0, "prompt": [1], "max_new_tokens": 1}
+      ]
+    },
+    {
+      "name": "staggered_arrivals",
+      "description": "The engine is genuinely idle before the second request arrives.",
+      "limits": {"capacity_tokens": 16, "max_running": 2, "max_tokens_per_round": 8},
+      "requests": [
+        {"id": "early", "arrival": 0, "prompt": [1], "max_new_tokens": 1},
+        {"id": "late", "arrival": 4, "prompt": [4, 2], "max_new_tokens": 2}
+      ]
+    },
+    {
+      "name": "stop_and_cancel",
+      "description": "Running cancellation, waiting cancellation, EOS and zero output share the same boundary clock.",
+      "limits": {"capacity_tokens": 24, "max_running": 2, "max_tokens_per_round": 6},
+      "requests": [
+        {"id": "cancel_running", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 6, "cancel_at": 2},
+        {"id": "cancel_waiting", "arrival": 0, "prompt": [4, 2], "max_new_tokens": 3, "cancel_at": 0},
+        {"id": "eos", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 5, "eos_token_id": 14},
+        {"id": "zero", "arrival": 1, "prompt": [1, 2, 3, 4], "max_new_tokens": 0}
+      ]
+    },
+    {
+      "name": "long_prefill_turn",
+      "description": "A whole four-token prefill eventually gets first choice despite two decoders.",
+      "limits": {"capacity_tokens": 32, "max_running": 3, "max_tokens_per_round": 4},
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1], "max_new_tokens": 6},
+        {"id": "b", "arrival": 0, "prompt": [2], "max_new_tokens": 6},
+        {"id": "long", "arrival": 1, "prompt": [3, 4, 5, 6], "max_new_tokens": 2}
+      ]
+    }
+  ]
+}

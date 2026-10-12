@@ -1,0 +1,7 @@
+{
+  "mode": "NONE",
+  "bucket": null,
+  "num_actual_tokens": 4,
+  "reason": "mode disables graph for this batch"
+}
+Dispatch policy illustration only; piecewise wrapper readiness and GPU execution are outside scope.

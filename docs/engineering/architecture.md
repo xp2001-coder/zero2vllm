@@ -29,7 +29,7 @@ flowchart TD
     I --> J
 ```
 
-上图是目标架构。当前已实现 CPU 参考、逻辑块分配、配置检查、环境清单和首个实验；2.1 已实现 CPU PyTorch 多层 Decoder；请求调度、真实权重、缓存接入及 GPU 算子适配继续推进。
+上图是目标架构。当前已实现 CPU 参考、逻辑块分配、配置检查、环境清单和首个实验；2.1 已实现 CPU PyTorch 多层 Decoder，2.2 已完成真实权重加载与参考对齐；2.3 已实现同步请求管理、Tiny KV 回收与真实模型封装；2.4 已加入静态/连续准入与三种预算约束；2.5 已实现 CPU KV 张量池、整块准入与分页读取；2.6 已加入完整前缀共享、哈希隔离、引用计数与闲置块逐出；2.7 已连接本机 HTTP 服务、SSE 客户端、有界队列与断连取消；真实模型增量缓存、张量批执行及 GPU 算子适配继续推进。
 
 ### 教学层
 
@@ -54,12 +54,14 @@ NVIDIA 路径使用上游 vLLM；沐曦路径使用官方 vLLM-MetaX 软件栈�
 | 模块 | 职责 | 状态 |
 | --- | --- | --- |
 | `reference/attention.py` | 单头随机模型、完整计算、缓存计算、生成、工作量计数 | 已实现 |
-| `reference/blocks.py` | 逻辑 token 到物理块编号的映射，分配与回收 | 已实现、独立模拟 |
+| `reference/blocks.py` | 逻辑 token 到物理块编号的映射，分配与回收 | 已实现；2.5 复用到 CPU 张量池 |
 | `profiles.py` | 显式选择后端、检查版本记录、预览容器内启动参数 | 已实现 |
 | `environment.py` | 采集 Python、平台、包版本和工具是否在 PATH 中 | 已实现 |
 | `scripts/docs/course.py` | 从结构化目录生成标记区段，检查文档漂移、链接和引用 | 已实现 |
-| `engine/` | 请求状态、调度、执行推进、结束与取消 | 规划 |
-| `modeling/` | 最小 PyTorch Decoder 与逐层对齐；真实权重加载待做 | 2.1 已完成 CPU 验证 |
+| `engine/` | 请求生命周期、静态/连续准入、三种预算、分页与共享前缀 runner | 2.3—2.6 CPU 已验证；逐请求串行执行，共享仍按完整请求收费 |
+| `serving/` | HTTP/ASGI、异步结果、有界队列、SSE 编解码、断连与超时 | 2.7 CPU 与真实本机 HTTP 已验证；独立就绪驱动器调用 LifecycleEngine，同步前向仍会阻塞事件循环 |
+| `cache/` | 独占分页与共享前缀存储、CPU K/V 张量、有效前缀、引用计数与逐出 | 2.5—2.6 CPU 已验证；gather 参考执行，无融合 GPU 算子 |
+| `modeling/` | 最小 PyTorch Decoder、Llama 子集、严格 safetensors 加载与逐层对齐 | 2.1—2.2 已完成 CPU 验证 |
 | `backends/` | 设备能力、注意力与其他算子、同步、图执行 | 规划 |
 | `benchmarks/` | 负载生成、流式时间记录、指标汇总 | 规划 |
 
@@ -93,11 +95,11 @@ MACA 的设备 API 可能呈现 CUDA 风格。不能只凭 `torch.cuda.is_availa
 
 ## 6. 模型与数值基准
 
-第一课 `next-token-demo` 使用五个教学词项与显式设置的二维权重，便于手算；KV Cache 引导实验使用固定随机权重和小词表。两者验证数学行为。真实模型首选候选为 Qwen3-0.6B；7B/8B 级模型作为后续性能负载，均需两平台验证。
+第一课 `next-token-demo` 使用五个教学词项与显式设置的二维权重，便于手算；KV Cache 引导实验使用固定随机权重和小词表。两者验证数学行为。2.2 已使用固定 revision 的 SmolLM2-135M，在 CPU 上完成真实权重加载和逐层对齐。GPU 部署首选候选仍为 Qwen3-0.6B；7B/8B 级模型作为后续性能负载，均需两平台验证。
 
 参考与优化实现对比时固定权重、输入 token、模型位置、dtype 和采样配置。优先逐步比较 logits，再比较贪心 token ID。浮点容差按 dtype 与实验观察制定，不要求 CPU 双精度与 GPU 半精度逐位一致。
 
-第一篇的 `1e-12` 容差用于 Python float 参考路径；2.1 分别使用 float64 的 atol=1e-12/rtol=1e-10 与 float32 的 atol=1e-5/rtol=1e-4，不外推至 GPU 低精度。
+第一篇的 `1e-12` 容差用于 Python float 参考路径；2.1 分别使用 float64 的 atol=1e-12/rtol=1e-10 与 float32 的 atol=1e-5/rtol=1e-4。2.2 的 CPU float32 对照使用 atol=rtol=1e-4，并要求独立贪心生成的 ID 相同。这些标准不外推至 GPU 低精度。
 
 ## 7. 单卡部署约定
 

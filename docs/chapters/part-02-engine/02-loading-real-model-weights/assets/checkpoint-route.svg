@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1040" viewBox="0 0 1600 1040" role="img" aria-labelledby="title desc">
+<title id="title">把检查点装进自己的模型</title><desc id="desc">原创数据流图：固定 SmolLM2-135M revision，配置构建模型，safetensors 经过检查和转换装载参数，Tokenizer 产生输入 ID；所有路径进入 CPU 前向，再与 Transformers 对齐。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1040" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1040" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.02  /  CHECKPOINT</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">把检查点装进自己的模型</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >结构、参数和文本编码来自同一个 revision，分别进入各自的计算环节。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="264" width="550" height="36" rx="18" fill="#11243b" stroke="#54dcff" stroke-opacity=".5"/>
+<text x="339" y="288" font-size="18" fill="#54dcff" class="mono" text-anchor="middle">SmolLM2-135M / 93efa2f097d5…</text>
+<text x="650" y="290" font-size="23" fill="#98aec9" >固定版本下载一次  ·  后续只读本地快照</text>
+<rect x="64" y="335" width="430" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 335 H176" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="90" y="376" font-size="27" fill="#6aa8ff" class="mono" >config.json</text>
+<text x="90" y="418" font-size="22" fill="#98aec9" >30 层 · D=576 · Hq/Hkv=9/3</text>
+<path d="M494 393 H568" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<rect x="574" y="335" width="420" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M598 335 H686" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="602" y="377" font-size="27" fill="#e8f2ff" font-weight="600">按配置构建参数</text>
+<text x="602" y="419" font-size="22" fill="#98aec9" class="mono" >先确定每个张量的形状</text>
+<path d="M994 393 H1097" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<rect x="64" y="500" width="430" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 500 H176" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="90" y="541" font-size="27" fill="#ae9aff" class="mono" >model.safetensors</text>
+<text x="90" y="583" font-size="22" fill="#98aec9" >272 个张量 · BF16 存储</text>
+<path d="M494 558 H568" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<rect x="574" y="500" width="420" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M598 500 H686" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="602" y="542" font-size="27" fill="#e8f2ff" font-weight="600">映射、检查、复制</text>
+<text x="602" y="584" font-size="22" fill="#98aec9" class="mono" >key / shape / dtype / tied</text>
+<path d="M994 558 H1097" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<rect x="64" y="665" width="430" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 665 H176" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="90" y="706" font-size="27" fill="#57e5be" class="mono" >Tokenizer files</text>
+<text x="90" y="748" font-size="22" fill="#98aec9" >tokenizer.json + 特殊 token</text>
+<path d="M494 723 H568" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<rect x="574" y="665" width="420" height="116" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M598 665 H686" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="602" y="707" font-size="27" fill="#e8f2ff" font-weight="600">文本编码一次</text>
+<text x="602" y="749" font-size="22" fill="#98aec9" class="mono" >同一串 ID 供两条路径使用</text>
+<path d="M994 723 H1097" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<rect x="1104" y="335" width="432" height="446" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M1128 335 H1216" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="1136" y="382" font-size="31" fill="#54dcff" class="mono" font-weight="700">LlamaDecoder</text>
+<text x="1136" y="435" font-size="26" fill="#e8f2ff" >参数全部通过检查后</text>
+<text x="1136" y="474" font-size="26" fill="#e8f2ff" >才允许执行前向</text>
+<path d="M1136 510 L1504 510" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="1136" y="556" font-size="26" fill="#ae9aff" class="mono" >CPU / float32</text>
+<text x="1136" y="601" font-size="23" fill="#98aec9" class="mono" >Embedding → 30 blocks</text>
+<text x="1136" y="641" font-size="23" fill="#98aec9" class="mono" >→ Norm → LM Head</text>
+<rect x="1136" y="697" width="365" height="36" rx="18" fill="#11243b" stroke="#57e5be" stroke-opacity=".5"/>
+<text x="1318.5" y="721" font-size="18" fill="#57e5be" class="mono" text-anchor="middle">logits [B,T,49152]</text>
+<rect x="64" y="840" width="1472" height="100" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 840 H176" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="94" y="882" font-size="26" fill="#57e5be" font-weight="600">最后验收</text>
+<text x="270" y="882" font-size="28" fill="#e8f2ff" >我们的前向  ↔  Transformers 4.51.3</text>
+<text x="270" y="918" font-size="23" fill="#98aec9" >相同 ID、精度与生成条件；逐层数值 + 贪心 token 双重检查。</text>
+<path d="M64 968 L1536 968" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="997" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1004" font-size="22" fill="#98aec9" >权重下载与数值验证是两个步骤</text>
+<text x="1536" y="1004" font-size="19" fill="#59718e" class="mono" text-anchor="end">ORIGINAL / CPU REFERENCE</text>
+</svg>

@@ -1,0 +1,14 @@
+{
+  "description": "Fixed affine Q/DQ and requantization; no physical packing",
+  "x": [[-1.5, 0.0, 0.5, 2.5, 6.0]],
+  "source": {"scale": 0.5, "zero_point": 3, "qmin": 0, "qmax": 15},
+  "target": {"scale": 1.0, "zero_point": 2, "qmin": 0, "qmax": 15},
+  "expected": {
+    "q1": [[0, 3, 4, 8, 15]],
+    "dq1": [[-1.5, 0.0, 0.5, 2.5, 6.0]],
+    "q2": [[0, 2, 2, 4, 8]],
+    "dq2": [[-2.0, 0.0, 0.0, 2.0, 6.0]]
+  },
+  "rounding_order": {"x": 0.25, "correct_q": 3, "round_after_adding_z": 4},
+  "double_rounding": {"x": 0.625, "q1": 4, "dq1": 0.5, "q2_via_q1": 2, "q2_direct": 3}
+}

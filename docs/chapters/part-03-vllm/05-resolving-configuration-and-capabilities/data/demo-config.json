@@ -1,0 +1,7 @@
+{
+  "max-num-batched-tokens": 4096,
+  "max-num-seqs": 64,
+  "enable-prefix-caching": true,
+  "enable-chunked-prefill": false,
+  "enforce-eager": null
+}

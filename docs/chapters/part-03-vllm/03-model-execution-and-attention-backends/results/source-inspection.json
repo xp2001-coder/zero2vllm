@@ -1,0 +1,1055 @@
+{
+  "recorded_at": "2026-09-20T06:09:29.355972+00:00",
+  "python": "3.11.9",
+  "verification_level": "metadata_only",
+  "upstream_executed": false,
+  "full_llama_executed": false,
+  "gpu_validated": false,
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "1dbecde17e182d209217034e659c2921f0fc0e9cc588fbe2f6765da89c54d842",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "cases": [
+    {
+      "name": "packing",
+      "checks": {
+        "tokens": true,
+        "positions": true,
+        "slots": true,
+        "query_boundaries": true,
+        "seq_lengths": true,
+        "logit_rows": true
+      },
+      "passed": true,
+      "metadata": {
+        "requests": [
+          {
+            "request_id": "B",
+            "token_ids": [
+              20,
+              21,
+              22,
+              23
+            ],
+            "computed": 3,
+            "scheduled": 1,
+            "block_table": [
+              5
+            ]
+          },
+          {
+            "request_id": "A",
+            "token_ids": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "computed": 2,
+            "scheduled": 3,
+            "block_table": [
+              8,
+              3
+            ]
+          }
+        ],
+        "input_ids": [
+          23,
+          12,
+          13,
+          14
+        ],
+        "positions": [
+          3,
+          2,
+          3,
+          4
+        ],
+        "slot_mapping": [
+          23,
+          34,
+          35,
+          12
+        ],
+        "query_start_loc": [
+          0,
+          1,
+          4
+        ],
+        "seq_lens": [
+          4,
+          5
+        ],
+        "logits_indices": [
+          0,
+          3
+        ],
+        "num_actual_tokens": 4,
+        "num_input_tokens": 4
+      }
+    },
+    {
+      "name": "packing_reordered",
+      "checks": {
+        "tokens": true,
+        "positions": true,
+        "slots": true,
+        "boundaries": true,
+        "mapping": true
+      },
+      "passed": true,
+      "metadata": {
+        "requests": [
+          {
+            "request_id": "A",
+            "token_ids": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15
+            ],
+            "computed": 2,
+            "scheduled": 3,
+            "block_table": [
+              8,
+              3
+            ]
+          },
+          {
+            "request_id": "B",
+            "token_ids": [
+              20,
+              21,
+              22,
+              23
+            ],
+            "computed": 3,
+            "scheduled": 1,
+            "block_table": [
+              5
+            ]
+          }
+        ],
+        "input_ids": [
+          12,
+          13,
+          14,
+          23
+        ],
+        "positions": [
+          2,
+          3,
+          4,
+          3
+        ],
+        "slot_mapping": [
+          34,
+          35,
+          12,
+          23
+        ],
+        "query_start_loc": [
+          0,
+          3,
+          4
+        ],
+        "seq_lens": [
+          5,
+          4
+        ],
+        "logits_indices": [
+          2,
+          3
+        ],
+        "num_actual_tokens": 4,
+        "num_input_tokens": 4
+      }
+    }
+  ],
+  "passed": true,
+  "source_inspection": {
+    "passed": true,
+    "errors": [],
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "matched": true
+      },
+      {
+        "path": "vllm/attention/layer.py",
+        "sha256_lf": "a30eba2d2d772bb3b7c249fd868ac3f8e219f9c92bd9f8779db850532d1d74a6",
+        "matched": true
+      },
+      {
+        "path": "vllm/attention/selector.py",
+        "sha256_lf": "273ea7c302ff1aa990c8c7eb3efb798eef5f02733cbf9b06655a462d21ce3db5",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/layers/linear.py",
+        "sha256_lf": "97b3effe7efa1bb60aa48646ba623665b9280b23ec5510536f0d9bec23be635b",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/layers/utils.py",
+        "sha256_lf": "01adb903f6b6bd914a2113893961329e9643e4745ae070bbd7bf6ef874b06906",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/model_loader/__init__.py",
+        "sha256_lf": "482701210aa0067a7eba86f4447442d8b6bc98495c7c0917689fe3c0f2dbc562",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/model_loader/loader.py",
+        "sha256_lf": "c589396d8b537d4d3409fe098da551a453e5c6081ad9d34470f0e5df8dddb505",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/model_loader/utils.py",
+        "sha256_lf": "e3801236e0e57c30bfdd0b07081879933ae560c3aa3f9765d1582d3bcbe88e52",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/models/llama.py",
+        "sha256_lf": "62cf9d6f60d93725d744bff07ec9af18f822f241806754c99e357f3bbeae8ec0",
+        "matched": true
+      },
+      {
+        "path": "vllm/model_executor/models/registry.py",
+        "sha256_lf": "2b488c6c7e3b5d2ab0fb1913f6126e0df0b2266dada1576514092369037c3ebc",
+        "matched": true
+      },
+      {
+        "path": "vllm/platforms/cuda.py",
+        "sha256_lf": "f2a80d4df5733f5d03a5ca2861545eb8ada75df75260d9b6a665b699e2a91681",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/attention/backends/flash_attn.py",
+        "sha256_lf": "8a3fd8ed5ee95a3bd48ca0343d33a1f24f9c393f3d93fa67fcf847467a749e30",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/outputs.py",
+        "sha256_lf": "493f18df432b7f66674ccfc9c84bc7338a6c59a6cda714ae7f123dce59df4afb",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/worker/gpu_input_batch.py",
+        "sha256_lf": "da951185f97bad480c53a161a0c01d001f7248f980a00c97b5fe8734e0293b0c",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "sha256_lf": "cca495d4d86bcc389bd2167404d076d95c4d4b6ec473eb45012e43ebfcc9a41a",
+        "matched": true
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "exec01",
+        "stage": "load",
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "symbol": "GPUModelRunner.load_model",
+        "title": "Runner 发起模型加载",
+        "calls": [
+          "get_model"
+        ],
+        "line": 1328,
+        "end_line": 1349,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L1328",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "get_model",
+            "line": 1332
+          }
+        ]
+      },
+      {
+        "id": "exec02",
+        "stage": "load",
+        "path": "vllm/model_executor/model_loader/__init__.py",
+        "symbol": "get_model",
+        "title": "选择加载器并加载模型",
+        "calls": [
+          "get_model_loader",
+          "loader.load_model"
+        ],
+        "line": 12,
+        "end_line": 14,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/model_loader/__init__.py#L12",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "get_model_loader",
+            "line": 13
+          },
+          {
+            "target": "loader.load_model",
+            "line": 14
+          }
+        ]
+      },
+      {
+        "id": "exec03",
+        "stage": "load",
+        "path": "vllm/model_executor/model_loader/loader.py",
+        "symbol": "DefaultModelLoader.load_model",
+        "title": "初始化、写入权重、后处理与 eval",
+        "calls": [
+          "_initialize_model",
+          "model.load_weights",
+          "self.get_all_weights",
+          "_process_weights_after_loading",
+          "model.eval"
+        ],
+        "line": 446,
+        "end_line": 473,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/model_loader/loader.py#L446",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "_initialize_model",
+            "line": 452
+          },
+          {
+            "target": "model.load_weights",
+            "line": 455
+          },
+          {
+            "target": "self.get_all_weights",
+            "line": 456
+          },
+          {
+            "target": "_process_weights_after_loading",
+            "line": 471
+          },
+          {
+            "target": "model.eval",
+            "line": 473
+          }
+        ]
+      },
+      {
+        "id": "exec04",
+        "stage": "load",
+        "path": "vllm/model_executor/model_loader/loader.py",
+        "symbol": "_initialize_model",
+        "title": "解析并实例化模型类",
+        "calls": [
+          "get_model_architecture",
+          "model_class"
+        ],
+        "line": 114,
+        "end_line": 161,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/model_loader/loader.py#L114",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "get_model_architecture",
+            "line": 123
+          },
+          {
+            "target": "model_class",
+            "line": 133
+          },
+          {
+            "target": "model_class",
+            "line": 161
+          }
+        ]
+      },
+      {
+        "id": "exec05",
+        "stage": "load",
+        "path": "vllm/model_executor/model_loader/utils.py",
+        "symbol": "get_model_architecture",
+        "title": "配置中的架构名映射到注册类",
+        "calls": [
+          "ModelRegistry.resolve_model_cls"
+        ],
+        "line": 87,
+        "end_line": 117,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/model_loader/utils.py#L87",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "ModelRegistry.resolve_model_cls",
+            "line": 109
+          }
+        ]
+      },
+      {
+        "id": "exec06",
+        "stage": "load",
+        "path": "vllm/model_executor/models/registry.py",
+        "symbol": "_ModelRegistry.resolve_model_cls",
+        "title": "按架构列表解析实现",
+        "calls": [
+          "self._try_load_model_cls"
+        ],
+        "line": 467,
+        "end_line": 478,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/models/registry.py#L467",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self._try_load_model_cls",
+            "line": 474
+          }
+        ]
+      },
+      {
+        "id": "exec07",
+        "stage": "weight",
+        "path": "vllm/model_executor/models/llama.py",
+        "symbol": "LlamaModel.load_weights",
+        "title": "模型参数名到融合目标参数的映射",
+        "calls": [
+          "weight_loader"
+        ],
+        "line": 381,
+        "end_line": 445,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/models/llama.py#L381",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "weight_loader",
+            "line": 409
+          },
+          {
+            "target": "weight_loader",
+            "line": 430
+          },
+          {
+            "target": "weight_loader",
+            "line": 443
+          }
+        ]
+      },
+      {
+        "id": "exec08",
+        "stage": "weight",
+        "path": "vllm/model_executor/layers/linear.py",
+        "symbol": "QKVParallelLinear.weight_loader",
+        "title": "根据 shard_id 写入 Q/K/V 对应区域",
+        "calls": [
+          "param_data.narrow",
+          "param_data.copy_"
+        ],
+        "line": 947,
+        "end_line": 1132,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L947",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "param_data.copy_",
+            "line": 1003
+          },
+          {
+            "target": "param_data.narrow",
+            "line": 1100
+          },
+          {
+            "target": "param_data.narrow",
+            "line": 1117
+          },
+          {
+            "target": "param_data.copy_",
+            "line": 1132
+          }
+        ]
+      },
+      {
+        "id": "exec09",
+        "stage": "weight",
+        "path": "vllm/model_executor/model_loader/loader.py",
+        "symbol": "_process_weights_after_loading",
+        "title": "量化与注意力的加载后处理",
+        "calls": [
+          "quant_method.process_weights_after_loading",
+          "module.process_weights_after_loading"
+        ],
+        "line": 164,
+        "end_line": 190,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/model_loader/loader.py#L164",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "module.process_weights_after_loading",
+            "line": 170
+          },
+          {
+            "target": "quant_method.process_weights_after_loading",
+            "line": 180
+          },
+          {
+            "target": "module.process_weights_after_loading",
+            "line": 190
+          }
+        ]
+      },
+      {
+        "id": "exec10",
+        "stage": "linear",
+        "path": "vllm/model_executor/layers/linear.py",
+        "symbol": "ColumnParallelLinear.forward",
+        "title": "Linear 的运行入口",
+        "calls": [
+          "self.quant_method.apply"
+        ],
+        "line": 478,
+        "end_line": 494,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L478",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.quant_method.apply",
+            "line": 485
+          }
+        ]
+      },
+      {
+        "id": "exec11",
+        "stage": "linear",
+        "path": "vllm/model_executor/layers/linear.py",
+        "symbol": "UnquantizedLinearMethod.apply",
+        "title": "未量化 Linear 的 GEMM 分派",
+        "calls": [
+          "dispatch_unquantized_gemm"
+        ],
+        "line": 197,
+        "end_line": 202,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L197",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "dispatch_unquantized_gemm",
+            "line": 202
+          }
+        ]
+      },
+      {
+        "id": "exec12",
+        "stage": "linear",
+        "path": "vllm/model_executor/layers/utils.py",
+        "symbol": "dispatch_unquantized_gemm",
+        "title": "非 ROCm 路径返回 PyTorch linear",
+        "calls": [
+          "current_platform.is_rocm"
+        ],
+        "line": 96,
+        "end_line": 99,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/utils.py#L96",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "current_platform.is_rocm",
+            "line": 97
+          }
+        ]
+      },
+      {
+        "id": "exec13",
+        "stage": "batch",
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "symbol": "GPUModelRunner._update_states",
+        "title": "持久请求状态与本轮执行排列",
+        "calls": [
+          "self.input_batch.remove_request",
+          "self.input_batch.add_request",
+          "self.input_batch.condense",
+          "self.attn_metadata_builder.reorder_batch"
+        ],
+        "line": 285,
+        "end_line": 486,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L285",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.input_batch.remove_request",
+            "line": 307
+          },
+          {
+            "target": "self.input_batch.remove_request",
+            "line": 332
+          },
+          {
+            "target": "self.input_batch.add_request",
+            "line": 473
+          },
+          {
+            "target": "self.input_batch.condense",
+            "line": 477
+          },
+          {
+            "target": "self.attn_metadata_builder.reorder_batch",
+            "line": 482
+          }
+        ]
+      },
+      {
+        "id": "exec14",
+        "stage": "batch",
+        "path": "vllm/v1/worker/gpu_input_batch.py",
+        "symbol": "InputBatch.condense",
+        "title": "填补批次中的空位",
+        "calls": [
+          "self.block_table.move_row"
+        ],
+        "line": 451,
+        "end_line": 531,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_input_batch.py#L451",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.block_table.move_row",
+            "line": 492
+          }
+        ]
+      },
+      {
+        "id": "exec15",
+        "stage": "batch",
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "symbol": "GPUModelRunner._prepare_inputs",
+        "title": "token、位置、槽位与注意力元数据",
+        "calls": [
+          "np.repeat",
+          "np.cumsum",
+          "torch.index_select",
+          "self.attn_metadata_builder.build"
+        ],
+        "line": 488,
+        "end_line": 631,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L488",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "np.repeat",
+            "line": 510
+          },
+          {
+            "target": "np.cumsum",
+            "line": 518
+          },
+          {
+            "target": "np.repeat",
+            "line": 520
+          },
+          {
+            "target": "torch.index_select",
+            "line": 546
+          },
+          {
+            "target": "self.attn_metadata_builder.build",
+            "line": 596
+          }
+        ]
+      },
+      {
+        "id": "exec16",
+        "stage": "execute",
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "symbol": "GPUModelRunner.execute_model",
+        "title": "前向、选择 logits、采样和部分预填充过滤",
+        "calls": [
+          "self._update_states",
+          "self._prepare_inputs",
+          "set_forward_context",
+          "self.model",
+          "self.model.compute_logits",
+          "self.sampler",
+          "valid_sampled_token_ids[i].clear"
+        ],
+        "line": 1003,
+        "end_line": 1288,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L1003",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self._update_states",
+            "line": 1013
+          },
+          {
+            "target": "self._prepare_inputs",
+            "line": 1020
+          },
+          {
+            "target": "set_forward_context",
+            "line": 1091
+          },
+          {
+            "target": "self.model",
+            "line": 1092
+          },
+          {
+            "target": "self.model.compute_logits",
+            "line": 1110
+          },
+          {
+            "target": "self.sampler",
+            "line": 1119
+          },
+          {
+            "target": "self.sampler",
+            "line": 1129
+          },
+          {
+            "target": "valid_sampled_token_ids[i].clear",
+            "line": 1192
+          }
+        ]
+      },
+      {
+        "id": "exec17",
+        "stage": "execute",
+        "path": "vllm/model_executor/models/llama.py",
+        "symbol": "LlamaAttention.forward",
+        "title": "融合 QKV、RoPE、Attention 和输出投影",
+        "calls": [
+          "self.qkv_proj",
+          "qkv.split",
+          "self.rotary_emb",
+          "self.attn",
+          "self.o_proj"
+        ],
+        "line": 198,
+        "end_line": 208,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/models/llama.py#L198",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.qkv_proj",
+            "line": 203
+          },
+          {
+            "target": "qkv.split",
+            "line": 204
+          },
+          {
+            "target": "self.rotary_emb",
+            "line": 205
+          },
+          {
+            "target": "self.attn",
+            "line": 206
+          },
+          {
+            "target": "self.o_proj",
+            "line": 207
+          }
+        ]
+      },
+      {
+        "id": "exec18",
+        "stage": "execute",
+        "path": "vllm/model_executor/models/llama.py",
+        "symbol": "LlamaForCausalLM.compute_logits",
+        "title": "最终隐状态到词表 logits",
+        "calls": [
+          "self.logits_processor"
+        ],
+        "line": 560,
+        "end_line": 567,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/models/llama.py#L560",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.logits_processor",
+            "line": 565
+          }
+        ]
+      },
+      {
+        "id": "exec19",
+        "stage": "backend",
+        "path": "vllm/attention/selector.py",
+        "symbol": "get_attn_backend",
+        "title": "传入形状和 V1 条件",
+        "calls": [
+          "_cached_get_attn_backend"
+        ],
+        "line": 81,
+        "end_line": 104,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/attention/selector.py#L81",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "_cached_get_attn_backend",
+            "line": 95
+          }
+        ]
+      },
+      {
+        "id": "exec20",
+        "stage": "backend",
+        "path": "vllm/attention/selector.py",
+        "symbol": "_cached_get_attn_backend",
+        "title": "全局覆盖、环境变量与平台选择",
+        "calls": [
+          "current_platform.get_attn_backend_cls",
+          "resolve_obj_by_qualname"
+        ],
+        "line": 108,
+        "end_line": 154,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/attention/selector.py#L108",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "current_platform.get_attn_backend_cls",
+            "line": 148
+          },
+          {
+            "target": "resolve_obj_by_qualname",
+            "line": 154
+          }
+        ]
+      },
+      {
+        "id": "exec21",
+        "stage": "backend",
+        "path": "vllm/platforms/cuda.py",
+        "symbol": "CudaPlatformBase.get_attn_backend_cls",
+        "title": "CUDA 平台的 V1 后端分支",
+        "calls": [
+          "cls.has_device_capability"
+        ],
+        "line": 176,
+        "end_line": 293,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/platforms/cuda.py#L176",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "cls.has_device_capability",
+            "line": 220
+          },
+          {
+            "target": "cls.has_device_capability",
+            "line": 238
+          }
+        ]
+      },
+      {
+        "id": "exec22",
+        "stage": "cache",
+        "path": "vllm/v1/worker/gpu_model_runner.py",
+        "symbol": "GPUModelRunner.initialize_kv_cache",
+        "title": "按后端布局创建并绑定 KV 张量",
+        "calls": [
+          "self.attn_backend.get_kv_cache_shape",
+          "torch.zeros",
+          "bind_kv_cache"
+        ],
+        "line": 1689,
+        "end_line": 1733,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L1689",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.attn_backend.get_kv_cache_shape",
+            "line": 1718
+          },
+          {
+            "target": "torch.zeros",
+            "line": 1722
+          },
+          {
+            "target": "bind_kv_cache",
+            "line": 1730
+          }
+        ]
+      },
+      {
+        "id": "exec23",
+        "stage": "cache",
+        "path": "vllm/v1/attention/backends/flash_attn.py",
+        "symbol": "FlashAttentionBackend.get_kv_cache_shape",
+        "title": "本后端块大小约束与 KV 布局",
+        "calls": [
+          "ValueError"
+        ],
+        "line": 57,
+        "end_line": 65,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/attention/backends/flash_attn.py#L57",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "ValueError",
+            "line": 64
+          }
+        ]
+      },
+      {
+        "id": "exec24",
+        "stage": "backend",
+        "path": "vllm/v1/attention/backends/flash_attn.py",
+        "symbol": "FlashAttentionMetadataBuilder.build",
+        "title": "构造本后端执行元数据",
+        "calls": [
+          "FlashAttentionMetadata"
+        ],
+        "line": 297,
+        "end_line": 417,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/attention/backends/flash_attn.py#L297",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "FlashAttentionMetadata",
+            "line": 400
+          }
+        ]
+      },
+      {
+        "id": "exec25",
+        "stage": "execute",
+        "path": "vllm/attention/layer.py",
+        "symbol": "Attention.forward",
+        "title": "访问 forward context 并调用注意力入口",
+        "calls": [
+          "self.impl.forward",
+          "torch.ops.vllm.unified_attention_with_output"
+        ],
+        "line": 167,
+        "end_line": 234,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/attention/layer.py#L167",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.impl.forward",
+            "line": 214
+          },
+          {
+            "target": "torch.ops.vllm.unified_attention_with_output",
+            "line": 222
+          },
+          {
+            "target": "self.impl.forward",
+            "line": 230
+          }
+        ]
+      },
+      {
+        "id": "exec26",
+        "stage": "execute",
+        "path": "vllm/attention/layer.py",
+        "symbol": "unified_attention_with_output",
+        "title": "通过层名与上下文到达具体实现",
+        "calls": [
+          "get_forward_context",
+          "self.impl.forward"
+        ],
+        "line": 404,
+        "end_line": 424,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/attention/layer.py#L404",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "get_forward_context",
+            "line": 412
+          },
+          {
+            "target": "self.impl.forward",
+            "line": 416
+          }
+        ]
+      },
+      {
+        "id": "exec27",
+        "stage": "kernel",
+        "path": "vllm/v1/attention/backends/flash_attn.py",
+        "symbol": "FlashAttentionImpl.forward",
+        "title": "先写 KV，再调用变长分页 Attention",
+        "calls": [
+          "torch.ops._C_cache_ops.reshape_and_cache_flash",
+          "flash_attn_varlen_func"
+        ],
+        "line": 481,
+        "end_line": 622,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/attention/backends/flash_attn.py#L481",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "torch.ops._C_cache_ops.reshape_and_cache_flash",
+            "line": 527
+          },
+          {
+            "target": "flash_attn_varlen_func",
+            "line": 572
+          }
+        ]
+      }
+    ],
+    "structures": [
+      {
+        "id": "attn-meta",
+        "path": "vllm/v1/attention/backends/flash_attn.py",
+        "symbol": "FlashAttentionMetadata",
+        "fields": [
+          "num_actual_tokens",
+          "query_start_loc",
+          "seq_lens",
+          "block_table",
+          "slot_mapping",
+          "num_input_tokens"
+        ],
+        "matched": true,
+        "line": 69,
+        "declared_fields": [
+          "num_actual_tokens",
+          "max_query_len",
+          "query_start_loc",
+          "max_seq_len",
+          "seq_lens",
+          "block_table",
+          "slot_mapping",
+          "use_cascade",
+          "common_prefix_len",
+          "cu_prefix_query_lens",
+          "prefix_kv_lens",
+          "suffix_kv_lens",
+          "scheduler_metadata",
+          "prefix_scheduler_metadata",
+          "num_input_tokens",
+          "local_attn_metadata"
+        ]
+      },
+      {
+        "id": "runner-output",
+        "path": "vllm/v1/outputs.py",
+        "symbol": "ModelRunnerOutput",
+        "fields": [
+          "req_ids",
+          "req_id_to_index",
+          "sampled_token_ids"
+        ],
+        "matched": true,
+        "line": 76,
+        "declared_fields": [
+          "req_ids",
+          "req_id_to_index",
+          "sampled_token_ids",
+          "spec_token_ids",
+          "logprobs",
+          "prompt_logprobs_dict"
+        ]
+      }
+    ],
+    "verification_level": "static_source_inspection",
+    "executed_upstream_code": false,
+    "gpu_validated": false,
+    "repository": "https://github.com/vllm-project/vllm",
+    "tag": "v0.8.5",
+    "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+    "downloaded": []
+  }
+}

@@ -1,0 +1,306 @@
+{
+  "recorded_at": "2026-09-20T07:17:41.115269+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "ea9e60f8bd9b2989ed8a63a25b3d52ef19ab601d048b669f3dbfa4c2359c0497",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "verification_level": "cpu_semantics_and_math",
+  "upstream_executed": false,
+  "gpu_validated": false,
+  "cases": [
+    {
+      "name": "stable_rows",
+      "checks": {
+        "mapping_is_1_0": true,
+        "identity_preserved": true,
+        "unscheduled_C_unchanged": true
+      },
+      "passed": true,
+      "step": {
+        "request_ids": [
+          "B",
+          "A"
+        ],
+        "indices": [
+          1,
+          0
+        ],
+        "generations": [
+          1,
+          1
+        ]
+      },
+      "persistent_before": [
+        {
+          "request_id": "A",
+          "token_ids": [
+            10,
+            11,
+            12,
+            13,
+            14
+          ],
+          "computed": 2,
+          "generation": 1
+        },
+        {
+          "request_id": "B",
+          "token_ids": [
+            20,
+            21,
+            22,
+            23
+          ],
+          "computed": 3,
+          "generation": 1
+        },
+        {
+          "request_id": "C",
+          "token_ids": [
+            30,
+            31
+          ],
+          "computed": 0,
+          "generation": 1
+        }
+      ]
+    },
+    {
+      "name": "scatter_progress",
+      "checks": {
+        "A_5_B_4_C_0": true
+      },
+      "passed": true,
+      "computed_by_id": {
+        "A": 5,
+        "B": 4,
+        "C": 0
+      }
+    },
+    {
+      "name": "row_reuse",
+      "checks": {
+        "stale_step_rejected": true,
+        "new_D_untouched": true
+      },
+      "passed": true,
+      "note": "Generation is a teaching guard, not an asserted upstream field."
+    },
+    {
+      "name": "preempt_and_resume",
+      "checks": {
+        "A_reloaded_elsewhere": true,
+        "progress_reset_explicitly": true
+      },
+      "passed": true,
+      "old_slot": 0,
+      "resumed_slot": 2,
+      "preserved_history": [
+        10,
+        11,
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "name": "staged_writes",
+      "checks": {
+        "staging_did_not_mutate_base": true,
+        "matches_dense_update": true,
+        "pending_cleared": true
+      },
+      "passed": true,
+      "payload": {
+        "indices": [
+          0,
+          2
+        ],
+        "starts": [
+          2,
+          0
+        ],
+        "cumulative_ends": [
+          2,
+          3
+        ],
+        "contents": [
+          8,
+          3,
+          5
+        ],
+        "payload_bytes": 36,
+        "full_table_bytes": 72
+      },
+      "result": [
+        [
+          0,
+          0,
+          8,
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          5,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "name": "overlap_guard",
+      "checks": {
+        "ambiguous_writes_rejected": true
+      },
+      "passed": true,
+      "note": "No GPU ordering guarantee is invented."
+    },
+    {
+      "name": "copy_ownership",
+      "checks": {
+        "unsafe_reads_new_step": true,
+        "snapshot_preserves_old_step": true
+      },
+      "passed": true,
+      "unsafe": {
+        "source_now": [
+          9,
+          7
+        ],
+        "received": [
+          9,
+          7
+        ],
+        "expected_previous_step": [
+          3,
+          7
+        ]
+      },
+      "snapshot": {
+        "source_now": [
+          9,
+          7
+        ],
+        "received": [
+          3,
+          7
+        ],
+        "expected_previous_step": [
+          3,
+          7
+        ]
+      }
+    },
+    {
+      "name": "expanded_sampling_map",
+      "checks": {
+        "state_indices": true,
+        "local_positions": true
+      },
+      "passed": true,
+      "indices": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "local_positions": [
+        0,
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "sampling_algebra",
+      "checks": {
+        "gumbel_equivalence": true,
+        "topk_uses_full_normalizer": true
+      },
+      "passed": true,
+      "logits": [
+        2.0,
+        1.0,
+        0.0,
+        -1.0
+      ],
+      "uniforms": [
+        0.13,
+        0.81,
+        0.4,
+        0.73
+      ],
+      "gumbel_token": 1,
+      "top_logprobs": {
+        "indices": [
+          0,
+          1
+        ],
+        "logprobs": [
+          -0.44018969856119533,
+          -1.4401896985611953
+        ]
+      },
+      "note": "Fixed-uniform algebra only; not Triton RNG or statistical throughput validation."
+    },
+    {
+      "name": "graph_dispatch",
+      "checks": {
+        "ready_full": true,
+        "mixed_piecewise": true,
+        "uncaptured_eager": true,
+        "large_eager": true,
+        "decode_only_mixed_eager": true
+      },
+      "passed": true,
+      "decisions": {
+        "decode_ready": {
+          "mode": "FULL",
+          "bucket": 4,
+          "num_actual_tokens": 3,
+          "reason": "configured policy"
+        },
+        "mixed": {
+          "mode": "PIECEWISE",
+          "bucket": 4,
+          "num_actual_tokens": 4,
+          "reason": "configured policy"
+        },
+        "uncaptured": {
+          "mode": "NONE",
+          "bucket": null,
+          "num_actual_tokens": 3,
+          "reason": "full graph not captured"
+        },
+        "too_large": {
+          "mode": "NONE",
+          "bucket": null,
+          "num_actual_tokens": 9,
+          "reason": "no shape bucket"
+        },
+        "decode_only_mixed": {
+          "mode": "NONE",
+          "bucket": null,
+          "num_actual_tokens": 4,
+          "reason": "mode disables graph for this batch"
+        }
+      }
+    }
+  ],
+  "passed": true
+}

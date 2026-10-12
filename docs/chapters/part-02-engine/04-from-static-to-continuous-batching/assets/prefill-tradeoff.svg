@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1140" viewBox="0 0 1600 1140" role="img" aria-labelledby="title desc">
+<title id="title">长 prompt 获得机会，decode 等一轮</title><desc id="desc">连续策略的长prompt实验。第3轮只执行long的prefill，A和B从边界3到5之间没有新输出。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1140" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1140" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.04  /  PREFILL</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">长 prompt 获得机会，decode 等一轮</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >T=4，S=3：轮转让 long 先取预算；已有 KV 保留，下一轮继续。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="285" width="1472" height="445" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 285 H176" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="330" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=0</text>
+<text x="500" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=1</text>
+<text x="670" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=2</text>
+<text x="840" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=3</text>
+<text x="1010" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=4</text>
+<text x="1180" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=5</text>
+<text x="1350" y="336" font-size="24" fill="#98aec9" class="mono" text-anchor="middle">r=6</text>
+<rect x="757" y="353" width="163" height="300" rx="14" fill="#2b203b" stroke="#ae9aff" stroke-opacity=".6"/>
+<text x="100" y="414" font-size="30" fill="#54dcff" class="mono" font-weight="700">A</text>
+<rect x="258" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="331" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">P1</text>
+<rect x="428" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="501" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">D1</text>
+<rect x="598" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="671" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">D1</text>
+<rect x="768" y="379" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="841" y="415.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">hold</text>
+<rect x="938" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="1011" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">D1</text>
+<rect x="1108" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="1181" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">D1</text>
+<rect x="1278" y="379" width="146" height="57" rx="7" fill="#183049" stroke="#54dcff" stroke-width="1"/>
+<text x="1351" y="415.5" font-size="27" fill="#54dcff" class="mono" text-anchor="middle">D1</text>
+<text x="100" y="501" font-size="30" fill="#6aa8ff" class="mono" font-weight="700">B</text>
+<rect x="258" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="331" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">P1</text>
+<rect x="428" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="501" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">D1</text>
+<rect x="598" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="671" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">D1</text>
+<rect x="768" y="466" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="841" y="502.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">hold</text>
+<rect x="938" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="1011" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">D1</text>
+<rect x="1108" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="1181" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">D1</text>
+<rect x="1278" y="466" width="146" height="57" rx="7" fill="#183049" stroke="#6aa8ff" stroke-width="1"/>
+<text x="1351" y="502.5" font-size="27" fill="#6aa8ff" class="mono" text-anchor="middle">D1</text>
+<text x="100" y="588" font-size="30" fill="#ae9aff" class="mono" font-weight="700">LONG</text>
+<rect x="258" y="553" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="331" y="589.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">·</text>
+<rect x="428" y="553" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="501" y="589.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">hold</text>
+<rect x="598" y="553" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="671" y="589.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">hold</text>
+<rect x="768" y="553" width="146" height="57" rx="7" fill="#183049" stroke="#ae9aff" stroke-width="1"/>
+<text x="841" y="589.5" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">P4</text>
+<rect x="938" y="553" width="146" height="57" rx="7" fill="#183049" stroke="#ae9aff" stroke-width="1"/>
+<text x="1011" y="589.5" font-size="27" fill="#ae9aff" class="mono" text-anchor="middle">D1</text>
+<rect x="1108" y="553" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="1181" y="589.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">·</text>
+<rect x="1278" y="553" width="146" height="57" rx="7" fill="#0c192c" stroke="#2b405b" stroke-width="1"/>
+<text x="1351" y="589.5" font-size="27" fill="#59718e" class="mono" text-anchor="middle">·</text>
+<text x="100" y="694" font-size="23" fill="#98aec9" >hold：已活跃，本轮未选中；保留 KV。</text>
+<rect x="64" y="772" width="720" height="155" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 772 H176" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="88" y="808" font-size="22" fill="#98aec9" >long 从到达到首项输出</text>
+<text x="88" y="861" font-size="38" fill="#ae9aff" class="mono" font-weight="700">6 → 3  rounds</text>
+<text x="88" y="898" font-size="21" fill="#98aec9" >静态首项在边界 7；连续首项在边界 4</text>
+<rect x="816" y="772" width="720" height="155" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M840 772 H928" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="840" y="808" font-size="22" fill="#98aec9" >A / B 的最大相邻输出间隔</text>
+<text x="840" y="861" font-size="38" fill="#54dcff" class="mono" font-weight="700">1 → 2  rounds</text>
+<text x="840" y="898" font-size="21" fill="#98aec9" >连续策略输出边界：1, 2, 3, 5, 6, 7</text>
+<path d="M64 1029 L1536 1029" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1058" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1065" font-size="22" fill="#98aec9" >新请求首项更早；已有请求在整段 prefill 时让出一轮。</text>
+<text x="1536" y="1065" font-size="19" fill="#59718e" class="mono" text-anchor="end">NO CHUNKED PREFILL</text>
+</svg>

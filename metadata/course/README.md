@@ -15,7 +15,7 @@
 | 6 | [调度、批处理与重叠执行](parts/06-scheduling.json) | 6 |
 | 7 | [Attention 与高性能算子](parts/07-attention.json) | 7 |
 | 8 | [编译、CUDA Graph 与执行优化](parts/08-compilation.json) | 7 |
-| 9 | [量化算法、算子实现与推理加速](parts/09-quantization.json) | 11 |
+| 9 | [量化算法、格式、算子与推理系统](parts/09-quantization.json) | 14 |
 | 10 | [Speculative Decoding 推测解码](parts/10-speculation.json) | 9 |
 | 11 | [并行切分与分布式执行](parts/11-parallelism.json) | 10 |
 | 12 | [MoE 与通信优化](parts/12-moe.json) | 6 |

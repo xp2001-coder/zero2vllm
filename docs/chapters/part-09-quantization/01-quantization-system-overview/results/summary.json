@@ -1,0 +1,808 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-20T09:04:36.483841+00:00",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "eeebc8752473d290b198c04f4ea9ec6852710bd59835f80865baa31ac2b50d6c",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "verification_level": "cpu_numerical_reference",
+  "python": "3.11.9",
+  "gpu_validated": false,
+  "upstream_executed": false,
+  "packed": false,
+  "cases": [
+    {
+      "name": "hand_computed_linear",
+      "passed": true,
+      "checks": {
+        "scale": true,
+        "logical_values": true,
+        "dequantized_values": true,
+        "original_output": true,
+        "quantized_output": true,
+        "weight_error": true,
+        "weight_mse": true,
+        "output_error": true
+      }
+    },
+    {
+      "name": "rounding_ties",
+      "passed": true,
+      "result": {
+        "fp32_input": [
+          [
+            -0.75,
+            -0.25,
+            0.25,
+            0.75,
+            1.25
+          ]
+        ],
+        "q": [
+          [
+            -2,
+            0,
+            0,
+            2,
+            2
+          ]
+        ],
+        "scale": 0.5,
+        "dequantized": [
+          [
+            -1.0,
+            0.0,
+            0.0,
+            1.0,
+            1.0
+          ]
+        ],
+        "contract": {
+          "logical_range": [
+            -7,
+            7
+          ],
+          "zero_point": 0,
+          "rounding": "ties_to_even",
+          "granularity": "per_tensor",
+          "group_size": null,
+          "group_axis": null,
+          "scale_dtype": "float64",
+          "arithmetic": "Python float64",
+          "storage": "Python integer lists; unpacked; not a checkpoint",
+          "scale_source": "explicit teaching parameter"
+        },
+        "error": {
+          "max_abs": 0.25,
+          "mse": 0.0625,
+          "out_of_range_count": 0,
+          "half_scale_bound_applicable": true,
+          "half_scale_bound_satisfied": true
+        }
+      }
+    },
+    {
+      "name": "zero_tensor",
+      "passed": true,
+      "result": {
+        "fp32_input": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "q": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "scale": 1.0,
+        "dequantized": [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        "contract": {
+          "logical_range": [
+            -7,
+            7
+          ],
+          "zero_point": 0,
+          "rounding": "ties_to_even",
+          "granularity": "per_tensor",
+          "group_size": null,
+          "group_axis": null,
+          "scale_dtype": "float64",
+          "arithmetic": "Python float64",
+          "storage": "Python integer lists; unpacked; not a checkpoint",
+          "scale_source": "amax/7; all-zero tensor uses 1"
+        },
+        "error": {
+          "max_abs": 0.0,
+          "mse": 0.0,
+          "out_of_range_count": 0,
+          "half_scale_bound_applicable": true,
+          "half_scale_bound_satisfied": true
+        }
+      }
+    },
+    {
+      "name": "clipping_breaks_half_scale_bound",
+      "passed": true,
+      "result": {
+        "fp32_input": [
+          [
+            -4.0,
+            4.0
+          ]
+        ],
+        "q": [
+          [
+            -7,
+            7
+          ]
+        ],
+        "scale": 0.5,
+        "dequantized": [
+          [
+            -3.5,
+            3.5
+          ]
+        ],
+        "contract": {
+          "logical_range": [
+            -7,
+            7
+          ],
+          "zero_point": 0,
+          "rounding": "ties_to_even",
+          "granularity": "per_tensor",
+          "group_size": null,
+          "group_axis": null,
+          "scale_dtype": "float64",
+          "arithmetic": "Python float64",
+          "storage": "Python integer lists; unpacked; not a checkpoint",
+          "scale_source": "explicit teaching parameter"
+        },
+        "error": {
+          "max_abs": 0.5,
+          "mse": 0.25,
+          "out_of_range_count": 2,
+          "half_scale_bound_applicable": false,
+          "half_scale_bound_satisfied": false
+        }
+      }
+    },
+    {
+      "name": "wrong_scale_changes_model",
+      "passed": true,
+      "wrong_scale": 1.0,
+      "wrong_output": [
+        [
+          -12.0,
+          -5.0
+        ]
+      ],
+      "note": "Deliberately wrong metadata; this is not the quality result of the intended quantizer."
+    },
+    {
+      "name": "fp32_input_is_explicit",
+      "passed": true,
+      "result": {
+        "fp32_input": [
+          [
+            0.10000000149011612,
+            3.5
+          ]
+        ],
+        "q": [
+          [
+            0,
+            7
+          ]
+        ],
+        "scale": 0.5,
+        "dequantized": [
+          [
+            0.0,
+            3.5
+          ]
+        ],
+        "contract": {
+          "logical_range": [
+            -7,
+            7
+          ],
+          "zero_point": 0,
+          "rounding": "ties_to_even",
+          "granularity": "per_tensor",
+          "group_size": null,
+          "group_axis": null,
+          "scale_dtype": "float64",
+          "arithmetic": "Python float64",
+          "storage": "Python integer lists; unpacked; not a checkpoint",
+          "scale_source": "amax/7; all-zero tensor uses 1"
+        },
+        "error": {
+          "max_abs": 0.10000000149011612,
+          "mse": 0.005000000149011613,
+          "out_of_range_count": 0,
+          "half_scale_bound_applicable": true,
+          "half_scale_bound_satisfied": true
+        }
+      }
+    },
+    {
+      "name": "reject_invalid_inputs",
+      "passed": true,
+      "expected_errors": [
+        "Expected a nonempty matrix",
+        "Matrix must be rectangular",
+        "Expected a finite number, not a boolean or string",
+        "Expected a finite number",
+        "Expected a finite number",
+        "Input is outside finite FP32 range",
+        "Nonzero input underflows to zero in FP32"
+      ]
+    },
+    {
+      "name": "name_is_not_execution_evidence",
+      "passed": true,
+      "statuses": {
+        "unknown": 51,
+        "declared": 5,
+        "verified": 0,
+        "not_applicable": 0
+      }
+    },
+    {
+      "name": "verified_requires_evidence",
+      "passed": true,
+      "expected_error": "Verified entries require observations and evidence"
+    },
+    {
+      "name": "passport_roundtrip",
+      "passed": true
+    },
+    {
+      "name": "affine_zero_point_encodes_zero",
+      "passed": true
+    },
+    {
+      "name": "omitting_zero_point_shifts_every_value",
+      "passed": true
+    },
+    {
+      "name": "requantization_changes_scale_and_zero_point",
+      "passed": true
+    },
+    {
+      "name": "requantization_saturates_target_range",
+      "passed": true
+    },
+    {
+      "name": "requantization_is_not_direct_quantization",
+      "passed": true
+    },
+    {
+      "name": "round_before_adding_zero_point",
+      "passed": true
+    },
+    {
+      "name": "reject_invalid_zero_point",
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "linear": {
+    "x": [
+      [
+        1.0,
+        2.0,
+        -1.0
+      ]
+    ],
+    "qdq": {
+      "fp32_input": [
+        [
+          -3.5,
+          -0.75
+        ],
+        [
+          0.25,
+          1.25
+        ],
+        [
+          2.5,
+          3.5
+        ]
+      ],
+      "q": [
+        [
+          -7,
+          -2
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          5,
+          7
+        ]
+      ],
+      "scale": 0.5,
+      "dequantized": [
+        [
+          -3.5,
+          -1.0
+        ],
+        [
+          0.0,
+          1.0
+        ],
+        [
+          2.5,
+          3.5
+        ]
+      ],
+      "contract": {
+        "logical_range": [
+          -7,
+          7
+        ],
+        "zero_point": 0,
+        "rounding": "ties_to_even",
+        "granularity": "per_tensor",
+        "group_size": null,
+        "group_axis": null,
+        "scale_dtype": "float64",
+        "arithmetic": "Python float64",
+        "storage": "Python integer lists; unpacked; not a checkpoint",
+        "scale_source": "amax/7; all-zero tensor uses 1"
+      },
+      "error": {
+        "max_abs": 0.25,
+        "mse": 0.03125,
+        "out_of_range_count": 0,
+        "half_scale_bound_applicable": true,
+        "half_scale_bound_satisfied": true
+      }
+    },
+    "original_output": [
+      [
+        -5.5,
+        -1.75
+      ]
+    ],
+    "quantized_output": [
+      [
+        -6.0,
+        -2.5
+      ]
+    ],
+    "output_max_abs_error": 0.75,
+    "compute": "FP32 input values promoted to Python float64 multiply/accumulate; no GPU kernel"
+  },
+  "affine": {
+    "input": [
+      [
+        -1.5,
+        0.0,
+        0.5,
+        2.5,
+        6.0
+      ]
+    ],
+    "source": {
+      "scale": 0.5,
+      "zero_point": 3,
+      "qmin": 0,
+      "qmax": 15
+    },
+    "target": {
+      "scale": 1.0,
+      "zero_point": 2,
+      "qmin": 0,
+      "qmax": 15
+    },
+    "q1": [
+      [
+        0,
+        3,
+        4,
+        8,
+        15
+      ]
+    ],
+    "dq1": [
+      [
+        -1.5,
+        0.0,
+        0.5,
+        2.5,
+        6.0
+      ]
+    ],
+    "q2": [
+      [
+        0,
+        2,
+        2,
+        4,
+        8
+      ]
+    ],
+    "dq2": [
+      [
+        -2.0,
+        0.0,
+        0.0,
+        2.0,
+        6.0
+      ]
+    ],
+    "expected": {
+      "q1": [
+        [
+          0,
+          3,
+          4,
+          8,
+          15
+        ]
+      ],
+      "dq1": [
+        [
+          -1.5,
+          0.0,
+          0.5,
+          2.5,
+          6.0
+        ]
+      ],
+      "q2": [
+        [
+          0,
+          2,
+          2,
+          4,
+          8
+        ]
+      ],
+      "dq2": [
+        [
+          -2.0,
+          0.0,
+          0.0,
+          2.0,
+          6.0
+        ]
+      ]
+    },
+    "wrong_dq_without_z": [
+      [
+        0.0,
+        1.5,
+        2.0,
+        4.0,
+        7.5
+      ]
+    ],
+    "saturated_q2": [
+      [
+        0,
+        2,
+        2,
+        3,
+        3
+      ]
+    ],
+    "double_rounding": {
+      "x": [
+        [
+          0.625
+        ]
+      ],
+      "q1": [
+        [
+          4
+        ]
+      ],
+      "via_q1": [
+        [
+          2
+        ]
+      ],
+      "direct": [
+        [
+          3
+        ]
+      ]
+    },
+    "rounding_order": {
+      "correct": [
+        [
+          3
+        ]
+      ],
+      "incorrect_round_after_adding_z": [
+        [
+          4
+        ]
+      ]
+    },
+    "compute": "Float64 reference with explicit DQ intermediate; no integer requantization kernel"
+  },
+  "verification": {
+    "scale": true,
+    "logical_values": true,
+    "dequantized_values": true,
+    "original_output": true,
+    "quantized_output": true,
+    "weight_error": true,
+    "weight_mse": true,
+    "output_error": true
+  },
+  "source_inspection": [
+    {
+      "passed": true,
+      "errors": [],
+      "files": [
+        {
+          "path": "LICENSE",
+          "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "matched": true
+        },
+        {
+          "path": "vllm/model_executor/layers/quantization/base_config.py",
+          "sha256_lf": "ba8ddfa4e5cd47e6aef855cd551ea84974e3dd905aa6f460579c73c0aaf32ccf",
+          "matched": true
+        },
+        {
+          "path": "vllm/model_executor/layers/linear.py",
+          "sha256_lf": "97b3effe7efa1bb60aa48646ba623665b9280b23ec5510536f0d9bec23be635b",
+          "matched": true
+        },
+        {
+          "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+          "sha256_lf": "f81bcbadec1c53e055fc962b7364d63790c5a747f1c6010296ce152df000acc5",
+          "matched": true
+        }
+      ],
+      "checkpoints": [
+        {
+          "id": "point-01",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/base_config.py",
+          "symbol": "QuantizationConfig.get_quant_method",
+          "title": "配置对象要为具体层返回量化方法",
+          "calls": [],
+          "line": 131,
+          "end_line": 142,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/base_config.py#L131",
+          "matched": true,
+          "call_sites": []
+        },
+        {
+          "id": "point-02",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/base_config.py",
+          "symbol": "QuantizeMethodBase.process_weights_after_loading",
+          "title": "加载后处理是接口职责，不是每次前向都必须重排",
+          "calls": [],
+          "line": 37,
+          "end_line": 42,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/base_config.py#L37",
+          "matched": true,
+          "call_sites": []
+        },
+        {
+          "id": "point-03",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/linear.py",
+          "symbol": "LinearBase.__init__",
+          "title": "层构造时获得 quant_method",
+          "calls": [
+            "quant_config.get_quant_method"
+          ],
+          "line": 218,
+          "end_line": 244,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L218",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "quant_config.get_quant_method",
+              "line": 242
+            }
+          ]
+        },
+        {
+          "id": "point-04",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/linear.py",
+          "symbol": "ReplicatedLinear.__init__",
+          "title": "按量化方法创建参数；ReplicatedLinear 作为最小接口示例",
+          "calls": [
+            "self.quant_method.create_weights"
+          ],
+          "line": 266,
+          "end_line": 303,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L266",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "self.quant_method.create_weights",
+              "line": 288
+            }
+          ]
+        },
+        {
+          "id": "point-05",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/linear.py",
+          "symbol": "ReplicatedLinear.forward",
+          "title": "前向把输入与 bias 交给量化方法",
+          "calls": [
+            "self.quant_method.apply"
+          ],
+          "line": 327,
+          "end_line": 336,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/linear.py#L327",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "self.quant_method.apply",
+              "line": 332
+            }
+          ]
+        },
+        {
+          "id": "point-06",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+          "symbol": "GPTQMarlinConfig.get_quant_method",
+          "title": "配置、层类型与方法选择衔接",
+          "calls": [
+            "get_linear_quant_method"
+          ],
+          "line": 153,
+          "end_line": 166,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/gptq_marlin.py#L153",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "get_linear_quant_method",
+              "line": 165
+            }
+          ]
+        },
+        {
+          "id": "point-07",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+          "symbol": "GPTQMarlinLinearMethod.create_weights",
+          "title": "创建 qweight/scales 等参数，并选择执行 kernel 类",
+          "calls": [
+            "MPLinearLayerConfig",
+            "choose_mp_linear_kernel",
+            "layer.register_parameter",
+            "kernel_type"
+          ],
+          "line": 210,
+          "end_line": 333,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/gptq_marlin.py#L210",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "MPLinearLayerConfig",
+              "line": 224
+            },
+            {
+              "target": "choose_mp_linear_kernel",
+              "line": 235
+            },
+            {
+              "target": "layer.register_parameter",
+              "line": 324
+            },
+            {
+              "target": "layer.register_parameter",
+              "line": 325
+            },
+            {
+              "target": "layer.register_parameter",
+              "line": 326
+            },
+            {
+              "target": "layer.register_parameter",
+              "line": 327
+            },
+            {
+              "target": "kernel_type",
+              "line": 329
+            }
+          ]
+        },
+        {
+          "id": "point-08",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+          "symbol": "GPTQMarlinLinearMethod.process_weights_after_loading",
+          "title": "把加载后处理委托给已选 kernel",
+          "calls": [
+            "self.kernel.process_weights_after_loading"
+          ],
+          "line": 335,
+          "end_line": 336,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/gptq_marlin.py#L335",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "self.kernel.process_weights_after_loading",
+              "line": 336
+            }
+          ]
+        },
+        {
+          "id": "point-09",
+          "stage": "read",
+          "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+          "symbol": "GPTQMarlinLinearMethod.apply",
+          "title": "调用已选实现，不从类名猜测实际执行路径",
+          "calls": [
+            "self.kernel.apply_weights"
+          ],
+          "line": 338,
+          "end_line": 344,
+          "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/model_executor/layers/quantization/gptq_marlin.py#L338",
+          "matched": true,
+          "call_sites": [
+            {
+              "target": "self.kernel.apply_weights",
+              "line": 344
+            }
+          ]
+        }
+      ],
+      "structures": [],
+      "verification_level": "static_source_inspection",
+      "executed_upstream_code": false,
+      "gpu_validated": false,
+      "repository": "https://github.com/vllm-project/vllm",
+      "tag": "v0.8.5",
+      "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+      "downloaded": []
+    }
+  ],
+  "passports": {
+    "cpu-passport.json": {
+      "unknown": 9,
+      "declared": 0,
+      "verified": 26,
+      "not_applicable": 21
+    },
+    "qwen-plan-passport.json": {
+      "unknown": 51,
+      "declared": 5,
+      "verified": 0,
+      "not_applicable": 0
+    }
+  }
+}

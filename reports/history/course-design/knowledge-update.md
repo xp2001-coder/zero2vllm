@@ -6,7 +6,7 @@
 
 1. [README](../../../README.md)：学习入口、课程状态和完整范围。
 2. [专题导读](../../../docs/references/topic-guides.md)：各主题的学习与练习入口。原备课映射已归档到维护者本地区，公开课程不再展示内部来源编号。
-3. [量化导读](../../../docs/chapters/part-09-quantization/guide.md)和 [CPU INT4 实验](../../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)：算法统一成章后的具体教学深度。
+3. [量化导读](../../../docs/chapters/part-09-quantization/guide.md)和 [CPU INT4 实验](../../../docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)：算法统一成章后的具体教学深度。
 4. [编译与 Profiling](../../../docs/chapters/part-08-compilation/guide.md)和[实验规范](../../../docs/engineering/experiments.md)：优化如何测、怎样避免错误归因。
 5. [验证记录](../validation-before-restructure.md)：实际检查范围和未完成项。
 
@@ -39,4 +39,4 @@
 
 ## 验证入口
 
-本次测试结果以[验证记录](../validation-before-restructure.md)、[测试输出](../part1-delivery/reference-tests.txt)、[课程检查](../lesson-2.1-delivery/curriculum-checks.json)和 [INT4 原始记录](../../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json)为准。所有 GPU 状态继续为 `not_run`。本轮没有生成发布压缩包、创建提交或推送 GitHub。
+本次测试结果以[验证记录](../validation-before-restructure.md)、[测试输出](../part1-delivery/reference-tests.txt)、[课程检查](../lesson-2.1-delivery/curriculum-checks.json)和 [INT4 原始记录](../../../docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json)为准。所有 GPU 状态继续为 `not_run`。本轮没有生成发布压缩包、创建提交或推送 GitHub。

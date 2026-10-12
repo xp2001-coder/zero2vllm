@@ -1,0 +1,1243 @@
+{
+  "passed": true,
+  "errors": [],
+  "files": [
+    {
+      "path": "LICENSE",
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "matched": true
+    },
+    {
+      "path": "vllm/config.py",
+      "sha256_lf": "016f1281a0519c636bace104012ff8d1c199db89aba190d6d9cd810d67c91a48",
+      "matched": true
+    },
+    {
+      "path": "vllm/entrypoints/openai/api_server.py",
+      "sha256_lf": "1f6ca5ac1b63d5b118b9dcd71e6488de2ffc96eb84940d466c8a8ee3c90c9c91",
+      "matched": true
+    },
+    {
+      "path": "vllm/entrypoints/openai/serving_chat.py",
+      "sha256_lf": "6e8b5e6029eaca133df7446e1bc832f92ec8c90f4c631351d03dcd2b13b821aa",
+      "matched": true
+    },
+    {
+      "path": "vllm/entrypoints/openai/serving_engine.py",
+      "sha256_lf": "949a9f47dc572ff8643d17cca2dee118da68412b26a99549983e34ae355b8145",
+      "matched": true
+    },
+    {
+      "path": "vllm/entrypoints/utils.py",
+      "sha256_lf": "bdaad36ac465e05a8aec9e458ed09f57f3794fc661758e0b975334f82a386c50",
+      "matched": true
+    },
+    {
+      "path": "vllm/executor/uniproc_executor.py",
+      "sha256_lf": "158e174330b566920eb0ea52e520ed5812a519130f2cffb9313c0f8f68a3a2f4",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/core/block_pool.py",
+      "sha256_lf": "66184ec8114891c8bf38888c60289198afb057ae7c48b17c038d9a597fd88228",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "sha256_lf": "b382c55a8f775e7756176286af64dd532488d0a7ce035de8a18b0b13a76da8c0",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/core/sched/output.py",
+      "sha256_lf": "c739929723acc72050eabd4c080ff0c165ffd9e8303f424a0e7c6c817b16c7be",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "sha256_lf": "18f3717ee040a8f9b70159ecc2af8a4f57a2525e1c1c8e18947f9e3d0b0716a4",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/__init__.py",
+      "sha256_lf": "2122e83c6cef6d8b926f3f156b364c748d712e61bb19c98dfa3a5bf119bf2495",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/async_llm.py",
+      "sha256_lf": "e83f905bd879e4e9c87fb4ce458aa453f31d06bdde945822282ca251d7c54a74",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/core.py",
+      "sha256_lf": "c01b04e57ddff7f24f96c144ce441a6dacca66f6facf0b97148fb7e680f28b18",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/core_client.py",
+      "sha256_lf": "5e6d623e14fc4571e3ddb38ef44d4b88c0521874086abb925743efc129802805",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/detokenizer.py",
+      "sha256_lf": "2069d8b0b042c752aabea9db5cb33da760a10a42a24f98febf3171e27bfa390b",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/output_processor.py",
+      "sha256_lf": "fb0eede9943da0f762667a7cb9ca708dff20c3b5a663f24ee05987f2bb0846eb",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/parallel_sampling.py",
+      "sha256_lf": "3a304413acf359c63c8df8028843866897de33833dfb2795daa59dc5d46d2eb5",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/engine/processor.py",
+      "sha256_lf": "3934fea3e5fbdc04c7157efe391dbc1c6edcea5cbe8d6b703e9b30e55747f96a",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/executor/abstract.py",
+      "sha256_lf": "465a2c5be9fa40d093d7a5420763ee9036a4a5dca8df5f0740a05adcaac5cf12",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/outputs.py",
+      "sha256_lf": "493f18df432b7f66674ccfc9c84bc7338a6c59a6cda714ae7f123dce59df4afb",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/request.py",
+      "sha256_lf": "7b46cf84e2e3c884fe608b4d3bbfcb243d388795004683d0a2bdb9df26e01229",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "sha256_lf": "cca495d4d86bcc389bd2167404d076d95c4d4b6ec473eb45012e43ebfcc9a41a",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/worker/gpu_worker.py",
+      "sha256_lf": "2831e027b65d20d7266ae15097fded2c71a25766dc7fcbf6710501c787ba78ba",
+      "matched": true
+    },
+    {
+      "path": "vllm/v1/core/sched/utils.py",
+      "sha256_lf": "879cb1cd840438dd3d4218c9803c8ec8074155658d244b134aff41c751b5acfd",
+      "matched": true
+    }
+  ],
+  "checkpoints": [
+    {
+      "id": "http",
+      "stage": "input",
+      "path": "vllm/entrypoints/openai/api_server.py",
+      "symbol": "create_chat_completion",
+      "title": "HTTP 路由选择聊天处理器",
+      "calls": [
+        "handler.create_chat_completion",
+        "StreamingResponse"
+      ],
+      "line": 470,
+      "end_line": 486,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/entrypoints/openai/api_server.py#L470",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "handler.create_chat_completion",
+          "line": 477
+        },
+        {
+          "target": "StreamingResponse",
+          "line": 486
+        }
+      ]
+    },
+    {
+      "id": "chat",
+      "stage": "input",
+      "path": "vllm/entrypoints/openai/serving_chat.py",
+      "symbol": "OpenAIServingChat.create_chat_completion",
+      "title": "模板、参数与引擎生成器",
+      "calls": [
+        "self._preprocess_chat",
+        "self.engine_client.generate",
+        "self.chat_completion_stream_generator"
+      ],
+      "line": 121,
+      "end_line": 272,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/entrypoints/openai/serving_chat.py#L121",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self._preprocess_chat",
+          "line": 183
+        },
+        {
+          "target": "self.engine_client.generate",
+          "line": 242
+        },
+        {
+          "target": "self.chat_completion_stream_generator",
+          "line": 262
+        }
+      ]
+    },
+    {
+      "id": "processor",
+      "stage": "input",
+      "path": "vllm/v1/engine/processor.py",
+      "symbol": "Processor.process_inputs",
+      "title": "输入转换为跨进程请求",
+      "calls": [
+        "self.input_preprocessor.preprocess",
+        "EngineCoreRequest"
+      ],
+      "line": 195,
+      "end_line": 319,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/processor.py#L195",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.input_preprocessor.preprocess",
+          "line": 226
+        },
+        {
+          "target": "EngineCoreRequest",
+          "line": 309
+        }
+      ]
+    },
+    {
+      "id": "generate",
+      "stage": "input",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM.generate",
+      "title": "请求协程等待并交出输出",
+      "calls": [
+        "self.add_request",
+        "q.get",
+        "self.abort"
+      ],
+      "line": 259,
+      "end_line": 338,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L259",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.add_request",
+          "line": 290
+        },
+        {
+          "target": "q.get",
+          "line": 306
+        },
+        {
+          "target": "self.abort",
+          "line": 316
+        },
+        {
+          "target": "self.abort",
+          "line": 335
+        }
+      ]
+    },
+    {
+      "id": "register",
+      "stage": "input",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM.add_request",
+      "title": "创建收集器并处理输入",
+      "calls": [
+        "RequestOutputCollector",
+        "self.processor.process_inputs",
+        "parent_request.get_child_info"
+      ],
+      "line": 197,
+      "end_line": 237,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L197",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "RequestOutputCollector",
+          "line": 217
+        },
+        {
+          "target": "self.processor.process_inputs",
+          "line": 220
+        },
+        {
+          "target": "parent_request.get_child_info",
+          "line": 231
+        }
+      ]
+    },
+    {
+      "id": "submit",
+      "stage": "input",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM._add_request",
+      "title": "先登记输出，再提交核心请求",
+      "calls": [
+        "self.output_processor.add_request",
+        "self.engine_core.add_request_async"
+      ],
+      "line": 239,
+      "end_line": 252,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L239",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.output_processor.add_request",
+          "line": 245
+        },
+        {
+          "target": "self.engine_core.add_request_async",
+          "line": 249
+        }
+      ]
+    },
+    {
+      "id": "client-choice",
+      "stage": "input",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "EngineCoreClient.make_client",
+      "title": "辅助对照：客户端工厂的分支（不是本路径的直接调用）",
+      "calls": [
+        "AsyncMPClient",
+        "InprocClient"
+      ],
+      "line": 52,
+      "end_line": 75,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L52",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "AsyncMPClient",
+          "line": 70
+        },
+        {
+          "target": "InprocClient",
+          "line": 75
+        }
+      ]
+    },
+    {
+      "id": "send-add",
+      "stage": "input",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "AsyncMPClient.add_request_async",
+      "title": "发送 ADD 消息",
+      "calls": [
+        "self._send_input"
+      ],
+      "line": 771,
+      "end_line": 773,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L771",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self._send_input",
+          "line": 772
+        }
+      ]
+    },
+    {
+      "id": "encode-input",
+      "stage": "input",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "AsyncMPClient._send_input",
+      "title": "请求类型与序列化载荷",
+      "calls": [
+        "self.encoder.encode",
+        "self._send_input_message"
+      ],
+      "line": 719,
+      "end_line": 728,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L719",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.encoder.encode",
+          "line": 727
+        },
+        {
+          "target": "self._send_input_message",
+          "line": 728
+        }
+      ]
+    },
+    {
+      "id": "send-input",
+      "stage": "input",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "AsyncMPClient._send_input_message",
+      "title": "带引擎身份的 ZMQ 发送",
+      "calls": [
+        "self.input_socket.send_multipart"
+      ],
+      "line": 730,
+      "end_line": 753,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L730",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.input_socket.send_multipart",
+          "line": 743
+        },
+        {
+          "target": "self.input_socket.send_multipart",
+          "line": 746
+        }
+      ]
+    },
+    {
+      "id": "receive-input",
+      "stage": "input",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCoreProc.process_input_socket",
+      "title": "输入线程解码并放入进程内队列",
+      "calls": [
+        "decoder.decode",
+        "self.input_queue.put_nowait"
+      ],
+      "line": 496,
+      "end_line": 524,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L496",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "decoder.decode",
+          "line": 521
+        },
+        {
+          "target": "self.input_queue.put_nowait",
+          "line": 524
+        }
+      ]
+    },
+    {
+      "id": "dispatch",
+      "stage": "input",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCoreProc._handle_client_request",
+      "title": "主循环分派 ADD 与 ABORT",
+      "calls": [
+        "self.add_request",
+        "self.abort_requests"
+      ],
+      "line": 443,
+      "end_line": 468,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L443",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.add_request",
+          "line": 448
+        },
+        {
+          "target": "self.abort_requests",
+          "line": 450
+        }
+      ]
+    },
+    {
+      "id": "core-add",
+      "stage": "input",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCore.add_request",
+      "title": "构造核心 Request 并进入等待队列",
+      "calls": [
+        "Request.from_engine_core_request",
+        "self.scheduler.add_request"
+      ],
+      "line": 163,
+      "end_line": 181,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L163",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "Request.from_engine_core_request",
+          "line": 176
+        },
+        {
+          "target": "self.scheduler.add_request",
+          "line": 181
+        }
+      ]
+    },
+    {
+      "id": "schedule",
+      "stage": "core",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler.schedule",
+      "title": "生成本轮工作与缓存决策",
+      "calls": [
+        "SchedulerOutput",
+        "self.kv_cache_manager.allocate_slots"
+      ],
+      "line": 137,
+      "end_line": 509,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L137",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.kv_cache_manager.allocate_slots",
+          "line": 217
+        },
+        {
+          "target": "self.kv_cache_manager.allocate_slots",
+          "line": 362
+        },
+        {
+          "target": "SchedulerOutput",
+          "line": 470
+        }
+      ]
+    },
+    {
+      "id": "step",
+      "stage": "core",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCore.step",
+      "title": "调度、执行、更新结果",
+      "calls": [
+        "self.scheduler.schedule",
+        "self.model_executor.execute_model",
+        "self.scheduler.update_from_output"
+      ],
+      "line": 192,
+      "end_line": 207,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L192",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.scheduler.schedule",
+          "line": 202
+        },
+        {
+          "target": "self.model_executor.execute_model",
+          "line": 203
+        },
+        {
+          "target": "self.scheduler.update_from_output",
+          "line": 204
+        }
+      ]
+    },
+    {
+      "id": "executor",
+      "stage": "core",
+      "path": "vllm/v1/executor/abstract.py",
+      "symbol": "Executor.execute_model",
+      "title": "按接口提交模型执行",
+      "calls": [
+        "self.collective_rpc"
+      ],
+      "line": 82,
+      "end_line": 88,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/executor/abstract.py#L82",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.collective_rpc",
+          "line": 86
+        }
+      ]
+    },
+    {
+      "id": "uni-rpc",
+      "stage": "core",
+      "path": "vllm/executor/uniproc_executor.py",
+      "symbol": "UniProcExecutor.collective_rpc",
+      "title": "单进程后端在本地调用 Worker",
+      "calls": [
+        "run_method"
+      ],
+      "line": 49,
+      "end_line": 57,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/executor/uniproc_executor.py#L49",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "run_method",
+          "line": 56
+        }
+      ]
+    },
+    {
+      "id": "worker",
+      "stage": "core",
+      "path": "vllm/v1/worker/gpu_worker.py",
+      "symbol": "Worker.execute_model",
+      "title": "转交模型运行器",
+      "calls": [
+        "self.model_runner.execute_model"
+      ],
+      "line": 264,
+      "end_line": 269,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_worker.py#L264",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.model_runner.execute_model",
+          "line": 268
+        }
+      ]
+    },
+    {
+      "id": "runner",
+      "stage": "core",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner.execute_model",
+      "title": "更新状态、准备输入、前向与采样",
+      "calls": [
+        "self._update_states",
+        "self._prepare_inputs",
+        "self.model",
+        "self.model.compute_logits",
+        "self.sampler"
+      ],
+      "line": 1003,
+      "end_line": 1288,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L1003",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self._update_states",
+          "line": 1013
+        },
+        {
+          "target": "self._prepare_inputs",
+          "line": 1020
+        },
+        {
+          "target": "self.model",
+          "line": 1092
+        },
+        {
+          "target": "self.model.compute_logits",
+          "line": 1110
+        },
+        {
+          "target": "self.sampler",
+          "line": 1119
+        },
+        {
+          "target": "self.sampler",
+          "line": 1129
+        }
+      ]
+    },
+    {
+      "id": "tensor-input",
+      "stage": "core",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner._prepare_inputs",
+      "title": "组织位置、槽位与注意力元数据",
+      "calls": [
+        "self.attn_metadata_builder.build",
+        "torch.index_select"
+      ],
+      "line": 488,
+      "end_line": 631,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L488",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "torch.index_select",
+          "line": 546
+        },
+        {
+          "target": "self.attn_metadata_builder.build",
+          "line": 596
+        }
+      ]
+    },
+    {
+      "id": "feedback",
+      "stage": "core",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler.update_from_output",
+      "title": "按请求取采样结果并检查结束",
+      "calls": [
+        "check_stop",
+        "self._free_request",
+        "EngineCoreOutput"
+      ],
+      "line": 625,
+      "end_line": 754,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L625",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "check_stop",
+          "line": 701
+        },
+        {
+          "target": "self._free_request",
+          "line": 703
+        },
+        {
+          "target": "EngineCoreOutput",
+          "line": 725
+        }
+      ]
+    },
+    {
+      "id": "send-output",
+      "stage": "output",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCoreProc.process_output_socket",
+      "title": "输出线程发送核心结果",
+      "calls": [
+        "self.output_queue.get",
+        "socket.send_multipart"
+      ],
+      "line": 526,
+      "end_line": 564,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L526",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.output_queue.get",
+          "line": 543
+        },
+        {
+          "target": "socket.send_multipart",
+          "line": 556
+        }
+      ]
+    },
+    {
+      "id": "receive-output",
+      "stage": "output",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "AsyncMPClient._ensure_output_queue_task.process_outputs_socket",
+      "title": "后台协程接收结果并入队",
+      "calls": [
+        "output_socket.recv_multipart",
+        "decoder.decode",
+        "outputs_queue.put_nowait"
+      ],
+      "line": 681,
+      "end_line": 703,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L681",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "output_socket.recv_multipart",
+          "line": 684
+        },
+        {
+          "target": "decoder.decode",
+          "line": 686
+        },
+        {
+          "target": "outputs_queue.put_nowait",
+          "line": 701
+        },
+        {
+          "target": "outputs_queue.put_nowait",
+          "line": 703
+        }
+      ]
+    },
+    {
+      "id": "output-loop",
+      "stage": "output",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM._run_output_handler.output_handler",
+      "title": "持续处理核心输出与字符串停止",
+      "calls": [
+        "engine_core.get_output_async",
+        "output_processor.process_outputs",
+        "engine_core.abort_requests_async"
+      ],
+      "line": 353,
+      "end_line": 400,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L353",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "engine_core.get_output_async",
+          "line": 357
+        },
+        {
+          "target": "output_processor.process_outputs",
+          "line": 375
+        },
+        {
+          "target": "engine_core.abort_requests_async",
+          "line": 385
+        }
+      ]
+    },
+    {
+      "id": "output-process",
+      "stage": "output",
+      "path": "vllm/v1/engine/output_processor.py",
+      "symbol": "OutputProcessor.process_outputs",
+      "title": "按 ID 查状态、反分词并路由输出",
+      "calls": [
+        "self.request_states.get",
+        "req_state.detokenizer.update",
+        "req_state.queue.put"
+      ],
+      "line": 293,
+      "end_line": 384,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/output_processor.py#L293",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.request_states.get",
+          "line": 327
+        },
+        {
+          "target": "req_state.detokenizer.update",
+          "line": 344
+        },
+        {
+          "target": "req_state.queue.put",
+          "line": 358
+        }
+      ]
+    },
+    {
+      "id": "collector",
+      "stage": "output",
+      "path": "vllm/v1/engine/output_processor.py",
+      "symbol": "RequestOutputCollector.put",
+      "title": "合并未被消费者取走的结果",
+      "calls": [
+        "self.output.add",
+        "self.ready.set"
+      ],
+      "line": 34,
+      "end_line": 42,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/output_processor.py#L34",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.ready.set",
+          "line": 38
+        },
+        {
+          "target": "self.output.add",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "id": "sse",
+      "stage": "output",
+      "path": "vllm/entrypoints/openai/serving_chat.py",
+      "symbol": "OpenAIServingChat.chat_completion_stream_generator",
+      "title": "生成聊天协议的 SSE 数据",
+      "calls": [
+        "chunk.model_dump_json"
+      ],
+      "line": 395,
+      "end_line": 889,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/entrypoints/openai/serving_chat.py#L395",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "chunk.model_dump_json",
+          "line": 527
+        },
+        {
+          "target": "chunk.model_dump_json",
+          "line": 559
+        },
+        {
+          "target": "chunk.model_dump_json",
+          "line": 850
+        }
+      ]
+    },
+    {
+      "id": "abort-front",
+      "stage": "cancel",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM.abort",
+      "title": "清理前端并通知核心",
+      "calls": [
+        "self.output_processor.abort_requests",
+        "self.engine_core.abort_requests_async"
+      ],
+      "line": 404,
+      "end_line": 411,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L404",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.output_processor.abort_requests",
+          "line": 407
+        },
+        {
+          "target": "self.engine_core.abort_requests_async",
+          "line": 408
+        }
+      ]
+    },
+    {
+      "id": "abort-send",
+      "stage": "cancel",
+      "path": "vllm/v1/engine/core_client.py",
+      "symbol": "AsyncMPClient.abort_requests_async",
+      "title": "发送 ABORT 消息",
+      "calls": [
+        "self._send_input"
+      ],
+      "line": 775,
+      "end_line": 777,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core_client.py#L775",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self._send_input",
+          "line": 777
+        }
+      ]
+    },
+    {
+      "id": "abort-core",
+      "stage": "cancel",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCore.abort_requests",
+      "title": "请求调度器结束指定 ID",
+      "calls": [
+        "self.scheduler.finish_requests"
+      ],
+      "line": 183,
+      "end_line": 190,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L183",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.scheduler.finish_requests",
+          "line": 189
+        }
+      ]
+    },
+    {
+      "id": "finish",
+      "stage": "cancel",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler.finish_requests",
+      "title": "移出队列并标记终态",
+      "calls": [
+        "self._free_request",
+        "self.requests.get"
+      ],
+      "line": 762,
+      "end_line": 789,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L762",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.requests.get",
+          "line": 779
+        },
+        {
+          "target": "self._free_request",
+          "line": 789
+        }
+      ]
+    },
+    {
+      "id": "release",
+      "stage": "cancel",
+      "path": "vllm/v1/core/sched/scheduler.py",
+      "symbol": "Scheduler._free_request",
+      "title": "释放逻辑所有权并记录已完成 ID",
+      "calls": [
+        "self.kv_cache_manager.free",
+        "self.finished_req_ids.add"
+      ],
+      "line": 791,
+      "end_line": 798,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L791",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.kv_cache_manager.free",
+          "line": 793
+        },
+        {
+          "target": "self.finished_req_ids.add",
+          "line": 798
+        }
+      ]
+    },
+    {
+      "id": "kv-free",
+      "stage": "cancel",
+      "path": "vllm/v1/core/kv_cache_manager.py",
+      "symbol": "KVCacheManager.free",
+      "title": "归还请求持有的块引用",
+      "calls": [
+        "self.block_pool.free_blocks",
+        "self.req_to_blocks.pop"
+      ],
+      "line": 296,
+      "end_line": 313,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/kv_cache_manager.py#L296",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.req_to_blocks.pop",
+          "line": 305
+        },
+        {
+          "target": "self.block_pool.free_blocks",
+          "line": 312
+        }
+      ]
+    },
+    {
+      "id": "block-free",
+      "stage": "cancel",
+      "path": "vllm/v1/core/block_pool.py",
+      "symbol": "BlockPool.free_blocks",
+      "title": "引用归零后回到可复用队列",
+      "calls": [
+        "block.decr_ref",
+        "self.free_block_queue.append"
+      ],
+      "line": 227,
+      "end_line": 239,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/block_pool.py#L227",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "block.decr_ref",
+          "line": 236
+        },
+        {
+          "target": "self.free_block_queue.append",
+          "line": 239
+        }
+      ]
+    },
+    {
+      "id": "runner-cleanup",
+      "stage": "cancel",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner._update_states",
+      "title": "接收完成 ID 并清理执行侧状态",
+      "calls": [
+        "self.requests.pop",
+        "self.input_batch.remove_request"
+      ],
+      "line": 285,
+      "end_line": 486,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/worker/gpu_model_runner.py#L285",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self.requests.pop",
+          "line": 297
+        },
+        {
+          "target": "self.input_batch.remove_request",
+          "line": 307
+        },
+        {
+          "target": "self.input_batch.remove_request",
+          "line": 332
+        }
+      ]
+    },
+    {
+      "id": "front-init",
+      "stage": "input",
+      "path": "vllm/v1/engine/async_llm.py",
+      "symbol": "AsyncLLM.__init__",
+      "title": "直接选择异步核心客户端",
+      "calls": [
+        "core_client_class"
+      ],
+      "line": 44,
+      "end_line": 130,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/async_llm.py#L44",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "core_client_class",
+          "line": 118
+        }
+      ]
+    },
+    {
+      "id": "core-loop",
+      "stage": "core",
+      "path": "vllm/v1/engine/core.py",
+      "symbol": "EngineCoreProc.run_busy_loop",
+      "title": "在迭代边界处理输入与执行",
+      "calls": [
+        "self._process_input_queue",
+        "self._process_engine_step"
+      ],
+      "line": 405,
+      "end_line": 413,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/engine/core.py#L405",
+      "matched": true,
+      "call_sites": [
+        {
+          "target": "self._process_input_queue",
+          "line": 411
+        },
+        {
+          "target": "self._process_engine_step",
+          "line": 413
+        }
+      ]
+    },
+    {
+      "id": "check-stop",
+      "stage": "output",
+      "path": "vllm/v1/core/sched/utils.py",
+      "symbol": "check_stop",
+      "title": "长度、EOS 与 token ID 停止",
+      "calls": [],
+      "line": 5,
+      "end_line": 22,
+      "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/utils.py#L5",
+      "matched": true,
+      "call_sites": []
+    }
+  ],
+  "structures": [
+    {
+      "path": "vllm/v1/engine/__init__.py",
+      "symbol": "EngineCoreRequest",
+      "fields": [
+        "request_id",
+        "prompt_token_ids",
+        "sampling_params"
+      ],
+      "matched": true,
+      "line": 41,
+      "declared_fields": [
+        "request_id",
+        "prompt_token_ids",
+        "mm_inputs",
+        "mm_hashes",
+        "mm_placeholders",
+        "sampling_params",
+        "eos_token_id",
+        "arrival_time",
+        "lora_request",
+        "current_wave"
+      ]
+    },
+    {
+      "path": "vllm/v1/core/sched/output.py",
+      "symbol": "SchedulerOutput",
+      "fields": [
+        "scheduled_new_reqs",
+        "scheduled_cached_reqs",
+        "num_scheduled_tokens",
+        "finished_req_ids"
+      ],
+      "matched": true,
+      "line": 82,
+      "declared_fields": [
+        "scheduled_new_reqs",
+        "scheduled_cached_reqs",
+        "num_scheduled_tokens",
+        "total_num_scheduled_tokens",
+        "scheduled_spec_decode_tokens",
+        "scheduled_encoder_inputs",
+        "num_common_prefix_blocks",
+        "finished_req_ids",
+        "free_encoder_input_ids",
+        "structured_output_request_ids",
+        "grammar_bitmask",
+        "kv_connector_metadata"
+      ]
+    },
+    {
+      "path": "vllm/v1/outputs.py",
+      "symbol": "ModelRunnerOutput",
+      "fields": [
+        "req_ids",
+        "req_id_to_index",
+        "sampled_token_ids"
+      ],
+      "matched": true,
+      "line": 76,
+      "declared_fields": [
+        "req_ids",
+        "req_id_to_index",
+        "sampled_token_ids",
+        "spec_token_ids",
+        "logprobs",
+        "prompt_logprobs_dict"
+      ]
+    },
+    {
+      "path": "vllm/v1/engine/__init__.py",
+      "symbol": "EngineCoreOutput",
+      "fields": [
+        "request_id",
+        "new_token_ids",
+        "finish_reason"
+      ],
+      "matched": true,
+      "line": 92,
+      "declared_fields": [
+        "request_id",
+        "new_token_ids",
+        "new_logprobs",
+        "new_prompt_logprobs_tensors",
+        "finish_reason",
+        "stop_reason",
+        "events"
+      ]
+    }
+  ],
+  "verification_level": "static_source_inspection",
+  "executed_upstream_code": false,
+  "gpu_validated": false,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.8.5",
+  "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+  "recorded_at": "2026-09-17T13:32:06.938561+00:00",
+  "downloaded": [
+    "LICENSE",
+    "vllm/config.py",
+    "vllm/entrypoints/openai/api_server.py",
+    "vllm/entrypoints/openai/serving_chat.py",
+    "vllm/entrypoints/openai/serving_engine.py",
+    "vllm/entrypoints/utils.py",
+    "vllm/executor/uniproc_executor.py",
+    "vllm/v1/core/block_pool.py",
+    "vllm/v1/core/kv_cache_manager.py",
+    "vllm/v1/core/sched/output.py",
+    "vllm/v1/core/sched/scheduler.py",
+    "vllm/v1/engine/__init__.py",
+    "vllm/v1/engine/async_llm.py",
+    "vllm/v1/engine/core.py",
+    "vllm/v1/engine/core_client.py",
+    "vllm/v1/engine/detokenizer.py",
+    "vllm/v1/engine/output_processor.py",
+    "vllm/v1/engine/parallel_sampling.py",
+    "vllm/v1/engine/processor.py",
+    "vllm/v1/executor/abstract.py",
+    "vllm/v1/outputs.py",
+    "vllm/v1/request.py",
+    "vllm/v1/worker/gpu_model_runner.py",
+    "vllm/v1/worker/gpu_worker.py",
+    "vllm/v1/core/sched/utils.py"
+  ],
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "729fcd1c10aa9f94c23d63c81c2fa5015c54c3411590066907d778d949c170f1",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  }
+}

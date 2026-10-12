@@ -1,0 +1,83 @@
+{
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "eeebc8752473d290b198c04f4ea9ec6852710bd59835f80865baa31ac2b50d6c",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "passed": true,
+  "commands": [
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0901",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "hand_computed_linear PASS\nrounding_ties PASS\nzero_tensor PASS\nclipping_breaks_half_scale_bound PASS\nwrong_scale_changes_model PASS\nfp32_input_is_explicit PASS\nreject_invalid_inputs PASS\nname_is_not_execution_evidence PASS\nverified_requires_evidence PASS\npassport_roundtrip PASS\naffine_zero_point_encodes_zero PASS\nomitting_zero_point_shifts_every_value PASS\nrequantization_changes_scale_and_zero_point PASS\nrequantization_saturates_target_range PASS\nrequantization_is_not_direct_quantization PASS\nround_before_adding_zero_point PASS\nreject_invalid_zero_point PASS\nCPU Q/DQ/RQ reference: unpacked Python integers; no quantized checkpoint or GPU execution.\nResults: $REPOSITORY\\.local\\runs\\part-09-quantization\\01-system-overview\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_affine.py",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "x -> Q1(s=0.5,z=3) -> DQ1 -> Q2(s=1,z=2) -> DQ2\n-1.5 -> 0 -> -1.5 -> 0 -> -2.0\n0.0 -> 3 -> 0.0 -> 2 -> 0.0\n0.5 -> 4 -> 0.5 -> 2 -> 0.0\n2.5 -> 8 -> 2.5 -> 4 -> 2.0\n6.0 -> 15 -> 6.0 -> 8 -> 6.0\n{\n  \"input\": [\n    [\n      -1.5,\n      0.0,\n      0.5,\n      2.5,\n      6.0\n    ]\n  ],\n  \"source\": {\n    \"scale\": 0.5,\n    \"zero_point\": 3,\n    \"qmin\": 0,\n    \"qmax\": 15\n  },\n  \"target\": {\n    \"scale\": 1.0,\n    \"zero_point\": 2,\n    \"qmin\": 0,\n    \"qmax\": 15\n  },\n  \"q1\": [\n    [\n      0,\n      3,\n      4,\n      8,\n      15\n    ]\n  ],\n  \"dq1\": [\n    [\n      -1.5,\n      0.0,\n      0.5,\n      2.5,\n      6.0\n    ]\n  ],\n  \"q2\": [\n    [\n      0,\n      2,\n      2,\n      4,\n      8\n    ]\n  ],\n  \"dq2\": [\n    [\n      -2.0,\n      0.0,\n      0.0,\n      2.0,\n      6.0\n    ]\n  ],\n  \"expected\": {\n    \"q1\": [\n      [\n        0,\n        3,\n        4,\n        8,\n        15\n      ]\n    ],\n    \"dq1\": [\n      [\n        -1.5,\n        0.0,\n        0.5,\n        2.5,\n        6.0\n      ]\n    ],\n    \"q2\": [\n      [\n        0,\n        2,\n        2,\n        4,\n        8\n      ]\n    ],\n    \"dq2\": [\n      [\n        -2.0,\n        0.0,\n        0.0,\n        2.0,\n        6.0\n      ]\n    ]\n  },\n  \"wrong_dq_without_z\": [\n    [\n      0.0,\n      1.5,\n      2.0,\n      4.0,\n      7.5\n    ]\n  ],\n  \"saturated_q2\": [\n    [\n      0,\n      2,\n      2,\n      3,\n      3\n    ]\n  ],\n  \"double_rounding\": {\n    \"x\": [\n      [\n        0.625\n      ]\n    ],\n    \"q1\": [\n      [\n        4\n      ]\n    ],\n    \"via_q1\": [\n      [\n        2\n      ]\n    ],\n    \"direct\": [\n      [\n        3\n      ]\n    ]\n  },\n  \"rounding_order\": {\n    \"correct\": [\n      [\n        3\n      ]\n    ],\n    \"incorrect_round_after_adding_z\": [\n      [\n        4\n      ]\n    ]\n  },\n  \"compute\": \"Float64 reference with explicit DQ intermediate; no integer requantization kernel\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_qdq.py",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "k n | FP32 input | / scale | q | restored | error\n0 0 | -3.5 | -7.0 | -7 | -3.5 | 0.0\n0 1 | -0.75 | -1.5 | -2 | -1.0 | 0.25\n1 0 | 0.25 | 0.5 | 0 | 0.0 | 0.25\n1 1 | 1.25 | 2.5 | 2 | 1.0 | 0.25\n2 0 | 2.5 | 5.0 | 5 | 2.5 | 0.0\n2 1 | 3.5 | 7.0 | 7 | 3.5 | 0.0\n{\n  \"x\": [\n    [\n      1.0,\n      2.0,\n      -1.0\n    ]\n  ],\n  \"qdq\": {\n    \"fp32_input\": [\n      [\n        -3.5,\n        -0.75\n      ],\n      [\n        0.25,\n        1.25\n      ],\n      [\n        2.5,\n        3.5\n      ]\n    ],\n    \"q\": [\n      [\n        -7,\n        -2\n      ],\n      [\n        0,\n        2\n      ],\n      [\n        5,\n        7\n      ]\n    ],\n    \"scale\": 0.5,\n    \"dequantized\": [\n      [\n        -3.5,\n        -1.0\n      ],\n      [\n        0.0,\n        1.0\n      ],\n      [\n        2.5,\n        3.5\n      ]\n    ],\n    \"contract\": {\n      \"logical_range\": [\n        -7,\n        7\n      ],\n      \"zero_point\": 0,\n      \"rounding\": \"ties_to_even\",\n      \"granularity\": \"per_tensor\",\n      \"group_size\": null,\n      \"group_axis\": null,\n      \"scale_dtype\": \"float64\",\n      \"arithmetic\": \"Python float64\",\n      \"storage\": \"Python integer lists; unpacked; not a checkpoint\",\n      \"scale_source\": \"amax/7; all-zero tensor uses 1\"\n    },\n    \"error\": {\n      \"max_abs\": 0.25,\n      \"mse\": 0.03125,\n      \"out_of_range_count\": 0,\n      \"half_scale_bound_applicable\": true,\n      \"half_scale_bound_satisfied\": true\n    }\n  },\n  \"original_output\": [\n    [\n      -5.5,\n      -1.75\n    ]\n  ],\n  \"quantized_output\": [\n    [\n      -6.0,\n      -2.5\n    ]\n  ],\n  \"output_max_abs_error\": 0.75,\n  \"compute\": \"FP32 input values promoted to Python float64 multiply/accumulate; no GPU kernel\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_qdq.py --scale 0.25",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "k n | FP32 input | / scale | q | restored | error\n0 0 | -3.5 | -14.0 | -7 | -1.75 | -1.75\n0 1 | -0.75 | -3.0 | -3 | -0.75 | 0.0\n1 0 | 0.25 | 1.0 | 1 | 0.25 | 0.0\n1 1 | 1.25 | 5.0 | 5 | 1.25 | 0.0\n2 0 | 2.5 | 10.0 | 7 | 1.75 | 0.75\n2 1 | 3.5 | 14.0 | 7 | 1.75 | 1.75\n{\n  \"x\": [\n    [\n      1.0,\n      2.0,\n      -1.0\n    ]\n  ],\n  \"qdq\": {\n    \"fp32_input\": [\n      [\n        -3.5,\n        -0.75\n      ],\n      [\n        0.25,\n        1.25\n      ],\n      [\n        2.5,\n        3.5\n      ]\n    ],\n    \"q\": [\n      [\n        -7,\n        -3\n      ],\n      [\n        1,\n        5\n      ],\n      [\n        7,\n        7\n      ]\n    ],\n    \"scale\": 0.25,\n    \"dequantized\": [\n      [\n        -1.75,\n        -0.75\n      ],\n      [\n        0.25,\n        1.25\n      ],\n      [\n        1.75,\n        1.75\n      ]\n    ],\n    \"contract\": {\n      \"logical_range\": [\n        -7,\n        7\n      ],\n      \"zero_point\": 0,\n      \"rounding\": \"ties_to_even\",\n      \"granularity\": \"per_tensor\",\n      \"group_size\": null,\n      \"group_axis\": null,\n      \"scale_dtype\": \"float64\",\n      \"arithmetic\": \"Python float64\",\n      \"storage\": \"Python integer lists; unpacked; not a checkpoint\",\n      \"scale_source\": \"explicit teaching parameter\"\n    },\n    \"error\": {\n      \"max_abs\": 1.75,\n      \"mse\": 1.1145833333333333,\n      \"out_of_range_count\": 3,\n      \"half_scale_bound_applicable\": false,\n      \"half_scale_bound_satisfied\": false\n    }\n  },\n  \"original_output\": [\n    [\n      -5.5,\n      -1.75\n    ]\n  ],\n  \"quantized_output\": [\n    [\n      -3.0,\n      0.0\n    ]\n  ],\n  \"output_max_abs_error\": 2.5,\n  \"compute\": \"FP32 input values promoted to Python float64 multiply/accumulate; no GPU kernel\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_qdq.py --scale 0",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "usage: walk_qdq.py [-h] [--scale SCALE]\nwalk_qdq.py: error: scale must be positive with a finite [-7s,7s] range\n"
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/inspect_passport.py .local/runs/part-09-quantization/01-system-overview/cpu-passport.json",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "lesson-9.1-cpu-linear Synthetic FP32 input values; unpacked integers and Python float64 arithmetic\nstatuses: {'unknown': 9, 'declared': 0, 'verified': 26, 'not_applicable': 21}\nprovenance.model: verified; expected=None; observed=synthetic Linear [1,3] x [3,2], no bias\nprovenance.quantization_framework: verified; expected=None; observed=zero2vllm CPU reference\nprovenance.framework_revision: verified; expected=None; observed={'git_commit': 'b013f7c59a52a0863b687f08a48056d4c8c9de2b', 'working_tree_dirty': True, 'source_sha256': 'eeebc8752473d290b198c04f4ea9ec6852710bd59835f80865baa31ac2b50d6c', 'recipe': 'Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL.'}\nprovenance.algorithm: verified; expected=None; observed=amax/7 symmetric RTN, ties-to-even\nnumerical.weight_representation: verified; expected=None; observed=logical signed INT4; quantizer range [-7,7]\nnumerical.activation_representation: verified; expected=None; observed=FP32 input values\nnumerical.symmetry: verified; expected=None; observed=symmetric\nnumerical.scale_dtype: verified; expected=None; observed=float64\nnumerical.scale_granularity: verified; expected=None; observed=per_tensor\nnumerical.zero_point: verified; expected=None; observed=0\nnumerical.rounding: verified; expected=None; observed=ties_to_even\nnumerical.clipping: verified; expected=None; observed=[-7,7] integer range\nnumerical.saturation: verified; expected=None; observed=clamp; current amax-calibrated fixture has no out-of-range input\nexecution.qweight_shape: verified; expected=None; observed=[3, 2]\nexecution.qweight_dtype: verified; expected=None; observed=Python int lists, unpacked\nexecution.scale_shape: verified; expected=None; observed=[]\nexecution.zero_point_shape: verified; expected=None; observed=[]\nexecution.in_memory_layout: verified; expected=None; observed=nested rows W[K,N]; no contiguous low-bit buffer\nexecution.activation_dtype: verified; expected=None; observed=FP32 values promoted to Python float64\nexecution.multiply_dtype: verified; expected=None; observed=Python float64\nexecution.accumulator_dtype: verified; expected=None; observed=Python float64\nexecution.output_dtype: verified; expected=None; observed=Python float64\nexecution.runtime: verified; expected=None; observed=zero2vllm CPU teaching program\nvalidation.hardware: verified; expected=None; observed=host CPU execution; physical GPU not queried\nvalidation.framework: verified; expected=None; observed={'python': '3.11.9', 'implementation': 'CPython'}\nvalidation.correctness: verified; expected=None; observed={'scale': True, 'logical_values': True, 'dequantized_values': True, 'original_output': True, 'quantized_output': True, 'weight_error': True, 'weight_mse': True, 'output_error': True}\nA well-formed citation is not proof; open the evidence and check its scope.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/01-quantization-system-overview/examples/inspect_passport.py .local/runs/part-09-quantization/01-system-overview/qwen-plan-passport.json",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "qwen3-8b-w4a16-g128-plan Planned model; no weights loaded or GPU execution\nstatuses: {'unknown': 51, 'declared': 5, 'verified': 0, 'not_applicable': 0}\nprovenance.model: declared; expected=Qwen3-8B; observed=None\nnumerical.weight_representation: declared; expected=4-bit; exact encoding unspecified; observed=None\nnumerical.activation_representation: declared; expected=16-bit floating point; FP16/BF16 unspecified; observed=None\nnumerical.group_size: declared; expected=128; observed=None\nexecution.runtime: declared; expected=vLLM; observed=None\nA well-formed citation is not proof; open the evidence and check its scope.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0901 --inspect-source",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "hand_computed_linear PASS\nrounding_ties PASS\nzero_tensor PASS\nclipping_breaks_half_scale_bound PASS\nwrong_scale_changes_model PASS\nfp32_input_is_explicit PASS\nreject_invalid_inputs PASS\nname_is_not_execution_evidence PASS\nverified_requires_evidence PASS\npassport_roundtrip PASS\naffine_zero_point_encodes_zero PASS\nomitting_zero_point_shifts_every_value PASS\nrequantization_changes_scale_and_zero_point PASS\nrequantization_saturates_target_range PASS\nrequantization_is_not_direct_quantization PASS\nround_before_adding_zero_point PASS\nreject_invalid_zero_point PASS\nPinned source inspection: True []\nCPU Q/DQ/RQ reference: unpacked Python integers; no quantized checkpoint or GPU execution.\nResults: $REPOSITORY\\.local\\runs\\part-09-quantization\\01-system-overview\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0901 --output-dir .local/runs/part-09-quantization/01-system-overview/replay",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "hand_computed_linear PASS\nrounding_ties PASS\nzero_tensor PASS\nclipping_breaks_half_scale_bound PASS\nwrong_scale_changes_model PASS\nfp32_input_is_explicit PASS\nreject_invalid_inputs PASS\nname_is_not_execution_evidence PASS\nverified_requires_evidence PASS\npassport_roundtrip PASS\naffine_zero_point_encodes_zero PASS\nomitting_zero_point_shifts_every_value PASS\nrequantization_changes_scale_and_zero_point PASS\nrequantization_saturates_target_range PASS\nrequantization_is_not_direct_quantization PASS\nround_before_adding_zero_point PASS\nreject_invalid_zero_point PASS\nCPU Q/DQ/RQ reference: unpacked Python integers; no quantized checkpoint or GPU execution.\nResults: .local\\runs\\part-09-quantization\\01-system-overview\\replay\n",
+      "stderr": ""
+    }
+  ]
+}

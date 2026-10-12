@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1160" viewBox="0 0 1600 1160" role="img" aria-labelledby="title desc">
+<title id="title">形状相同，也可能算错</title><desc id="desc">原创布局图：9个Q头按0到2、3到5、6到8分三组，对应KV0、KV1、KV2。四维RoPE示例的相邻配对为0与1、2与3，Llama配对为0与2、1与3。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1160" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1160" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.02  /  HEAD LAYOUT</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">形状相同，也可能算错</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >头的分组与旋转的坐标配对，都是训练权重约定的一部分。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="280" width="1472" height="360" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 280 H176" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="94" y="325" font-size="21" fill="#54dcff" class="mono" >01</text>
+<text x="138" y="325" font-size="27" fill="#e8f2ff" font-weight="600">GQA：每三个 Q 头使用同一个 KV 头</text>
+<rect x="240" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="279" y="404.5" font-size="26" fill="#6aa8ff" class="mono" text-anchor="middle">Q0</text>
+<path d="M279 423 V462 H371 V500" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" />
+<rect x="332" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="371" y="404.5" font-size="26" fill="#6aa8ff" class="mono" text-anchor="middle">Q1</text>
+<path d="M371 423 V462 H371 V500" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" />
+<rect x="424" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="463" y="404.5" font-size="26" fill="#6aa8ff" class="mono" text-anchor="middle">Q2</text>
+<path d="M463 423 V462 H371 V500" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" />
+<circle cx="371" cy="462" r="5" fill="#6aa8ff" filter="url(#glow)"/>
+<rect x="314" y="500" width="114" height="52" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="371" y="534" font-size="26" fill="#6aa8ff" class="mono" text-anchor="middle">KV0</text>
+<rect x="630" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="669" y="404.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">Q3</text>
+<path d="M669 423 V462 H761 V500" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" />
+<rect x="722" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="761" y="404.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">Q4</text>
+<path d="M761 423 V462 H761 V500" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" />
+<rect x="814" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="853" y="404.5" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">Q5</text>
+<path d="M853 423 V462 H761 V500" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" />
+<circle cx="761" cy="462" r="5" fill="#ae9aff" filter="url(#glow)"/>
+<rect x="704" y="500" width="114" height="52" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="761" y="534" font-size="26" fill="#ae9aff" class="mono" text-anchor="middle">KV1</text>
+<rect x="1020" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1059" y="404.5" font-size="26" fill="#57e5be" class="mono" text-anchor="middle">Q6</text>
+<path d="M1059 423 V462 H1151 V500" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" />
+<rect x="1112" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1151" y="404.5" font-size="26" fill="#57e5be" class="mono" text-anchor="middle">Q7</text>
+<path d="M1151 423 V462 H1151 V500" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" />
+<rect x="1204" y="370" width="78" height="53" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1243" y="404.5" font-size="26" fill="#57e5be" class="mono" text-anchor="middle">Q8</text>
+<path d="M1243 423 V462 H1151 V500" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" />
+<circle cx="1151" cy="462" r="5" fill="#57e5be" filter="url(#glow)"/>
+<rect x="1094" y="500" width="114" height="52" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1151" y="534" font-size="26" fill="#57e5be" class="mono" text-anchor="middle">KV2</text>
+<text x="94" y="404" font-size="22" fill="#98aec9" class="mono" >Q heads</text>
+<text x="94" y="534" font-size="22" fill="#98aec9" class="mono" >K &amp; V</text>
+<text x="153" y="602" font-size="28" fill="#54dcff" class="mono" >repeat_interleave:  0 0 0  |  1 1 1  |  2 2 2</text>
+<rect x="64" y="690" width="714" height="354" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 690 H176" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<rect x="812" y="690" width="724" height="354" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M836 690 H924" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="94" y="736" font-size="21" fill="#6aa8ff" class="mono" >02</text>
+<text x="138" y="736" font-size="27" fill="#e8f2ff" font-weight="600">2.1：相邻配对</text>
+<text x="842" y="736" font-size="21" fill="#ae9aff" class="mono" >03</text>
+<text x="886" y="736" font-size="27" fill="#e8f2ff" font-weight="600">本节：Llama 配对</text>
+<rect x="139" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="196" y="835.5" font-size="24" fill="#6aa8ff" class="mono" text-anchor="middle">a / 0</text>
+<rect x="887" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="944" y="835.5" font-size="24" fill="#ae9aff" class="mono" text-anchor="middle">a / 0</text>
+<rect x="279" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="336" y="835.5" font-size="24" fill="#6aa8ff" class="mono" text-anchor="middle">b / 1</text>
+<rect x="1027" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1084" y="835.5" font-size="24" fill="#54dcff" class="mono" text-anchor="middle">b / 1</text>
+<rect x="419" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="476" y="835.5" font-size="24" fill="#57e5be" class="mono" text-anchor="middle">c / 2</text>
+<rect x="1167" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1224" y="835.5" font-size="24" fill="#ae9aff" class="mono" text-anchor="middle">c / 2</text>
+<rect x="559" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="616" y="835.5" font-size="24" fill="#57e5be" class="mono" text-anchor="middle">d / 3</text>
+<rect x="1307" y="800" width="114" height="55" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1364" y="835.5" font-size="24" fill="#54dcff" class="mono" text-anchor="middle">d / 3</text>
+<path d="M196 855 V904 H336 V855" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" />
+<path d="M476 855 V904 H616 V855" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" />
+<path d="M944 855 V911 H1224 V855" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" />
+<path d="M1084 855 V944 H1364 V855" fill="none" stroke="#54dcff" stroke-width="2.5" opacity=".9" />
+<text x="160" y="988" font-size="26" fill="#98aec9" class="mono" >(a,b) θ0    (c,d) θ1</text>
+<text x="887" y="988" font-size="26" fill="#98aec9" class="mono" >(a,c) θ0    (b,d) θ1</text>
+<path d="M64 1076 L1536 1076" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1105" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1112" font-size="22" fill="#98aec9" >RoPE 图为 Dh=4 的缩小示例；真实模型 Dh=64</text>
+<text x="1536" y="1112" font-size="19" fill="#59718e" class="mono" text-anchor="end">POSITION 0 ALONE IS NOT ENOUGH</text>
+</svg>

@@ -1,0 +1,664 @@
+{
+  "recorded_at_utc": "2026-09-20T09:47:41.977515+00:00",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "48be978fc5725f2d5f716f6d4da611d80634921c23218875a7b73ce887cad23d",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "python": "3.11.9",
+  "verification_level": "cpu_tensor_contract_reference",
+  "gpu_validated": false,
+  "packed": false,
+  "passed": true,
+  "cases": [
+    {
+      "name": "non_square_linear_golden",
+      "passed": true
+    },
+    {
+      "name": "asymmetric_zero_has_code_five",
+      "passed": true,
+      "result": {
+        "shape": [
+          1,
+          4
+        ],
+        "axis": null,
+        "group_size": null,
+        "bits": 4,
+        "scheme": "asymmetric",
+        "scale_dtype": "float64",
+        "pad_to_group": false,
+        "q": [
+          [
+            0,
+            5,
+            10,
+            15
+          ]
+        ],
+        "scales": [
+          [
+            0.2
+          ]
+        ],
+        "zero_points": [
+          [
+            5
+          ]
+        ],
+        "physical_shape": [
+          1,
+          4
+        ],
+        "parameter_shape": [
+          1,
+          1
+        ],
+        "integer_range": [
+          0,
+          15
+        ],
+        "rounding": "round_ties_to_even_before_adding_zero_point",
+        "input_dtype": "FP32 values",
+        "reference_arithmetic": "Python float64",
+        "storage": "Unpacked Python integers; not a checkpoint"
+      }
+    },
+    {
+      "name": "axis_changes_parameter_shape",
+      "passed": true,
+      "axis1": {
+        "shape": [
+          5,
+          3
+        ],
+        "axis": 1,
+        "group_size": 2,
+        "bits": 4,
+        "scheme": "symmetric",
+        "scale_dtype": "float64",
+        "pad_to_group": false,
+        "q": [
+          [
+            -7,
+            0,
+            7
+          ],
+          [
+            -1,
+            7,
+            7
+          ],
+          [
+            1,
+            7,
+            -7
+          ],
+          [
+            4,
+            7,
+            7
+          ],
+          [
+            1,
+            7,
+            -7
+          ]
+        ],
+        "scales": [
+          [
+            0.5,
+            0.03571428571428571
+          ],
+          [
+            1.0,
+            0.25
+          ],
+          [
+            0.21428571428571427,
+            0.5
+          ],
+          [
+            0.5,
+            0.10714285714285714
+          ],
+          [
+            2.0,
+            0.07142857142857142
+          ]
+        ],
+        "zero_points": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ],
+        "physical_shape": [
+          5,
+          3
+        ],
+        "parameter_shape": [
+          5,
+          2
+        ],
+        "integer_range": [
+          -7,
+          7
+        ],
+        "rounding": "round_ties_to_even_before_adding_zero_point",
+        "input_dtype": "FP32 values",
+        "reference_arithmetic": "Python float64",
+        "storage": "Unpacked Python integers; not a checkpoint"
+      }
+    },
+    {
+      "name": "tensor_channel_token_granularity",
+      "passed": true,
+      "parameter_shapes": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "name": "tail_keeps_one_valid_row",
+      "passed": true,
+      "tail_scales": [
+        0.35714285714285715,
+        2.0,
+        0.07142857142857142
+      ]
+    },
+    {
+      "name": "padding_uses_zero_point",
+      "passed": true,
+      "padding_codes": [
+        0,
+        0,
+        15
+      ],
+      "wrong_dq_if_code_zero": -0.4998779296875
+    },
+    {
+      "name": "padding_excluded_from_statistics",
+      "passed": true
+    },
+    {
+      "name": "all_zero_groups",
+      "passed": true
+    },
+    {
+      "name": "one_sided_constants_include_zero",
+      "passed": true
+    },
+    {
+      "name": "stored_scale_is_used",
+      "passed": true,
+      "stored": 0.2332763671875,
+      "ideal": 0.23333333333333334
+    },
+    {
+      "name": "reject_unrepresentable_scales",
+      "passed": true,
+      "expected_errors": [
+        "Stored scale must stay positive and finite; underflow is not silently fixed",
+        "Scale cannot be stored in the declared dtype"
+      ]
+    },
+    {
+      "name": "storage_accounting",
+      "passed": true,
+      "report": {
+        "n_weights": 15,
+        "nominal_bits": 4,
+        "weight_bits": 60,
+        "scale_bits": 144,
+        "zero_point_bits": 36,
+        "metadata_bits": 32,
+        "tensor_padding_bits": 12,
+        "byte_padding_bits": 4,
+        "alignment_padding_bits": 96,
+        "total_bits": 384,
+        "estimated_bytes": 48,
+        "effective_bpw": 25.6,
+        "scope": "Declared buffer plan, not measured checkpoint size or GPU memory",
+        "scale_dtype": "float16",
+        "zero_point_storage_bits": 4,
+        "alignment_bytes": 16
+      }
+    },
+    {
+      "name": "fp4_nonuniform_grid",
+      "passed": true,
+      "positive_grid": [
+        0.0,
+        0.5,
+        1.0,
+        1.5,
+        2.0,
+        3.0,
+        4.0,
+        6.0
+      ]
+    },
+    {
+      "name": "same_bits_different_interpretation",
+      "passed": true,
+      "byte_hex": "0x38",
+      "uint8": 56,
+      "e4m3fn": 1,
+      "e5m2": 0.5
+    },
+    {
+      "name": "special_bit_patterns",
+      "passed": true,
+      "counts": {
+        "e4m3fn": {
+          "finite": 254,
+          "inf": 0,
+          "nan": 2
+        },
+        "e5m2": {
+          "finite": 248,
+          "inf": 2,
+          "nan": 6
+        },
+        "e2m1": {
+          "finite": 16,
+          "inf": 0,
+          "nan": 0
+        }
+      }
+    },
+    {
+      "name": "subnormal_and_ftz",
+      "passed": true,
+      "preserved": 0.001953125,
+      "ftz": 0
+    },
+    {
+      "name": "fp4_ties_and_saturation",
+      "passed": true
+    },
+    {
+      "name": "e8m0_is_not_an_integer_scale",
+      "passed": true,
+      "code127": 1,
+      "code128": 2,
+      "code255": "NaN",
+      "zero_encoding": false
+    },
+    {
+      "name": "scaled_fp4_has_multiple_parameters",
+      "passed": true,
+      "mxfp4_first": 12.0,
+      "nvfp4_first": 3.0
+    },
+    {
+      "name": "shard_boundary_cuts_a_group",
+      "passed": true,
+      "global_group_ids": [
+        1,
+        2
+      ],
+      "incorrect_local_group_ids": [
+        0,
+        0
+      ],
+      "scope": "Index arithmetic only; not a distributed kernel"
+    }
+  ],
+  "linear": {
+    "x": [
+      [
+        1,
+        0,
+        2,
+        -1,
+        0.5
+      ],
+      [
+        0,
+        1,
+        0,
+        1,
+        -1
+      ]
+    ],
+    "w": [
+      [
+        -3.5,
+        0,
+        0.25
+      ],
+      [
+        -0.75,
+        7,
+        1.75
+      ],
+      [
+        0.25,
+        1.5,
+        -3.5
+      ],
+      [
+        1.75,
+        3.5,
+        0.75
+      ],
+      [
+        2.5,
+        14,
+        -0.5
+      ]
+    ],
+    "symmetric": {
+      "shape": [
+        5,
+        3
+      ],
+      "axis": 0,
+      "group_size": 2,
+      "bits": 4,
+      "scheme": "symmetric",
+      "scale_dtype": "float64",
+      "pad_to_group": false,
+      "q": [
+        [
+          -7,
+          0,
+          1
+        ],
+        [
+          -2,
+          7,
+          7
+        ],
+        [
+          1,
+          3,
+          -7
+        ],
+        [
+          7,
+          7,
+          2
+        ],
+        [
+          7,
+          7,
+          -7
+        ]
+      ],
+      "scales": [
+        [
+          0.5,
+          1.0,
+          0.25
+        ],
+        [
+          0.25,
+          0.5,
+          0.5
+        ],
+        [
+          0.35714285714285715,
+          2.0,
+          0.07142857142857142
+        ]
+      ],
+      "zero_points": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "physical_shape": [
+        5,
+        3
+      ],
+      "parameter_shape": [
+        3,
+        3
+      ],
+      "integer_range": [
+        -7,
+        7
+      ],
+      "rounding": "round_ties_to_even_before_adding_zero_point",
+      "input_dtype": "FP32 values",
+      "reference_arithmetic": "Python float64",
+      "storage": "Unpacked Python integers; not a checkpoint"
+    },
+    "asymmetric_fp16_padded": {
+      "shape": [
+        5,
+        3
+      ],
+      "axis": 0,
+      "group_size": 2,
+      "bits": 4,
+      "scheme": "asymmetric",
+      "scale_dtype": "float16",
+      "pad_to_group": true,
+      "q": [
+        [
+          0,
+          0,
+          2
+        ],
+        [
+          12,
+          15,
+          15
+        ],
+        [
+          2,
+          6,
+          0
+        ],
+        [
+          15,
+          15,
+          15
+        ],
+        [
+          15,
+          15,
+          0
+        ],
+        [
+          0,
+          0,
+          15
+        ]
+      ],
+      "scales": [
+        [
+          0.2332763671875,
+          0.466552734375,
+          0.11663818359375
+        ],
+        [
+          0.11663818359375,
+          0.2332763671875,
+          0.283447265625
+        ],
+        [
+          0.1666259765625,
+          0.93310546875,
+          0.0333251953125
+        ]
+      ],
+      "zero_points": [
+        [
+          15,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          12
+        ],
+        [
+          0,
+          0,
+          15
+        ]
+      ],
+      "physical_shape": [
+        6,
+        3
+      ],
+      "parameter_shape": [
+        3,
+        3
+      ],
+      "integer_range": [
+        0,
+        15
+      ],
+      "rounding": "round_ties_to_even_before_adding_zero_point",
+      "input_dtype": "FP32 values",
+      "reference_arithmetic": "Python float64",
+      "storage": "Unpacked Python integers; not a checkpoint"
+    },
+    "dq": [
+      [
+        -3.5,
+        0.0,
+        0.25
+      ],
+      [
+        -1.0,
+        7.0,
+        1.75
+      ],
+      [
+        0.25,
+        1.5,
+        -3.5
+      ],
+      [
+        1.75,
+        3.5,
+        1.0
+      ],
+      [
+        2.5,
+        14.0,
+        -0.5
+      ]
+    ],
+    "y_original": [
+      [
+        -3.5,
+        6.5,
+        -7.75
+      ],
+      [
+        -1.5,
+        -3.5,
+        3.0
+      ]
+    ],
+    "y_qdq": [
+      [
+        -3.5,
+        6.5,
+        -8.0
+      ],
+      [
+        -1.75,
+        -3.5,
+        3.25
+      ]
+    ],
+    "weight_error": {
+      "max_abs": 0.25,
+      "mse": 0.008333333333333333
+    },
+    "output_error": {
+      "max_abs": 0.25,
+      "mse": 0.03125
+    }
+  },
+  "storage": {
+    "n_weights": 15,
+    "nominal_bits": 4,
+    "weight_bits": 60,
+    "scale_bits": 144,
+    "zero_point_bits": 36,
+    "metadata_bits": 32,
+    "tensor_padding_bits": 12,
+    "byte_padding_bits": 4,
+    "alignment_padding_bits": 96,
+    "total_bits": 384,
+    "estimated_bytes": 48,
+    "effective_bpw": 25.6,
+    "scope": "Declared buffer plan, not measured checkpoint size or GPU memory",
+    "scale_dtype": "float16",
+    "zero_point_storage_bits": 4,
+    "alignment_bytes": 16
+  },
+  "torch_oracle": {
+    "torch_version": "2.7.1+cpu",
+    "device": "cpu",
+    "operation": "uint8 bit view to float8 then cast to float32",
+    "native_low_precision_arithmetic": false,
+    "formats": [
+      {
+        "format": "e4m3fn",
+        "patterns": 256,
+        "passed": true,
+        "mismatch_codes": []
+      },
+      {
+        "format": "e5m2",
+        "patterns": 256,
+        "passed": true,
+        "mismatch_codes": []
+      }
+    ],
+    "passed": true
+  }
+}

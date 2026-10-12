@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.8.5",
+  "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+  "hash_policy": "SHA-256 after CRLF-to-LF normalization",
+  "files": {
+    "LICENSE": {
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "vllm/v1/worker/gpu_input_batch.py": {
+      "sha256_lf": "da951185f97bad480c53a161a0c01d001f7248f980a00c97b5fe8734e0293b0c"
+    },
+    "vllm/v1/worker/gpu_model_runner.py": {
+      "sha256_lf": "cca495d4d86bcc389bd2167404d076d95c4d4b6ec473eb45012e43ebfcc9a41a"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "point-01",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner._update_states",
+      "title": "按请求 ID 与批次排列维护状态",
+      "calls": [
+        "self.requests.pop",
+        "self.encoder_cache.pop",
+        "self.input_batch.remove_request",
+        "removed_req_indices.append"
+      ]
+    },
+    {
+      "id": "point-02",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner._prepare_inputs",
+      "title": "早期 V1 输入准备",
+      "calls": [
+        "self.input_batch.block_table.commit",
+        "np.array",
+        "np.repeat",
+        "np.cumsum"
+      ]
+    },
+    {
+      "id": "point-03",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_model_runner.py",
+      "symbol": "GPUModelRunner.execute_model",
+      "title": "模型执行及输出整理",
+      "calls": [
+        "has_kv_transfer_group",
+        "get_kv_transfer_group().bind_connector_metadata",
+        "get_kv_transfer_group",
+        "self._update_states"
+      ]
+    },
+    {
+      "id": "point-04",
+      "stage": "read",
+      "path": "vllm/v1/worker/gpu_input_batch.py",
+      "symbol": "InputBatch.condense",
+      "title": "压紧持久 batch 的空行",
+      "calls": [
+        "self._req_ids.clear",
+        "self.req_output_token_ids.clear",
+        "empty_req_indices.pop",
+        "self.block_table.move_row"
+      ]
+    }
+  ],
+  "structures": []
+}

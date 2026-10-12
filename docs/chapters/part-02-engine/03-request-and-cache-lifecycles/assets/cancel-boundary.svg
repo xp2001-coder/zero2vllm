@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080" role="img" aria-labelledby="title desc">
+<title id="title">取消标记先到，资源稍后释放</title><desc id="desc">四个时刻：进入forward、计算中取消、返回时丢弃新token、清空缓存并归还额度。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1080" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1080" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.03  /  CANCEL BOUNDARY</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">取消标记先到，资源稍后释放</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >一次计算已经开始时，先记住取消意图，在可控制的返回边界完成收尾。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M160 320 H1450" fill="none" stroke="#54dcff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-54dcff)"/>
+<circle cx="146" cy="320" r="5" fill="#6aa8ff" filter="url(#glow)"/>
+<rect x="76" y="360" width="160" height="36" rx="18" fill="#11243b" stroke="#6aa8ff" stroke-opacity=".5"/>
+<text x="156" y="384" font-size="18" fill="#6aa8ff" class="mono" text-anchor="middle">01</text>
+<rect x="76" y="424" width="314" height="345" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M100 424 H188" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="97" y="475" font-size="28" fill="#6aa8ff" font-weight="600">进入 forward</text>
+<circle cx="524" cy="320" r="5" fill="#ae9aff" filter="url(#glow)"/>
+<rect x="454" y="360" width="160" height="36" rx="18" fill="#11243b" stroke="#ae9aff" stroke-opacity=".5"/>
+<text x="534" y="384" font-size="18" fill="#ae9aff" class="mono" text-anchor="middle">02</text>
+<rect x="454" y="424" width="314" height="345" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M478 424 H566" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="475" y="475" font-size="28" fill="#ae9aff" font-weight="600">收到取消</text>
+<circle cx="902" cy="320" r="5" fill="#54dcff" filter="url(#glow)"/>
+<rect x="832" y="360" width="160" height="36" rx="18" fill="#11243b" stroke="#54dcff" stroke-opacity=".5"/>
+<text x="912" y="384" font-size="18" fill="#54dcff" class="mono" text-anchor="middle">03</text>
+<rect x="832" y="424" width="314" height="345" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M856 424 H944" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="853" y="475" font-size="28" fill="#54dcff" font-weight="600">forward 返回</text>
+<circle cx="1280" cy="320" r="5" fill="#57e5be" filter="url(#glow)"/>
+<rect x="1210" y="360" width="160" height="36" rx="18" fill="#11243b" stroke="#57e5be" stroke-opacity=".5"/>
+<text x="1290" y="384" font-size="18" fill="#57e5be" class="mono" text-anchor="middle">04</text>
+<rect x="1210" y="424" width="314" height="345" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M1234 424 H1322" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="1231" y="475" font-size="28" fill="#57e5be" font-weight="600">统一收尾</text>
+<text x="98" y="543" font-size="25" fill="#6aa8ff" class="mono" >RUNNING</text>
+<text x="98" y="603" font-size="21" fill="#98aec9" >模型正在使用请求上下文</text>
+<text x="98" y="664" font-size="22" fill="#e8f2ff" class="mono" >reserved = 6</text>
+<text x="476" y="543" font-size="23" fill="#ae9aff" class="mono" >cancel = true</text>
+<text x="476" y="603" font-size="21" fill="#98aec9" >此刻保留 KV 与运行额度</text>
+<text x="476" y="664" font-size="24" fill="#e8f2ff" class="mono" >KV = 3</text>
+<text x="476" y="711" font-size="22" fill="#e8f2ff" class="mono" >reserved = 6</text>
+<text x="854" y="543" font-size="24" fill="#54dcff" >先检查取消标记</text>
+<text x="854" y="603" font-size="23" fill="#e8f2ff" >本次新 token 不提交</text>
+<text x="854" y="664" font-size="23" fill="#98aec9" >已有输出保持不变</text>
+<text x="1232" y="543" font-size="26" fill="#57e5be" class="mono" >CANCELLED</text>
+<text x="1232" y="603" font-size="24" fill="#e8f2ff" class="mono" >KV = 0</text>
+<text x="1232" y="655" font-size="22" fill="#e8f2ff" class="mono" >reserved = 0</text>
+<text x="1232" y="711" font-size="23" fill="#98aec9" >收尾恰好一次</text>
+<rect x="76" y="828" width="1448" height="113" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M100 828 H188" stroke="#ff9b99" stroke-width="3" opacity=".95"/>
+<text x="104" y="873" font-size="25" fill="#e8f2ff" >若 forward 抛出异常，本节记录 FAILED / model_error，并执行同一个资源回收出口。</text>
+<text x="104" y="914" font-size="24" fill="#98aec9" >演示用同线程回调控制事件顺序；没有并发线程，没有中断 GPU kernel。</text>
+<path d="M64 1001 L1536 1001" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1030" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1037" font-size="22" fill="#98aec9" >真实异步后端还需要等待设备事件与在途任务；本节没有证明 GPU 并发安全。</text>
+<text x="1536" y="1037" font-size="19" fill="#59718e" class="mono" text-anchor="end">CANCEL → OBSERVE → FINALIZE</text>
+</svg>

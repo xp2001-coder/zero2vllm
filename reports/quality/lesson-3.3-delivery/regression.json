@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-09-20T06:15:19.645235+00:00",
+  "platform": "Windows-10-10.0.26200-SP0",
+  "python": "3.11.9",
+  "command": "python -X utf8 -m unittest discover -s tests -v",
+  "exit_code": 0,
+  "tests": 335,
+  "skipped": 0,
+  "passed": true,
+  "elapsed_seconds": 235.609,
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "1dbecde17e182d209217034e659c2921f0fc0e9cc588fbe2f6765da89c54d842",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "source_unchanged_during_tests": true,
+  "gpu_validated": false,
+  "remote_ci_executed": false
+}

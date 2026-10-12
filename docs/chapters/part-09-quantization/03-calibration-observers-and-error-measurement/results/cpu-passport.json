@@ -1,0 +1,535 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "lesson-9.3-static-activation-calibration",
+  "scope": "Synthetic lookup features; no LLM weights, tokenizer or inference kernel",
+  "sections": {
+    "provenance": {
+      "model": {
+        "expected": null,
+        "observed": "fixed 2-channel token-feature lookup",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "model_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "tokenizer_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "quantization_framework": {
+        "expected": null,
+        "observed": "zero2vllm CPU observer",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "framework_revision": {
+        "expected": null,
+        "observed": {
+          "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+          "working_tree_dirty": true,
+          "source_sha256": "d69b29a4a453bd60c64e315444ab8231868d3d3bbd96dbcf6f9ec17c0ed3c508",
+          "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "algorithm": {
+        "expected": null,
+        "observed": "per-tensor MinMax then symmetric RTN",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "calibration_dataset": {
+        "expected": null,
+        "observed": {
+          "name": "zero2vllm synthetic token fixture v1",
+          "split": "calibration",
+          "domain": "general",
+          "sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+          "sample_ids": [
+            "calibration-general-4",
+            "calibration-general-1",
+            "calibration-general-5",
+            "calibration-general-2",
+            "calibration-general-0",
+            "calibration-general-3",
+            "calibration-general-7",
+            "calibration-general-6"
+          ]
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "calibration_samples": {
+        "expected": null,
+        "observed": 8,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "token_budget": {
+        "expected": null,
+        "observed": 50,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "sequence_length": {
+        "expected": null,
+        "observed": 8,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "seed": {
+        "expected": null,
+        "observed": 0,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      }
+    },
+    "numerical": {
+      "weight_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "activation_representation": {
+        "expected": null,
+        "observed": "logical signed INT4 [-7,7]; static activation Q/DQ",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "kv_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "symmetry": {
+        "expected": null,
+        "observed": "symmetric",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "group_size": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "group_axis": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "scale_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "scale_granularity": {
+        "expected": null,
+        "observed": "per_tensor",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "zero_point": {
+        "expected": null,
+        "observed": 0,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "rounding": {
+        "expected": null,
+        "observed": "ties_to_even_before_adding_z",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "clipping": {
+        "expected": null,
+        "observed": [
+          -7,
+          7
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "saturation": {
+        "expected": null,
+        "observed": "clamp at frozen range",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      }
+    },
+    "execution": {
+      "checkpoint_format": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "format_version": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "qweight_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "qweight_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "scale_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "zero_point_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "g_idx": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "packing": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "on_disk_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "repack": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "in_memory_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "activation_dtype": {
+        "expected": null,
+        "observed": "FP32 lookup values",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "multiply_dtype": {
+        "expected": null,
+        "observed": "Python float64 reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "accumulator_dtype": {
+        "expected": null,
+        "observed": "Python float64 reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "output_dtype": {
+        "expected": null,
+        "observed": "Python float64 DQ",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "runtime": {
+        "expected": null,
+        "observed": "offline CPU calibration reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "quant_method": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "linear_backend": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "actual_kernel": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      }
+    },
+    "validation": {
+      "hardware": {
+        "expected": null,
+        "observed": "host CPU only",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "driver": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "device_runtime": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic activation experiment, no model weights/checkpoint/device kernel"
+      },
+      "framework": {
+        "expected": null,
+        "observed": {
+          "python": "3.11.9"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "correctness": {
+        "expected": null,
+        "observed": {
+          "case_count": 20,
+          "passed": true
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "protocol.json",
+          "zero2vllm/quantization/calibration.py"
+        ],
+        "note": ""
+      },
+      "model_quality": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "kv_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "prefill": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "decode": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "ttft": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tpot": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "throughput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "goodput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    }
+  }
+}

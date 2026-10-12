@@ -1,0 +1,36 @@
+{
+  "description": "Teaching input, matching lesson 3.1; block IDs are illustrative, not a GPU run.",
+  "requests": [
+    {
+      "request_id": "A",
+      "token_ids": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "computed": 2,
+      "scheduled": 3,
+      "block_table": [
+        8,
+        3
+      ]
+    },
+    {
+      "request_id": "B",
+      "token_ids": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "computed": 3,
+      "scheduled": 1,
+      "block_table": [
+        5
+      ]
+    }
+  ]
+}

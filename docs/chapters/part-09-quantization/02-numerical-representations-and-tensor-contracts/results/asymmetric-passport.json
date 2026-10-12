@@ -1,0 +1,543 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "lesson-9.2-asymmetric",
+  "scope": "Synthetic 2-D integer tensor; unpacked codes; float64 reference arithmetic",
+  "sections": {
+    "provenance": {
+      "model": {
+        "expected": null,
+        "observed": "Synthetic W[5,3], X[2,5]; no bias",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "model_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "tokenizer_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "quantization_framework": {
+        "expected": null,
+        "observed": "zero2vllm CPU reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "framework_revision": {
+        "expected": null,
+        "observed": {
+          "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+          "working_tree_dirty": true,
+          "source_sha256": "48be978fc5725f2d5f716f6d4da611d80634921c23218875a7b73ce887cad23d",
+          "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "algorithm": {
+        "expected": null,
+        "observed": "Group MinMax including zero",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "calibration_dataset": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "calibration_samples": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "token_budget": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "sequence_length": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "seed": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      }
+    },
+    "numerical": {
+      "weight_representation": {
+        "expected": null,
+        "observed": "logical 4-bit integer; range (0, 15)",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "activation_representation": {
+        "expected": null,
+        "observed": "FP32 values",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "kv_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "symmetry": {
+        "expected": null,
+        "observed": "asymmetric",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "group_size": {
+        "expected": null,
+        "observed": 2,
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "group_axis": {
+        "expected": null,
+        "observed": {
+          "axis": 0,
+          "meaning": "partition K of W[K,N]; separate parameters for each N"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "scale_dtype": {
+        "expected": null,
+        "observed": "float16",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "scale_granularity": {
+        "expected": null,
+        "observed": "per_group_per_output_channel",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "zero_point": {
+        "expected": null,
+        "observed": [
+          [
+            15,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            12
+          ],
+          [
+            0,
+            0,
+            15
+          ]
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "rounding": {
+        "expected": null,
+        "observed": "ties-to-even before adding zero-point",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "clipping": {
+        "expected": null,
+        "observed": [
+          0,
+          15
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "saturation": {
+        "expected": null,
+        "observed": "integer clamp",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      }
+    },
+    "execution": {
+      "checkpoint_format": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "format_version": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "qweight_shape": {
+        "expected": null,
+        "observed": [
+          6,
+          3
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "qweight_dtype": {
+        "expected": null,
+        "observed": "unpacked Python integers",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "scale_shape": {
+        "expected": null,
+        "observed": [
+          3,
+          3
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "zero_point_shape": {
+        "expected": null,
+        "observed": [
+          3,
+          3
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "g_idx": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "packing": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "on_disk_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "repack": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "in_memory_layout": {
+        "expected": null,
+        "observed": {
+          "logical_shape": [
+            5,
+            3
+          ],
+          "physical_shape": [
+            6,
+            3
+          ],
+          "padding": "q_pad = z",
+          "container": "Python tuple rows; no packed buffer"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "activation_dtype": {
+        "expected": null,
+        "observed": "FP32 values promoted to float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "multiply_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "accumulator_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "output_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "runtime": {
+        "expected": null,
+        "observed": "CPU teaching reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "quant_method": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "linear_backend": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "actual_kernel": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      }
+    },
+    "validation": {
+      "hardware": {
+        "expected": null,
+        "observed": "Host CPU; GPU not used",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "driver": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "device_runtime": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic CPU tensor reference; no model checkpoint or device runtime"
+      },
+      "framework": {
+        "expected": null,
+        "observed": {
+          "python": "3.11.9"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "correctness": {
+        "expected": null,
+        "observed": {
+          "cases_passed": true,
+          "scope": "synthetic tensor and format checks"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/quantization/tensor_contract.py"
+        ],
+        "note": ""
+      },
+      "model_quality": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "kv_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "prefill": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "decode": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "ttft": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tpot": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "throughput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "goodput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    }
+  }
+}

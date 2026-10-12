@@ -10,27 +10,27 @@
     },
     "2.2": {
       "title": "Loading real model weights",
-      "topics": "Configuration, safetensors, weight mapping, tokenizers, and model revisions"
+      "topics": "Configuration and revisions, safetensors, weight mapping and tying, tokenizers, GQA/RoPE layouts, and layerwise checks"
     },
     "2.3": {
       "title": "Request and cache lifecycles",
-      "topics": "Creation, execution, completion, cancellation, exceptions, and cache ownership"
+      "topics": "Request states, admission budgets, cancellation boundaries, failure cleanup, owned KV, and shared models"
     },
     "2.4": {
       "title": "From static to continuous batching",
-      "topics": "Iteration-level scheduling, active queues, token budgets, and request admission/removal"
+      "topics": "Static cohorts and iteration admission, three budgets, FIFO blocking, rotation fairness, and output gaps"
     },
     "2.5": {
       "title": "Paged caching",
-      "topics": "Logical/physical blocks, block tables, slot mapping, and device KV storage"
+      "topics": "Block tables and slot mapping, CPU KV tensors, valid prefixes, whole-block admission, isolation, and reclamation"
     },
     "2.6": {
       "title": "Prefix caching",
-      "topics": "Cross-request sharing, reference counts, hash matching, eviction, and invalidation"
+      "topics": "Full-prefix matching, final-block recomputation, shared KV tensors, reference counts, hash isolation, and LRU eviction"
     },
     "2.7": {
       "title": "HTTP and streaming output",
-      "topics": "Async iteration, backpressure, disconnects, cancellation propagation, and request errors"
+      "topics": "HTTP/SSE fundamentals, async output, bounded queues, backpressure, disconnect cancellation, and error termination"
     }
   }
 }

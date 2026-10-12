@@ -1,114 +1,543 @@
-# 量化篇设计：算法、算子与推理加速
+# Part 9 · 量化算法、格式、算子与推理系统
 
-本篇以**设计量化策略、实现量化算子、解释实际加速**为核心，覆盖 9.1—9.11。已有[专题导读](guide.md)和 [CPU INT4 Linear 实验](04-writing-quantization-and-data-reordering-kernels/lab.md)；GPU 算子、真实模型评测和 vLLM 接入待交付。课程状态与[详细目录](../README.md)一致。
+**课程设计基线 v1.0 · 2026-09-20**。固定 4 个 Module、14 个一级教学单元；后续在节内增加专题与实验页。前三篇保持当前教学版本。
 
-## 1. 教学目标与阅读深度
+[本篇目录](README.md) · [专题导读](guide.md) · [统一写作模板](templates/lesson.md)
 
-- **学生**：从数学参考和位布局出发，写出 Q/DQ、打包与基础量化 Linear，理解位宽、质量和性能的关系。
-- **量化工程师**：从精度分配、布局、融合边界和执行瓶颈进入，完成内核优化、vLLM 接入与端到端消融。
+> **Quantization from Algorithms to Systems**
 
-算法集中到 **9.2 量化算法**。GPTQ、AWQ 等作为误差目标、校准和变换策略的比较案例；工具与格式用于解释模型产物怎样进入执行路径，查阅映射保留在文末。
+## 0. 本篇定位
 
-Part 7 提供通用 GPU/Attention 基础，Part 8 提供编译与图执行；本篇重点是低精度数据如何存、搬、算，以及这些选择怎样影响质量和性能。
+本篇不把量化仅理解为“把 FP16 权重变成 INT4”，而是完整研究：
 
-## 2. 十一个章节如何串起来
+```text
+浮点模型
+   ↓
+量化数值契约
+   ↓
+校准与算法优化
+   ↓
+量化模型生产
+   ↓
+Checkpoint / Metadata
+   ↓
+Packing / Serialization
+   ↓
+Loader / Repack
+   ↓
+Kernel
+   ↓
+Hardware
+   ↓
+Runtime
+   ↓
+Model / Serving Performance
+```
 
-| 阶段 | 章节 | 应交付的能力 |
+全篇核心命题：
+
+> **Quantization Algorithm ≠ Quantized Checkpoint Format ≠ Compute Kernel**
+
+同时区分两条实际流程。
+
+### 模型生产
+
+```text
+Floating Model + Calibration Data
+        ↓
+Quantization Scheme
+        ↓
+Algorithm / Optimization
+        ↓
+Quantized Tensor
+        ↓
+Checkpoint Export
+```
+
+### 模型消费
+
+```text
+Quantized Checkpoint
+        ↓
+Runtime Loader
+        ↓
+Metadata Parsing
+        ↓
+Repack / Initialization
+        ↓
+Kernel Dispatch
+        ↓
+Hardware Execution
+        ↓
+Quality / Memory / Latency / Throughput
+```
+
+两条路径通过明确的 **Quantized Model Contract** 连接。
+
+---
+
+## 1. 全篇固定实验主线
+
+### 1.1 LLM 主线
+
+贯穿模型：
+
+```text
+Qwen3-8B
+```
+
+第一阶段统一研究：
+
+```text
+W4A16
+Group Size = 128
+```
+
+依次扩展：
+
+```text
+W4A16
+  ↓
+W8A8 / INT8
+  ↓
+FP8 等硬件相关路径
+  ↓
+KV Quantization
+  ↓
+MoE / TP / EP
+```
+
+Qwen3-8B 不代表所有实验都直接使用完整模型。
+
+实验分为三层：
+
+```text
+Level 1
+Small Matrix / Single Linear
+        ↓
+检查公式、axis、packing、误差
+
+Level 2
+Few Layers / Small Model
+        ↓
+研究 calibration、reconstruction、误差传播
+
+Level 3
+Qwen3-8B
+        ↓
+质量、显存、Runtime、Serving
+```
+
+---
+
+### 1.2 CNN 经典量化支线
+
+统一使用一个主要案例：
+
+```text
+MobileNetV2
+```
+
+主要服务：
+
+```text
+Observer
+FakeQuant
+PTQ
+QAT
+STE
+AdaRound
+BRECQ
+QDrop
+LSQ
+BN / Activation Statistics
+```
+
+框架：
+
+```text
+MQBench        主实验框架
+PPQ            框架设计对照
+```
+
+CNN 支线不承担整篇主叙事，不要求读者完成完整 CNN 部署链才能继续 LLM 主线。
+
+---
+
+### 1.3 量化工具教学分工
+
+| 工具                            | 本课程主要职责                                               |
+| ----------------------------- | ----------------------------------------------------- |
+| 自己实现的 CPU / PyTorch reference | 公式、Q/DQ、packing、layout、误差黄金参考                         |
+| MQBench                       | 经典 PTQ/QAT、Observer、FakeQuant                         |
+| PPQ                           | Graph-based quantization 与 backend abstraction        |
+| LightCompress                 | LLM 量化算法、重构、变换、策略研究                                   |
+| AutoRound                     | rounding optimization 与 Algorithm / Format 解耦         |
+| LLM Compressor                | 可部署量化模型生产、compressed-tensors 与 vLLM 路径                |
+| ModelOpt                      | NVIDIA 低精度与 hardware-aware quantization 对照            |
+| vLLM                          | Loader、Repack、QuantMethod、Kernel dispatch 与最终 Serving |
+| SGLang                        | Runtime 对照                                            |
+| TensorRT-LLM                  | NVIDIA Runtime / Hardware-specific quantization 对照    |
+| FastLLM / llama.cpp           | 轻量 Runtime 与不同低比特布局对照                                 |
+
+这些是**教学职责划分**，不是对项目能力边界的定义。
+
+---
+
+## 2. 全篇统一产物：Quantized Model Passport
+
+每个实验维护来源与算法、数值契约、存储与执行、验证证据四组信息。完整字段与填写规则见 [Passport v1.0 规范](templates/model-passport.md)。
+
+## 十四节教学单元
+
+| Module | 教学范围 | 小节 |
 | --- | --- | --- |
-| 表示、算法与策略 | 9.1—9.3 | 明确存储/乘法/累加精度；比较算法；根据质量、显存和延迟预算分配精度 |
-| 基础算子 | 9.4 | 编写缩放统计、Q/DQ、低比特打包与重排，验证边界 |
-| 量化矩阵乘 | 9.5—9.6 | 实现 weight-only 和设备支持的低精度计算路径，处理 scales、累加及输出缩放 |
-| 内核加速 | 9.7 | 优化访存、融合、分块、流水线与资源占用，说明适用的形状范围 |
-| 特定执行路径 | 9.8—9.9 | 优化 KV/Attention 与 MoE 量化子路径，核对状态、布局与负载特点 |
-| 引擎集成与验收 | 9.10—9.11 | 接入 vLLM 调度/执行，验证质量和完整服务收益 |
+| A · Quantization Foundations | 数值、契约与校准 | 9.1—9.3 |
+| B · Algorithms & Model Production | 算法、策略与模型生产 | 9.4—9.6 |
+| C · Format, Packing & Kernel | 格式、packing、repack 与算子 | 9.7—9.10 |
+| D · Runtime State & Systems | KV/MoE、vLLM 与端到端验证 | 9.11—9.14 |
 
-## 3. 贯穿实验：从量化张量到一个可用的 Linear
-
-以下是贯穿实验设计。Q0/Q1 已提供一种教学格式及 CPU 参考；stride/重排等扩展、Q2—Q5 仍需实现与检查。
-
-| 阶段 | 具体工作 | 产出与检查 |
+| 小节 | 教学单元 | 验收产物 |
 | --- | --- | --- |
-| Q0 策略与契约 | 定义 shape、位宽、量化轴、group size、scales、舍入与饱和；设计质量/性能预算 | 张量契约和策略选择说明 |
-| Q1 数学与布局参考 | 已实现 Q/DQ、INT4 pack/unpack 与 Linear；后续扩展重排与反重排 | [CPU 参考](04-writing-quantization-and-data-reordering-kernels/lab.md)已检查黄金字节、尾组、负数、零值和误差界；尚未实现 GPU 重排 |
-| Q2 基础 GPU 实现 | 先写独立 Q/DQ，再写小规模 weight-only GEMV/GEMM | 对齐参考的 GPU 实现与误差报告 |
-| Q3 融合与调优 | 将分块反量化并入矩阵乘，复用 scales；调整 tile、加载和流水线 | 形状扫描、时间线与逐项消融 |
-| Q4 扩展路径 | 学习动态激活量化与 GEMM；进阶选择 KV 写读或专家 grouped GEMM | 完整子路径的时间/质量对照 |
-| Q5 接入 vLLM | 注册配置/方法，处理加载后重排、kernel 选择和回退；运行层/模型/服务实验 | 集成记录与端到端报告 |
+| 9.1 | [量化系统全景与术语分层](01-quantization-system-overview/README.md) | 术语分类、第一版 Passport、无 packing 的最小 Q/DQ 与生产/消费系统图 |
+| 9.2 | [数值表示、量化公式与张量契约](02-numerical-representations-and-tensor-contracts/README.md) | 对称/非对称 CPU 参考、非方阵/尾组/数值边界测试与含元数据的 bpw 报告 |
+| 9.3 | [Calibration、Observer 与误差测量](03-calibration-observers-and-error-measurement/README.md) | Calibration Protocol、Observer 参考与固定数据/固定 token budget 的分组对照 |
+| 9.4 | [量化算法与误差控制](04-quantization-algorithms-and-error-control/README.md) | RTN/裁剪/小矩阵舍入实现，GPTQ/AWQ 简化推导与受控算法对比表 |
+| 9.5 | [Activation Quantization 与混合精度策略](05-activation-quantization-and-mixed-precision/README.md) | per-token INT8 参考、敏感度图、精度分配表与固定质量/固定内存对照 |
+| 9.6 | [量化框架、导出流程与生态](06-quantization-frameworks-and-export/README.md) | Framework Matrix，以及 LightCompress 与 LLM Compressor 各一条真实 export 记录 |
+| 9.7 | [Checkpoint Format 与 Quantized Weight ABI](07-checkpoint-formats-and-quantized-weight-abi/README.md) | 真实 checkpoint 检查器与至少两种格式的非方阵布局/元数据分析 |
+| 9.8 | [位打包、序列化与 Repack](08-bit-packing-serialization-and-repack/README.md) | 沿用现有 CPU INT4 实验；扩展 n-bit、序列化与 repack，提交字节级黄金测试 |
+| 9.9 | [Weight-only GEMV / GEMM 与调优](09-weight-only-gemv-gemm-and-tuning/README.md) | 三基线正确性、形状扫描、逐项 profiling 消融与 W4A16 Kernel Optimization Report |
+| 9.10 | [激活量化、低精度 GEMM 与融合](10-activation-quantization-low-precision-gemm-and-fusion/README.md) | Low Precision GEMM Report：未融合分项与融合总耗时、正确性、资源与负载边界 |
+| 9.11 | [KV Cache 量化与 Attention 协同](11-kv-cache-quantization-and-attention/README.md) | KV 容量/并发/写读开销/Attention 延迟/质量报告，prefill 与 decode 分开 |
+| 9.12 | [MoE、并行切分与量化](12-moe-parallel-sharding-and-quantization/README.md) | Distributed Quantization Contract 与 MoE 案例；CPU 切分重组、单卡计算、多卡扩展分开验收 |
+| 9.13 | [量化路径接入 vLLM](13-integrating-quantization-into-vllm/README.md) | 层→模型→离线→在线四级记录，以及 config→loader→repack→backend→kernel 的证据链 |
+| 9.14 | [从算子收益到端到端推理加速](14-from-kernel-gains-to-end-to-end-acceleration/README.md) | A100/C500 独立端到端报告与 Algorithm→Format→Kernel→Runtime 系统图 |
 
-Triton 矩阵乘教程用于学习可读的分块实现、程序排序与自动调优；Marlin 用于分析 weight-only 内核的布局、反量化与计算协作。它们是阅读材料，当前工程尚未集成其实现。[Triton 教程](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html) · [Marlin](https://github.com/IST-DASLab/marlin)
+每节入口保留本次确认的能力目标、图解计划、实现、实验与验收项；当前均为教学计划，后续逐节交付正文。
 
-### 张量契约应写到什么程度
+## 3. 三条贯穿式实验轨道
 
-首个教学例子采用 `X[M,K] × W[K,N]`，权重沿 K 分组，至少固定：
+### Track A · Classic PTQ / QAT
 
-- `qW` 的符号表示、低/高半字节顺序、存储 dtype、stride、重排映射和对齐要求。
-- `scales[ceil(K/G),N]` 的轴顺序及广播规则，其中 G 为 group size；尾组和全零组的处理。
-- 输入、反量化、乘法、累加和输出的 dtype；非有限值的支持或拒绝规则。
-- 非对称格式的 zero-point 及补偿方式；分组 scale 随 K 变化时，不能无条件提到完整 K 归约之后。
-- 独立反量化参考 `Y_ref = X @ dequant(qW, scales)`；加载阶段与每次前向分别承担的工作。
+```text
+MobileNetV2
+    ↓
+MQBench
+    ↓
+Observer / FakeQuant
+    ↓
+PTQ / QAT
+    ↓
+AdaRound / BRECQ / QDrop / LSQ
+```
 
-此契约用于第一个小实现，后续按 kernel 与 checkpoint 增加格式适配。各实现保持明确的数学语义和可追溯的布局转换。
+作用：
 
-## 4. 策略设计需要回答的问题
+> 建立经典量化方法论。
 
-| 决策 | 分析依据 | 要比较的成本 |
-| --- | --- | --- |
-| W/A/KV 哪些量化 | 权重读取、激活计算、KV 容量/带宽分别是否构成瓶颈 | 节省的流量与新增 Q/DQ、统计和元数据 |
-| 静态还是动态 | 输入分布、校准覆盖、负载漂移、质量目标 | 校准成本与每次前向的统计/量化成本 |
-| tensor/channel/group/block/token/head 粒度 | 离群值、误差分布、kernel 能消费的格式 | scales 大小、广播、矩阵乘缩放与布局约束 |
-| 哪些层/专家保留高精度 | 层敏感度、专家负载、路由变化、长上下文质量 | 质量收益、混合路径开销与 kernel 切换 |
-| 如何随负载选算子 | M/N/K、并发、prefill/decode、上下文长度 | 切换阈值、带宽/计算瓶颈与尾延迟 |
-| 算法如何适配执行格式 | 裁剪、舍入、误差补偿和变换的输出要求 | 离线重排能否消化、是否新增在线计算 |
+---
 
-比较算法时固定位宽、粒度与执行后端；比较 kernel 时固定量化后的逻辑权重与语义。联合优化作为单独实验，避免把策略变化产生的收益记到内核改动上。
+### Track B · Main LLM Track
 
-## 5. 算子加速的实验次序
+```text
+Qwen3-8B BF16/FP16
+      ↓
+W4A16 G128
+      ↓
+RTN / GPTQ / AWQ / AutoRound
+      ↓
+Checkpoint
+      ↓
+Packing
+      ↓
+Repack
+      ↓
+Kernel
+      ↓
+vLLM
+      ↓
+TTFT / TPOT / Memory / Quality
+```
 
-1. **定位开销**：分测统计、Q/DQ、重排、GEMM/GEMV 和输出处理，分别观察 prefill/decode。
-2. **优化流量与布局**：向量加载、连续访问、权重/scale 排布、L2/共享内存复用与 padding 代价。
-3. **选择融合边界**：分块反量化+GEMM、Norm/Act+Quant、缩放/bias/activation epilogue；同时检查寄存器压力。
-4. **调整调度与流水线**：tile、warp/threadblock 分工、双缓冲、受支持的异步加载、split-K 与归约。
-5. **检查资源和形状范围**：寄存器溢出、共享内存冲突、occupancy、尾块、短 K、小 M 与大 M 的拐点。
-6. **回到服务链路**：检查启动、图执行、框架调度和量化开销是否抵消了算子收益。
+这是 **Part 9 主轴**。
 
-A100 沿 CUDA/Triton 与对应内核库验证；C500 按 MACA、编译器和算子库的实际交付选择实现。平台专用指令、流水线能力与工具链分别核对。[平台说明](../../platforms/README.md)
+---
 
-## 6. vLLM 接入的阅读重点
+### Track C · Advanced Systems
 
-9.10 沿 `QuantizationConfig` / `QuantizeMethodBase` 阅读权重创建、`process_weights_after_loading` 和 `apply` 的职责，再追踪 Linear/MoE 的实际 kernel 选择。正式章节固定源码版本，检查元数据、加载时重排、运行时分派与回退。[量化接口](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py)
+```text
+W8A8
+ ↓
+FP8 / FP4
+ ↓
+KV Quant
+ ↓
+MoE Quant
+ ↓
+TP / EP
+ ↓
+A100 / C500
+```
 
-检查加载后的布局/scales、重复加载或更新、目标 kernel 命中、不支持的 shape 与回退行为；进入模型后再验证图执行、取消和适用的功能组合。[Kernel 配置](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py)
+作用：
 
-## 7. 正确性和性能分层验收
+> 从静态 Weight-only 走到动态状态和分布式系统。
 
-### 两类误差分别检查
+---
 
-- **实现误差**：GPU kernel 对比相同 `qW/scales` 的反量化参考。位打包、索引和量化整数等离散结果单独精确检查，浮点计算按 dtype/累加长度制定容差。
-- **策略损失**：使用已验证的量化路径与原精度模型比较 logits、困惑度或任务质量，并检查长上下文、异常样本和专家路由相关表现。
+## 4. 每一节统一模板
 
-实现误差合格后才解释模型质量变化。校准数据与质量评测数据分开记录，观察逐层/逐步结果及任务质量。
+以后写 9.1～9.14 时，强制使用同一个结构。
 
-### 三个必要基线
+```text
+1. 本节为什么存在
+2. 本节需要解决的问题
+3. 前置知识
+4. 核心概念
+5. 数学推导
+6. 中文图解
+7. 最小 CPU / PyTorch 实现
+8. 真实框架对应
+9. GPU / Runtime 实验
+10. 常见误区
+11. 工程边界
+12. 练习
+13. 实验产物
+14. 完成标准
+15. 源码与论文入口
+```
 
-| 基线 | 用途 |
-| --- | --- |
-| 原精度的库实现 | 评估量化策略和完整加速收益 |
-| 同一量化权重，独立反量化后计算 | 验证语义，测显式 Q/DQ 与中间张量代价 |
-| 同一量化权重，融合执行 | 测内核优化效果；可加入固定版本的成熟量化内核对照 |
+---
 
-分别报告纯 kernel、含前后处理的算子、模型前向和服务延迟。加载时预打包单独计时并说明摊销；在线动态量化计入每次请求实际开销。记录 GPU 同步/事件计时、预热、重复次数、缓存状态和测量区间。
+## 5. 每节实验状态统一
 
-形状覆盖 decode 小 M、prefill 大 M、对齐/非对齐 N/K、多种 group size。报告时间、实际存储、有效带宽或计算量口径、质量与 TTFT/TPOT/Goodput。A100/C500 独立记录，不预填加速倍数。[实验规范](../../engineering/experiments.md) · [验证模板](../../../configs/templates/feature-validation.json)
+建议继续使用课程已有状态体系，并进一步给实验增加：
 
-## 8. 原有算法、格式与工具怎样保留
+```text
+🧮 CPU Reference
+🟢 A100 Verified
+🟣 C500 Verified
+🟠 Multi-GPU Verified
+📖 Source Verified
+⚪ Planned
+```
 
-| 查阅对象 | 新章节归属 |
-| --- | --- |
-| GPTQ、AWQ 等算法 | 9.2 算法比较；9.3 策略权衡 |
-| INT4/INT8、FP8 E4M3/E5M2、NVFP4/MXFP4/MXFP8、W4A16/W8A16/W8A8/W4A8 | 9.1 表示/计算路径；9.5—9.6 实现与硬件条件 |
-| Marlin、Machete、Humming、CUTLASS、Triton、DeepGEMM、FlashInfer 等内核 | 9.5—9.7、9.9 比较阅读与调优；9.10 分派 |
-| AutoAWQ/AutoGPTQ/GPTQModel、LLM Compressor/compressed-tensors、ModelOpt、TorchAO、Quark、INC、BnB/GGUF | 9.10 checkpoint/配置/布局接口与版本兼容索引 |
-| FP8/INT8/INT4/NVFP4/TurboQuant 等 KV 格式 | 9.8 KV 与 Attention 协同，按后端验证 |
-| experts_int8、moe_wna16、混合精度与其他注册项 | 9.3 策略、9.9 专家算子、9.10 集成 |
+例如：
 
-全部已盘点名称仍在 [特性索引](../../references/feature-map.md) 和 [注册项清单](../../../metadata/upstream/features.json) 中。查阅名称、上游实现、平台可运行、实际收益分别记录。
+```text
+9.8 Packing
+🧮 ✅
+📖 ✅
+A100 —
+C500 —
+
+9.9 W4A16 GEMM
+🧮 ✅
+A100 ✅
+C500 🧩
+```
+
+这样不会出现：
+
+> “章节写完了，所以这个功能一定跑过。”
+
+---
+
+## 6. 开发顺序
+
+虽然课程顺序是：
+
+```text
+9.1 → 9.14
+```
+
+实际开发不要按这个顺序平铺。
+
+第一阶段先做一条 Vertical Slice：
+
+```text
+9.1
+ ↓
+9.2
+ ↓
+9.4
+ ↓
+9.6
+ ↓
+9.7
+ ↓
+9.8
+ ↓
+9.9
+ ↓
+9.13
+ ↓
+9.14
+```
+
+也就是优先打通：
+
+## Qwen3-8B W4A16 End-to-End
+
+先证明：
+
+```text
+Algorithm
+→ Format
+→ Pack
+→ Load
+→ Repack
+→ Kernel
+→ vLLM
+→ Serving
+```
+
+是真的完整闭环。
+
+随后补：
+
+```text
+9.3 Calibration
+9.5 Activation / Mixed Precision
+9.10 W/A GEMM
+9.11 KV
+9.12 MoE / Distributed
+```
+
+---
+
+## 7. Part 9 的最终毕业标准
+
+Part 9 完成不能以：
+
+> “14 篇 Markdown 都写完了。”
+
+为标准。
+
+至少需要产生：
+
+```text
+1 × Quantized Model Passport specification
+
+1 × CPU quantization reference library
+
+1 × bit-level packing/repack implementation
+
+1 × MQBench classic PTQ/QAT track
+
+1 × Qwen3-8B W4A16 complete pipeline
+
+1 × GPTQ/AWQ/AutoRound controlled comparison
+
+1 × real quantized checkpoint format analysis
+
+1 × W4A16 GPU kernel optimization report
+
+1 × W/A low-precision compute report
+
+1 × KV quantization report
+
+1 × vLLM quantization runtime trace
+
+1 × A100 end-to-end report
+
+1 × C500 independent platform report
+
+1 × final Algorithm→Format→Kernel→Runtime system map
+```
+
+做到这里，Part 9 才算真正完成。
+
+---
+
+## 8. 本篇最终希望读者达到的水平
+
+不是：
+
+> “我会用 GPTQ 把模型变成 INT4。”
+
+而是看到：
+
+```text
+Qwen3-8B-W4A16-G128
+```
+
+会继续追问：
+
+```text
+哪个算法？
+
+校准集是什么？
+sym 还是 asym？
+group 沿哪个轴？
+
+scale 什么 dtype？
+zero-point 怎样编码？
+
+checkpoint format 是什么？
+qweight shape 是什么？
+怎样 packing？
+
+加载后有没有 repack？
+in-memory layout 是什么？
+
+activation dtype 是什么？
+accumulator dtype 是什么？
+
+vLLM 使用哪个 QuantMethod？
+实际 Linear backend 是什么？
+真正执行哪个 kernel？
+
+是在 A100 还是 C500？
+Prefill 还是 Decode？
+batch/context 多大？
+
+PPL 损失多少？
+显存降多少？
+TTFT / TPOT 到底改善多少？
+```
+
+到这里，读者才真正从：
+
+> **“会做量化”**
+
+进入：
+
+> **“理解 Quantized Inference System”。**
+
+## 基线实施约定
+
+### 教学重心与当前交付边界
+
+9.7—9.10、9.13—9.14 是本篇最重的区域。9.1—9.6 讲深算法基础，同时为格式、repack、kernel、vLLM 和实测收益服务。PTQ/QAT、Observer、FakeQuant、STE 的基础保留在主线；CNN 支线不构成 LLM 学习的额外前置。
+
+当前 [9.1](01-quantization-system-overview/README.md) 已交付完整课程、CPU Q/DQ/RQ 与 Passport；已有 [CPU INT4 打包实验](08-bit-packing-serialization-and-repack/lab.md)和[专题导读](guide.md)继续保留。[9.2](02-numerical-representations-and-tensor-contracts/README.md) 也已交付数值表示、分组 Q/DQ、尾组和存储开销的 CPU 课程。[9.3](03-calibration-observers-and-error-measurement/README.md) 已交付校准协议、基础 Observer、受控对照与误差测量的 CPU 课程；KL 优化器、CNN/MQBench 模型实验仍在后续支线扩展。[9.4](04-quantization-algorithms-and-error-control/README.md) 已交付 RTN/裁剪/舍入、GPTQ 核心参考、缩放/旋转与 STE 的 CPU 教学；完整算法框架与真实模型仍需后续验收。9.5—9.14 的正式正文、真实量化模型生产与 GPU 性能仍逐项建设。总设计中的“必须”“完成证据”是验收目标，具体交付以各节结果为准。
+
+### 验证状态需要证据
+
+课程继续使用 `planned / partial / complete` 与 `scaffold / lesson`。实验另记 CPU Reference、A100 Verified、C500 Verified、Multi-GPU Verified、Source Verified、Planned 六种范围；只有附命令、环境、结果并通过检查时才标 Verified。源码阅读记录不能替代 GPU 记录；不适用、未运行和执行失败分别说明。
+
+9.1 新增无打包的 Q/DQ/RQ 数值记录与 Passport 程序；旧 CPU INT4 参考记录继续保留。n-bit、序列化与 repack 扩展仍是计划，9.8 的 partial 不代表这些扩展已经实现。所有 GPU/多卡记录仍为未验证。上文状态示例只演示记法，不代表当前项目状态。
+
+### 开发顺序与最小校准前置
+
+阅读按 9.1—9.14；开发先交付 9.1，再逐步贯通 W4A16 的生产、格式、执行与服务。9.3 的完整 Observer 专题可以后补，但首次 GPTQ/AWQ/AutoRound 对照之前，必须已有最小 Calibration Protocol、独立评测集和基线质量记录。
+
+先固定小矩阵，再固定少量层，最后固定 Qwen3-8B 的模型/tokenizer revision。完整模型的量化成本与内存需求实测后记录。LightCompress 与 LLM Compressor 各自建立独立生产路径，格式转换需核验数值与输出。
+
+### 数学、格式与源码口径
+
+- 统一采用 `X[M,K] × W[K,N]`；如引用列样本记法，先给出转置关系。GPTQ 类输入 Gram/Hessian 代理在当前约定下与 `XᵀX` 成正比，常数依损失归一化确定。
+- effective bpw 的分子以 bit 计，包含实际 padding；若输入统计为 byte，先乘 8。
+- Checkpoint ABI 与执行布局分别记录；本课程的 Quantized Weight ABI 是分析契约的教学术语，不声称各框架存在统一标准 ABI。
+- Runtime 图表达职责与追踪入口；方法选择、backend 选择和 repack 的调用时机按所选 tag/commit 核对，不规定所有后端都在 `apply()` 后选择 kernel。
+- A100 的 W/A 实践优先验证 INT8 W8A8。FP8/FP4 的存储、模拟、weight-only fallback 与原生低精度计算分别说明；C500 按实际 MACA 软件栈独立确认。
+- Qwen3-8B 贯穿稠密 LLM 主线；MoE 使用单独的专家夹具或明确命名的 MoE 模型，不能把稠密模型写成 MoE 实测。
+- 每个 API、格式和算子案例固定版本。公开课程只链接可公开查阅的源码、论文与文档；中文图由课程自行绘制。
+
+### 原有材料迁移
+
+旧 9.4 的 INT4 教学实验归入新 9.8；旧 9.7 的访存、流水线、寄存器、split-K、autotune 内容由新 9.9/9.10 承接。算法集中在新 9.4，KV 在 9.11，MoE 在 9.12，vLLM 接入在 9.13，服务验收在 9.14。
+
+篇级写作遵循[统一模板](templates/lesson.md)，每节的代码、实验输入、图和公开结果就近放置；有实际内容后再创建子目录。

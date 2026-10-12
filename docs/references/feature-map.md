@@ -2,7 +2,7 @@
 
 本表用于检查课程覆盖范围、查找对应章节和设计实验。查阅日期：**2026-09-15**。
 
-**阅读范围覆盖官方公开功能与设计，实机主线是单卡 A100、单卡 C500。** 正式章节共 19 篇、126 章；当前 GPU 功能均为待验证。先通过下表定位章节，再从 [课程目录](../chapters/README.md) 查看练习，从 [来源总表](README.md) 进入官方资料。
+**阅读范围覆盖官方公开功能与设计，实机主线是单卡 A100、单卡 C500。** 正式章节共 19 篇、129 章；当前 GPU 功能均为待验证。先通过下表定位章节，再从 [课程目录](../chapters/README.md) 查看练习，从 [来源总表](README.md) 进入官方资料。
 
 ## 1. 覆盖口径与状态
 
@@ -24,9 +24,9 @@
 | 调度与批处理 | 连续批处理、FCFS/priority、Chunked Prefill、token/显存预算、抢占、异步调度 | 6.1—6.4 |
 | 重叠执行 | DBO、ubatch、TBO/SBO 对照、shared expert overlap、Async TP、通信融合 | 6.5—6.6、8.5、12.6 |
 | Attention | FlashAttention 1/2/3/4、FlashInfer、Triton、SDPA/Flex、paged/varlen、cascade、MLA/稀疏 | 7.1—7.5 |
-| Kernel | GEMM/GEMV、RMSNorm/RoPE/激活融合、Marlin/Machete/CUTLASS/DeepGEMM/Humming/CuTeDSL | 7.6—7.7、9.4—9.10、12.3 |
+| Kernel | GEMM/GEMV、RMSNorm/RoPE/激活融合、Marlin/Machete/CUTLASS/DeepGEMM/Humming/CuTeDSL | 7.6—7.7、9.8—9.10、9.12—9.13、12.3 |
 | 编译与图 | torch.compile、动态形状/特化、CUDA Graph 全模式、编译缓存、JIT、融合 Pass、vLLM IR | 8.1—8.7 |
-| 量化 | 算法统一比较、策略/混合精度、Q/DQ/打包、量化 GEMV/GEMM、融合/访存/流水线、KV/MoE 算子、vLLM 接入、端到端验证 | 9.1—9.11 |
+| 量化 | 算法统一比较、策略/混合精度、Q/DQ/打包、量化 GEMV/GEMM、融合/访存/流水线、KV/MoE 算子、vLLM 接入、端到端验证 | 9.1—9.14 |
 | 推测解码 | N-gram/Suffix/Draft/EAGLE/MTP/MLP/Medusa/PARD/DFlash/DSpark、动态推测、拒绝采样 | 10.1—10.9 |
 | 并行与拓扑 | TP/PP/DP/EP/CP/PCP/DCP/SP、进程组、collectives、组合度数、mp/Ray/多节点 | 11.1—11.10 |
 | MoE | 路由/专家/分发/汇总、Fused MoE、DeepEP/MoRI/NIXL、EPLB、弹性扩缩、负载均衡 | 12.1—12.6 |
@@ -39,7 +39,7 @@
 | 评测与运维 | bench/sweep、SLO/Goodput、trace replay、profiling、Prometheus/OTel、Batch Invariance | 17.1—17.6 |
 | 平台与扩展 | CUDA/MACA、CPU/ROCm/XPU/TPU、模型/算子/量化插件、部署生态、废弃迁移与贡献 | 18.1—18.5 |
 
-量化篇按算法、策略和算子开发组织：算法名称保留在 9.2 的比较与注册项索引，具体内核实现贯穿 9.4—9.10。格式/工具/内核到新章节的映射、贯穿实验与双重误差检查见 [量化篇设计](../chapters/part-09-quantization/design.md)。
+量化篇固定四个 Module、14 节：9.4 统一比较算法，9.6 讲框架与生产，9.7/9.8 讲格式与重排，9.9/9.10 讲算子，9.13/9.14 讲接入与服务验收。格式/工具/内核到新章节的映射、贯穿实验与双重误差检查见 [量化篇设计](../chapters/part-09-quantization/design.md)。
 
 ## 3. 先讲清楚几个容易混淆的概念
 
@@ -142,7 +142,7 @@ FA2、FA3、FA4 的目标架构和功能条件分别讲解，A100 先核对适�
 
 ### 量化方法与快捷配置
 
-章节：9.1、9.2、9.3、9.10。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py)。
+章节：9.1、9.2、9.4、9.5、9.6、9.7、9.13。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/__init__.py)。
 
 别名、算法、框架和在线量化快捷方式并存；fbgemm_fp8、fp_quant 在本次源码中标为 deprecated。BnB/GGUF 在文档有条目，但不在本次 QuantizationMethods 枚举中。
 
@@ -177,7 +177,7 @@ FA2、FA3、FA4 的目标架构和功能条件分别讲解，A100 先核对适�
 
 ### CacheDType
 
-章节：5.5、9.8。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py)。
+章节：5.5、9.11。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/cache.py)。
 
 含 dtype、模型专用布局和低比特方案；通过配置解析不能证明内核支持。低精度存储不等于同精度计算。
 
@@ -208,7 +208,7 @@ SpeculativeMethod 中的 MTPModelTypes 另列；PARD、动态推测、自适应�
 
 ### LinearBackend
 
-章节：7.6、7.7、9.5、9.6、9.7、9.10。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py)。
+章节：7.6、7.7、9.7、9.8、9.9、9.10、9.13。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py)。
 
 按量化格式、shape、设备与优先级选择；支持 per-quant 覆盖。auto/emulation 等与原生优化实现要区分。
 
@@ -219,7 +219,7 @@ SpeculativeMethod 中的 MTPModelTypes 另列；PARD、动态推测、自适应�
 
 ### MoEBackend
 
-章节：12.3、9.9、9.10。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py)。
+章节：12.3、9.12、9.13。来源：[官方源码](https://github.com/vllm-project/vllm/blob/main/vllm/config/kernel.py)。
 
 不同路由/量化/模型与平台能力；mega-MoE 有额外模型接线条件，不能当通用开关。
 

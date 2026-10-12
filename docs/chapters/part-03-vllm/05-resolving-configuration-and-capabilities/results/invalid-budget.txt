@@ -1,0 +1,6 @@
+usage: explain_config.py [-h] [--config CONFIG] [--usage {server,offline}]
+                         [--memory-gib MEMORY_GIB] [--model-limit MODEL_LIMIT]
+                         [--max-num-batched-tokens MAX_NUM_BATCHED_TOKENS]
+                         [--max-num-seqs MAX_NUM_SEQS]
+                         [--prefix {true,false,inherit}] [--enforce-eager]
+explain_config.py: error: token budget must be >= max_num_seqs

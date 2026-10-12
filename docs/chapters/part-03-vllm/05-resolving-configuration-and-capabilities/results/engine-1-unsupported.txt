@@ -1,0 +1,3 @@
+usage: inspect_engine.py [-h] [--intent {auto,0,1}]
+                         [--feature {supported,experimental,unsupported}]
+inspect_engine.py: error: explicit V1 cannot satisfy unsupported feature

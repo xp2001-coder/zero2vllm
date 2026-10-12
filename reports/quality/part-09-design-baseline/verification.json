@@ -1,0 +1,36 @@
+{
+  "scope": "Part 9 design and directory adoption only; no new lesson implementation or GPU validation.",
+  "tests": {
+    "command": "python -X utf8 -m unittest tests.maintenance.test_course tests.maintenance.test_layout tests.reference.test_quantization -v",
+    "provenance": "Summary recorded from the completed local unittest process output.",
+    "run": 37,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_seconds": 188.827,
+    "exit_code": 0,
+    "full_repository_suite_run": false
+  },
+  "int4_rerun": {
+    "command": "python -m zero2vllm quant-demo",
+    "created_at_utc": "2026-09-20T08:16:06.852280+00:00",
+    "verification": {
+      "passed": true,
+      "implementation_max_abs_error": 0.0,
+      "weight_max_abs_error": 0.14067759110638123,
+      "output_quantization_max_abs_error": 0.4033838925001154,
+      "weight_half_scale_bound_passed": true,
+      "absolute_tolerance": 1e-12
+    },
+    "same_as_published_except_timestamp": true
+  },
+  "published_int4_artifact": {
+    "current_path": "docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json",
+    "sha256": "72a3868b0843ebef0c2807fdb514720ac5513eb29c51bac2f9614955ae5bca75",
+    "byte_identical_after_move": true
+  },
+  "gpu_a100": "not_run",
+  "gpu_c500": "not_run",
+  "multi_gpu": "not_run",
+  "remote_ci": "not_run"
+}

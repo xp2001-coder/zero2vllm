@@ -19,6 +19,18 @@
 
 时间是学习安排建议，未通过学生试学计时。初学者按 1.1→1.6 顺序；工程师可先运行全部命令，再按薄弱部分回读。量化方向重点关注 1.2 的算术强度、1.3 的字节预算和 1.6 的误差定义。
 
+## 后半篇怎样分段学习
+
+1.4—1.6 已补充逐步推导、中文原创图与短示例。建议每次完成一组“预测 → 手算 → 运行 → 解释”，再进入下一组。
+
+| 小节 | 先抓住的问题 | 实验 | 练习 |
+| --- | --- | --- | --- |
+| 1.4 | 时间点怎样变成延迟？样本、分母和窗口各是什么？ | [四请求报告与单变量对照](04-performance-metrics/lab.md) | [10 组](04-performance-metrics/exercises.md) |
+| 1.5 | 下一步需要读取什么，上一轮需要留下什么？ | [位置、窗口、latent 与递推](05-model-structures/lab.md) | [10 组](05-model-structures/exercises.md) |
+| 1.6 | 概率怎样选成一个 ID，误差和停止怎样检查？ | [分布、生成、停止与数值](06-sampling-correctness/lab.md) | [12 组](06-sampling-correctness/exercises.md) |
+
+1.2 增加了输入/缓存/新输出时序图，1.3 增加了 GQA 读取图。后半篇另有 8 张图，图与手算、代码使用相同约定。六个新增短示例只用标准库；原有 28 案例入口继续保留，修订记录另存，不改写历史基线。
+
 ## 2. 准备一个可以直接运行的环境
 
 ### 2.1 检查 Python 与目录
@@ -117,6 +129,19 @@ python -m scripts.experiments.part01 --skip-tests --output-dir .local/runs/part-
 
 此时摘要会明确标记 `tests_skipped=true`，不能把它当成这次又运行了全套测试。每个输出目录用于一轮结果；再次使用相同目录会更新同名文件，需要保留对比时换一个目录。
 
+### 4.1 六个新增短示例
+
+```bash
+python docs/chapters/part-01-inference/04-performance-metrics/examples/compare_timelines.py
+python docs/chapters/part-01-inference/05-model-structures/examples/walk_positions.py
+python docs/chapters/part-01-inference/05-model-structures/examples/walk_states.py
+python docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_distribution.py
+python -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_stopping.py
+python docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_correctness.py
+```
+
+每个示例把关键中间结果直接打印出来，并用独立手算值检查。它们不计入原有的 28 个命令案例；复现记录见[第一篇修订检查](../../../reports/quality/part-01-revision/README.md)。
+
 ## 5. 独立检查与代码阅读顺序
 
 ```bash
@@ -165,7 +190,7 @@ python -m scripts.docs.course --check
 
 课程交付需要六节正文、对应代码/命令、可审阅结果、练习答案和有效测试；学生完成需要能解释综合练习，不能以“命令退出码为 0”替代掌握原理。
 
-当前 CPU 数学参考不包含训练、完整 Transformer 堆栈、生产 Tokenizer、真实 vLLM 服务或 GPU 性能。Part 2 在这些可检查的小例子上实现 PyTorch 教学引擎；GPU 环境、源码与量化/算子专题分别沿后续课程推进。
+当前 CPU 数学参考不包含训练、完整 Transformer 堆栈、生产 Tokenizer、真实 vLLM 服务或 GPU 性能。Part 2 的 2.1—2.7 已在这些小例子上提供模型、权重、请求、缓存与 HTTP 的 CPU 教学链路；GPU 环境、源码与量化/算子专题分别沿后续课程推进。
 
 ## 本篇章节
 

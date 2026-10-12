@@ -1,0 +1,2184 @@
+{
+  "recorded_at_utc": "2026-09-17T09:15:12.888592+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "8dc4c73d29cb0e8537ad092bebcc4e8091f35cce6eb541d2f0096bd00fa09fdb",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "platform": "Windows-10-10.0.26200-SP0",
+    "uvicorn": "0.35.0",
+    "h11": "0.16.0",
+    "device": "cpu"
+  },
+  "execution": {
+    "http": "real loopback sockets where labeled; controlled ASGI sends for deterministic stalls",
+    "engine": "single-loop synchronous tiny forwards; no tensor batching",
+    "delay": "artificial step delays expose cancellation; no performance claims"
+  },
+  "full_recompute_reference": {
+    "normal": [
+      12,
+      3,
+      8
+    ],
+    "branch": [
+      14,
+      13,
+      1
+    ]
+  },
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "cases": [
+    {
+      "name": "http-normal",
+      "level": "real_loopback_http",
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 1,
+            "index": 0,
+            "token_id": 12
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 2,
+            "index": 1,
+            "token_id": 3
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 3,
+            "index": 2,
+            "token_id": 8
+          }
+        },
+        {
+          "event": "done",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 4,
+            "status": "finished",
+            "reason": "length",
+            "output_tokens": 3,
+            "forward_calls": 3
+          }
+        }
+      ],
+      "record": {
+        "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+        "status": "finished",
+        "reason": "length",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 3,
+        "eos_token_id": null,
+        "required_tokens": 8,
+        "output_ids": [
+          12,
+          3,
+          8
+        ],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 8,
+        "forward_calls": 3,
+        "cancel_requested": false,
+        "error": null,
+        "terminal_event": {
+          "event": "done",
+          "data": {
+            "request_id": "909e1b75f4af46cba1f7d73f79f009d5",
+            "seq": 4,
+            "status": "finished",
+            "reason": "length",
+            "output_tokens": 3,
+            "forward_calls": 3
+          }
+        },
+        "transport_end": "client_disconnected",
+        "peak_queue": 2,
+        "send_completed_tokens": 3,
+        "engine_events": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 0,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 0,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 5,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8,
+            "token_id": 12
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 7,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 8,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8,
+            "token_id": 3
+          },
+          {
+            "sequence": 9,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 10,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 8,
+            "cached_positions": 8,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 11,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 8,
+            "cached_positions": 8,
+            "engine_used_tokens": 8,
+            "token_id": 8
+          },
+          {
+            "sequence": 12,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 3,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 8
+          }
+        ]
+      },
+      "assertions": {
+        "reference_output": true,
+        "one_done": true,
+        "ordered": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-zero",
+      "level": "real_loopback_http",
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "78eab130415d4b7ab1d8da606de47aa7",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "done",
+          "data": {
+            "request_id": "78eab130415d4b7ab1d8da606de47aa7",
+            "seq": 1,
+            "status": "finished",
+            "reason": "length",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        }
+      ],
+      "record": {
+        "request_id": "78eab130415d4b7ab1d8da606de47aa7",
+        "status": "finished",
+        "reason": "length",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 0,
+        "eos_token_id": null,
+        "required_tokens": 0,
+        "output_ids": [],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 0,
+        "forward_calls": 0,
+        "cancel_requested": false,
+        "error": null,
+        "terminal_event": {
+          "event": "done",
+          "data": {
+            "request_id": "78eab130415d4b7ab1d8da606de47aa7",
+            "seq": 1,
+            "status": "finished",
+            "reason": "length",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        },
+        "transport_end": "client_disconnected",
+        "peak_queue": 1,
+        "send_completed_tokens": 0,
+        "engine_events": [
+          {
+            "sequence": 13,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 14,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "reference_output": true,
+        "one_done": true,
+        "ordered": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-eos",
+      "level": "real_loopback_http",
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "35cdf41100f141a9aee9f94d8c637912",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "35cdf41100f141a9aee9f94d8c637912",
+            "seq": 1,
+            "index": 0,
+            "token_id": 12
+          }
+        },
+        {
+          "event": "done",
+          "data": {
+            "request_id": "35cdf41100f141a9aee9f94d8c637912",
+            "seq": 2,
+            "status": "finished",
+            "reason": "eos",
+            "output_tokens": 1,
+            "forward_calls": 1
+          }
+        }
+      ],
+      "record": {
+        "request_id": "35cdf41100f141a9aee9f94d8c637912",
+        "status": "finished",
+        "reason": "eos",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 8,
+        "eos_token_id": 12,
+        "required_tokens": 13,
+        "output_ids": [
+          12
+        ],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 6,
+        "forward_calls": 1,
+        "cancel_requested": false,
+        "error": null,
+        "terminal_event": {
+          "event": "done",
+          "data": {
+            "request_id": "35cdf41100f141a9aee9f94d8c637912",
+            "seq": 2,
+            "status": "finished",
+            "reason": "eos",
+            "output_tokens": 1,
+            "forward_calls": 1
+          }
+        },
+        "transport_end": "client_disconnected",
+        "peak_queue": 1,
+        "send_completed_tokens": 1,
+        "engine_events": [
+          {
+            "sequence": 15,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 16,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 13,
+            "cached_positions": 0,
+            "engine_used_tokens": 13
+          },
+          {
+            "sequence": 17,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 13,
+            "cached_positions": 0,
+            "engine_used_tokens": 13
+          },
+          {
+            "sequence": 18,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 13,
+            "cached_positions": 6,
+            "engine_used_tokens": 13
+          },
+          {
+            "sequence": 19,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 13,
+            "cached_positions": 6,
+            "engine_used_tokens": 13,
+            "token_id": 12
+          },
+          {
+            "sequence": 20,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 1,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "eos",
+            "released_tokens": 13
+          }
+        ]
+      },
+      "assertions": {
+        "reference_output": true,
+        "one_done": true,
+        "ordered": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-input-errors",
+      "level": "real_loopback_http",
+      "responses": [
+        {
+          "status": 400,
+          "body": {
+            "error": {
+              "code": "invalid_json",
+              "message": "Body must contain valid UTF-8 JSON."
+            }
+          }
+        },
+        {
+          "status": 422,
+          "body": {
+            "error": {
+              "code": "invalid_request",
+              "message": "Prompt must contain valid integer token IDs."
+            }
+          }
+        },
+        {
+          "status": 415,
+          "body": {
+            "error": {
+              "code": "content_type",
+              "message": "Use Content-Type: application/json."
+            }
+          }
+        }
+      ],
+      "assertions": {
+        "statuses": true,
+        "no_requests": true,
+        "no_reservation": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-two-clients",
+      "level": "real_loopback_http",
+      "streams": [
+        [
+          {
+            "event": "accepted",
+            "data": {
+              "request_id": "ec3aa1370042451094504f4724813706",
+              "seq": 0,
+              "queue_capacity": 2
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "ec3aa1370042451094504f4724813706",
+              "seq": 1,
+              "index": 0,
+              "token_id": 12
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "ec3aa1370042451094504f4724813706",
+              "seq": 2,
+              "index": 1,
+              "token_id": 3
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "ec3aa1370042451094504f4724813706",
+              "seq": 3,
+              "index": 2,
+              "token_id": 8
+            }
+          },
+          {
+            "event": "done",
+            "data": {
+              "request_id": "ec3aa1370042451094504f4724813706",
+              "seq": 4,
+              "status": "finished",
+              "reason": "length",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          }
+        ],
+        [
+          {
+            "event": "accepted",
+            "data": {
+              "request_id": "926980da8d15403eadc04b38c94ff185",
+              "seq": 0,
+              "queue_capacity": 2
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "926980da8d15403eadc04b38c94ff185",
+              "seq": 1,
+              "index": 0,
+              "token_id": 14
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "926980da8d15403eadc04b38c94ff185",
+              "seq": 2,
+              "index": 1,
+              "token_id": 13
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "926980da8d15403eadc04b38c94ff185",
+              "seq": 3,
+              "index": 2,
+              "token_id": 1
+            }
+          },
+          {
+            "event": "done",
+            "data": {
+              "request_id": "926980da8d15403eadc04b38c94ff185",
+              "seq": 4,
+              "status": "finished",
+              "reason": "length",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          }
+        ]
+      ],
+      "assertions": {
+        "isolated_outputs": true,
+        "different_ids": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-disconnect",
+      "level": "real_loopback_http",
+      "received_before_close": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "7f7a770f94f24f9f8238423e434ee0cd",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "7f7a770f94f24f9f8238423e434ee0cd",
+            "seq": 1,
+            "index": 0,
+            "token_id": 12
+          }
+        }
+      ],
+      "closed_request": {
+        "request_id": "7f7a770f94f24f9f8238423e434ee0cd",
+        "status": "cancelled",
+        "reason": "cancelled",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 20,
+        "eos_token_id": null,
+        "required_tokens": 25,
+        "output_ids": [
+          12,
+          3
+        ],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 7,
+        "forward_calls": 2,
+        "cancel_requested": true,
+        "error": null,
+        "terminal_event": {
+          "event": "error",
+          "data": {
+            "request_id": "7f7a770f94f24f9f8238423e434ee0cd",
+            "seq": 3,
+            "status": "cancelled",
+            "reason": "client_disconnected",
+            "output_tokens": 2,
+            "forward_calls": 2
+          }
+        },
+        "transport_end": "client_disconnected",
+        "peak_queue": 2,
+        "send_completed_tokens": 1,
+        "engine_events": [
+          {
+            "sequence": 45,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 46,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 25,
+            "cached_positions": 0,
+            "engine_used_tokens": 25
+          },
+          {
+            "sequence": 47,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 25,
+            "cached_positions": 0,
+            "engine_used_tokens": 25
+          },
+          {
+            "sequence": 48,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 25,
+            "cached_positions": 6,
+            "engine_used_tokens": 25
+          },
+          {
+            "sequence": 49,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 25,
+            "cached_positions": 6,
+            "engine_used_tokens": 25,
+            "token_id": 12
+          },
+          {
+            "sequence": 52,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 25,
+            "cached_positions": 6,
+            "engine_used_tokens": 33
+          },
+          {
+            "sequence": 53,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 25,
+            "cached_positions": 7,
+            "engine_used_tokens": 33
+          },
+          {
+            "sequence": 54,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 25,
+            "cached_positions": 7,
+            "engine_used_tokens": 33,
+            "token_id": 3
+          },
+          {
+            "sequence": 58,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 25,
+            "cached_positions": 7,
+            "engine_used_tokens": 33
+          },
+          {
+            "sequence": 59,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 2,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 8,
+            "reason": "cancelled",
+            "released_tokens": 25
+          }
+        ]
+      },
+      "survivor": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "74cbcdf755154edab7156a80f53e2976",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "74cbcdf755154edab7156a80f53e2976",
+            "seq": 1,
+            "index": 0,
+            "token_id": 14
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "74cbcdf755154edab7156a80f53e2976",
+            "seq": 2,
+            "index": 1,
+            "token_id": 13
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "74cbcdf755154edab7156a80f53e2976",
+            "seq": 3,
+            "index": 2,
+            "token_id": 1
+          }
+        },
+        {
+          "event": "done",
+          "data": {
+            "request_id": "74cbcdf755154edab7156a80f53e2976",
+            "seq": 4,
+            "status": "finished",
+            "reason": "length",
+            "output_tokens": 3,
+            "forward_calls": 3
+          }
+        }
+      ],
+      "assertions": {
+        "client_read_one": true,
+        "no_done_claim": true,
+        "cancelled_before_limit": true,
+        "peer_correct": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "bounded-backpressure",
+      "level": "controlled_asgi_send",
+      "slow_calls_before_peer": 3,
+      "slow_calls_after_peer": 3,
+      "snapshot_while_blocked": {
+        "open_streams": 1,
+        "used_tokens": 25,
+        "capacity_tokens": 64,
+        "max_requests": 8,
+        "queue_capacity": 2,
+        "running": 1,
+        "queue_lengths": {
+          "18d4ca2926394dacab6512d955694972": 2
+        }
+      },
+      "records": [
+        {
+          "request_id": "6d0a4e26745944b5974113da6d77784d",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 6,
+          "prompt_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [
+            12,
+            3,
+            8
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 8,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null,
+          "terminal_event": {
+            "event": "done",
+            "data": {
+              "request_id": "6d0a4e26745944b5974113da6d77784d",
+              "seq": 4,
+              "status": "finished",
+              "reason": "length",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          },
+          "transport_end": "response_complete",
+          "peak_queue": 2,
+          "send_completed_tokens": 3,
+          "engine_events": [
+            {
+              "sequence": 12,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 13,
+              "kind": "admitted",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 14,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 15,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 6,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 16,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 6,
+              "engine_used_tokens": 33,
+              "token_id": 12
+            },
+            {
+              "sequence": 17,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 6,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 18,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 7,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 19,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 7,
+              "engine_used_tokens": 33,
+              "token_id": 3
+            },
+            {
+              "sequence": 20,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 7,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 21,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 8,
+              "engine_used_tokens": 33
+            },
+            {
+              "sequence": 22,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 8,
+              "cached_positions": 8,
+              "engine_used_tokens": 33,
+              "token_id": 8
+            },
+            {
+              "sequence": 23,
+              "kind": "finalized",
+              "status": "finished",
+              "output_tokens": 3,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 25,
+              "reason": "length",
+              "released_tokens": 8
+            }
+          ]
+        },
+        {
+          "request_id": "18d4ca2926394dacab6512d955694972",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 6,
+          "prompt_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 20,
+          "eos_token_id": null,
+          "required_tokens": 25,
+          "output_ids": [
+            12,
+            3,
+            8
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 8,
+          "forward_calls": 3,
+          "cancel_requested": true,
+          "error": null,
+          "terminal_event": {
+            "event": "error",
+            "data": {
+              "request_id": "18d4ca2926394dacab6512d955694972",
+              "seq": 4,
+              "status": "cancelled",
+              "reason": "client_disconnected",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          },
+          "transport_end": "client_disconnected",
+          "peak_queue": 2,
+          "send_completed_tokens": 0,
+          "engine_events": [
+            {
+              "sequence": 1,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0
+            },
+            {
+              "sequence": 2,
+              "kind": "admitted",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 25,
+              "cached_positions": 0,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 3,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 25,
+              "cached_positions": 0,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 4,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 25,
+              "cached_positions": 6,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 5,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 25,
+              "cached_positions": 6,
+              "engine_used_tokens": 25,
+              "token_id": 12
+            },
+            {
+              "sequence": 6,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 25,
+              "cached_positions": 6,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 7,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 25,
+              "cached_positions": 7,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 8,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 25,
+              "cached_positions": 7,
+              "engine_used_tokens": 25,
+              "token_id": 3
+            },
+            {
+              "sequence": 9,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 25,
+              "cached_positions": 7,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 10,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 25,
+              "cached_positions": 8,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 11,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 25,
+              "cached_positions": 8,
+              "engine_used_tokens": 25,
+              "token_id": 8
+            },
+            {
+              "sequence": 24,
+              "kind": "cancel_requested",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 25,
+              "cached_positions": 8,
+              "engine_used_tokens": 25
+            },
+            {
+              "sequence": 25,
+              "kind": "finalized",
+              "status": "cancelled",
+              "output_tokens": 3,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0,
+              "reason": "cancelled",
+              "released_tokens": 25
+            }
+          ]
+        }
+      ],
+      "assertions": {
+        "paused_producer": true,
+        "queue_bounded": true,
+        "peer_finished": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "send-timeout",
+      "level": "controlled_asgi_send",
+      "record": {
+        "request_id": "333041789093454d9b0f0bffb00405f3",
+        "status": "cancelled",
+        "reason": "cancelled",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 3,
+        "eos_token_id": null,
+        "required_tokens": 8,
+        "output_ids": [
+          12,
+          3
+        ],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 7,
+        "forward_calls": 2,
+        "cancel_requested": true,
+        "error": null,
+        "terminal_event": {
+          "event": "error",
+          "data": {
+            "request_id": "333041789093454d9b0f0bffb00405f3",
+            "seq": 3,
+            "status": "cancelled",
+            "reason": "send_timeout",
+            "output_tokens": 2,
+            "forward_calls": 2
+          }
+        },
+        "transport_end": "send_timeout",
+        "peak_queue": 2,
+        "send_completed_tokens": 0,
+        "engine_events": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 0,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 0,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 5,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8,
+            "token_id": 12
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 6,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 7,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 8,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8,
+            "token_id": 3
+          },
+          {
+            "sequence": 9,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 8,
+            "cached_positions": 7,
+            "engine_used_tokens": 8
+          },
+          {
+            "sequence": 10,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 2,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 8
+          }
+        ]
+      },
+      "assertions": {
+        "timeout_recorded": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "error-after-start",
+      "level": "controlled_asgi",
+      "status": 200,
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "d13398e64e6a4c078df08f1b81a1a11e",
+            "seq": 0,
+            "queue_capacity": 2
+          }
+        },
+        {
+          "event": "token",
+          "data": {
+            "request_id": "d13398e64e6a4c078df08f1b81a1a11e",
+            "seq": 1,
+            "index": 0,
+            "token_id": 12
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "request_id": "d13398e64e6a4c078df08f1b81a1a11e",
+            "seq": 2,
+            "status": "failed",
+            "reason": "model_error",
+            "output_tokens": 1,
+            "forward_calls": 2
+          }
+        }
+      ],
+      "assertions": {
+        "status_stays_200": true,
+        "partial_output": true,
+        "explicit_error": true,
+        "no_private_error_on_wire": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "body-and-admission-limits",
+      "level": "controlled_asgi",
+      "statuses": [
+        413,
+        408,
+        503
+      ],
+      "assertions": {
+        "expected_errors": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "request-deadline",
+      "level": "controlled_service",
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "d9c508297adb47569a596cef7d33958f",
+            "seq": 0,
+            "queue_capacity": 1
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "request_id": "d9c508297adb47569a596cef7d33958f",
+            "seq": 1,
+            "status": "cancelled",
+            "reason": "deadline_exceeded",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        }
+      ],
+      "record": {
+        "request_id": "d9c508297adb47569a596cef7d33958f",
+        "status": "cancelled",
+        "reason": "cancelled",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 3,
+        "eos_token_id": null,
+        "required_tokens": 8,
+        "output_ids": [],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 0,
+        "forward_calls": 0,
+        "cancel_requested": true,
+        "error": null,
+        "terminal_event": {
+          "event": "error",
+          "data": {
+            "request_id": "d9c508297adb47569a596cef7d33958f",
+            "seq": 1,
+            "status": "cancelled",
+            "reason": "deadline_exceeded",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        },
+        "transport_end": "stream_closed",
+        "peak_queue": 1,
+        "send_completed_tokens": 0,
+        "engine_events": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "cancel_requested",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "bounded_terminal": true,
+        "reason": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "slow-consumer",
+      "level": "controlled_service",
+      "events": [
+        {
+          "event": "accepted",
+          "data": {
+            "request_id": "e4877dfb48d74930aa37f9739f219d1c",
+            "seq": 0,
+            "queue_capacity": 1
+          }
+        },
+        {
+          "event": "error",
+          "data": {
+            "request_id": "e4877dfb48d74930aa37f9739f219d1c",
+            "seq": 1,
+            "status": "cancelled",
+            "reason": "slow_consumer",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        }
+      ],
+      "record": {
+        "request_id": "e4877dfb48d74930aa37f9739f219d1c",
+        "status": "cancelled",
+        "reason": "cancelled",
+        "prompt_tokens": 6,
+        "prompt_ids": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "max_new_tokens": 3,
+        "eos_token_id": null,
+        "required_tokens": 8,
+        "output_ids": [],
+        "reserved_tokens": 0,
+        "cached_positions": 0,
+        "peak_cached_positions": 0,
+        "forward_calls": 0,
+        "cancel_requested": true,
+        "error": null,
+        "terminal_event": {
+          "event": "error",
+          "data": {
+            "request_id": "e4877dfb48d74930aa37f9739f219d1c",
+            "seq": 1,
+            "status": "cancelled",
+            "reason": "slow_consumer",
+            "output_tokens": 0,
+            "forward_calls": 0
+          }
+        },
+        "transport_end": "stream_closed",
+        "peak_queue": 1,
+        "send_completed_tokens": 0,
+        "engine_events": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "cancel_requested",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "bounded_terminal": true,
+        "reason": true,
+        "released": true
+      },
+      "passed": true
+    },
+    {
+      "name": "service-shutdown",
+      "level": "controlled_service",
+      "records": [
+        {
+          "request_id": "f29346dae6d149ac895f7e7c16bad2a4",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 6,
+          "prompt_ids": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 8,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": true,
+          "error": null,
+          "terminal_event": {
+            "event": "error",
+            "data": {
+              "request_id": "f29346dae6d149ac895f7e7c16bad2a4",
+              "seq": 1,
+              "status": "cancelled",
+              "reason": "service_stopped",
+              "output_tokens": 0,
+              "forward_calls": 0
+            }
+          },
+          "transport_end": "service_stopped",
+          "peak_queue": 1,
+          "send_completed_tokens": 0,
+          "engine_events": [
+            {
+              "sequence": 1,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0
+            },
+            {
+              "sequence": 2,
+              "kind": "cancel_requested",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0
+            },
+            {
+              "sequence": 3,
+              "kind": "finalized",
+              "status": "cancelled",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0,
+              "reason": "cancelled",
+              "released_tokens": 0
+            }
+          ]
+        }
+      ],
+      "assertions": {
+        "no_jobs": true,
+        "no_reservation": true,
+        "driver_finished": true
+      },
+      "passed": true
+    },
+    {
+      "name": "sse-byte-fragments",
+      "level": "protocol_bytes",
+      "fragmentations": [
+        {
+          "chunk_bytes": 1,
+          "parsed": [
+            {
+              "event": "accepted",
+              "data": {
+                "说明": "流式事件"
+              }
+            },
+            {
+              "event": "token",
+              "data": {
+                "token_id": 12
+              }
+            },
+            {
+              "event": "done",
+              "data": {}
+            }
+          ]
+        },
+        {
+          "chunk_bytes": 2,
+          "parsed": [
+            {
+              "event": "accepted",
+              "data": {
+                "说明": "流式事件"
+              }
+            },
+            {
+              "event": "token",
+              "data": {
+                "token_id": 12
+              }
+            },
+            {
+              "event": "done",
+              "data": {}
+            }
+          ]
+        },
+        {
+          "chunk_bytes": 7,
+          "parsed": [
+            {
+              "event": "accepted",
+              "data": {
+                "说明": "流式事件"
+              }
+            },
+            {
+              "event": "token",
+              "data": {
+                "token_id": 12
+              }
+            },
+            {
+              "event": "done",
+              "data": {}
+            }
+          ]
+        },
+        {
+          "chunk_bytes": 115,
+          "parsed": [
+            {
+              "event": "accepted",
+              "data": {
+                "说明": "流式事件"
+              }
+            },
+            {
+              "event": "token",
+              "data": {
+                "token_id": 12
+              }
+            },
+            {
+              "event": "done",
+              "data": {}
+            }
+          ]
+        }
+      ],
+      "assertions": {
+        "all_equal": true,
+        "truncated_rejected": true
+      },
+      "passed": true
+    },
+    {
+      "name": "http-prefix-backend",
+      "level": "real_loopback_http_cpu_torch",
+      "torch": "2.7.1+cpu",
+      "streams": [
+        [
+          {
+            "event": "accepted",
+            "data": {
+              "request_id": "4637bd512950463ab2f8e49222ed991c",
+              "seq": 0,
+              "queue_capacity": 2
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "4637bd512950463ab2f8e49222ed991c",
+              "seq": 1,
+              "index": 0,
+              "token_id": 12
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "4637bd512950463ab2f8e49222ed991c",
+              "seq": 2,
+              "index": 1,
+              "token_id": 3
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "4637bd512950463ab2f8e49222ed991c",
+              "seq": 3,
+              "index": 2,
+              "token_id": 8
+            }
+          },
+          {
+            "event": "done",
+            "data": {
+              "request_id": "4637bd512950463ab2f8e49222ed991c",
+              "seq": 4,
+              "status": "finished",
+              "reason": "length",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          }
+        ],
+        [
+          {
+            "event": "accepted",
+            "data": {
+              "request_id": "984fb9cc8d454b87a75cac77cacdcca0",
+              "seq": 0,
+              "queue_capacity": 2
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "984fb9cc8d454b87a75cac77cacdcca0",
+              "seq": 1,
+              "index": 0,
+              "token_id": 12
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "984fb9cc8d454b87a75cac77cacdcca0",
+              "seq": 2,
+              "index": 1,
+              "token_id": 3
+            }
+          },
+          {
+            "event": "token",
+            "data": {
+              "request_id": "984fb9cc8d454b87a75cac77cacdcca0",
+              "seq": 3,
+              "index": 2,
+              "token_id": 8
+            }
+          },
+          {
+            "event": "done",
+            "data": {
+              "request_id": "984fb9cc8d454b87a75cac77cacdcca0",
+              "seq": 4,
+              "status": "finished",
+              "reason": "length",
+              "output_tokens": 3,
+              "forward_calls": 3
+            }
+          }
+        ]
+      ],
+      "acquisitions": [
+        {
+          "kind": "acquired",
+          "request": 1,
+          "hit_blocks": [],
+          "new_blocks": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "kind": "acquired",
+          "request": 2,
+          "hit_blocks": [
+            0,
+            1
+          ],
+          "new_blocks": [
+            4,
+            5
+          ]
+        }
+      ],
+      "pool": {
+        "capacity_blocks": 32,
+        "active_requests": 0,
+        "active_unique_blocks": 0,
+        "active_block_references": 0,
+        "idle_cached_blocks": 4,
+        "empty_blocks": 28,
+        "blocks": [
+          {
+            "id": 0,
+            "refs": 0,
+            "digest": "b74991027ec3c62741904447c39f53b9e755137eeefcdcabac2156b59209afa7",
+            "signature": [
+              "[\"662923a52c1cc406aeba7d00be512ba22b254c4e27f6aa0d9c418cd6f5119535\",\"public\"]",
+              [
+                1,
+                2
+              ]
+            ],
+            "released_at": 8
+          },
+          {
+            "id": 1,
+            "refs": 0,
+            "digest": "8296881368c6d45b1f4fb403dc59f38461b55eeb83b1741b8d549447f48851ab",
+            "signature": [
+              "[\"662923a52c1cc406aeba7d00be512ba22b254c4e27f6aa0d9c418cd6f5119535\",\"public\"]",
+              [
+                1,
+                2,
+                3,
+                4
+              ]
+            ],
+            "released_at": 7
+          },
+          {
+            "id": 2,
+            "refs": 0,
+            "digest": "28a0b5c5178e45001fae12631797ab2807156eb965dd7521da099bdbec161bb9",
+            "signature": [
+              "[\"662923a52c1cc406aeba7d00be512ba22b254c4e27f6aa0d9c418cd6f5119535\",\"public\"]",
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+              ]
+            ],
+            "released_at": 2
+          },
+          {
+            "id": 3,
+            "refs": 0,
+            "digest": "10e5c32fe787330b79a6d7fad0c8967e60f4eec756fde08136f3c9f9d6c3c319",
+            "signature": [
+              "[\"662923a52c1cc406aeba7d00be512ba22b254c4e27f6aa0d9c418cd6f5119535\",\"public\"]",
+              [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                12,
+                3
+              ]
+            ],
+            "released_at": 1
+          },
+          {
+            "id": 4,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 6
+          },
+          {
+            "id": 5,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 5
+          },
+          {
+            "id": 6,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 7,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 8,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 9,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 10,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 11,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 12,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 13,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 14,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 15,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 16,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 17,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 18,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 19,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 20,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 21,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 22,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 23,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 24,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 25,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 26,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 27,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 28,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 29,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 30,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          },
+          {
+            "id": 31,
+            "refs": 0,
+            "digest": null,
+            "signature": null,
+            "released_at": 0
+          }
+        ]
+      },
+      "assertions": {
+        "same_output": true,
+        "cold_then_warm": true,
+        "no_active_refs": true,
+        "released": true
+      },
+      "passed": true
+    }
+  ],
+  "passed": true
+}

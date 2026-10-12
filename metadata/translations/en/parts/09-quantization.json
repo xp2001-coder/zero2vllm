@@ -1,53 +1,65 @@
 {
   "number": 9,
   "part": {
-    "title": "Quantization Algorithms, Kernel Implementation, and Inference Acceleration",
-    "readme_note": "Students start with the mathematical reference, packing, and basic GEMM; quantization engineers can begin with strategy and kernel design. See the [quantization course design](docs/chapters/part-09-quantization/design.md) for the running experiment, tensor contracts, and acceptance criteria."
+    "title": "Quantization Algorithms, Formats, Kernels, and Inference Systems",
+    "readme_note": "The v1.0 baseline has four modules and 14 units, with a Quantized Model Passport for every experiment. Start with CPU matrices, then a few layers, then Qwen3-8B W4A16 G128. CNN/MQBench is a classic side track. See the [Part 9 design](docs/chapters/part-09-quantization/design.md)."
   },
   "chapters": {
     "9.1": {
-      "title": "Low-precision representations and compute paths",
-      "topics": "INT4/INT8 and FP8/FP4/MX formats; scales/zero points, rounding/saturation, granularity; storage/multiply/accumulation precision"
+      "title": "Quantization systems and terminology",
+      "topics": "Separate algorithms, schemes, representations, formats, layouts, and kernels; affine Q/DQ/requantization with zero-points, repacking, a hand-computed Linear, and evidence-aware passports"
     },
     "9.2": {
-      "title": "Quantization algorithms",
-      "topics": "Compare error objectives, calibration, clipping, rounding, error compensation, and equivalent transformations; GPTQ/AWQ as case studies, PTQ vs. QAT"
+      "title": "Numerical representations, quantization formulas, and tensor contracts",
+      "topics": "Integer and floating-point representations; affine grouped Q/DQ, axes, tails and scale precision; MX/NV block scales and effective bits per weight"
     },
     "9.3": {
-      "title": "Quantization strategies and precision allocation",
-      "topics": "W/A/KV, weight-only vs. low-precision computation, static/dynamic, online/offline, layer/group/expert mixed precision, and workload awareness"
+      "title": "Calibration, observers, and error measurement",
+      "topics": "Reproducible calibration protocols, valid tokens/masks and held-out evaluation; MinMax/EMA/histogram/percentile/MSE search; weight, layer, block and task objectives with explicit input provenance"
     },
     "9.4": {
-      "title": "Writing quantization and data-reordering kernels",
-      "topics": "amax/reduction, Q/DQ, per-token/per-group scales, INT4 nibble packing, sign extension, reordering, and tail blocks"
+      "title": "Quantization algorithms and error control",
+      "topics": "RTN, clipping and rounding objectives; GPTQ Hessian, compensation, Cholesky, damping and groups; AWQ-inspired scaling, rotation, FakeQuant/STE and PTQ/QAT"
     },
     "9.5": {
-      "title": "Weight-only GEMV and GEMM",
-      "topics": "W4A16/W8A16, packed layouts, fused tiled dequantization, scale reuse, small-M decode, and large-M prefill"
+      "title": "Activation quantization and mixed-precision strategies",
+      "topics": "Static/dynamic activation scales, token/block granularity, outliers and transforms, sensitivity, and precision allocation under quality or memory budgets"
     },
     "9.6": {
-      "title": "Low-precision GEMM and scaling",
-      "topics": "W8A8/W4A8, conditional INT8/FP8/FP4 paths, dynamic activation quantization, group scaling, accumulation precision, zero-point compensation, and epilogues"
+      "title": "Quantization frameworks, export workflows, and ecosystem",
+      "topics": "Teaching roles for MQBench/PPQ, LightCompress, AutoRound, LLM Compressor, and ModelOpt; independent export paths and algorithm/format separation"
     },
     "9.7": {
-      "title": "Kernel fusion and tuning",
-      "topics": "Norm/Act+Quant, GEMM epilogues, tiling, L2/shared-memory reuse, pipelines/double buffering, registers, split-K, and autotuning"
+      "title": "Checkpoint formats and the quantized weight ABI",
+      "topics": "GPTQ/AWQ/compressed-tensors/GGUF; weight, zero-point, scale and group metadata; container, storage, and execution contracts"
     },
     "9.8": {
-      "title": "KV quantization and attention integration",
-      "topics": "KV formats/layouts, per-head/per-token scales, quantized writes/fused reads, low-bit dequantization, outlier layers, and long-context error"
+      "title": "Bit packing, serialization, and repacking",
+      "topics": "INT4 byte/word packing; bit-stream, padded, and block-word alternatives; serialization, repacking and inverses, endianness, and tails"
     },
     "9.9": {
-      "title": "MoE expert quantization and grouped computation",
-      "topics": "Per-expert precision/scales, activation quantization after routing, grouped GEMM, packed layouts, load imbalance, and communication integration"
+      "title": "Weight-only GEMV/GEMM and tuning",
+      "topics": "Explicit versus fused dequantization, actual compute types, prefill/decode shape sweeps, tiling, reuse, pipelines, registers, split-K, and tuning"
     },
     "9.10": {
-      "title": "Integrating quantized kernels into vLLM",
-      "topics": "QuantizationConfig → get_quant_method → create_weights → load → process_weights_after_loading → apply; layouts/sharding/dispatch/fallbacks"
+      "title": "Activation quantization, low-precision GEMM, and fusion",
+      "topics": "Start with INT8 W8A8; conditional FP8/W4A8/FP4 paths; time statistics, Q, GEMM, scaling, DQ, and epilogues; fusion ablations"
     },
     "9.11": {
-      "title": "From kernel gains to end-to-end acceleration",
-      "topics": "Microbenchmark → layer → model → serving; prefill/decode, numerical error and model quality, TTFT/TPOT/goodput, and amortizing preprocessing"
+      "title": "KV cache quantization and attention integration",
+      "topics": "Quantized writes, cache and scale lifetimes, dequantized reads, granularity, KV formats, algorithm cases, and long-context quality"
+    },
+    "9.12": {
+      "title": "MoE, parallel sharding, and quantization",
+      "topics": "TP sharding and group boundaries, fused QKV, expert sensitivity and imbalance, grouped computation, and EP metadata/communication"
+    },
+    "9.13": {
+      "title": "Integrating quantization into vLLM",
+      "topics": "Trace configuration, method selection, weight creation/loading, post-load processing, repacking, backend dispatch, and fallback in pinned vLLM source"
+    },
+    "9.14": {
+      "title": "From kernel gains to end-to-end inference acceleration",
+      "topics": "Numerical correctness, model quality, kernel/model/serving measurements, memory, latency, throughput, goodput, amortization, and independent platform reports"
     }
   }
 }

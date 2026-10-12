@@ -10,7 +10,7 @@
 | simulation | 调度、逻辑块等模拟结果，明确模拟假设 |
 | template | 尚未运行的模板；指标使用 null |
 
-当前的 [KV Cache 实验](../chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)和 [INT4 Linear 实验](../chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json)属于 `measured_reference`。GPU [记录模板](../../configs/templates/gpu-run.json)尚未执行；其他设备或第三方的测量记录不计入本项目的单卡验证。
+当前的 [KV Cache 实验](../chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)和 [INT4 Linear 实验](../chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json)属于 `measured_reference`。GPU [记录模板](../../configs/templates/gpu-run.json)尚未执行；其他设备或第三方的测量记录不计入本项目的单卡验证。
 
 [Part 1](../chapters/part-01-inference/README.md)中，`phase-demo`、`kv-demo` 的外层为实际执行的 CPU 参考，嵌套容量/性能模型标为 `analytical_estimate`；`metrics-demo` 默认事件与统计结果均为 `simulation`。不能只看最外层记录类型就把其中所有数字当成设备测量。
 

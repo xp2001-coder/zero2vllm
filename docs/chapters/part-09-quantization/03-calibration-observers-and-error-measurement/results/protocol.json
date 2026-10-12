@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "dataset": "zero2vllm synthetic token fixture v1",
+  "dataset_sha256": "eb6c5b88a5e8d7afbac4524d68467f968f8372916461273317eb9fb54c9db4a0",
+  "tokenizer": {
+    "name": "pretokenized-synthetic-ids",
+    "revision": "v1",
+    "language_model_tokenizer": false
+  },
+  "split": "calibration",
+  "domain": "general",
+  "seed": 0,
+  "requested_samples": 8,
+  "selected_ids": [
+    "calibration-general-4",
+    "calibration-general-1",
+    "calibration-general-5",
+    "calibration-general-2",
+    "calibration-general-0",
+    "calibration-general-3",
+    "calibration-general-7",
+    "calibration-general-6"
+  ],
+  "used_samples": 8,
+  "sample_ids": [
+    "calibration-general-4",
+    "calibration-general-1",
+    "calibration-general-5",
+    "calibration-general-2",
+    "calibration-general-0",
+    "calibration-general-3",
+    "calibration-general-7",
+    "calibration-general-6"
+  ],
+  "max_length": 8,
+  "requested_token_budget": null,
+  "valid_tokens": 50,
+  "body_tokens": 34,
+  "bos_tokens": 8,
+  "eos_tokens": 8,
+  "padding_tokens": 14,
+  "body_tokens_dropped_by_length": 0,
+  "preprocessing": {
+    "bos": true,
+    "eos": true,
+    "length_policy": "reserve specials, truncate body on right",
+    "budget_policy": "keep prefix of final sample; EOS can be omitted",
+    "padding": "right; token_id=0",
+    "concatenation": false,
+    "statistics_mask": "all retained tokens including BOS/EOS; exclude padding"
+  },
+  "input_ids": [
+    [
+      1,
+      3,
+      9,
+      4,
+      5,
+      2,
+      0,
+      0
+    ],
+    [
+      1,
+      4,
+      3,
+      4,
+      2,
+      0,
+      0,
+      0
+    ],
+    [
+      1,
+      4,
+      10,
+      3,
+      6,
+      2,
+      0,
+      0
+    ],
+    [
+      1,
+      5,
+      6,
+      3,
+      4,
+      9,
+      2,
+      0
+    ],
+    [
+      1,
+      3,
+      4,
+      5,
+      6,
+      2,
+      0,
+      0
+    ],
+    [
+      1,
+      6,
+      5,
+      4,
+      3,
+      9,
+      10,
+      2
+    ],
+    [
+      1,
+      4,
+      3,
+      8,
+      6,
+      2,
+      0,
+      0
+    ],
+    [
+      1,
+      3,
+      4,
+      7,
+      5,
+      2,
+      0,
+      0
+    ]
+  ],
+  "attention_mask": [
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ],
+    [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      false,
+      false
+    ]
+  ],
+  "prepared_sha256": "065f88764c3be2ca84826f9cab4926e045753f1ff4372a5840f00952d79919c2",
+  "feature_source": "corpus.json#features; deterministic synthetic lookup, no transformer",
+  "feature_sha256": "51a35ae7797d44cd6d389692620782a60ce691ada865f2b0db34b2e940d4dc01",
+  "calibration_target": "per-tensor static activation range, logical signed INT4 [-7,7]",
+  "upstream_input": "fixed unquantized feature lookup",
+  "batching": "one prepared document per observer update"
+}

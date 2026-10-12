@@ -87,7 +87,7 @@ python scripts/docs/course.py --check --report reports/history/lesson-2.1-delive
 - [Prefill/Decode 轨迹与估算](../../docs/chapters/part-01-inference/02-prefill-decode/results/baseline/02-phases.json)、[缓存/GQA/容量](../../docs/chapters/part-01-inference/03-kv-cache/results/baseline/03-cache.json)
 - [模拟请求指标](../../docs/chapters/part-01-inference/04-performance-metrics/results/baseline/04-metrics.json)、[位置与模型结构](../../docs/chapters/part-01-inference/05-model-structures/results/baseline/05-structures.json)、[采样/停止/数值](../../docs/chapters/part-01-inference/06-sampling-correctness/results/baseline/06-sampling.json)
 - [CPU 实验 JSON](../../docs/chapters/part-01-inference/03-kv-cache/results/initial-baseline.json)
-- [CPU INT4 原始输入、字节与输出](../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/results/int4-reference.json)
+- [CPU INT4 原始输入、字节与输出](../../docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/results/int4-reference.json)
 - [本地环境 JSON](../platforms/cpu/initial-environment.json)
 - [文档与配置检查 JSON](lesson-2.1-delivery/document-checks.json)
 - [课程与特性目录检查 JSON](lesson-2.1-delivery/curriculum-checks.json)
@@ -119,7 +119,7 @@ python scripts/docs/course.py --check --report reports/history/lesson-2.1-delive
 
 ### 量化篇结构修订
 
-量化篇仍为 11 章，算法统一到 9.2。已有[量化导读](../../docs/chapters/part-09-quantization/guide.md)与 [CPU INT4 实验](../../docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)，覆盖一种对称格式的策略/契约、Q/DQ、打包和 Linear 数学参考。GPU GEMV/GEMM、融合、KV/MoE、vLLM 接入与模型质量仍待实现和实测。
+量化篇仍为 11 章，算法统一到 9.2。已有[量化导读](../../docs/chapters/part-09-quantization/guide.md)与 [CPU INT4 实验](../../docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)，覆盖一种对称格式的策略/契约、Q/DQ、打包和 Linear 数学参考。GPU GEMV/GEMM、融合、KV/MoE、vLLM 接入与模型质量仍待实现和实测。
 
 ## 框架审查与优化
 

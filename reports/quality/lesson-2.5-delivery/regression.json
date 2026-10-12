@@ -1,0 +1,32 @@
+{
+  "recorded_at_utc": "2026-09-17T07:36:33.118193+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "0195f44e24d04618887b30baa14859805c6acf8e91b99d2b14b5800d70211384",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "tests": {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "count": 206,
+    "seconds": 247.95,
+    "skipped": 0,
+    "output": "tests.txt"
+  },
+  "lesson_cases": {
+    "passed": true,
+    "cases": 11,
+    "output": "../../../docs/chapters/part-02-engine/05-paged-caching/results/baseline/summary.json"
+  },
+  "remote_ci": "not_run",
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  }
+}

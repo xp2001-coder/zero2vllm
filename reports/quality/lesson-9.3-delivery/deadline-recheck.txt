@@ -1,0 +1,6 @@
+test_deadline_after_first_token_returns_running_cache (tests.serving.test_streaming.ServiceTests.test_deadline_after_first_token_returns_running_cache) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.106s
+
+OK

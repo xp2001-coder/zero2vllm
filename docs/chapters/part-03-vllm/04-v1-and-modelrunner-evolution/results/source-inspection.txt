@@ -1,0 +1,13 @@
+stable_rows PASS
+scatter_progress PASS
+row_reuse PASS
+preempt_and_resume PASS
+staged_writes PASS
+overlap_guard PASS
+copy_ownership PASS
+expanded_sampling_map PASS
+sampling_algebra PASS
+graph_dispatch PASS
+v0.8.5 static inspection True []
+v0.17.1 static inspection True []
+No upstream runner, GPU transfer, Triton sampler or CUDA Graph executed.

@@ -1,0 +1,25 @@
+{
+  "scope": "Classify the named object in its stated context; names may have other meanings elsewhere.",
+  "terms": [
+    {"term":"GPTQ 论文中的误差补偿方法","category":"algorithm","why":"描述怎样依据输入统计求量化参数。"},
+    {"term":"W4A16 G128","category":"scheme","why":"声明 W/A 位宽与分组大小；没有说明分组轴或执行算子。"},
+    {"term":"有符号 INT4 的整数值域","category":"representation","why":"规定可表示的整数；本课使用其中 [-7,7]。"},
+    {"term":"本例 scale=0.5、zero_point=0","category":"parameters","why":"把具体整数与还原实数连接起来。"},
+    {"term":"本例 ties-to-even 舍入规则","category":"numerical_contract","why":"定义恰在两个整数中间时如何取值。"},
+    {"term":"AutoGPTQ-compatible 导出格式","category":"checkpoint_format","why":"描述文件中的张量与元数据如何被解释；还需版本。"},
+    {"term":"两个 INT4 合成一字节且第一个放低位","category":"packing_layout","why":"规定整数值怎样占据字节中的位置。"},
+    {"term":"为某个 Marlin kernel 准备的权重排列","category":"compute_layout","why":"规定执行时按哪个位置取权重。"},
+    {"term":"某个实际执行的 Marlin GEMM kernel","category":"kernel","why":"执行加载、解码、计算与输出的程序。"},
+    {"term":"vLLM 请求调度、加载和执行系统","category":"runtime","why":"组织模型运行与服务，而非仅定义一条公式。"},
+    {"term":"NVIDIA A100 GPU","category":"hardware","why":"执行程序的物理设备；能力与软件路径还要核对。"},
+    {"term":"沐曦 C500 GPU","category":"hardware","why":"另一硬件平台，需要独立 MACA 软件栈记录。"},
+    {"term":"safetensors 文件容器","category":"container","why":"承载张量与元数据，不独自定义量化语义。"},
+    {"term":"checkpoint 加载后的 repack 操作","category":"layout_conversion","why":"转换权重排列；正确转换要保持逻辑值及其元数据对应。"},
+    {"term":"本例用 Python int 列表存放 q","category":"storage_type","why":"宿主实际存储类型；不意味着每个值只占 4 bit。"},
+    {"term":"C4 作为某次实验的校准输入","category":"calibration_data","why":"它是求统计量或优化参数的数据，不是算法名称。"},
+    {"term":"FP32 作为某次 GEMM 的累加类型","category":"compute_type","why":"说明部分和如何计算，与权重文件类型分开。"},
+    {"term":"AutoRound Python 工具包","category":"producer_framework","why":"生产量化产物的工具；其中的算法与导出格式要另记。"},
+    {"term":"MACA 编译器与设备软件栈","category":"device_software_stack","why":"支撑设备程序编译和运行，不等同于上层推理引擎。"},
+    {"term":"固定负载下测得 TTFT=40ms","category":"measurement","why":"带口径和证据的测量；本题数字仅为分类示例。"}
+  ]
+}

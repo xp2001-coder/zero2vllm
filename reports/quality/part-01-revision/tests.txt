@@ -1,0 +1,32 @@
+test_mha_gqa_mqa_capacity_and_scaling (tests.reference.test_part1.CacheGeometryTests.test_mha_gqa_mqa_capacity_and_scaling) ... ok
+test_uneven_chunks_offsets_and_input_preservation (tests.reference.test_part1.CacheGeometryTests.test_uneven_chunks_offsets_and_input_preservation) ... ok
+test_zero_queries_produce_group_value_means (tests.reference.test_part1.CacheGeometryTests.test_zero_queries_produce_group_value_means) ... ok
+test_all_failed_and_single_token_slo_policy (tests.reference.test_part1.MetricsTests.test_all_failed_and_single_token_slo_policy) ... ok
+test_failed_partial_tokens_do_not_inflate_throughput (tests.reference.test_part1.MetricsTests.test_failed_partial_tokens_do_not_inflate_throughput) ... ok
+test_hand_computed_timeline_and_goodput (tests.reference.test_part1.MetricsTests.test_hand_computed_timeline_and_goodput) ... ok
+test_percentiles_empty_singleton_and_interpolation (tests.reference.test_part1.MetricsTests.test_percentiles_empty_singleton_and_interpolation) ... ok
+test_reject_bad_clocks_duplicates_chunks_and_empty_success (tests.reference.test_part1.MetricsTests.test_reject_bad_clocks_duplicates_chunks_and_empty_success) ... ok
+test_bad_arguments_fail_without_report (tests.reference.test_part1.Part1CLITests.test_bad_arguments_fail_without_report) ... ok
+test_commands_save_valid_reports_in_unicode_directory (tests.reference.test_part1.Part1CLITests.test_commands_save_valid_reports_in_unicode_directory) ... ok
+test_gemm_flops_bytes_and_roofline_by_hand (tests.reference.test_part1.PhaseTests.test_gemm_flops_bytes_and_roofline_by_hand) ... ok
+test_invalid_estimates_and_trace_budget (tests.reference.test_part1.PhaseTests.test_invalid_estimates_and_trace_budget) ... ok
+test_phase_steps_and_last_unconsumed_token (tests.reference.test_part1.PhaseTests.test_phase_steps_and_last_unconsumed_token) ... ok
+test_eos_stop_ids_and_minimum_length (tests.reference.test_part1.SamplingTests.test_eos_stop_ids_and_minimum_length) ... ok
+test_logit_tolerance_and_token_equality_are_independent (tests.reference.test_part1.SamplingTests.test_logit_tolerance_and_token_equality_are_independent) ... ok
+test_seed_replay_and_empirical_distribution (tests.reference.test_part1.SamplingTests.test_seed_replay_and_empirical_distribution) ... ok
+test_sign_aware_penalties_have_distinct_histories (tests.reference.test_part1.SamplingTests.test_sign_aware_penalties_have_distinct_histories) ... ok
+test_stable_softmax_shift_and_invalid_inputs (tests.reference.test_part1.SamplingTests.test_stable_softmax_shift_and_invalid_inputs) ... ok
+test_stop_string_crosses_piece_boundary_and_ignores_prompt (tests.reference.test_part1.SamplingTests.test_stop_string_crosses_piece_boundary_and_ignores_prompt) ... ok
+test_top_k_top_p_min_p_known_probabilities (tests.reference.test_part1.SamplingTests.test_top_k_top_p_min_p_known_probabilities) ... ok
+test_zero_output_and_invalid_stopping_budget (tests.reference.test_part1.SamplingTests.test_zero_output_and_invalid_stopping_budget) ... ok
+test_zero_temperature_masks_and_ties (tests.reference.test_part1.SamplingTests.test_zero_temperature_masks_and_ties) ... ok
+test_alibi_hand_calculation_and_causality (tests.reference.test_part1.StructureTests.test_alibi_hand_calculation_and_causality) ... ok
+test_linear_attention_recurrence_and_non_softmax_semantics (tests.reference.test_part1.StructureTests.test_linear_attention_recurrence_and_non_softmax_semantics) ... ok
+test_rope_known_rotation_norm_and_relative_positions (tests.reference.test_part1.StructureTests.test_rope_known_rotation_norm_and_relative_positions) ... ok
+test_ssm_scan_matches_closed_form (tests.reference.test_part1.StructureTests.test_ssm_scan_matches_closed_form) ... ok
+test_window_membership_counts_and_full_limit (tests.reference.test_part1.StructureTests.test_window_membership_counts_and_full_limit) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 2.555s
+
+OK

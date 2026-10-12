@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/vllm-project/vllm",
+  "tag": "v0.8.5",
+  "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+  "hash_policy": "SHA-256 after CRLF-to-LF normalization",
+  "files": {
+    "LICENSE": {
+      "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "vllm/model_executor/layers/quantization/base_config.py": {
+      "sha256_lf": "ba8ddfa4e5cd47e6aef855cd551ea84974e3dd905aa6f460579c73c0aaf32ccf"
+    },
+    "vllm/model_executor/layers/linear.py": {
+      "sha256_lf": "97b3effe7efa1bb60aa48646ba623665b9280b23ec5510536f0d9bec23be635b"
+    },
+    "vllm/model_executor/layers/quantization/gptq_marlin.py": {
+      "sha256_lf": "f81bcbadec1c53e055fc962b7364d63790c5a747f1c6010296ce152df000acc5"
+    }
+  },
+  "checkpoints": [
+    {
+      "id": "point-01",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/base_config.py",
+      "symbol": "QuantizationConfig.get_quant_method",
+      "title": "配置对象要为具体层返回量化方法",
+      "calls": []
+    },
+    {
+      "id": "point-02",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/base_config.py",
+      "symbol": "QuantizeMethodBase.process_weights_after_loading",
+      "title": "加载后处理是接口职责，不是每次前向都必须重排",
+      "calls": []
+    },
+    {
+      "id": "point-03",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/linear.py",
+      "symbol": "LinearBase.__init__",
+      "title": "层构造时获得 quant_method",
+      "calls": [
+        "quant_config.get_quant_method"
+      ]
+    },
+    {
+      "id": "point-04",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/linear.py",
+      "symbol": "ReplicatedLinear.__init__",
+      "title": "按量化方法创建参数；ReplicatedLinear 作为最小接口示例",
+      "calls": [
+        "self.quant_method.create_weights"
+      ]
+    },
+    {
+      "id": "point-05",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/linear.py",
+      "symbol": "ReplicatedLinear.forward",
+      "title": "前向把输入与 bias 交给量化方法",
+      "calls": [
+        "self.quant_method.apply"
+      ]
+    },
+    {
+      "id": "point-06",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+      "symbol": "GPTQMarlinConfig.get_quant_method",
+      "title": "配置、层类型与方法选择衔接",
+      "calls": [
+        "get_linear_quant_method"
+      ]
+    },
+    {
+      "id": "point-07",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+      "symbol": "GPTQMarlinLinearMethod.create_weights",
+      "title": "创建 qweight/scales 等参数，并选择执行 kernel 类",
+      "calls": [
+        "MPLinearLayerConfig",
+        "choose_mp_linear_kernel",
+        "layer.register_parameter",
+        "kernel_type"
+      ]
+    },
+    {
+      "id": "point-08",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+      "symbol": "GPTQMarlinLinearMethod.process_weights_after_loading",
+      "title": "把加载后处理委托给已选 kernel",
+      "calls": [
+        "self.kernel.process_weights_after_loading"
+      ]
+    },
+    {
+      "id": "point-09",
+      "stage": "read",
+      "path": "vllm/model_executor/layers/quantization/gptq_marlin.py",
+      "symbol": "GPTQMarlinLinearMethod.apply",
+      "title": "调用已选实现，不从类名猜测实际执行路径",
+      "calls": [
+        "self.kernel.apply_weights"
+      ]
+    }
+  ],
+  "structures": []
+}

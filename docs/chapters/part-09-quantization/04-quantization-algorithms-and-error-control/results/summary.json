@@ -1,0 +1,1775 @@
+{
+  "recorded_at_utc": "2026-09-29T06:48:32.232984+00:00",
+  "python": "3.11.9",
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "18960990a50965d3605514de5e516bfb93d5dc73841c7718f551113e777ae3f4",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "fixture_sha256": "2b22189c16745f96289abc4bf8c043f9f16d83f8bd86f77c9dd8a245145da75d",
+  "gpu_validated": false,
+  "real_model_evaluated": false,
+  "upstream_algorithm_packages_executed": false,
+  "passed": true,
+  "cases": [
+    {
+      "name": "nearest_rounding_is_zero",
+      "passed": true
+    },
+    {
+      "name": "four_rounding_candidates",
+      "passed": true
+    },
+    {
+      "name": "reconstruction_selects_zero_one",
+      "passed": true
+    },
+    {
+      "name": "hand_reconstruction_sse",
+      "passed": true
+    },
+    {
+      "name": "gptq_compensates_second_weight",
+      "passed": true
+    },
+    {
+      "name": "gptq_matches_toy_optimum",
+      "passed": true
+    },
+    {
+      "name": "calibration_gain_can_lose_held_out",
+      "passed": true
+    },
+    {
+      "name": "lazy_block_1_same_codes",
+      "passed": true
+    },
+    {
+      "name": "lazy_block_2_same_codes",
+      "passed": true
+    },
+    {
+      "name": "lazy_block_8_same_codes",
+      "passed": true
+    },
+    {
+      "name": "loss_accounting_act_order_False",
+      "passed": true
+    },
+    {
+      "name": "loss_accounting_act_order_True",
+      "passed": true
+    },
+    {
+      "name": "rank_deficiency_without_damping_rejected",
+      "passed": true
+    },
+    {
+      "name": "damping_allows_rank_deficient_case",
+      "passed": true
+    },
+    {
+      "name": "exhaustive_size_guard",
+      "passed": true
+    },
+    {
+      "name": "scaling_float_identity",
+      "passed": true
+    },
+    {
+      "name": "scaling_can_improve",
+      "passed": true
+    },
+    {
+      "name": "scaling_not_monotonic",
+      "passed": true
+    },
+    {
+      "name": "rotation_float_identity",
+      "passed": true
+    },
+    {
+      "name": "rotation_redistributes_peak",
+      "passed": true
+    },
+    {
+      "name": "nonzero_zero_point_preserved",
+      "passed": true
+    },
+    {
+      "name": "ste_has_zero_saturated_input_gradient",
+      "passed": true
+    },
+    {
+      "name": "stochastic_sampling_matches_declared_distribution",
+      "passed": true
+    }
+  ],
+  "comparison": {
+    "rows": [
+      {
+        "method": "RTN",
+        "weight_mse": 0.009103061224489796,
+        "calibration_mse": 0.05363584183673468,
+        "held_out_mse": 0.015052891156462566,
+        "search_budget": "one nearest rounding pass",
+        "effective_weight": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.32857142857142857,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ]
+      },
+      {
+        "method": "clipping search",
+        "weight_mse": 0.009103061224489796,
+        "calibration_mse": 0.05363584183673468,
+        "held_out_mse": 0.015052891156462566,
+        "search_budget": "4 range candidates",
+        "effective_weight": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.32857142857142857,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ]
+      },
+      {
+        "method": "floor/ceil exhaustive",
+        "weight_mse": 0.009415986394557823,
+        "calibration_mse": 0.0077531887755102075,
+        "held_out_mse": 0.05111751700680265,
+        "search_budget": "32 discrete candidates",
+        "effective_weight": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.6571428571428571,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ]
+      },
+      {
+        "method": "GPTQ core reference",
+        "weight_mse": 0.009415986394557823,
+        "calibration_mse": 0.0077531887755102075,
+        "held_out_mse": 0.05111751700680265,
+        "search_budget": "one 3x3 inverse/Cholesky and 3 row decisions",
+        "effective_weight": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.6571428571428571,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ]
+      },
+      {
+        "method": "AWQ-inspired scaling",
+        "weight_mse": 0.0064748071313096706,
+        "calibration_mse": 0.002040826774900215,
+        "held_out_mse": 0.03070909198400107,
+        "search_budget": "5 scaling candidates",
+        "effective_weight": [
+          [
+            0.5861092209656266,
+            -0.8324449805019047
+          ],
+          [
+            0.3285714285714285,
+            0.4
+          ],
+          [
+            2.2999999999999994,
+            -1.4000000000000001
+          ]
+        ]
+      }
+    ],
+    "rtn": {
+      "q": [
+        [
+          1,
+          -4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          7,
+          -7
+        ]
+      ],
+      "dq": [
+        [
+          0.32857142857142857,
+          -0.7999999999999999
+        ],
+        [
+          0.32857142857142857,
+          0.39999999999999997
+        ],
+        [
+          2.3,
+          -1.4
+        ]
+      ],
+      "grids": [
+        {
+          "scale": 0.32857142857142857,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        {
+          "scale": 0.19999999999999998,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        }
+      ]
+    },
+    "clipping": {
+      "objective": "layer",
+      "candidates": [
+        {
+          "ratio": 1,
+          "objective_mse": 0.05363584183673468,
+          "q": [
+            [
+              1,
+              -4
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              7,
+              -7
+            ]
+          ],
+          "dq": [
+            [
+              0.32857142857142857,
+              -0.7999999999999999
+            ],
+            [
+              0.32857142857142857,
+              0.39999999999999997
+            ],
+            [
+              2.3,
+              -1.4
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.32857142857142857,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            },
+            {
+              "scale": 0.19999999999999998,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        {
+          "ratio": 0.9,
+          "objective_mse": 0.06341932397959182,
+          "q": [
+            [
+              2,
+              -4
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              7,
+              -7
+            ]
+          ],
+          "dq": [
+            [
+              0.5914285714285714,
+              -0.72
+            ],
+            [
+              0.5914285714285714,
+              0.36
+            ],
+            [
+              2.07,
+              -1.26
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.2957142857142857,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            },
+            {
+              "scale": 0.18,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        {
+          "ratio": 0.75,
+          "objective_mse": 0.12542897002551018,
+          "q": [
+            [
+              2,
+              -5
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              7,
+              -7
+            ]
+          ],
+          "dq": [
+            [
+              0.4928571428571428,
+              -0.7499999999999998
+            ],
+            [
+              0.4928571428571428,
+              0.29999999999999993
+            ],
+            [
+              1.7249999999999999,
+              -1.0499999999999998
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.2464285714285714,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            },
+            {
+              "scale": 0.14999999999999997,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        {
+          "ratio": 0.5,
+          "objective_mse": 0.47002104591836735,
+          "q": [
+            [
+              3,
+              -7
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              7,
+              -7
+            ]
+          ],
+          "dq": [
+            [
+              0.4928571428571429,
+              -0.7
+            ],
+            [
+              0.4928571428571429,
+              0.39999999999999997
+            ],
+            [
+              1.15,
+              -0.7
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.16428571428571428,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            },
+            {
+              "scale": 0.09999999999999999,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        }
+      ],
+      "best": {
+        "ratio": 1,
+        "objective_mse": 0.05363584183673468,
+        "q": [
+          [
+            1,
+            -4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            7,
+            -7
+          ]
+        ],
+        "dq": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.32857142857142857,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 0.32857142857142857,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          },
+          {
+            "scale": 0.19999999999999998,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ]
+      }
+    },
+    "rounding": {
+      "best": {
+        "q": [
+          [
+            1,
+            -4
+          ],
+          [
+            2,
+            2
+          ],
+          [
+            7,
+            -7
+          ]
+        ],
+        "dq": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.6571428571428571,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 0.32857142857142857,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          },
+          {
+            "scale": 0.19999999999999998,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ],
+        "loss": 0.06202551020408166
+      },
+      "rtn": {
+        "q": [
+          [
+            1,
+            -4
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            7,
+            -7
+          ]
+        ],
+        "dq": [
+          [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          [
+            0.32857142857142857,
+            0.39999999999999997
+          ],
+          [
+            2.3,
+            -1.4
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 0.32857142857142857,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          },
+          {
+            "scale": 0.19999999999999998,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ]
+      },
+      "candidates": 32,
+      "free_variables": 5,
+      "scope": "Clipped floor/ceil choices on fixed grids; calibration SSE only"
+    },
+    "gptq": {
+      "q": [
+        [
+          1,
+          -4
+        ],
+        [
+          2,
+          2
+        ],
+        [
+          7,
+          -7
+        ]
+      ],
+      "dq": [
+        [
+          0.32857142857142857,
+          -0.7999999999999999
+        ],
+        [
+          0.6571428571428571,
+          0.39999999999999997
+        ],
+        [
+          2.3,
+          -1.4
+        ]
+      ],
+      "grids": [
+        {
+          "scale": 0.32857142857142857,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        },
+        {
+          "scale": 0.19999999999999998,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        }
+      ],
+      "order": [
+        0,
+        1,
+        2
+      ],
+      "hessian": [
+        [
+          14.076666666666666,
+          7.0,
+          -5.0
+        ],
+        [
+          7.0,
+          4.576666666666667,
+          -3.0
+        ],
+        [
+          -5.0,
+          -3.0,
+          4.576666666666667
+        ]
+      ],
+      "upper": [
+        [
+          0.5500396894798318,
+          -0.78444154690221,
+          0.0867167822343473
+        ],
+        [
+          0.0,
+          0.6189643096977989,
+          0.405730428789526
+        ],
+        [
+          0.0,
+          0.0,
+          0.4674394461681002
+        ]
+      ],
+      "lambda_absolute": 0.07666666666666667,
+      "trace": [
+        {
+          "step": 0,
+          "original_feature": 0,
+          "before": [
+            0.49,
+            -0.8
+          ],
+          "codes": [
+            1,
+            -4
+          ],
+          "dq": [
+            0.32857142857142857,
+            -0.7999999999999999
+          ],
+          "normalized_error": [
+            0.2934853148165238,
+            -2.0184416613191778e-16
+          ],
+          "incremental_objective": 0.04306681500647704
+        },
+        {
+          "step": 1,
+          "original_feature": 1,
+          "before": [
+            0.720222074347756,
+            0.3499999999999998
+          ],
+          "codes": [
+            2,
+            2
+          ],
+          "dq": [
+            0.6571428571428571,
+            0.39999999999999997
+          ],
+          "normalized_error": [
+            0.10191091185160002,
+            -0.08078010188408438
+          ],
+          "incremental_objective": 0.00845562940741382
+        },
+        {
+          "step": 2,
+          "original_feature": 2,
+          "before": [
+            2.233201539902195,
+            -1.3672250546249087
+          ],
+          "codes": [
+            7,
+            -7
+          ],
+          "dq": [
+            2.3,
+            -1.4
+          ],
+          "normalized_error": [
+            -0.14290291639996222,
+            0.07011591692521534
+          ],
+          "incremental_objective": 0.012668742660939144
+        }
+      ],
+      "layer_sse": 0.06202551020408166,
+      "regularization_penalty": 0.0021656768707482995,
+      "regularized_objective": 0.06419118707482996,
+      "trace_objective": 0.06419118707483001
+    },
+    "scaling": {
+      "activation_mean_abs": [
+        1.25,
+        0.625,
+        0.625
+      ],
+      "candidates": [
+        {
+          "alpha": 0,
+          "transform_scales": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "quantized": {
+            "q": [
+              [
+                1,
+                -4
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                -7
+              ]
+            ],
+            "dq": [
+              [
+                0.32857142857142857,
+                -0.7999999999999999
+              ],
+              [
+                0.32857142857142857,
+                0.39999999999999997
+              ],
+              [
+                2.3,
+                -1.4
+              ]
+            ],
+            "grids": [
+              {
+                "scale": 0.32857142857142857,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              },
+              {
+                "scale": 0.19999999999999998,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              }
+            ]
+          },
+          "effective_w": [
+            [
+              0.32857142857142857,
+              -0.7999999999999999
+            ],
+            [
+              0.32857142857142857,
+              0.39999999999999997
+            ],
+            [
+              2.3,
+              -1.4
+            ]
+          ],
+          "calibration_mse": 0.05363584183673468,
+          "identity_error": 0.0
+        },
+        {
+          "alpha": 0.25,
+          "transform_scales": [
+            1.0905077326652577,
+            0.9170040432046713,
+            0.9170040432046713
+          ],
+          "quantized": {
+            "q": [
+              [
+                2,
+                -5
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                -7
+              ]
+            ],
+            "dq": [
+              [
+                0.6026026569630697,
+                -0.9170040432046712
+              ],
+              [
+                0.30130132848153485,
+                0.3668016172818685
+              ],
+              [
+                2.109109299370744,
+                -1.2838056604865398
+              ]
+            ],
+            "grids": [
+              {
+                "scale": 0.30130132848153485,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              },
+              {
+                "scale": 0.18340080864093425,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              }
+            ]
+          },
+          "effective_w": [
+            [
+              0.5525890728810124,
+              -0.8408964152537145
+            ],
+            [
+              0.32857142857142857,
+              0.39999999999999997
+            ],
+            [
+              2.3,
+              -1.4
+            ]
+          ],
+          "calibration_mse": 0.002293515917990572,
+          "identity_error": 0.0
+        },
+        {
+          "alpha": 0.5,
+          "transform_scales": [
+            1.189207115002721,
+            0.8408964152537145,
+            0.8408964152537145
+          ],
+          "quantized": {
+            "q": [
+              [
+                2,
+                -6
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                -7
+              ]
+            ],
+            "dq": [
+              [
+                0.5525890728810123,
+                -1.0090756983044573
+              ],
+              [
+                0.27629453644050617,
+                0.3363585661014858
+              ],
+              [
+                1.934061755083543,
+                -1.1772549813552002
+              ]
+            ],
+            "grids": [
+              {
+                "scale": 0.27629453644050617,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              },
+              {
+                "scale": 0.1681792830507429,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              }
+            ]
+          },
+          "effective_w": [
+            [
+              0.4646701704940169,
+              -0.8485281374238569
+            ],
+            [
+              0.3285714285714285,
+              0.39999999999999997
+            ],
+            [
+              2.3,
+              -1.4
+            ]
+          ],
+          "calibration_mse": 0.012109010650141689,
+          "identity_error": 4.440892098500626e-16
+        },
+        {
+          "alpha": 0.75,
+          "transform_scales": [
+            1.2968395546510096,
+            0.7711054127039704,
+            0.7711054127039704
+          ],
+          "quantized": {
+            "q": [
+              [
+                3,
+                -7
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                -7
+              ]
+            ],
+            "dq": [
+              [
+                0.7600896210939134,
+                -1.0795475777855585
+              ],
+              [
+                0.2533632070313045,
+                0.30844216508158817
+              ],
+              [
+                1.7735424492191314,
+                -1.0795475777855585
+              ]
+            ],
+            "grids": [
+              {
+                "scale": 0.2533632070313045,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              },
+              {
+                "scale": 0.15422108254079409,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              }
+            ]
+          },
+          "effective_w": [
+            [
+              0.5861092209656266,
+              -0.8324449805019047
+            ],
+            [
+              0.3285714285714285,
+              0.4
+            ],
+            [
+              2.2999999999999994,
+              -1.4000000000000001
+            ]
+          ],
+          "calibration_mse": 0.002040826774900215,
+          "identity_error": 4.440892098500626e-16
+        },
+        {
+          "alpha": 1,
+          "transform_scales": [
+            1.414213562373095,
+            0.7071067811865475,
+            0.7071067811865475
+          ],
+          "quantized": {
+            "q": [
+              [
+                3,
+                -7
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                7,
+                -6
+              ]
+            ],
+            "dq": [
+              [
+                0.6970052557410253,
+                -1.131370849898476
+              ],
+              [
+                0.23233508524700844,
+                0.32324881425670743
+              ],
+              [
+                1.626345596729059,
+                -0.9697464427701223
+              ]
+            ],
+            "grids": [
+              {
+                "scale": 0.23233508524700844,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              },
+              {
+                "scale": 0.16162440712835371,
+                "zero_point": 0,
+                "qmin": -7,
+                "qmax": 7,
+                "scheme": "symmetric"
+              }
+            ]
+          },
+          "effective_w": [
+            [
+              0.4928571428571428,
+              -0.8
+            ],
+            [
+              0.32857142857142857,
+              0.4571428571428572
+            ],
+            [
+              2.3,
+              -1.3714285714285717
+            ]
+          ],
+          "calibration_mse": 0.009242984693877562,
+          "identity_error": 2.220446049250313e-16
+        }
+      ],
+      "best": {
+        "alpha": 0.75,
+        "transform_scales": [
+          1.2968395546510096,
+          0.7711054127039704,
+          0.7711054127039704
+        ],
+        "quantized": {
+          "q": [
+            [
+              3,
+              -7
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              7,
+              -7
+            ]
+          ],
+          "dq": [
+            [
+              0.7600896210939134,
+              -1.0795475777855585
+            ],
+            [
+              0.2533632070313045,
+              0.30844216508158817
+            ],
+            [
+              1.7735424492191314,
+              -1.0795475777855585
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.2533632070313045,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            },
+            {
+              "scale": 0.15422108254079409,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.5861092209656266,
+            -0.8324449805019047
+          ],
+          [
+            0.3285714285714285,
+            0.4
+          ],
+          [
+            2.2999999999999994,
+            -1.4000000000000001
+          ]
+        ],
+        "calibration_mse": 0.002040826774900215,
+        "identity_error": 4.440892098500626e-16
+      }
+    },
+    "scope": "Same W/X, INT4 per-output grids and held-out rows; range/scaling methods intentionally change grids. No model algorithm ranking."
+  },
+  "rounding_toy": {
+    "rtn": {
+      "q": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "dq": [
+        [
+          0
+        ],
+        [
+          0
+        ]
+      ],
+      "grids": [
+        {
+          "scale": 1,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        }
+      ]
+    },
+    "rounding": {
+      "best": {
+        "q": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "dq": [
+          [
+            0
+          ],
+          [
+            1
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 1,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ],
+        "loss": 0.2405
+      },
+      "rtn": {
+        "q": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "dq": [
+          [
+            0
+          ],
+          [
+            0
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 1,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ]
+      },
+      "candidates": 4,
+      "free_variables": 2,
+      "scope": "Clipped floor/ceil choices on fixed grids; calibration SSE only"
+    },
+    "gptq": {
+      "q": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "dq": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "grids": [
+        {
+          "scale": 1,
+          "zero_point": 0,
+          "qmin": -7,
+          "qmax": 7,
+          "scheme": "symmetric"
+        }
+      ],
+      "order": [
+        0,
+        1
+      ],
+      "hessian": [
+        [
+          4.0,
+          2.0
+        ],
+        [
+          2.0,
+          2.0
+        ]
+      ],
+      "upper": [
+        [
+          0.7071067811865476,
+          -0.7071067811865475
+        ],
+        [
+          0.0,
+          0.7071067811865476
+        ]
+      ],
+      "lambda_absolute": 0.0,
+      "trace": [
+        {
+          "step": 0,
+          "original_feature": 0,
+          "before": [
+            0.49
+          ],
+          "codes": [
+            0
+          ],
+          "dq": [
+            0
+          ],
+          "normalized_error": [
+            0.6929646455628166
+          ],
+          "incremental_objective": 0.24009999999999998
+        },
+        {
+          "step": 1,
+          "original_feature": 1,
+          "before": [
+            0.98
+          ],
+          "codes": [
+            1
+          ],
+          "dq": [
+            1
+          ],
+          "normalized_error": [
+            -0.028284271247461926
+          ],
+          "incremental_objective": 0.0004000000000000007
+        }
+      ],
+      "layer_sse": 0.2405,
+      "regularization_penalty": 0.0,
+      "regularized_objective": 0.2405,
+      "trace_objective": 0.2405
+    },
+    "held_out_rtn": {
+      "elements": 2,
+      "sse": 1.2005,
+      "mse": 0.60025,
+      "max_abs": 0.98,
+      "reference_energy": 1.2005,
+      "nmse": 1.0,
+      "cosine": null,
+      "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+    },
+    "held_out_optimized": {
+      "elements": 2,
+      "sse": 1.3005,
+      "mse": 0.65025,
+      "max_abs": 1.02,
+      "reference_energy": 1.2005,
+      "nmse": 1.0832986255726782,
+      "cosine": 1.0,
+      "undefined_policy": "NMSE null if reference energy=0; cosine null if either norm=0; no epsilon added"
+    }
+  },
+  "scaling_toy": {
+    "activation_mean_abs": [
+      8.0,
+      1.0
+    ],
+    "candidates": [
+      {
+        "alpha": 0,
+        "transform_scales": [
+          1.0,
+          1.0
+        ],
+        "quantized": {
+          "q": [
+            [
+              1
+            ],
+            [
+              7
+            ]
+          ],
+          "dq": [
+            [
+              0.14285714285714285
+            ],
+            [
+              1.0
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.14285714285714285,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.14285714285714285
+          ],
+          [
+            1.0
+          ]
+        ],
+        "calibration_mse": 0.010579591836734674,
+        "identity_error": 0.0
+      },
+      {
+        "alpha": 0.25,
+        "transform_scales": [
+          1.2968395546510096,
+          0.7711054127039704
+        ],
+        "quantized": {
+          "q": [
+            [
+              2
+            ],
+            [
+              7
+            ]
+          ],
+          "dq": [
+            [
+              0.2203158322011344
+            ],
+            [
+              0.7711054127039704
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.1101579161005672,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.16988673071467444
+          ],
+          [
+            1.0
+          ]
+        ],
+        "calibration_mse": 0.10182088237471694,
+        "identity_error": 4.440892098500626e-16
+      },
+      {
+        "alpha": 0.5,
+        "transform_scales": [
+          1.681792830507429,
+          0.5946035575013605
+        ],
+        "quantized": {
+          "q": [
+            [
+              3
+            ],
+            [
+              7
+            ]
+          ],
+          "dq": [
+            [
+              0.2548300960720117
+            ],
+            [
+              0.5946035575013605
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.08494336535733722,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.15152288168283162
+          ],
+          [
+            1.0
+          ]
+        ],
+        "calibration_mse": 0.0296470038997228,
+        "identity_error": 2.220446049250313e-16
+      },
+      {
+        "alpha": 0.75,
+        "transform_scales": [
+          2.1810154653305154,
+          0.4585020216023356
+        ],
+        "quantized": {
+          "q": [
+            [
+              4
+            ],
+            [
+              7
+            ]
+          ],
+          "dq": [
+            [
+              0.26200115520133466
+            ],
+            [
+              0.45850202160233566
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.06550028880033366,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.12012805932195923
+          ],
+          [
+            1.0000000000000002
+          ]
+        ],
+        "calibration_mse": 0.006237133616048399,
+        "identity_error": 0.0
+      },
+      {
+        "alpha": 1,
+        "transform_scales": [
+          2.82842712474619,
+          0.35355339059327373
+        ],
+        "quantized": {
+          "q": [
+            [
+              7
+            ],
+            [
+              7
+            ]
+          ],
+          "dq": [
+            [
+              0.3676955262170047
+            ],
+            [
+              0.3676955262170047
+            ]
+          ],
+          "grids": [
+            {
+              "scale": 0.05252793231671495,
+              "zero_point": 0,
+              "qmin": -7,
+              "qmax": 7,
+              "scheme": "symmetric"
+            }
+          ]
+        },
+        "effective_w": [
+          [
+            0.13
+          ],
+          [
+            1.04
+          ]
+        ],
+        "calibration_mse": 0.001600000000000003,
+        "identity_error": 0.0
+      }
+    ],
+    "best": {
+      "alpha": 1,
+      "transform_scales": [
+        2.82842712474619,
+        0.35355339059327373
+      ],
+      "quantized": {
+        "q": [
+          [
+            7
+          ],
+          [
+            7
+          ]
+        ],
+        "dq": [
+          [
+            0.3676955262170047
+          ],
+          [
+            0.3676955262170047
+          ]
+        ],
+        "grids": [
+          {
+            "scale": 0.05252793231671495,
+            "zero_point": 0,
+            "qmin": -7,
+            "qmax": 7,
+            "scheme": "symmetric"
+          }
+        ]
+      },
+      "effective_w": [
+        [
+          0.13
+        ],
+        [
+          1.04
+        ]
+      ],
+      "calibration_mse": 0.001600000000000003,
+      "identity_error": 0.0
+    }
+  },
+  "rotation": {
+    "matrix": [
+      [
+        0.7071067811865475,
+        0.7071067811865475
+      ],
+      [
+        0.7071067811865475,
+        -0.7071067811865475
+      ]
+    ],
+    "input_before": [
+      [
+        8,
+        0
+      ]
+    ],
+    "input_after": [
+      [
+        5.65685424949238,
+        5.65685424949238
+      ]
+    ],
+    "weight_after": [
+      [
+        0.8838834764831843
+      ],
+      [
+        -0.5303300858899106
+      ]
+    ],
+    "output_before": [
+      [
+        2.0
+      ]
+    ],
+    "output_after": [
+      [
+        1.9999999999999996
+      ]
+    ]
+  },
+  "stochastic": {
+    "seed": 7,
+    "draws": 10000,
+    "mean_code": 0.2513,
+    "theoretical_mean": 0.25,
+    "note": "Within range only; expectation does not guarantee a smaller loss for one draw"
+  },
+  "torch_oracles": {
+    "torch_version": "2.7.1+cpu",
+    "device": "cpu",
+    "dtype": "float64",
+    "gptq_oracles": [
+      {
+        "name": "GPTQ vs constrained inverse, act_order=False",
+        "max_abs": 0.0,
+        "passed": true
+      },
+      {
+        "name": "GPTQ vs constrained inverse, act_order=True",
+        "max_abs": 0.0,
+        "passed": true
+      }
+    ],
+    "ste_oracles": [
+      {
+        "x": -4.0,
+        "torch_dx": 0.0,
+        "torch_ds": -7.0,
+        "expected": {
+          "dx": 0.0,
+          "ds": -7.0
+        },
+        "passed": true
+      },
+      {
+        "x": -0.6,
+        "torch_dx": 1.0,
+        "torch_ds": 0.19999999999999996,
+        "expected": {
+          "dx": 1.0,
+          "ds": 0.19999999999999996
+        },
+        "passed": true
+      },
+      {
+        "x": 0.6,
+        "torch_dx": 1.0,
+        "torch_ds": -0.19999999999999996,
+        "expected": {
+          "dx": 1.0,
+          "ds": -0.19999999999999996
+        },
+        "passed": true
+      },
+      {
+        "x": 4.0,
+        "torch_dx": 0.0,
+        "torch_ds": 7.0,
+        "expected": {
+          "dx": 0.0,
+          "ds": 7.0
+        },
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "scope": "Independent small-matrix math and explicitly chosen STE; not execution of upstream GPTQ/AWQ packages"
+  }
+}

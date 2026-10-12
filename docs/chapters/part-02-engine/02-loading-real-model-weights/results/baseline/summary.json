@@ -1,0 +1,1377 @@
+{
+  "experiment": "part2-02-real-checkpoint",
+  "created_at_utc": "2026-09-17T03:21:54.169529+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "4d5fed6610e92fdf507034b7c764bed1ec679023cf2f68c0dc4e77a896a1711e",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "checkpoint": {
+    "repo_id": "HuggingFaceTB/SmolLM2-135M",
+    "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+    "files": [
+      {
+        "file": "README.md",
+        "sha256": "d1ba68cae64a89b6b434b11526e6e2271ee5ffd2c914ec35ed515f9d84c6085c",
+        "bytes": 6340
+      },
+      {
+        "file": "config.json",
+        "sha256": "1d556eab73b69c7f11f64c557a2f9c6f440bd4c6b89bb2584a6b498c92603843",
+        "bytes": 704
+      },
+      {
+        "file": "generation_config.json",
+        "sha256": "2056c988e990b0d13670f63f2f3b87b3b6d07edaf7a3416998ba27dab2d8a059",
+        "bytes": 111
+      },
+      {
+        "file": "merges.txt",
+        "sha256": "0b54e8aa4e53d5383e2e4bc635a56b43f9647f7b13832d5d9ecd8f82dac4f510",
+        "bytes": 466391
+      },
+      {
+        "file": "model.safetensors",
+        "sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+        "bytes": 269060552
+      },
+      {
+        "file": "special_tokens_map.json",
+        "sha256": "e786b595b9a23148bf1630df78d9037a048ea671e48bfd3549a1e3c233742bb3",
+        "bytes": 831
+      },
+      {
+        "file": "tokenizer.json",
+        "sha256": "9ca9acddb6525a194ec8ac7a87f24fbba7232a9a15ffa1af0c1224fcd888e47c",
+        "bytes": 2104556
+      },
+      {
+        "file": "tokenizer_config.json",
+        "sha256": "4bb9af56a342753d39374f4016a16574cab299fe088e896f425ce3c433f61424",
+        "bytes": 3658
+      },
+      {
+        "file": "vocab.json",
+        "sha256": "82b84012e3add4d01d12ba14442026e49b8cbbaead1f79ecf3d919784f82dc79",
+        "bytes": 800662
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.11.9",
+    "system": "Windows-10-10.0.26200-SP0",
+    "torch": "2.7.1+cpu",
+    "numpy": "2.2.6",
+    "transformers": "4.51.3",
+    "safetensors": "0.5.3",
+    "huggingface-hub": "0.30.2",
+    "tokenizers": "0.21.1",
+    "device": "cpu",
+    "dtype": "float32",
+    "threads": 2
+  },
+  "config": {
+    "vocab_size": 49152,
+    "hidden_size": 576,
+    "intermediate_size": 1536,
+    "num_hidden_layers": 30,
+    "num_attention_heads": 9,
+    "num_key_value_heads": 3,
+    "max_position_embeddings": 8192,
+    "rms_norm_eps": 1e-05,
+    "rope_theta": 100000,
+    "tie_word_embeddings": true
+  },
+  "parameter_count": 134515008,
+  "atol": 0.0001,
+  "rtol": 0.0001,
+  "attention": "eager",
+  "use_cache": false,
+  "add_special_tokens": false,
+  "chat_template": false,
+  "max_new_tokens": 8,
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "weights_output": "weights.json",
+  "verification": "executed",
+  "passed": true,
+  "cases": [
+    {
+      "prompt": "The capital of France is",
+      "input_ids": [
+        504,
+        3575,
+        282,
+        4649,
+        314
+      ],
+      "input_tokens": 5,
+      "comparisons": [
+        {
+          "stage": "embedding",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.0",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.1",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.2",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.3",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.4",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.5",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.6",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.7",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.8",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.9",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.10",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.11",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.12",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.13",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.14",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.15",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.16",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.17",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.18",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.19",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.20",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.21",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.22",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.23",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.24",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.25",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.26",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.27",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.28",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.29",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "final_norm",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "logits",
+          "shape": [
+            1,
+            5,
+            49152
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        }
+      ],
+      "last_top5": [
+        {
+          "id": 260,
+          "logit": 14.022819519042969
+        },
+        {
+          "id": 7042,
+          "logit": 12.997310638427734
+        },
+        {
+          "id": 3807,
+          "logit": 12.747232437133789
+        },
+        {
+          "id": 1217,
+          "logit": 12.236940383911133
+        },
+        {
+          "id": 253,
+          "logit": 12.124650001525879
+        }
+      ],
+      "our_generated_ids": [
+        260,
+        3575,
+        282,
+        260,
+        1798,
+        30,
+        198,
+        198
+      ],
+      "reference_generated_ids": [
+        260,
+        3575,
+        282,
+        260,
+        1798,
+        30,
+        198,
+        198
+      ],
+      "our_completion": " the capital of the country.\n\n",
+      "reference_completion": " the capital of the country.\n\n",
+      "all_stages_close": true,
+      "greedy_ids_equal": true,
+      "passed": true
+    },
+    {
+      "prompt": "Once upon a time",
+      "input_ids": [
+        6403,
+        1980,
+        253,
+        655
+      ],
+      "input_tokens": 4,
+      "comparisons": [
+        {
+          "stage": "embedding",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.0",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.1",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.2",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.3",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.4",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.5",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.6",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.7",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.8",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.9",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.10",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.11",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.12",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.13",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.14",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.15",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.16",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.17",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.18",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.19",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.20",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.21",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.22",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.23",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.24",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.25",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.26",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.27",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.28",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.29",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "final_norm",
+          "shape": [
+            1,
+            4,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "logits",
+          "shape": [
+            1,
+            4,
+            49152
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        }
+      ],
+      "last_top5": [
+        {
+          "id": 28,
+          "logit": 22.53120994567871
+        },
+        {
+          "id": 281,
+          "logit": 21.05805015563965
+        },
+        {
+          "id": 665,
+          "logit": 19.20924186706543
+        },
+        {
+          "id": 335,
+          "logit": 17.196517944335938
+        },
+        {
+          "id": 981,
+          "logit": 17.058364868164062
+        }
+      ],
+      "our_generated_ids": [
+        28,
+        665,
+        436,
+        253,
+        1838,
+        8180,
+        3365,
+        14176
+      ],
+      "reference_generated_ids": [
+        28,
+        665,
+        436,
+        253,
+        1838,
+        8180,
+        3365,
+        14176
+      ],
+      "our_completion": ", there was a little girl named Lily",
+      "reference_completion": ", there was a little girl named Lily",
+      "all_stages_close": true,
+      "greedy_ids_equal": true,
+      "passed": true
+    },
+    {
+      "prompt": "1 + 1 =",
+      "input_ids": [
+        33,
+        1232,
+        216,
+        33,
+        446
+      ],
+      "input_tokens": 5,
+      "comparisons": [
+        {
+          "stage": "embedding",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.0",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.1",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.2",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.3",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.4",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.5",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.6",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.7",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.8",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.9",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.10",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.11",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.12",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.13",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.14",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.15",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.16",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.17",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.18",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.19",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.20",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.21",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.22",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.23",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.24",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.25",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.26",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.27",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.28",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "layers.29",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "final_norm",
+          "shape": [
+            1,
+            5,
+            576
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        },
+        {
+          "stage": "logits",
+          "shape": [
+            1,
+            5,
+            49152
+          ],
+          "max_abs_error": 0.0,
+          "mean_abs_error": 0.0,
+          "passed": true
+        }
+      ],
+      "last_top5": [
+        {
+          "id": 216,
+          "logit": 21.090112686157227
+        },
+        {
+          "id": 731,
+          "logit": 17.70379638671875
+        },
+        {
+          "id": 365,
+          "logit": 17.664934158325195
+        },
+        {
+          "id": 3814,
+          "logit": 16.85136604309082
+        },
+        {
+          "id": 304,
+          "logit": 16.562063217163086
+        }
+      ],
+      "our_generated_ids": [
+        216,
+        33,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "reference_generated_ids": [
+        216,
+        33,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "our_completion": " 1000000",
+      "reference_completion": " 1000000",
+      "all_stages_close": true,
+      "greedy_ids_equal": true,
+      "passed": true
+    }
+  ],
+  "tokenizer": {
+    "class": "GPT2TokenizerFast",
+    "length": 49152,
+    "bos_token_id": 0,
+    "eos_token_id": 0
+  }
+}

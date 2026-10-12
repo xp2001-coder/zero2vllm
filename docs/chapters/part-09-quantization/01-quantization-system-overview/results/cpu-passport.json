@@ -1,0 +1,504 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "lesson-9.1-cpu-linear",
+  "scope": "Synthetic FP32 input values; unpacked integers and Python float64 arithmetic",
+  "sections": {
+    "provenance": {
+      "model": {
+        "expected": null,
+        "observed": "synthetic Linear [1,3] x [3,2], no bias",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "model_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "tokenizer_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "quantization_framework": {
+        "expected": null,
+        "observed": "zero2vllm CPU reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "framework_revision": {
+        "expected": null,
+        "observed": {
+          "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+          "working_tree_dirty": true,
+          "source_sha256": "eeebc8752473d290b198c04f4ea9ec6852710bd59835f80865baa31ac2b50d6c",
+          "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#course_source"
+        ],
+        "note": ""
+      },
+      "algorithm": {
+        "expected": null,
+        "observed": "amax/7 symmetric RTN, ties-to-even",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "calibration_dataset": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "calibration_samples": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "token_budget": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "sequence_length": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      },
+      "seed": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Deterministic synthetic tensor fixture; no tokenizer, calibration corpus or random sampling"
+      }
+    },
+    "numerical": {
+      "weight_representation": {
+        "expected": null,
+        "observed": "logical signed INT4; quantizer range [-7,7]",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "activation_representation": {
+        "expected": null,
+        "observed": "FP32 input values",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "kv_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Per-tensor toy Linear; no groups and no KV state"
+      },
+      "symmetry": {
+        "expected": null,
+        "observed": "symmetric",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "group_size": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Per-tensor toy Linear; no groups and no KV state"
+      },
+      "group_axis": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Per-tensor toy Linear; no groups and no KV state"
+      },
+      "scale_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "scale_granularity": {
+        "expected": null,
+        "observed": "per_tensor",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "zero_point": {
+        "expected": null,
+        "observed": 0,
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "rounding": {
+        "expected": null,
+        "observed": "ties_to_even",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "clipping": {
+        "expected": null,
+        "observed": "[-7,7] integer range",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "saturation": {
+        "expected": null,
+        "observed": "clamp; current amax-calibrated fixture has no out-of-range input",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      }
+    },
+    "execution": {
+      "checkpoint_format": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "format_version": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "qweight_shape": {
+        "expected": null,
+        "observed": [
+          3,
+          2
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "qweight_dtype": {
+        "expected": null,
+        "observed": "Python int lists, unpacked",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "scale_shape": {
+        "expected": null,
+        "observed": [],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "zero_point_shape": {
+        "expected": null,
+        "observed": [],
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "g_idx": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "packing": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "on_disk_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "repack": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "in_memory_layout": {
+        "expected": null,
+        "observed": "nested rows W[K,N]; no contiguous low-bit buffer",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "activation_dtype": {
+        "expected": null,
+        "observed": "FP32 values promoted to Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "multiply_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "accumulator_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "output_dtype": {
+        "expected": null,
+        "observed": "Python float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "runtime": {
+        "expected": null,
+        "observed": "zero2vllm CPU teaching program",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "quant_method": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "linear_backend": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      },
+      "actual_kernel": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "No model checkpoint, packing, GPU kernel or vLLM integration in this experiment"
+      }
+    },
+    "validation": {
+      "hardware": {
+        "expected": null,
+        "observed": "host CPU execution; physical GPU not queried",
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "driver": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "CPU-only Python reference; no device runtime used"
+      },
+      "device_runtime": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "CPU-only Python reference; no device runtime used"
+      },
+      "framework": {
+        "expected": null,
+        "observed": {
+          "python": "3.11.9",
+          "implementation": "CPython"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "correctness": {
+        "expected": null,
+        "observed": {
+          "scale": true,
+          "logical_values": true,
+          "dequantized_values": true,
+          "original_output": true,
+          "quantized_output": true,
+          "weight_error": true,
+          "weight_mse": true,
+          "output_error": true
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json#linear",
+          "zero2vllm/reference/quantization_overview.py"
+        ],
+        "note": ""
+      },
+      "model_quality": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "kv_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "prefill": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "decode": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "ttft": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tpot": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "throughput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "goodput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    }
+  }
+}

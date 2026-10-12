@@ -1,0 +1,54 @@
+docs/chapters/part-01-inference/04-performance-metrics/examples/compare_timelines.py
+base: window=2.3s success=3/4 tokens/s=2.608696 good=2
+late_failure: window=3.0s success=3/4 tokens/s=2.000000 good=2
+partial_failure: window=2.3s success=3/4 tokens/s=2.608696 good=2
+strict_slo: window=2.3s success=3/4 tokens/s=2.608696 good=0
+request-mean TPOT=0.425000s; interval-mean ITL=0.366667s
+pooled P95=90.1; average of round P95=50.5
+PASS: simulated metrics, weighting, and window boundaries.
+
+docs/chapters/part-01-inference/05-model-structures/examples/walk_positions.py
+rotate [1,0] at position 1: [0.540302, 0.841471]
+query position 7: score=0.540302; wrongly reset to 0: 0.960170
+query 0: keys [0]
+query 1: keys [0, 1]
+query 2: keys [0, 1, 2]
+query 3: keys [1, 2, 3]
+query 4: keys [2, 3, 4]
+query 5: keys [3, 4, 5]
+query 6: keys [4, 5, 6]
+query 7: keys [5, 6, 7]
+pairs: full=36, window3=21; ALiBi second output=7/3
+PASS: absolute positions, visibility, and distance bias.
+
+docs/chapters/part-01-inference/05-model-structures/examples/walk_states.py
+latent: expanded K=[1, 2, 3]; transformed Q=[3, 4]; both scores=11
+linear step 0: S=1, z=1, output=1.000000
+linear step 1: S=7, z=3, output=2.333333
+SSM states: [1.0, 2.5, 4.25] outputs: [2.0, 5.0, 8.5]
+PASS: three separate identities; no cross-model equivalence claimed.
+
+docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_correctness.py
+same_token_wrong_scores: within_tolerance=False, same_argmax=True, max_error=18
+close_scores_different_token: within_tolerance=True, same_argmax=False, max_error=2e-07
+gap_exceeds_twice_error: within_tolerance=False, same_argmax=True, max_error=0.1
+addition order: left=1, right=0
+PASS: same token and close logits are distinct checks.
+
+docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_distribution.py
+base kept= [0, 1, 2, 3] p= [0.4, 0.3, 0.2, 0.1]
+temperature_0.5 kept= [0, 1, 2, 3] p= [0.533333, 0.3, 0.133333, 0.033333]
+top_k_2 kept= [0, 1] p= [0.571429, 0.428571, 0.0, 0.0]
+top_p_0.8 kept= [0, 1, 2] p= [0.444444, 0.333333, 0.222222, 0.0]
+min_p_0.6 kept= [0, 1] p= [0.571429, 0.428571, 0.0, 0.0]
+k_then_p kept= [0] p= [1.0, 0.0, 0.0, 0.0]
+u=0.65 -> ID 1
+u=0.75 -> ID 2
+PASS: temperature, filter order, renormalization, and interval sampling.
+
+docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_stopping.py
+zero: ids=[], text='', cache=0, reason=length
+eos: ids=[2], text='', cache=2, reason=eos
+string: ids=[2, 2], text='', cache=3, reason=stop_string
+length: ids=[2, 2, 2], text='推理推理推理', cache=4, reason=length
+PASS: stopping, text removal, and final unconsumed output.

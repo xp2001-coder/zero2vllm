@@ -1,0 +1,5 @@
+{
+  "engine": "V0",
+  "reason": "automatic fallback: experimental feature"
+}
+Feature classification is supplied, not detected. No model/platform support is established.

@@ -1,0 +1,139 @@
+{
+  "values": {
+    "max_model_len": 4096,
+    "max_num_batched_tokens": 512,
+    "max_num_seqs": 16,
+    "enable_prefix_caching": true,
+    "enable_chunked_prefill": true,
+    "enforce_eager": false,
+    "block_size": 16
+  },
+  "origins": {
+    "max_model_len": "model_config",
+    "max_num_batched_tokens": "cli",
+    "max_num_seqs": "cli",
+    "enable_prefix_caching": "file",
+    "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+    "enforce_eager": "model_default",
+    "block_size": "cuda_platform_default"
+  },
+  "trace": [
+    {
+      "field": "max_model_len",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_num_batched_tokens",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_num_seqs",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enable_prefix_caching",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enable_chunked_prefill",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enforce_eager",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "block_size",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_num_batched_tokens",
+      "before": null,
+      "after": 4096,
+      "phase": "file"
+    },
+    {
+      "field": "max_num_seqs",
+      "before": null,
+      "after": 64,
+      "phase": "file"
+    },
+    {
+      "field": "enable_prefix_caching",
+      "before": null,
+      "after": true,
+      "phase": "file"
+    },
+    {
+      "field": "enable_chunked_prefill",
+      "before": null,
+      "after": false,
+      "phase": "file"
+    },
+    {
+      "field": "enforce_eager",
+      "before": null,
+      "after": null,
+      "phase": "file"
+    },
+    {
+      "field": "max_num_batched_tokens",
+      "before": 4096,
+      "after": 512,
+      "phase": "cli"
+    },
+    {
+      "field": "max_num_seqs",
+      "before": 64,
+      "after": 16,
+      "phase": "cli"
+    },
+    {
+      "field": "max_model_len",
+      "before": null,
+      "after": 4096,
+      "phase": "model_config"
+    },
+    {
+      "field": "enable_chunked_prefill",
+      "before": false,
+      "after": true,
+      "phase": "v1_policy: mandatory chunked prefill"
+    },
+    {
+      "field": "enforce_eager",
+      "before": null,
+      "after": false,
+      "phase": "model_default"
+    },
+    {
+      "field": "block_size",
+      "before": null,
+      "after": 16,
+      "phase": "cuda_platform_default"
+    }
+  ],
+  "graph_intent": "eligible_for_configuration_not_proven_active",
+  "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+  "runtime_checks_pending": [
+    "model loading",
+    "backend dimensions/dtype",
+    "cache capacity",
+    "capture and replay",
+    "numerical validation"
+  ]
+}

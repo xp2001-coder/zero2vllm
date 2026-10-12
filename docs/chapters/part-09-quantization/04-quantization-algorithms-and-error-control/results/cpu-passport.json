@@ -1,0 +1,531 @@
+{
+  "schema_version": "1.0",
+  "experiment_id": "lesson-9.4-fixed-grid-gptq-core",
+  "scope": "3x2 synthetic Linear, CPU float64; algorithm reference only",
+  "sections": {
+    "provenance": {
+      "model": {
+        "expected": null,
+        "observed": "synthetic Linear W[3,2]",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "model_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "tokenizer_revision": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "quantization_framework": {
+        "expected": null,
+        "observed": "zero2vllm teaching algorithms",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "framework_revision": {
+        "expected": null,
+        "observed": {
+          "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+          "working_tree_dirty": true,
+          "source_sha256": "18960990a50965d3605514de5e516bfb93d5dc73841c7718f551113e777ae3f4",
+          "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "algorithm": {
+        "expected": null,
+        "observed": "GPTQ Cholesky core; fixed per-output grid, relative damping .01, block size 2",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "calibration_dataset": {
+        "expected": null,
+        "observed": {
+          "fixture": "data/linear.json",
+          "sha256": "2b22189c16745f96289abc4bf8c043f9f16d83f8bd86f77c9dd8a245145da75d",
+          "split": "main.calibration"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "calibration_samples": {
+        "expected": null,
+        "observed": 4,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "token_budget": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "sequence_length": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "seed": {
+        "expected": null,
+        "observed": 0,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      }
+    },
+    "numerical": {
+      "weight_representation": {
+        "expected": null,
+        "observed": "logical signed INT4 [-7,7]",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "activation_representation": {
+        "expected": null,
+        "observed": "float64 unquantized",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "kv_representation": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "symmetry": {
+        "expected": null,
+        "observed": "symmetric",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "group_size": {
+        "expected": null,
+        "observed": 3,
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "group_axis": {
+        "expected": null,
+        "observed": "K: axis 0 of W[K,N]",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "scale_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "scale_granularity": {
+        "expected": null,
+        "observed": "one scale per output channel; one full-K group",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "zero_point": {
+        "expected": null,
+        "observed": [
+          0,
+          0
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "rounding": {
+        "expected": null,
+        "observed": "nearest-even of compensated weight before adding zero-point",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "clipping": {
+        "expected": null,
+        "observed": [
+          -7,
+          7
+        ],
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "saturation": {
+        "expected": null,
+        "observed": "clamp integer codes",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      }
+    },
+    "execution": {
+      "checkpoint_format": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "format_version": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "qweight_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "qweight_dtype": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "scale_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "zero_point_shape": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "g_idx": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "packing": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "on_disk_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "repack": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "in_memory_layout": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "activation_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "multiply_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "accumulator_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "output_dtype": {
+        "expected": null,
+        "observed": "float64",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "runtime": {
+        "expected": null,
+        "observed": "offline CPU reference",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "quant_method": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "linear_backend": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "actual_kernel": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      }
+    },
+    "validation": {
+      "hardware": {
+        "expected": null,
+        "observed": "host CPU",
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "driver": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "device_runtime": {
+        "expected": null,
+        "observed": null,
+        "status": "not_applicable",
+        "evidence": [],
+        "note": "Synthetic un-packed Linear reference; no model tokenizer/checkpoint/device kernel"
+      },
+      "framework": {
+        "expected": null,
+        "observed": {
+          "python": "3.11.9"
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "correctness": {
+        "expected": null,
+        "observed": {
+          "passed": true,
+          "cases": 23
+        },
+        "status": "verified",
+        "evidence": [
+          "summary.json",
+          "data/linear.json",
+          "zero2vllm/quantization/algorithms.py"
+        ],
+        "note": ""
+      },
+      "model_quality": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "model_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "kv_memory": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "prefill": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "decode": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "ttft": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "tpot": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "throughput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      },
+      "goodput": {
+        "expected": null,
+        "observed": null,
+        "status": "unknown",
+        "evidence": [],
+        "note": ""
+      }
+    }
+  }
+}

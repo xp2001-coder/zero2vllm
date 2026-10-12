@@ -1,6 +1,6 @@
 # 8.7 多模态图与编译排错
 
-[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 8.6](../06-optimization-levels-customop-and-vllm-ir/README.md) · [下一节 9.1](../../part-09-quantization/01-low-precision-representations-and-compute-paths/README.md)
+[本篇目录](../README.md) · [全部课程](../../README.md) · [上一节 8.6](../06-optimization-levels-customop-and-vllm-ir/README.md) · [下一节 9.1](../../part-09-quantization/01-quantization-system-overview/README.md)
 
 > 📋 教学骨架；正文与实验待编写。目录存在不表示内容已经完成。
 

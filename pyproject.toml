@@ -13,8 +13,10 @@ requires-python = ">=3.11"
 dependencies = []
 
 [project.optional-dependencies]
+serving = ["uvicorn==0.35.0"]
 # Install the CPU wheel using the official index in lesson 2.1.
 torch = ["torch==2.7.1", "numpy==2.2.6"]
+checkpoint = ["torch==2.7.1", "numpy==2.2.6", "transformers==4.51.3", "safetensors==0.5.3", "huggingface-hub==0.30.2", "tokenizers==0.21.1"]
 
 [project.scripts]
 zero2vllm = "zero2vllm.cli:main"

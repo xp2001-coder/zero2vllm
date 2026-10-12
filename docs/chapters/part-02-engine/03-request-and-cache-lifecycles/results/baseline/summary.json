@@ -1,0 +1,3460 @@
+{
+  "experiment": "part2-03-request-lifecycle",
+  "created_at_utc": "2026-09-17T05:56:22.428757+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "3433beada32369d9e42d7ac6057e6e223a454c2a7c99f81d8bf4aa2422d14aea",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "mode": "synchronous single-thread; manually ordered steps",
+  "tiny_model": {
+    "vocab_size": 16,
+    "width": 8,
+    "max_context": 32,
+    "seed": 7
+  },
+  "budget_unit": "logical maximum input token positions; not bytes or physical blocks",
+  "cases": [
+    {
+      "name": "length",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1,
+                5,
+                12
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 6,
+              "forward_calls": 4,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 7,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 8,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6,
+            "token_id": 1
+          },
+          {
+            "sequence": 9,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 10,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 11,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6,
+            "token_id": 5
+          },
+          {
+            "sequence": 12,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 13,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 14,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 4,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6,
+            "token_id": 12
+          },
+          {
+            "sequence": 15,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 4,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "eos",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": 14,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": 14,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "finished",
+              "reason": "eos",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": 14,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "eos",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": 14,
+          "required_tokens": 6,
+          "output_ids": [
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 6,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 1,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "eos",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "zero_output",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 0,
+              "eos_token_id": null,
+              "required_tokens": 0,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 0,
+              "eos_token_id": null,
+              "required_tokens": 0,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 0,
+          "eos_token_id": null,
+          "required_tokens": 0,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": false,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "cancel_waiting",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": true,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "cancel_requested",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "cancel_running",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "two_tokens_committed",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1
+              ],
+              "reserved_tokens": 6,
+              "cached_positions": 4,
+              "peak_cached_positions": 4,
+              "forward_calls": 2,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 4,
+              "forward_calls": 2,
+              "cancel_requested": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 2,
+          "cancel_requested": true,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 7,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 8,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6,
+            "token_id": 1
+          },
+          {
+            "sequence": 9,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 10,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 2,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "cancel_in_forward",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "cancel_latched_during_forward",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 3,
+              "peak_cached_positions": 0,
+              "forward_calls": 1,
+              "cancel_requested": true,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": true,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 6,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "resources_retained_in_forward": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "model_error",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "failed",
+              "reason": "model_error",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": false,
+              "error": "RuntimeError: injected after KV append"
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "failed",
+          "reason": "model_error",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": false,
+          "error": "RuntimeError: injected after KV append"
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 3,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "finalized",
+            "status": "failed",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "model_error",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "initialization_error",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "submitted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "admission_attempted",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "failed",
+              "reason": "initialization_error",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": "MemoryError: injected context creation failure"
+            }
+          ]
+        },
+        {
+          "stage": "terminal",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "failed",
+              "reason": "initialization_error",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": "MemoryError: injected context creation failure"
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "failed",
+          "reason": "initialization_error",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": false,
+          "error": "MemoryError: injected context creation failure"
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 2,
+            "kind": "finalized",
+            "status": "failed",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "initialization_error",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "expected_status": true,
+        "expected_ids": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "capacity_wait_resume",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 6,
+      "timeline": [
+        {
+          "stage": "b_waits_for_budget",
+          "used_tokens": 6,
+          "available_tokens": 0,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 6,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "a_cancelled",
+          "used_tokens": 0,
+          "available_tokens": 6,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": true,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "b_finished",
+          "used_tokens": 0,
+          "available_tokens": 6,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": true,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1,
+                5,
+                12
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 6,
+              "forward_calls": 4,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": true,
+          "error": null
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 7,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 8,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 9,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 1,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 6
+          }
+        ],
+        "b": [
+          {
+            "sequence": 2,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 4,
+            "kind": "admission_deferred",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 10,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 11,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 12,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 13,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 14,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 15,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 16,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6,
+            "token_id": 1
+          },
+          {
+            "sequence": 17,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 18,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 19,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6,
+            "token_id": 5
+          },
+          {
+            "sequence": 20,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 21,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 22,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 4,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6,
+            "token_id": 12
+          },
+          {
+            "sequence": 23,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 4,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 6
+          }
+        ]
+      },
+      "assertions": {
+        "deferred_then_admitted": true,
+        "b_matches_full_recompute": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "interleaved_isolation",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 16,
+      "timeline": [
+        {
+          "stage": "manual_round_1",
+          "used_tokens": 10,
+          "available_tokens": 6,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 6,
+              "cached_positions": 3,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 2,
+              "prompt_ids": [
+                4,
+                2
+              ],
+              "max_new_tokens": 3,
+              "eos_token_id": null,
+              "required_tokens": 4,
+              "output_ids": [
+                7
+              ],
+              "reserved_tokens": 4,
+              "cached_positions": 2,
+              "peak_cached_positions": 2,
+              "forward_calls": 1,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "manual_round_2",
+          "used_tokens": 10,
+          "available_tokens": 6,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1
+              ],
+              "reserved_tokens": 6,
+              "cached_positions": 4,
+              "peak_cached_positions": 4,
+              "forward_calls": 2,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 2,
+              "prompt_ids": [
+                4,
+                2
+              ],
+              "max_new_tokens": 3,
+              "eos_token_id": null,
+              "required_tokens": 4,
+              "output_ids": [
+                7,
+                14
+              ],
+              "reserved_tokens": 4,
+              "cached_positions": 3,
+              "peak_cached_positions": 3,
+              "forward_calls": 2,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "manual_round_3",
+          "used_tokens": 6,
+          "available_tokens": 10,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1,
+                5
+              ],
+              "reserved_tokens": 6,
+              "cached_positions": 5,
+              "peak_cached_positions": 5,
+              "forward_calls": 3,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 2,
+              "prompt_ids": [
+                4,
+                2
+              ],
+              "max_new_tokens": 3,
+              "eos_token_id": null,
+              "required_tokens": 4,
+              "output_ids": [
+                7,
+                14,
+                1
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 4,
+              "forward_calls": 3,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "manual_round_4",
+          "used_tokens": 0,
+          "available_tokens": 16,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14,
+                1,
+                5,
+                12
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 6,
+              "forward_calls": 4,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "finished",
+              "reason": "length",
+              "prompt_tokens": 2,
+              "prompt_ids": [
+                4,
+                2
+              ],
+              "max_new_tokens": 3,
+              "eos_token_id": null,
+              "required_tokens": 4,
+              "output_ids": [
+                7,
+                14,
+                1
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 4,
+              "forward_calls": 3,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14,
+            1,
+            5,
+            12
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 6,
+          "forward_calls": 4,
+          "cancel_requested": false,
+          "error": null
+        },
+        {
+          "request_id": "b",
+          "status": "finished",
+          "reason": "length",
+          "prompt_tokens": 2,
+          "prompt_ids": [
+            4,
+            2
+          ],
+          "max_new_tokens": 3,
+          "eos_token_id": null,
+          "required_tokens": 4,
+          "output_ids": [
+            7,
+            14,
+            1
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 4,
+          "forward_calls": 3,
+          "cancel_requested": false,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 6,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 7,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 10,
+            "token_id": 14
+          },
+          {
+            "sequence": 11,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 12,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 13,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 10,
+            "token_id": 1
+          },
+          {
+            "sequence": 17,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 4,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 18,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 19,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 10,
+            "token_id": 5
+          },
+          {
+            "sequence": 24,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 5,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 25,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 26,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 4,
+            "reserved_tokens": 6,
+            "cached_positions": 6,
+            "engine_used_tokens": 6,
+            "token_id": 12
+          },
+          {
+            "sequence": 27,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 4,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "length",
+            "released_tokens": 6
+          }
+        ],
+        "b": [
+          {
+            "sequence": 2,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 4,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 4,
+            "cached_positions": 0,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 8,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 4,
+            "cached_positions": 0,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 9,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 4,
+            "cached_positions": 2,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 10,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 4,
+            "cached_positions": 2,
+            "engine_used_tokens": 10,
+            "token_id": 7
+          },
+          {
+            "sequence": 14,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 4,
+            "cached_positions": 2,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 15,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 4,
+            "cached_positions": 3,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 16,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 4,
+            "cached_positions": 3,
+            "engine_used_tokens": 10,
+            "token_id": 14
+          },
+          {
+            "sequence": 20,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 4,
+            "cached_positions": 3,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 21,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 2,
+            "reserved_tokens": 4,
+            "cached_positions": 4,
+            "engine_used_tokens": 10
+          },
+          {
+            "sequence": 22,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 3,
+            "reserved_tokens": 4,
+            "cached_positions": 4,
+            "engine_used_tokens": 10,
+            "token_id": 1
+          },
+          {
+            "sequence": 23,
+            "kind": "finalized",
+            "status": "finished",
+            "output_tokens": 3,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 6,
+            "reason": "length",
+            "released_tokens": 4
+          }
+        ]
+      },
+      "assertions": {
+        "distinct_cache_objects": true,
+        "a_matches_full_recompute": true,
+        "b_matches_full_recompute": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    },
+    {
+      "name": "engine_close",
+      "cache_kind": "real_python_kv_lists",
+      "capacity_tokens": 8,
+      "timeline": [
+        {
+          "stage": "before_close",
+          "used_tokens": 6,
+          "available_tokens": 2,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "running",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 6,
+              "cached_positions": 3,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": false,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "waiting",
+              "reason": null,
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": false,
+              "error": null
+            }
+          ]
+        },
+        {
+          "stage": "after_close",
+          "used_tokens": 0,
+          "available_tokens": 8,
+          "requests": [
+            {
+              "request_id": "a",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [
+                14
+              ],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 3,
+              "forward_calls": 1,
+              "cancel_requested": true,
+              "error": null
+            },
+            {
+              "request_id": "b",
+              "status": "cancelled",
+              "reason": "cancelled",
+              "prompt_tokens": 3,
+              "prompt_ids": [
+                1,
+                2,
+                3
+              ],
+              "max_new_tokens": 4,
+              "eos_token_id": null,
+              "required_tokens": 6,
+              "output_ids": [],
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "peak_cached_positions": 0,
+              "forward_calls": 0,
+              "cancel_requested": true,
+              "error": null
+            }
+          ]
+        }
+      ],
+      "requests": [
+        {
+          "request_id": "a",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [
+            14
+          ],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 3,
+          "forward_calls": 1,
+          "cancel_requested": true,
+          "error": null
+        },
+        {
+          "request_id": "b",
+          "status": "cancelled",
+          "reason": "cancelled",
+          "prompt_tokens": 3,
+          "prompt_ids": [
+            1,
+            2,
+            3
+          ],
+          "max_new_tokens": 4,
+          "eos_token_id": null,
+          "required_tokens": 6,
+          "output_ids": [],
+          "reserved_tokens": 0,
+          "cached_positions": 0,
+          "peak_cached_positions": 0,
+          "forward_calls": 0,
+          "cancel_requested": true,
+          "error": null
+        }
+      ],
+      "events": {
+        "a": [
+          {
+            "sequence": 1,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 3,
+            "kind": "admitted",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 4,
+            "kind": "forward_started",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 0,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 5,
+            "kind": "forward_returned",
+            "status": "running",
+            "output_tokens": 0,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 6,
+            "kind": "token_committed",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6,
+            "token_id": 14
+          },
+          {
+            "sequence": 7,
+            "kind": "cancel_requested",
+            "status": "running",
+            "output_tokens": 1,
+            "reserved_tokens": 6,
+            "cached_positions": 3,
+            "engine_used_tokens": 6
+          },
+          {
+            "sequence": 8,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 1,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 6
+          }
+        ],
+        "b": [
+          {
+            "sequence": 2,
+            "kind": "submitted",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 9,
+            "kind": "cancel_requested",
+            "status": "waiting",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0
+          },
+          {
+            "sequence": 10,
+            "kind": "finalized",
+            "status": "cancelled",
+            "output_tokens": 0,
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "engine_used_tokens": 0,
+            "reason": "cancelled",
+            "released_tokens": 0
+          }
+        ]
+      },
+      "assertions": {
+        "both_cancelled": true,
+        "budget_returned": true,
+        "all_terminal": true,
+        "no_live_cache": true,
+        "finalized_once": true,
+        "all_contexts_closed": true
+      },
+      "passed": true
+    }
+  ],
+  "real_checkpoint": {
+    "verification": "executed",
+    "reference": "lesson0202 greedy_generate; same model, separate request loop",
+    "checkpoint": {
+      "repo_id": "HuggingFaceTB/SmolLM2-135M",
+      "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+      "files": [
+        {
+          "file": "README.md",
+          "sha256": "d1ba68cae64a89b6b434b11526e6e2271ee5ffd2c914ec35ed515f9d84c6085c",
+          "bytes": 6340
+        },
+        {
+          "file": "config.json",
+          "sha256": "1d556eab73b69c7f11f64c557a2f9c6f440bd4c6b89bb2584a6b498c92603843",
+          "bytes": 704
+        },
+        {
+          "file": "generation_config.json",
+          "sha256": "2056c988e990b0d13670f63f2f3b87b3b6d07edaf7a3416998ba27dab2d8a059",
+          "bytes": 111
+        },
+        {
+          "file": "merges.txt",
+          "sha256": "0b54e8aa4e53d5383e2e4bc635a56b43f9647f7b13832d5d9ecd8f82dac4f510",
+          "bytes": 466391
+        },
+        {
+          "file": "model.safetensors",
+          "sha256": "80521b40281d6ce74e35c9282c22539e75aa0ac8578892b2a59955ef78d55da1",
+          "bytes": 269060552
+        },
+        {
+          "file": "special_tokens_map.json",
+          "sha256": "e786b595b9a23148bf1630df78d9037a048ea671e48bfd3549a1e3c233742bb3",
+          "bytes": 831
+        },
+        {
+          "file": "tokenizer.json",
+          "sha256": "9ca9acddb6525a194ec8ac7a87f24fbba7232a9a15ffa1af0c1224fcd888e47c",
+          "bytes": 2104556
+        },
+        {
+          "file": "tokenizer_config.json",
+          "sha256": "4bb9af56a342753d39374f4016a16574cab299fe088e896f425ce3c433f61424",
+          "bytes": 3658
+        },
+        {
+          "file": "vocab.json",
+          "sha256": "82b84012e3add4d01d12ba14442026e49b8cbbaead1f79ecf3d919784f82dc79",
+          "bytes": 800662
+        }
+      ]
+    },
+    "prompts": {
+      "a": "Once upon a time",
+      "b": "The capital of France is"
+    },
+    "expected_ids": {
+      "a": [
+        28,
+        665,
+        436,
+        253
+      ],
+      "b": [
+        260,
+        3575,
+        282,
+        260
+      ]
+    },
+    "torch": "2.7.1+cpu",
+    "dtype": "float32",
+    "threads": 2,
+    "cache_kind": "none_full_prefix_recompute",
+    "cases": [
+      {
+        "name": "real_cancel_isolation",
+        "cache_kind": "none_full_prefix_recompute",
+        "capacity_tokens": 32,
+        "timeline": [
+          {
+            "stage": "first_round",
+            "used_tokens": 15,
+            "available_tokens": 17,
+            "requests": [
+              {
+                "request_id": "a",
+                "status": "running",
+                "reason": null,
+                "prompt_tokens": 4,
+                "prompt_ids": [
+                  6403,
+                  1980,
+                  253,
+                  655
+                ],
+                "max_new_tokens": 4,
+                "eos_token_id": 0,
+                "required_tokens": 7,
+                "output_ids": [
+                  28
+                ],
+                "reserved_tokens": 7,
+                "cached_positions": 0,
+                "peak_cached_positions": 0,
+                "forward_calls": 1,
+                "cancel_requested": false,
+                "error": null
+              },
+              {
+                "request_id": "b",
+                "status": "running",
+                "reason": null,
+                "prompt_tokens": 5,
+                "prompt_ids": [
+                  504,
+                  3575,
+                  282,
+                  4649,
+                  314
+                ],
+                "max_new_tokens": 4,
+                "eos_token_id": 0,
+                "required_tokens": 8,
+                "output_ids": [
+                  260
+                ],
+                "reserved_tokens": 8,
+                "cached_positions": 0,
+                "peak_cached_positions": 0,
+                "forward_calls": 1,
+                "cancel_requested": false,
+                "error": null
+              }
+            ]
+          },
+          {
+            "stage": "a_cancelled_b_finished",
+            "used_tokens": 0,
+            "available_tokens": 32,
+            "requests": [
+              {
+                "request_id": "a",
+                "status": "cancelled",
+                "reason": "cancelled",
+                "prompt_tokens": 4,
+                "prompt_ids": [
+                  6403,
+                  1980,
+                  253,
+                  655
+                ],
+                "max_new_tokens": 4,
+                "eos_token_id": 0,
+                "required_tokens": 7,
+                "output_ids": [
+                  28
+                ],
+                "reserved_tokens": 0,
+                "cached_positions": 0,
+                "peak_cached_positions": 0,
+                "forward_calls": 1,
+                "cancel_requested": true,
+                "error": null
+              },
+              {
+                "request_id": "b",
+                "status": "finished",
+                "reason": "length",
+                "prompt_tokens": 5,
+                "prompt_ids": [
+                  504,
+                  3575,
+                  282,
+                  4649,
+                  314
+                ],
+                "max_new_tokens": 4,
+                "eos_token_id": 0,
+                "required_tokens": 8,
+                "output_ids": [
+                  260,
+                  3575,
+                  282,
+                  260
+                ],
+                "reserved_tokens": 0,
+                "cached_positions": 0,
+                "peak_cached_positions": 0,
+                "forward_calls": 4,
+                "cancel_requested": false,
+                "error": null
+              }
+            ]
+          }
+        ],
+        "requests": [
+          {
+            "request_id": "a",
+            "status": "cancelled",
+            "reason": "cancelled",
+            "prompt_tokens": 4,
+            "prompt_ids": [
+              6403,
+              1980,
+              253,
+              655
+            ],
+            "max_new_tokens": 4,
+            "eos_token_id": 0,
+            "required_tokens": 7,
+            "output_ids": [
+              28
+            ],
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "peak_cached_positions": 0,
+            "forward_calls": 1,
+            "cancel_requested": true,
+            "error": null
+          },
+          {
+            "request_id": "b",
+            "status": "finished",
+            "reason": "length",
+            "prompt_tokens": 5,
+            "prompt_ids": [
+              504,
+              3575,
+              282,
+              4649,
+              314
+            ],
+            "max_new_tokens": 4,
+            "eos_token_id": 0,
+            "required_tokens": 8,
+            "output_ids": [
+              260,
+              3575,
+              282,
+              260
+            ],
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "peak_cached_positions": 0,
+            "forward_calls": 4,
+            "cancel_requested": false,
+            "error": null
+          }
+        ],
+        "events": {
+          "a": [
+            {
+              "sequence": 1,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0
+            },
+            {
+              "sequence": 2,
+              "kind": "admitted",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 5,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 6,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 7,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 15,
+              "token_id": 28
+            },
+            {
+              "sequence": 11,
+              "kind": "cancel_requested",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 12,
+              "kind": "finalized",
+              "status": "cancelled",
+              "output_tokens": 1,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 8,
+              "reason": "cancelled",
+              "released_tokens": 7
+            }
+          ],
+          "b": [
+            {
+              "sequence": 3,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 4,
+              "kind": "admitted",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 8,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 9,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 15
+            },
+            {
+              "sequence": 10,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 15,
+              "token_id": 260
+            },
+            {
+              "sequence": 13,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 14,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 15,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8,
+              "token_id": 3575
+            },
+            {
+              "sequence": 16,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 17,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 18,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8,
+              "token_id": 282
+            },
+            {
+              "sequence": 19,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 20,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8
+            },
+            {
+              "sequence": 21,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 4,
+              "reserved_tokens": 8,
+              "cached_positions": 0,
+              "engine_used_tokens": 8,
+              "token_id": 260
+            },
+            {
+              "sequence": 22,
+              "kind": "finalized",
+              "status": "finished",
+              "output_tokens": 4,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0,
+              "reason": "length",
+              "released_tokens": 8
+            }
+          ]
+        },
+        "assertions": {
+          "a_prefix_preserved": true,
+          "b_matches_0202_loop": true,
+          "same_shared_model": true,
+          "budget_returned": true,
+          "all_terminal": true,
+          "no_live_cache": true,
+          "finalized_once": true
+        },
+        "passed": true
+      },
+      {
+        "name": "real_reuse_after_cancel",
+        "cache_kind": "none_full_prefix_recompute",
+        "capacity_tokens": 32,
+        "timeline": [],
+        "requests": [
+          {
+            "request_id": "fresh",
+            "status": "finished",
+            "reason": "length",
+            "prompt_tokens": 4,
+            "prompt_ids": [
+              6403,
+              1980,
+              253,
+              655
+            ],
+            "max_new_tokens": 4,
+            "eos_token_id": 0,
+            "required_tokens": 7,
+            "output_ids": [
+              28,
+              665,
+              436,
+              253
+            ],
+            "reserved_tokens": 0,
+            "cached_positions": 0,
+            "peak_cached_positions": 0,
+            "forward_calls": 4,
+            "cancel_requested": false,
+            "error": null
+          }
+        ],
+        "events": {
+          "fresh": [
+            {
+              "sequence": 1,
+              "kind": "submitted",
+              "status": "waiting",
+              "output_tokens": 0,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0
+            },
+            {
+              "sequence": 2,
+              "kind": "admitted",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 3,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 4,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 0,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 5,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7,
+              "token_id": 28
+            },
+            {
+              "sequence": 6,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 7,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 1,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 8,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7,
+              "token_id": 665
+            },
+            {
+              "sequence": 9,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 10,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 2,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 11,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7,
+              "token_id": 436
+            },
+            {
+              "sequence": 12,
+              "kind": "forward_started",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 13,
+              "kind": "forward_returned",
+              "status": "running",
+              "output_tokens": 3,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7
+            },
+            {
+              "sequence": 14,
+              "kind": "token_committed",
+              "status": "running",
+              "output_tokens": 4,
+              "reserved_tokens": 7,
+              "cached_positions": 0,
+              "engine_used_tokens": 7,
+              "token_id": 253
+            },
+            {
+              "sequence": 15,
+              "kind": "finalized",
+              "status": "finished",
+              "output_tokens": 4,
+              "reserved_tokens": 0,
+              "cached_positions": 0,
+              "engine_used_tokens": 0,
+              "reason": "length",
+              "released_tokens": 7
+            }
+          ]
+        },
+        "assertions": {
+          "matches_0202_loop": true,
+          "budget_returned": true,
+          "all_terminal": true,
+          "no_live_cache": true,
+          "finalized_once": true
+        },
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  },
+  "passed": true
+}

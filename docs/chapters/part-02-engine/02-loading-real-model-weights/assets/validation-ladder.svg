@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1090" viewBox="0 0 1600 1090" role="img" aria-labelledby="title desc">
+<title id="title">从“加载成功”到“计算一致”</title><desc id="desc">原创验证图：文件身份与参数检查后，同一token输入两条独立前向，分别比较Embedding、30个Block、Norm和全部logits。最后比较两套greedy生成。实际3个prompt共99个阶段比较，全部通过。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1090" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1090" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.02  /  VERIFY</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">从“加载成功”到“计算一致”</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >先固定实验条件，再逐层定位；可读文本与模型质量需要另行评估。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="280" width="1472" height="109" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 280 H176" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="94" y="321" font-size="24" fill="#6aa8ff" class="mono" >01 / IDENTITY</text>
+<text x="400" y="321" font-size="27" fill="#e8f2ff" >revision + 文件 SHA-256 + 配置 + 权重映射</text>
+<text x="400" y="360" font-size="24" fill="#98aec9" >272 个张量；检查 key、shape、dtype、有限值与共享关系。</text>
+<rect x="560" y="419" width="480" height="36" rx="18" fill="#11243b" stroke="#57e5be" stroke-opacity=".5"/>
+<text x="800" y="443" font-size="18" fill="#57e5be" class="mono" text-anchor="middle">同一份 token IDs [B,T]</text>
+<path d="M670 455 V494 H428 V528" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<path d="M930 455 V494 H1172 V528" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<rect x="64" y="536" width="704" height="273" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 536 H176" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<rect x="832" y="536" width="704" height="273" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M856 536 H944" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="94" y="578" font-size="24" fill="#6aa8ff" class="mono" >02 / OUR FORWARD</text>
+<text x="864" y="578" font-size="24" fill="#ae9aff" class="mono" >03 / TRANSFORMERS</text>
+<text x="94" y="625" font-size="30" fill="#e8f2ff" font-weight="600">LlamaDecoder</text>
+<text x="864" y="625" font-size="30" fill="#e8f2ff" font-weight="600">LlamaForCausalLM</text>
+<text x="94" y="671" font-size="26" fill="#98aec9" class="mono" >Embedding → Block 0 … 29</text>
+<text x="94" y="713" font-size="25" fill="#98aec9" class="mono" >→ RMSNorm → logits [B,T,V]</text>
+<text x="864" y="671" font-size="26" fill="#98aec9" class="mono" >Embedding → Block 0 … 29</text>
+<text x="864" y="713" font-size="25" fill="#98aec9" class="mono" >→ RMSNorm → logits [B,T,V]</text>
+<rect x="94" y="741" width="410" height="36" rx="18" fill="#11243b" stroke="#6aa8ff" stroke-opacity=".5"/>
+<text x="299" y="765" font-size="18" fill="#6aa8ff" class="mono" text-anchor="middle">CPU FP32 / eager / no cache</text>
+<rect x="864" y="741" width="410" height="36" rx="18" fill="#11243b" stroke="#ae9aff" stroke-opacity=".5"/>
+<text x="1069" y="765" font-size="18" fill="#ae9aff" class="mono" text-anchor="middle">CPU FP32 / eager / no cache</text>
+<path d="M416 809 V843 H800 V868" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<path d="M1184 809 V843 H800 V868" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<rect x="64" y="874" width="1472" height="117" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 874 H176" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="94" y="919" font-size="24" fill="#57e5be" class="mono" >04 / COMPARE</text>
+<text x="400" y="918" font-size="28" fill="#e8f2ff" >每个输入 33 个检查点 + 独立贪心生成</text>
+<text x="400" y="962" font-size="28" fill="#57e5be" class="mono" >|ours − ref| ≤ 1e−4 + 1e−4 × |ref|</text>
+<path d="M64 1014 L1536 1014" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1043" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1050" font-size="22" fill="#98aec9" >本轮 3 个输入：全部阶段通过，生成 ID 一致</text>
+<text x="1536" y="1050" font-size="19" fill="#59718e" class="mono" text-anchor="end">MEASURED / WINDOWS CPU</text>
+</svg>

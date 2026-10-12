@@ -1,8 +1,8 @@
 # 量化策略与算子：从误差目标到 vLLM 执行路径
 
-对应 9.1—9.5、9.7、9.10—9.11。前置：矩阵乘、dtype、基本推理链路。状态：**导读与 CPU INT4 参考已交付；GPU kernel、真实模型质量和 vLLM 插件集成待完成**。
+对应新版 9.1—9.14，重点衔接 9.2/9.4/9.7—9.10/9.13—9.14。前置：矩阵乘、dtype、基本推理链路。状态：**导读与 CPU INT4 参考已交付；GPU kernel、真实模型质量和 vLLM 插件集成待完成**。
 
-吸收 vLLM 第 10、11 讲、SGLang 第 8、9 讲。算法继续统一在 **9.2 量化算法**，以相同数据契约比较方法，再把主要精力投入算子实现和加速。
+按 [Part 9 v1.0 总设计](design.md)组织，算法统一在 **9.4 量化算法与误差控制**，以相同数据契约比较方法，再把主要精力投入算子实现和加速。
 
 ## 1. 先选一个可验证的问题
 
@@ -18,7 +18,7 @@
 
 A100 的起步候选可研究 W4A16/W8A16 或受实现支持的 INT8 路径。官方兼容表不把 Ampere 列为 llm-compressor FP8 W8A8 支持设备；某种 FP8 权重格式可被读取，也不等于原生 FP8 乘法。C500 的格式和 kernel 能力单独核对。[vLLM 量化兼容表](https://docs.vllm.ai/en/latest/features/quantization/)
 
-## 2. 9.2 量化算法：统一比较目标和代价
+## 2. 9.4 量化算法：统一比较目标和代价
 
 最小基线从 RTN（就近舍入）开始。随后逐项研究：量化区间与裁剪、优化舍入、输入相关的重构误差、误差补偿、等价变换以及 PTQ/QAT 的成本。
 
@@ -45,9 +45,9 @@ checkpoint 可能保存 packed weight、scale、zero-point 等。kernel 可能�
 
 同一个量化模型有可能选择“完整反量化后 matmul”，也可能走“分块读取并融合反量化的 GEMM”。选择与版本、M/N/K、dtype、硬件、布局等有关。课程不沿用某篇笔记中的固定 M 阈值作为通用规则。
 
-## 4. 当前可运行的 Q0/Q1
+## 4. 当前可运行的 CPU 参考（归入 9.8）
 
-从[CPU INT4 Linear 实验](04-writing-quantization-and-data-reordering-kernels/lab.md)开始。它已经实现：
+从[CPU INT4 Linear 实验](08-bit-packing-serialization-and-repack/lab.md)开始。它已经实现：
 
 - 沿 K 分组的对称 Q/DQ，量化范围 `[-7,7]`，ties-to-even 舍入。
 - 两个有符号 INT4 打包到一个 byte，低半字节优先；奇数尾部补零。
@@ -56,7 +56,7 @@ checkpoint 可能保存 packed weight、scale、zero-point 等。kernel 可能�
 
 这是自定义教学格式，尚不兼容 AWQ/GPTQ/Marlin checkpoint。CPU 使用 Python float 计算，不冒充 W4A16 硬件执行。
 
-## 5. Q2/Q3：从独立 Q/DQ 到融合 GEMM
+## 5. 9.9/9.10：从独立 Q/DQ 到融合 GEMM
 
 第一版 GPU 实现只选一种明确格式，先处理正确性：连续布局、非整除 K/N、尾组、负数符号扩展、scale 广播，再增加 stride、重排和更广形状。
 
@@ -72,7 +72,7 @@ checkpoint 可能保存 packed weight、scale、zero-point 等。kernel 可能�
 
 参考 [Triton Matmul](https://triton-lang.org/main/getting-started/tutorials/03-matrix-multiplication.html)和[Marlin](https://github.com/IST-DASLab/marlin)的思路，当前项目未移植这些内核。小 M 的收益不应推广到所有 prefill 形状。
 
-## 6. Q5：接入 vLLM 时追踪完整链路
+## 6. 9.13：接入 vLLM 时追踪完整链路
 
 按所选版本读取 `QuantizationConfig` 与 `QuantizeMethodBase`。典型职责如下，具体签名和支持的层型以源码为准。[量化基类](https://github.com/vllm-project/vllm/blob/main/vllm/model_executor/layers/quantization/base_config.py)
 
@@ -102,7 +102,7 @@ checkpoint 可能保存 packed weight、scale、zero-point 等。kernel 可能�
 
 含预打包成本的回本次数，可粗略估为 `T_repack / (T_baseline − T_quant)`；分母非正时，这个负载下不存在靠重复运行摊销得到的回本点。真实服务还要计入排队、缓存、批次和质量。
 
-最终分别提交 A100/C500 的 kernel、层、模型、服务四级报告。9.8 KV 与 9.9 MoE 在完整 Linear 链路之后扩展；不要把 KV 压缩、专家量化和稠密 GEMM 的性能结论互相替代。
+最终分别提交 A100/C500 的 kernel、层、模型、服务四级报告。9.11 KV 与 9.12 MoE 在完整 Linear 链路之后扩展；不要把 KV 压缩、专家量化和稠密 GEMM 的性能结论互相替代。
 
 ## 8. 验收
 

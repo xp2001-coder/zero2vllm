@@ -1,0 +1,115 @@
+{
+  "values": {
+    "max_model_len": 4096,
+    "max_num_batched_tokens": 8192,
+    "max_num_seqs": 1024,
+    "enable_prefix_caching": true,
+    "enable_chunked_prefill": true,
+    "enforce_eager": false,
+    "block_size": 16
+  },
+  "origins": {
+    "max_model_len": "model_config",
+    "max_num_batched_tokens": "v1_device_usage_default",
+    "max_num_seqs": "v1_device_default",
+    "enable_prefix_caching": "v1_default",
+    "enable_chunked_prefill": "v1_policy: mandatory chunked prefill",
+    "enforce_eager": "model_default",
+    "block_size": "cuda_platform_default"
+  },
+  "trace": [
+    {
+      "field": "max_model_len",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_num_batched_tokens",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_num_seqs",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enable_prefix_caching",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enable_chunked_prefill",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "enforce_eager",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "block_size",
+      "before": null,
+      "after": null,
+      "phase": "declared_default"
+    },
+    {
+      "field": "max_model_len",
+      "before": null,
+      "after": 4096,
+      "phase": "model_config"
+    },
+    {
+      "field": "enable_chunked_prefill",
+      "before": null,
+      "after": true,
+      "phase": "v1_policy: mandatory chunked prefill"
+    },
+    {
+      "field": "enable_prefix_caching",
+      "before": null,
+      "after": true,
+      "phase": "v1_default"
+    },
+    {
+      "field": "max_num_batched_tokens",
+      "before": null,
+      "after": 8192,
+      "phase": "v1_device_usage_default"
+    },
+    {
+      "field": "max_num_seqs",
+      "before": null,
+      "after": 1024,
+      "phase": "v1_device_default"
+    },
+    {
+      "field": "enforce_eager",
+      "before": null,
+      "after": false,
+      "phase": "model_default"
+    },
+    {
+      "field": "block_size",
+      "before": null,
+      "after": 16,
+      "phase": "cuda_platform_default"
+    }
+  ],
+  "graph_intent": "eligible_for_configuration_not_proven_active",
+  "scope": "v0.8.5 selected V1 CUDA defaults; synthetic context; no vLLM or GPU execution",
+  "runtime_checks_pending": [
+    "model loading",
+    "backend dimensions/dtype",
+    "cache capacity",
+    "capture and replay",
+    "numerical validation"
+  ]
+}

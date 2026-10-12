@@ -1,0 +1,7 @@
+{
+  "mode": "PIECEWISE",
+  "bucket": 4,
+  "num_actual_tokens": 4,
+  "reason": "configured policy"
+}
+Dispatch policy illustration only; piecewise wrapper readiness and GPU execution are outside scope.

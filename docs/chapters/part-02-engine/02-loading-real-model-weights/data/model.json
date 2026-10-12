@@ -1,0 +1,18 @@
+{
+  "repo_id": "HuggingFaceTB/SmolLM2-135M",
+  "revision": "93efa2f097d58c2a74874c7e644dbc9b0cee75a2",
+  "reviewed_on": "2026-09-17",
+  "license": "Apache-2.0 (upstream model; not the course license)",
+  "files": [
+    "config.json", "generation_config.json", "model.safetensors",
+    "tokenizer.json", "tokenizer_config.json", "special_tokens_map.json",
+    "merges.txt", "vocab.json", "README.md"
+  ],
+  "prompts": ["The capital of France is", "Once upon a time", "1 + 1 ="],
+  "max_new_tokens": 8,
+  "compute_dtype": "float32",
+  "attention": "eager",
+  "use_cache": false,
+  "atol": 0.0001,
+  "rtol": 0.0001
+}

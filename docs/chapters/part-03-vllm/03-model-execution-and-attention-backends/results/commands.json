@@ -1,0 +1,55 @@
+{
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "1dbecde17e182d209217034e659c2921f0fc0e9cc588fbe2f6765da89c54d842",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "commands": [
+    {
+      "artifact": "metadata.json",
+      "command": "python -X utf8 -S -m scripts.experiments.lesson0303 --mode metadata --output-dir .local/checks/lesson0303/metadata",
+      "exit_code": 0
+    },
+    {
+      "artifact": "tensors-float64.json",
+      "command": "python -X utf8 -m scripts.experiments.lesson0303 --output-dir .local/checks/lesson0303/tensors-float64",
+      "exit_code": 0
+    },
+    {
+      "artifact": "tensors-float32.json",
+      "command": "python -X utf8 -m scripts.experiments.lesson0303 --dtype float32 --output-dir .local/checks/lesson0303/tensors-float32",
+      "exit_code": 0
+    },
+    {
+      "artifact": "source-inspection.json",
+      "command": "python -X utf8 -S -m scripts.experiments.lesson0303 --mode metadata --inspect-source --output-dir .local/checks/lesson0303/source-inspection",
+      "exit_code": 0
+    },
+    {
+      "artifact": "inputs-ba.txt",
+      "command": "python -X utf8 -S docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py",
+      "exit_code": 0
+    },
+    {
+      "artifact": "inputs-ab.txt",
+      "command": "python -X utf8 -S docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py --order AB",
+      "exit_code": 0
+    },
+    {
+      "artifact": "tensor-ba.txt",
+      "command": "python -X utf8 docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py --tensors",
+      "exit_code": 0
+    },
+    {
+      "artifact": "tensor-ab.txt",
+      "command": "python -X utf8 docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py --tensors --order AB",
+      "exit_code": 0
+    },
+    {
+      "artifact": "padding.txt",
+      "command": "python -X utf8 docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py --tensors --pad-to 8",
+      "exit_code": 0
+    }
+  ]
+}

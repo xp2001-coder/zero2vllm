@@ -1,0 +1,332 @@
+{
+  "description": "Original synthetic pretokenized documents and feature lookup; not a language model or real corpus",
+  "reserved_ids": {
+    "pad": 0,
+    "bos": 1,
+    "eos": 2
+  },
+  "features": {
+    "0": [
+      999,
+      -999
+    ],
+    "1": [
+      0.25,
+      -0.25
+    ],
+    "2": [
+      0,
+      0.5
+    ],
+    "3": [
+      0.25,
+      0.5
+    ],
+    "4": [
+      -0.5,
+      0.75
+    ],
+    "5": [
+      1,
+      -1
+    ],
+    "6": [
+      1.5,
+      0.25
+    ],
+    "7": [
+      -2,
+      2
+    ],
+    "8": [
+      7,
+      -6
+    ],
+    "9": [
+      0.5,
+      0.25
+    ],
+    "10": [
+      0.75,
+      -0.5
+    ],
+    "11": [
+      3,
+      -2.5
+    ],
+    "12": [
+      -5,
+      4
+    ]
+  },
+  "records": [
+    {
+      "id": "calibration-general-0",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "calibration-general-1",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        4,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "calibration-general-2",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        5,
+        6,
+        3,
+        4,
+        9
+      ]
+    },
+    {
+      "id": "calibration-general-3",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        6,
+        5,
+        4,
+        3,
+        9,
+        10
+      ]
+    },
+    {
+      "id": "calibration-general-4",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        3,
+        9,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "calibration-general-5",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        4,
+        10,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "calibration-general-6",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        3,
+        4,
+        7,
+        5
+      ]
+    },
+    {
+      "id": "calibration-general-7",
+      "split": "calibration",
+      "domain": "general",
+      "token_ids": [
+        4,
+        3,
+        8,
+        6
+      ]
+    },
+    {
+      "id": "calibration-code-0",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        8,
+        11,
+        5,
+        12
+      ]
+    },
+    {
+      "id": "calibration-code-1",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        11,
+        8,
+        12
+      ]
+    },
+    {
+      "id": "calibration-code-2",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        12,
+        11,
+        8,
+        5,
+        4
+      ]
+    },
+    {
+      "id": "calibration-code-3",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        8,
+        12,
+        11,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "calibration-code-4",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        11,
+        12,
+        5,
+        8
+      ]
+    },
+    {
+      "id": "calibration-code-5",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        8,
+        5,
+        12,
+        11
+      ]
+    },
+    {
+      "id": "calibration-code-6",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        12,
+        8,
+        5,
+        11
+      ]
+    },
+    {
+      "id": "calibration-code-7",
+      "split": "calibration",
+      "domain": "code",
+      "token_ids": [
+        11,
+        5,
+        8,
+        12
+      ]
+    },
+    {
+      "id": "validation-general-0",
+      "split": "validation",
+      "domain": "general",
+      "token_ids": [
+        3,
+        5,
+        9,
+        4
+      ]
+    },
+    {
+      "id": "validation-general-1",
+      "split": "validation",
+      "domain": "general",
+      "token_ids": [
+        6,
+        3,
+        5,
+        10
+      ]
+    },
+    {
+      "id": "validation-code-0",
+      "split": "validation",
+      "domain": "code",
+      "token_ids": [
+        8,
+        12,
+        3,
+        11
+      ]
+    },
+    {
+      "id": "validation-code-1",
+      "split": "validation",
+      "domain": "code",
+      "token_ids": [
+        11,
+        5,
+        12,
+        8
+      ]
+    },
+    {
+      "id": "test-general-0",
+      "split": "test",
+      "domain": "general",
+      "token_ids": [
+        4,
+        9,
+        5,
+        3
+      ]
+    },
+    {
+      "id": "test-general-1",
+      "split": "test",
+      "domain": "general",
+      "token_ids": [
+        5,
+        10,
+        6,
+        4
+      ]
+    },
+    {
+      "id": "test-code-0",
+      "split": "test",
+      "domain": "code",
+      "token_ids": [
+        12,
+        3,
+        8,
+        11
+      ]
+    },
+    {
+      "id": "test-code-1",
+      "split": "test",
+      "domain": "code",
+      "token_ids": [
+        8,
+        4,
+        11,
+        12
+      ]
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "model": {"vocab_size": 16, "width": 8, "max_context": 32, "seed": 7},
+  "generation": {"prompt": [1, 2, 3, 4, 5], "max_new_tokens": 5},
+  "mapping": {
+    "keys": [[1, 0], [0, 1], [1, 1]],
+    "values": [[10, 0], [20, 10], [30, 20]],
+    "query": [1, 0]
+  },
+  "block_size_sweep": {"sizes": [1, 2, 4, 8], "reserved_lengths": [5, 3, 9], "written_lengths": [3, 2, 7]},
+  "engine_cases": [
+    {
+      "name": "admission", "num_blocks": 3, "block_size": 4, "max_running": 2,
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 3},
+        {"id": "b", "arrival": 0, "prompt": [1, 2, 3], "max_new_tokens": 3}
+      ]
+    },
+    {
+      "name": "fragmented", "num_blocks": 4, "block_size": 2, "max_running": 3,
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2], "max_new_tokens": 1},
+        {"id": "b", "arrival": 0, "prompt": [3], "max_new_tokens": 2},
+        {"id": "c", "arrival": 0, "prompt": [4, 5], "max_new_tokens": 1},
+        {"id": "d", "arrival": 1, "prompt": [5, 6, 7], "max_new_tokens": 2}
+      ]
+    },
+    {
+      "name": "cleanup", "num_blocks": 5, "block_size": 2, "max_running": 2,
+      "requests": [
+        {"id": "a", "arrival": 0, "prompt": [1, 2], "max_new_tokens": 3, "cancel_at": 2},
+        {"id": "bad", "arrival": 0, "prompt": [7], "max_new_tokens": 2, "fail_after_write": true},
+        {"id": "b", "arrival": 0, "prompt": [3, 4], "max_new_tokens": 3}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "engine": "V1",
+  "reason": "supported feature"
+}
+Feature classification is supplied, not detected. No model/platform support is established.

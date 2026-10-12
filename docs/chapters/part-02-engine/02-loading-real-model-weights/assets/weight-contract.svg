@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1090" viewBox="0 0 1600 1090" role="img" aria-labelledby="title desc">
+<title id="title">权重映射：名称变了，布局不能变</title><desc id="desc">原创权重契约图：Q 576x576，K/V 192x576，gate/up 1536x576，down 576x1536。Embedding E 49152x576 同时用于查表和 hidden@E转置，共享一个参数。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1090" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1090" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.02  /  WEIGHTS</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">权重映射：名称变了，布局不能变</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >HF 检查点与 nn.Linear 都按 [out,in] 存储；本节直接复制，不再转置。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="280" width="1472" height="438" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 280 H176" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<text x="94" y="324" font-size="24" fill="#98aec9" class="mono" >HF / model.layers.0.</text>
+<text x="710" y="324" font-size="21" fill="#98aec9" class="mono" >OUR MODULE</text>
+<text x="1260" y="324" font-size="22" fill="#98aec9" class="mono" >[out,in]</text>
+<path d="M94 353 L1506 353" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="94" y="380" font-size="25" fill="#6aa8ff" class="mono" >self_attn.q_proj.weight</text>
+<path d="M637 372 H684" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<text x="710" y="380" font-size="24" fill="#e8f2ff" class="mono" >layers.0.q.weight</text>
+<text x="1260" y="380" font-size="24" fill="#6aa8ff" class="mono" >576 × 576</text>
+<path d="M94 419 L1506 419" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="94" y="446" font-size="25" fill="#54dcff" class="mono" >self_attn.k_proj.weight</text>
+<path d="M637 438 H684" fill="none" stroke="#54dcff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-54dcff)"/>
+<text x="710" y="446" font-size="24" fill="#e8f2ff" class="mono" >layers.0.k.weight</text>
+<text x="1260" y="446" font-size="24" fill="#54dcff" class="mono" >192 × 576</text>
+<path d="M94 485 L1506 485" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="94" y="512" font-size="25" fill="#57e5be" class="mono" >self_attn.v_proj.weight</text>
+<path d="M637 504 H684" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<text x="710" y="512" font-size="24" fill="#e8f2ff" class="mono" >layers.0.v.weight</text>
+<text x="1260" y="512" font-size="24" fill="#57e5be" class="mono" >192 × 576</text>
+<path d="M94 551 L1506 551" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="94" y="578" font-size="25" fill="#ae9aff" class="mono" >mlp.gate_proj.weight</text>
+<path d="M637 570 H684" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<text x="710" y="578" font-size="24" fill="#e8f2ff" class="mono" >layers.0.gate.weight</text>
+<text x="1260" y="578" font-size="24" fill="#ae9aff" class="mono" >1536 × 576</text>
+<path d="M94 617 L1506 617" fill="none" stroke="#29405a" stroke-width="1" />
+<text x="94" y="644" font-size="25" fill="#ae9aff" class="mono" >mlp.down_proj.weight</text>
+<path d="M637 636 H684" fill="none" stroke="#ae9aff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-ae9aff)"/>
+<text x="710" y="644" font-size="24" fill="#e8f2ff" class="mono" >layers.0.down.weight</text>
+<text x="1260" y="644" font-size="24" fill="#ae9aff" class="mono" >576 × 1536</text>
+<rect x="64" y="768" width="1472" height="218" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 768 H176" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="96" y="811" font-size="28" fill="#57e5be" font-weight="600">共享参数</text>
+<rect x="605" y="810" width="390" height="96" rx="14" fill="#142d3b" stroke="#57e5be" />
+<text x="800" y="851" font-size="30" fill="#57e5be" class="mono" text-anchor="middle">E [49152,576]</text>
+<text x="800" y="883" font-size="22" fill="#98aec9" text-anchor="middle">同一个 Parameter 对象</text>
+<text x="117" y="872" font-size="28" fill="#e8f2ff" class="mono" >E[token_id]</text>
+<text x="117" y="913" font-size="22" fill="#98aec9" >输入：按行查表</text>
+<text x="1120" y="872" font-size="28" fill="#e8f2ff" class="mono" >hidden @ E.T</text>
+<text x="1120" y="913" font-size="22" fill="#98aec9" >输出：映射回词表</text>
+<path d="M605 858 H407" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<path d="M995 858 H1085" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<text x="800" y="957" font-size="23" fill="#98aec9" text-anchor="middle">tie_word_embeddings = true → 不必重复存储 lm_head.weight</text>
+<path d="M64 1014 L1536 1014" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1043" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1050" font-size="22" fill="#98aec9" >本检查点：30 × 9 + 2 = 272 个张量</text>
+<text x="1536" y="1050" font-size="19" fill="#59718e" class="mono" text-anchor="end">134,515,008 PARAMETERS</text>
+</svg>

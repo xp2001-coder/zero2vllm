@@ -1,0 +1,7 @@
+{
+  "mode": "FULL",
+  "bucket": 4,
+  "num_actual_tokens": 3,
+  "reason": "configured policy"
+}
+Dispatch policy illustration only; piecewise wrapper readiness and GPU execution are outside scope.

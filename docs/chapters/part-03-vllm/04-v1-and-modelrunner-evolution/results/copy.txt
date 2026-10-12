@@ -1,0 +1,37 @@
+{
+  "name": "copy_ownership",
+  "checks": {
+    "unsafe_reads_new_step": true,
+    "snapshot_preserves_old_step": true
+  },
+  "passed": true,
+  "unsafe": {
+    "source_now": [
+      9,
+      7
+    ],
+    "received": [
+      9,
+      7
+    ],
+    "expected_previous_step": [
+      3,
+      7
+    ]
+  },
+  "snapshot": {
+    "source_now": [
+      9,
+      7
+    ],
+    "received": [
+      3,
+      7
+    ],
+    "expected_previous_step": [
+      3,
+      7
+    ]
+  }
+}
+CPU semantics only; no upstream runner or GPU execution.

@@ -1,0 +1,15 @@
+{
+  "description": "Exact binary fractions for a hand-computable non-square Linear; no bias.",
+  "x": [[1.0, 2.0, -1.0]],
+  "w": [[-3.5, -0.75], [0.25, 1.25], [2.5, 3.5]],
+  "expected": {
+    "scale": 0.5,
+    "q": [[-7, -2], [0, 2], [5, 7]],
+    "dequantized": [[-3.5, -1.0], [0.0, 1.0], [2.5, 3.5]],
+    "original_output": [[-5.5, -1.75]],
+    "quantized_output": [[-6.0, -2.5]],
+    "weight_max_abs_error": 0.25,
+    "weight_mse": 0.03125,
+    "output_max_abs_error": 0.75
+  }
+}

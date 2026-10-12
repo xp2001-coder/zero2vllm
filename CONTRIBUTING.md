@@ -22,6 +22,16 @@ Part 1 改动可运行 `python -m scripts.experiments.part01`，一次保存 28 
 
 2.1 改动使用独立虚拟环境安装 CPU PyTorch，再运行 `python -m scripts.experiments.lesson0201`；详见[本节实验](docs/chapters/part-02-engine/01-pytorch-model/lab.md)。
 
+2.2 改动按[权重加载实验](docs/chapters/part-02-engine/02-loading-real-model-weights/lab.md)安装固定依赖，先运行 `python -m unittest tests.modeling.test_checkpoint -v`，再运行 `python -m scripts.experiments.lesson0202` 对齐真实模型。仅首次下载加 `--download`；离线随机小模型测试不能替代真实检查点验收。
+
+2.3 改动运行 `python -m unittest tests.integration.test_lifecycle -v` 与 `python -m scripts.experiments.lesson0203`，基础部分只需标准库；已有 2.2 快照时再加 `--real-checkpoint` 检查真实模型封装，见[实验说明](docs/chapters/part-02-engine/03-request-and-cache-lifecycles/lab.md)。
+
+2.4 改动运行 `python -m unittest tests.integration.test_scheduler -v` 与 `python -m scripts.experiments.lesson0204`，核对冻结计划、三种预算、独立输出及边界计时；命令见[实验页](docs/chapters/part-02-engine/04-from-static-to-continuous-batching/lab.md)。
+
+2.5 改动运行 `python -m unittest tests.cache.test_paged tests.integration.test_paged_engine -v` 与 `python -m scripts.experiments.lesson0205`，需要 CPU PyTorch；核对实际 K/V、因果前缀、整块额度与复用隔离，见[实验页](docs/chapters/part-02-engine/05-paged-caching/lab.md)。
+
+2.6 改动运行 `python -m unittest tests.cache.test_prefix tests.integration.test_prefix_engine -v` 与 `python -m scripts.experiments.lesson0206`，需要 CPU PyTorch；核对冷暖 logits、末块重算、共享引用、命名空间隔离与逐出，见[实验页](docs/chapters/part-02-engine/06-prefix-caching/lab.md)。
+
 ## 课程目录的维护入口
 
 - [中文课程数据](metadata/course/README.md)：`parts/` 下每篇一个 JSON，维护章节标题、知识点、练习、设备、状态、前置和篇内说明；`catalog.json` 只维护篇文件顺序与公共来源。
@@ -62,6 +72,7 @@ python -m scripts.docs.course --check
 - 正文、实验、练习、图注、导读和中英文首页均不引用本地知识库、内部编号、ZIP 文件名、私人台账或本机阅读路径。
 - 备课时可查阅本地资料；需要公开引用的结论应回到可核对的公开原始来源。无法提供公开链接时，删除该参考条目，不编造链接。
 - 原创插图链接仓库内的图稿说明；说明所用公式、代码或手算数据。第三方内容仍须保留实际公开来源及许可说明。
+- 新增教学插图优先采用白底论文配图风格：细线与明确箭头、少量蓝橙绿强调、必要的子图编号和解释性图注；标题与解释性标签使用中文，公式、变量和必要的代码字段名保留原写法。图内数值对应可复核案例，保留 SVG 与 PNG。排版参考 [2.5 插图](docs/chapters/part-02-engine/05-paged-caching/assets/README.md)。
 - 私人来源台账放在已忽略的 `.local/archive/editorial/`，不进入公开课程数据，也不参与导航生成。
 
 `python -m scripts.docs.course --check` 会拦截读者页面中的内部资料标识及指向私有目录、本机文件的链接。此检查不联网，公开网址能否访问、来源是否支持相关结论仍需人工核对。正常的仓库内学习链接和实验输出路径可以保留。
@@ -79,3 +90,5 @@ Issue 提供运行问题、课程建议与平台实测三种表单。提交 PR �
 项目原创内容采用 [CC BY-NC-SA 4.0](LICENSE)：署名、非商业性使用、相同方式共享。贡献者须有权按该许可提供所提交内容；第三方材料保留各自的许可与出处。
 
 本地审阅与上传步骤见[GitHub 上传说明](docs/maintenance/publishing.md)。项目不宣称与 vLLM、Datawhale 或沐曦存在官方合作关系。
+
+2.7 改动运行 `python -m unittest tests.serving.test_streaming tests.serving.test_http -v` 与 `python -m scripts.experiments.lesson0207`。真实 HTTP 需 `uvicorn==0.35.0`；涉及前缀后端时还安装 CPU PyTorch 并加 `--include-prefix`。分别核对真实断连与受控发送阻塞，不能把受控实验写成网络性能实测，见[实验页](docs/chapters/part-02-engine/07-http-and-streaming-output/lab.md)。

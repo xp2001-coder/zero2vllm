@@ -1,0 +1,5 @@
+{
+  "engine": "V1",
+  "reason": "experimental opt-in"
+}
+Feature classification is supplied, not detected. No model/platform support is established.

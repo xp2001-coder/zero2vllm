@@ -25,7 +25,46 @@ jobs:
           python-version: ${{ matrix.python }}
       - run: python -m unittest discover -s tests -v
       - run: python -m scripts.experiments.part01 --skip-tests
-      - run: python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/04-quantization-kernels/int4.json
+      - run: python -X utf8 docs/chapters/part-01-inference/04-performance-metrics/examples/compare_timelines.py
+      - run: python -X utf8 docs/chapters/part-01-inference/05-model-structures/examples/walk_positions.py
+      - run: python -X utf8 docs/chapters/part-01-inference/05-model-structures/examples/walk_states.py
+      - run: python -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_correctness.py
+      - run: python -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_distribution.py
+      - run: python -X utf8 docs/chapters/part-01-inference/06-sampling-correctness/examples/walk_stopping.py
+      - run: python -X utf8 docs/chapters/part-03-vllm/01-a-request-s-journey-through-vllm/examples/walk_iteration.py
+      - run: python -m scripts.experiments.lesson0302
+      - run: python -m scripts.experiments.lesson0303 --mode metadata
+      - run: python -m scripts.experiments.lesson0304
+      - run: python -m scripts.experiments.lesson0305
+      - run: python -m scripts.experiments.lesson0901
+      - run: python -m scripts.experiments.lesson0902
+      - run: python -m scripts.experiments.lesson0903
+      - run: python -m scripts.experiments.lesson0904
+      - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_rounding.py
+      - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_gptq.py
+      - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_transforms.py
+      - run: python docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/examples/inspect_protocol.py --token-budget 16
+      - run: python docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/examples/walk_observer.py
+      - run: python docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/examples/compare_objectives.py
+      - run: python docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/walk_groups.py --asymmetric --pad
+      - run: python docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py
+      - run: python docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/count_bits.py
+      - run: python docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_affine.py
+      - run: python docs/chapters/part-09-quantization/01-quantization-system-overview/examples/walk_qdq.py
+      - run: python docs/chapters/part-09-quantization/01-quantization-system-overview/examples/inspect_passport.py .local/runs/part-09-quantization/01-system-overview/cpu-passport.json
+      - run: python docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/walk_state.py
+      - run: python docs/chapters/part-03-vllm/04-v1-and-modelrunner-evolution/examples/inspect_graphs.py
+      - run: python docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/explain_config.py
+      - run: python docs/chapters/part-03-vllm/05-resolving-configuration-and-capabilities/examples/inspect_engine.py
+      - run: python -X utf8 docs/chapters/part-03-vllm/03-model-execution-and-attention-backends/examples/walk_inputs.py
+      - run: python -X utf8 docs/chapters/part-03-vllm/02-scheduling-and-kv-management-in-vllm/examples/walk_schedule.py
+      - run: python -m scripts.experiments.lesson0203
+      - run: python docs/chapters/part-02-engine/03-request-and-cache-lifecycles/examples/walk_requests.py
+      - run: python docs/chapters/part-02-engine/03-request-and-cache-lifecycles/examples/cancellation_boundary.py
+      - run: python -m scripts.experiments.lesson0204
+      - run: python docs/chapters/part-02-engine/04-from-static-to-continuous-batching/examples/walk_batches.py
+      - run: python docs/chapters/part-02-engine/04-from-static-to-continuous-batching/examples/inspect_budgets.py
+      - run: python -m zero2vllm quant-demo --output .local/runs/part-09-quantization/08-bit-packing-serialization-and-repack/int4.json
       - run: python -m scripts.docs.course --check
       - run: python -m scripts.docs.layout
 
@@ -38,6 +77,43 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install torch==2.7.1 numpy==2.2.6 --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m scripts.experiments.lesson0902 --torch-check
+      - run: python -m scripts.experiments.lesson0903 --torch-check
+      - run: python -m scripts.experiments.lesson0904 --torch-check
       - run: python -m scripts.experiments.lesson0201
+      - run: python -m unittest tests.modeling.test_packed_attention -v
+      - run: python -m scripts.experiments.lesson0303
+      - run: python -m unittest tests.cache.test_paged tests.integration.test_paged_engine -v
+      - run: python -m scripts.experiments.lesson0205
+      - run: python -m unittest tests.cache.test_prefix tests.integration.test_prefix_engine -v
+      - run: python -m scripts.experiments.lesson0206
+      - run: python -m pip install uvicorn==0.35.0
+      - run: python -m unittest tests.serving.test_streaming.ServiceTests.test_prefix_backend_shared_refs_survive_stream_cancellation -v
+      - run: python -m scripts.experiments.lesson0207 --case prefix
+      - run: python docs/chapters/part-02-engine/06-prefix-caching/examples/walk_prefix.py
+      - run: python docs/chapters/part-02-engine/06-prefix-caching/examples/share_and_release.py
+      - run: python docs/chapters/part-02-engine/05-paged-caching/examples/walk_pages.py
+      - run: python docs/chapters/part-02-engine/05-paged-caching/examples/paged_schedule.py
       - run: python -m zero2vllm torch-demo --dtype float32 --output .local/runs/part-02-engine/01-pytorch-model/cli-float32.json
       - run: python docs/chapters/part-02-engine/01-pytorch-model/examples/run.py
+      - run: python -m pip install transformers==4.51.3 safetensors==0.5.3 huggingface-hub==0.30.2 tokenizers==0.21.1
+      - run: python -m unittest tests.modeling.test_checkpoint -v
+      - run: python docs/chapters/part-02-engine/02-loading-real-model-weights/examples/layout_traps.py
+
+  http-lesson:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install uvicorn==0.35.0
+      - run: python -m unittest tests.serving.test_streaming tests.serving.test_http -v
+      - run: python -m scripts.experiments.lesson0207
+      - run: python docs/chapters/part-02-engine/07-http-and-streaming-output/examples/walk_events.py
+      - run: python docs/chapters/part-02-engine/07-http-and-streaming-output/examples/inspect_frames.py

@@ -1,0 +1,34 @@
+{
+  "recorded_at_utc": "2026-09-17T06:45:25.980981+00:00",
+  "source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "d9692e912b27d98ea0af33202e4612103a89870d609de7965fb29a5f4d97cfe8",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "environment": {
+    "python": "3.11.9",
+    "system": "Windows-10-10.0.26200-SP0",
+    "device": "cpu"
+  },
+  "tests": {
+    "command": "python -X utf8 -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "count": 180,
+    "seconds": 205.588,
+    "skipped": 0,
+    "output": "tests.txt"
+  },
+  "lesson_cases": {
+    "passed": true,
+    "workloads": 6,
+    "policies": 2,
+    "replays": 12,
+    "output": "../../../docs/chapters/part-02-engine/04-from-static-to-continuous-batching/results/baseline/summary.json"
+  },
+  "remote_ci": "not_run",
+  "gpu_status": {
+    "cuda-a100": "not_run",
+    "maca-c500": "not_run"
+  }
+}

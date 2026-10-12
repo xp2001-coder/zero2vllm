@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1180" viewBox="0 0 1600 1180" role="img" aria-labelledby="title desc">
+<title id="title">三个上限，三本独立的账</title><desc id="desc">活跃请求上限为2，每轮输入上限为3，保留容量为32。两请求共预留10，首轮只计算A的三个prompt token。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1180" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1180" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.04  /  BUDGETS</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">三个上限，三本独立的账</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >A: P=3, N=4；B: P=2, N=3。两者同时准入，第 0 轮只计算 A。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="64" y="285" width="464" height="635" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M88 285 H176" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<rect x="568" y="285" width="464" height="635" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M592 285 H680" stroke="#6aa8ff" stroke-width="3" opacity=".95"/>
+<rect x="1072" y="285" width="464" height="635" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M1096 285 H1184" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<text x="90" y="337" font-size="29" fill="#54dcff" font-weight="700">活跃请求</text>
+<text x="90" y="380" font-size="23" fill="#98aec9" class="mono" >S = 2</text>
+<text x="90" y="475" font-size="58" fill="#54dcff" class="mono" font-weight="700">2 / 2</text>
+<rect x="91" y="520" width="152" height="89" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="167" y="572.5" font-size="36" fill="#54dcff" class="mono" text-anchor="middle">A</text>
+<rect x="269" y="520" width="152" height="89" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="345" y="572.5" font-size="36" fill="#6aa8ff" class="mono" text-anchor="middle">B</text>
+<text x="90" y="665" font-size="25" fill="#e8f2ff" >A、B 都处于 RUNNING</text>
+<text x="90" y="710" font-size="23" fill="#98aec9" >B 暂时没有被选中</text>
+<text x="90" y="835" font-size="23" fill="#98aec9" >单位：请求</text>
+<text x="594" y="337" font-size="29" fill="#6aa8ff" font-weight="700">本轮输入</text>
+<text x="594" y="380" font-size="23" fill="#98aec9" class="mono" >T = 3</text>
+<text x="594" y="475" font-size="58" fill="#6aa8ff" class="mono" font-weight="700">3 / 3</text>
+<rect x="595" y="520" width="113" height="89" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="651.5" y="572.5" font-size="30" fill="#54dcff" class="mono" text-anchor="middle">A0</text>
+<rect x="723" y="520" width="113" height="89" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="779.5" y="572.5" font-size="30" fill="#54dcff" class="mono" text-anchor="middle">A1</text>
+<rect x="851" y="520" width="113" height="89" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="907.5" y="572.5" font-size="30" fill="#54dcff" class="mono" text-anchor="middle">A2</text>
+<text x="594" y="665" font-size="25" fill="#e8f2ff" >A prefill 消耗 3 个额度</text>
+<text x="594" y="710" font-size="23" fill="#98aec9" >B 的 2 个输入等下一轮</text>
+<text x="594" y="835" font-size="23" fill="#98aec9" >每轮重置；不是输出数</text>
+<text x="1098" y="337" font-size="29" fill="#ae9aff" font-weight="700">持有额度</text>
+<text x="1098" y="380" font-size="23" fill="#98aec9" class="mono" >C = 32</text>
+<text x="1098" y="475" font-size="58" fill="#ae9aff" class="mono" font-weight="700">10 / 32</text>
+<rect x="1098" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1122" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1146" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1170" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1194" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1218" y="522" width="17" height="35" rx="4" fill="#28596a" stroke="#54dcff" />
+<rect x="1242" y="522" width="17" height="35" rx="4" fill="#334c81" stroke="#6aa8ff" />
+<rect x="1266" y="522" width="17" height="35" rx="4" fill="#334c81" stroke="#6aa8ff" />
+<rect x="1290" y="522" width="17" height="35" rx="4" fill="#334c81" stroke="#6aa8ff" />
+<rect x="1314" y="522" width="17" height="35" rx="4" fill="#334c81" stroke="#6aa8ff" />
+<rect x="1338" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1362" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1386" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1410" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1434" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1458" y="522" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1098" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1122" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1146" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1170" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1194" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1218" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1242" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1266" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1290" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1314" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1338" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1362" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1386" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1410" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1434" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<rect x="1458" y="572" width="17" height="35" rx="4" fill="#132035" stroke="#30415c" />
+<text x="1098" y="665" font-size="25" fill="#54dcff" class="mono" >A: 3+4−1 = 6</text>
+<text x="1098" y="710" font-size="25" fill="#6aa8ff" class="mono" >B: 2+3−1 = 4</text>
+<text x="1098" y="835" font-size="23" fill="#98aec9" >跨轮持有，终态返还</text>
+<rect x="196" y="967" width="1208" height="36" rx="18" fill="#11243b" stroke="#57e5be" stroke-opacity=".5"/>
+<text x="800" y="991" font-size="18" fill="#57e5be" class="mono" text-anchor="middle">NEXT ROUND:  B:P2 + A:D1 = 3 INPUTS;  RESERVED = 10</text>
+<path d="M64 1074 L1536 1074" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1103" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1110" font-size="22" fill="#98aec9" >预留容量用逻辑位置计数；本图没有换算显存字节。</text>
+<text x="1536" y="1110" font-size="19" fill="#59718e" class="mono" text-anchor="end">ACTIVE ≠ SELECTED</text>
+</svg>

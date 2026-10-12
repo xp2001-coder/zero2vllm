@@ -138,7 +138,7 @@ def english_outline(catalog, translation):
         f"This edition plans **{len(parts)} parts and {len(chapter_ids)} chapters**. Every chapter has its own directory; unfinished entries contain a teaching outline, not a completed lesson. Two CPU labs live under their related parts. See the [detailed curriculum](docs/chapters/README.md) for prerequisites, exercises, and hardware requirements. Chapter materials are currently primarily in Chinese.",
         "**Status: ✅ complete with local validation; 🧩 partial material or code available; 📋 planned, chapter text pending.** Upstream availability does not mean a feature has been tested in this project.",
         "[✅ CPU starter lab: checking correctness with and without KV cache](docs/chapters/part-01-inference/03-kv-cache/lab.md)",
-        "[✅ CPU quantization lab: INT4 packing, group scales, and Linear](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)",
+        "[✅ CPU quantization lab: INT4 packing, group scales, and Linear](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)",
         table(["Part", "Scope", "Chapters"],
               [[f"[Part {p['number']}]({p['directory']}/README.md)", translation["parts"][str(p["number"])]["title"],
                 len(p["chapters"])] for p in parts]),
@@ -171,7 +171,7 @@ def rendered_sections(catalog, inventory, translation):
     readme = [f"本版共 **{summary}**，每篇、每节都有独立目录；未完成小节先提供教学骨架，两个 CPU 实验已归入对应篇。目录齐全不表示正文全部完成；前置知识、练习产出、设备条件见[详细课程目录](docs/chapters/README.md)。",
               "**状态：✅ 已完成并有本地验证；🧩 有部分材料或代码；📋 已规划、正文待编写。** 功能已被上游收录也不等于本项目已经实测。",
               "[✅ CPU 引导实验：KV Cache 前后是否计算一致](docs/chapters/part-01-inference/03-kv-cache/lab.md)",
-              "[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/chapters/part-09-quantization/04-writing-quantization-and-data-reordering-kernels/lab.md)",
+              "[✅ CPU 量化实验：INT4 打包、分组缩放与 Linear](docs/chapters/part-09-quantization/08-bit-packing-serialization-and-repack/lab.md)",
               table(["篇", "专题范围", "章节数"],
                     [[f"[Part {p['number']}]({p['directory']}/README.md)", p["title"], len(p["chapters"])] for p in parts])]
     detailed = []

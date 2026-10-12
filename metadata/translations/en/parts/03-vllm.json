@@ -1,28 +1,29 @@
 {
   "number": 3,
   "part": {
-    "title": "Inside the Real vLLM"
+    "title": "Inside the Real vLLM",
+    "readme_note": "Lessons 3.1–3.5 include pinned-source reading, CPU experiments, and exercises. Lesson 3.4 compares v0.8.5 and v0.17.1; the other main paths use v0.8.5. State, tensor, and configuration exercises do not validate GPU execution."
   },
   "chapters": {
     "3.1": {
       "title": "A request's journey through vLLM",
-      "topics": "Input processing → EngineCoreClient → EngineCore → Executor/Worker/ModelRunner; request IDs, IPC, streaming queues, and cancellation"
+      "topics": "Pinned v0.8.5 request path; inputs, processes/threads/tasks, message structures, model iterations, output merging, and cancellation cleanup"
     },
     "3.2": {
       "title": "Scheduling and KV management in vLLM",
-      "topics": "Input processing, scheduler outputs, KVCacheManager, BlockPool, and execution feedback"
+      "topics": "Pinned v0.8.5; token gaps and budgets, mixed scheduling, block allocation, prefix references, head-of-line blocking, recompute preemption, and execution feedback"
     },
     "3.3": {
       "title": "Model execution and attention backends",
-      "topics": "Registration/initialization/weight loading/postprocessing; input_ids, positions, slot_mapping, attention metadata, and sampling"
+      "topics": "Pinned v0.8.5; model loading, weight orientation and fused QKV, input packing, RoPE/GQA, attention metadata, backend contracts, and candidate filtering"
     },
     "3.4": {
       "title": "V1 and ModelRunner evolution",
-      "topics": "V0/V1 vs. MRV1/MRV2; persistent state and execution order, StagedWriteTensor, GPU metadata, sampling, and graph management"
+      "topics": "V0/V1 vs. MRV1/MRV2; stable slots, staged writes, copy lifetime, GPU metadata, sampling math, and graph dispatch"
     },
     "3.5": {
       "title": "Resolving configuration and capabilities",
-      "topics": "EngineArgs, VllmConfig, environment variables, platform defaults, precedence, and validation"
+      "topics": "CLI/SDK to EngineArgs; None vs. False, V1 defaults and policy overrides, value provenance, budget constraints, and platform/runtime validation"
     }
   }
 }

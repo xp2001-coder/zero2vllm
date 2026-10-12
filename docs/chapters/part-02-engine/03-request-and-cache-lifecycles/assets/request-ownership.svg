@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1110" viewBox="0 0 1600 1110" role="img" aria-labelledby="title desc">
+<title id="title">同一份权重，两份请求状态</title><desc id="desc">引擎与模型持有权重，两个请求各自持有输入、输出与缓存；取消A不会清除B。</desc>
+<defs>
+      <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#080e1b"/><stop offset="1" stop-color="#101d33"/></linearGradient>
+      <radialGradient id="aura"><stop stop-color="#17628b" stop-opacity=".3"/><stop offset="1" stop-color="#17628b" stop-opacity="0"/></radialGradient>
+      <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#132137"/><stop offset="1" stop-color="#0c1729"/></linearGradient>
+      <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#547698" stroke-opacity=".07"/></pattern>
+      <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <marker id="arrow-54dcff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#54dcff" stroke-width="1.5"/></marker><marker id="arrow-6aa8ff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#6aa8ff" stroke-width="1.5"/></marker><marker id="arrow-ae9aff" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ae9aff" stroke-width="1.5"/></marker><marker id="arrow-57e5be" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#57e5be" stroke-width="1.5"/></marker><marker id="arrow-ff9b99" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#ff9b99" stroke-width="1.5"/></marker>
+    </defs>
+    <style>text {font-family:'Microsoft YaHei','Noto Sans SC',sans-serif} .mono {font-family:Consolas,'Roboto Mono',monospace}</style>
+    <rect width="1600" height="1110" rx="28" fill="url(#bg)"/>
+    <rect width="1600" height="1110" rx="28" fill="url(#grid)"/>
+    <ellipse cx="1360" cy="80" rx="580" ry="380" fill="url(#aura)"/>
+<rect x="64" y="52" width="32" height="32" rx="8" fill="#102a3b" stroke="#54dcff" />
+<path d="M73 61 L87 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<path d="M87 61 L73 75" fill="none" stroke="#54dcff" stroke-width="2" />
+<text x="112" y="76" font-size="27" fill="#e8f2ff" class="mono" font-weight="700">zero2vllm</text>
+<text x="315" y="75" font-size="19" fill="#98aec9" class="mono" letter-spacing="1.5">/  COMPUTE NOTES</text>
+<text x="1536" y="75" font-size="19" fill="#54dcff" class="mono" text-anchor="end" letter-spacing="1.8">02.03  /  OWNERSHIP</text>
+<text x="64" y="157" font-size="49" fill="#e8f2ff" font-weight="700">同一份权重，两份请求状态</text>
+<text x="64" y="205" font-size="25" fill="#98aec9" >取消 A 的目标是 A 的运行资源；B 与共享模型应继续可用。</text>
+<path d="M64 236 L1536 236" fill="none" stroke="#30455f" stroke-width="1" />
+<path d="M64 236 L190 236" fill="none" stroke="#54dcff" stroke-width="2" />
+<rect x="432" y="280" width="736" height="145" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M456 280 H544" stroke="#54dcff" stroke-width="3" opacity=".95"/>
+<text x="466" y="327" font-size="24" fill="#54dcff" class="mono" >MODEL / RUNNER</text>
+<text x="466" y="375" font-size="25" fill="#e8f2ff" >权重只加载一次；A、B 使用同一个模型对象</text>
+<path d="M540 425 V477 H398 V524" fill="none" stroke="#6aa8ff" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-6aa8ff)"/>
+<path d="M1060 425 V477 H1200 V524" fill="none" stroke="#57e5be" stroke-width="2.5" opacity=".9" marker-end="url(#arrow-57e5be)"/>
+<rect x="80" y="530" width="660" height="400" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M104 530 H192" stroke="#ae9aff" stroke-width="3" opacity=".95"/>
+<rect x="800" y="530" width="720" height="400" rx="20" fill="url(#panel)" stroke="#2b405c" />
+<path d="M824 530 H912" stroke="#57e5be" stroke-width="3" opacity=".95"/>
+<text x="110" y="578" font-size="21" fill="#ae9aff" class="mono" >A</text>
+<text x="154" y="578" font-size="27" fill="#e8f2ff" font-weight="600">已生成 1 项 → 取消</text>
+<text x="116" y="635" font-size="25" fill="#98aec9" class="mono" >prompt = [1,2,3]</text>
+<text x="116" y="678" font-size="25" fill="#e8f2ff" class="mono" >output = [first_token]</text>
+<text x="116" y="736" font-size="27" fill="#ae9aff" >请求自己的 K/V：3 个位置 → 0</text>
+<rect x="116" y="773" width="116" height="54" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="174" y="808" font-size="25" fill="#59718e" class="mono" text-anchor="middle">K / V</text>
+<path d="M123 818 L225 782" fill="none" stroke="#ff9b99" stroke-width="2" />
+<rect x="256" y="773" width="116" height="54" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="314" y="808" font-size="25" fill="#59718e" class="mono" text-anchor="middle">K / V</text>
+<path d="M263 818 L365 782" fill="none" stroke="#ff9b99" stroke-width="2" />
+<rect x="396" y="773" width="116" height="54" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="454" y="808" font-size="25" fill="#59718e" class="mono" text-anchor="middle">K / V</text>
+<path d="M403 818 L505 782" fill="none" stroke="#ff9b99" stroke-width="2" />
+<text x="116" y="884" font-size="26" fill="#ae9aff" class="mono" >reserved: 6 → 0</text>
+<text x="834" y="578" font-size="21" fill="#57e5be" class="mono" >B</text>
+<text x="878" y="578" font-size="27" fill="#e8f2ff" font-weight="600">继续生成</text>
+<text x="840" y="635" font-size="25" fill="#98aec9" class="mono" >prompt = [4,2]</text>
+<text x="840" y="678" font-size="25" fill="#e8f2ff" class="mono" >output = [first_token]</text>
+<text x="840" y="736" font-size="25" fill="#57e5be" >请求自己的 K/V：2 个位置，继续增长</text>
+<rect x="840" y="773" width="116" height="54" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="898" y="808" font-size="25" fill="#57e5be" class="mono" text-anchor="middle">K / V</text>
+<rect x="980" y="773" width="116" height="54" rx="7" fill="#152c44" stroke="#305672" stroke-width="1"/>
+<text x="1038" y="808" font-size="25" fill="#57e5be" class="mono" text-anchor="middle">K / V</text>
+<text x="840" y="884" font-size="26" fill="#57e5be" class="mono" >reserved: 4</text>
+<text x="90" y="985" font-size="25" fill="#98aec9" >终态结果仍可读取；forget 才移除输入、输出与事件记录。释放缓存不等于删除结果。</text>
+<path d="M64 1034 L1536 1034" fill="none" stroke="#2c425d" stroke-width="1" />
+<circle cx="71" cy="1063" r="5" fill="#57e5be" filter="url(#glow)"/>
+<text x="90" y="1070" font-size="22" fill="#98aec9" >Tiny 路径持有真实 Python K/V 列表；2.2 Llama 路径仍完整前缀重算。</text>
+<text x="1536" y="1070" font-size="19" fill="#59718e" class="mono" text-anchor="end">SHARED WEIGHTS · OWNED CONTEXTS</text>
+</svg>

@@ -1,0 +1,107 @@
+{
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "48be978fc5725f2d5f716f6d4da611d80634921c23218875a7b73ce887cad23d",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "passed": true,
+  "commands": [
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0902",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "non_square_linear_golden PASS\nasymmetric_zero_has_code_five PASS\naxis_changes_parameter_shape PASS\ntensor_channel_token_granularity PASS\ntail_keeps_one_valid_row PASS\npadding_uses_zero_point PASS\npadding_excluded_from_statistics PASS\nall_zero_groups PASS\none_sided_constants_include_zero PASS\nstored_scale_is_used PASS\nreject_unrepresentable_scales PASS\nstorage_accounting PASS\nfp4_nonuniform_grid PASS\nsame_bits_different_interpretation PASS\nspecial_bit_patterns PASS\nsubnormal_and_ftz PASS\nfp4_ties_and_saturation PASS\ne8m0_is_not_an_integer_scale PASS\nscaled_fp4_has_multiple_parameters PASS\nshard_boundary_cuts_a_group PASS\nUnpacked CPU reference; bpw is a declared buffer plan, not file or GPU memory measurement.\nResults: $REPOSITORY\\.local\\runs\\part-09-quantization\\02-tensor-contracts\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/walk_groups.py",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"contract\": {\n    \"shape\": [\n      5,\n      3\n    ],\n    \"axis\": 0,\n    \"group_size\": 2,\n    \"bits\": 4,\n    \"scheme\": \"symmetric\",\n    \"scale_dtype\": \"float64\",\n    \"pad_to_group\": false,\n    \"q\": [\n      [\n        -7,\n        0,\n        1\n      ],\n      [\n        -2,\n        7,\n        7\n      ],\n      [\n        1,\n        3,\n        -7\n      ],\n      [\n        7,\n        7,\n        2\n      ],\n      [\n        7,\n        7,\n        -7\n      ]\n    ],\n    \"scales\": [\n      [\n        0.5,\n        1.0,\n        0.25\n      ],\n      [\n        0.25,\n        0.5,\n        0.5\n      ],\n      [\n        0.35714285714285715,\n        2.0,\n        0.07142857142857142\n      ]\n    ],\n    \"zero_points\": [\n      [\n        0,\n        0,\n        0\n      ],\n      [\n        0,\n        0,\n        0\n      ],\n      [\n        0,\n        0,\n        0\n      ]\n    ],\n    \"physical_shape\": [\n      5,\n      3\n    ],\n    \"parameter_shape\": [\n      3,\n      3\n    ],\n    \"integer_range\": [\n      -7,\n      7\n    ],\n    \"rounding\": \"round_ties_to_even_before_adding_zero_point\",\n    \"input_dtype\": \"FP32 values\",\n    \"reference_arithmetic\": \"Python float64\",\n    \"storage\": \"Unpacked Python integers; not a checkpoint\"\n  },\n  \"dq\": [\n    [\n      -3.5,\n      0.0,\n      0.25\n    ],\n    [\n      -1.0,\n      7.0,\n      1.75\n    ],\n    [\n      0.25,\n      1.5,\n      -3.5\n    ],\n    [\n      1.75,\n      3.5,\n      1.0\n    ],\n    [\n      2.5,\n      14.0,\n      -0.5\n    ]\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/walk_groups.py --axis 1",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"contract\": {\n    \"shape\": [\n      5,\n      3\n    ],\n    \"axis\": 1,\n    \"group_size\": 2,\n    \"bits\": 4,\n    \"scheme\": \"symmetric\",\n    \"scale_dtype\": \"float64\",\n    \"pad_to_group\": false,\n    \"q\": [\n      [\n        -7,\n        0,\n        7\n      ],\n      [\n        -1,\n        7,\n        7\n      ],\n      [\n        1,\n        7,\n        -7\n      ],\n      [\n        4,\n        7,\n        7\n      ],\n      [\n        1,\n        7,\n        -7\n      ]\n    ],\n    \"scales\": [\n      [\n        0.5,\n        0.03571428571428571\n      ],\n      [\n        1.0,\n        0.25\n      ],\n      [\n        0.21428571428571427,\n        0.5\n      ],\n      [\n        0.5,\n        0.10714285714285714\n      ],\n      [\n        2.0,\n        0.07142857142857142\n      ]\n    ],\n    \"zero_points\": [\n      [\n        0,\n        0\n      ],\n      [\n        0,\n        0\n      ],\n      [\n        0,\n        0\n      ],\n      [\n        0,\n        0\n      ],\n      [\n        0,\n        0\n      ]\n    ],\n    \"physical_shape\": [\n      5,\n      3\n    ],\n    \"parameter_shape\": [\n      5,\n      2\n    ],\n    \"integer_range\": [\n      -7,\n      7\n    ],\n    \"rounding\": \"round_ties_to_even_before_adding_zero_point\",\n    \"input_dtype\": \"FP32 values\",\n    \"reference_arithmetic\": \"Python float64\",\n    \"storage\": \"Unpacked Python integers; not a checkpoint\"\n  },\n  \"dq\": [\n    [\n      -3.5,\n      0.0,\n      0.25\n    ],\n    [\n      -1.0,\n      7.0,\n      1.75\n    ],\n    [\n      0.21428571428571427,\n      1.5,\n      -3.5\n    ],\n    [\n      2.0,\n      3.5,\n      0.75\n    ],\n    [\n      2.0,\n      14.0,\n      -0.5\n    ]\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/walk_groups.py --asymmetric --pad",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"contract\": {\n    \"shape\": [\n      5,\n      3\n    ],\n    \"axis\": 0,\n    \"group_size\": 2,\n    \"bits\": 4,\n    \"scheme\": \"asymmetric\",\n    \"scale_dtype\": \"float64\",\n    \"pad_to_group\": true,\n    \"q\": [\n      [\n        0,\n        0,\n        2\n      ],\n      [\n        12,\n        15,\n        15\n      ],\n      [\n        2,\n        6,\n        0\n      ],\n      [\n        15,\n        15,\n        15\n      ],\n      [\n        15,\n        15,\n        0\n      ],\n      [\n        0,\n        0,\n        15\n      ]\n    ],\n    \"scales\": [\n      [\n        0.23333333333333334,\n        0.4666666666666667,\n        0.11666666666666667\n      ],\n      [\n        0.11666666666666667,\n        0.23333333333333334,\n        0.2833333333333333\n      ],\n      [\n        0.16666666666666666,\n        0.9333333333333333,\n        0.03333333333333333\n      ]\n    ],\n    \"zero_points\": [\n      [\n        15,\n        0,\n        0\n      ],\n      [\n        0,\n        0,\n        12\n      ],\n      [\n        0,\n        0,\n        15\n      ]\n    ],\n    \"physical_shape\": [\n      6,\n      3\n    ],\n    \"parameter_shape\": [\n      3,\n      3\n    ],\n    \"integer_range\": [\n      0,\n      15\n    ],\n    \"rounding\": \"round_ties_to_even_before_adding_zero_point\",\n    \"input_dtype\": \"FP32 values\",\n    \"reference_arithmetic\": \"Python float64\",\n    \"storage\": \"Unpacked Python integers; not a checkpoint\"\n  },\n  \"dq\": [\n    [\n      -3.5,\n      0.0,\n      0.23333333333333334\n    ],\n    [\n      -0.7,\n      7.0,\n      1.75\n    ],\n    [\n      0.23333333333333334,\n      1.4,\n      -3.4\n    ],\n    [\n      1.75,\n      3.5,\n      0.85\n    ],\n    [\n      2.5,\n      14.0,\n      -0.5\n    ],\n    [\n      0.0,\n      0.0,\n      0.0\n    ]\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "bit pattern: 0x3d format: e4m3fn decoded: 1.625\ninput: 1.625 encoded: 0x3d restored: 1.625\nFinite-input nearest-even encoder, saturating overflow. No native low-precision arithmetic.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py --format e5m2 --code 0x38 --value 0.5",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "bit pattern: 0x38 format: e5m2 decoded: 0.5\ninput: 0.5 encoded: 0x38 restored: 0.5\nFinite-input nearest-even encoder, saturating overflow. No native low-precision arithmetic.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py --format e2m1 --code 0x7 --value 5",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "bit pattern: 0x7 format: e2m1 decoded: 6.0\ninput: 5.0 encoded: 0x6 restored: 4.0\nFinite-input nearest-even encoder, saturating overflow. No native low-precision arithmetic.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py --code 0x1 --ftz",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "bit pattern: 0x1 format: e4m3fn decoded: 0.0\ninput: 1.625 encoded: 0x3d restored: 1.625\nFinite-input nearest-even encoder, saturating overflow. No native low-precision arithmetic.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/inspect_bits.py --format e2m1 --code 0x10",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "passed": true,
+      "stdout": "",
+      "stderr": "usage: inspect_bits.py [-h] [--format {e4m3fn,e5m2,e2m1}] [--code CODE]\n                       [--value VALUE] [--ftz]\ninspect_bits.py: error: Invalid bit pattern or FTZ policy\n"
+    },
+    {
+      "command": "python -X utf8 docs/chapters/part-09-quantization/02-numerical-representations-and-tensor-contracts/examples/count_bits.py",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "{\n  \"n_weights\": 15,\n  \"nominal_bits\": 4,\n  \"weight_bits\": 60,\n  \"scale_bits\": 144,\n  \"zero_point_bits\": 36,\n  \"metadata_bits\": 32,\n  \"tensor_padding_bits\": 12,\n  \"byte_padding_bits\": 4,\n  \"alignment_padding_bits\": 96,\n  \"total_bits\": 384,\n  \"estimated_bytes\": 48,\n  \"effective_bpw\": 25.6,\n  \"scope\": \"Declared buffer plan, not measured checkpoint size or GPU memory\",\n  \"scale_dtype\": \"float16\",\n  \"zero_point_storage_bits\": 4,\n  \"alignment_bytes\": 16\n}\n48 estimated bytes / 15 real weights = 25.6 bits per weight. No checkpoint is written.\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0902 --torch-check",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "non_square_linear_golden PASS\nasymmetric_zero_has_code_five PASS\naxis_changes_parameter_shape PASS\ntensor_channel_token_granularity PASS\ntail_keeps_one_valid_row PASS\npadding_uses_zero_point PASS\npadding_excluded_from_statistics PASS\nall_zero_groups PASS\none_sided_constants_include_zero PASS\nstored_scale_is_used PASS\nreject_unrepresentable_scales PASS\nstorage_accounting PASS\nfp4_nonuniform_grid PASS\nsame_bits_different_interpretation PASS\nspecial_bit_patterns PASS\nsubnormal_and_ftz PASS\nfp4_ties_and_saturation PASS\ne8m0_is_not_an_integer_scale PASS\nscaled_fp4_has_multiple_parameters PASS\nshard_boundary_cuts_a_group PASS\nPyTorch FP8 bit patterns: {'torch_version': '2.7.1+cpu', 'device': 'cpu', 'operation': 'uint8 bit view to float8 then cast to float32', 'native_low_precision_arithmetic': False, 'formats': [{'format': 'e4m3fn', 'patterns': 256, 'passed': True, 'mismatch_codes': []}, {'format': 'e5m2', 'patterns': 256, 'passed': True, 'mismatch_codes': []}], 'passed': True}\nUnpacked CPU reference; bpw is a declared buffer plan, not file or GPU memory measurement.\nResults: $REPOSITORY\\.local\\runs\\part-09-quantization\\02-tensor-contracts\n",
+      "stderr": ""
+    },
+    {
+      "command": "python -X utf8 -m scripts.experiments.lesson0902 --output-dir .local/runs/part-09-quantization/02-tensor-contracts/replay",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true,
+      "stdout": "non_square_linear_golden PASS\nasymmetric_zero_has_code_five PASS\naxis_changes_parameter_shape PASS\ntensor_channel_token_granularity PASS\ntail_keeps_one_valid_row PASS\npadding_uses_zero_point PASS\npadding_excluded_from_statistics PASS\nall_zero_groups PASS\none_sided_constants_include_zero PASS\nstored_scale_is_used PASS\nreject_unrepresentable_scales PASS\nstorage_accounting PASS\nfp4_nonuniform_grid PASS\nsame_bits_different_interpretation PASS\nspecial_bit_patterns PASS\nsubnormal_and_ftz PASS\nfp4_ties_and_saturation PASS\ne8m0_is_not_an_integer_scale PASS\nscaled_fp4_has_multiple_parameters PASS\nshard_boundary_cuts_a_group PASS\nUnpacked CPU reference; bpw is a declared buffer plan, not file or GPU memory measurement.\nResults: .local\\runs\\part-09-quantization\\02-tensor-contracts\\replay\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+cli_over_file PASS
+false_is_explicit PASS
+v1_forces_chunking PASS
+usage_and_memory_defaults PASS
+engine_intent PASS
+forced_unsupported_errors PASS
+cross_field_validation PASS
+model_limit PASS
+chunk_budget PASS
+eager_intent PASS
+validation_stages PASS
+unverified_platform PASS
+Synthetic configuration context; no vLLM import, device detection or GPU validation.

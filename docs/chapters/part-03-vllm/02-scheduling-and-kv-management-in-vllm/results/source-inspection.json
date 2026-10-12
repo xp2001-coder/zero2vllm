@@ -1,0 +1,2635 @@
+{
+  "recorded_at": "2026-09-20T03:36:57.399780+00:00",
+  "verification_level": "teaching_count_simulation",
+  "executed_upstream_code": false,
+  "model_executed": false,
+  "gpu_validated": false,
+  "course_source": {
+    "git_commit": "b013f7c59a52a0863b687f08a48056d4c8c9de2b",
+    "working_tree_dirty": true,
+    "source_sha256": "30734f0baceeecf942ac3e0628ecf294b58a859fbb02242afe0422086e95346c",
+    "recipe": "Sorted recursive package/tests/scripts Python files, chapter examples and input JSON; relative UTF-8 path + NUL + LF-normalized bytes + NUL."
+  },
+  "cases": [
+    {
+      "name": "mixed",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [
+              "A"
+            ],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "A",
+              "kind": "running",
+              "known_before": 5,
+              "computed_before": 4,
+              "scheduled": 1,
+              "new_block_ids": [
+                2
+              ],
+              "block_table": [
+                1,
+                2
+              ]
+            },
+            {
+              "request": "B",
+              "kind": "new",
+              "known_before": 7,
+              "computed_before": 0,
+              "scheduled": 3,
+              "new_block_ids": [
+                3
+              ],
+              "block_table": [
+                3
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 0,
+          "stop_reason": "token_budget",
+          "after_schedule": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 5,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 3,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {
+            "A": 1
+          },
+          "after_feedback": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 3,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "before": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 3,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "A",
+              "kind": "running",
+              "known_before": 6,
+              "computed_before": 5,
+              "scheduled": 1,
+              "new_block_ids": [],
+              "block_table": [
+                1,
+                2
+              ]
+            },
+            {
+              "request": "B",
+              "kind": "running",
+              "known_before": 7,
+              "computed_before": 3,
+              "scheduled": 3,
+              "new_block_ids": [
+                4
+              ],
+              "block_table": [
+                3,
+                4
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 0,
+          "stop_reason": "token_budget",
+          "after_schedule": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 6,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 6,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3,
+                  4
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {
+            "A": 1
+          },
+          "after_feedback": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 7,
+                "computed": 6,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 6,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3,
+                  4
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "before": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 7,
+                "computed": 6,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 6,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3,
+                  4
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "A",
+              "kind": "running",
+              "known_before": 7,
+              "computed_before": 6,
+              "scheduled": 1,
+              "new_block_ids": [],
+              "block_table": [
+                1,
+                2
+              ]
+            },
+            {
+              "request": "B",
+              "kind": "running",
+              "known_before": 7,
+              "computed_before": 6,
+              "scheduled": 1,
+              "new_block_ids": [],
+              "block_table": [
+                3,
+                4
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 2,
+          "stop_reason": "queues_examined",
+          "after_schedule": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 7,
+                "computed": 7,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 7,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3,
+                  4
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {
+            "A": 1,
+            "B": 1
+          },
+          "after_feedback": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 8,
+                "computed": 7,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 8,
+                "computed": 7,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ],
+                "B": [
+                  3,
+                  4
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "chunked",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [],
+            "waiting": [
+              "P"
+            ],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "P",
+              "kind": "new",
+              "known_before": 9,
+              "computed_before": 0,
+              "scheduled": 4,
+              "new_block_ids": [
+                1
+              ],
+              "block_table": [
+                1
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 0,
+          "stop_reason": "token_budget",
+          "after_schedule": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {},
+          "after_feedback": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "before": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "P",
+              "kind": "running",
+              "known_before": 9,
+              "computed_before": 4,
+              "scheduled": 4,
+              "new_block_ids": [
+                2
+              ],
+              "block_table": [
+                1,
+                2
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 0,
+          "stop_reason": "token_budget",
+          "after_schedule": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 8,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1,
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {},
+          "after_feedback": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 8,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1,
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "before": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 8,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1,
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "P",
+              "kind": "running",
+              "known_before": 9,
+              "computed_before": 8,
+              "scheduled": 1,
+              "new_block_ids": [
+                3
+              ],
+              "block_table": [
+                1,
+                2,
+                3
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 3,
+          "stop_reason": "queues_examined",
+          "after_schedule": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 9,
+                "computed": 9,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "synthetic_output_counts": {
+            "P": 1
+          },
+          "after_feedback": {
+            "running": [
+              "P"
+            ],
+            "waiting": [],
+            "requests": {
+              "P": {
+                "known": 10,
+                "computed": 9,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "P": [
+                  1,
+                  2,
+                  3
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "sequence_limit",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [
+              "A"
+            ],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "A",
+              "kind": "running",
+              "known_before": 5,
+              "computed_before": 4,
+              "scheduled": 1,
+              "new_block_ids": [
+                2
+              ],
+              "block_table": [
+                1,
+                2
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 3,
+          "stop_reason": "max_seqs",
+          "after_schedule": {
+            "running": [
+              "A"
+            ],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 5,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 7,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+              ],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        }
+      ],
+      "after_feedback": {
+        "running": [
+          "A"
+        ],
+        "waiting": [
+          "B"
+        ],
+        "requests": {
+          "A": {
+            "known": 6,
+            "computed": 5,
+            "status": "RUNNING"
+          },
+          "B": {
+            "known": 7,
+            "computed": 0,
+            "status": "WAITING"
+          }
+        },
+        "blocks": {
+          "free_ids": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "cached_ids": [],
+          "tables": {
+            "A": [
+              1,
+              2
+            ]
+          },
+          "references": [
+            0,
+            1,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    {
+      "name": "head_blocking",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [],
+            "waiting": [
+              "large",
+              "small"
+            ],
+            "requests": {
+              "large": {
+                "known": 8,
+                "computed": 0,
+                "status": "WAITING"
+              },
+              "small": {
+                "known": 1,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [],
+          "preempted": [],
+          "unused_token_budget": 8,
+          "stop_reason": "waiting_head_no_blocks",
+          "after_schedule": {
+            "running": [],
+            "waiting": [
+              "large",
+              "small"
+            ],
+            "requests": {
+              "large": {
+                "known": 8,
+                "computed": 0,
+                "status": "WAITING"
+              },
+              "small": {
+                "known": 1,
+                "computed": 0,
+                "status": "WAITING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "preemption",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [
+              "A",
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1
+                ],
+                "B": [
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "A",
+              "kind": "running",
+              "known_before": 5,
+              "computed_before": 4,
+              "scheduled": 1,
+              "new_block_ids": [
+                2
+              ],
+              "block_table": [
+                1,
+                2
+              ]
+            }
+          ],
+          "preempted": [
+            "B"
+          ],
+          "unused_token_budget": 3,
+          "stop_reason": "preemption_blocks_admission",
+          "after_schedule": {
+            "running": [
+              "A"
+            ],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 5,
+                "status": "RUNNING"
+              },
+              "B": {
+                "known": 5,
+                "computed": 0,
+                "status": "PREEMPTED"
+              }
+            },
+            "blocks": {
+              "free_ids": [],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1,
+                  2
+                ]
+              },
+              "references": [
+                0,
+                1,
+                1
+              ]
+            }
+          },
+          "after_feedback": {
+            "running": [],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "FINISHED"
+              },
+              "B": {
+                "known": 5,
+                "computed": 0,
+                "status": "PREEMPTED"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1,
+                2
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0,
+                0
+              ]
+            }
+          }
+        },
+        {
+          "before": {
+            "running": [],
+            "waiting": [
+              "B"
+            ],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "FINISHED"
+              },
+              "B": {
+                "known": 5,
+                "computed": 0,
+                "status": "PREEMPTED"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1,
+                2
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          "scheduled": [
+            {
+              "request": "B",
+              "kind": "resumed",
+              "known_before": 5,
+              "computed_before": 0,
+              "scheduled": 4,
+              "new_block_ids": [
+                1
+              ],
+              "block_table": [
+                1
+              ]
+            }
+          ],
+          "preempted": [],
+          "unused_token_budget": 0,
+          "stop_reason": "token_budget",
+          "after_schedule": {
+            "running": [
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "FINISHED"
+              },
+              "B": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2
+              ],
+              "cached_ids": [],
+              "tables": {
+                "B": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0
+              ]
+            }
+          },
+          "after_feedback": {
+            "running": [
+              "B"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 6,
+                "computed": 5,
+                "status": "FINISHED"
+              },
+              "B": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                2
+              ],
+              "cached_ids": [],
+              "tables": {
+                "B": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1,
+                0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "self_preemption",
+      "passed": true,
+      "rounds": [
+        {
+          "before": {
+            "running": [
+              "A"
+            ],
+            "waiting": [],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 4,
+                "status": "RUNNING"
+              }
+            },
+            "blocks": {
+              "free_ids": [],
+              "cached_ids": [],
+              "tables": {
+                "A": [
+                  1
+                ]
+              },
+              "references": [
+                0,
+                1
+              ]
+            }
+          },
+          "scheduled": [],
+          "preempted": [
+            "A"
+          ],
+          "unused_token_budget": 4,
+          "stop_reason": "preemption_blocks_admission",
+          "after_schedule": {
+            "running": [],
+            "waiting": [
+              "A"
+            ],
+            "requests": {
+              "A": {
+                "known": 5,
+                "computed": 0,
+                "status": "PREEMPTED"
+              }
+            },
+            "blocks": {
+              "free_ids": [
+                1
+              ],
+              "cached_ids": [],
+              "tables": {},
+              "references": [
+                0,
+                0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "prefix_boundary",
+      "passed": true,
+      "block_size": 4,
+      "rows": [
+        {
+          "known": 7,
+          "cached_full_blocks": 2,
+          "reused": 4
+        },
+        {
+          "known": 8,
+          "cached_full_blocks": 2,
+          "reused": 4
+        },
+        {
+          "known": 9,
+          "cached_full_blocks": 2,
+          "reused": 8
+        }
+      ]
+    },
+    {
+      "name": "prefix_capacity",
+      "passed": true,
+      "failed_before": {
+        "free_ids": [
+          1,
+          2
+        ],
+        "cached_ids": [
+          1,
+          2
+        ],
+        "tables": {},
+        "references": [
+          0,
+          0,
+          0
+        ]
+      },
+      "failed_after": {
+        "free_ids": [
+          1,
+          2
+        ],
+        "cached_ids": [
+          1,
+          2
+        ],
+        "tables": {},
+        "references": [
+          0,
+          0,
+          0
+        ]
+      },
+      "success": {
+        "free_ids": [],
+        "cached_ids": [
+          1,
+          2
+        ],
+        "tables": {
+          "P": [
+            1,
+            2,
+            3
+          ]
+        },
+        "references": [
+          0,
+          1,
+          1,
+          1
+        ]
+      },
+      "required_new": 1,
+      "free_before_touch": 2,
+      "evictable_hits": 2
+    },
+    {
+      "name": "shared_release",
+      "passed": true,
+      "shared": {
+        "free_ids": [],
+        "cached_ids": [
+          1
+        ],
+        "tables": {
+          "A": [
+            1,
+            2
+          ],
+          "B": [
+            1,
+            3
+          ]
+        },
+        "references": [
+          0,
+          2,
+          1,
+          1
+        ]
+      },
+      "after_A": {
+        "free_ids": [
+          2
+        ],
+        "cached_ids": [
+          1
+        ],
+        "tables": {
+          "B": [
+            1,
+            3
+          ]
+        },
+        "references": [
+          0,
+          1,
+          0,
+          1
+        ]
+      },
+      "after_B": {
+        "free_ids": [
+          2,
+          3,
+          1
+        ],
+        "cached_ids": [
+          1
+        ],
+        "tables": {},
+        "references": [
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "name": "eviction",
+      "passed": true,
+      "before": {
+        "free_ids": [
+          1
+        ],
+        "cached_ids": [
+          1
+        ],
+        "tables": {},
+        "references": [
+          0,
+          0
+        ]
+      },
+      "after": {
+        "free_ids": [],
+        "cached_ids": [],
+        "tables": {
+          "new_content": [
+            1
+          ]
+        },
+        "references": [
+          0,
+          1
+        ]
+      }
+    }
+  ],
+  "source_inspection": {
+    "passed": true,
+    "errors": [],
+    "files": [
+      {
+        "path": "LICENSE",
+        "sha256_lf": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/core/block_pool.py",
+        "sha256_lf": "66184ec8114891c8bf38888c60289198afb057ae7c48b17c038d9a597fd88228",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/core/kv_cache_manager.py",
+        "sha256_lf": "b382c55a8f775e7756176286af64dd532488d0a7ce035de8a18b0b13a76da8c0",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/core/sched/output.py",
+        "sha256_lf": "c739929723acc72050eabd4c080ff0c165ffd9e8303f424a0e7c6c817b16c7be",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/core/sched/scheduler.py",
+        "sha256_lf": "18f3717ee040a8f9b70159ecc2af8a4f57a2525e1c1c8e18947f9e3d0b0716a4",
+        "matched": true
+      },
+      {
+        "path": "vllm/v1/request.py",
+        "sha256_lf": "7b46cf84e2e3c884fe608b4d3bbfcb243d388795004683d0a2bdb9df26e01229",
+        "matched": true
+      }
+    ],
+    "checkpoints": [
+      {
+        "id": "kv01",
+        "stage": "schedule",
+        "path": "vllm/v1/core/sched/scheduler.py",
+        "symbol": "Scheduler.schedule",
+        "title": "先运行队列，后等待队列；预算、分配与抢占",
+        "calls": [
+          "self.kv_cache_manager.allocate_slots",
+          "self.running.pop",
+          "self.waiting.appendleft",
+          "self.kv_cache_manager.get_computed_blocks",
+          "SchedulerOutput"
+        ],
+        "line": 137,
+        "end_line": 509,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L137",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.kv_cache_manager.allocate_slots",
+            "line": 217
+          },
+          {
+            "target": "self.running.pop",
+            "line": 224
+          },
+          {
+            "target": "self.waiting.appendleft",
+            "line": 232
+          },
+          {
+            "target": "self.kv_cache_manager.get_computed_blocks",
+            "line": 325
+          },
+          {
+            "target": "self.kv_cache_manager.allocate_slots",
+            "line": 362
+          },
+          {
+            "target": "SchedulerOutput",
+            "line": 470
+          }
+        ]
+      },
+      {
+        "id": "kv02",
+        "stage": "prefix",
+        "path": "vllm/v1/core/kv_cache_manager.py",
+        "symbol": "KVCacheManager.get_computed_blocks",
+        "title": "完整前缀查找与末块重算",
+        "calls": [
+          "hash_request_tokens",
+          "block_hashes.pop",
+          "self.specialized_manager.find_longest_cache_hit",
+          "block_hashes.append"
+        ],
+        "line": 92,
+        "end_line": 162,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/kv_cache_manager.py#L92",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "hash_request_tokens",
+            "line": 113
+          },
+          {
+            "target": "block_hashes.pop",
+            "line": 133
+          },
+          {
+            "target": "self.specialized_manager.find_longest_cache_hit",
+            "line": 138
+          },
+          {
+            "target": "block_hashes.append",
+            "line": 156
+          }
+        ]
+      },
+      {
+        "id": "kv03",
+        "stage": "allocate",
+        "path": "vllm/v1/core/kv_cache_manager.py",
+        "symbol": "KVCacheManager.allocate_slots",
+        "title": "分配公式、命中保护与新增块",
+        "calls": [
+          "cdiv",
+          "self.block_pool.get_num_free_blocks",
+          "self.block_pool.touch",
+          "self.block_pool.get_new_blocks",
+          "self.block_pool.cache_full_blocks"
+        ],
+        "line": 164,
+        "end_line": 294,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/kv_cache_manager.py#L164",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "cdiv",
+            "line": 220
+          },
+          {
+            "target": "self.block_pool.get_num_free_blocks",
+            "line": 231
+          },
+          {
+            "target": "self.block_pool.touch",
+            "line": 238
+          },
+          {
+            "target": "self.block_pool.get_num_free_blocks",
+            "line": 257
+          },
+          {
+            "target": "self.block_pool.get_new_blocks",
+            "line": 266
+          },
+          {
+            "target": "self.block_pool.cache_full_blocks",
+            "line": 282
+          }
+        ]
+      },
+      {
+        "id": "kv04",
+        "stage": "release",
+        "path": "vllm/v1/core/kv_cache_manager.py",
+        "symbol": "KVCacheManager.free",
+        "title": "拆除请求块表并释放引用",
+        "calls": [
+          "self.req_to_blocks.pop",
+          "self.block_pool.free_blocks"
+        ],
+        "line": 296,
+        "end_line": 313,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/kv_cache_manager.py#L296",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.req_to_blocks.pop",
+            "line": 305
+          },
+          {
+            "target": "self.block_pool.free_blocks",
+            "line": 312
+          }
+        ]
+      },
+      {
+        "id": "kv05",
+        "stage": "prefix",
+        "path": "vllm/v1/core/block_pool.py",
+        "symbol": "BlockPool.touch",
+        "title": "命中块增加引用并离开空闲队列",
+        "calls": [
+          "self.free_block_queue.remove",
+          "block.incr_ref"
+        ],
+        "line": 212,
+        "end_line": 225,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/block_pool.py#L212",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.free_block_queue.remove",
+            "line": 224
+          },
+          {
+            "target": "block.incr_ref",
+            "line": 225
+          }
+        ]
+      },
+      {
+        "id": "kv06",
+        "stage": "allocate",
+        "path": "vllm/v1/core/block_pool.py",
+        "symbol": "BlockPool.get_new_blocks",
+        "title": "取得块并清除旧缓存身份",
+        "calls": [
+          "self.free_block_queue.popleft",
+          "self._maybe_evict_cached_block",
+          "curr_block.incr_ref"
+        ],
+        "line": 158,
+        "end_line": 188,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/block_pool.py#L158",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.free_block_queue.popleft",
+            "line": 177
+          },
+          {
+            "target": "self._maybe_evict_cached_block",
+            "line": 182
+          },
+          {
+            "target": "curr_block.incr_ref",
+            "line": 184
+          }
+        ]
+      },
+      {
+        "id": "kv07",
+        "stage": "release",
+        "path": "vllm/v1/core/block_pool.py",
+        "symbol": "BlockPool.free_blocks",
+        "title": "引用归零才归还队列",
+        "calls": [
+          "block.decr_ref",
+          "self.free_block_queue.append"
+        ],
+        "line": 227,
+        "end_line": 239,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/block_pool.py#L227",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "block.decr_ref",
+            "line": 236
+          },
+          {
+            "target": "self.free_block_queue.append",
+            "line": 239
+          }
+        ]
+      },
+      {
+        "id": "kv08",
+        "stage": "evict",
+        "path": "vllm/v1/core/block_pool.py",
+        "symbol": "BlockPool._maybe_evict_cached_block",
+        "title": "移除缓存身份",
+        "calls": [
+          "block.reset_hash"
+        ],
+        "line": 190,
+        "end_line": 210,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/block_pool.py#L190",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "block.reset_hash",
+            "line": 203
+          }
+        ]
+      },
+      {
+        "id": "kv09",
+        "stage": "feedback",
+        "path": "vllm/v1/core/sched/scheduler.py",
+        "symbol": "Scheduler.update_from_output",
+        "title": "按请求更新采样结果与停止状态",
+        "calls": [
+          "request.append_output_token_ids",
+          "check_stop",
+          "self._free_request"
+        ],
+        "line": 625,
+        "end_line": 754,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L625",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "request.append_output_token_ids",
+            "line": 697
+          },
+          {
+            "target": "check_stop",
+            "line": 701
+          },
+          {
+            "target": "self._free_request",
+            "line": 703
+          }
+        ]
+      },
+      {
+        "id": "kv10",
+        "stage": "release",
+        "path": "vllm/v1/core/sched/scheduler.py",
+        "symbol": "Scheduler._free_request",
+        "title": "最终结束时清理完整请求状态",
+        "calls": [
+          "self.kv_cache_manager.free",
+          "self.kv_cache_manager.free_block_hashes",
+          "self.finished_req_ids.add"
+        ],
+        "line": 791,
+        "end_line": 798,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/core/sched/scheduler.py#L791",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self.kv_cache_manager.free",
+            "line": 793
+          },
+          {
+            "target": "self.kv_cache_manager.free_block_hashes",
+            "line": 794
+          },
+          {
+            "target": "self.finished_req_ids.add",
+            "line": 798
+          }
+        ]
+      },
+      {
+        "id": "kv11",
+        "stage": "feedback",
+        "path": "vllm/v1/request.py",
+        "symbol": "Request.append_output_token_ids",
+        "title": "输出 token 同步进入完整序列",
+        "calls": [
+          "self._output_token_ids.append",
+          "self._all_token_ids.append"
+        ],
+        "line": 94,
+        "end_line": 103,
+        "url": "https://github.com/vllm-project/vllm/blob/ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d/vllm/v1/request.py#L94",
+        "matched": true,
+        "call_sites": [
+          {
+            "target": "self._output_token_ids.append",
+            "line": 99
+          },
+          {
+            "target": "self._all_token_ids.append",
+            "line": 100
+          }
+        ]
+      }
+    ],
+    "structures": [
+      {
+        "id": "scheduler-output",
+        "path": "vllm/v1/core/sched/output.py",
+        "symbol": "SchedulerOutput",
+        "fields": [
+          "scheduled_new_reqs",
+          "scheduled_cached_reqs",
+          "num_scheduled_tokens",
+          "total_num_scheduled_tokens",
+          "finished_req_ids"
+        ],
+        "matched": true,
+        "line": 82,
+        "declared_fields": [
+          "scheduled_new_reqs",
+          "scheduled_cached_reqs",
+          "num_scheduled_tokens",
+          "total_num_scheduled_tokens",
+          "scheduled_spec_decode_tokens",
+          "scheduled_encoder_inputs",
+          "num_common_prefix_blocks",
+          "finished_req_ids",
+          "free_encoder_input_ids",
+          "structured_output_request_ids",
+          "grammar_bitmask",
+          "kv_connector_metadata"
+        ]
+      }
+    ],
+    "verification_level": "static_source_inspection",
+    "executed_upstream_code": false,
+    "gpu_validated": false,
+    "repository": "https://github.com/vllm-project/vllm",
+    "tag": "v0.8.5",
+    "commit": "ba41cc90e8ef7f236347b2f1599eec2cbb9e1f0d",
+    "downloaded": []
+  },
+  "passed": true
+}
