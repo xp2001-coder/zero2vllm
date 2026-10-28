@@ -31,7 +31,7 @@
 
 [文档导航](docs/README.md) · [开发路线](docs/engineering/roadmap.md) · [更新记录](CHANGELOG.md) · [使用许可](LICENSE)
 
-> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。2.1—2.7 的模型构建、真实权重加载、请求生命周期、迭代调度、CPU 张量分页、前缀共享与 HTTP 流式服务已完成 CPU 验证，3.1—3.5 已提供固定版本源码阅读、调度/KV 与执行张量实验、Runner 演进、配置解析及 CPU 静态核验。9.1 已提供含 zero-point 的量化/反量化/重量化、模型 Passport、6 张中文图与 17 个 CPU 案例。9.2 进一步提供非方阵分组 Q/DQ、FP8/FP4 表示、尾组补零与有效位宽计算，含 20 个 CPU 案例和 7 张中文图。9.3 已补充校准协议、Observer、有效 token 预算及权重/层/任务误差对照。9.4 已补充量化误差控制推导、GPTQ 核心参考、缩放/旋转与 STE 实验。第13篇面向工程师，12节规划覆盖P/D性能建模、SLO配比、Mooncake/KV系统、Dynamo与llm-d控制面，以及生产运维验收。全部 135 节已有独立目录；后续引擎功能逐节推进，A100/C500 的 GPU 实验尚待实机验证。
+> **课程建设中。** Part 1 的 1.1—1.6 已提供完整正文、CPU 代码、操作命令、练习答案和统一检查入口；另有 INT4 Linear 实验、7 篇专题导读和双后端配置模板。2.1—2.7 的模型构建、真实权重加载、请求生命周期、迭代调度、CPU 张量分页、前缀共享与 HTTP 流式服务已完成 CPU 验证，3.1—3.5 已提供固定版本源码阅读、调度/KV 与执行张量实验、Runner 演进、配置解析及 CPU 静态核验。9.1 已提供含 zero-point 的量化/反量化/重量化、模型 Passport、6 张中文图与 17 个 CPU 案例。9.2 进一步提供非方阵分组 Q/DQ、FP8/FP4 表示、尾组补零与有效位宽计算，含 20 个 CPU 案例和 7 张中文图。9.3 已补充校准协议、Observer、有效 token 预算及权重/层/任务误差对照。9.4 已补充量化误差控制推导、GPTQ 核心参考、缩放/旋转与 STE 实验。13.1已提供PD适用边界正文、2张中文示意图、6组合成请求轨迹、SLO分析器与9组练习。第13篇面向工程师，12节覆盖P/D性能建模、SLO配比、Mooncake/KV系统、Dynamo与llm-d控制面，以及生产运维验收。全部 135 节已有独立目录；后续引擎功能逐节推进，A100/C500 的 GPU 实验尚待实机验证。
 
 ## 第一次来，从这里开始
 
@@ -460,7 +460,7 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 
 | 章节 | 必须覆盖的知识点 | 状态 |
 | --- | --- | --- |
-| 13.1 [PD 分离的收益、代价与适用边界](docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | 混部与 Chunked Prefill 基线；P/D 干扰；TTFT/TPOT/ITL 与 goodput；独立扩展与首 token 归属 | 🧩 |
+| 13.1 [PD 分离的收益、代价与适用边界](docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | 混部/Chunked Prefill/PD同预算对照；KV成本与首token归属；逐请求TTFT/TPOT/最大ITL联合SLO；6组合成轨迹审计与适用边界 | ✅ |
 | 13.2 [P-only / D-only 测量与负载协议](docs/chapters/part-13-disaggregation/02-isolated-measurement-and-workload-protocol/README.md) | 模型与硬件指纹；ISL/OSL 联合分布；P 输出 1 token 基线；D fake transfer 上下文核验；request_rate/request_num/max_concurrency；预热与稳态窗口 | 📋 |
 | 13.3 [性能曲线、SLO 查表与不确定性](docs/chapters/part-13-disaggregation/03-performance-surfaces-and-slo-lookup/README.md) | 长度/并发/速率性能表；可选 scan 与绝对速率 sweep；固定 q_ref；分位数与联合 SLO；重复测量；插值边界与不可行点；Roofline解释与实测拟合/留出残差；Dynamo Profiler 的测量/估算来源与适用范围 | 📋 |
 | 13.4 [P/D 配比、卡数与集群容量规划](docs/chapters/part-13-disaggregation/04-pd-ratios-and-capacity-planning/README.md) | req/s 与 token/s 换算；SLO 合格 qP/qD；目标流量与容量余量；整数实例数；TP/PP/EP/CP 资源组；网络/显存/成本约束；离线容量建议与在线 Planner 的分工及 GPU 预算 | 📋 |
@@ -646,7 +646,7 @@ python -m zero2vllm profile configs/platforms/maca/c500.toml
 | 已有成果 | 验证或阅读入口 |
 | --- | --- |
 | 工程设计、课程分层和迭代验收标准 | [工程设计](docs/engineering/architecture.md)、[开发路线](docs/engineering/roadmap.md) |
-| 19 篇、135 章大纲与特性/优化索引 | [详细目录](docs/chapters/README.md)、[特性地图](docs/references/feature-map.md)、[一致性检查](reports/quality/part-13-engineering/course.json) |
+| 19 篇、135 章大纲与特性/优化索引 | [详细目录](docs/chapters/README.md)、[特性地图](docs/references/feature-map.md)、[一致性检查](reports/quality/lesson-13.1-delivery/course.json) |
 | Part 1 全六节：正文、CPU 代码、参数命令、练习答案与统一运行 | [整篇学习入口](docs/chapters/part-01-inference/README.md)、[运行器](scripts/experiments/part01.py)、[验证记录](reports/README.md) |
 | 2.1 最小 PyTorch 模型：逐层对齐、7 个案例、6 组练习 | [正文与实验](docs/chapters/part-02-engine/01-pytorch-model/README.md)、[运行记录](docs/chapters/part-02-engine/01-pytorch-model/results/baseline/summary.json) |
 | 2.2 真实权重加载：4 张原创图、3 个真实输入、8 组练习 | [正文与实验](docs/chapters/part-02-engine/02-loading-real-model-weights/README.md)、[运行记录](docs/chapters/part-02-engine/02-loading-real-model-weights/results/README.md) |

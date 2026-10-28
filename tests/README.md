@@ -41,3 +41,5 @@
 9.3：`python -m unittest tests.quantization.test_calibration -v`；39 项检查覆盖数据协议、Observer、裁剪目标、误差与 NLL。1 项 PyTorch 对照为可选，其余只需标准库。
 
 9.4：`python -m unittest tests.quantization.test_algorithms -v`；33 项检查覆盖舍入、补偿、处理顺序、等价变换与替代梯度。1 项 PyTorch 数学核验为可选，其余只需标准库。
+
+13.1：`python -m unittest tests.reference.test_disaggregation -v`；22项标准库测试，覆盖联合SLO、首token/输出间隔、失败分母、窗口边界、同预算与非法数据。

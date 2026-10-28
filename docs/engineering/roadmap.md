@@ -50,4 +50,4 @@
 一个章节完成需要：文字可读、代码能运行、核心结果有检查、平台状态明确、出处可追溯。一个平台可用需要真实执行记录。一个发布版本需要从新环境按文档复现并固定版本。
 
 
-Part 13已扩充为12节，先建设单阶段性能表和SLO容量查询，再接真实KV传输、Mooncake、Dynamo/llm-d控制面与生产运维验收；具体范围见[本篇规划](../chapters/part-13-disaggregation/README.md)。
+Part 13共12节，13.1已交付工程边界与离线SLO分析。后续建设单阶段性能表和SLO容量查询，再接真实KV传输、Mooncake、Dynamo/llm-d控制面与生产运维验收；具体范围见[本篇规划](../chapters/part-13-disaggregation/README.md)。

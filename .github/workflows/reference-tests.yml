@@ -40,6 +40,7 @@ jobs:
       - run: python -m scripts.experiments.lesson0902
       - run: python -m scripts.experiments.lesson0903
       - run: python -m scripts.experiments.lesson0904
+      - run: python -m scripts.experiments.lesson1301
       - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_rounding.py
       - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_gptq.py
       - run: python docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/examples/walk_transforms.py

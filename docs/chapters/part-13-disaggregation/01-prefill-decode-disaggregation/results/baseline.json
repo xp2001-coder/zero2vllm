@@ -1,0 +1,599 @@
+{
+  "schema_version": 1,
+  "source_kind": "synthetic",
+  "provenance": "Original hand-constructed teaching traces; no hardware benchmark.",
+  "contract": {
+    "model_revision": "teaching-model-v1",
+    "tokenizer_revision": "teaching-tokenizer-v1",
+    "precision": "BF16-assumption",
+    "workload_revision": "four-requests-v1",
+    "generation_config": {
+      "ignore_eos": true,
+      "fixed_output_tokens": 4
+    },
+    "cache_policy": "cold, no shared prefixes",
+    "gpu_model": "hypothetical-identical-GPU",
+    "gpu_count": 2,
+    "runtime_revision": "not-executed"
+  },
+  "window": {
+    "start_ms": 0,
+    "end_ms": 1000
+  },
+  "duration_seconds": 1.0,
+  "slo": {
+    "ttft_ms": 200,
+    "tpot_ms": 50,
+    "max_itl_ms": 80
+  },
+  "percentile_method": "nearest_rank; completed requests only; max_itl is a per-request maximum",
+  "scope": "Fixed finite window, no pre-window arrivals. Not a steady-state capacity estimate, GPU simulation or correctness test.",
+  "runs": [
+    {
+      "name": "mixed_uncontrolled",
+      "allocation": [
+        {
+          "role": "mixed",
+          "gpus": 2
+        }
+      ],
+      "configuration": {
+        "description": "mixed_uncontrolled",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "qualified": 2,
+      "joint_success_fraction": 0.5,
+      "completed_rps": 4.0,
+      "goodput_rps": 2.0,
+      "observed_output_tokens_per_second": 16.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 110,
+          "p95": 230,
+          "p99": 230
+        },
+        "tpot_ms": {
+          "p50": 30.0,
+          "p95": 63.333333333333336,
+          "p99": 63.333333333333336
+        },
+        "max_itl_ms": {
+          "p50": 30,
+          "p95": 130,
+          "p99": 130
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 100,
+          "tpot_ms": 63.333333333333336,
+          "max_itl_ms": 130,
+          "qualified": false,
+          "violations": [
+            "tpot_ms",
+            "max_itl_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 230,
+          "tpot_ms": 30.0,
+          "max_itl_ms": 30,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 110,
+          "tpot_ms": 30.0,
+          "max_itl_ms": 30,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 120,
+          "tpot_ms": 30.0,
+          "max_itl_ms": 30,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        }
+      ]
+    },
+    {
+      "name": "mixed_chunked",
+      "allocation": [
+        {
+          "role": "mixed",
+          "gpus": 2
+        }
+      ],
+      "configuration": {
+        "description": "mixed_chunked",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "qualified": 3,
+      "joint_success_fraction": 0.75,
+      "completed_rps": 4.0,
+      "goodput_rps": 3.0,
+      "observed_output_tokens_per_second": 16.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 170,
+          "p95": 230,
+          "p99": 230
+        },
+        "tpot_ms": {
+          "p50": 40.0,
+          "p95": 40.0,
+          "p99": 40.0
+        },
+        "max_itl_ms": {
+          "p50": 40,
+          "p95": 40,
+          "p99": 40
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 130,
+          "tpot_ms": 40.0,
+          "max_itl_ms": 40,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 170,
+          "tpot_ms": 40.0,
+          "max_itl_ms": 40,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 190,
+          "tpot_ms": 40.0,
+          "max_itl_ms": 40,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 230,
+          "tpot_ms": 40.0,
+          "max_itl_ms": 40,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        }
+      ]
+    },
+    {
+      "name": "pd_fast_transfer",
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "configuration": {
+        "description": "pd_fast_transfer",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "qualified": 4,
+      "joint_success_fraction": 1.0,
+      "completed_rps": 4.0,
+      "goodput_rps": 4.0,
+      "observed_output_tokens_per_second": 16.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 160,
+          "p95": 160,
+          "p99": 160
+        },
+        "tpot_ms": {
+          "p50": 25.0,
+          "p95": 25.0,
+          "p99": 25.0
+        },
+        "max_itl_ms": {
+          "p50": 25,
+          "p95": 25,
+          "p99": 25
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 160,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 160,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 160,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 160,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        }
+      ]
+    },
+    {
+      "name": "pd_slow_transfer",
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "configuration": {
+        "description": "pd_slow_transfer",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "qualified": 0,
+      "joint_success_fraction": 0.0,
+      "completed_rps": 4.0,
+      "goodput_rps": 0.0,
+      "observed_output_tokens_per_second": 16.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 280,
+          "p95": 280,
+          "p99": 280
+        },
+        "tpot_ms": {
+          "p50": 25.0,
+          "p95": 25.0,
+          "p99": 25.0
+        },
+        "max_itl_ms": {
+          "p50": 25,
+          "p95": 25,
+          "p99": 25
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 280,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 280,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 280,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 280,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        }
+      ]
+    },
+    {
+      "name": "pd_first_token_from_p",
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "configuration": {
+        "description": "pd_first_token_from_p",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 4,
+      "status_counts": {
+        "completed": 4
+      },
+      "qualified": 0,
+      "joint_success_fraction": 0.0,
+      "completed_rps": 4.0,
+      "goodput_rps": 0.0,
+      "observed_output_tokens_per_second": 16.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 100,
+          "p95": 100,
+          "p99": 100
+        },
+        "tpot_ms": {
+          "p50": 66.66666666666667,
+          "p95": 66.66666666666667,
+          "p99": 66.66666666666667
+        },
+        "max_itl_ms": {
+          "p50": 140,
+          "p95": 140,
+          "p99": 140
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 100,
+          "tpot_ms": 66.66666666666667,
+          "max_itl_ms": 140,
+          "qualified": false,
+          "violations": [
+            "tpot_ms",
+            "max_itl_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 100,
+          "tpot_ms": 66.66666666666667,
+          "max_itl_ms": 140,
+          "qualified": false,
+          "violations": [
+            "tpot_ms",
+            "max_itl_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 100,
+          "tpot_ms": 66.66666666666667,
+          "max_itl_ms": 140,
+          "qualified": false,
+          "violations": [
+            "tpot_ms",
+            "max_itl_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 100,
+          "tpot_ms": 66.66666666666667,
+          "max_itl_ms": 140,
+          "qualified": false,
+          "violations": [
+            "tpot_ms",
+            "max_itl_ms"
+          ],
+          "exclusion": null
+        }
+      ]
+    },
+    {
+      "name": "pd_pool_imbalance",
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "configuration": {
+        "description": "pd_pool_imbalance",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "offered": 4,
+      "completed": 3,
+      "status_counts": {
+        "completed": 3,
+        "incomplete": 1
+      },
+      "qualified": 2,
+      "joint_success_fraction": 0.5,
+      "completed_rps": 3.0,
+      "goodput_rps": 2.0,
+      "observed_output_tokens_per_second": 13.0,
+      "completed_request_percentiles": {
+        "ttft_ms": {
+          "p50": 190,
+          "p95": 250,
+          "p99": 250
+        },
+        "tpot_ms": {
+          "p50": 25.0,
+          "p95": 25.0,
+          "p99": 25.0
+        },
+        "max_itl_ms": {
+          "p50": 25,
+          "p95": 25,
+          "p99": 25
+        }
+      },
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 160,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 190,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": true,
+          "violations": [],
+          "exclusion": null
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "output_tokens": 4,
+          "ttft_ms": 250,
+          "tpot_ms": 25.0,
+          "max_itl_ms": 25,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": null
+        },
+        {
+          "id": "r4",
+          "status": "incomplete",
+          "output_tokens": 1,
+          "ttft_ms": 600,
+          "tpot_ms": null,
+          "max_itl_ms": null,
+          "qualified": false,
+          "violations": [
+            "ttft_ms"
+          ],
+          "exclusion": "incomplete"
+        }
+      ]
+    }
+  ],
+  "input_sha256": "69c06478860b5cae8609803f5bb1be001dbcc15cd62725de67e7f3ab98076b04",
+  "input_sha256_recipe": "Input bytes with CRLF normalized to LF; no other changes."
+}

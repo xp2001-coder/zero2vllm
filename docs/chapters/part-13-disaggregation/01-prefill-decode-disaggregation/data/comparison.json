@@ -1,0 +1,424 @@
+{
+  "schema_version": 1,
+  "source_kind": "synthetic",
+  "provenance": "Original hand-constructed teaching traces; no hardware benchmark.",
+  "clock": "client_monotonic_ms",
+  "contract": {
+    "model_revision": "teaching-model-v1",
+    "tokenizer_revision": "teaching-tokenizer-v1",
+    "precision": "BF16-assumption",
+    "workload_revision": "four-requests-v1",
+    "generation_config": {
+      "ignore_eos": true,
+      "fixed_output_tokens": 4
+    },
+    "cache_policy": "cold, no shared prefixes",
+    "gpu_model": "hypothetical-identical-GPU",
+    "gpu_count": 2,
+    "runtime_revision": "not-executed"
+  },
+  "window": {
+    "start_ms": 0,
+    "end_ms": 1000
+  },
+  "slo": {
+    "ttft_ms": 200,
+    "tpot_ms": 50,
+    "max_itl_ms": 80
+  },
+  "workload": [
+    {
+      "id": "r1",
+      "arrival_ms": 0,
+      "input_tokens": 1024,
+      "output_tokens": 4
+    },
+    {
+      "id": "r2",
+      "arrival_ms": 100,
+      "input_tokens": 8192,
+      "output_tokens": 4
+    },
+    {
+      "id": "r3",
+      "arrival_ms": 200,
+      "input_tokens": 1024,
+      "output_tokens": 4
+    },
+    {
+      "id": "r4",
+      "arrival_ms": 300,
+      "input_tokens": 8192,
+      "output_tokens": 4
+    }
+  ],
+  "runs": [
+    {
+      "name": "mixed_uncontrolled",
+      "configuration": {
+        "description": "mixed_uncontrolled",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "mixed",
+          "gpus": 2
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            100,
+            130,
+            260,
+            290
+          ],
+          "end_ms": 290
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            330,
+            360,
+            390,
+            420
+          ],
+          "end_ms": 420
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            310,
+            340,
+            370,
+            400
+          ],
+          "end_ms": 400
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "token_arrivals_ms": [
+            420,
+            450,
+            480,
+            510
+          ],
+          "end_ms": 510
+        }
+      ]
+    },
+    {
+      "name": "mixed_chunked",
+      "configuration": {
+        "description": "mixed_chunked",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "mixed",
+          "gpus": 2
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            130,
+            170,
+            210,
+            250
+          ],
+          "end_ms": 250
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            270,
+            310,
+            350,
+            390
+          ],
+          "end_ms": 390
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            390,
+            430,
+            470,
+            510
+          ],
+          "end_ms": 510
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "token_arrivals_ms": [
+            530,
+            570,
+            610,
+            650
+          ],
+          "end_ms": 650
+        }
+      ]
+    },
+    {
+      "name": "pd_fast_transfer",
+      "configuration": {
+        "description": "pd_fast_transfer",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            160,
+            185,
+            210,
+            235
+          ],
+          "end_ms": 235
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            260,
+            285,
+            310,
+            335
+          ],
+          "end_ms": 335
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            360,
+            385,
+            410,
+            435
+          ],
+          "end_ms": 435
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "token_arrivals_ms": [
+            460,
+            485,
+            510,
+            535
+          ],
+          "end_ms": 535
+        }
+      ]
+    },
+    {
+      "name": "pd_slow_transfer",
+      "configuration": {
+        "description": "pd_slow_transfer",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            280,
+            305,
+            330,
+            355
+          ],
+          "end_ms": 355
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            380,
+            405,
+            430,
+            455
+          ],
+          "end_ms": 455
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            480,
+            505,
+            530,
+            555
+          ],
+          "end_ms": 555
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "token_arrivals_ms": [
+            580,
+            605,
+            630,
+            655
+          ],
+          "end_ms": 655
+        }
+      ]
+    },
+    {
+      "name": "pd_first_token_from_p",
+      "configuration": {
+        "description": "pd_first_token_from_p",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            100,
+            240,
+            270,
+            300
+          ],
+          "end_ms": 300
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            200,
+            340,
+            370,
+            400
+          ],
+          "end_ms": 400
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            300,
+            440,
+            470,
+            500
+          ],
+          "end_ms": 500
+        },
+        {
+          "id": "r4",
+          "status": "completed",
+          "token_arrivals_ms": [
+            400,
+            540,
+            570,
+            600
+          ],
+          "end_ms": 600
+        }
+      ]
+    },
+    {
+      "name": "pd_pool_imbalance",
+      "configuration": {
+        "description": "pd_pool_imbalance",
+        "timings": "hand-constructed, not a scheduling model"
+      },
+      "allocation": [
+        {
+          "role": "prefill",
+          "gpus": 1
+        },
+        {
+          "role": "decode",
+          "gpus": 1
+        }
+      ],
+      "requests": [
+        {
+          "id": "r1",
+          "status": "completed",
+          "token_arrivals_ms": [
+            160,
+            185,
+            210,
+            235
+          ],
+          "end_ms": 235
+        },
+        {
+          "id": "r2",
+          "status": "completed",
+          "token_arrivals_ms": [
+            290,
+            315,
+            340,
+            365
+          ],
+          "end_ms": 365
+        },
+        {
+          "id": "r3",
+          "status": "completed",
+          "token_arrivals_ms": [
+            450,
+            475,
+            500,
+            525
+          ],
+          "end_ms": 525
+        },
+        {
+          "id": "r4",
+          "status": "incomplete",
+          "token_arrivals_ms": [
+            900
+          ],
+          "end_ms": 1000
+        }
+      ]
+    }
+  ]
+}

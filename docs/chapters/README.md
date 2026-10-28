@@ -285,7 +285,7 @@ v1.0 基线固定四个 Module、14 节。以 Qwen3-8B W4A16 G128 贯穿，依�
 
 | 编号 | 章节 | 验收练习或产出 | 设备 | 状态 |
 | --- | --- | --- | --- | --- |
-| 13.1 | [PD 分离的收益、代价与适用边界](part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | 给出同资源预算下混部/分离的比较协议，解释何时不应分离 | 使用真实业务负载与部署预算设计对照，离线分析可在 CPU 完成 | 🧩 |
+| 13.1 | [PD 分离的收益、代价与适用边界](part-13-disaggregation/01-prefill-decode-disaggregation/README.md) | 运行离线比较器、复算请求指标并完成9组练习，交付同预算方案评审；GPU/集群收益另行实测 | Python 3.11+标准库；离线分析已验证，GPU与真实KV传输待后续实测 | ✅ |
 | 13.2 | [P-only / D-only 测量与负载协议](part-13-disaggregation/02-isolated-measurement-and-workload-protocol/README.md) | 定义可复现的单阶段测量协议，区分配置速率、实际到达率、完成吞吐和 fake 路径边界 | 单卡 A100/C500 独立测量；并行实例曲线需对应多卡环境 | 📋 |
 | 13.3 | [性能曲线、SLO 查表与不确定性](part-13-disaggregation/03-performance-surfaces-and-slo-lookup/README.md) | 规划可追溯性能表和 SLO 查询器，保留失败/超时/拒绝与所有复测，不把 q_ref 当合格容量 | 离线分析机与可追溯实测数据；平台 Profiler 另需其支持环境 | 📋 |
 | 13.4 | [P/D 配比、卡数与集群容量规划](part-13-disaggregation/04-pd-ratios-and-capacity-planning/README.md) | 设计容量规划器：输出 P/D 实例、GPU/节点数、预算与不可行原因，标明忽略传输的初估边界 | 离线规划与目标集群资源清单；配置需真实集群复核 | 📋 |
@@ -298,7 +298,7 @@ v1.0 基线固定四个 Module、14 节。以 Qwen3-8B W4A16 G128 贯穿，依�
 | 13.11 | [Encoder 分离与 E/P/D 资源规划](part-13-disaggregation/11-encoder-disaggregation-and-caching/README.md) | 把 P/D 规划扩展为 E/P/D，分别预算 embedding 与 KV 传输，明确计时边界 | 模型支持的 E/P/D 执行资源和实际传输链路 | 📋 |
 | 13.12 | [生产运维、故障恢复与端到端验收](part-13-disaggregation/12-distributed-serving-lifecycles/README.md) | 交付 SLO 看板设计、故障演练/排空回滚手册及同资源容量验收报告；报告恢复时间、联合 goodput 与预测误差 | 隔离的多机验收环境；容量/故障测试不在生产流量上直接试验 | 🧩 |
 
-12 节规划与工程验收设计；正文、部署清单及真实集群结果待逐节交付。单卡 A100/C500 可独立采集阶段曲线；Dynamo 等平台及跨厂商传输须按固定版本验证，不承诺 C500 支持。
+13.1已交付正文、离线请求轨迹分析与练习；13.2—13.12仍为工程规划。单卡A100/C500及真实集群实验须独立验证，不能用合成数据作为性能结论。
 
 源码与资料：[Disaggregated Prefilling](https://docs.vllm.ai/en/stable/features/disagg_prefill/) · [Disaggregated Encoder](https://docs.vllm.ai/en/stable/features/disagg_encoder/) · [KV Connector 注册表](https://github.com/vllm-project/vllm/blob/main/vllm/distributed/kv_transfer/kv_connector/factory.py) · [NIXL 兼容性矩阵](https://docs.vllm.ai/en/stable/features/nixl_connector_compatibility/) · [KV Offloading](https://docs.vllm.ai/en/stable/features/kv_offloading_usage/) · [DistServe — SLO-aware PD resource allocation](https://www.usenix.org/conference/osdi24/presentation/zhong-yinmin) · [Mooncake — KVCache-centric serving architecture](https://www.usenix.org/conference/fast25/presentation/qin) · [Mooncake Transfer Engine](https://kvcache-ai.github.io/Mooncake/design/transfer-engine/index.html) · [vLLM MooncakeConnector](https://docs.vllm.ai/en/latest/features/mooncake_connector_usage/) · [NVIDIA Dynamo 架构](https://docs.nvidia.com/dynamo/dev/knowledge-base/concepts/architecture) · [NVIDIA Dynamo Profiler](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/profiler/overview) · [NVIDIA Dynamo Planner 设计](https://docs.nvidia.com/dynamo/dev/knowledge-base/modular-components/planner/planner-design) · [NVIDIA Dynamo KVBM 配置与存储层级](https://docs.nvidia.com/dynamo/dev/reference/components/kvbm-configuration) · [llm-d 架构](https://llm-d.ai/docs/architecture) · [vLLM Production Stack](https://github.com/vllm-project/production-stack)。
 

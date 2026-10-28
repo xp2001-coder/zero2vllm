@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "errors": [],
+  "empty_directories": [],
+  "parts": 19,
+  "lessons": 135,
+  "published_artifact_links": 38,
+  "local_workspace_excluded": ".local/; archives and current runs do not enter public course checks",
+  "validation_tree": "Tracked repository files plus explicit lesson 13.1 additions; local outputs and ZIP backup excluded."
+}

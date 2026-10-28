@@ -11,6 +11,10 @@
 | [maintenance/](maintenance/README.md) | 目录规范、更新课程、按文件提交 |
 | [metadata/](../metadata/README.md) | 课程编排与英文大纲按篇拆分；特性和来源分别维护 |
 
+## 工程进阶入口
+
+[13.1 PD分离的收益、代价与适用边界](chapters/part-13-disaggregation/01-prefill-decode-disaggregation/README.md)：正文、同预算协议、6组合成轨迹分析、命令与9组练习。GPU与多机验收留待后续实测。
+
 ## 开始学习
 
 | 入口 | 内容 |

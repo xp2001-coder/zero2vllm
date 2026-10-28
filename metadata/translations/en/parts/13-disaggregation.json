@@ -6,7 +6,7 @@
   "chapters": {
     "13.1": {
       "title": "When to disaggregate prefill and decode",
-      "topics": "Colocated and chunked-prefill baselines; interference, TTFT/TPOT/ITL, goodput, independent scaling and first-token ownership"
+      "topics": "Equal-budget colocated/chunked-prefill/PD comparisons; KV costs and first-token ownership; joint per-request TTFT/TPOT/max-ITL SLOs; six synthetic trace audits and validity limits"
     },
     "13.2": {
       "title": "Isolated P/D measurement and workload protocols",

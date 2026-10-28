@@ -40,3 +40,5 @@
 9.3：`python -m scripts.experiments.lesson0903` 运行 20 个离线校准与误差案例；`--torch-check` 显式对照 PyTorch Observer。见[实验手册](../docs/chapters/part-09-quantization/03-calibration-observers-and-error-measurement/lab.md)。
 
 9.4：`python -m scripts.experiments.lesson0904` 运行 23 个离线算法案例；`--torch-check` 对照 GPTQ 补偿和 STE 的 PyTorch 数学表达。见[实验手册](../docs/chapters/part-09-quantization/04-quantization-algorithms-and-error-control/lab.md)。
+
+13.1：`python -m scripts.experiments.lesson1301`分析6组合成请求轨迹，支持自定义输入和SLO阈值；保留失败/未完成请求并检查声明的GPU预算。只做离线统计，不模拟GPU或估算稳态容量，见[实验手册](../docs/chapters/part-13-disaggregation/01-prefill-decode-disaggregation/lab.md)。
